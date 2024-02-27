@@ -11468,10 +11468,10 @@ react-wrap-balancer@1.1.0:
   resolved "https://registry.yarnpkg.com/react-wrap-balancer/-/react-wrap-balancer-1.1.0.tgz#3d246573413b936b799f29a1549cd217b948234c"
   integrity sha512-EhF3jOZm5Fjx+Cx41e423qOv2c2aOvXAtym2OHqrGeMUnwERIyNsRBgnfT3plB170JmuYvts8K2KSPEIerKr5A==
 
-react-zoom-pan-pinch@3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.4.2.tgz#21d3b2d60725631a650bc61afc3022395bcdc9aa"
-  integrity sha512-Gg44aKCmfO4d19TmPaswwUeBtJkizR45YXxRd3MMK7FIINuSyqBF5/jDYPMZbMSjTvOI3v1p0FfKtebkTamP+w==
+react-zoom-pan-pinch@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.4.3.tgz#10027dcf8ca997783414f43f84413fc00458d76b"
+  integrity sha512-x5MFlfAx2D6NTpZu8OISqc2nYn4p+YEaM1p21w7S/VE1wbVzK8vRzTo9Bj1ydufa649MuP7JBRM3vvj1RftFZw==
 
 react@18.2.0:
   version "18.2.0"
