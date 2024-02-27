@@ -1,0 +1,204 @@
+---
+id: list-available-benchmarks
+title: "List available benchmarks."
+description: "List available benchmarks."
+sidebar_label: "List available benchmarks."
+hide_title: true
+hide_table_of_contents: true
+api: eJylVl1v0zAU/SuWn0Cq6IYEgr6NaqBJSKAxeEFT5do3izfHNrbTrYry3/F10jRNS9aOvXRx7j335NwvV1SA507aII2mM/pV+kDYiknFlgrIEjTPC+Ye/Bs6oYHdeTr7TR1Y4wK9nVDLHCsggMPziur4EEE6r+gjEfVPCW4dH3ZjzU1RMOIBQQIIojC2yfpByYVSRGZEm0AEZFKDQCKe51AwOqtoWFuM6IOT+o7WEwpPrLAKz9ijX3DpF+eLd5Pt/+8p2lhlRLTJmPJQTzrijzLki4jNH/w49SvNVSmAJNuGmcRXROpgSMh7yh2iuzRGAdMJNmOlChsqPS4+R41HWVyDKDmkcFJnxhUscUAGxhIFK1DEOmPBBQn+oHDHMJHCL4xW6+fIhNJpgoYNI+ExmTtanMohVpgDb4324NHh7dkZ/hwo2d2yiVDc6AA6oDmzVkmetJnee/Sp9kkw51j6wgCF752b5T1wzANT6luWqnz4Zitx8pMBy29YmkO5bqIuybQRSfq2lrhRKsKiUT3wOQaydzIObHhZRH3YCdB9l1HwtoOeF3fbtoP2amqnwYm13YYaBJFKOND/DkO5dLxUzL2aI9C8c3+938+bgBGzF8fT2AebjNIBCsXy3M29FMdJKUWn33ZOxEgZTtNHEx+OgunMD6Ot4lg+Orut8WEkrkwp/iehGKEBIQ7iYGI6kDiw9kL11P7UO8W/CY2LJjdRYXoHqe1YyOPDtNlG023744wBt9ospdKpaJaHYP1sOq1y40M9q9CnjpYr5iSuuvQV+K4ZMO0cospwptJxJJC23s7rDx/jRKrToMIJ3Ot/+lk+kSu9ig1j3JrMjQNyffnjhlx8v6K93NBf5w20DwVLuWqn7ugmHsyFbtg9s7+bJAV4ClOrmEx9lOSpWjW73T6hPT3j1zXK/KZVtWQefjpV13jcrAJUWUiPEUU7u0covnztH+T/AOvBlWPFVIl2FHfY8bxO2+kjXHZvES9kc/puH2G0uUu8mMuRq32EQu8SsWVxu+2/WES30TgHJsClimr8LjgH2+e+t80RpRsNXy5vYj/+BTzyxBI=
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  List available benchmarks.
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/report/benchmarks"}
+>
+  
+</MethodEndpoint>
+
+List available benchmarks.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"benchmark","in":"query","description":"Comma separated list of benchmarks. All if not defined.","schema":{"type":"string"},"example":"aws_cis_1_5,aws_cis_1_6","explode":false}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_checks","in":"query","description":"Include check definition into the benchmark","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"short","in":"query","description":"Reduce the information to top level properties.","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"ids_only","in":"query","description":"Return only the ids of the benchmarks.","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          List of benchmarks.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The id of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"framework"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The framework of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"version"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The version of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"clouds"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","items":{"type":"string"},"description":"The clouds relevant for this benchmark"}}
+                      >
+                        
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"id\": \"string\",\n    \"framework\": \"string\",\n    \"version\": \"string\",\n    \"clouds\": [\n      \"string\"\n    ],\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"documentation\": \"string\",\n    \"checks\": [\n      \"string\"\n    ],\n    \"children\": [\n      null\n    ]\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

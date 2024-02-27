@@ -1,0 +1,144 @@
+---
+id: commit-a-batch-update
+title: "Commit a batch update"
+description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+sidebar_label: "Commit a batch update"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VMFu2zAM/RVBpy0I6m6nzRgGdEUH9NSizXZpg4KxmVitLKsSHSQw/O8j5SRN1q7AimG5WKKeqMdHvnS6xFgE48k0Tud6NDpbeQymRkdgR6NcTSoT1cnlueKPa0hFgplFBa5UtVlUpGaoYju7x4JUM1dFBW6BR19mIft6606bujakQM2Aikq1vgTCo1unx5pgEXV+oxcBfHVXg4MFyqt6OtYeAtRIGATRaccb5jYgTcmXjXD1QBWvcQW1twKYmxXvDwuaVKhMyXnN3GAQhsSRlIqxAR9bE7DUOYUWxzoWFdag807T2kvKSMG4he778Y5GKuU5jcNnTzYV7z3N+oEa8jEHINU689iiXT+BYiJ3oNVfkZwKOPrGRYxy/vH4WD6H1C4eVI0xstycu2gcieiMAu+tKUBQ2X0UaPfHp/ZV/5boFqnThOUR8+DfWHMDq6YUgZpIejzolOssaZ912272Wao367a69oyNGJbb7rfB8rWKyMc8y7qKs/V555tAglxCMDKQqV45GwqeQ2t5qW1TgE1hZiR3Do8/fWaF+iSccfMmFWoolfXdrNS5W7I4TVir0yagujq7nogV5FlmN8j588OQOhLPsCTYjMmLo//7nHRPDfif1ht6SbiizFvgKeYKkszdpksbWzI233NdyiSxnQVYt0HzG91xAyP+CLbvJcyTHdYcnz61KHWzNFHWPBdzsBFf0ePd1Wbu36vXTfxiOZsguHUaEtvKjpcPuN7/KxFfv4nSvzT4GwrYdaCfMrZCKDEkfYfjk6JAT3sXn5lbRn7n0MuL6wnb4Be8aBLE
+sidebar_class_name: "post api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Commit a batch update
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/graph/{graph_id}/batch/{batch_id}"}
+>
+  
+</MethodEndpoint>
+
+**Experimental**: This API is not stable and might be subject of change.<br/> Commit a batch update.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"batch_id","in":"path","description":"A batch identifier is a string that uniquely identifies the batch update.","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Ok message
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

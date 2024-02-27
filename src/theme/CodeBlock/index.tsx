@@ -1,0 +1,44 @@
+import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
+import { useDocsVersion } from '@docusaurus/theme-common/internal';
+import latestRelease from '@site/latestRelease.json';
+import versions from '@site/versions.json';
+import OriginalCodeBlock from '@theme-original/CodeBlock';
+import type CodeBlockType from '@theme/CodeBlock';
+import { ComponentProps } from 'react';
+
+type Props = ComponentProps<typeof CodeBlockType>;
+
+export default function CodeBlock(props: Props): JSX.Element {
+  let versionMetadata: PropVersionMetadata;
+
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    versionMetadata = useDocsVersion();
+  } catch (e) {
+    versionMetadata = null;
+  }
+
+  const versionTag =
+    versionMetadata?.version === 'current'
+      ? null
+      : latestRelease[versionMetadata?.version ?? versions[0]];
+
+  return (
+    <OriginalCodeBlock {...props}>
+      {props.children
+        .toString()
+        .replace(/\{\{imageTag\}\}/g, versionTag ?? 'edge')
+        .replace(
+          /\{\{nonEdgeImageTag\}\}/g,
+          versionTag ?? latestRelease[versions[0]],
+        )
+        .replace(/\{\{repoBranch\}\}/g, versionTag ?? 'main')
+        .replace(
+          /\{\{dockerComposeUrl\}\}/g,
+          versionTag
+            ? `https://github.com/someengineering/fixinventory/releases/download/${versionTag}/docker-compose.yaml`
+            : 'https://raw.githubusercontent.com/someengineering/fixinventory/main/docker-compose.yaml',
+        )}
+    </OriginalCodeBlock>
+  );
+}

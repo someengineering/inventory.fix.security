@@ -1,0 +1,16 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "allowArbitraryExtensions": true
+  },
+  "exclude": [
+    "build",
+    "node_modules",
+    "tools",
+    ".devcontainer",
+    ".docusaurus",
+    ".vscode"
+  ]
+}

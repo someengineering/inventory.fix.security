@@ -1,0 +1,23 @@
+---
+sidebar_label: "3. Configure Fix Inventory"
+sidebar_position: 3
+pagination_label: Configure Fix Inventory
+pagination_prev: getting-started/launch/index
+pagination_next: getting-started/explore/index
+---
+
+# Configure Fix Inventory
+
+Fix Inventory needs to be configured to authenticate with your cloud providers so it can access your resources.
+
+See [Data Sources How-To Guides](../../how-to-guides/data-sources/index.mdx) for detailed step-by-step directions on how to configure cloud providers.
+
+:::note
+
+**Fix Inventory requires a [set of required permissions](../../reference/iam-permissions/aws.mdx) to access AWS resources.**
+
+We provide a CloudFormation template that creates a role with the required permissions. You can use this template to roll out the permissions to your entire organization.
+
+See [How to Roll Out Fix Inventory AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.mdx) for step-by-step directions on how to use the template.
+
+:::

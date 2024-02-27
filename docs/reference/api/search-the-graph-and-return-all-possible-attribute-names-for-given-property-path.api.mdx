@@ -1,0 +1,234 @@
+---
+id: search-the-graph-and-return-all-possible-attribute-names-for-given-property-path
+title: "Search the graph and return all possible attribute names for given property path."
+description: "Search the graph and return all possible attribute names for given property path."
+sidebar_label: "Search the graph and return all possible attribute names for given property path."
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VtGO0zoQ/RXLTyC1DfAEkUCCFUj7BGIXXrYVmiaTxncTO9jO7lZR/p0ZO0mbpVRcrriqVNX2zPjMmTPjdtLDzsn0Ru4sNOU3h2CzUm4WsgELNXq0fNpJTQuZDlYqlwupNK0b8CX9xgeom4oNCvVA6xxdZlXjlWGj6xKFylF7VSi0whTC004IRbYWv7fKYi5Tb1tcSJeVWINMO+n3DYd03iq9k32/mGA4zELsAcX3Fu3+5LVsP144OInWYS4KYwVUlWisadD6veBM3EpcFkIbL3IslCYza2ihnADn2hrz1QxvAZU7A5ho0W3N3FpsjPWYR4jBeSGJXMjBg9wcZ8Z4Hqd1YJeLtdYnM50lIrwRsZQh0XtFW6CFCQ7AWWOuMvD4h/xnptX+PPsfp7tGITGoHXoB4uJ2+b7CmhSxvOBIokTIyeC+VITYom+tdqFmROA2SibuUkn+cVRDjO7ut+qxNaZCiLQV0FY+ptr3m+iNzr8z+Z49fuZ1oJGwE71EZk1hMqM93R6uwAefNBUwE905KUw1VO5J7CLW1lMqC6ls0MeK6X39ei35aC3FcvmGaCfiCaZrjHboOPaLZ89OYyUryi7qnUQ7QFc6UDlKmnMAP88CmqZiPVCohPk9mQtYC3M53qy1EGtp7jXatVzEFbllt9QtCfUbFW3aJ4GSDEps3UqZhFUajjZBz8pj7U5pLqY/T/VqKMk4RAYOWR+xp41zaluhAE9htq2Pc8CFXtipO9TzblnFbixNzg1oHJMTBlsqk3BB0o1zr09Gz2QKziJ0aO/GUdnaijxL7xuXJklXUsA+7bjCPVnegVVA4EK2fBZLOehSViaDKmxT2uwzP375imrfB+UqXZjAmPKhGB/Ug7jUlJw3di8ujEXx+f3VtXj76ZKvJXSRva/PY2jnawiFHnr6b7A6q9tU3KOeISSBrm4gfHiHyDU9emrGuPTziHXiIPJ3I7tuCw6/2KrveTtOJK5FrhyTfRgOjxBNPfC3XouTKd/ifvaI3UHVspXkEfv7kJ98HkbfU/GfXoAzGIfn6A8B/m9vwJkMxqfqkMLm0IT/UiOPCP/1f5qTeMYxqvfHcEack9z7DdlGMgK8eHwRQSyvOcjBfXbDaPs2y7A5zvmn8c4cTBPv08erazLeDk9gbXL2sXDPjyt9p3JNH546PwBeBYg4
+sidebar_class_name: "post api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Search the graph and return all possible attribute names for given property path.
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/graph/{graph_id}/property/attributes"}
+>
+  
+</MethodEndpoint>
+
+Search the graph and return all possible attribute names for given property path.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"section","in":"query","description":"The name of the section used for all property paths. If not defined root is assumed.","required":false,"schema":{"type":"string","enum":["reported","desired","metadata"]}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"prop","in":"query","example":"tags\n","description":"The property path to search for with an optional predicate","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"count","in":"query","description":"Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements","required":false,"schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"text/plain"}
+    value={"text/plain-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":"1rem","marginBottom":"1rem"}}
+        >
+          
+          
+          The search to perform
+          
+          
+        </div>
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The result of this search in the defined format
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

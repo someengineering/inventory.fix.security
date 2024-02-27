@@ -1,0 +1,9 @@
+.docusaurus
+build
+node_modules
+
+*.svg
+**/lottie/*.json
+
+tsconfig.json
+.devcontainer/devcontainer.json

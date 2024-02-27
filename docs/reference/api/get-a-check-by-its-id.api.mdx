@@ -1,0 +1,375 @@
+---
+id: get-a-check-by-its-id
+title: "Get a check by its id."
+description: "Get a check by its id."
+sidebar_label: "Get a check by its id."
+hide_title: true
+hide_table_of_contents: true
+api: eJylVk1v2zAM/SuCThsQNF1Pm2/F1hW5FV23SxEEis3EamxLleg0huH/PlKy87GkbbCeqlDU49czX1uZgU+dtqhNJRN5CyiUSHNIV2LeCI1e6OxCjiSqpZfJo3RgjUM5HUmrnCoBwbG9lRX9IIDwdKYzeqIZ0CrM6XwY5SEHMfkhzEIgnWI0NMKCWxhXcjhPxlLJpJXYWMb16HS1lN1IwkaVtmCbevEzSK9mvlLW5wZnUKWusQgc3cFzrR0dE3Q1dFO2eGsqD55hry4v+c9xXiEbL8i5LpBTSU2FUCF7K2sLnSr2Hj95ftIeZ2rmT5AiPbTOUEWoY0BqyVE1p/qis9gX7WMqXDIhrXUG7jyEwfsYx4Nb6xTOg+mdj1FQY3EmRnA9RqAWwtK4vjM9jHJONUwbhNKfnPyJYW2BThW7BqexObfa6P0PDtGtqksmPvkjzb4gU66XzOkSMk13I1mYl0D3hZHTkCYyAZgvWaY5hiruDrhwRmURRMDGEhM92Y8LdMAZqPjoPfohbPDMmZHn8Gnuh6CItSvOwyDHVyBUOuT7n825DgC8LgZkCHF05S0VDpnQ3tcgux1T5f1Hyzhse6F4xXyMuT3KsG5OROH9M1vpKvvoRxIwCF7RanccGWtXUWja77uYFyGo9qvzOsOe4gUCICqKsBR6wQa9rAzb9orZG8QkDul7f9HxHWlIbqidcgmBtiwYiRxHoRkHjHE7yEon4xYbVCeMUuaI1ifjcZsbj13S8kv2XCun1byIvOK7uPIXilpLzwpD33Mw845lWTu4/vqNNIJSnPbfNjemr+On3ohJtSZZMK4R37ni+5tfD+L6bsJhKbvYqj9fIrTHUgXS9yr5qswedLrdac8bwhxnxV/t2BZK7zM89nIr2iM5LLVkK9NUXGzMo2zbufLw2xVdx+bnGhwtz8fpro+h5Zn2fKaJLVTh4Y2cP933GvxZvK/4J+sYWF81YZpFzb/ouIJm/3+NjtduDipIJKUYr6/TFCzuPTySbx7tln63Nw807b/FgR9f
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Get a check by its id.
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/report/check/{check_id}"}
+>
+  
+</MethodEndpoint>
+
+Get a check by its id.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"check_id","in":"path","description":"The ID of the check to perform.","schema":{"type":"string"},"example":"aws_ec2_snapshot_encrypted","required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The checks result.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The id of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"provider"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The provider of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"service"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The service of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The title of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"categories"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","items":{"type":"string"},"description":"The categories of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"severity"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={"**Possible values:** [`critical`, `high`, `medium`, `low`, `info`]"}
+                        schema={{"type":"string","description":"The severity of this check","enum":["critical","high","medium","low","info"]}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                detect
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              The detect expression of this check
+                              
+                              
+                            </div><SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                remediation
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"text"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The text of the remediation"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"url"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The url of the remediation"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      action
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Action to remediate the inspected issue
+                                    
+                                    
+                                  </div><SchemaItem
+                                    name={"property name*"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                    collapsible={false}
+                                    discriminator={false}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"url"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The url of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"related"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","items":{"type":"string"},"description":"The related checks of this check"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"result_kinds"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","items":{"type":"string"},"description":"The kinds that are returned by this check."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"risk"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The risk we are taking if we ignore this check"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"service\": \"string\",\n  \"title\": \"string\",\n  \"categories\": [\n    \"string\"\n  ],\n  \"severity\": \"critical\",\n  \"remediation\": {\n    \"text\": \"string\",\n    \"url\": \"string\"\n  },\n  \"url\": \"string\",\n  \"related\": [\n    \"string\"\n  ],\n  \"result_kinds\": [\n    \"string\"\n  ],\n  \"risk\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

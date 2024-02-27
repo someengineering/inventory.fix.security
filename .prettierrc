@@ -1,0 +1,18 @@
+{
+  "printWidth": 80,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": [".imgbotconfig", ".eslintrc", ".prettierrc"],
+      "options": { "parser": "json" }
+    },
+    {
+      "files": ["*.md", "*.mdx"],
+      "options": {
+        "embeddedLanguageFormatting": "off",
+        "printWidth": 240,
+        "proseWrap": "never"
+      }
+    }
+  ]
+}

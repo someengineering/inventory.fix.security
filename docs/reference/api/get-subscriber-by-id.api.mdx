@@ -1,0 +1,315 @@
+---
+id: get-subscriber-by-id
+title: "Get subscriber by id"
+description: "Get the subscriber with a defined id."
+sidebar_label: "Get subscriber by id"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVclu2zAQ/RWBpxYwYrcIitY3o0iDXIogcXtJAoMWRxZTmlS4ODYE/XtnSMXWErQ+iSJne2+2mglwuZWVl0azObsGn/kSMhfWdL0Gm71KX2Y8E1BIDSKT4oJNmOcbx+YPrJWL6o49TVjFLd+CB0vPNdP4g2ZP5lZSoLokXxX3JZ77ASzRuRSgvSwkOjfFIBxUsPASpAXB5t4GmDCXl7DlbF4zf6iiN2+l3rCmeSJhV2Fo4Oj982xGn7HHnv3caI8BkCSvKiVzTpLTZ0fidcdd386iS1rJHXIWtHwJkBEJGdcCb5R0nkD1eZu8RW7Wz5B7/K+sqcB6meJGzkboziFOui6yZjJI18nm0e/YppA5/XF7GMU9yV5LsBAz9AcOGbqj4xac4xu8JtsTxoWQ0YK67YF6xxWVWJQlV1xnPLruOf0vV633VZI6h7WYnrbQWo/exEwBnYi3Vy79qjB2lZttpSApH22vjVHA9cj4TRcE5QKzQ6YHiZlEz7CjVxQRmD1XmqBERm6xiLxUUedRDyoMkecIF7uyyztVGtmhpjX6eH/xqJfkuM0S7CukD1XXUPKdNCHWDEaBicaQjY12MCU8KO9i2NhtaCTCjLepAZEeL7dggu9QosM2NdOQ7lMAIliemMEMAzadcENmIkgyTu5hD3nw0EkTBrMocNQktSRHzZw45M4FhI4sFFyqYBMxFqhqUgQ4GxDFsVUi6gHAL7Mm4vOKUN13C7F55yW2WXy4nF2Oi/yn6YIrTNCiP2887P20UlwOJs2wiGHPqQ5HJuOsjmBwZDQpEpzGpcEBwjYQu4Wm7pxNT1rTujeeGxRyYHdvIzxYhfKl95WbT6d1aZxv5nVlrCfJHbeSr1XqPXpLqFv6mDI5V/EaIyGd/vPXbziRmziopS5MhNoy+kPusxtNTWGwIr8bzN/d1f0yW9zekFuMLnH6+1My7fyWR9balUObrMPM+pDFzdNLSH3i/vzNl1LRyRS6jxzVLbcPrLdO5v3lh1ATTQ+srtfcwS+rmoaucVXYA94/nViNCRDS0RlTWHDl4B8YPty1q/FjdsYefRdJe8n1ISZXBfrDI8730R5vnlChBI7dFgNNMos8h8p3tEdLlNJ9rMrrqyVWwF/ukwHO
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Get subscriber by id
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/subscriber/{subscriber_id}"}
+>
+  
+</MethodEndpoint>
+
+Get the subscriber with a defined id.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The subscriber
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The identifier of this subscriber"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                subscriptions
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              The dictionary of subscriptions, where the key is the message type
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      property name*
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       Subscription
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    The definition of an action subscription
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"message_type"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","description":"The name of the action to listen to"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"wait_for_completion"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"boolean","description":"If an action is sent to this subscriber, the event sender should wait until this\nsubscriber has processed the message and send a done message.\nThis is the expected behaviour of every actor and defaults to true.\n","default":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"timeout"}
+                                    required={false}
+                                    schemaName={"number"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"number","description":"This is the duration in seconds this subscriber has time to execute the action.\nAfter this time the sender assumes a failure and rejects the result of this actor.\n","default":60}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"string\",\n  \"subscriptions\": {}\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          No subscriber found
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

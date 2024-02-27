@@ -1,0 +1,153 @@
+---
+id: this-endpoint-is-used-to-create-the-first-user
+title: "This endpoint is used to create the first user."
+description: "Create the first user from the create first user login form."
+sidebar_label: "This endpoint is used to create the first user."
+hide_title: true
+hide_table_of_contents: true
+api: eJylVE1vEzEQ/SuWz/lCvUBuUIHUExUNXKIKObuzWYPXNuPZfLDa/86MnUJoKUQih40/3jw/v5nxoMlsk16utempDWi/G7LB6/uJriFVaGOeLvU1giFQ1IJqLCZSfQJUDYYur1Vl+2zLha31qgnYzfREI3zrIdGbUB/1ctBV8ASeZGhidLbKp84P0/1+P5WYaY8OfBVqqAWUqhY6IyM6RmA5YfMFKmLiiCECkoVUeLto/PEMmAit3+rH11mJ5gJW3nQw0+NEN71zMrksXNA5VoUmeyDXzjws1brLSDL0CUE0Ke0D1pdxPKCfpfmMEDk9l7EVLNTP0yLUFsX9C/kKWnFGlWmIS+OBTdl0KpyaifNP2FMMPpV8Xi2u5O8vrBQyXYpQ2caybDmGCy8Xai4+Ie2Ai5vt1DGkXDWGWp7Ny+nTXLZTkcR7/N0BSk8MmskY1hLFtJzPh5ajx+UQA9LIyJ1BazauSJW9orUxveOhdqEyLi9LLjjm9+2XrxYLuTW3mvVNyG5acmLnO3tQN37HHRLwqK4Dgvrw9m6lXt/eyLGsrjjx6UWhTtQZLwSletkhdhZ8HYP1JC7z1WqxqvpTF88e5+2sP/+370/1QXCgeXTGehGcXR1OSVjrp0lgS4qdaz0MG5PgI7pxlGV+RZDbe33/y32ZMWkLpuZQydpXOIrycofpSiQI3PUi5d/vjWTkZ8Hcvr9bcfTm9HB1jODVM/TkfCJSxvEHVxrcGA==
+sidebar_class_name: "post api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  This endpoint is used to create the first user.
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/create-first-user"}
+>
+  
+</MethodEndpoint>
+
+Create the first user from the create first user login form.
+
+## Request
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/x-www-form-urlencoded"}
+    value={"application/x-www-form-urlencoded-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"company"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The company name."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"fullname"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The full name of the user."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"email"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The email of the user."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"password"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The password of the user."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"password_repeat"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The repeated password of the user."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"redirect"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The redirect url after the user is created."}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"303"}
+        value={"303"}
+      >
+        <div>
+          
+          
+          The redirect to the specified url in the form.
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

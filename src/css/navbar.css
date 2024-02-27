@@ -1,0 +1,127 @@
+.navbar__item:last-of-type {
+  margin-right: var(--ifm-navbar-item-padding-horizontal);
+}
+
+.navbar__link {
+  white-space: nowrap;
+}
+
+.navbar__items .social {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__items .social .link-text {
+  display: none;
+}
+
+.social::before,
+.module::before,
+.docs::before {
+  flex: none;
+  mask-image: var(--icon);
+  -webkit-mask-image: var(--icon);
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  background-color: var(--ifm-navbar-link-color);
+  width: 2em;
+  height: 2em;
+  content: '';
+}
+
+.social:hover::before,
+.dropdown__link:hover::before,
+.dropdown__link--active::before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
+.social::before {
+  margin-right: calc(var(--ifm-navbar-item-padding-horizontal) * -1);
+}
+
+.docs::before {
+  margin-right: 0.5em;
+}
+
+.menu__link.social::before,
+.menu__link.social:hover::before,
+.menu__link.docs::before,
+.menu__link.docs:hover::before {
+  margin: 0 0.75em 0 0;
+  background-color: var(--ifm-menu-color);
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.menu__link--active::before {
+  background-color: var(--ifm-menu-color-active) !important;
+}
+
+.github::before {
+  --icon: url('../img/social/github.svg');
+}
+
+.discord::before {
+  --icon: url('../img/social/discord.svg');
+}
+
+.linkedin::before {
+  --icon: url('../img/social/linkedin.svg');
+}
+
+.github-stars {
+  --ifm-button-background-color: var(--ifm-navbar-link-color);
+  display: inline-block;
+  position: relative;
+  margin-left: calc(0.625em + var(--ifm-navbar-item-padding-horizontal));
+  margin-right: calc(var(--ifm-navbar-item-padding-horizontal) * -1);
+  border-radius: 0.875rem;
+  padding: 0.375em 0.375em 0.375em 0.625em;
+  color: var(--ifm-navbar-background-color);
+  text-align: center;
+}
+
+.social:hover > .github-stars {
+  --ifm-button-background-color: var(--ifm-navbar-link-hover-color);
+}
+
+.github-stars:after {
+  position: absolute;
+  left: -1.25em;
+  transition-duration: var(--ifm-button-transition-duration);
+  transition-property: color, background, border-color;
+  transition-timing-function: var(--ifm-transition-timing-default);
+  border-top: 0.75em solid transparent;
+  border-right: 0.75em solid var(--ifm-navbar-link-color);
+  border-bottom: 0.75em solid transparent;
+  border-left: 0.75em solid transparent;
+  content: '';
+}
+
+.social:hover > .github-stars:after {
+  border-right: 0.75em solid var(--ifm-button-background-color);
+}
+
+.menu__list .github-stars {
+  display: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .navbar__items .social:not(.github) {
+    display: none;
+  }
+
+  .social::before {
+    background-color: var(--ifm-navbar-link-color);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .menu__list-item .github-stars {
+    display: none;
+  }
+}

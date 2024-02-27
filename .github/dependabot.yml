@@ -1,0 +1,24 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: '[skip ci] build'
+      prefix-development: '[skip ci] chore'
+      include: scope
+    labels:
+      - 🧩 dependencies
+      - 🤖 bot
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: '[skip ci] ci'
+      include: scope
+    labels:
+      - 🧩 dependencies
+      - 🤖 bot

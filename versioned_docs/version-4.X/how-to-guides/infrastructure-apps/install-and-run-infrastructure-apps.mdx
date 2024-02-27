@@ -1,0 +1,65 @@
+---
+sidebar_label: Install & Run Infrastructure Apps
+---
+
+# How to Install & Run Infrastructure Apps
+
+Fix Inventory infrastructure apps are low-code applications can be installed to extend Fix Inventory's functionality.
+
+Infrastructure apps can perform simple tasks like [cleaning up untagged resources](../cleanup/clean-up-untagged-resources.mdx), finding abandoned load balancers, or sending notifications to [Slack](../alerting/send-slack-notifications/index.mdx), [Discord](../alerting/send-discord-notifications/index.mdx), or [PagerDuty](../alerting/create-pagerduty-alerts/index.mdx).
+
+:::info[How safe are Fix Inventory infrastructure apps?]
+
+An infrastructure app can not execute any Fix Inventory commands directly. Instead, it generates Fix Inventory commands which are then executed by Fix Inventory.
+
+An app has read-only access to the Fix Inventory Infrastructure Graph using the `search()` function, meaning that it can only retrieve information about resources that are already known to Fix Inventory.
+
+To modify resources, an app needs to generate a Fix Inventory command that does so.
+
+:::
+
+## Prerequisites
+
+This guide assumes that you have already [installed](../../getting-started/install/index.mdx) Fix Inventory.
+
+## Directions
+
+1.  Search for an app using the [`app search` command](../../reference/cli/app/search.mdx):
+
+    ```bash
+    > apps search cleanup
+    ```
+
+2.  Use the [`app install` command](../../reference/cli/app/install.mdx) to install the app:
+
+    ```bash
+    > apps install cleanup-untagged
+    ```
+
+3.  Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
+
+    ```bash
+    > apps run cleanup-untagged
+    ```
+
+    :::tip
+
+    Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+    :::
+
+    :::info
+
+    By default, Fix Inventory passes the app a configuration that corresponds to the app name.
+
+    For example, when installing an app named `foobar`, Fix Inventory creates a default config named `fixinventory.apps.foobar`.
+
+    If you would like to run the app with an alternative config, you can specify the config name using the `--config` argument.
+
+    Please refer to [`app run` Command](../../reference/cli/app/run.mdx) for more information.
+
+    :::
+
+## Further Reading
+
+- [`app` Command](../../reference/cli/app/index.mdx)

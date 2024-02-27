@@ -1,0 +1,112 @@
+.searchQueryInput,
+.searchVersionInput {
+  transition: border var(--ifm-transition-fast) ease;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--ifm-toc-border-color);
+  border-radius: var(--ifm-global-radius);
+  background: var(--docsearch-searchbox-focus-background);
+  padding: 0.8rem;
+  width: 100%;
+  color: var(--docsearch-text-color);
+  font: var(--ifm-font-size-base) var(--ifm-font-family-base);
+}
+
+.searchQueryInput:focus,
+.searchVersionInput:focus {
+  outline: none;
+  border-color: var(--docsearch-primary-color);
+}
+
+.searchQueryInput::placeholder {
+  color: var(--docsearch-muted-color);
+}
+
+.searchResultsColumn {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.algoliaLogo {
+  max-width: 150px;
+}
+
+.algoliaLogoPathFill {
+  fill: var(--ifm-font-color-base);
+}
+
+.searchResultItem {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  padding: 1rem 0;
+}
+
+.searchResultItemHeading {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.searchResultItemPath {
+  --ifm-breadcrumb-separator-size-multiplier: 1;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.8rem;
+}
+
+.searchResultItemSummary {
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 996px) {
+  .searchQueryColumn {
+    max-width: 60% !important;
+  }
+
+  .searchVersionColumn {
+    max-width: 40% !important;
+  }
+
+  .searchResultsColumn {
+    max-width: 60% !important;
+  }
+
+  .searchLogoColumn {
+    padding-left: 0 !important;
+    max-width: 40% !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .searchQueryColumn {
+    max-width: 100% !important;
+  }
+
+  .searchVersionColumn {
+    padding-left: var(--ifm-spacing-horizontal) !important;
+    max-width: 100% !important;
+  }
+}
+
+.loadingSpinner {
+  animation: loading-spin 1s linear infinite;
+  margin: 0 auto;
+  border: 0.4em solid #eee;
+  border-top-color: var(--ifm-color-primary);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+@keyframes loading-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  margin-top: 2rem;
+}
+
+:global(.search-result-match) {
+  background: rgb(255 215 142 / 25%);
+  padding: 0.09em 0;
+  color: var(--docsearch-hit-color);
+}
