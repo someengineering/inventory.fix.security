@@ -1,0 +1,287 @@
+---
+id: add-subscription-to-subscriber
+title: "Add subscription to subscriber"
+description: "Add a specific subscription to a subscriber."
+sidebar_label: "Add subscription to subscriber"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV0tv1DAQ/iuWTyBF3cIBQW4VAqknKlq4lKryxpPG4LWD7SxdRfnvzNjZzWNTaLkBUqXu2vP85pvxbMsl+MKpOihreM7PpGSC+RoKVaqC+WZ9uGXB0lU6WYM74RkP4s7z/JqP5Ty/yXgtnNhAAEfXLTf4Ba0PyrdKoroil7UIFX6exnFVAVMSTMAwwDFbsoAngz4qOPjeKAeS58E1kHFfVLARPG952NXRW3DK3PGuyw4BwBZN3sb733kXRUw6ajDSOPlDn0FtwDZh7/B7A243MVUK7eE4BOUZ/lHasnEiBqMM81BYI+kcLwc8WCXwDD1RleAeiiZA1E1pnHwxZyVWI6klOcITjMRD4X2zAY/VLYXSjUMtI5mDr1CEFIED3+iQyoAG0Kh1aJMvIGCaTaqPhFKgEs9fnY7h+CFUuC2tuy3sptYQ030aNOclxrevD6EQK2TnkGQx8lS/PlFf2UZLRiGwBrmlo84XM8OxdrYA70FGC4iMF3cJE7KDMElrDucIw7hWcI+9E1B1DZXYKttE8mIUbpdgi3Z6bHwMG5n0AJZrazUIMwaTpLvuhkDyNTYbeJJ/eXpK/45ZPOkYZE5ANEhS1LVWRWTV6qsn8XbkfjYT5jwTCJ7CYjEqacxHMK185Md0EmT7TOyayITfEdsaXFApbpwCR73zmFEwKTTvstkAGmwe/B7blCoySGBh5nFn7EcFLvXIN9jta7tnQj8/hJQqWtAXk6QWXEGpTJQlVwN5x05/i1XvPU2vR6EWy9OPzt4j8o0qBfSJcFvqxmX+/RcdOG2z7DC7F8fb3ziup0MZ8wuasrocE7FbuIlt1sUbfNYrK+nptD6ylF7QnK+G7Fbt5KHvVu3w7nY058Bt95tB4zQqVyHUPl+t2gptdnlbWxdIciucEmudGoDuUn/1OXBtC6HjMcZFOtPr129wLHZxWipT2ljFPq336p6dG4rKIi3eWgTx47vLK3Z2cU5uMbpU188vkmkfNiJ2Rv+K0Z40X44ms3ZCj3YYvU/esBLtAtyHVa0FvpMYTwSt7ZG/5hPH+XzJykdLDyKRULzmbbsWHj453XV0nN5eqohUniB/4PUdp/K3kH4RQ5zrk+VsK3RDUpx2lcdj8M+Owl+AtrzCDQDeDI37REY9+9ivfs/ZI34BLIbYHwqzG8e0D33aHE8r9Sy4xR8IfxDSqD27G5SuQCA9InBJ4KwooB5T9Gh5I8QPY/niw+UVTr2fCqXpNg==
+sidebar_class_name: "post api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Add subscription to subscriber
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/subscriber/{subscriber_id}/{event_type}"}
+>
+  
+</MethodEndpoint>
+
+Add a specific subscription to a subscriber.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"event_type","in":"path","description":"The action event type.","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"timeout","in":"query","required":false,"description":"This is the duration in seconds this subscriber has time to execute the action.\nAfter this time the sender assumes a failure and rejects the result of this actor.\n","schema":{"type":"number","default":60}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"wait_for_completion","in":"query","required":false,"description":"If an action is sent to this subscriber, the event sender should wait until this\nsubscriber has processed the message and send a done message.\nThis is the expected behaviour of every actor and defaults to true.\n","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The subscriber
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The identifier of this subscriber"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                subscriptions
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              The dictionary of subscriptions, where the key is the message type
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      property name*
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       Subscription
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    The definition of an action subscription
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"message_type"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","description":"The name of the action to listen to"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"wait_for_completion"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"boolean","description":"If an action is sent to this subscriber, the event sender should wait until this\nsubscriber has processed the message and send a done message.\nThis is the expected behaviour of every actor and defaults to true.\n","default":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"timeout"}
+                                    required={false}
+                                    schemaName={"number"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"number","description":"This is the duration in seconds this subscriber has time to execute the action.\nAfter this time the sender assumes a failure and rejects the result of this actor.\n","default":60}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"string\",\n  \"subscriptions\": {}\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

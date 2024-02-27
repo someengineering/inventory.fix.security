@@ -1,0 +1,257 @@
+---
+id: proxy-request-to-a-configured-tsdb-server
+title: "Proxy request to a configured tsdb server."
+description: "Proxy request to a configured tsdb server."
+sidebar_label: "Proxy request to a configured tsdb server."
+hide_title: true
+hide_table_of_contents: true
+api: eJy1lcFu2zAMhl9F0GkFDCcZOmDzrdi6oZei6LpeuhwYi4612ZInyWkMw+8+UnZTp+2hw7ZLbNEUyf8jpfSyAQc1BnReZne9NLSQGVlDKROp0OdON0FbQ8ZLGzAT/h62W3RCWfTC2CCgquy9CFYoLLRBAcKgD6gEBxH3mn58Bb5En1JIbR7DO/zVaodKZsG1mEifl1iDzHoZuobL8MFpsyVP3EPdVGyCRi92qwWVDAoCyGFYJzLAlsuXwauNXHNg31jj0XOs0+UpP461XBQilCgeHIX2Irc1JROFs7X4rPfijbH8vNUgSgSF7iShPeRYIxhPrxAEJ+S9zCG3ptDblvQkwlvCwPKIhMjBRIcNipriMAXyDWhClIr7sGgqYDD9qxCQoExc2jH5CF2lzw1n6kdL2Qu9T3Pr8FAfMIKUwA1DIt8t3/4/OCXOoIzVeXQ7Gp4ZEodAmtVfUyEl6VGOqS0xPmzIZ1RMfKCtYpKx8jgkJITkPEdxw5pGP6GN0jkE9MmjviNGlIrnftPFT/NawKiIjbysqToajsbZfZd+N5+wQYpLbK0ZCY7ZMtHZVpSwQz5amsC4xuGTpEoXBTpCVnEo+boTtEpXBEbhSk48jvXOwsduP0jhiXnqfcUiDnMeeOhfbjh3l45saemsyy0GWsY7IJML9lr0vBpYQHQf76LWVeRQhtD4bLHoS+vDkPWNdYE9d+A0tzW2j7+NzZuaKyubQxXNVDXvOf78/sNyyfrXfCMVNhLTIfLhPl2YHVG1rhMf+ehcn3+9EWdXF5yWqhvF367G0D7UEKd0ujv/CMoRz0PXZtNPKSKHfgI2XXKJzOKa6h+138m+34DHb64aBjZTeteRff2IKlJV2vM7NaKAyuOzEg6HUL65nu7nE/FPrv4XxU1GMF3sadXyil5/YvfwRzGsyW88FVHB+Oksz7EJs03zuOvZuH05v6FO/wZQXGJg
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Proxy request to a configured tsdb server.
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/tsdb/{path}"}
+>
+  
+</MethodEndpoint>
+
+Proxy request to a configured tsdb server.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"path","description":"Note: swagger does not allow to define a nested path with slashes.","in":"path","required":true,"schema":{"type":"string","example":"api/v1/metadata"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          If the response is coming from Fix (no FixVia header), this means that tsdb is not configured, so a request can not be made.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"502"}
+        value={"502"}
+      >
+        <div>
+          
+          
+          If the response is coming from Fix (no FixVia header), this means that the configured tsdb server can not be reached.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          The response from the tsdb.
+          
+          
+        </div><details
+          style={{"textAlign":"left","marginBottom":"1rem"}}
+          className={"openapi-markdown__details"}
+          data-collaposed={true}
+          open={false}
+        >
+          <summary
+            style={{}}
+          >
+            <strong>
+              Response Headers
+            </strong>
+          </summary><ul
+            style={{"marginLeft":"1rem"}}
+          >
+            <li
+              className={"schemaItem"}
+            >
+              <summary
+                style={{}}
+              >
+                <strong>
+                  ViaFix
+                </strong><span
+                  style={{"opacity":"0.6"}}
+                >
+                   string
+                </span>
+              </summary><div>
+                <div
+                  style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                >
+                  
+                  
+                  This header indicates, that the response is created by the tsdb server and Fix is only a proxy.
+                  Depending on this header: you have to interpret the response differently.
+                  
+                  
+                  
+                </div>
+              </div>
+            </li>
+          </ul>
+        </details><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

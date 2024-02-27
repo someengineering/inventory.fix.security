@@ -1,0 +1,96 @@
+---
+id: web-socket-register-as-event-listener-and-receive-all-events
+title: "[WebSocket] Register as event listener and receive all events."
+description: "## WebSocket Endpoint"
+sidebar_label: "[WebSocket] Register as event listener and receive all events."
+hide_title: true
+hide_table_of_contents: true
+api: eJztVEtvEzEQ/iuDe4uiptwgqpAKCqggoaoN9JCNqLM7yZp4PVt78mKV/87Ym6ZdVA699+bxvL5vXo0qMOTe1GzIqaE6OYFbnN1QvkSGkStqMo4zNy4RcmvQMTjEIgATBHQFaGuBRenxfmU8FlCiLtAHmJMHDZsAOTmHeQyfOS0epU7epbwtJt8NzkKbsPbElJM9PZ/5wYfM9XrfiaORkTjagSOGmcgYWFLNPVWwMaJ1EDZ6sUD/ptfLJI+wuFhxSd780W3mSycBAsJns00INFzdfAPj5l4H9qucVx5FhNrqHPsJ1vN84evtWKQlOlgbnQzvOrnuDiXInFTgaDI321+6a5YTLQ2eCjYG4adtIKgpBDOLdSGgyvAhFkio1hxiCVskrssRKgxBL8RCim984OOH6DpllpSjra5qi5lrIFNL44pMDeXVQZipvnz93nCr+4jaC5Jz+fiQKdhnTvVVrb2ukKXhajhplBNBhiiUtBGliQN1v0K/E6E7ZhcyNriW8raVFXtITcmpqrTwi3Fji60JLM4P06WGcykT9hVua0sFHuWQl1hpNWwU7+oEgb1xC7XfT/uK9SLCU2EnY1OpaYwXanIBQ/QocK5XltvnU5Di3VfCriRJrBbIiTCXIgxa8PIR0K8f6K+8FV3JXIfhYNCUFHg/bGryvBfLtfZGS29T0qjrJFeWcm3Tt2SNPl31u/dnZwIo8pGppUTVsI1c40xfugiI/A4+kUzy9ehmDBdXlzGtoGv5/Hzbhg5caRcDHNo1OW78FK5xISWXPks7EsfUAnTxR4bOY45mjWnt2xKc/tvbRsnGiwe/XpPXa/Kya3LYXcYtD6R0cj9kXtNSNYfFm6jD4skatCs0UU0zk1788Ha/j9/twYnrWJgQ9+3xavx3Tl94jp7FucTd4+lba7vCdEKmj4svoKZPL8qX0Vg2+i/CdqT0
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  [WebSocket] Register as event listener and receive all events.
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/events"}
+>
+  
+</MethodEndpoint>
+
+## WebSocket Endpoint
+
+The client needs to send all the required headers for a ws connection and has to handle the websocket protocol.<br/> **Note this can not be tested from within swagger!**
+
+## Authorization
+
+In case Fix has a PSK infrastructure in place, the client needs to send a JWT token via the `Authorization` header or via the `fix_authorization` cookie. It is also possible to omit header or cookie and send an Authorization message as first message on the websocket. Example \{ "kind": "authorization", "jwt": "Bearer &lt;jwt&gt;" \}
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"show","in":"query","description":"All events to show as a comma separated list","required":false,"explode":false,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+---
+sidebar_label: Update Fix Inventory
+sidebar_position: 1
+---
+
+# How to Update Fix Inventory
+
+We regularly release [new versions of Fix Inventory](/releases) with bug fixes and new features, and recommend keeping your Fix Inventory installation up to date.
+
+:::tip
+
+Don't want to manage your own Fix Inventory installation? Check out **[Fix](https://fix.security)**, an all-in-one security dashboard built on top of Fix Inventory.
+
+:::
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-started#download-and-install-docker)
+
+- [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
+
+## Directions
+
+1.  Fetch the `docker-compose.yaml` file for the latest Fix Inventory version. See the [list of versions](https://github.com/someengineering/fixinventory/releases) if you want to use a specific version.
+
+    ```bash
+    $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+    ```
+
+2.  Restart the services defined in the `docker-compose.yaml` file:
+
+    ```bash
+    $ docker-compose up -d
+    ```
+
+    :::note
+
+    [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+    In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+    :::
+
+    <VersionOnly allowed="current">
+
+    :::info
+
+    Fix Inventory publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
+
+    If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
+
+    :::
+
+    </VersionOnly>

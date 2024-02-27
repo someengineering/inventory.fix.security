@@ -1,0 +1,144 @@
+---
+id: abort-a-batch-update
+title: "Abort a batch update"
+description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+sidebar_label: "Abort a batch update"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VF1v00AQ/Cune4IoqgtPYKFKAYJUCQlUAi9thDb2Jr72fL7eratElv87u+ckTWipRIXIi+9jbnd2diedLjEWwXgyjdO5Ho2ma4/B1OgI7GiUq1llopp8PVf8cQ2pSLCwqMCVqjaritQCVWwX11iQapaqqMCt8OTdImRnV26yaAIpUAugolKtL4Hw5MrpsSZYRZ1f6lUAX/2swcEKJamej7WHADUSBkF02vGGqQ1IU/JjI1Q9UMVrXEPtrQCWZs3743pmFSpTclyzNBiEIPFJCsXYgLetCVjqnEKLYx2LCmvQeadp4yVkpGDcSvf9eE8jlfKQxnHaybbig9QsH6ghHnMAUq0zty3azT0oJnJHWv0VybmAo29cxCj3r09P5XNM7cuNqjFGlptjF40jEZ1R4L01BQgqu44C7f6Y6lD194kuSKOxPGEW/Btrbl/VMGVObrmTejzolOssaZ91u272Wao363a69oyNGO523W+D5WcVkY95lnVVE6nPO8/pBHkHwcg8pnrlbih4Ca3lpbZNATYdMyd5c3z95i0r1CfhjFs2qVBDqaxPZq3O3R2L04SN+tAEVBfTbzNxgqRldoOcP14NoSPxDEuA7Zg8Nvm/j0l3r/9/NN7QScI1Zd4CzzDzTyJ32x5tTcnY/MBzKZKc7Q3Aqg2KX+qO2xfxe7B9L8c812HD5/P7BqVelibKmudiCTbiE3K8uNhO/Uv1tIUfLWd7CG6TRsS2suPlDW4O/0jE1c+i9C/t/YwC9h3o54ytEEoMSd/helIU6Ong4QNry8DvHfpx+nk6m7INfgHHrBGm
+sidebar_class_name: "delete api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Abort a batch update
+</h1>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/graph/{graph_id}/batch/{batch_id}"}
+>
+  
+</MethodEndpoint>
+
+**Experimental**: This API is not stable and might be subject of change.<br/> Abort a batch update.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"batch_id","in":"path","description":"A batch identifier is a string that uniquely identifies the batch update.","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Ok message
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

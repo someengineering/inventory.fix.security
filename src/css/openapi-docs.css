@@ -1,0 +1,103 @@
+.api-method .menu__link,
+.api-method h2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.api-method .menu__link::before,
+.api-method h2::before {
+  flex: none;
+  margin-right: calc(var(--ifm-spacing-horizontal) / 2);
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 0.25rem;
+  width: 50px;
+  height: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.get .menu__link::before,
+.get h2::before {
+  background-color: var(--ifm-color-primary);
+  content: 'GET';
+}
+
+.post .menu__link::before,
+.post h2::before {
+  background-color: var(--openapi-code-green);
+  content: 'POST';
+}
+
+.delete .menu__link::before,
+.delete h2::before {
+  background-color: var(--openapi-code-red);
+  content: 'DELETE';
+}
+
+.put .menu__link::before,
+.put h2::before {
+  background-color: var(--openapi-code-blue);
+  content: 'PUT';
+}
+
+.patch .menu__link::before,
+.patch h2::before {
+  background-color: var(--openapi-code-orange);
+  content: 'PATCH';
+}
+
+.head .menu__link::before,
+.head h2::before {
+  background-color: var(--ifm-color-secondary-darkest);
+  content: 'HEAD';
+}
+
+details.openapi-markdown__details .badge {
+  font-size: 100%;
+}
+
+.openapi__method-endpoint-path {
+  margin-top: 0;
+}
+
+.openapi-markdown__details-summary-mime {
+  align-items: center;
+}
+
+.openapi-markdown__details-summary-mime > * + * {
+  margin-left: 0.5rem;
+}
+
+@media (pointer: fine) {
+  .openapi-tabs__code-list-container,
+  .openapi-explorer__playground-container {
+    scrollbar-width: thin;
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar,
+  .openapi-explorer__playground-container::-webkit-scrollbar {
+    width: var(--ifm-scrollbar-size);
+    height: var(--ifm-scrollbar-size);
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar-thumb,
+  .openapi-explorer__playground-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--ifm-scrollbar-thumb-background-color);
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar-track,
+  .openapi-explorer__playground-container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: var(--ifm-scrollbar-track-background-color);
+  }
+}
+
+ul > .openapi-params__list-item + .openapi-params__list-item {
+  margin-top: 1rem !important;
+}

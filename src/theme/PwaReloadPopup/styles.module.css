@@ -1,0 +1,32 @@
+.popup {
+  display: flex;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  width: 344px;
+}
+
+.popup p {
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .popup {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+}
+
+.buttonContainer :global(.close) {
+  margin: 0;
+  padding: 0;
+}

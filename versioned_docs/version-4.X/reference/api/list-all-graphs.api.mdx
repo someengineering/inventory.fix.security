@@ -1,0 +1,137 @@
+---
+id: list-all-graphs
+title: "List all graphs"
+description: "List all graphs"
+sidebar_label: "List all graphs"
+hide_title: true
+hide_table_of_contents: true
+api: eJxtkk1PwzAMhv9K5fOkAifYDSFAkzggGFwQQqbz2kCahNibNkX979gtAobopfFnXj9OAcGWYf4EbcbUvfQYsKWegsDzDDJxioFJEwqcHB3Zb0XcZJfExQBzWHZUBeyJq7iu0PtqbMMwgyYGsTZagil516CV1G9sdQW46ahHO8k+kXbCnHGvdU6o519+luxCC8MMaId98mRie3RBc4VYdQ72zf4Iu3Esh4J6ki6uNNSSqJlQOjXqMa42U95SNhQFNtlrqBNJPK/r0kWWYV5SzDJo5hazw1c/UbHYhGWNG69H8LFBP7pVlNUchk/PlKMKVrwurOM4qRMbC67crlqErVKLeV9dxEzV3eX9sjq/Xdi1qm6a7fF4as2i67IGtoF/Zz5g8o1UaCd18sZQ+4zDli8eX+/Alj9N9gSlvCLTQ/bDYO6PDeW9+p9/QJiljTrCFeUR4DtpCpw3DSUZifnNuOO/D8EofO/l+nKpYD4B35Dfiw==
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  List all graphs
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/graph"}
+>
+  
+</MethodEndpoint>
+
+List all graphs
+
+## Request
+
+<div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The names of all graphs
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  \"main\",\n  \"test\"\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

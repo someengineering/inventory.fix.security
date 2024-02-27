@@ -1,0 +1,31 @@
+.theme-doc-sidebar-container {
+  border: none !important;
+  background-color: #d9b8ff22;
+  border-bottom-right-radius: 0.5rem;
+  flex-grow: 0;
+  align-self: flex-start;
+}
+
+.theme-doc-sidebar-menu {
+  padding: 0.25rem 0;
+}
+
+.breadcrumbs__link {
+  display: inline-block;
+  transition-property: none;
+  background: none !important;
+  padding: 0;
+  text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+  text-decoration: var(--ifm-link-hover-decoration);
+}
+
+.theme-doc-version-badge {
+  display: none;
+}
+
+nav.menu {
+  margin-bottom: 0 !important;
+}

@@ -1,0 +1,15 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
+# Assets with a file hash are safe for immutable caching, as filenames change when the content changes
+
+/assets/*
+  Cache-Control: public
+  Cache-Control: max-age=365000000
+  Cache-Control: immutable
+
+/img/kroki/*
+  Cache-Control: public
+  Cache-Control: max-age=365000000
+  Cache-Control: immutable

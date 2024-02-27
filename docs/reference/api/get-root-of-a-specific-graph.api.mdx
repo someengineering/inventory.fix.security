@@ -1,0 +1,173 @@
+---
+id: get-root-of-a-specific-graph
+title: "Get root of a specific graph"
+description: "Get root of a specific graph"
+sidebar_label: "Get root of a specific graph"
+hide_title: true
+hide_table_of_contents: true
+api: eJyFVMFu2zAM/RVBpw0ImrTLhs23buiCXoaiy3YJgoGx6VitbakSnSUw/O8jZcdNkaI7WaIeycdH0q0m2AadrPTWgyv+VFDDFiusSa8n2oGHCgm9IFpd80UnA9JkeqJNzXcHVPAZ91C5UgC52fM9w5B648hYAS0LVCbjuCY36JXNFbElhmKsx6fGeMx0Qr7BiQ5pgRXopNV0cBIykDf1VnfdWsDB2TpgkPer2Uw+58liaPXXUBEzeWtJ1TZDzpbamqRC9gPnSpOC+E0fgji358nt5gFTYkfIMiNQKO+8dejJCImesjuxtPrR1Nk5/ddEEWQvhwmR4AVXeaJmq1npRF9efZh//BSlctYTZs9ZNGGgC04u/CfHLn0F4mZKtYYOfF9YKqCKsclQ7NMPkaPrxDSfzd+SMbMo5Ejh3gSKQV5CF0i9xFwJqOAw5T6nY395iAorVLcoOsaJSfQ0Pk/b40B1/BTQ747z1viSUQWRC8l02hY2UJe0Ur4gd+ANbMpeb3nrC8ihKfmoS5tCGc1MVnxePn/+woPTxXkydW5jrwZZvpu9uq13PCHWH9Q361Hd3/xcquu7W0nL7Pqaf1/2oUMUOhn34z9avBBunBDCPU1dCbxRHDRW3g46DbvJrsm4eky7L3ml23YDAX/5suvE/NSg536v1s8KRTEzE+TMTcihDHjGY1wK/e5+2Mb36u2tfZX6YIT6EHtUNnLj4yMeTv8d3ZqxBUKGPtLrn6/TFB2dOJ7tpzRsnKbFzZJ7+A/reJ7v
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Get root of a specific graph
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/graph/{graph_id}"}
+>
+  
+</MethodEndpoint>
+
+Get root of a specific graph
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The graph with the root node
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"kind"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The kind of this node."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        name={"property name*"}
+                        required={false}
+                        schemaName={"any"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}}
+                        collapsible={false}
+                        discriminator={false}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"123456\",\n  \"reported\": {\n    \"kind\": \"test.person\",\n    \"name\": \"Batman\",\n    \"city\": \"Gotham\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          The graph does not exist
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

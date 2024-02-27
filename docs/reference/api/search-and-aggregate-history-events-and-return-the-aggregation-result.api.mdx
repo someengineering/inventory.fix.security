@@ -1,0 +1,280 @@
+---
+id: search-and-aggregate-history-events-and-return-the-aggregation-result
+title: "Search and aggregate history events and return the aggregation result."
+description: "Search and aggregate history events and return the aggregation result."
+sidebar_label: "Search and aggregate history events and return the aggregation result."
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v2zgM/lcEPbVAmp9NkwbIAb1hB/Rpxda7lybIFJuJtdmyJ8lpgiD/+0jJduMmy12Hdi+7FCgsiaI+fqRIastDMIGWmZWp4iP+CYQOIiZUyMRyqWEpLLBIGpvqDYMVKGvcogaba8VsBJUcKsBpk8e2OVE3zEDgpgKh2BxYCAupIGRn+CFQxjCbss+tz2w8ZjpN7TmNpbKgM9SNimLUuAKW6TQDbTcsEzYyqPn9WiRZDCMmzdkqjfMEzh2iMw1Zqi2ETbGEP7q9kKUaTzVS41QQg1DjsdU50HQCVoTCiuYKtEGQ43H3fKJ4g1uxNHz0wJdaZNHMODL4tMEzoQVuQmlc3XKFAyTLS8kQN0oijyDiN3iEOLGQaxzXGb5HymSIRMqFBM3ShSPRqUJZDd9yQsxHhLXBTRBBIvhoy+0mI5XGaqmWfLdrVDAKpksU33LQm6PHknx5YOme3KBTFsiJiOPnZLPbBVOprXxHfkLamTAGaQ+bNbwLEZsTgJEWlSfEbeknD9FtbvDSI3y6b9kcEBmcNuyD+xAIvvQRRdISY4gseha6XqFnHKMLA1gmYCz662W2oJZEWJxBzHBBSmoeEQuE8Yqwnb43Rx1EQi1fk+1HaaM91F4/c6h+KnJUGsIs0CB89LhhnoX7wxBioGEtjNDmf70bFaVkD14Kdyf8RaEkcHAXaAlTFO5hRRKpXWW6JnS1XnhHjnpo6lXgUX+m4Ya2HcLfT8IeMdmBl5k0ouIgxdSqrDsT1raVxYII2Z5ivUpjVSV4yrFfpQpHDNPAWQfTr2FEvjl3SZk+KZvu8EfITZYqA4aO6Lbbx+H7uuEZROYKC6QvMCXlBTk1Y0SWxTJwdre+mPSZSacPqrHWZLRcJEAJBk/NAMtKeljkFrlyuZN8W5CWzr9gPsWxCEPpb8hdparM5U+EPkwUw9+WTdCWXNkJH7GrdgOHxCuNJlw8mhkE3ZlUGJYqgBkdNeEklEAyE6slyXWHzct+OZeItdN0WU1IRROdcmxTK2I3M2gP2K5xBEan3b8aXtWhLIMMdQcReuEHKDq9Zn8wuLzsXXc7+O8AUm94+RxUu9m/vr5qX/cG/QN43W5/gIr6zUFv2B12un22m6ipr9DSOgpvypgMKYfV4mB9ocL/Y+F3jQWXdbAyRWlILVlqyBWuMxvxlsvNrW3ZuO1aPtO0isLVqjId7jGgV2XDl+sYt0fWZmbUam0j1LobbSkX7lByJbQU89jnOFrz8eb6XNwWp4GI3TQioz315eE1ZsWdS/NSLVKXigvD/pJrdquomFJVfUety8f3n+7Zzd0tHevrDsr90/GqjU2EC/ui8L1ON/+8Xm6fEvBv/17wV36vpKIfXLBsi5gr3hIoO9p7LhQviwYvqKJsUYUeBoIPoge+3c6Fgb91vNvRtG9fKCBDaSjinnqKH3rojRr/o5Z/hU3tPbIScU5SnJqx/w759Vr6Eyirt8WvAHmqgT+BsXxH/AqIJ5v1ExirV8NPgnzj5vsUu7aGevqUyF94xc4+Fh3+OTv9uj8KppgUarMPpwRZJY3dFGUjECFGBMHzy+88iIt776dye+2EUvYmCCDbt/mgeSYOqtJ59+HTPQrPizdHgm09zmrxSE8a/D/iE/yjyvUdk509Kw==
+sidebar_class_name: "post api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Search and aggregate history events and return the aggregation result.
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/graph/{graph_id}/search/history/aggregate"}
+>
+  
+</MethodEndpoint>
+
+Search and aggregate history events and return the aggregation result. A section can be defined (defaults to `/` == root) to interpret relative property paths. Example: is(volume) and (reported.age&gt;23d or desired.clean==true or metadata.version==2)
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"section","in":"query","description":"The name of the section used for all property paths. If not defined root is assumed.","required":false,"schema":{"type":"string","enum":["reported","desired","metadata"]}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"before","in":"query","description":"Optional parameter to get all history events before the given timestamp","required":false,"schema":{"type":"string","format":"date-time"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"after","in":"query","description":"Optional parameter to get all history events after the given timestamp","required":false,"schema":{"type":"string","format":"date-time"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"change","in":"query","description":"Optional parameter to get all history events with the given change type","required":false,"schema":{"type":"string","enum":["node_created","node_updated","node_deleted"]}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"at","in":"query","description":"The timestamp to use for the search. If not defined the latest version of the graph is used.","required":false,"schema":{"type":"string","format":"date-time"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"text/plain"}
+    value={"text/plain-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":"1rem","marginBottom":"1rem"}}
+        >
+          
+          
+          The aggregation search to perform
+          
+          
+        </div>
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The result of this search in the defined format
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        name={"property name*"}
+                        required={false}
+                        schemaName={"any"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"The result of the aggregation. The properties depend on the aggregation function.","type":"object","additionalProperties":true,"example":"[\n    { \"count\": 60, \"kind\": \"aws_ec2_instance_type\", \"mem_avg\": 28.45, \"mem_max\": 64, \"mem_min\": 1, \"mem_total\": 1707 },\n    { \"count\": 105686, \"kind\": \"gcp_machine_type\", \"mem_avg\": 213.57744392143945, \"mem_max\": 3844, \"mem_min\": 0.599609375, \"mem_total\": 22572145.73828125 }\n]\n","title":"Aggregated"}}
+                        collapsible={false}
+                        discriminator={false}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem><TabItem
+              label={"application/x-ndjson"}
+              value={"application/x-ndjson"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        name={"property name*"}
+                        required={false}
+                        schemaName={"any"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"The result of the aggregation. The properties depend on the aggregation function.","type":"object","additionalProperties":true,"example":"[\n    { \"count\": 60, \"kind\": \"aws_ec2_instance_type\", \"mem_avg\": 28.45, \"mem_max\": 64, \"mem_min\": 1, \"mem_total\": 1707 },\n    { \"count\": 105686, \"kind\": \"gcp_machine_type\", \"mem_avg\": 213.57744392143945, \"mem_max\": 3844, \"mem_min\": 0.599609375, \"mem_total\": 22572145.73828125 }\n]\n","title":"Aggregated"}}
+                        collapsible={false}
+                        discriminator={false}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+---
+id: web-socket-listen-to-registered-events-of-given-subscriber
+title: "[WebSocket] Listen to registered events of given subscriber"
+description: "## WebSocket Endpoint"
+sidebar_label: "[WebSocket] Listen to registered events of given subscriber"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVFFv0zAQ/ivGe4GqWoq0B4gQUoUGmoQmtA14aCPkJJfEmmtntrOuivLfd2ena8MA8cIbfenZ5+/uu7vv0vMSXGFl66XRPOUnJ+w75NemuAXPznXZGqn9Wt80wAolQXumAUrHvGEOdMmEUsyj08JdJy2UrAFRgnWsMpYJtnWsMFpDQeHXWiCiEQHdoK0gYLeQu5iwtcabwqjTd7lN3q/1bHZpPD2SGEdopo1nOZ7BeUxVWbNhW4lezdxW1DXYF7PZWo90n/JSuhACxnoQhLQ13IOlcIUyDsrTtV7irYgQ9GnvmKkCQ7fDhJsYxHU5NSxHLJVioZbotGUMiuFCX8aUa32ggQn4nHtRO56u+Bgm9N3xbM5bYcUGMBK5e67xgPM4ZPshS4RLGlIrfIP2dHJUsyyRtawkctszf8IjYD8knnrbwZy7ooGN4GnP/a4N2byVuubDkNFj1yI1cOQ/W5zR3zTjpTluRmU6TQyxYI8sQlR48EmrBJHuf5ttzuFBbFoFz0LSbGPTsfaBfnOOLWoMVsBr8HweW5Hy5IBK+knPhiQqDd86sPf79nZWIazxvnVpkvSNcX5I+9ZYP+DLe2GlyFWsnXyx+Ep0Ck2uTCFUuEZChJm637xdLIhuRuOqTKhY+lDfR/nALjRpy9gd+2AssKvz6xu2/HJBaZFdbO231zG08xsRmjfKYfW0nBn7TLoL4t5rEHfioNtaojmd/2R8/WFS/7f+n299VPzRQuB4gwb7UcIrPhlV+vPijypGTUU9rnjf58LBV6uGga7vOrA7vM8O8g1KL6UjG1emEsrBH1Tw8moc5yv2Fx+TX5Y0Xgq9C1ukOjqheQu7Zx+zIUNAFE4gGt8siwJaf4Q+TpAd7f+n8xtcskcxwmLd
+sidebar_class_name: "get api-method"
+info_path: reference/api/fix-inventory-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  [WebSocket] Listen to registered events of given subscriber
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/subscriber/{subscriber_id}/handle"}
+>
+  
+</MethodEndpoint>
+
+## WebSocket Endpoint
+
+The client needs to send all the required headers for a ws connection and has to handle the websocket protocol.<br/> **Note this can not be tested from within swagger!**
+
+The connection to this endpoint will never be closed. All action events of the system this subscriber has registerd will be send to this connection.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          No subscriber found
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

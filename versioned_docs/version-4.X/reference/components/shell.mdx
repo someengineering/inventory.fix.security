@@ -1,0 +1,42 @@
+---
+sidebar_position: 3
+sidebar_label: Shell
+---
+
+# Fix Inventory Shell
+
+The `fixsh` command starts [Fix Inventory Shell (`fixshell`)](https://github.com/someengineering/fixinventory/tree/main/fixshell), which is used to interact with [`fixcore`](./core.mdx).
+
+Fix Inventory Shell allows you to explore the graph, find resources of interest, mark them for cleanup, fix their tagging, aggregate over their metadata to create metrics, and format the output for use in a third-party script or system.
+
+:::info
+
+See [Launch Fix Inventory](../../getting-started/launch/index.mdx) for instructions on how to start Fix Inventory Shell.
+
+Please refer to [Command-Line Interface](../cli/index.mdx) for details on how to use Fix Inventory Shell.
+
+:::
+
+## Usage
+
+### Options
+
+| Option                                      | Description                                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `--fixcore-uri <FIXCORE_URI>`               | Fix Inventory Core URI (default: `https://localhost:8900`)                                  |
+| `--fixcore-section <FIXCORE_SECTION>`       | All queries are interpreted with this section name. If not set, the server default is used. |
+| `--fixcore-graph <FIXCORE_GRAPH>`           | The name of the graph to use by default. If not set, the server default is used.            |
+| `--download-directory <DOWNLOAD_DIRECTORY>` | If files are received, they are written to this directory.                                  |
+| `--no-color`                                | Output should be rendered plain without any color escape sequences.                         |
+| `--stdin`                                   | Read from STDIN instead of opening a shell                                                  |
+| `--verbose`, `-v`                           | Verbose logging                                                                             |
+| `--quiet`                                   | Only log errors                                                                             |
+| `--psk <PSK>`                               | Pre-shared key                                                                              |
+| `--ca-cert <CA_CERT>`                       | Path to custom CA certificate file                                                          |
+| `--no-verify-certs`                         | Turn off certificate verification                                                           |
+
+### Environment Variables
+
+CLI options can also be set via environment variables. The environment variable name is the same as the option name, but in uppercase with the prefix `FIXSHELL_` and dashes replaced by underscores.
+
+For example, `--fixcore-uri https://foobar.tld:8900` would become `FIXSHELL_FIXCORE_URI=https://foobar.tld:8900`.

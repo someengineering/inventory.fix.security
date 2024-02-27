@@ -1,0 +1,148 @@
+:root {
+  --ifm-color-primary: #762dd7;
+  --ifm-color-primary-dark: #6a25c5;
+  --ifm-color-primary-darker: #6423ba;
+  --ifm-color-primary-darkest: #521d99;
+  --ifm-color-primary-light: #8443db;
+  --ifm-color-primary-lighter: #8b4edd;
+  --ifm-color-primary-lightest: #a16fe3;
+  --ifm-color-content: #000c1d;
+  --ifm-link-color: #a142f0;
+  --ifm-heading-color: var(--ifm-color-primary);
+  --ifm-font-size-base: 105%;
+  --ifm-font-family-base: 'Nunito Sans', sans-serif;
+  --ifm-h1-font-size: 2.5rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  --ifm-h5-font-size: 1rem;
+  --ifm-h6-font-size: 0.875rem;
+  --ifm-heading-margin-top: calc(var(--ifm-spacing-vertical) * 2);
+  --ifm-navbar-height: 4rem;
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
+  --ifm-background-color: #ffffff;
+  --ifm-container-width-xxl: 1500px;
+}
+
+article header {
+  margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+  margin-top: 0;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code {
+  border: none;
+  background: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+em,
+strong {
+  color: var(--ifm-color-primary-darkest);
+}
+
+td {
+  vertical-align: top;
+}
+
+td ul:last-child,
+td ol:last-child {
+  margin: 0;
+}
+
+input,
+button,
+textarea {
+  font-family: var(--ifm-font-family-base);
+}
+
+button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed !important;
+}
+
+.button--outline:not(:disabled):hover {
+  --ifm-button-background-color: transparent;
+}
+
+.button--primary.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-primary-darker);
+  --ifm-button-border-color: var(--ifm-color-primary-darker);
+}
+
+.button--secondary.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-secondary-darker);
+  --ifm-button-border-color: var(--ifm-color-secondary-darker);
+}
+
+.button--success.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-success-darker);
+  --ifm-button-border-color: var(--ifm-color-success-darker);
+}
+
+.button--info.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-info-darker);
+  --ifm-button-border-color: var(--ifm-color-info-darker);
+}
+
+.button--warning.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-warning-darker);
+  --ifm-button-border-color: var(--ifm-color-warning-darker);
+}
+
+.button--danger.button--outline:not(:disabled):hover {
+  --ifm-button-color: var(--ifm-color-danger-darker);
+  --ifm-button-border-color: var(--ifm-color-danger-darker);
+}
+
+.alert em,
+.alert strong {
+  color: var(--ifm-alert-foreground-color);
+}
+
+.admonition-heading {
+  --ifm-heading-color: var(--ifm-alert-foreground-color);
+}
+
+.docusaurus-highlight-code-line {
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.video-container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+}
+
+.markdown .video-container:not(:last-child) {
+  margin-bottom: var(--ifm-leading);
+}
+
+.yt-lite > .lty-playbtn {
+  cursor: pointer;
+  border: 0;
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: var(--ifm-container-width-xxl);
+  }
+}
