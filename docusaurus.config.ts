@@ -363,13 +363,13 @@ const config: Config = {
     footer: {
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>.`,
     },
-    // algolia: {
-    //   appId: 'DOGNENB96P',
-    //   apiKey: '0e3e7cbce9da253ee147af5fe2f7d91b',
-    //   indexName: 'resoto',
-    //   contextualSearch: true,
-    //   insights: true,
-    // },
+    algolia: {
+      appId: 'BT2GRJ78EI',
+      apiKey: 'd180d83745e710f2e2d0e1fd58da8c1a',
+      indexName: 'inventory-fix',
+      contextualSearch: true,
+      insights: true,
+    },
     prism: {
       theme: prismThemes.github,
       additionalLanguages: [
