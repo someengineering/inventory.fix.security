@@ -4,7 +4,7 @@ import {
   GcpPolicyName,
   Provider,
   policyUrl,
-} from '@site/src/utils/iamPolicyUtils';
+} from '@site/src/utils/iamPolicy';
 import versions from '@site/versions.json';
 import CodeBlock from '@theme/CodeBlock';
 import useStoredJson from '@theme/useStoredJson';

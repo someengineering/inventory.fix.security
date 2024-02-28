@@ -4,7 +4,7 @@ const sidebars: SidebarsConfig = {
   sidebar: [
     {
       type: 'doc',
-      id: 'overview',
+      id: 'index',
       label: 'Overview',
       // className: 'docs overview',
     },

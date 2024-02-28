@@ -1,8 +1,5 @@
 import Link from '@docusaurus/Link';
-import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
-import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { useSidebarBreadcrumbs } from '@docusaurus/theme-common/internal';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import { type ReactNode } from 'react';
 
 function BreadcrumbsItemLink({
@@ -53,23 +50,12 @@ function BreadcrumbsItem({
 
 export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
-  const { pluginId, pluginData } = useActivePlugin();
-  const href = useBaseUrl(pluginData.path);
 
   if (!breadcrumbs || !breadcrumbs.length) {
     return null;
   }
 
   breadcrumbs.pop();
-
-  breadcrumbs.unshift({
-    type: 'link',
-    href,
-    label:
-      pluginId === DEFAULT_PLUGIN_ID
-        ? 'Documentation'
-        : pluginId.replace(/^\w/, (c) => c.toUpperCase()),
-  });
 
   return (
     <nav aria-label="Breadcrumbs">

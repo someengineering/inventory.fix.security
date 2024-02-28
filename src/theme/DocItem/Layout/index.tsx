@@ -1,7 +1,7 @@
 import { useWindowSize } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
-import { getImage } from '@site/src/utils/socialImageUtils';
+import { openGraph } from '@site/src/utils/og';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import DocItemContent from '@theme/DocItem/Content';
 import DocItemFooter from '@theme/DocItem/Footer';
@@ -46,7 +46,7 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
     assets,
     metadata: { title, description },
   } = useDoc();
-  const image = assets.image ?? frontMatter.image ?? getImage({ title });
+  const image = assets.image ?? frontMatter.image ?? openGraph({ title });
 
   return (
     <div className="row">

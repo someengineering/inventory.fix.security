@@ -2,7 +2,7 @@
   "sidebar": [
     {
       "type": "doc",
-      "id": "overview",
+      "id": "index",
       "label": "Overview"
     },
     {

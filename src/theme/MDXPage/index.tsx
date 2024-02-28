@@ -3,7 +3,7 @@ import {
   PageMetadata,
   ThemeClassNames,
 } from '@docusaurus/theme-common';
-import { getImage } from '@site/src/utils/socialImageUtils';
+import { openGraph } from '@site/src/utils/og';
 import Layout from '@theme/Layout';
 import MDXContent from '@theme/MDXContent';
 import type { Props } from '@theme/MDXPage';
@@ -34,7 +34,7 @@ export default function MDXPage(props: Props): JSX.Element {
         title={title}
         description={description}
         keywords={keywords}
-        image={assets.image ?? frontMatter.image ?? getImage({ title })}
+        image={assets.image ?? frontMatter.image ?? openGraph({ title })}
       />
       <Layout>
         <main className="container container--fluid margin-vert--lg">

@@ -313,7 +313,7 @@ const config: Config = {
       disableSwitch: true,
     },
     image:
-      'https://og.some.engineering/api/image?theme=fixinventory&darkMode=0&title=%20&metadata=Fix%20Inventory%20by%20Some%20Engineering%20Inc.',
+      'https://og.some.engineering/api/image?theme=fixinventory&darkMode=0&title=%20&metadata=by%20Some%20Engineering%20Inc.',
     docs: {
       sidebar: { autoCollapseCategories: true },
       versionPersistence: 'none',

@@ -1,6 +1,6 @@
 import { useBlogPost } from '@docusaurus/theme-common/internal';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
-import { getImage } from '@site/src/utils/socialImageUtils';
+import { openGraph } from '@site/src/utils/og';
 import type { Props } from '@theme/BlogPostItem/Container';
 import { union } from 'lodash';
 
@@ -16,7 +16,7 @@ export default function BlogPostItemContainer({
   const image =
     assets.image ??
     frontMatter.image ??
-    getImage({
+    openGraph({
       title,
       metadata: formattedDate
         ? `${formattedDate}${

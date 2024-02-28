@@ -1,6 +1,6 @@
 import { PageMetadata } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
-import { getImage } from '@site/src/utils/socialImageUtils';
+import { openGraph } from '@site/src/utils/og';
 
 export default function DocItemMetadata(): JSX.Element {
   const {
@@ -14,7 +14,11 @@ export default function DocItemMetadata(): JSX.Element {
       title={title}
       description={description}
       keywords={frontMatter.keywords}
-      image={assets.image ?? frontMatter.image ?? getImage({ title: title })}
+      image={
+        assets.image ??
+        frontMatter.image ??
+        openGraph({ title: title ? title : 'by Some Engineering Inc.' })
+      }
     />
   );
 }

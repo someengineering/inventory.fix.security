@@ -1,6 +1,6 @@
 import type { Author } from '@docusaurus/plugin-content-blog';
 
-export const getImage = ({
+export const openGraph = ({
   title,
   metadata,
   authors,
@@ -30,5 +30,5 @@ export const getImage = ({
     }`;
   }
 
-  return 'https://og.some.engineering/api/image?theme=fixinventory&darkMode=0&title=%20&metadata=Fix%20Inventory%20by%20Some%20Engineering%20Inc.';
+  return 'https://og.some.engineering/api/image?theme=fixinventory&darkMode=0&title=%20&metadata=by%20Some%20Engineering%20Inc.';
 };
