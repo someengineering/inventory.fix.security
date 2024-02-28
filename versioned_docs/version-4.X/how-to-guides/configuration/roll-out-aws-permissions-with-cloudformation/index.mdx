@@ -18,7 +18,7 @@ The source code can be found in the [`someengineering/fixinventory-cf` GitHub re
 
 :::note
 
-If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `FixInventoryAccess` role is [https://resotopublic.s3.amazonaws.com/cf/fixinventory-role.template](https://resotopublic.s3.amazonaws.com/cf/fixinventory-role.template).
+If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `FixInventoryAccess` role is [https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-role.template](https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-role.template).
 
 :::
 
@@ -45,7 +45,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 3. Click this button to open the **Quick create stack** page:
 
-   [<span class="button button--primary">Deploy StackSet</span>](https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template)
+   [<span class="button button--primary">Deploy StackSet</span>](https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-stackset.template)
 
 4. Enter a stack name (e.g., `FixInventoryAccess`) and configure the four parameters as follows:
 
@@ -93,12 +93,12 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
    ```bash
    AWS_OU="r-7h7x"  # Replace with your OU
-   FIX_ACCOUNT_ID="434236089377"  # Replace with your Fix Inventory account ID
+   FIXINVENTORY_ACCOUNT_ID="434236089377"  # Replace with your Fix Inventory account ID
    aws cloudformation create-stack \
      --region us-east-1 \
      --stack-name FixInventoryAccess \
-     --template-url https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template \
-     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixInventoryAccountID,ParameterValue=$FIX_ACCOUNT_ID
+     --template-url https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-stackset.template \
+     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixAccountID,ParameterValue=$FIXINVENTORY_ACCOUNT_ID
    ```
 
    :::info
@@ -112,7 +112,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 ### Configuring Fix Inventory to Assume the `FixInventoryAccess` Role and Scrape the Organization
 
-1. In Fix Inventory Shell, execute `config edit fixinventory.worker` and locate the `aws` section.
+1. In Fix Inventory Shell, execute `config edit fix.worker` and locate the `aws` section.
 
 2. Modify the configuration as follows:
 
