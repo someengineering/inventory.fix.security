@@ -26,10 +26,10 @@ You will also need a valid routing key for your [PagerDuty](https://pagerduty.co
 
    :::
 
-3. Open the `fixinventory.core.commands` configuration:
+3. Open the `fix.core.commands` configuration:
 
    ```bash
-   > config edit fixinventory.core.commands
+   > config edit fix.core.commands
    ```
 
 4. Add the routing key copied in step 2 as the default value of the `routing_key` parameter in the `pagerduty` section. This will allow you to execute the `pagerduty` command without specifying the routing key parameter each time.
