@@ -6,9 +6,9 @@ sidebar_label: Roll Out Fix Inventory AWS Permissions with CloudFormation
 
 Each version of Fix Inventory programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> [permissions](../../../reference/iam-permissions/aws.mdx) it requires to collect (and optionally, manipulate) AWS resources. Manually maintaining these permissions is a tedious task, especially if you have multiple AWS accounts.
 
-**To eliminate this pain point, we provide a CloudFormation template that automatically creates a `FixAccess` role with the required permissions and a trust that allows a specified AWS account to assume this role.**
+**To eliminate this pain point, we provide a CloudFormation template that automatically creates a `FixInventoryAccess` role with the required permissions and a trust that allows a specified AWS account to assume this role.**
 
-The stack can be deployed in a single account, or organization-wide as a [CloudFormation StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html). In this how-to guide, we use this template to create a StackSet that deploys the `FixAccess` role to all accounts in your organization.
+The stack can be deployed in a single account, or organization-wide as a [CloudFormation StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html). In this how-to guide, we use this template to create a StackSet that deploys the `FixInventoryAccess` role to all accounts in your organization.
 
 :::info
 
@@ -18,7 +18,7 @@ The source code can be found in the [`someengineering/fixinventory-cf` GitHub re
 
 :::note
 
-If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `FixAccess` role is [https://resotopublic.s3.amazonaws.com/cf/resoto-role.template](https://resotopublic.s3.amazonaws.com/cf/resoto-role.template).
+If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `FixInventoryAccess` role is [https://resotopublic.s3.amazonaws.com/cf/fixinventory-role.template](https://resotopublic.s3.amazonaws.com/cf/fixinventory-role.template).
 
 :::
 
@@ -35,7 +35,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 <Tabs>
 <TabItem value="console" label="AWS Console">
 
-1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `FixAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
+1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `FixInventoryAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
 
    The OU is the cryptic string underneath the <abbr title="Organization Unit">OU</abbr> name. To deploy the role to all accounts in the organization, use the **Root** OU (`r-7h7x` in the below example).
 
@@ -47,12 +47,12 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
    [<span class="button button--primary">Deploy StackSet</span>](https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template)
 
-4. Enter a stack name (e.g., `FixAccess`) and configure the four parameters as follows:
+4. Enter a stack name (e.g., `FixInventoryAccess`) and configure the four parameters as follows:
 
    | Parameter | Description |
    | --- | --- |
    | `DeploymentTargetOrganizationalUnitIds` | The <abbr title="Organization Unit">OU</abbr> (or multiple, space-delimited <abbr title="Organization Unit">OU</abbr>s) where you wish to deploy the role. |
-   | `FixAccountID` | The account ID of the account where you have Fix Inventory deployed. This account will be the one the Role has a trust relationship with. |
+   | `FixInventoryAccountID` | The account ID of the account where you have Fix Inventory deployed. This account will be the one the Role has a trust relationship with. |
    | `StackSetCallAs` | Defaults to `DELEGATED_ADMIN` but can be changed to `SELF` depending on the permissions you have in your organization and whether the account you are deploying the StackSet in is registered as a delegated administrator for your organization (recommended). |
    | `StackSetPermissionModel` | Defaults to `SERVICE_MANAGED` but can be changed to `SELF_MANAGED` if you want to manage the StackSet permissions yourself. We prefer `SERVICE_MANAGED` as it allows us to turn on automatic deployments to accounts that we add to our organization in the future. |
 
@@ -72,18 +72,18 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
    ![Stacks Created](./img/stacks_created.png)
 
-   If we click it and check out its resources, you will see the `FixAccess` <abbr title="Identity and Access Management">IAM</abbr> role:
+   If we click it and check out its resources, you will see the `FixInventoryAccess` <abbr title="Identity and Access Management">IAM</abbr> role:
 
-   ![FixAccess Role](./img/resotoaccess_role.png)
+   ![FixInventoryAccess Role](./img/resotoaccess_role.png)
 
    Selecting the role, you can confirm it has the correct permissions as well as a trust relationship with the account where Fix Inventory is deployed:
 
-   ![FixAccess Role Permissions](./img/resotoaccess_role_permissions.png)![FixAccess Role Trust](./img/resotoaccess_role_trust.png)
+   ![FixInventoryAccess Role Permissions](./img/resotoaccess_role_permissions.png)![FixInventoryAccess Role Trust](./img/resotoaccess_role_trust.png)
 
 </TabItem>
 <TabItem value="cli" label="AWS CLI">
 
-1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `FixAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
+1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `FixInventoryAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
 
    The OU is the cryptic string underneath the <abbr title="Organization Unit">OU</abbr> name. To deploy the role to all accounts in the organization, use the **Root** OU (`r-7h7x` in the below example).
 
@@ -96,9 +96,9 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
    FIX_ACCOUNT_ID="434236089377"  # Replace with your Fix Inventory account ID
    aws cloudformation create-stack \
      --region us-east-1 \
-     --stack-name FixAccess \
+     --stack-name FixInventoryAccess \
      --template-url https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template \
-     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixAccountID,ParameterValue=$FIX_ACCOUNT_ID
+     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixInventoryAccountID,ParameterValue=$FIX_ACCOUNT_ID
    ```
 
    :::info
@@ -110,7 +110,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 </TabItem>
 </Tabs>
 
-### Configuring Fix Inventory to Assume the `FixAccess` Role and Scrape the Organization
+### Configuring Fix Inventory to Assume the `FixInventoryAccess` Role and Scrape the Organization
 
 1. In Fix Inventory Shell, execute `config edit fixinventory.worker` and locate the `aws` section.
 
@@ -118,13 +118,13 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
    ```yaml
    aws:
-     role: 'FixAccess'
+     role: 'FixInventoryAccess'
      scrape_org: true
      assume_current: true
      do_not_scrape_current: true
    ```
 
-   The `assume_current` and `do_not_scrape_current` options depend on your organization setup. They control whether Fix Inventory should assume the role inside the account it is running in, or just collect that account with the permissions it already has. (For instance, if you deploy Fix Inventory using Kubernetes and it is using a service account that is already using the `FixAccess` role, there would be no need to assume the same role again.)
+   The `assume_current` and `do_not_scrape_current` options depend on your organization setup. They control whether Fix Inventory should assume the role inside the account it is running in, or just collect that account with the permissions it already has. (For instance, if you deploy Fix Inventory using Kubernetes and it is using a service account that is already using the `FixInventoryAccess` role, there would be no need to assume the same role again.)
 
 ## Further Reading
 
