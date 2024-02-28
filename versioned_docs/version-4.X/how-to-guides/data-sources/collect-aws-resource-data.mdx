@@ -17,7 +17,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Add `aws` to the list of collectors by modifying the configuration as follows:
@@ -47,7 +47,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 2.  Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
     ```bash
-    > config edit fixinventory.worker
+    > config edit fix.worker
     ```
 
 3.  Add the contents of your `credentials` file to the `fixworker` section of the configuration as follows:
@@ -109,7 +109,7 @@ Access keys in the configuration are visible to anyone with access to your Fix I
 1.  Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
     ```bash
-    > config edit fixinventory.worker
+    > config edit fix.worker
     ```
 
 2.  Modify the `aws` section of the configuration as follows:
@@ -149,7 +149,7 @@ Access keys in the configuration are visible to anyone with access to your Fix I
 2.  Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
     ```bash
-    > config edit fixinventory.worker
+    > config edit fix.worker
     ```
 
 3.  Add the contents of your `credentials` file to the `fixworker` section of the configuration as follows:
@@ -256,7 +256,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 2.  Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
     ```bash
-    > config edit fixinventory.worker
+    > config edit fix.worker
     ```
 
 3.  Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:

@@ -77,7 +77,7 @@ You can pipe commands using `|` and chain commands using `;`.
 
 It is possible to create your own commands by combining existing commands with your own logic.
 
-In [Fix Inventory Shell](../components/shell.mdx), type `config edit fixinventory.core.commands`. This will open a file and show all available custom commands.
+In [Fix Inventory Shell](../components/shell.mdx), type `config edit fix.core.commands`. This will open a file and show all available custom commands.
 
 ### Custom Command Properties
 
@@ -104,7 +104,7 @@ parameters:
 template: 'echo Hello {{person}}.'
 ```
 
-Once a custom command has been defined in the `fixinventory.core.commands` configuration, the command can be executed in [Fix Inventory Shell](../components/shell.mdx):
+Once a custom command has been defined in the `fix.core.commands` configuration, the command can be executed in [Fix Inventory Shell](../components/shell.mdx):
 
 ```bash title="Usage of the new hello command"
 > help hello

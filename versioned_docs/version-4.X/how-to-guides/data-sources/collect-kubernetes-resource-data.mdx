@@ -17,7 +17,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Add `k8s` to the list of collectors by modifying the configuration as follows:
@@ -45,7 +45,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Add the content of kubeconfig file(s) to the `fixworker` section as follows:
@@ -139,7 +139,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Modify the `k8s` section of the configuration as follows:

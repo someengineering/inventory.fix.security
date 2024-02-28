@@ -17,7 +17,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Add `gcp` to the list of collectors by modifying the configuration as follows:
@@ -43,7 +43,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
 ```bash
-> config edit fixinventory.worker
+> config edit fix.worker
 ```
 
 2. Add the contents of your service account JSON file(s) to the `fixworker` section of the configuration as follows:
@@ -119,7 +119,7 @@ You can specify an empty string for the service account file, and Fix Inventory 
 1. Open the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Fix Inventory Shell](../../reference/components/shell):
 
    ```bash
-   > config edit fixinventory.worker
+   > config edit fix.worker
    ```
 
 2. Modify the `gcp` section of the configuration as follows:
