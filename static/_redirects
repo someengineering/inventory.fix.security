@@ -6,7 +6,7 @@ https://origin.inventory.fix.security/*                       https://inventory.
 
 /js/script.js                                                 https://plausible.io/js/script.js 200
 /api/event                                                    https://plausible.io/api/event 200
-/apps/index.json                                              https://cdn.some.engineering/resoto/apps/index.json 200
+/apps/index.json                                              https://cdn.some.engineering/fixinventory/apps/index.json 200
 
 /docs/*                                                       /:splat
 

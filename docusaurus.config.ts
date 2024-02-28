@@ -24,6 +24,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'throw',
+  onDuplicateRoutes: 'throw',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
   noIndex: !isProd,
