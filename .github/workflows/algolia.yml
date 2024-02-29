@@ -31,4 +31,4 @@ jobs:
           algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
           algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
           site-url: https://inventory.fix.security
-          crawler-name: resoto
+          crawler-name: inventory-fix
