@@ -1425,7 +1425,6 @@ class gcp_container_cluster {
 **default_max_pods_constraint**: string
 **enable_kubernetes_alpha**: boolean
 **enable_tpu**: boolean
-**endpoint**: string
 **etag**: string
 **expire_time**: datetime
 **identity_service_config**: boolean
@@ -1734,6 +1733,10 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class managed_kubernetes_cluster_provider {
+**endpoint**: string
+**version**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1775,6 +1778,7 @@ gcp_container_cluster --> gcp_container_resource_usage_export_config
 gcp_container_cluster --> gcp_container_status_condition
 gcp_container_cluster --> gcp_deprecation_status
 gcp_resource <|--- gcp_container_cluster
+managed_kubernetes_cluster_provider <|--- gcp_container_cluster
 gcp_container_cluster_autoscaling --> gcp_container_autoprovisioning_node_pool_defaults
 gcp_container_cluster_autoscaling --> gcp_container_resource_limit
 gcp_container_logging_config --> gcp_container_logging_component_config
@@ -1810,6 +1814,7 @@ gcp_container_update_info --> gcp_container_blue_green_info
 gcp_container_upgrade_settings --> gcp_container_blue_green_settings
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- managed_kubernetes_cluster_provider
 @enduml
 ```
 
@@ -2882,7 +2887,7 @@ class gcp_health_check {
 **check_interval_sec**: int64
 **grpc_health_check**: gcp_grpc_health_check
 **health_check_log_config**: boolean
-**healthy_thfixshold**: int64
+**healthy_threshold**: int64
 **http2_health_check**: gcp_http2_health_check
 **http_health_check**: gcp_http_health_check_spec
 **https_health_check**: gcp_https_health_check_spec
@@ -2890,7 +2895,7 @@ class gcp_health_check {
 **tcp_health_check**: gcp_tcp_health_check
 **timeout_sec**: int64
 **type**: string
-**unhealthy_thfixshold**: int64
+**unhealthy_threshold**: int64
 }
 class gcp_http2_health_check {
 **host**: string
@@ -3150,12 +3155,12 @@ class gcp_deprecation_status {
 }
 class gcp_http_health_check {
 **check_interval_sec**: int64
-**healthy_thfixshold**: int64
+**healthy_threshold**: int64
 **host**: string
 **port**: int64
 **request_path**: string
 **timeout_sec**: int64
-**unhealthy_thfixshold**: int64
+**unhealthy_threshold**: int64
 }
 class gcp_resource {
 **deprecation_status**: gcp_deprecation_status
@@ -3262,12 +3267,12 @@ class gcp_deprecation_status {
 }
 class gcp_https_health_check {
 **check_interval_sec**: int64
-**healthy_thfixshold**: int64
+**healthy_threshold**: int64
 **host**: string
 **port**: int64
 **request_path**: string
 **timeout_sec**: int64
-**unhealthy_thfixshold**: int64
+**unhealthy_threshold**: int64
 }
 class gcp_resource {
 **deprecation_status**: gcp_deprecation_status
@@ -3999,7 +4004,7 @@ class gcp_instance_group_manager_actions_summary {
 **deleting**: int64
 **none**: int64
 **recreating**: int64
-**reffixshing**: int64
+**refreshing**: int64
 **restarting**: int64
 **resuming**: int64
 **starting**: int64
@@ -8089,15 +8094,15 @@ class gcp_security_policy_rule_matcher_config {
 }
 class gcp_security_policy_rule_rate_limit_options {
 **ban_duration_sec**: int64
-**ban_thfixshold**: gcp_security_policy_rule_rate_limit_options_thfixshold
+**ban_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
 **conform_action**: string
 **enforce_on_key**: string
 **enforce_on_key_name**: string
 **exceed_action**: string
 **exceed_redirect_options**: gcp_security_policy_rule_redirect_options
-**rate_limit_thfixshold**: gcp_security_policy_rule_rate_limit_options_thfixshold
+**rate_limit_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
 }
-class gcp_security_policy_rule_rate_limit_options_thfixshold {
+class gcp_security_policy_rule_rate_limit_options_threshold {
 **count**: int64
 **interval_sec**: int64
 }
@@ -8133,7 +8138,7 @@ gcp_security_policy_rule --> gcp_security_policy_rule_redirect_options
 gcp_security_policy_rule_http_header_action --> gcp_security_policy_rule_http_header_action_http_header_option
 gcp_security_policy_rule_matcher --> gcp_expr
 gcp_security_policy_rule_matcher --> gcp_security_policy_rule_matcher_config
-gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_rate_limit_options_thfixshold
+gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_rate_limit_options_threshold
 gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_redirect_options
 @enduml
 ```

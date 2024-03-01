@@ -275,7 +275,7 @@ class azure_application_gateway_probe {
 **provisioning_state**: string
 **timeout**: int64
 **type**: string
-**unhealthy_thfixshold**: int64
+**unhealthy_threshold**: int64
 }
 class azure_application_gateway_probe_health_response_match {
 **body**: string
@@ -442,11 +442,7 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_private_endpoint {
 **application_security_groups**: azure_application_security_group[]
@@ -488,6 +484,11 @@ class azure_private_link_service_connection_state {
 **status**: string
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class gateway {
 }
@@ -552,7 +553,7 @@ azure_application_gateway_ssl_profile --> azure_application_gateway_ssl_policy
 azure_application_gateway_url_path_map --> azure_application_gateway_path_rule
 azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_disabled_rule_group
 azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_exclusion
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 azure_private_endpoint --> azure_application_security_group
 azure_private_endpoint --> azure_custom_dns_config_properties_format
 azure_private_endpoint --> azure_extended_location
@@ -815,11 +816,11 @@ class azure_availability_set {
 }
 class azure_proximity_placement_group {
 }
-class azure_virtual_machine {
+class azure_virtual_machine_base {
 }
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
-azure_availability_set -[#1A83AF]-> azure_virtual_machine
-azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
+azure_availability_set -[#1A83AF]-> azure_virtual_machine_base
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_base
 @enduml
 ```
 
@@ -1124,9 +1125,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_capacity_reservation_group {
 }
-class azure_virtual_machine {
+class azure_virtual_machine_base {
 }
-azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
+azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine_base
 @enduml
 ```
 
@@ -1163,10 +1164,10 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_cloud_service {
 **allow_model_override**: boolean
+**cloud_service_network_profile**: azure_cloud_service_network_profile
 **configuration**: string
 **configuration_url**: string
 **extension_profile**: azure_cloud_service_extension_profile
-**network_profile**: azure_cloud_service_network_profile
 **os_profile**: azure_cloud_service_os_profile
 **package_url**: string
 **provisioning_state**: string
@@ -1911,10 +1912,16 @@ class azure_snapshot {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 azure_disk -[#1A83AF]-> azure_disk_encryption_set
 azure_disk -[#1A83AF]-> azure_snapshot
 azure_disk_access -[#1A83AF]-> azure_disk
 azure_virtual_machine -[#1A83AF]-> azure_disk
+azure_virtual_machine_base -[#1A83AF]-> azure_disk
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_disk
 @enduml
 ```
 
@@ -2161,7 +2168,10 @@ class azure_disk {
 }
 class azure_disk_encryption_set {
 }
+class azure_managed_cluster {
+}
 azure_disk -[#1A83AF]-> azure_disk_encryption_set
+azure_managed_cluster -[#1A83AF]-> azure_disk_encryption_set
 @enduml
 ```
 
@@ -2858,13 +2868,14 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class resource {
 **age**: duration
@@ -2882,7 +2893,7 @@ azure_express_route_link --> azure_express_route_link_mac_sec_config
 azure_express_route_port --> azure_express_route_link
 azure_express_route_port --> azure_managed_service_identity
 azure_resource <|--- azure_express_route_port
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 resource <|--- azure_resource
 @enduml
 ```
@@ -3440,13 +3451,14 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class policy {
 }
@@ -3478,7 +3490,7 @@ azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_polic
 azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_policy_intrusion_detection_signature_specification
 azure_firewall_policy_log_analytics_resources --> azure_firewall_policy_log_analytics_workspace
 azure_firewall_policy_transport_security --> azure_firewall_policy_certificate_authority
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 resource <|--- azure_resource
 resource <|--- policy
 @enduml
@@ -3518,6 +3530,134 @@ class azure_firewall {
 class azure_firewall_policy {
 }
 azure_firewall -[#1A83AF]-> azure_firewall_policy
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_fleet`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_fleet data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_agent_profile {
+**subnet_id**: string
+**vm_size**: string
+}
+class azure_api_server_access_profile {
+**enable_private_cluster**: boolean
+**enable_vnet_integration**: boolean
+**subnet_id**: string
+}
+class azure_fleet {
+**azure_fleet_identity**: azure_managed_service_identity
+**cluster_resource_id**: string
+**e_tag**: string
+**hub_profile**: azure_fleet_hub_profile
+**provisioning_state**: string
+**resource_group**: string
+}
+class azure_fleet_hub_profile {
+**agent_profile**: azure_agent_profile
+**api_server_access_profile**: azure_api_server_access_profile
+**dns_prefix**: string
+**fqdn**: string
+**kubernetes_version**: string
+**portal_fqdn**: string
+}
+class azure_managed_service_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_fleet --> azure_fleet_hub_profile
+azure_fleet --> azure_managed_service_identity
+azure_resource <|--- azure_fleet
+azure_fleet_hub_profile --> azure_agent_profile
+azure_fleet_hub_profile --> azure_api_server_access_profile
+azure_managed_service_identity --> azure_user_assigned_identity
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_fleet resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_fleet {
+}
+class azure_managed_cluster {
+}
+azure_fleet -[#1A83AF]-> azure_managed_cluster
 @enduml
 ```
 
@@ -3754,7 +3894,13 @@ class azure_image {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 azure_virtual_machine -[#1A83AF]-> azure_image
+azure_virtual_machine_base -[#1A83AF]-> azure_image
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_image
 @enduml
 ```
 
@@ -3957,6 +4103,103 @@ azure_virtual_network -[#1A83AF]-> azure_ip_group
 </div>
 </details>
 
+## `azure_kubernetes_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_kubernetes_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_kubernetes_snapshot {
+**creation_data_source_id**: string
+**enable_fips**: boolean
+**kubernetes_version**: string
+**node_image_version**: string
+**os_sku**: string
+**os_type**: string
+**snapshot_type**: string
+**vm_size**: string
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_resource <|--- azure_kubernetes_snapshot
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_kubernetes_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_kubernetes_snapshot {
+}
+class azure_managed_cluster {
+}
+azure_managed_cluster -[#1A83AF]-> azure_kubernetes_snapshot
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `azure_load_balancer`
 
 <ZoomPanPinch>
@@ -4057,6 +4300,7 @@ class azure_inbound_nat_rule {
 **type**: string
 }
 class azure_load_balancer {
+**aks_public_ip_address**: string
 **azure_sku**: azure_sku
 **backend_address_pools**: azure_backend_address_pool[]
 **etag**: string
@@ -4122,7 +4366,7 @@ class azure_probe {
 **name**: string
 **number_of_probes**: int64
 **port**: int64
-**probe_thfixshold**: int64
+**probe_threshold**: int64
 **protocol**: string
 **provisioning_state**: string
 **request_path**: string
@@ -4203,18 +4447,32 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_load_balancer {
 }
+class azure_managed_cluster {
+}
 class azure_subnet {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
 class azure_virtual_machine_scale_set {
+}
+class azure_virtual_machine_scale_set_instance {
 }
 class azure_virtual_network {
 }
 azure_load_balancer -[#1A83AF]-> azure_virtual_machine
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_base
 azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_managed_cluster -[#1A83AF]-> azure_load_balancer
+azure_managed_cluster -[#1A83AF]-> azure_virtual_machine_scale_set
 azure_subnet -[#1A83AF]-> azure_load_balancer
 azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_virtual_machine_base
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_virtual_network -[#1A83AF]-> azure_load_balancer
 azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml
@@ -4335,6 +4593,467 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_location {
 }
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_managed_cluster`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_managed_cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_auto_scaler_profile {
+**balance_similar_node_groups**: string
+**expander**: string
+**max_empty_bulk_delete**: string
+**max_graceful_termination_sec**: string
+**max_node_provision_time**: string
+**max_total_unready_percentage**: string
+**new_pod_scale_up_delay**: string
+**ok_total_unready_count**: string
+**scale_down_delay_after_add**: string
+**scale_down_delay_after_delete**: string
+**scale_down_delay_after_failure**: string
+**scale_down_unneeded_time**: string
+**scale_down_unready_time**: string
+**scale_down_utilization_threshold**: string
+**scan_interval**: string
+**skip_nodes_with_local_storage**: string
+**skip_nodes_with_system_pods**: string
+}
+class azure_azure_key_vault_kms {
+**enabled**: boolean
+**key_id**: string
+**key_vault_network_access**: string
+**key_vault_resource_id**: string
+}
+class azure_cluster_upgrade_settings {
+**override_settings**: azure_upgrade_override_settings
+}
+class azure_container_service_linux_profile {
+**admin_username**: string
+**ssh**: azure_container_service_ssh_configuration
+}
+class azure_container_service_network_profile {
+**dns_service_ip**: string
+**ip_families**: string[]
+**load_balancer_profile**: azure_managed_cluster_load_balancer_profile
+**load_balancer_sku**: string
+**nat_gateway_profile**: azure_managed_cluster_nat_gateway_profile
+**network_dataplane**: string
+**network_mode**: string
+**network_plugin**: string
+**network_plugin_mode**: string
+**network_policy**: string
+**outbound_type**: string
+**pod_cidr**: string
+**pod_cidrs**: string[]
+**service_cidr**: string
+**service_cidrs**: string[]
+}
+class azure_container_service_ssh_configuration {
+**public_keys**: string[]
+}
+class azure_count_countipv6 {
+**count**: int64
+**count_i_pv6**: int64
+}
+class azure_delegated_resource {
+**location**: string
+**referral_resource**: string
+**resource_id**: string
+**tenant_id**: string
+}
+class azure_error {
+**error**: azure_managed_cluster_pod_identity_provisioning_error
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_istio_certificate_authority {
+**plugin**: azure_istio_plugin_certificate_authority
+}
+class azure_istio_components {
+**egress_gateways**: azure_istio_egress_gateway[]
+**ingress_gateways**: azure_istio_ingress_gateway[]
+}
+class azure_istio_egress_gateway {
+**enabled**: boolean
+**node_selector**: dictionary[string, string]
+}
+class azure_istio_ingress_gateway {
+**enabled**: boolean
+**mode**: string
+}
+class azure_istio_plugin_certificate_authority {
+**cert_chain_object_name**: string
+**cert_object_name**: string
+**key_object_name**: string
+**key_vault_id**: string
+**root_cert_object_name**: string
+}
+class azure_istio_service_mesh {
+**certificate_authority**: azure_istio_certificate_authority
+**components**: azure_istio_components
+**revisions**: string[]
+}
+class azure_managed_cluster {
+**aad_profile**: azure_managed_cluster_aad_profile
+**addon_profiles**: dictionary[string, azure_managed_cluster_addon_profile]
+**agent_pool_profiles**: string[]
+**api_server_access_profile**: azure_managed_cluster_api_server_access_profile
+**auto_scaler_profile**: azure_auto_scaler_profile
+**auto_upgrade_profile**: azure_managed_cluster_auto_upgrade_profile
+**azure_monitor_profile**: azure_managed_cluster_azure_monitor_profile
+**azure_portal_fqdn**: string
+**container_service_network_profile**: azure_container_service_network_profile
+**current_kubernetes_version**: string
+**disable_local_accounts**: boolean
+**disk_encryption_set_id**: string
+**dns_prefix**: string
+**enable_pod_security_policy**: boolean
+**enable_rbac**: boolean
+**extended_location**: azure_extended_location
+**fqdn**: string
+**fqdn_subdomain**: string
+**http_proxy_config**: azure_managed_cluster_http_proxy_config
+**identity_profile**: dictionary[string, azure_user_assigned_identity]
+**kubernetes_version**: string
+**linux_profile**: azure_container_service_linux_profile
+**managed_cluster_identity**: azure_managed_cluster_identity
+**managed_cluster_sku**: azure_managed_cluster_sku
+**managed_cluster_storage_profile**: azure_managed_cluster_storage_profile
+**max_agent_pools**: int64
+**node_resource_group**: string
+**oidc_issuer_profile**: azure_managed_cluster_oidc_issuer_profile
+**pod_identity_profile**: azure_managed_cluster_pod_identity_profile
+**power_state**: string
+**private_fqdn**: string
+**private_link_resources**: azure_private_link_resource[]
+**provisioning_state**: string
+**public_network_access**: string
+**resource_uid**: string
+**security_profile**: azure_managed_cluster_security_profile
+**service_mesh_profile**: azure_service_mesh_profile
+**service_principal_profile**: azure_managed_cluster_service_principal_profile
+**support_plan**: string
+**upgrade_settings**: azure_cluster_upgrade_settings
+**windows_profile**: azure_managed_cluster_windows_profile
+**workload_auto_scaler_profile**: azure_managed_cluster_workload_auto_scaler_profile
+}
+class azure_managed_cluster_aad_profile {
+**admin_group_object_i_ds**: string[]
+**client_app_id**: string
+**enable_azure_rbac**: boolean
+**managed**: boolean
+**server_app_id**: string
+**server_app_secret**: string
+**tenant_id**: string
+}
+class azure_managed_cluster_addon_profile {
+**config**: dictionary[string, string]
+**enabled**: boolean
+**identity**: azure_user_assigned_identity
+}
+class azure_managed_cluster_api_server_access_profile {
+**authorized_ip_ranges**: string[]
+**disable_run_command**: boolean
+**enable_private_cluster**: boolean
+**enable_private_cluster_public_fqdn**: boolean
+**private_dns_zone**: string
+}
+class azure_managed_cluster_auto_upgrade_profile {
+**node_os_upgrade_channel**: string
+**upgrade_channel**: string
+}
+class azure_managed_cluster_azure_monitor_profile {
+**metrics**: azure_managed_cluster_azure_monitor_profile_metrics
+}
+class azure_managed_cluster_azure_monitor_profile_kube_state_metrics {
+**metric_annotations_allow_list**: string
+**metric_labels_allowlist**: string
+}
+class azure_managed_cluster_azure_monitor_profile_metrics {
+**enabled**: boolean
+**kube_state_metrics**: azure_managed_cluster_azure_monitor_profile_kube_state_metrics
+}
+class azure_managed_cluster_http_proxy_config {
+**http_proxy**: string
+**https_proxy**: string
+**no_proxy**: string[]
+**trusted_ca**: string
+}
+class azure_managed_cluster_identity {
+**delegated_resources**: dictionary[string, azure_delegated_resource]
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_managed_cluster_load_balancer_profile {
+**allocated_outbound_ports**: int64
+**effective_outbound_i_ps**: string[]
+**enable_multiple_standard_load_balancers**: boolean
+**idle_timeout_in_minutes**: int64
+**managed_outbound_i_ps**: azure_count_countipv6
+**outbound_i_ps**: azure_public_i_ps
+**outbound_ip_prefixes**: azure_public_ip_prefixes
+}
+class azure_managed_cluster_nat_gateway_profile {
+**effective_outbound_i_ps**: string[]
+**idle_timeout_in_minutes**: int64
+**managed_outbound_ip_profile**: int64
+}
+class azure_managed_cluster_oidc_issuer_profile {
+**enabled**: boolean
+**issuer_url**: string
+}
+class azure_managed_cluster_pod_identity {
+**binding_selector**: string
+**identity**: azure_user_assigned_identity
+**name**: string
+**namespace**: string
+**provisioning_info**: azure_error
+**provisioning_state**: string
+}
+class azure_managed_cluster_pod_identity_exception {
+**name**: string
+**namespace**: string
+**pod_labels**: dictionary[string, string]
+}
+class azure_managed_cluster_pod_identity_profile {
+**allow_network_plugin_kubenet**: boolean
+**enabled**: boolean
+**user_assigned_identities**: azure_managed_cluster_pod_identity[]
+**user_assigned_identity_exceptions**: azure_managed_cluster_pod_identity_exception[]
+}
+class azure_managed_cluster_pod_identity_provisioning_error {
+**error**: azure_managed_cluster_pod_identity_provisioning_error_body
+}
+class azure_managed_cluster_pod_identity_provisioning_error_body {
+**code**: string
+**details**: dictionary[string, any][]
+**message**: string
+**target**: string
+}
+class azure_managed_cluster_security_profile {
+**azure_key_vault_kms**: azure_azure_key_vault_kms
+**defender**: azure_managed_cluster_security_profile_defender
+**image_cleaner**: azure_managed_cluster_security_profile_image_cleaner
+**workload_identity**: boolean
+}
+class azure_managed_cluster_security_profile_defender {
+**log_analytics_workspace_resource_id**: string
+**security_monitoring**: boolean
+}
+class azure_managed_cluster_security_profile_image_cleaner {
+**enabled**: boolean
+**interval_hours**: int64
+}
+class azure_managed_cluster_service_principal_profile {
+**client_id**: string
+**secret**: string
+}
+class azure_managed_cluster_sku {
+**name**: string
+**tier**: string
+}
+class azure_managed_cluster_storage_profile {
+**blob_csi_driver**: boolean
+**disk_csi_driver**: boolean
+**file_csi_driver**: boolean
+**snapshot_controller**: boolean
+}
+class azure_managed_cluster_windows_profile {
+**admin_password**: string
+**admin_username**: string
+**enable_csi_proxy**: boolean
+**gmsa_profile**: azure_windows_gmsa_profile
+**license_type**: string
+}
+class azure_managed_cluster_workload_auto_scaler_profile {
+**keda**: boolean
+**vertical_pod_autoscaler**: boolean
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_private_link_resource {
+**group_id**: string
+**id**: string
+**name**: string
+**private_link_service_id**: string
+**required_members**: string[]
+**type**: string
+}
+class azure_public_i_ps {
+**public_i_ps**: string[]
+}
+class azure_public_ip_prefixes {
+**public_ip_prefixes**: string[]
+}
+class azure_resource {
+}
+class azure_service_mesh_profile {
+**istio**: azure_istio_service_mesh
+**mode**: string
+}
+class azure_upgrade_override_settings {
+**force_upgrade**: boolean
+**until**: datetime
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
+}
+class azure_windows_gmsa_profile {
+**dns_server**: string
+**enabled**: boolean
+**root_domain_name**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cluster_upgrade_settings --> azure_upgrade_override_settings
+azure_container_service_linux_profile --> azure_container_service_ssh_configuration
+azure_container_service_network_profile --> azure_managed_cluster_load_balancer_profile
+azure_container_service_network_profile --> azure_managed_cluster_nat_gateway_profile
+azure_error --> azure_managed_cluster_pod_identity_provisioning_error
+azure_istio_certificate_authority --> azure_istio_plugin_certificate_authority
+azure_istio_components --> azure_istio_egress_gateway
+azure_istio_components --> azure_istio_ingress_gateway
+azure_istio_service_mesh --> azure_istio_certificate_authority
+azure_istio_service_mesh --> azure_istio_components
+azure_managed_cluster --> azure_auto_scaler_profile
+azure_managed_cluster --> azure_cluster_upgrade_settings
+azure_managed_cluster --> azure_container_service_linux_profile
+azure_managed_cluster --> azure_container_service_network_profile
+azure_managed_cluster --> azure_extended_location
+azure_managed_cluster --> azure_managed_cluster_aad_profile
+azure_managed_cluster --> azure_managed_cluster_addon_profile
+azure_managed_cluster --> azure_managed_cluster_api_server_access_profile
+azure_managed_cluster --> azure_managed_cluster_auto_upgrade_profile
+azure_managed_cluster --> azure_managed_cluster_azure_monitor_profile
+azure_managed_cluster --> azure_managed_cluster_http_proxy_config
+azure_managed_cluster --> azure_managed_cluster_identity
+azure_managed_cluster --> azure_managed_cluster_oidc_issuer_profile
+azure_managed_cluster --> azure_managed_cluster_pod_identity_profile
+azure_managed_cluster --> azure_managed_cluster_security_profile
+azure_managed_cluster --> azure_managed_cluster_service_principal_profile
+azure_managed_cluster --> azure_managed_cluster_sku
+azure_managed_cluster --> azure_managed_cluster_storage_profile
+azure_managed_cluster --> azure_managed_cluster_windows_profile
+azure_managed_cluster --> azure_managed_cluster_workload_auto_scaler_profile
+azure_managed_cluster --> azure_private_link_resource
+azure_resource <|--- azure_managed_cluster
+azure_managed_cluster --> azure_service_mesh_profile
+azure_managed_cluster --> azure_user_assigned_identity
+azure_managed_cluster_addon_profile --> azure_user_assigned_identity
+azure_managed_cluster_azure_monitor_profile --> azure_managed_cluster_azure_monitor_profile_metrics
+azure_managed_cluster_azure_monitor_profile_metrics --> azure_managed_cluster_azure_monitor_profile_kube_state_metrics
+azure_managed_cluster_identity --> azure_delegated_resource
+azure_managed_cluster_identity --> azure_principalid_clientid
+azure_managed_cluster_load_balancer_profile --> azure_count_countipv6
+azure_managed_cluster_load_balancer_profile --> azure_public_i_ps
+azure_managed_cluster_load_balancer_profile --> azure_public_ip_prefixes
+azure_managed_cluster_pod_identity --> azure_error
+azure_managed_cluster_pod_identity --> azure_user_assigned_identity
+azure_managed_cluster_pod_identity_profile --> azure_managed_cluster_pod_identity
+azure_managed_cluster_pod_identity_profile --> azure_managed_cluster_pod_identity_exception
+azure_managed_cluster_pod_identity_provisioning_error --> azure_managed_cluster_pod_identity_provisioning_error_body
+azure_managed_cluster_security_profile --> azure_azure_key_vault_kms
+azure_managed_cluster_security_profile --> azure_managed_cluster_security_profile_defender
+azure_managed_cluster_security_profile --> azure_managed_cluster_security_profile_image_cleaner
+azure_managed_cluster_windows_profile --> azure_windows_gmsa_profile
+resource <|--- azure_resource
+azure_service_mesh_profile --> azure_istio_service_mesh
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_managed_cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk_encryption_set {
+}
+class azure_fleet {
+}
+class azure_kubernetes_snapshot {
+}
+class azure_load_balancer {
+}
+class azure_managed_cluster {
+}
+class azure_virtual_machine_scale_set {
+}
+azure_fleet -[#1A83AF]-> azure_managed_cluster
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_managed_cluster -[#1A83AF]-> azure_disk_encryption_set
+azure_managed_cluster -[#1A83AF]-> azure_kubernetes_snapshot
+azure_managed_cluster -[#1A83AF]-> azure_load_balancer
+azure_managed_cluster -[#1A83AF]-> azure_virtual_machine_scale_set
 @enduml
 ```
 
@@ -4689,13 +5408,21 @@ class azure_private_link_service {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 class azure_virtual_network_tap {
 }
 azure_network_interface -[#1A83AF]-> azure_dscp_configuration
 azure_network_security_group -[#1A83AF]-> azure_network_interface
 azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_private_link_service -[#1A83AF]-> azure_network_interface
 azure_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_base -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_network_interface
 azure_virtual_network_tap -[#1A83AF]-> azure_network_interface
 @enduml
 ```
@@ -4827,11 +5554,11 @@ class azure_network_profile {
 }
 class azure_subnet {
 }
-class azure_virtual_machine {
+class azure_virtual_machine_base {
 }
-azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_network_profile -[#1A83AF]-> azure_virtual_machine_base
 azure_subnet -[#1A83AF]-> azure_network_profile
-azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_virtual_machine_base
 @enduml
 ```
 
@@ -5003,11 +5730,21 @@ class azure_subnet {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 azure_network_security_group -[#1A83AF]-> azure_network_interface
 azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_subnet -[#1A83AF]-> azure_network_security_group
 azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_virtual_machine_base
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_base -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -5050,7 +5787,7 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_network_virtual_appliance {
 **additional_nics**: azure_virtual_appliance_additional_nic_properties[]
@@ -5078,11 +5815,12 @@ class azure_partner_managed_resource_properties {
 **internal_load_balancer_id**: string
 **standard_load_balancer_id**: string
 }
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
-}
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class azure_virtual_appliance_additional_nic_properties {
 **has_public_ip**: boolean
@@ -5111,7 +5849,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 azure_network_virtual_appliance --> azure_delegation_properties
 azure_network_virtual_appliance --> azure_managed_service_identity
 azure_network_virtual_appliance --> azure_partner_managed_resource_properties
@@ -5823,12 +6561,19 @@ class azure_proximity_placement_group {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
 class azure_virtual_machine_scale_set {
 }
+class azure_virtual_machine_scale_set_instance {
+}
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
-azure_availability_set -[#1A83AF]-> azure_virtual_machine
+azure_availability_set -[#1A83AF]-> azure_virtual_machine_base
 azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_base
 azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 @enduml
 ```
 
@@ -6746,9 +7491,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_restore_point_collection {
 }
-class azure_virtual_machine {
+class azure_virtual_machine_base {
 }
-azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine
+azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine_base
 @enduml
 ```
 
@@ -7608,11 +8353,22 @@ class azure_subnet {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 class azure_virtual_network {
 }
 azure_load_balancer -[#1A83AF]-> azure_virtual_machine
-azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_base
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_network_profile -[#1A83AF]-> azure_virtual_machine_base
 azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_subnet -[#1A83AF]-> azure_application_gateway
 azure_subnet -[#1A83AF]-> azure_bastion_host
 azure_subnet -[#1A83AF]-> azure_dscp_configuration
@@ -7624,6 +8380,10 @@ azure_subnet -[#1A83AF]-> azure_network_profile
 azure_subnet -[#1A83AF]-> azure_network_security_group
 azure_subnet -[#1A83AF]-> azure_network_virtual_appliance
 azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_virtual_machine_base
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set -[#1A83AF]-> azure_virtual_machine_scale_set_instance
 azure_virtual_network -[#1A83AF]-> azure_bastion_host
 azure_virtual_network -[#1A83AF]-> azure_ip_allocation
 azure_virtual_network -[#1A83AF]-> azure_load_balancer
@@ -8269,6 +9029,13 @@ class azure_vault_secret_group {
 **vault_certificates**: azure_vault_certificate[]
 }
 class azure_virtual_machine {
+}
+class azure_virtual_machine_agent_instance_view {
+**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
+**statuses**: azure_instance_view_status[]
+**vm_agent_version**: string
+}
+class azure_virtual_machine_base {
 **application_profile**: azure_application_profile
 **availability_set**: string
 **azure_plan**: azure_plan
@@ -8300,11 +9067,6 @@ class azure_virtual_machine {
 **virtual_machine_security_profile**: azure_security_profile
 **virtual_machine_storage_profile**: azure_storage_profile
 **vm_id**: string
-}
-class azure_virtual_machine_agent_instance_view {
-**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
-**statuses**: azure_instance_view_status[]
-**vm_agent_version**: string
 }
 class azure_virtual_machine_extension {
 **auto_upgrade_minor_version**: boolean
@@ -8510,17 +9272,33 @@ azure_virtual_machine --> azure_extended_location
 azure_virtual_machine --> azure_hardware_profile
 azure_virtual_machine --> azure_os_profile
 azure_virtual_machine --> azure_plan
-azure_resource <|--- azure_virtual_machine
 azure_virtual_machine --> azure_scheduled_events_profile
 azure_virtual_machine --> azure_security_profile
 azure_virtual_machine --> azure_storage_profile
+azure_virtual_machine_base <|--- azure_virtual_machine
 azure_virtual_machine --> azure_virtual_machine_extension
 azure_virtual_machine --> azure_virtual_machine_identity
 azure_virtual_machine --> azure_virtual_machine_instance_view
 azure_virtual_machine --> azure_virtual_machine_network_profile
-instance <|--- azure_virtual_machine
 azure_virtual_machine_agent_instance_view --> azure_instance_view_status
 azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
+azure_virtual_machine_base --> azure_additional_capabilities
+azure_virtual_machine_base --> azure_application_profile
+azure_virtual_machine_base --> azure_capacity_reservation_profile
+azure_virtual_machine_base --> azure_diagnostics_profile
+azure_virtual_machine_base --> azure_extended_location
+azure_virtual_machine_base --> azure_hardware_profile
+azure_virtual_machine_base --> azure_os_profile
+azure_virtual_machine_base --> azure_plan
+azure_resource <|--- azure_virtual_machine_base
+azure_virtual_machine_base --> azure_scheduled_events_profile
+azure_virtual_machine_base --> azure_security_profile
+azure_virtual_machine_base --> azure_storage_profile
+azure_virtual_machine_base --> azure_virtual_machine_extension
+azure_virtual_machine_base --> azure_virtual_machine_identity
+azure_virtual_machine_base --> azure_virtual_machine_instance_view
+azure_virtual_machine_base --> azure_virtual_machine_network_profile
+instance <|--- azure_virtual_machine_base
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
 azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
@@ -8583,6 +9361,639 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
+class azure_image {
+}
+class azure_load_balancer {
+}
+class azure_network_interface {
+}
+class azure_network_security_group {
+}
+class azure_proximity_placement_group {
+}
+class azure_subnet {
+}
+class azure_virtual_machine {
+}
+class azure_virtual_machine_size {
+}
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_virtual_machine -[#1A83AF]-> azure_disk
+azure_virtual_machine -[#1A83AF]-> azure_image
+azure_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_virtual_machine_base`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_base data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_additional_capabilities {
+**hibernation_enabled**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_application_profile {
+**gallery_applications**: azure_vm_gallery_application[]
+}
+class azure_available_patch_summary {
+**assessment_activity_id**: string
+**critical_and_security_patch_count**: int64
+**error**: azure_api_error
+**last_modified_time**: datetime
+**other_patch_count**: int64
+**reboot_pending**: boolean
+**start_time**: datetime
+**status**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_boot_diagnostics_instance_view {
+**console_screenshot_blob_uri**: string
+**serial_console_log_blob_uri**: string
+**status**: azure_instance_view_status
+}
+class azure_capacity_reservation_profile {
+**capacity_reservation_group**: string
+}
+class azure_data_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**detach_option**: string
+**disk_iops_read_write**: int64
+**disk_m_bps_read_write**: int64
+**disk_size_gb**: int64
+**image**: string
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**to_be_detached**: boolean
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_diff_disk_settings {
+**option**: string
+**placement**: string
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_instance_view {
+**encryption_settings**: azure_disk_encryption_settings[]
+**name**: string
+**statuses**: azure_instance_view_status[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_image_reference {
+**community_gallery_image_id**: string
+**exact_version**: string
+**image_reference_sku**: string
+**offer**: string
+**publisher**: string
+**shared_gallery_image_id**: string
+**version**: string
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_last_patch_installation_summary {
+**error**: azure_api_error
+**excluded_patch_count**: int64
+**failed_patch_count**: int64
+**installation_activity_id**: string
+**installed_patch_count**: int64
+**last_modified_time**: datetime
+**maintenance_window_exceeded**: boolean
+**not_selected_patch_count**: int64
+**pending_patch_count**: int64
+**start_time**: datetime
+**status**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_maintenance_redeploy_status {
+**is_customer_initiated_maintenance_allowed**: boolean
+**last_operation_message**: string
+**last_operation_result_code**: string
+**maintenance_window_end_time**: datetime
+**maintenance_window_start_time**: datetime
+**pre_maintenance_window_end_time**: datetime
+**pre_maintenance_window_start_time**: datetime
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_sub_resource
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_network_interface_reference {
+**delete_option**: string
+**primary**: boolean
+}
+class azure_os_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**diff_disk_settings**: azure_diff_disk_settings
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**image**: string
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_os_image_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_public_ip_address_sku {
+**name**: string
+**tier**: string
+}
+class azure_resource {
+}
+class azure_scheduled_events_profile {
+**os_image_notification_profile**: azure_os_image_notification_profile
+**terminate_notification_profile**: azure_terminate_notification_profile
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_storage_profile {
+**data_disks**: azure_data_disk[]
+**disk_controller_type**: string
+**image_reference**: azure_image_reference
+**os_disk**: azure_os_disk
+}
+class azure_sub_resource {
+**id**: string
+}
+class azure_terminate_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_virtual_machine_agent_instance_view {
+**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
+**statuses**: azure_instance_view_status[]
+**vm_agent_version**: string
+}
+class azure_virtual_machine_base {
+**application_profile**: azure_application_profile
+**availability_set**: string
+**azure_plan**: azure_plan
+**billing_profile**: double
+**capacity_reservation**: azure_capacity_reservation_profile
+**eviction_policy**: string
+**extended_location**: azure_extended_location
+**extensions_time_budget**: string
+**hardware_profile**: azure_hardware_profile
+**host**: string
+**host_group**: string
+**license_type**: string
+**location**: string
+**platform_fault_domain**: int64
+**provisioning_state**: string
+**proximity_placement_group**: string
+**scheduled_events_profile**: azure_scheduled_events_profile
+**time_created**: datetime
+**user_data**: string
+**virtual_machine_capabilities**: azure_additional_capabilities
+**virtual_machine_diagnostics_profile**: azure_diagnostics_profile
+**virtual_machine_identity**: azure_virtual_machine_identity
+**virtual_machine_instance_view**: azure_virtual_machine_instance_view
+**virtual_machine_network_profile**: azure_virtual_machine_network_profile
+**virtual_machine_os_profile**: azure_os_profile
+**virtual_machine_priority**: string
+**virtual_machine_resources**: azure_virtual_machine_extension[]
+**virtual_machine_scale_set**: string
+**virtual_machine_security_profile**: azure_security_profile
+**virtual_machine_storage_profile**: azure_storage_profile
+**vm_id**: string
+}
+class azure_virtual_machine_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**machine_extension_instance_view**: azure_virtual_machine_extension_instance_view
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_handler_instance_view {
+**status**: azure_instance_view_status
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_instance_view {
+**name**: string
+**statuses**: azure_instance_view_status[]
+**substatuses**: azure_instance_view_status[]
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_health_status {
+**status**: azure_instance_view_status
+}
+class azure_virtual_machine_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_virtual_machine_instance_view {
+**assigned_host**: string
+**boot_diagnostics**: azure_boot_diagnostics_instance_view
+**computer_name**: string
+**disks**: azure_disk_instance_view[]
+**extensions**: azure_virtual_machine_extension_instance_view[]
+**hyper_v_generation**: string
+**maintenance_redeploy_status**: azure_maintenance_redeploy_status
+**os_name**: string
+**os_version**: string
+**patch_status**: azure_virtual_machine_patch_status
+**platform_fault_domain**: int64
+**platform_update_domain**: int64
+**rdp_thumb_print**: string
+**statuses**: azure_instance_view_status[]
+**vm_agent**: azure_virtual_machine_agent_instance_view
+**vm_health**: azure_virtual_machine_health_status
+}
+class azure_virtual_machine_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_virtual_machine_network_interface_configuration {
+**delete_option**: string
+**disable_tcp_state_tracking**: boolean
+**dns_settings**: azure_virtual_machine_network_interface_dns_settings_configuration
+**dscp_configuration**: string
+**enable_accelerated_networking**: boolean
+**enable_fpga**: boolean
+**enable_ip_forwarding**: boolean
+**ip_configurations**: azure_virtual_machine_network_interface_ip_configuration[]
+**name**: string
+**network_security_group**: string
+**primary**: boolean
+}
+class azure_virtual_machine_network_interface_dns_settings_configuration {
+**dns_servers**: string[]
+}
+class azure_virtual_machine_network_interface_ip_configuration {
+**application_gateway_backend_address_pools**: string[]
+**application_security_groups**: string[]
+**load_balancer_backend_address_pools**: string[]
+**name**: string
+**primary**: boolean
+**private_ip_address_version**: string
+**public_ip_address_configuration**: azure_virtual_machine_public_ip_address_configuration
+**subnet**: string
+}
+class azure_virtual_machine_network_profile {
+**network_api_version**: string
+**network_interface_configurations**: azure_virtual_machine_network_interface_configuration[]
+**network_interfaces**: azure_network_interface_reference[]
+}
+class azure_virtual_machine_patch_status {
+**available_patch_summary**: azure_available_patch_summary
+**configuration_statuses**: azure_instance_view_status[]
+**last_patch_installation_summary**: azure_last_patch_installation_summary
+}
+class azure_virtual_machine_public_ip_address_configuration {
+**delete_option**: string
+**dns_settings**: string
+**idle_timeout_in_minutes**: int64
+**ip_tags**: azure_virtual_machine_ip_tag[]
+**name**: string
+**public_ip_address_version**: string
+**public_ip_allocation_method**: string
+**public_ip_prefix**: string
+**sku**: azure_public_ip_address_sku
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_sub_resource
+**security_encryption_type**: string
+}
+class azure_vm_gallery_application {
+**configuration_reference**: string
+**enable_automatic_upgrade**: boolean
+**order**: int64
+**package_reference_id**: string
+**tags**: string
+**treat_failure_as_deployment_failure**: boolean
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_application_profile --> azure_vm_gallery_application
+azure_available_patch_summary --> azure_api_error
+azure_boot_diagnostics_instance_view --> azure_instance_view_status
+azure_data_disk --> azure_managed_disk_parameters
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_instance_view --> azure_disk_encryption_settings
+azure_disk_instance_view --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_sub_resource <|--- azure_image_reference
+azure_last_patch_installation_summary --> azure_api_error
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_sub_resource <|--- azure_network_interface_reference
+azure_os_disk --> azure_diff_disk_settings
+azure_os_disk --> azure_disk_encryption_settings
+azure_os_disk --> azure_managed_disk_parameters
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+resource <|--- azure_resource
+azure_scheduled_events_profile --> azure_os_image_notification_profile
+azure_scheduled_events_profile --> azure_terminate_notification_profile
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_storage_profile --> azure_data_disk
+azure_storage_profile --> azure_image_reference
+azure_storage_profile --> azure_os_disk
+azure_vault_secret_group --> azure_vault_certificate
+azure_virtual_machine_agent_instance_view --> azure_instance_view_status
+azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
+azure_virtual_machine_base --> azure_additional_capabilities
+azure_virtual_machine_base --> azure_application_profile
+azure_virtual_machine_base --> azure_capacity_reservation_profile
+azure_virtual_machine_base --> azure_diagnostics_profile
+azure_virtual_machine_base --> azure_extended_location
+azure_virtual_machine_base --> azure_hardware_profile
+azure_virtual_machine_base --> azure_os_profile
+azure_virtual_machine_base --> azure_plan
+azure_resource <|--- azure_virtual_machine_base
+azure_virtual_machine_base --> azure_scheduled_events_profile
+azure_virtual_machine_base --> azure_security_profile
+azure_virtual_machine_base --> azure_storage_profile
+azure_virtual_machine_base --> azure_virtual_machine_extension
+azure_virtual_machine_base --> azure_virtual_machine_identity
+azure_virtual_machine_base --> azure_virtual_machine_instance_view
+azure_virtual_machine_base --> azure_virtual_machine_network_profile
+instance <|--- azure_virtual_machine_base
+azure_virtual_machine_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
+azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+azure_virtual_machine_health_status --> azure_instance_view_status
+azure_virtual_machine_identity --> azure_principalid_clientid
+azure_virtual_machine_instance_view --> azure_boot_diagnostics_instance_view
+azure_virtual_machine_instance_view --> azure_disk_instance_view
+azure_virtual_machine_instance_view --> azure_instance_view_status
+azure_virtual_machine_instance_view --> azure_maintenance_redeploy_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_agent_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_health_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_patch_status
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_dns_settings_configuration
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_ip_configuration
+azure_virtual_machine_network_interface_ip_configuration --> azure_virtual_machine_public_ip_address_configuration
+azure_virtual_machine_network_profile --> azure_network_interface_reference
+azure_virtual_machine_network_profile --> azure_virtual_machine_network_interface_configuration
+azure_virtual_machine_patch_status --> azure_available_patch_summary
+azure_virtual_machine_patch_status --> azure_instance_view_status
+azure_virtual_machine_patch_status --> azure_last_patch_installation_summary
+azure_virtual_machine_public_ip_address_configuration --> azure_public_ip_address_sku
+azure_virtual_machine_public_ip_address_configuration --> azure_virtual_machine_ip_tag
+azure_vm_disk_security_profile --> azure_sub_resource
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- instance
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_base resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
 class azure_availability_set {
 }
 class azure_capacity_reservation_group {
@@ -8605,27 +10016,27 @@ class azure_restore_point_collection {
 }
 class azure_subnet {
 }
-class azure_virtual_machine {
+class azure_virtual_machine_base {
 }
 class azure_virtual_machine_size {
 }
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
-azure_availability_set -[#1A83AF]-> azure_virtual_machine
-azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
-azure_load_balancer -[#1A83AF]-> azure_virtual_machine
-azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_availability_set -[#1A83AF]-> azure_virtual_machine_base
+azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine_base
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_base
+azure_network_profile -[#1A83AF]-> azure_virtual_machine_base
 azure_network_security_group -[#1A83AF]-> azure_network_interface
-azure_network_security_group -[#1A83AF]-> azure_virtual_machine
-azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
-azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_base
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_base
+azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine_base
 azure_subnet -[#1A83AF]-> azure_load_balancer
 azure_subnet -[#1A83AF]-> azure_network_profile
 azure_subnet -[#1A83AF]-> azure_network_security_group
-azure_subnet -[#1A83AF]-> azure_virtual_machine
-azure_virtual_machine -[#1A83AF]-> azure_disk
-azure_virtual_machine -[#1A83AF]-> azure_image
-azure_virtual_machine -[#1A83AF]-> azure_network_interface
-azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
+azure_subnet -[#1A83AF]-> azure_virtual_machine_base
+azure_virtual_machine_base -[#1A83AF]-> azure_disk
+azure_virtual_machine_base -[#1A83AF]-> azure_image
+azure_virtual_machine_base -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_base -[#1A83AF]-> azure_virtual_machine_size
 @enduml
 ```
 
@@ -9177,12 +10588,683 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_load_balancer {
 }
+class azure_managed_cluster {
+}
 class azure_proximity_placement_group {
+}
+class azure_subnet {
 }
 class azure_virtual_machine_scale_set {
 }
+class azure_virtual_machine_scale_set_instance {
+}
 azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_managed_cluster -[#1A83AF]-> azure_load_balancer
+azure_managed_cluster -[#1A83AF]-> azure_virtual_machine_scale_set
 azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_virtual_machine_scale_set_instance`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_scale_set_instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_additional_capabilities {
+**hibernation_enabled**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_application_profile {
+**gallery_applications**: azure_vm_gallery_application[]
+}
+class azure_available_patch_summary {
+**assessment_activity_id**: string
+**critical_and_security_patch_count**: int64
+**error**: azure_api_error
+**last_modified_time**: datetime
+**other_patch_count**: int64
+**reboot_pending**: boolean
+**start_time**: datetime
+**status**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_boot_diagnostics_instance_view {
+**console_screenshot_blob_uri**: string
+**serial_console_log_blob_uri**: string
+**status**: azure_instance_view_status
+}
+class azure_capacity_reservation_profile {
+**capacity_reservation_group**: string
+}
+class azure_data_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**detach_option**: string
+**disk_iops_read_write**: int64
+**disk_m_bps_read_write**: int64
+**disk_size_gb**: int64
+**image**: string
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**to_be_detached**: boolean
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_diff_disk_settings {
+**option**: string
+**placement**: string
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_instance_view {
+**encryption_settings**: azure_disk_encryption_settings[]
+**name**: string
+**statuses**: azure_instance_view_status[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_image_reference {
+**community_gallery_image_id**: string
+**exact_version**: string
+**image_reference_sku**: string
+**offer**: string
+**publisher**: string
+**shared_gallery_image_id**: string
+**version**: string
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_last_patch_installation_summary {
+**error**: azure_api_error
+**excluded_patch_count**: int64
+**failed_patch_count**: int64
+**installation_activity_id**: string
+**installed_patch_count**: int64
+**last_modified_time**: datetime
+**maintenance_window_exceeded**: boolean
+**not_selected_patch_count**: int64
+**pending_patch_count**: int64
+**start_time**: datetime
+**status**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_maintenance_redeploy_status {
+**is_customer_initiated_maintenance_allowed**: boolean
+**last_operation_message**: string
+**last_operation_result_code**: string
+**maintenance_window_end_time**: datetime
+**maintenance_window_start_time**: datetime
+**pre_maintenance_window_end_time**: datetime
+**pre_maintenance_window_start_time**: datetime
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_sub_resource
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_network_interface_reference {
+**delete_option**: string
+**primary**: boolean
+}
+class azure_os_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**diff_disk_settings**: azure_diff_disk_settings
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**image**: string
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_os_image_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_public_ip_address_sku {
+**name**: string
+**tier**: string
+}
+class azure_resource {
+}
+class azure_scheduled_events_profile {
+**os_image_notification_profile**: azure_os_image_notification_profile
+**terminate_notification_profile**: azure_terminate_notification_profile
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_storage_profile {
+**data_disks**: azure_data_disk[]
+**disk_controller_type**: string
+**image_reference**: azure_image_reference
+**os_disk**: azure_os_disk
+}
+class azure_sub_resource {
+**id**: string
+}
+class azure_terminate_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_virtual_machine_agent_instance_view {
+**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
+**statuses**: azure_instance_view_status[]
+**vm_agent_version**: string
+}
+class azure_virtual_machine_base {
+**application_profile**: azure_application_profile
+**availability_set**: string
+**azure_plan**: azure_plan
+**billing_profile**: double
+**capacity_reservation**: azure_capacity_reservation_profile
+**eviction_policy**: string
+**extended_location**: azure_extended_location
+**extensions_time_budget**: string
+**hardware_profile**: azure_hardware_profile
+**host**: string
+**host_group**: string
+**license_type**: string
+**location**: string
+**platform_fault_domain**: int64
+**provisioning_state**: string
+**proximity_placement_group**: string
+**scheduled_events_profile**: azure_scheduled_events_profile
+**time_created**: datetime
+**user_data**: string
+**virtual_machine_capabilities**: azure_additional_capabilities
+**virtual_machine_diagnostics_profile**: azure_diagnostics_profile
+**virtual_machine_identity**: azure_virtual_machine_identity
+**virtual_machine_instance_view**: azure_virtual_machine_instance_view
+**virtual_machine_network_profile**: azure_virtual_machine_network_profile
+**virtual_machine_os_profile**: azure_os_profile
+**virtual_machine_priority**: string
+**virtual_machine_resources**: azure_virtual_machine_extension[]
+**virtual_machine_scale_set**: string
+**virtual_machine_security_profile**: azure_security_profile
+**virtual_machine_storage_profile**: azure_storage_profile
+**vm_id**: string
+}
+class azure_virtual_machine_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**machine_extension_instance_view**: azure_virtual_machine_extension_instance_view
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_handler_instance_view {
+**status**: azure_instance_view_status
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_instance_view {
+**name**: string
+**statuses**: azure_instance_view_status[]
+**substatuses**: azure_instance_view_status[]
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_health_status {
+**status**: azure_instance_view_status
+}
+class azure_virtual_machine_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_virtual_machine_instance_view {
+**assigned_host**: string
+**boot_diagnostics**: azure_boot_diagnostics_instance_view
+**computer_name**: string
+**disks**: azure_disk_instance_view[]
+**extensions**: azure_virtual_machine_extension_instance_view[]
+**hyper_v_generation**: string
+**maintenance_redeploy_status**: azure_maintenance_redeploy_status
+**os_name**: string
+**os_version**: string
+**patch_status**: azure_virtual_machine_patch_status
+**platform_fault_domain**: int64
+**platform_update_domain**: int64
+**rdp_thumb_print**: string
+**statuses**: azure_instance_view_status[]
+**vm_agent**: azure_virtual_machine_agent_instance_view
+**vm_health**: azure_virtual_machine_health_status
+}
+class azure_virtual_machine_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_virtual_machine_network_interface_configuration {
+**delete_option**: string
+**disable_tcp_state_tracking**: boolean
+**dns_settings**: azure_virtual_machine_network_interface_dns_settings_configuration
+**dscp_configuration**: string
+**enable_accelerated_networking**: boolean
+**enable_fpga**: boolean
+**enable_ip_forwarding**: boolean
+**ip_configurations**: azure_virtual_machine_network_interface_ip_configuration[]
+**name**: string
+**network_security_group**: string
+**primary**: boolean
+}
+class azure_virtual_machine_network_interface_dns_settings_configuration {
+**dns_servers**: string[]
+}
+class azure_virtual_machine_network_interface_ip_configuration {
+**application_gateway_backend_address_pools**: string[]
+**application_security_groups**: string[]
+**load_balancer_backend_address_pools**: string[]
+**name**: string
+**primary**: boolean
+**private_ip_address_version**: string
+**public_ip_address_configuration**: azure_virtual_machine_public_ip_address_configuration
+**subnet**: string
+}
+class azure_virtual_machine_network_profile {
+**network_api_version**: string
+**network_interface_configurations**: azure_virtual_machine_network_interface_configuration[]
+**network_interfaces**: azure_network_interface_reference[]
+}
+class azure_virtual_machine_patch_status {
+**available_patch_summary**: azure_available_patch_summary
+**configuration_statuses**: azure_instance_view_status[]
+**last_patch_installation_summary**: azure_last_patch_installation_summary
+}
+class azure_virtual_machine_public_ip_address_configuration {
+**delete_option**: string
+**dns_settings**: string
+**idle_timeout_in_minutes**: int64
+**ip_tags**: azure_virtual_machine_ip_tag[]
+**name**: string
+**public_ip_address_version**: string
+**public_ip_allocation_method**: string
+**public_ip_prefix**: string
+**sku**: azure_public_ip_address_sku
+}
+class azure_virtual_machine_scale_set_instance {
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_sub_resource
+**security_encryption_type**: string
+}
+class azure_vm_gallery_application {
+**configuration_reference**: string
+**enable_automatic_upgrade**: boolean
+**order**: int64
+**package_reference_id**: string
+**tags**: string
+**treat_failure_as_deployment_failure**: boolean
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_application_profile --> azure_vm_gallery_application
+azure_available_patch_summary --> azure_api_error
+azure_boot_diagnostics_instance_view --> azure_instance_view_status
+azure_data_disk --> azure_managed_disk_parameters
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_instance_view --> azure_disk_encryption_settings
+azure_disk_instance_view --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_sub_resource <|--- azure_image_reference
+azure_last_patch_installation_summary --> azure_api_error
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_sub_resource <|--- azure_network_interface_reference
+azure_os_disk --> azure_diff_disk_settings
+azure_os_disk --> azure_disk_encryption_settings
+azure_os_disk --> azure_managed_disk_parameters
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+resource <|--- azure_resource
+azure_scheduled_events_profile --> azure_os_image_notification_profile
+azure_scheduled_events_profile --> azure_terminate_notification_profile
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_storage_profile --> azure_data_disk
+azure_storage_profile --> azure_image_reference
+azure_storage_profile --> azure_os_disk
+azure_vault_secret_group --> azure_vault_certificate
+azure_virtual_machine_agent_instance_view --> azure_instance_view_status
+azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
+azure_virtual_machine_base --> azure_additional_capabilities
+azure_virtual_machine_base --> azure_application_profile
+azure_virtual_machine_base --> azure_capacity_reservation_profile
+azure_virtual_machine_base --> azure_diagnostics_profile
+azure_virtual_machine_base --> azure_extended_location
+azure_virtual_machine_base --> azure_hardware_profile
+azure_virtual_machine_base --> azure_os_profile
+azure_virtual_machine_base --> azure_plan
+azure_resource <|--- azure_virtual_machine_base
+azure_virtual_machine_base --> azure_scheduled_events_profile
+azure_virtual_machine_base --> azure_security_profile
+azure_virtual_machine_base --> azure_storage_profile
+azure_virtual_machine_base --> azure_virtual_machine_extension
+azure_virtual_machine_base --> azure_virtual_machine_identity
+azure_virtual_machine_base --> azure_virtual_machine_instance_view
+azure_virtual_machine_base --> azure_virtual_machine_network_profile
+instance <|--- azure_virtual_machine_base
+azure_virtual_machine_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
+azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+azure_virtual_machine_health_status --> azure_instance_view_status
+azure_virtual_machine_identity --> azure_principalid_clientid
+azure_virtual_machine_instance_view --> azure_boot_diagnostics_instance_view
+azure_virtual_machine_instance_view --> azure_disk_instance_view
+azure_virtual_machine_instance_view --> azure_instance_view_status
+azure_virtual_machine_instance_view --> azure_maintenance_redeploy_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_agent_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_health_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_patch_status
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_dns_settings_configuration
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_ip_configuration
+azure_virtual_machine_network_interface_ip_configuration --> azure_virtual_machine_public_ip_address_configuration
+azure_virtual_machine_network_profile --> azure_network_interface_reference
+azure_virtual_machine_network_profile --> azure_virtual_machine_network_interface_configuration
+azure_virtual_machine_patch_status --> azure_available_patch_summary
+azure_virtual_machine_patch_status --> azure_instance_view_status
+azure_virtual_machine_patch_status --> azure_last_patch_installation_summary
+azure_virtual_machine_public_ip_address_configuration --> azure_public_ip_address_sku
+azure_virtual_machine_public_ip_address_configuration --> azure_virtual_machine_ip_tag
+azure_virtual_machine_scale_set_instance --> azure_additional_capabilities
+azure_virtual_machine_scale_set_instance --> azure_application_profile
+azure_virtual_machine_scale_set_instance --> azure_capacity_reservation_profile
+azure_virtual_machine_scale_set_instance --> azure_diagnostics_profile
+azure_virtual_machine_scale_set_instance --> azure_extended_location
+azure_virtual_machine_scale_set_instance --> azure_hardware_profile
+azure_virtual_machine_scale_set_instance --> azure_os_profile
+azure_virtual_machine_scale_set_instance --> azure_plan
+azure_virtual_machine_scale_set_instance --> azure_scheduled_events_profile
+azure_virtual_machine_scale_set_instance --> azure_security_profile
+azure_virtual_machine_scale_set_instance --> azure_storage_profile
+azure_virtual_machine_base <|--- azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set_instance --> azure_virtual_machine_extension
+azure_virtual_machine_scale_set_instance --> azure_virtual_machine_identity
+azure_virtual_machine_scale_set_instance --> azure_virtual_machine_instance_view
+azure_virtual_machine_scale_set_instance --> azure_virtual_machine_network_profile
+azure_vm_disk_security_profile --> azure_sub_resource
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- instance
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_scale_set_instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
+class azure_image {
+}
+class azure_load_balancer {
+}
+class azure_network_interface {
+}
+class azure_network_security_group {
+}
+class azure_proximity_placement_group {
+}
+class azure_subnet {
+}
+class azure_virtual_machine_scale_set {
+}
+class azure_virtual_machine_scale_set_instance {
+}
+class azure_virtual_machine_size {
+}
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_subnet -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set -[#1A83AF]-> azure_virtual_machine_scale_set_instance
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_disk
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_image
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_network_interface
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_virtual_machine_size
 @enduml
 ```
 
@@ -9296,9 +11378,15 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_virtual_machine {
 }
+class azure_virtual_machine_base {
+}
+class azure_virtual_machine_scale_set_instance {
+}
 class azure_virtual_machine_size {
 }
 azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
+azure_virtual_machine_base -[#1A83AF]-> azure_virtual_machine_size
+azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_virtual_machine_size
 @enduml
 ```
 
@@ -10496,7 +12584,7 @@ class azure_web_application_firewall_custom_rule {
 **name**: string
 **priority**: int64
 **rate_limit_duration**: string
-**rate_limit_thfixshold**: int64
+**rate_limit_threshold**: int64
 **rule_type**: string
 **state**: string
 }
