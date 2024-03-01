@@ -1,5 +1,167 @@
 ---
-date: 2024-02-29
+date: 2024-03-01
 ---
 
 # 4.0.0
+
+**Resoto is now Fix Inventory.** This wasn't originally planned, but an idea that [Matthias](https://linkedin.com/in/matthias-veit) came up with a few weeks ago.
+
+We updated our GitHub README to list and explain the various components of Fix, and the list looked like this:
+
+- `fixfrontend`
+- `fixbackend`
+- `resoto`
+- `fixcf`
+- `fixca`
+- `fixbackup`
+- `fixcloudutils`
+
+As you can see (and [as Sesame Street has taught us](https://youtube.com/watch?v=6b0ftfKFEJg)), one of these things is not like the others.
+
+## Migration
+
+We dislike breaking changes and are fans of backward compatibility, so will do our best to make the product rename as non-intrusive as possible and provide a smooth migration path.
+
+(In fact, one reason why we didn't just [remove Resoto UI](./index.mdx#sunsetting-resoto-ui) and cut a new release is because we don't want people who have container images pinned to `:latest` to be surprised by its removal.)
+
+- [Resoto 3.9](../3.9.0/index.mdx) was the final release with Resoto UI, and also the last release named "Resoto."
+
+  The Resoto website and documentation at [resoto.com](https://resoto.com) will be maintained for at least a couple of months.
+
+- The [GitHub repository](https://github.com/someengineering/fixinventory) was renamed from `resoto` to `fixinventory`, and the first version of Fix Inventory is tagged `4.0`.
+
+  We have launched [inventory.fix.security](https://inventory.fix.security) with documentation for Fix Inventory 4.0+ (separate and distinct from the Fix SaaS product [website](https://fix.security) and [documentation](https://docs.fix.security) to avoid confusion).
+
+**To migrate to Fix Inventory, all you need to do is rename any container currently called `resoto…` to `fix…`.** So, `resotocore` becomes `fixcore`, `resotoworker` will be `fixworker`, `resotoshell` will be `fixshell`, etc. Within Fix Inventory, we'll handle the heavy lifting for you, including data migrations and configuration updates.
+
+## Highlights
+
+So, what new features does Fix Inventory 4.0 contain?
+
+- **Microsoft Azure support:** If you have a multi-cloud environment, you will now find all of your AWS, Google Cloud, and Azure resources inside a single inventory.
+
+- **Updated AWS benchmarks:** We have updated the [CIS AWS Benchmark](https://www.cisecurity.org/benchmark/amazon_web_services) from version 1.5 to 2.0. We have also added the [AWS Well-Architected Framework Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html).
+
+- **AWS Organizations:** You will now see your Organization structure in the graph, right below the cloud level.
+
+- **LoadLens:** LoadLens enriches the graph with usage metrics, allowing you to view the minimum, maximum, and average CPU, memory, and disk usage of your compute and storage resources in a new `/usage` section. This enables the creation of dashboards that display comprehensive resource usage across your cloud infrastructure.
+
+  The data for these metrics is sourced from AWS CloudWatch, Google Cloud Monitoring, and Azure Monitor. We adjust the period and granularity of the data retrieval to align with your configured collection interval, ensuring no metrics are overlooked.
+
+For more details, see the [changelog](./index.mdx#whats-changed) below.
+
+## Introducing Fix
+
+We are also excited to announce [Fix](https://fix.security), our cloud asset inventory and <abbr title="Cloud Security Posture Management">CSPM</abbr> system. Fix is a SaaS solution encompassing the [inventory](/concepts/asset-inventory-graph) and security benchmarks components of Resoto, hosted by us.
+
+**Sign up today at [https://fix.security](https://fix.security) and get one cloud account free, forever.**
+
+### Open Source for Transparency
+
+**Like Resoto, Fix is fully open source.** We strongly believe that if you trust us with your infrastructure data, you have a right to see exactly how we are collecting it and what we are doing with it.
+
+We decided to open source every component of our SaaS, from the frontend and backend code to internal scripts that create database backups.
+
+However&mdash;Fix is very opinionated, with many dependencies on third-party systems, payment interfaces, OAuth providers, infrastructure provisioning tools, etc.&mdash;so, while technically possible, this decision was not so much about offering an option to self-host but for transparency.
+
+### Dedicated Databases for Security
+
+If you are familiar with Resoto, you know that we use [ArangoDB](https://arangodb.com) to store infrastructure data.
+
+**Fix allocates a dedicated database instance to every customer, meaning your cloud infrastructure data is never commingled in a shared database with other Fix customer data.**
+
+This architecture not only segregates customer data (enhancing privacy), but also mitigates a range of security vulnerabilities associated with shared databases, such as SQL injection attacks.
+
+### Affordable Pricing
+
+If you look at the current cloud security space, most commercial offerings target enterprise customers and come with steep six-figure price tags and multi-year contracts.
+
+**We firmly believe that every cloud user should be able to afford a secure cloud infrastructure.**
+
+Fix is priced fairly and competitively. Fix also doesn't require you to talk to a sales rep or have a solutions architect on-site for several days; anyone can sign up and try Fix before making a purchase decision.
+
+## Sunsetting Resoto UI
+
+In the last four months, we've taken a good, hard look at Resoto. We analyzed the functionality people are using&mdash;what is there but rarely or never used, and what is missing despite being in the backlog for years.
+
+**One of the biggest pain points has always been the WebAssembly-based [Resoto UI](https://github.com/someengineering/resoto-ui).**
+
+### Developent Burden
+
+We originally decided to use the [Godot game engine](https://godotengine.org) to build Resoto UI because Godot compiles to Wasm and runs in the browser, comes with built-in UI elements, and has 2D and 3D acceleration (good for rendering the graph).
+
+However, in practice, this decision turned out to be very problematic: the Wasm and WebGL browser support was not what we expected.
+
+Companies often lag behind the latest browser versions, and many don't have dedicated graphics cards. Some browsers only supported WebGL 1.0, others 2.0 but not 1.0, and you can basically forget about mobile (especially on iOS, unless you enjoy interfaces moving at two frames per second).
+
+The issues started with minor things like clipboard functionality (copy and paste) not working in all browsers. In those browsers that did offer support, users were presented with a security pop-up to allow Resoto UI clipboard access. There was also no abstraction for key combinations. Instead, Resoto UI received raw key presses and had to detect your operating system to support to Ctrl+C/V on Linux or Windows and Command+C/V on Mac&mdash;this sometimes worked but often didn't.
+
+Then, we discovered that some graphics shaders worked on some browser versions and with some graphics card drivers but not others. Symptoms ranged from crashing a browser tab to locking up an entire M1-based Macbook.
+
+Wasm also doesn't play nicely with certain browser extensions that capture key events, preventing our app from receiving them. **Many features that would have been available out-of-the-box in the Web world required custom implementations and workarounds, adding to the development burden and increasing the complexity of Resoto UI.**
+
+### Lack of Adoption
+
+Looking at our PostHog metrics, we saw that hardly anyone continued to use Resoto UI after running the initial setup wizard&mdash;most work was done in Resoto's CLI. In hindsight, this is hardly surprising given the poor UX. **We decided to drop support for Resoto UI in Fix Inventory.**
+
+Despite these challenges noted above, Godot is nevertheless a great engine; we simply used it for a purpose it wasn't built for. Godot's capabilities for game development are outstanding, and our experience shouldn't detract from its potential in its intended use cases.
+
+And&mdash;before the rumor mill gets going, let's set the record straight: the decision to sunset the UI wasn't a sneaky move to push our SaaS. 😉 If you look at the [Resoto UI GitHub repository](https://github.com/someengineering/resoto-ui), you will find that the last commit was over seven months ago, long before we began to build [Fix](https://fix.security).
+
+## What's Changed
+
+### Features
+
+- [`93bfd686`](https://github.com/someengineering/fix/commit/93bfd686) <span class="badge badge--secondary">azure</span> Add new edges between resources (#1954)
+- [`94d7f6a6`](https://github.com/someengineering/fix/commit/94d7f6a6) <span class="badge badge--secondary">fixcore</span> Migrate existing resoto data and configs (#1962)
+- [`57a5a377`](https://github.com/someengineering/fix/commit/57a5a377) <span class="badge badge--secondary">fix</span> more typos (#1960)
+- [`ab21ad73`](https://github.com/someengineering/fix/commit/ab21ad73) <span class="badge badge--secondary">fix</span> Update Fix -> FixInventory (#1957)
+- [`782c8f5a`](https://github.com/someengineering/fix/commit/782c8f5a) <span class="badge badge--secondary">fix</span> Update Fix -> FixInventory (#1955)
+- [`ced24bdf`](https://github.com/someengineering/fix/commit/ced24bdf) <span class="badge badge--secondary">aws</span> Adjust ec2 network metrics collection (#1940)
+- [`111ed2af`](https://github.com/someengineering/fix/commit/111ed2af) <span class="badge badge--secondary">feat</span> Introduce managed_kubernetes_cluster and clean up collect (#1939)
+- [`36312474`](https://github.com/someengineering/fix/commit/36312474) <span class="badge badge--secondary">azure</span> AKS collecting (#1926)
+- [`4011f205`](https://github.com/someengineering/fix/commit/4011f205) <span class="badge badge--secondary">resotocore</span> introduce refine-resource-data command (#1937)
+
+### Fixes
+
+- [`293b3e75`](https://github.com/someengineering/fix/commit/293b3e75) <span class="badge badge--secondary">fixlib</span> Make overrides backwards compatible (#1972)
+- [`17098877`](https://github.com/someengineering/fix/commit/17098877) <span class="badge badge--secondary">fixinventory</span> Ensure backwards compatibility (#1971)
+- [`6aefe6f9`](https://github.com/someengineering/fix/commit/6aefe6f9) <span class="badge badge--secondary">inventory</span> Use fixinventory instead of fix (#1970)
+- [`7d348d65`](https://github.com/someengineering/fix/commit/7d348d65) <span class="badge badge--secondary">fixinventory</span> Update core env prefix (#1969)
+- [`e7be81a9`](https://github.com/someengineering/fix/commit/e7be81a9) <span class="badge badge--secondary">ci</span> Remove duplicate docker-compose up -d (#1968)
+- [`1ddddd53`](https://github.com/someengineering/fix/commit/1ddddd53) <span class="badge badge--secondary">inventory</span> Correct Badges (#1966)
+- [`44b5a6ee`](https://github.com/someengineering/fix/commit/44b5a6ee) <span class="badge badge--secondary">ci</span> Bump peter-evans/create-pull-request to v6 (#1967)
+- [`7066f4fb`](https://github.com/someengineering/fix/commit/7066f4fb) <span class="badge badge--secondary">fixcore</span> Restore SVG (#1964)
+- [`6ab2ad72`](https://github.com/someengineering/fix/commit/6ab2ad72) <span class="badge badge--secondary">fixcore</span> Update logo (#1961)
+- [`bf9bf8b3`](https://github.com/someengineering/fix/commit/bf9bf8b3) <span class="badge badge--secondary">core</span> Wait after stdout/stderr has been read (#1963)
+- [`73f26fbe`](https://github.com/someengineering/fix/commit/73f26fbe) <span class="badge badge--secondary">fixcore</span> Updated logo (#1959)
+- [`debafe46`](https://github.com/someengineering/fix/commit/debafe46) <span class="badge badge--secondary">inventory</span> remove dist folder (#1956)
+- [`d4a41734`](https://github.com/someengineering/fix/commit/d4a41734) <span class="badge badge--secondary">fixinventory</span> Update runuser (#1950)
+- [`9543c40d`](https://github.com/someengineering/fix/commit/9543c40d) <span class="badge badge--secondary">docker</span> Outdated home path (#1948)
+- [`7025a928`](https://github.com/someengineering/fix/commit/7025a928) <span class="badge badge--secondary">inventory</span> use correct secret name (#1947)
+- [`3b081782`](https://github.com/someengineering/fix/commit/3b081782) <span class="badge badge--secondary">inventory</span> do not publish resoto images (#1946)
+- [`35e9718e`](https://github.com/someengineering/fix/commit/35e9718e) <span class="badge badge--secondary">inventory</span> fix policy gen path (#1945)
+- [`a497b4ff`](https://github.com/someengineering/fix/commit/a497b4ff) <span class="badge badge--secondary">inventory</span> fix policy gen requirements (#1944)
+- [`2393592c`](https://github.com/someengineering/fix/commit/2393592c) <span class="badge badge--secondary">chore</span> Rename Resoto -> Fix (#1943)
+
+### Chores
+
+- [`a618166b`](https://github.com/someengineering/fix/commit/a618166b) <span class="badge badge--secondary">fixinventory</span> Bump 4.0.0 (#1973)
+- [`09db99ca`](https://github.com/someengineering/fix/commit/09db99ca) <span class="badge badge--secondary">core</span> Remove resoto-ui and show static HTML page instead. (#1965)
+- [`d9105fb0`](https://github.com/someengineering/fix/commit/d9105fb0) <span class="badge badge--secondary">fixinventory</span> Bump 4.0.0a4 (#1958)
+- [`f70de397`](https://github.com/someengineering/fix/commit/f70de397) <span class="badge badge--secondary">fixinventory</span> FixInventory -> Fix Inventory (#1952)
+- [`c37c3528`](https://github.com/someengineering/fix/commit/c37c3528) <span class="badge badge--secondary">ci</span> Update publish workflow (#1953)
+- [`d889d2e4`](https://github.com/someengineering/fix/commit/d889d2e4) <span class="badge badge--secondary">fixinventory</span> Remove graph view (#1951)
+- [`81b7c881`](https://github.com/someengineering/fix/commit/81b7c881) <span class="badge badge--secondary">fixinventory</span> Bump 4.0.0a3 (#1949)
+- [`8e306a10`](https://github.com/someengineering/fix/commit/8e306a10) <span class="badge badge--secondary">fixinventory</span> Rename Docker components Resoto -> Fix Inventory (#1942)
+- [`12024086`](https://github.com/someengineering/fix/commit/12024086) <span class="badge badge--secondary">fixinventory</span> Bump 4.0.0 (#1935)
+- [`593b5cc2`](https://github.com/someengineering/fix/commit/593b5cc2) <span class="badge badge--secondary">ci</span> Bypass waits when publish workflow triggered manually (#1936)
+
+{/* truncate */}
+
+## Docker Images
+
+- `somecr.io/someengineering/fixcore:4.0.0`
+- `somecr.io/someengineering/fixworker:4.0.0`
+- `somecr.io/someengineering/fixshell:4.0.0`
+- `somecr.io/someengineering/fixmetrics:4.0.0`

@@ -562,13 +562,13 @@ class aws_alb_target_group {
 **alb_health_check_port**: string
 **alb_health_check_protocol**: string
 **alb_health_check_timeout_seconds**: int64
-**alb_healthy_thfixshold_count**: int64
+**alb_healthy_threshold_count**: int64
 **alb_ip_address_type**: string
 **alb_lb_arns**: string[]
 **alb_matcher**: aws_alb_matcher
 **alb_protocol_version**: string
 **alb_target_health**: aws_alb_target_health_description[]
-**alb_unhealthy_thfixshold_count**: int64
+**alb_unhealthy_threshold_count**: int64
 **port**: int64
 **protocol**: string
 **target_type**: string
@@ -3945,8 +3945,8 @@ class aws_cloudwatch_alarm {
 **cloudwatch_state_updated_timestamp**: datetime
 **cloudwatch_state_value**: string
 **cloudwatch_statistic**: string
-**cloudwatch_thfixshold**: double
-**cloudwatch_thfixshold_metric_id**: string
+**cloudwatch_threshold**: double
+**cloudwatch_threshold_metric_id**: string
 **cloudwatch_treat_missing_data**: string
 **cloudwatch_unit**: string
 }
@@ -8623,7 +8623,7 @@ class aws_ecs_container_instance {
 **running_tasks_count**: int64
 **status**: string
 **status_reason**: string
-**version**: int64
+**version**: string
 **version_info**: aws_ecs_version_info
 }
 class aws_ecs_container_instance_health_status {
@@ -9894,7 +9894,6 @@ class aws_eks_cluster {
 **cluster_client_request_token**: string
 **cluster_connector_config**: aws_eks_connector_config
 **cluster_encryption_config**: aws_eks_encryption_config[]
-**cluster_endpoint**: string
 **cluster_identity**: aws_eks_identity
 **cluster_kubernetes_network_config**: aws_eks_kubernetes_network_config_response
 **cluster_logging**: aws_eks_logging
@@ -9902,7 +9901,6 @@ class aws_eks_cluster {
 **cluster_resources_vpc_config**: aws_eks_vpc_config_response
 **cluster_role_arn**: string
 **cluster_status**: string
-**cluster_version**: string
 }
 class aws_eks_connector_config {
 **activation_code**: string
@@ -9942,6 +9940,10 @@ class aws_eks_vpc_config_response {
 class aws_resource {
 **arn**: string
 }
+class managed_kubernetes_cluster_provider {
+**endpoint**: string
+**version**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -9961,8 +9963,10 @@ aws_eks_cluster --> aws_eks_kubernetes_network_config_response
 aws_eks_cluster --> aws_eks_logging
 aws_eks_cluster --> aws_eks_vpc_config_response
 aws_resource <|--- aws_eks_cluster
+managed_kubernetes_cluster_provider <|--- aws_eks_cluster
 aws_eks_logging --> aws_eks_log_setup
 resource <|--- aws_resource
+resource <|--- managed_kubernetes_cluster_provider
 @enduml
 ```
 
@@ -10462,10 +10466,10 @@ class aws_elasticache_replication_group_pending_modified_values {
 **automatic_failover_status**: string
 **log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
 **primary_cluster_id**: string
-**fixsharding**: aws_elasticache_fixsharding_status
+**resharding**: aws_elasticache_resharding_status
 **user_groups**: aws_elasticache_user_groups_update_status
 }
-class aws_elasticache_fixsharding_status {
+class aws_elasticache_resharding_status {
 **slot_migration**: double
 }
 class aws_elasticache_user_groups_update_status {
@@ -10499,7 +10503,7 @@ aws_elasticache_replication_group --> aws_elasticache_node_group
 aws_elasticache_replication_group --> aws_elasticache_replication_group_pending_modified_values
 aws_resource <|--- aws_elasticache_replication_group
 aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
-aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_fixsharding_status
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_resharding_status
 aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_user_groups_update_status
 resource <|--- aws_resource
 @enduml
@@ -10611,11 +10615,11 @@ class aws_elb_connection_draining {
 **timeout**: int64
 }
 class aws_elb_health_check {
-**healthy_thfixshold**: int64
+**healthy_threshold**: int64
 **interval**: int64
 **target**: string
 **timeout**: int64
-**unhealthy_thfixshold**: int64
+**unhealthy_threshold**: int64
 }
 class aws_elb_lb_cookie_stickiness_policy {
 **cookie_expiration_period**: int64
@@ -11470,7 +11474,7 @@ class aws_iam_policy_detail {
 class aws_iam_role {
 **description**: string
 **path**: string
-**role_assume_role_policy_document**: any
+**role_assume_role_policy_document**: dictionary[string, any]
 **role_last_used**: aws_iam_role_last_used
 **role_max_session_duration**: int64
 **role_permissions_boundary**: aws_iam_attached_permissions_boundary
@@ -14418,7 +14422,7 @@ class dns_record {
 **record_mname**: string
 **record_port**: int64
 **record_priority**: int64
-**record_reffixsh**: int64
+**record_refresh**: int64
 **record_retry**: int64
 **record_rname**: string
 **record_serial**: int64
@@ -17342,7 +17346,7 @@ class aws_sagemaker_model_configuration {
 **environment_parameters**: aws_sagemaker_environment_parameter[]
 **inference_specification_name**: string
 }
-class aws_sagemaker_model_latency_thfixshold {
+class aws_sagemaker_model_latency_threshold {
 **percentile**: string
 **value_in_milliseconds**: int64
 }
@@ -17380,7 +17384,7 @@ class aws_sagemaker_recommendation_job_resource_limit {
 }
 class aws_sagemaker_recommendation_job_stopping_conditions {
 **max_invocations**: int64
-**model_latency_thfixsholds**: aws_sagemaker_model_latency_thfixshold[]
+**model_latency_thresholds**: aws_sagemaker_model_latency_threshold[]
 }
 class aws_sagemaker_recommendation_metrics {
 **cost_per_hour**: double
@@ -17427,7 +17431,7 @@ aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_j
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_job_resource_limit
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_traffic_pattern
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_vpc_config
-aws_sagemaker_recommendation_job_stopping_conditions --> aws_sagemaker_model_latency_thfixshold
+aws_sagemaker_recommendation_job_stopping_conditions --> aws_sagemaker_model_latency_threshold
 aws_sagemaker_traffic_pattern --> aws_sagemaker_phase
 @enduml
 ```

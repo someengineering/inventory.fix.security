@@ -1,0 +1,38 @@
+---
+date: 2022-04-12
+---
+
+# 2.0.0
+
+**We are proud to announce the general availability of Resoto 2.0.0.**
+
+Resoto provides a single data source and search engine to explore infrastructure in a cloud-agnostic way. Resoto aggregates and exports user-defined infrastructure metrics, and automates recurring tasks. That ensures a sound infrastructure and leaves developers and SREs more time and headspace to do productive work.
+
+Resoto currently supports the following cloud providers:
+
+- [Amazon Web Services (AWS)](/how-to-guides/data-sources/collect-aws-resource-data)
+- [Google Cloud](/how-to-guides/data-sources/collect-google-cloud-resource-data)
+- [DigitalOcean](/how-to-guides/data-sources/collect-digitalocean-resource-data)
+
+## Highlights
+
+- Flexible distributed [system setup](/reference/components), which allows for small installations as well as a big enterprise scale infrastructure.
+- [Graph-based](/concepts/asset-inventory-graph) data storage, that maintains all infrastructure resources, as well as all relationships between them.
+- Powerful [search](/reference/search) of your entire cloud metadata, no matter which service, account, or region.
+- Report infrastructure changes over time with out-of-the-box [metrics](https://github.com/someengineering/resoto/tree/main/resotometrics), and aggregation of any data points for custom metrics.
+- [Automate](/concepts/automation) tedious tasks. Define rules for your infrastructure that are checked against existing resources, no matter how they were created. Rules are applied automatically whenever infrastructure changes.
+- [Command line interface](/reference/cli) to interact with Resoto.
+- Ability to [clean up](/concepts/resource-management/cleanup) your infrastructure in a user defined and reliable way.
+- Allow for manipulating [tags](/concepts/resource-management/tagging).
+- [API](/reference/api) to interact with Resoto from your own code.
+
+Please check out the [Getting Started](/getting-started) section of our documentation to give it a spin.
+
+{/* truncate */}
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:2.0.0`
+- `somecr.io/someengineering/resotoworker:2.0.0`
+- `somecr.io/someengineering/resotoshell:2.0.0`
+- `somecr.io/someengineering/resotometrics:2.0.0`

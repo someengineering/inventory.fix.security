@@ -975,7 +975,7 @@ class dns_record {
 **record_mname**: string
 **record_port**: int64
 **record_priority**: int64
-**record_reffixsh**: int64
+**record_refresh**: int64
 **record_retry**: int64
 **record_rname**: string
 **record_serial**: int64
@@ -1755,17 +1755,19 @@ skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_kubernetes_cluster {
 **auto_upgrade_enabled**: boolean
 **cluster_status**: string
-**endpoint**: string
 **ha_enabled**: boolean
 **ipv4_address**: string
 **k8s_cluster_subnet**: string
 **k8s_service_subnet**: string
-**k8s_version**: string
 **registry_enabled**: boolean
 **surge_upgrade_enabled**: boolean
 }
 class digitalocean_resource {
 **urn**: string
+}
+class managed_kubernetes_cluster_provider {
+**endpoint**: string
+**version**: string
 }
 class resource {
 **age**: duration
@@ -1780,8 +1782,9 @@ class resource {
 **tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_kubernetes_cluster
-resource <|--- digitalocean_kubernetes_cluster
+managed_kubernetes_cluster_provider <|--- digitalocean_kubernetes_cluster
 resource <|--- digitalocean_resource
+resource <|--- managed_kubernetes_cluster_provider
 @enduml
 ```
 
