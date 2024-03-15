@@ -346,7 +346,7 @@ const config: Config = {
         },
         {
           label: 'Discord',
-          href: 'https://discord.gg/someengineering',
+          href: 'https://discord.gg/fixsecurity',
           position: 'right',
           className: 'social discord',
           'aria-label': 'Discord',
