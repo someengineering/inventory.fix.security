@@ -5,7 +5,7 @@ description: "Delete the subscriber with a defined id."
 sidebar_label: "Delete by id"
 hide_title: true
 hide_table_of_contents: true
-api: eJyVUk1v1DAQ/SvWO4FkkS3iAL4hupUqcUBl4bKKkHc9aSy8dmpPlkaR/ztykmpJQQhOSWYmM+9rhKF0jLZjGzwUrskRk+CWROoPpXOgKH5YboUWhhrryQhrXkGC9X2C2mOZmzYk1BKdjvpETLG0R3h9Iihc1n2zBhK2nOs0t5DPMOxaEtaQZ9tYiiI0z+BAItJDbyMZKI49SaRjSycNNYKHbrrG0fp75FyX4dQFnyiV/uvNm/JYX/RBHINn8oycJU7EbTBQMJMakDNOheoCohpXhDIkEsXzE+k+Oii0zF1SVTW2IXFWYxcil8mzjlYf3Iyo9GZIje4dQ8GFo3ZTOUuUf9btt+82G+SJmvVNmFhbdoX2jX0Ut/5MnkMcxIcQSdxtP+/E+0+35SzFNBP+ejWvTnzSvixYTFrsPwxi8mil0ognjf4vJrMhTI9cdU5bXy5P8oyLrHusvFXrpNRyUWiPcTzoRF+iy7mUH3qKA9S+vgg6aW9sKu8GqtEu0V9ovLhbcvRS/EPo/shkKWo/TL66vnxB4jsNv4U+17+G63r7cbvbIuefAvk2JQ==
+api: eJyVUsFq3EAM/ZVBpxZMvCk9NL6VZgOBHkq67WVZwngtx0NnZ5wZeRsz+N8j2Q4btyEkJ8uSRu89PSWoMO6Dacl4BwVcokVCRQ2q2JVSKTGov4YapVWFtXFYKVOdQQak7yIUW5j7xgkRdhm0OugDTwlSTuD4hyefxt2aip8bgWs1NRwvOWwY3FToyNSGwX39Dx1+EPC+MwErKCh0mEHcN3jQUCSgvh3RKBh3B8Owk+bYMjWMUv+0+iyfJaLzau8dMSS/yIDJN55nc5dsA7KJZwH5iUSeFoIGbooYjk+iu2C5vyFqY5HnqfGRhiK1PpB0HnUwurQTI6lNlGrdWQ7B+r22Y5rJyJtl+cvFasU8RZpxtR9VG7Ii+8o8qGt3ZCE+9OqbD6hu1j836uuPa4FldpPg3+fT6EgH7WTAbNJsf9mr0aPFlhI87eh9ZzIZQvhAeWs1287I43rSvNYtLLwtlpfCKqcNbSGlUkf8FewwSPq+w9Bzfnda6Lj7ykSJ2cBa24ivyPhwM9/RR/WGo3tRyZzUrh99tZ38cfgH+/+Oftg9P67L9ff1Zs1GPgIC+TYl
 sidebar_class_name: "delete api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
@@ -21,14 +21,16 @@ import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1
+<Heading
+  as={"h1"}
   className={"openapi__heading"}
+  children={"Delete by id"}
 >
-  Delete by id
-</h1>
+</Heading>
 
 <MethodEndpoint
   method={"delete"}
@@ -39,7 +41,13 @@ import TabItem from "@theme/TabItem";
 
 Delete the subscriber with a defined id.
 
-## Request
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <details
   style={{"marginBottom":"1rem"}}

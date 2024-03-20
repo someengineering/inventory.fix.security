@@ -5,7 +5,7 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Get a node with the given node id"
 hide_title: true
 hide_table_of_contents: true
-api: eJzFVNtu2zAM/RWBT1sg1Gl3wSYMA7ahK/oyFF22lzQoFIux1dqyKjFdAsP/PlB2mrQpugsGzC+2KUrn6PCQLRiMebCebONAwWh0vPIYbI2OdDUaKTEpbRQfzk6FjcI1JCLpeYVCOyNqW5Qk5ijicn6FOYlmIfJSuwIP3s1D9v7CnSAJLVxjUPywVAoqURT2Fl0fs+bCgQTSRQQ1BY5d1trpAhkfZhK8DrpGwsAJLThdIygogvblpTUgwTJrr6kECbjSta84YWFXIB9cbVIyIDqyC4uBuSY2fBRICHiztAENKApLlBDzEmsNqgVaez4yUrCugK6TdzQS3z0Wv4PKO/8IdMbJ0TcuYuT1o/GYX/exzpGWwSUAgwvr0GyA8sYRK6pa0N5XNte8JbuKvK/dx21SPUGCNsZyqq7OQuMxkGX8nq3fibRwbZ3ZZ/6YHJzZC5EsZfCAVd1WrwVrQMHh0YuXr14nlXwTCM0WBQgjHXgMzF9uyvFRU635P7e0BgUnDZW6TmeTpeSLLyxHx4+EGqls+LAC+aapegqyZIis3Visy5hh1g617kBCxHC7MeQyVKCgJPJRZVlbNpE61TJfzrzVwXK3JIF4ra/ZQi8rAgVVk+sqhTsJvOf+8pu34zGTnbG/Fk0Sd7jHZ7sSp+4WHTVhLT41AcX58dcJ9ynDYoi93N8P+6NjUkbdOfeXffmwcO3WQv9pRvS2IlxR5ittHV8sqd8OpZvCppfVznwYGkBtenUmh0JMoW3nOuK3UHUdh2+WGNagprNt3VKJjY38bUAtdBXxCWGenQ/9/Fw8PWwevcwQ1G6dnFMt+Q8kXON6d+Tx/PmHlAZ9/oLRRtFu1kkoURsMSa9+9UOeo6edfXtzh31914MnxxPoup+H9TqJ
+api: eJzFVMlu2zAQ/RWCp9YwoiRd0ApFgbRIg1yKIHV7cYyAFscSE5lkyFFqQ9C/d4byljpIFxSoLuIyw3l87w1bqSEWwXg0zspcDganCw/BzMGiqgeDXIwqE8XJxbmgn3UoIqppDUJZLeamrFBMQcRmegMFCjcTRaVsCQfvpiF7f2XPAIWiNA3iu8FKYAWiNPdg+zWjr6wcSlRllPlY8tr1XFlVAteXk6H0Kqg5IAQOaKWlCaEsg/LVtdGUaxi1V1jRGBZq7msOmJkFzR9ebVRxQTrXzAwExprQ8FEUG+CuMQG0zDE0MJSxqGCuZN5KXHo+MmIwtpRdN9zASHj3UPxOVc78o6ITDo7e2QiR948PD/n3sNYlYBNsKqBhZizodaHCWWRGKUV5X5tCcUp2Ezmv3a/rkp6UqLQ2HKrqi+DIGGi4fo/W76y08tZYvY/8MTo4siciWUrDAbO6Va+VxGkuj45fvHz1OrHkXUDQ2yoSIeIBFWf8w7UcHxSSefi2Bpc0P3NYqXk6Gw0mX3xmOjr+hpJsVTk+rAS+aVIvl1kyRNauLdZljDBrV1p3FBkh3K8N2YSakipEH/MsaysXsctbxsuR9yoY7pZEEO/1ms1UU9NQ1q5QdVomOJzzcPvNWxK5S9obO3OJ3NU9PpmFOLfUR+jCUnx0AcTl6ZcR9ymXJXQ93d+O+qNjYibfOPeXffmzcO3WQv/pjehthbDAzNeKGo4ulthvV9KN5bqX8533YdUA+bpXicxeiLFs26mK8DXUXcfLdw0Ess14stUtSaxN5DE5ZabqCE8Q8+xy1c/PxdOPzaOXWS0qu0zOqRue0fAWlrtPHr8//xDSip+/QLRmtJtQaAVKQ0h89bsnRQEed/L23h329aYHz05HZPUfh/U6iQ==
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
@@ -21,14 +21,16 @@ import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1
+<Heading
+  as={"h1"}
   className={"openapi__heading"}
+  children={"Get a node with the given node id"}
 >
-  Get a node with the given node id
-</h1>
+</Heading>
 
 <MethodEndpoint
   method={"get"}
@@ -39,7 +41,13 @@ import TabItem from "@theme/TabItem";
 
 **Experimental**: This API is not stable and might be subject of change.<br/> Get a node with the given node id
 
-## Request
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <details
   style={{"marginBottom":"1rem"}}

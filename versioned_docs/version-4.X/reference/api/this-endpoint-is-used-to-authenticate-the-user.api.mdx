@@ -5,7 +5,7 @@ description: "Authenticate the user. This endpoint needs to be accessed from a b
 sidebar_label: "This endpoint is used to authenticate the user."
 hide_title: true
 hide_table_of_contents: true
-api: eJzNVMFu1DAQ/ZVhztluUS+QW6lA6omKLlyqPTjxhBgSjzuedLtE+Xc0ybZdCoIeySWx5+mN/d6bjOgp1xKSBo5Y4vmgLUUNtVMCbQmGTHICmzZkoOgTh6gQiXwGZagIXF1TzuShEe7BQSW8yySv4FIhZEicc6g643L6SGgVIR+EaiVvTC6ytiTgnvoHjpBJ7khOsEB1XzOWN2gAlvBjruO2QKHbgbK+Y7/HcsSao1JU+3QpdQei9f1qt9utGpZ+NUhHsWZP3kC5bql39qX7RFgiV9+oViwwCScSDZStSr0L3REsq4T4FYtn+m1aghkK3Dzph1OByeW8Y/Ev43hA/0bzINvLaB7QMEgHrlGSXzyohZySP8Fpfow9J455ufLZ6Zm9/sKqPNPlRHVoAvm5TYjzpmkNu6AtODC1ITlxPdkRnPdL0wJ70pY9lpg4z6I7bbHE9VEOCAtccmABGHGQDktsVVMu1+ux5axTOSYWnbDAOyfBVd1yA6stV2jc0CmW2HHtunnbLGF5Vn7z9vTUxNgWGGLDs8hBO1P5Q7iHy3hHUVn2cMFC8On99QbOry6tLUleBPryeqHO2rtoBNH1NAt3PEIhmwlL9P84cs/tPEr2fzykSyCV7nWdOheiSTH7NR6cXQb40dltcfDoBsexcpk+SzdNtn07kOyxvNk+WWqrqcCWnCeZo/Cd9ljixSLMamPdDd4Ndop/j7/Z/BjAq4/XGyywOvxHevZGcoQujhd2lGn6CUre1/8=
+api: eJzNVE1z0zAQ/StC54SE6QVyKx2YyYkODVwyPSjWuhY4kpDW+cDj/85bO01cykCP5BJp9fbt7ttdt9pSLpKL7ILXC33dcEWeXWGYFI6qyZReq1XlsiJvY3CelSeyWXFQG1KmKChnsqpMYauM2qSwh8srtWQFnxhydptauAyfCeUlkXWJCoYrmIwPeEzKXOIjIQXsDvH1RLN5yHqx1gIIyf3s3/X9RCf60VDm98Ee9aLVRfAMAjmaGOsT0eww3e/30zKk7bRJNfkiWLICykVFWyMnPkaCAmHzDVkhYkwhUmJHWV4BcvUIljk5/wDYU/1WqLCHqlBe9NMd6EzO+5Dsyzge0c9oHmV7Gc0jWqFoZUqGwuMeFInQZwvi/ifsOQafh5Kv5lfy9xdWNE7ocqTClQ6dlDDO90bRWu0dVxgKURslJbMlScFYOwSdaBiqAE00BqUX3XCF22w0BwTzMAcyAK1GDCAq5pgXs1lbwbFbtDEk7oDcmeQMBq6vQN6GEkrT1DjqOhSm7s3SEvg8fX77bj4XMTBXzpehF9lxLSp/dAe19DskFdJR3YRE6vOHu5W6vl1KWGQ3CPT1zUCdeWu8EHhU3Qs3XiGcm3wa/T+u3O/tHE32f7ykw0AyHXgWa+O8SNH3qz11dljgc2eh89CjtW7bjcn0JdVdJ2YsdcJCr+8vLZUb+CoyllI/Ct8JEH0zCDNdSXSB141k8e/1lzafB/D2090K3pvTd2QLBKwj9GR8kVS67hdK3tf/
 sidebar_class_name: "post api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
@@ -21,14 +21,16 @@ import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1
+<Heading
+  as={"h1"}
   className={"openapi__heading"}
+  children={"This endpoint is used to authenticate the user."}
 >
-  This endpoint is used to authenticate the user.
-</h1>
+</Heading>
 
 <MethodEndpoint
   method={"post"}
@@ -39,7 +41,13 @@ import TabItem from "@theme/TabItem";
 
 Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.
 
-## Request
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <MimeTabs
   className={"openapi-tabs__mime"}

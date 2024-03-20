@@ -827,93 +827,6 @@ azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_base
 </div>
 </details>
 
-## `azure_available_service_alias`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_available_service_alias data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_available_service_alias {
-**resource_name**: string
-}
-class azure_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-azure_resource <|--- azure_available_service_alias
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_available_service_alias resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_available_service_alias {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
 ## `azure_bastion_host`
 
 <ZoomPanPinch>
@@ -1300,101 +1213,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_cloud_service {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `azure_compute_operation_value`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_compute_operation_value data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_compute_operation_value {
-**display**: azure_compute_operation_value_display
-**origin**: string
-}
-class azure_compute_operation_value_display {
-**description**: string
-**operation**: string
-**provider**: string
-**resource**: string
-}
-class azure_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-azure_compute_operation_value --> azure_compute_operation_value_display
-azure_resource <|--- azure_compute_operation_value
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_compute_operation_value resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_compute_operation_value {
 }
 @enduml
 ```
@@ -3238,95 +3056,6 @@ class azure_virtual_hub {
 azure_firewall -[#1A83AF]-> azure_firewall_policy
 azure_firewall -[#1A83AF]-> azure_virtual_hub
 azure_subnet -[#1A83AF]-> azure_firewall
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `azure_firewall_fqdn_tag`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_firewall_fqdn_tag data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_firewall_fqdn_tag {
-**etag**: string
-**fqdn_tag_name**: string
-**provisioning_state**: string
-}
-class azure_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-azure_resource <|--- azure_firewall_fqdn_tag
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_firewall_fqdn_tag resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_firewall_fqdn_tag {
-}
 @enduml
 ```
 
@@ -8533,6 +8262,15 @@ class azure_usage_name {
 **localized_value**: string
 **value**: string
 }
+class network_quota {
+}
+class phantom_resource {
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -8548,6 +8286,10 @@ class resource {
 resource <|--- azure_resource
 azure_resource <|--- azure_usage
 azure_usage --> azure_usage_name
+network_quota <|--- azure_usage
+quota <|--- network_quota
+resource <|--- phantom_resource
+phantom_resource <|--- quota
 @enduml
 ```
 
@@ -12664,94 +12406,6 @@ class azure_application_gateway {
 class azure_web_application_firewall_policy {
 }
 azure_application_gateway -[#1A83AF]-> azure_web_application_firewall_policy
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `azure_web_category`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_web_category data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
-class azure_web_category {
-**etag**: string
-**properties**: string
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-resource <|--- azure_resource
-azure_resource <|--- azure_web_category
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_web_category resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_web_category {
-}
 @enduml
 ```
 

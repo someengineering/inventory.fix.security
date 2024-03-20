@@ -21,14 +21,16 @@ import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1
+<Heading
+  as={"h1"}
   className={"openapi__heading"}
+  children={"[WebSocket] Register as event listener and receive all events."}
 >
-  [WebSocket] Register as event listener and receive all events.
-</h1>
+</Heading>
 
 <MethodEndpoint
   method={"get"}
@@ -45,7 +47,13 @@ The client needs to send all the required headers for a ws connection and has to
 
 In case Fix has a PSK infrastructure in place, the client needs to send a JWT token via the `Authorization` header or via the `fix_authorization` cookie. It is also possible to omit header or cookie and send an Authorization message as first message on the websocket. Example \{ "kind": "authorization", "jwt": "Bearer &lt;jwt&gt;" \}
 
-## Request
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
 
 <details
   style={{"marginBottom":"1rem"}}

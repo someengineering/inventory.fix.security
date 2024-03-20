@@ -21,14 +21,16 @@ import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
-<h1
+<Heading
+  as={"h1"}
   className={"openapi__heading"}
+  children={"Get information about CLI"}
 >
-  Get information about CLI
-</h1>
+</Heading>
 
 <MethodEndpoint
   method={"get"}
@@ -38,8 +40,6 @@ import TabItem from "@theme/TabItem";
 </MethodEndpoint>
 
 **Experimental**: This API is not stable and might be subject of change.<br/> Get information about CLI
-
-## Request
 
 <div>
   <div>
