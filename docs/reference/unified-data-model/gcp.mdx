@@ -9604,8 +9604,8 @@ class gcp_resource {
 }
 class gcp_ssl_certificate {
 **certificate**: string
+**certificate_managed**: gcp_ssl_certificate_managed_ssl_certificate
 **expire_time**: datetime
-**managed**: gcp_ssl_certificate_managed_ssl_certificate
 **private_key**: string
 **self_managed**: gcp_ssl_certificate_self_managed_ssl_certificate
 **subject_alternative_names**: string[]

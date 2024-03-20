@@ -2878,7 +2878,7 @@ class aws_cloudfront_logging_config {
 class aws_cloudfront_origin {
 **connection_attempts**: int64
 **connection_timeout**: int64
-**custom_header**: aws_cloudfront_origin_custom_header[]
+**custom_header**: dictionary[string, string]
 **custom_origin_config**: aws_cloudfront_custom_origin_config
 **domain_name**: string
 **id**: string
@@ -2886,10 +2886,6 @@ class aws_cloudfront_origin {
 **origin_path**: string
 **origin_shield**: aws_cloudfront_origin_shield
 **s3_origin_config**: string
-}
-class aws_cloudfront_origin_custom_header {
-**header_name**: string
-**header_value**: string
 }
 class aws_cloudfront_origin_group {
 **failover_criteria**: aws_cloudfront_origin_group_failover_criteria
@@ -2960,7 +2956,6 @@ aws_cloudfront_distribution_config --> aws_cloudfront_restrictions
 aws_cloudfront_distribution_config --> aws_cloudfront_viewer_certificate
 aws_cloudfront_forwarded_values --> aws_cloudfront_cookie_preference
 aws_cloudfront_origin --> aws_cloudfront_custom_origin_config
-aws_cloudfront_origin --> aws_cloudfront_origin_custom_header
 aws_cloudfront_origin --> aws_cloudfront_origin_shield
 aws_cloudfront_origin_group --> aws_cloudfront_origin_group_failover_criteria
 aws_cloudfront_origin_group --> aws_cloudfront_origin_group_members
@@ -11343,6 +11338,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_iam_policy {
+**managed**: boolean
 **path**: string
 **policy_attachment_count**: int64
 **policy_default_version_id**: string
@@ -21369,10 +21365,10 @@ class aws_waf_request_inspection_acfp {
 **username_field**: string
 }
 class aws_waf_response_inspection {
-**failure_values**: string[]
-**identifier**: string
-**name**: string
-**success_values**: string[]
+**body_contains**: aws_waf_response_inspection
+**header**: aws_waf_response_inspection
+**json**: aws_waf_response_inspection
+**status_code**: aws_waf_response_inspection
 }
 class aws_waf_rule {
 **action**: aws_waf_rule_action
@@ -21522,6 +21518,7 @@ aws_waf_regex_match_statement --> aws_waf_field_to_match
 aws_waf_regex_match_statement --> aws_waf_text_transformation
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_field_to_match
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_text_transformation
+aws_waf_response_inspection --> aws_waf_response_inspection
 aws_waf_rule --> aws_waf_captcha_config
 aws_waf_rule --> aws_waf_challenge_config
 aws_waf_rule --> aws_waf_override_action
