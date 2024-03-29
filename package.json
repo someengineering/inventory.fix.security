@@ -29,7 +29,7 @@
     "@1password/docusaurus-plugin-stored-data": "0.1.0",
     "@docusaurus/core": "3.1.1",
     "@docusaurus/plugin-pwa": "3.1.1",
-    "@docusaurus/plugin-sitemap": "3.1.1",
+    "@docusaurus/plugin-sitemap": "3.2.0",
     "@docusaurus/preset-classic": "3.1.1",
     "@docusaurus/theme-mermaid": "3.1.1",
     "@fec/remark-a11y-emoji": "4.0.2",
