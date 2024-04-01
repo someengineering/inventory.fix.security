@@ -8,7 +8,6 @@ import { groupBy, sortBy } from 'lodash';
 import path from 'path';
 import { themes as prismThemes } from 'prism-react-renderer';
 import remarkKroki from 'remark-kroki-plugin';
-import { EnumChangefreq } from 'sitemap';
 import latestRelease from './latestRelease.json';
 import versions from './versions.json';
 
@@ -187,7 +186,11 @@ const config: Config = {
             './src/css/openapi-docs.css',
           ],
         },
-        sitemap: { changefreq: EnumChangefreq.DAILY, priority: 0.5 },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: null,
+          priority: null,
+        },
       } satisfies Preset.Options,
     ],
   ],
