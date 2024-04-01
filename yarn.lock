@@ -10966,10 +10966,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-css-order@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-css-order/-/prettier-plugin-css-order-2.1.1.tgz#9b7550b3217e53d4a8001c9bf196a81dc270bfdd"
-  integrity sha512-oAnL8g4T31Y8mhdJOn2UtoljFrzl595iogu2mt6T2vcKlDpgid5yCA/y+T8thcu8HWTM+NBmCt3MOBy/5t8Inw==
+prettier-plugin-css-order@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-css-order/-/prettier-plugin-css-order-2.1.2.tgz#75be1b838552e3760740154753e6f8970816c29d"
+  integrity sha512-vomxPjHI6pOMYcBuouSJHxxQClJXaUpU9rsV9IAO2wrSTZILRRlrxAAR8t9UF6wtczLkLfNRFUwM+ZbGXOONUA==
   dependencies:
     css-declaration-sorter "^7.1.1"
     postcss-less "^6.0.0"
