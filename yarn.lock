@@ -2197,16 +2197,16 @@
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-5.0.1.tgz#1b882a54587d9e58b7aebb5ae5b9a08522c822f0"
   integrity sha512-RTmWsLfig8SBoiSdgvCht4BXl1CHU89Co5xiQ5JF19my/sIRDFCQ1RPrmK0exgqUZuNm39C/bV8+/83+MJEjGg==
 
-"@octokit/core@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.0.1.tgz#4213915398c8722cfd2f9c43bcf35dd99bc06ca8"
-  integrity sha512-MIpPQXu8Y8GjHwXM81JLveiV+DHJZtLMcB5nKekBGOl3iAtk0HT3i12Xl8Biybu+bCS1+k4qbuKEq5d0RxNRnQ==
+"@octokit/core@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.1.1.tgz#c1c18a2cc755358b3c76d3520704e9d9836bee0d"
+  integrity sha512-uVypPdnZV7YoEa69Ky2kTSw3neFLGT0PZ54OwUMDph7w6TmhF0ZnoVcvb/kYnjDHCFo2mfoeRDYifLKhLNasUg==
   dependencies:
     "@octokit/auth-token" "^5.0.0"
     "@octokit/graphql" "^8.0.0"
     "@octokit/request" "^9.0.0"
     "@octokit/request-error" "^6.0.1"
-    "@octokit/types" "^12.0.0"
+    "@octokit/types" "^13.0.0"
     before-after-hook "^3.0.2"
     universal-user-agent "^7.0.0"
 
@@ -2232,6 +2232,11 @@
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-20.0.0.tgz#9ec2daa0090eeb865ee147636e0c00f73790c6e5"
   integrity sha512-EtqRBEjp1dL/15V7WiX5LJMIxxkdiGJnabzYx5Apx4FkQIFgAfKumXeYAqqJCj1s+BMX4cPFIFC4OLCR6stlnA==
 
+"@octokit/openapi-types@^21.0.0":
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-21.1.0.tgz#3b73097aed43c0e4d3533c91d1c4ad02a4ffdf01"
+  integrity sha512-wWfyybx64JhezyPHkHXm3kP33U1ceJ+1y8q5sCKGdqzQA7cGBZjo1PCYlNnVV/c1RR6rDGAn1DxJ5LwrJC4z7Q==
+
 "@octokit/request-error@^6.0.1":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-6.0.2.tgz#b8060d8b31d5f92b0a88ab01df5a097c771723b4"
@@ -2255,6 +2260,13 @@
   integrity sha512-1rhSOfRa6H9w4YwK0yrf5faDaDTb+yLyBUKOCV4xtCDB5VmIPqd/v9yr9o6SAzOAlRxMiRiCic6JVM1/kunVkw==
   dependencies:
     "@octokit/openapi-types" "^20.0.0"
+
+"@octokit/types@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-13.0.0.tgz#6828279d1c0af76753a16d64b96e594aa0a135d0"
+  integrity sha512-jSOgEoFZvjg78txlb7cuRTAEvyyQkIEB4Nujg5ZN7E1xaICsr8A0X045Nwb1wUWNrBUHBHZNtcsDIhk8d8ipCw==
+  dependencies:
+    "@octokit/openapi-types" "^21.0.0"
 
 "@paloaltonetworks/openapi-to-postmanv2@3.1.0-hotfix.1":
   version "3.1.0-hotfix.1"
