@@ -29,3 +29,7 @@
 nav.menu {
   margin-bottom: 0 !important;
 }
+
+.menu__link--active {
+  font-weight: 800;
+}

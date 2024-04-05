@@ -7,10 +7,12 @@
   --ifm-color-primary-lighter: #8b4edd;
   --ifm-color-primary-lightest: #a16fe3;
   --ifm-color-content: #000c1d;
-  --ifm-link-color: #a142f0;
-  --ifm-heading-color: var(--ifm-color-primary);
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-heading-color: #000000;
+  --ifm-menu-color: #000000;
+  --ifm-menu-color-active: var(--ifm-color-primary-darkest);
   --ifm-font-size-base: 105%;
-  --ifm-font-family-base: 'Nunito Sans', sans-serif;
+  --ifm-font-family-base: 'Plus Jakarta Sans', sans-serif;
   --ifm-h1-font-size: 2.5rem;
   --ifm-h2-font-size: 2rem;
   --ifm-h3-font-size: 1.5rem;

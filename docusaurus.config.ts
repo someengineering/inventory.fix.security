@@ -28,7 +28,7 @@ const config: Config = {
   trailingSlash: false,
   noIndex: !isProd,
   stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap',
+    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap',
   ],
   scripts: isProd
     ? [

@@ -1,16 +1,10 @@
-.navbar__brand {
-  color: var(--ifm-color-primary);
-}
-
 .navbar__brand:hover {
-  color: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary-darkest);
 }
 
 .navbar__title {
-  font-size: 1.6rem;
-  line-height: 1.6rem;
-  padding-top: 0.05rem;
-  margin-left: -0.2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
 }
 
 .navbar__item:last-of-type {
