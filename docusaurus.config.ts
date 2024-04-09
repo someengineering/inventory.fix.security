@@ -332,8 +332,8 @@ const config: Config = {
     ],
     tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
     announcementBar: {
-      id: `announcementBar-fix`,
-      content: `Don't want to manage your own Fix Inventory installation? Check out <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Fix Inventory.`,
+      content: `Don't want to manage your own Fix Inventory installation? <strong>Get started for free with <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Fix Inventory.</strong>`,
+      isCloseable: false,
     },
     navbar: {
       hideOnScroll: true,

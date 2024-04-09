@@ -24,6 +24,7 @@
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
   --ifm-background-color: #ffffff;
   --ifm-container-width-xxl: 1500px;
+  --docusaurus-announcement-bar-height: auto !important;
 }
 
 article header {
