@@ -91,7 +91,6 @@ export default function CookieConsent() {
               e.preventDefault();
               setShowConsent(false);
               Cookies.set('cookie_consent', 'false', {
-                expires: isProd ? 30 : undefined,
                 domain: isProd ? '.fix.security' : undefined,
                 secure: !isDev,
               });
