@@ -1,5 +1,7 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import posthog from 'posthog-js';
 import { PostHogProvider as Provider } from 'posthog-js/react';
+import { useEffect } from 'react';
 
 export default function PosthogProvider({
   children,
@@ -8,16 +10,16 @@ export default function PosthogProvider({
 }) {
   const {
     siteConfig: {
-      customFields: { isDev, isNetlify, posthogProjectApiKey },
+      customFields: { isDev, isNetlify, isProd, posthogProjectApiKey },
     },
   } = useDocusaurusContext();
 
-  return (
-    <Provider
-      apiKey={posthogProjectApiKey as string}
-      options={{
+  useEffect(() => {
+    if (posthogProjectApiKey && !posthog.__loaded) {
+      posthog.init(posthogProjectApiKey as string, {
         api_host: isNetlify ? '/api/ingest' : 'https://eu.posthog.com',
         ui_host: 'https://eu.posthog.com',
+        cross_subdomain_cookie: !!isProd,
         debug: !!isDev,
         capture_pageview: false, // Page views are captured manually
 
@@ -27,9 +29,9 @@ export default function PosthogProvider({
         disable_session_recording: true,
         disable_surveys: true,
         enable_recording_console_log: false,
-      }}
-    >
-      {children}
-    </Provider>
-  );
+      });
+    }
+  }, [isDev, isNetlify, isProd, posthogProjectApiKey]);
+
+  return <Provider client={posthog}>{children}</Provider>;
 }
