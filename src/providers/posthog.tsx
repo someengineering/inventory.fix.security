@@ -20,6 +20,7 @@ export default function PosthogProvider({
         api_host: isNetlify ? '/api/ingest' : 'https://eu.posthog.com',
         ui_host: 'https://eu.posthog.com',
         cross_subdomain_cookie: !!isProd,
+        secure_cookie: !!isNetlify,
         debug: !!isDev,
         capture_pageview: false, // Page views are captured manually
 

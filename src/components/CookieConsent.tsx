@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function CookieConsent() {
   const {
     siteConfig: {
-      customFields: { isProd, posthogProjectApiKey },
+      customFields: { isDev, isProd, posthogProjectApiKey },
     },
   } = useDocusaurusContext();
   const posthog = usePostHog();
@@ -25,10 +25,11 @@ export default function CookieConsent() {
       Cookies.get('cookie_consent') !== 'false'
     ) {
       Cookies.remove('cookie_consent', {
-        domain: isProd ? 'fix.security' : undefined,
+        domain: isProd ? '.fix.security' : undefined,
+        secure: !isDev,
       });
     }
-  }, [isProd, posthog]);
+  }, [isDev, isProd, posthog]);
 
   if (!posthogProjectApiKey || !showConsent) {
     return null;
@@ -90,7 +91,9 @@ export default function CookieConsent() {
               e.preventDefault();
               setShowConsent(false);
               Cookies.set('cookie_consent', 'false', {
-                domain: isProd ? 'fix.security' : undefined,
+                expires: isProd ? 30 : undefined,
+                domain: isProd ? '.fix.security' : undefined,
+                secure: !isDev,
               });
               posthog.opt_out_capturing();
             }}

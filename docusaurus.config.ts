@@ -14,7 +14,7 @@ import versions from './versions.json';
 const isDev = process.env.NODE_ENV === 'development';
 const isBuildFast = isDev || !!process.env.BUILD_FAST;
 const isNetlify = !!process.env.NETLIFY;
-const isProd = !isDev && isNetlify && process.env.CONTEXT === 'production';
+const isProd = isNetlify && process.env.CONTEXT === 'production';
 
 const config: Config = {
   title: 'Fix Inventory by Some Engineering Inc.',
