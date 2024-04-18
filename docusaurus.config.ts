@@ -13,8 +13,8 @@ import versions from './versions.json';
 
 const isDev = process.env.NODE_ENV === 'development';
 const isBuildFast = isDev || !!process.env.BUILD_FAST;
-const isProd =
-  !isDev && !!process.env.NETLIFY && process.env.CONTEXT !== 'deploy-preview';
+const isNetlify = !!process.env.NETLIFY;
+const isProd = !isDev && isNetlify && process.env.CONTEXT === 'production';
 
 const config: Config = {
   title: 'Fix Inventory by Some Engineering Inc.',
@@ -27,6 +27,12 @@ const config: Config = {
   favicon: 'img/favicon.ico',
   trailingSlash: false,
   noIndex: !isProd,
+  customFields: {
+    isDev,
+    isNetlify,
+    isProd,
+    posthogProjectApiKey: process.env.POSTHOG_PROJECT_API_KEY,
+  },
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap',
   ],

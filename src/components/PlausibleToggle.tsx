@@ -1,15 +1,17 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
-import useIsBrowser from '@docusaurus/useIsBrowser';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Admonition from '@theme/Admonition';
 import { useEffect, useState } from 'react';
 
 export default function PlausibleToggle(): JSX.Element {
   const [isExcluded, setIsExcluded] = useState<boolean>(false);
-  const isProd =
-    useIsBrowser() &&
-    new URL(window.location.href).hostname === 'inventory.fix.security';
+  const {
+    siteConfig: {
+      customFields: { isProd },
+    },
+  } = useDocusaurusContext();
   const { pathname } = useLocation();
 
   useEffect(
