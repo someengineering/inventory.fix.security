@@ -1,6 +1,6 @@
 import { useLocation } from '@docusaurus/router';
 import type { WrapperProps } from '@docusaurus/types';
-import useIsBrowser from '@docusaurus/useIsBrowser';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Footer from '@theme-original/Footer';
 import type FooterType from '@theme/Footer';
 import { useEffect, useState } from 'react';
@@ -11,9 +11,11 @@ type Props = WrapperProps<typeof FooterType>;
 export default function FooterWrapper(props: Props): JSX.Element {
   const [timestamp, setTimestamp] = useState(new Date().getTime());
   const { pathname } = useLocation();
-  const isProd =
-    useIsBrowser() &&
-    new URL(window.location.href).hostname === 'docs.fix.security';
+  const {
+    siteConfig: {
+      customFields: { isProd },
+    },
+  } = useDocusaurusContext();
 
   useEffect(() => {
     setTimestamp(new Date().getTime());
