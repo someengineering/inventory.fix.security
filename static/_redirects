@@ -11,6 +11,12 @@ https://origin.inventory.fix.security/*       https://inventory.fix.security/:sp
 /api/ingest/static/*                          https://eu-assets.i.posthog.com/static/:splat 200
 /api/ingest/*                                 https://eu.i.posthog.com/:splat 200
 
+/code-of-conduct                              https://fix.security/code-of-conduct
+/cookie*                                      https://fix.security/cookie-policy
+/privacy*                                     https://fix.security/privacy-policy
+/terms*                                       https://fix.security/terms-and-conditions
+/website-analytics                            https://fix.security/cookie-policy
+
 /docs/*                                       /:splat
 
 /release/*                                    /releases/:splat
