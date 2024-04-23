@@ -36,7 +36,7 @@
     "@mdx-js/react": "3.0.1",
     "@octokit/core": "6.1.2",
     "a11y-react-emoji": "1.2.0",
-    "clsx": "2.1.0",
+    "clsx": "2.1.1",
     "docusaurus-plugin-openapi-docs": "3.0.0-beta.10",
     "docusaurus-theme-openapi-docs": "3.0.0-beta.10",
     "github-slugger": "2.0.0",
