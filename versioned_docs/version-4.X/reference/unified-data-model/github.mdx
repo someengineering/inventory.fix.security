@@ -356,6 +356,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class github_region {
 }
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -374,7 +376,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 region <|--- github_region
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 @enduml
 ```
 
