@@ -31,6 +31,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class phantom_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -47,8 +49,9 @@ class vsphere_cluster {
 }
 class zone {
 }
+resource <|--- phantom_resource
 zone <|--- vsphere_cluster
-resource <|--- zone
+phantom_resource <|--- zone
 @enduml
 ```
 
@@ -117,6 +120,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -136,7 +141,8 @@ class resource {
 }
 class vsphere_data_center {
 }
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 region <|--- vsphere_data_center
 @enduml
 ```

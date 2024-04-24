@@ -7213,6 +7213,8 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -7235,7 +7237,8 @@ gcp_resource <|--- gcp_region
 region <|--- gcp_region
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 @enduml
 ```
 
@@ -11441,6 +11444,8 @@ class gcp_zone {
 **zone_deprecated**: gcp_deprecation_status
 **zone_supports_pzs**: boolean
 }
+class phantom_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -11460,7 +11465,8 @@ resource <|--- gcp_resource
 gcp_zone --> gcp_deprecation_status
 gcp_resource <|--- gcp_zone
 zone <|--- gcp_zone
-resource <|--- zone
+resource <|--- phantom_resource
+phantom_resource <|--- zone
 @enduml
 ```
 
