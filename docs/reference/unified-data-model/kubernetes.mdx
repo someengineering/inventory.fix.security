@@ -2879,6 +2879,8 @@ class kubernetes_resource {
 **namespace**: string
 **resource_version**: string
 }
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -2901,7 +2903,8 @@ kubernetes_resource <|--- kubernetes_namespace
 region <|--- kubernetes_namespace
 kubernetes_namespace_status --> kubernetes_namespace_status_conditions
 resource <|--- kubernetes_resource
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 @enduml
 ```
 
