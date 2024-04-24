@@ -2141,6 +2141,8 @@ class digitalocean_region {
 class digitalocean_resource {
 **urn**: string
 }
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -2161,7 +2163,8 @@ class resource {
 digitalocean_resource <|--- digitalocean_region
 region <|--- digitalocean_region
 resource <|--- digitalocean_resource
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 @enduml
 ```
 

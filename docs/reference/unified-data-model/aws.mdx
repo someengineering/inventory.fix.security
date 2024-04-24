@@ -13968,6 +13968,8 @@ class aws_region {
 class aws_resource {
 **arn**: string
 }
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -13988,7 +13990,8 @@ class resource {
 aws_resource <|--- aws_region
 region <|--- aws_region
 resource <|--- aws_resource
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 @enduml
 ```
 

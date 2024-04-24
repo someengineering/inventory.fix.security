@@ -151,6 +151,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class phantom_resource {
+}
 class region {
 **latitude**: double
 **long_name**: string
@@ -172,7 +174,8 @@ class slack_region {
 }
 class slack_resource {
 }
-resource <|--- region
+resource <|--- phantom_resource
+phantom_resource <|--- region
 region <|--- slack_region
 slack_resource <|--- slack_region
 @enduml
