@@ -5834,6 +5834,8 @@ class aws_ecs_container_instance {
 }
 class aws_elb {
 }
+class aws_iam_instance_profile {
+}
 class aws_region {
 }
 class aws_ssm_instance {
@@ -5857,6 +5859,7 @@ aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
 aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
 aws_ecs_container_instance -[#1A83AF]-> aws_ec2_instance
 aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_iam_instance_profile -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_alb_target_group
 aws_region -[#1A83AF]-> aws_autoscaling_group
 aws_region -[#1A83AF]-> aws_cloudwatch_alarm
@@ -5867,6 +5870,7 @@ aws_region -[#1A83AF]-> aws_ec2_keypair
 aws_region -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_ec2_volume
 aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_iam_instance_profile
 aws_region -[#1A83AF]-> aws_vpc
 aws_ssm_instance -[#1A83AF]-> aws_ec2_instance
 aws_ssm_resource_compliance -[#1A83AF]-> aws_ec2_instance
@@ -11294,13 +11298,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_instance {
+}
 class aws_iam_instance_profile {
 }
 class aws_iam_role {
 }
 class aws_region {
 }
+aws_iam_instance_profile -[#1A83AF]-> aws_ec2_instance
 aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
+aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_iam_instance_profile
 aws_region -[#1A83AF]-> aws_iam_role
 @enduml
@@ -14127,6 +14135,7 @@ aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
 aws_elb -[#1A83AF]-> aws_ec2_instance
 aws_iam_group -[#1A83AF]-> aws_iam_policy
 aws_iam_group -[#1A83AF]-> aws_iam_user
+aws_iam_instance_profile -[#1A83AF]-> aws_ec2_instance
 aws_iam_role -[#1A83AF]-> aws_eks_cluster
 aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
 aws_iam_role -[#1A83AF]-> aws_iam_policy
@@ -21371,10 +21380,10 @@ class aws_waf_request_inspection_acfp {
 **username_field**: string
 }
 class aws_waf_response_inspection {
-**failure_values**: string[]
-**identifier**: string
-**name**: string
-**success_values**: string[]
+**body_contains**: aws_waf_response_inspection
+**header**: aws_waf_response_inspection
+**json**: aws_waf_response_inspection
+**status_code**: aws_waf_response_inspection
 }
 class aws_waf_rule {
 **action**: aws_waf_rule_action
@@ -21524,6 +21533,7 @@ aws_waf_regex_match_statement --> aws_waf_field_to_match
 aws_waf_regex_match_statement --> aws_waf_text_transformation
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_field_to_match
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_text_transformation
+aws_waf_response_inspection --> aws_waf_response_inspection
 aws_waf_rule --> aws_waf_captcha_config
 aws_waf_rule --> aws_waf_challenge_config
 aws_waf_rule --> aws_waf_override_action
