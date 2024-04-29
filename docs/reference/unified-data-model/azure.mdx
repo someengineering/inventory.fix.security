@@ -442,11 +442,7 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_private_endpoint {
 **application_security_groups**: azure_application_security_group[]
@@ -488,6 +484,11 @@ class azure_private_link_service_connection_state {
 **status**: string
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class gateway {
 }
@@ -552,7 +553,7 @@ azure_application_gateway_ssl_profile --> azure_application_gateway_ssl_policy
 azure_application_gateway_url_path_map --> azure_application_gateway_path_rule
 azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_disabled_rule_group
 azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_exclusion
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 azure_private_endpoint --> azure_application_security_group
 azure_private_endpoint --> azure_custom_dns_config_properties_format
 azure_private_endpoint --> azure_extended_location
@@ -2909,13 +2910,14 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class resource {
 **age**: duration
@@ -2933,7 +2935,7 @@ azure_express_route_link --> azure_express_route_link_mac_sec_config
 azure_express_route_port --> azure_express_route_link
 azure_express_route_port --> azure_managed_service_identity
 azure_resource <|--- azure_express_route_port
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 resource <|--- azure_resource
 @enduml
 ```
@@ -3402,13 +3404,14 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class policy {
 }
@@ -3440,7 +3443,7 @@ azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_polic
 azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_policy_intrusion_detection_signature_specification
 azure_firewall_policy_log_analytics_resources --> azure_firewall_policy_log_analytics_workspace
 azure_firewall_policy_transport_security --> azure_firewall_policy_certificate_authority
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 resource <|--- azure_resource
 resource <|--- policy
 @enduml
@@ -3543,13 +3546,14 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
-}
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class resource {
 **age**: duration
@@ -3568,7 +3572,7 @@ azure_fleet --> azure_managed_service_identity
 azure_resource <|--- azure_fleet
 azure_fleet_hub_profile --> azure_agent_profile
 azure_fleet_hub_profile --> azure_api_server_access_profile
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 resource <|--- azure_resource
 @enduml
 ```
@@ -5742,7 +5746,7 @@ class azure_managed_service_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
 }
 class azure_network_virtual_appliance {
 **additional_nics**: azure_virtual_appliance_additional_nic_properties[]
@@ -5770,11 +5774,12 @@ class azure_partner_managed_resource_properties {
 **internal_load_balancer_id**: string
 **standard_load_balancer_id**: string
 }
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
-}
 class azure_resource {
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**resource_id**: string
 }
 class azure_virtual_appliance_additional_nic_properties {
 **has_public_ip**: boolean
@@ -5803,7 +5808,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_managed_service_identity --> azure_principalid_clientid
+azure_managed_service_identity --> azure_user_assigned_identity
 azure_network_virtual_appliance --> azure_delegation_properties
 azure_network_virtual_appliance --> azure_managed_service_identity
 azure_network_virtual_appliance --> azure_partner_managed_resource_properties
