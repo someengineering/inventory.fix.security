@@ -148,4 +148,10 @@ button:disabled {
   .container {
     max-width: var(--ifm-container-width-xxl);
   }
+
+  .main-wrapper {
+    align-self: center;
+    max-width: calc(var(--doc-sidebar-width) + var(--ifm-container-width-xxl));
+    width: 100%;
+  }
 }
