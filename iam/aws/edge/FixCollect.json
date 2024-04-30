@@ -151,6 +151,7 @@
         "route53:ListTagsForResource",
         "s3:GetAccountPublicAccessBlock",
         "s3:GetBucketAcl",
+        "s3:GetBucketLocation",
         "s3:GetBucketLogging",
         "s3:GetBucketPolicy",
         "s3:GetBucketTagging",
