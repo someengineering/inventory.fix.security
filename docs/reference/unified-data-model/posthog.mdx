@@ -32,34 +32,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class posthog_event {
-**action_id**: int64
-**count**: int64
-**description**: string
-**is_action**: boolean
-**is_calculating**: boolean
-**last_calculated_at**: string
-**last_seen_at**: string
-**post_to_slack**: boolean
-**posthog_tags**: string[]
-**project_id**: int64
-**query_usage_30_day**: int64
-**verified**: boolean
-**verified_at**: string
-**volume_30_day**: int64
 }
 class posthog_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 posthog_resource <|--- posthog_event
 resource <|--- posthog_event
@@ -134,37 +110,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
 class posthog_project {
-**access_control**: boolean
-**anonymize_ips**: boolean
-**app_urls**: string[]
-**completed_snippet_onboarding**: boolean
-**correlation_config**: dictionary[any, any]
-**data_attributes**: any
-**live_events_columns**: string[]
-**path_cleaning_filters**: any
-**person_display_name_properties**: string[]
-**primary_dashboard**: int64
-**project_id**: int64
-**recording_domains**: string[]
-**session_recording_opt_in**: boolean
-**slack_incoming_webhook**: string[]
-**test_account_filters**: any
-**test_account_filters_default_checked**: boolean
-**timezone**: string
 }
 class posthog_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- account
 account <|--- posthog_project

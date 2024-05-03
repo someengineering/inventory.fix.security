@@ -35,21 +35,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
 class dockerhub_namespace {
-**count**: int64
 }
 class dockerhub_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- account
 account <|--- dockerhub_namespace
@@ -123,26 +112,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class dockerhub_repository {
-**affiliation**: string
-**is_private**: boolean
-**media_types**: string[]
-**pull_count**: int64
-**repository_type**: string
-**star_count**: int64
 }
 class dockerhub_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 dockerhub_resource <|--- dockerhub_repository
 resource <|--- dockerhub_repository
