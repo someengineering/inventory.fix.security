@@ -38,24 +38,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_alert_policy {
-**description**: string
-**is_enabled**: boolean
-**policy_type**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_alert_policy
 resource <|--- digitalocean_alert_policy
@@ -132,26 +118,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_app {
-**default_ingress**: string
-**live_domain**: string
-**live_url**: string
-**live_url_base**: string
-**tier_slug**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_app
 resource <|--- digitalocean_app
@@ -237,28 +207,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_cdn_endpoint {
-**certificate_id**: string
-**custom_domain**: string
-**endpoint**: string
-**origin**: string
-**ttl**: int64
 }
 class digitalocean_resource {
-**urn**: string
 }
 class endpoint {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_cdn_endpoint
 endpoint <|--- digitalocean_cdn_endpoint
@@ -336,28 +290,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class certificate {
-**dns_names**: string[]
-**expires**: datetime
-**sha1_fingerprint**: string
 }
 class digitalocean_certificate {
-**certificate_state**: string
-**certificate_type**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- certificate
 certificate <|--- digitalocean_certificate
@@ -435,23 +373,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_container_registry {
-**is_read_only**: boolean
-**storage_usage_bytes**: int64
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_container_registry
 resource <|--- digitalocean_container_registry
@@ -536,23 +461,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_container_registry_repository {
-**manifest_count**: int64
-**tag_count**: int64
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_container_registry_repository
 resource <|--- digitalocean_container_registry_repository
@@ -637,26 +549,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_container_registry_repository_tag {
-**compressed_size_bytes**: int64
-**manifest_digest**: string
-**registry_name**: string
-**repository_name**: string
-**size_bytes**: int64
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_container_registry_repository_tag
 resource <|--- digitalocean_container_registry_repository_tag
@@ -737,32 +633,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class database {
-**db_endpoint**: string
-**db_publicly_accessible**: boolean
-**db_status**: string
-**db_type**: string
-**db_version**: string
-**instance_type**: string
-**volume_encrypted**: boolean
-**volume_iops**: int64
-**volume_size**: int64
 }
 class digitalocean_database {
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- database
 database <|--- digitalocean_database
@@ -858,25 +734,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_domain {
-**ttl**: int64
-**zone_file**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class dns_zone {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_domain
 dns_zone <|--- digitalocean_domain
@@ -962,40 +825,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_domain_record {
-**domain_name**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class dns_record {
-**record_data**: string
-**record_expire**: int64
-**record_flags**: int64
-**record_minimum**: int64
-**record_mname**: string
-**record_port**: int64
-**record_priority**: int64
-**record_refresh**: int64
-**record_retry**: int64
-**record_rname**: string
-**record_serial**: int64
-**record_tag**: string
-**record_ttl**: int64
-**record_type**: string
-**record_value**: string
-**record_weight**: int64
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_domain_record
 dns_record <|--- digitalocean_domain_record
@@ -1077,31 +912,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet {
-**droplet_backup_ids**: string[]
-**droplet_features**: string[]
-**droplet_image**: string
-**is_locked**: boolean
 }
 class digitalocean_resource {
-**urn**: string
 }
 class instance {
-**instance_cores**: double
-**instance_memory**: double
-**instance_status**: instance_status
-**instance_type**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_droplet
 instance <|--- digitalocean_droplet
@@ -1235,24 +1051,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet_neighborhood {
-**droplets**: string[]
 }
 class digitalocean_resource {
-**urn**: string
 }
 class phantom_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_droplet_neighborhood
 phantom_resource <|--- digitalocean_droplet_neighborhood
@@ -1329,33 +1133,14 @@ skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet_size {
 }
 class digitalocean_resource {
-**urn**: string
 }
 class instance_type {
-**instance_cores**: double
-**instance_memory**: double
-**instance_type**: string
-**ondemand_cost**: double
-**reservations**: int64
 }
 class phantom_resource {
 }
 class quota {
-**quota**: double
-**quota_type**: string
-**usage**: double
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class type {
 }
@@ -1438,22 +1223,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_firewall {
-**firewall_status**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_firewall
 resource <|--- digitalocean_firewall
@@ -1534,26 +1307,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_floating_ip {
-**is_locked**: boolean
 }
 class digitalocean_resource {
-**urn**: string
 }
 class ip_address {
-**ip_address**: string
-**ip_address_family**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_floating_ip
 ip_address <|--- digitalocean_floating_ip
@@ -1645,29 +1404,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_image {
-**description**: string
-**distribution**: string
-**image_slug**: string
-**image_status**: string
-**image_type**: string
-**is_public**: boolean
-**min_disk_size**: int64
-**size_gigabytes**: int64
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_image
 resource <|--- digitalocean_image
@@ -1753,33 +1493,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_kubernetes_cluster {
-**auto_upgrade_enabled**: boolean
-**cluster_status**: string
-**ha_enabled**: boolean
-**ipv4_address**: string
-**k8s_cluster_subnet**: string
-**k8s_service_subnet**: string
-**registry_enabled**: boolean
-**surge_upgrade_enabled**: boolean
 }
 class digitalocean_resource {
-**urn**: string
 }
 class managed_kubernetes_cluster_provider {
-**endpoint**: string
-**version**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_kubernetes_cluster
 managed_kubernetes_cluster_provider <|--- digitalocean_kubernetes_cluster
@@ -1877,32 +1596,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_load_balancer {
-**disable_lets_encrypt_dns_records**: boolean
-**enable_backend_keepalive**: boolean
-**enable_proxy_protocol**: boolean
-**loadbalancer_status**: string
-**nr_nodes**: int64
-**redirect_http_to_https**: boolean
 }
 class digitalocean_resource {
-**urn**: string
 }
 class load_balancer {
-**backends**: string[]
-**lb_type**: string
-**public_ip_address**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_load_balancer
 load_balancer <|--- digitalocean_load_balancer
@@ -2000,27 +1699,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_project {
-**description**: string
-**environment**: string
-**is_default**: boolean
-**owner_id**: string
-**owner_uuid**: string
-**purpose**: string
 }
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_project
 resource <|--- digitalocean_project
@@ -2133,32 +1815,14 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_region {
-**do_region_droplet_sizes**: string[]
-**do_region_features**: string[]
-**do_region_slug**: string
-**is_available**: boolean
 }
 class digitalocean_resource {
-**urn**: string
 }
 class phantom_resource {
 }
 class region {
-**latitude**: double
-**long_name**: string
-**longitude**: double
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 digitalocean_resource <|--- digitalocean_region
 region <|--- digitalocean_region
@@ -2291,19 +1955,8 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_resource {
-**urn**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- digitalocean_resource
 @enduml
@@ -2378,33 +2031,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_snapshot {
-**resource_id**: string
-**resource_type**: string
-**snapshot_size_gigabytes**: int64
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class snapshot {
-**description**: string
-**encrypted**: boolean
-**owner_alias**: string
-**owner_id**: string
-**snapshot_status**: string
-**volume_id**: string
-**volume_size**: int64
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_snapshot
@@ -2498,21 +2130,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class bucket {
 }
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_space {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- bucket
 resource <|--- digitalocean_resource
@@ -2598,25 +2219,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_ssh_key {
-**public_key**: string
 }
 class keypair {
-**fingerprint**: string
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_ssh_key
@@ -2696,21 +2304,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_team {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- account
 resource <|--- digitalocean_resource
@@ -2892,34 +2489,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_volume {
-**description**: string
-**filesystem_label**: string
-**filesystem_type**: string
-**ondemand_cost**: double
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class volume {
-**snapshot_before_delete**: boolean
-**volume_encrypted**: boolean
-**volume_iops**: int64
-**volume_size**: int64
-**volume_status**: volume_status
-**volume_throughput**: int64
-**volume_type**: string
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_volume
@@ -3011,26 +2586,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_resource {
-**urn**: string
 }
 class digitalocean_vpc {
-**description**: string
-**ip_range**: string
-**is_default**: boolean
 }
 class network {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_vpc

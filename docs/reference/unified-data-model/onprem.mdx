@@ -33,29 +33,12 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class instance {
-**instance_cores**: double
-**instance_memory**: double
-**instance_status**: instance_status
-**instance_type**: string
 }
 class onprem_instance {
-**network_device**: string
-**network_ip4**: string
-**network_ip6**: string
 }
 class onprem_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- instance
 instance <|--- onprem_instance
@@ -133,16 +116,6 @@ class account {
 class onprem_location {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- account
 account <|--- onprem_location
@@ -221,16 +194,6 @@ class onprem_network {
 class onprem_resource {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 resource <|--- network
 network <|--- onprem_network
@@ -308,21 +271,8 @@ class onprem_region {
 class phantom_resource {
 }
 class region {
-**latitude**: double
-**long_name**: string
-**longitude**: double
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 region <|--- onprem_region
 resource <|--- phantom_resource

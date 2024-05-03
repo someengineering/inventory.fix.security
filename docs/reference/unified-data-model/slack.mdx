@@ -32,45 +32,8 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class slack_conversation {
-**creator**: string
-**is_archived**: boolean
-**is_channel**: boolean
-**is_ext_shared**: boolean
-**is_general**: boolean
-**is_group**: boolean
-**is_im**: boolean
-**is_member**: boolean
-**is_mpim**: boolean
-**is_org_shared**: boolean
-**is_pending_ext_shared**: boolean
-**is_private**: boolean
-**is_shared**: boolean
-**name_normalized**: string
-**num_members**: int64
-**parent_conversation**: string
-**pending_connected_team_ids**: string[]
-**pending_shared**: string[]
-**previous_names**: string[]
-**purpose**: string
-**purpose_creator**: string
-**purpose_last_set**: int64
-**shared_team_ids**: string[]
-**topic**: string
-**topic_creator**: string
-**topic_last_set**: int64
-**unlinked**: int64
 }
 class slack_resource {
 }
@@ -154,21 +117,8 @@ skinparam stereotypeIBackgroundColor #e98df7
 class phantom_resource {
 }
 class region {
-**latitude**: double
-**long_name**: string
-**longitude**: double
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class slack_region {
 }
@@ -263,23 +213,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class slack_resource {
 }
 class slack_team {
-**domain**: string
-**email_domain**: string
-**icon**: string
 }
 resource <|--- account
 account <|--- slack_team
@@ -356,54 +293,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class slack_resource {
 }
 class slack_user {
-**color**: string
-**deleted**: boolean
-**display_name**: string
-**display_name_normalized**: string
-**email**: string
-**first_name**: string
-**guest_invited_by**: string
-**image_192**: string
-**image_24**: string
-**image_32**: string
-**image_48**: string
-**image_512**: string
-**image_72**: string
-**is_admin**: boolean
-**is_app_user**: boolean
-**is_bot**: boolean
-**is_owner**: boolean
-**is_primary_owner**: boolean
-**is_restricted**: boolean
-**is_ultra_restricted**: boolean
-**last_name**: string
-**phone**: string
-**real_name**: string
-**real_name_normalized**: string
-**skype**: string
-**status_emoji**: string
-**status_expiration**: int64
-**status_text**: string
-**status_text_canonical**: string
-**team_id**: string
-**title**: string
-**tz**: string
-**tz_label**: string
-**tz_offset**: int64
 }
 class user {
 }
@@ -492,32 +385,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class group {
 }
 class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
 }
 class slack_resource {
 }
 class slack_usergroup {
-**auto_provision**: boolean
-**auto_type**: string
-**created_by**: string
-**description**: string
-**enterprise_subteam_id**: string
-**handle**: string
-**is_external**: boolean
-**is_subteam**: boolean
-**is_usergroup**: boolean
-**team_id**: string
-**updated_by**: string
-**user_count**: int64
 }
 resource <|--- group
 group <|--- slack_usergroup
