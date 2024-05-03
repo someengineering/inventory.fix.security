@@ -1,9 +1,6 @@
 .theme-doc-sidebar-container {
   border: none !important;
   background-color: #d9b8ff22;
-  border-bottom-right-radius: 0.5rem;
-  flex-grow: 0;
-  align-self: flex-start;
 }
 
 .theme-doc-sidebar-menu {
