@@ -5,10 +5,11 @@ description: "Get the user information."
 sidebar_label: "This endpoint is used to renew a JWT that is about to expire."
 hide_title: true
 hide_table_of_contents: true
-api: eJx9Ustu2zAQ/BViz0LkNIiR8FSjSIP0VLRue7B8oKWNxZYiWXLlyBX478VSSgP1dRHBHc3ucmZGIHWMIHegempd0D8UaWdhX0CDsQ7a56uEeyRBLYo+YhDaPrrQ5T8voICA0TsbMYIc4dVqxceSvf0Hs0XVYMi8zWL+XzssVhQTVzxpavNmAS0+YSPefdly61i32CluRGePICFS0PYIKaUCamcJLTGqvDe6zi3Lr3EajYPqvGHSWFkhKsBOaVOBFBUQRnrNn4sGKyhmfPCMXq5vrtbr66vr27kenME48VTTaVtBZVNleYlUQIfUugYkHJGgAK+oBQnl4pllfha/B8MpS7UboQ8GJLREPsqyHFsXKcnRu0AJCjipoNXBTHYwNqn5qHpDIMG4WplcTgUwZwnf3K5WvN++ADYrC6gpi/FWD+LBntCSC2fxxgUUH+4+bsXm/QOPxRAnrz5fTq0jdSrraVWH2UMdBdrGO21J6MiRaAS5yTqh2DpBrcqYOrieGMTB64Bs6SIR44uJ/w3n7D7hQKU3SlveLQs4zor/nn0ONGu+L2b1djCOBxXxUzApcfl7j+EMcrd/EZtv6TnQ2aRveAYJm7pGT9kV0/Mif+SNlf6VhPu7LaT0E4c+OjE=
+api: {"tags":["authorization"],"description":"Get the user information.","responses":{"200":{"description":"The user information.","headers":{"Authorization":{"description":"The authorization header with the renewed JWT.","schema":{"type":"string"}}},"content":{"application/json":{"example":"{\n  \"email\": \"test@test.de\",\n  \"exp\": 1683665359,\n  \"roles\": \"admin\"\n}\n"}}}},"method":"get","path":"/authorization/renew","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to renew a JWT that is about to expire.","description":{"content":"Get the user information.","type":"text/plain"},"url":{"path":["authorization","renew"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

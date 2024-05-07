@@ -204,25 +204,6 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: 'doc',
-          id: 'reference/api/deprecated-get-the-currently-defined-model',
-          label: '[Deprecated] Get the currently defined model.',
-          className: 'menu__list-item--deprecated api-method get',
-        },
-        {
-          type: 'doc',
-          id: 'reference/api/deprecated-add-or-update-the-current-defined-model',
-          label: '[Deprecated] Add or update the current defined model.',
-          className: 'menu__list-item--deprecated api-method patch',
-        },
-        {
-          type: 'doc',
-          id: 'reference/api/deprecated-get-the-currently-defined-model-as-svg-uml-image',
-          label:
-            '[Deprecated] Get the currently defined model as svg uml image.',
-          className: 'menu__list-item--deprecated api-method get',
-        },
-        {
-          type: 'doc',
           id: 'reference/api/get-the-currently-defined-model',
           label: 'Get the currently defined model.',
           className: 'api-method get',

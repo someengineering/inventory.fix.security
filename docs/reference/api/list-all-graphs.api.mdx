@@ -5,10 +5,11 @@ description: "List all graphs"
 sidebar_label: "List all graphs"
 hide_title: true
 hide_table_of_contents: true
-api: eJxtkkGPEzEMhf/K6J0jTeEEua3QglbaA4LCpaqQd+rOBDJJiN2qVZT/jjKzWuiKXJLYsuP3vRQojQK7w5gpTT9mCjTyzEGxN8gsKQZhgS14u9m07cAyZJfUxQCL7cRdoJmli8eOvO+WNgKDIQZtbWwBpeTdQK2k/ymtrkCGiWdqJ70mhgXlTFcYOOVZ/omLZhdGVAO+0Jw8t2FncgEGyqLY17bMq8EenejtQDPrFA+wGFlhkEgnWPRLHgbC+cy5oSg4ZQ+LSTWJ7fsyRdFqS4pZKwzOlB09+ZVKy61YjnTyCgsfB/JLuBq0mtv0u/ebDWqtewMXjnFR6rTJwkd36R7CmYPGfO0+xMzdl/uv2+7u80N7lrOs2r6/WVuLzrTAbA78V/MNkxekyhftk28Mq1nFlmcez/+gmb8q26GUJxL+ln2tLfz7xPkKu9v/BdFu1WBiOnBeAP7iKyzuhoGTLsT8afH49UdoFF58+XS/Ra1/AN+Q34s=
+api: {"tags":["graph_management"],"responses":{"200":{"description":"The names of all graphs","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"},"example":["main","test"]}}}}},"description":"List all graphs","method":"get","path":"/graph","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"List all graphs","description":{"type":"text/plain"},"url":{"path":["graph"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

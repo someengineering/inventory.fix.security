@@ -5,10 +5,11 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Get all configuration keys that have a model defined."
 hide_title: true
 hide_table_of_contents: true
-api: eJzNksGO0zAQhl9lNMfKagonsBDSCpXV3hAULt0VmibT2LuOHexJ1SjKuyM7wLZ7QpzwJc5YM//MfP+EDac62l5s8Khxtdqee462Yy/kVisNO2MT3Hy6A5vAB4EkdHAM5BvobGsEDgxpODxyLRCOUBvyLa/fHWL1/t7fsgA5B3XwR9sOkbIMPPGYQAwJGDoxEHShYQcNH63nZn3vUaFQm1Dvccn8fiJnm5KNDwojpz74xAn1hK83m/y5nuPmL0XXqLKEsJdchPre2bokVI8pV5ow1YY7yjcZe0aNFCONqNAKd+kiniRa3+JcjsKOxYQGNbYsqLAnMaixWrpK1cVEChPHE8c88IRDdKjRiPRJV9VkQpJZT32IMqPCE0WbARTh/LbMfqTBCWp0oSZXwrPCnHP9/ObtZpMbfFBo/TGU5q243P1He4Y7f2IvIY7wIUSGz9svu4w+y3JMy2a/vVpKJ+mo7MdTl/P/CTWqa27TM4z/yIoLXuGzVL0j6/MCCqXpF9XfNk0F0KVTF0J7nKYDJf4a3Tzn8I+B44h6//AMNP/NCg1Tw7EY4YnH7OS65l6WwkOx30uPZpp/zHa73eE8/wSOXFM4
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys that have a model defined.\n","tags":["config_validation"],"responses":{"200":{"description":"All configuration keys that have a model.","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}},"method":"get","path":"/configs/validation","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get all configuration keys that have a model defined.","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys that have a model defined.\n","type":"text/plain"},"url":{"path":["configs","validation"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

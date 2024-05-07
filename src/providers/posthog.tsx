@@ -23,6 +23,7 @@ export default function PosthogProvider({
         secure_cookie: !!isNetlify,
         debug: !!isDev,
         capture_pageview: false, // Page views are captured manually
+        capture_pageleave: true,
 
         opt_out_persistence_by_default: true,
         opt_out_capturing_by_default: true,

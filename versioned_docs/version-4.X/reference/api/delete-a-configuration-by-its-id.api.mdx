@@ -5,10 +5,11 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Delete a configuration by its id"
 hide_title: true
 hide_table_of_contents: true
-api: eJzNU02P0zAQ/SujOUEVtQVxAAshIbZIK3FAu4VLt0JuPE0GHDtrT0qryP8dOQnb7QokjpzizMTz5n2kR0OxDNwKe4cKZ7PVsaXADTnRdjZTsK45wvvP18ARnBeIoneWQDsDDVe1wI4gdrvvVAr4PZS1dhXN3+7C4t2duyJLQqCh9G7PVRd0xgE25IT3TAZ2J2ADP1lqaIM/sCEDB207mt85LFB0FVFtcLyP2wJbHXRDQiHXe3S6IVRT/xsbLJAzkVZLjQUGuu84kEEloaPiCVup6bxLyOvnyjgLxENFMscCY1lTo1H1KKc2o0UJ7CpMaZsRYutdpJj7L5ev8uMS5ZYrp22E2JUlxTjCcATf0qjHHFMqsCGpvUGFZhANi5GDwsW40KJ/IJnyUhQOv0XogkWFtUgb1WLR1z5KUn3rg+QvDzpw9mzYMPfGFfe6s4IKrS+1HcqpwHznsv36zXKJaaDKbu8HFVhsluEjH+HaHciJDyf44APBzep2ndOSYSnEUYCvL8bRURrt8oDJtL+kI0dCIgxeXijZZ5uFnPyPQR2TIXSURWs1u0x58KWffHwIcYHqHNdtMVmywb7f6Uhfgk0pl+87CidUm+3ZwcFswzGfDaq9tvFpph9r9OxmSv9z+Mek/5HFVNTuNITJdvkNC/xBp4s/L20fp/hq9Wm1XmFKvwAFE4Im
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","tags":["config"],"parameters":[{"name":"config_id","in":"path","required":true,"description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"204":{"description":"Signals success of this operation."}},"method":"delete","path":"/config/{config_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete a configuration by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

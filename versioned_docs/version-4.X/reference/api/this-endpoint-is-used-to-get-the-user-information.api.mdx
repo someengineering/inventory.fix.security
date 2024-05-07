@@ -5,10 +5,11 @@ description: "Get the user information."
 sidebar_label: "This endpoint is used to get the user information."
 hide_title: true
 hide_table_of_contents: true
-api: eJx9kkFvGyEQhf8KemeUdVrJsjk1qtIot6p1e/H6QHYnXloWKMxadhH/vWJtNXKq5gJiHg9G35sM1vsEtYWeePDR/NZsvMNOoqfURRPmo8IDseCBxJQoCuOefRznmzeQiJSCd4kSVMa7xaJu1+7Nf5ydd0yOq0GHYE03K82PVF0ZdNRjsASF3DohWtCojW2hRAumxB/qctNTC3nRj6Gqt8vV++VysV6tL/XoLaWzT/ejcS1aV1qHUkqRGIkH30NhTwyJoHmAQnNFpKntQyJRPFCsxDKmaKEwMIekmiYPPnFROfjIBRIHHY1+smcqVTtjedaTZShY32k7l4tE9VzLq/ViUdvbSVRmVWTDM4tP5ige3YEc+3gSH30k8eX+60bcfX6s31JMZ+jfb89PJx71jNPpkeYwTBLk+uCNY2FSTaYX7MX+jYyv8swvwb05GHwK9UOmIzfBauNqQzO1fKH8eu4kZs47eSG2Rc5POtG3aEup5V8TxRPUdvcCuJ6KxEC6pzgH85NOULjrOgo8J2Gn2sc/I1bp/g3/4X6DUv4A1MYLag==
+api: {"tags":["authorization"],"description":"Get the user information.","responses":{"200":{"description":"The user information.","content":{"application/json":{"example":"{\n  \"email\": \"test@test.de\",\n  \"exp\": 1683660989,\n  \"roles\": \"admin\"\n}\n"}}}},"method":"get","path":"/authorization/user","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to get the user information.","description":{"content":"Get the user information.","type":"text/plain"},"url":{"path":["authorization","user"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

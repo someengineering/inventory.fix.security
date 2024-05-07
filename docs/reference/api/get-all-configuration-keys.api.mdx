@@ -5,10 +5,11 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Get all configuration keys"
 hide_title: true
 hide_table_of_contents: true
-api: eJzFUsFu2zAM/RWBx0CI0502YRhQDGnR27Blu6Q5yA5jqZUlTaSDGIb/faC9rc2wneeLLFIkH997IxyRmuIz+xTBwGq1vWQsvsPINqxWRu2cJ3X76UF5UjGxIrZ1QGXjUXW+daxqVNTXT9iwSifVOBtbXL+vS/XhMd4jKxuCalI8+bYvVsaoZxxI+ajYoaKBGLv1YwQNbFsCs4flNRw0FKScIiGBGeHNZiPHNeDbv3Zfg5YujJGlxOYcfDOnqyeSuhGocdhZ+eMhIxiwpdgBNHjGjl7FiYuPLUzzp6FDdukIBlpk0JAtOzBQLRgINBCWMxZZZIS+BDDgmDOZqhpdIp7MmFPhCTScbfFC5jxNcst6J9sHBgMhNTbM4UmD1Fyn377bbATVQYOPpzQj9hwE8p2/qId4xsipDOpjKqg+b7/sREYZi4UW8r7dLK2JOzuTEm0n9f+WDfQ1/+MLzf/ZO4tYjBeucrA+ymYz/eNPjX75isRYC9t7GMfaEn4tYZok/L3HMoDZH17EkdukwaE9YplFfcZBjNc0mHlWMfSzf/40mSjz2y332x1M0w8Qwy3c
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys in the system.\n","tags":["config"],"responses":{"200":{"description":"All configuration keys.","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}},"method":"get","path":"/configs","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get all configuration keys","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys in the system.\n","type":"text/plain"},"url":{"path":["configs"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";
