@@ -5,10 +5,11 @@ description: "Delete the subscriber with a defined id."
 sidebar_label: "Delete by id"
 hide_title: true
 hide_table_of_contents: true
-api: eJyVUk1v1DAQ/SvWO4FkkS3iAL4hupUqcUBl4bKKkHc9aSy8dmpPlkaR/ztykmpJQQhOSWYmM+9rhKF0jLZjGzwUrskRk+CWROoPpXOgKH5YboUWhhrryQhrXkGC9X2C2mOZmzYk1BKdjvpETLG0R3h9Iihc1n2zBhK2nOs0t5DPMOxaEtaQZ9tYiiI0z+BAItJDbyMZKI49SaRjSycNNYKHbrrG0fp75FyX4dQFnyiV/uvNm/JYX/RBHINn8oycJU7EbTBQMJMakDNOheoCohpXhDIkEsXzE+k+Oii0zF1SVTW2IXFWYxcil8mzjlYf3Iyo9GZIje4dQ8GFo3ZTOUuUf9btt+82G+SJmvVNmFhbdoX2jX0Ut/5MnkMcxIcQSdxtP+/E+0+35SzFNBP+ejWvTnzSvixYTFrsPwxi8mil0ognjf4vJrMhTI9cdU5bXy5P8oyLrHusvFXrpNRyUWiPcTzoRF+iy7mUH3qKA9S+vgg6aW9sKu8GqtEu0V9ovLhbcvRS/EPo/shkKWo/TL66vnxB4jsNv4U+17+G63r7cbvbIuefAvk2JQ==
+api: {"description":"Delete the subscriber with a defined id.","tags":["subscriptions"],"parameters":[{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}],"responses":{"204":{"description":"no content"}},"method":"delete","path":"/subscriber/{subscriber_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete by id","description":{"content":"Delete the subscriber with a defined id.","type":"text/plain"},"url":{"path":["subscriber",":subscriber_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the subscriber","type":"text/plain"},"type":"any","value":"","key":"subscriber_id"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
 info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

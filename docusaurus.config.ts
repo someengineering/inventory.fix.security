@@ -230,22 +230,26 @@ const config: Config = {
           fixcoreEdge: {
             specPath: 'openapi/fixcore-edge.yml',
             outputDir: `docs/reference/api`,
+            disableCompression: true,
+            hideSendButton: true,
             sidebarOptions: { groupPathsBy: 'tag', categoryLinkSource: 'tag' },
-          },
+          } satisfies OpenApiDocsOptions,
           ...versions
             .map((version) => ({
               [`fixcore${version.substring(0, version.indexOf('.'))}`]: {
                 specPath: `openapi/fixcore-${version}.yml`,
                 outputDir: `versioned_docs/version-${version}/reference/api`,
+                disableCompression: true,
+                hideSendButton: true,
                 sidebarOptions: {
                   groupPathsBy: 'tag',
                   categoryLinkSource: 'tag',
                 },
-              },
+              } satisfies OpenApiDocsOptions,
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },
-      } satisfies OpenApiDocsOptions,
+      },
     ],
     [
       '@1password/docusaurus-plugin-stored-data',

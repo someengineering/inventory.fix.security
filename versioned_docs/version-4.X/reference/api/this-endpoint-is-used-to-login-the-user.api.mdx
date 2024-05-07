@@ -5,10 +5,11 @@ description: "Authenticate the user. This endpoint needs to be accessed from a b
 sidebar_label: "This endpoint is used to login the user."
 hide_title: true
 hide_table_of_contents: true
-api: eJzNks+OEzEMxl/F+DxqCyfIbYV2UW8ICpeqB3fGbSKlSbA9Zcso744ys9o/PAGnyHHyffH3y4RGZ0W3RxrNZwl/yEJOeOhwYO0llLl0eDea52ShJ2MwzzAqywp2PihwGkoOySAxDwqW4chAfc+qPMBJ8gUIjpJ/K8s72BoEhZJVwzE2LbJnwdYRHoJwbzw0JUrZPAvQi3/ICZTlyrLCDoW15KSs6Cb8sNm05e3Td54h5nNIUOjMK6y1wwubzwM6PLNhh4XMo8P1fAw7XORbLhOOEtGhNyvq1uvJZ7XqppLFKnZ4JQl0jIt96y3+JxqjocOYe4rzdu2w3Xnb/vhps8Fa66HDkE65NS1YZHT4EB5hm66cLMsNPmdh+Hb/fQd3X7fNlkWX6X6+X6TVLpSaQKILz1O/JhO05TsnukTxjBD/IT1hn5Nxsv8Zut1Km9H40dYlUkgtgxnU9MRyjwvLQ/dEZY/TdCTlHxJrbdu/RpYbuv3hBWKrXn+OL/c7rPUvJCUYRQ==
+api: {"tags":["authorization"],"description":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","responses":{"200":{"description":"The login page."}},"method":"get","path":"/login","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to login the user.","description":{"content":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","type":"text/plain"},"url":{"path":["login"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

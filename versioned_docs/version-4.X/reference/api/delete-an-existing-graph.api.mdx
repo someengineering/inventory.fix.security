@@ -5,10 +5,11 @@ description: "Delete an existing graph"
 sidebar_label: "Delete an existing graph"
 hide_title: true
 hide_table_of_contents: true
-api: eJytU02L2zAQ/StiTi2ITdpTq9vSTUug0LJNe1lCmdjjWKwsaaVxPjD670W24026YaHQk0DzZua9NzMdMG4jqAfYBvT17wYtbqkhy7CW4DFgQ0whIzqw2BCoEalLkKAtKPDINUigAzbeZEClDyChpFgE7Vm7DFrVJHRJlnWlKQhXCa5J9KVAQqCnVgcqQXFoSUIsamoQVAd89Llk5KDtFlKSEw0OrS2Q6UTjqaVwhCu5G+cMoYX0N6dlJqGjmGQKHUUklsIQ7uiZoSip0lbnNCk2LYu99kO4RMYbSOssIXpnI8Xc+f18np/Ldt8exb4mO+SRISbhPAXMYbHHKGJbFBRj1RqQUDjLeQxZBx145g1mmd2Zz19GbrlUeQMppRcS74Y+aAUddGRtt5PnDXHtSlAwFAA5DFLBrEfMutOcUzaVwu60Bm0woKBm9lHNZl3tIifVeRc4I3cYNG7M4EOODUZU2BoGBcYVaPrvJCHnXIY/fJzPs5B1HmrlevWae7Wf9UEs7Y4su3AUn1wgcb/4sRK335e5LYU4SP71bigducHesHFfXrHiwrNpb85sT3JQ3Y0ejecCEtR0DWs5yn2ArttgpJ/BpJS/h83M1pU6Zm9KUBWaSC86T0P/f7spr8t5pOPlDe3QtBnWL/NpiP9I+s39eMdvxev3fpXS+In2eE7nRHXyOa2ThJqwpNDTG8K3RUGezxLPa6/Ptv1u8XWxWkBKfwAB8bT6
+api: {"tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}},{"name":"truncate","in":"query","schema":{"type":"boolean"},"description":"If this parameter is set, leave the graph definition, but wipe the data."}],"responses":{"200":{"description":"Ok when the delete operation was successful","content":{"text/plain":{"example":"Graph deleted."}}}},"description":"Delete an existing graph","method":"delete","path":"/graph/{graph_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete an existing graph","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"If this parameter is set, leave the graph definition, but wipe the data.","type":"text/plain"},"key":"truncate","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"text/plain"}],"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

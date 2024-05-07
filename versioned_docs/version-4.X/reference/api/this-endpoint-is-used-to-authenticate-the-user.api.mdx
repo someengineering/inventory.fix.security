@@ -5,10 +5,11 @@ description: "Authenticate the user. This endpoint needs to be accessed from a b
 sidebar_label: "This endpoint is used to authenticate the user."
 hide_title: true
 hide_table_of_contents: true
-api: eJzNVMFu1DAQ/ZVhztluUS+QW6lA6omKLlyqPTjxhBgSjzuedLtE+Xc0ybZdCoIeySWx5+mN/d6bjOgp1xKSBo5Y4vmgLUUNtVMCbQmGTHICmzZkoOgTh6gQiXwGZagIXF1TzuShEe7BQSW8yySv4FIhZEicc6g643L6SGgVIR+EaiVvTC6ytiTgnvoHjpBJ7khOsEB1XzOWN2gAlvBjruO2QKHbgbK+Y7/HcsSao1JU+3QpdQei9f1qt9utGpZ+NUhHsWZP3kC5bql39qX7RFgiV9+oViwwCScSDZStSr0L3REsq4T4FYtn+m1aghkK3Dzph1OByeW8Y/Ev43hA/0bzINvLaB7QMEgHrlGSXzyohZySP8Fpfow9J455ufLZ6Zm9/sKqPNPlRHVoAvm5TYjzpmkNu6AtODC1ITlxPdkRnPdL0wJ70pY9lpg4z6I7bbHE9VEOCAtccmABGHGQDktsVVMu1+ux5axTOSYWnbDAOyfBVd1yA6stV2jc0CmW2HHtunnbLGF5Vn7z9vTUxNgWGGLDs8hBO1P5Q7iHy3hHUVn2cMFC8On99QbOry6tLUleBPryeqHO2rtoBNH1NAt3PEIhmwlL9P84cs/tPEr2fzykSyCV7nWdOheiSTH7NR6cXQb40dltcfDoBsexcpk+SzdNtn07kOyxvNk+WWqrqcCWnCeZo/Cd9ljixSLMamPdDd4Ndop/j7/Z/BjAq4/XGyywOvxHevZGcoQujhd2lGn6CUre1/8=
+api: {"description":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","tags":["authorization"],"requestBody":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"email":{"type":"string","description":"The email of the user."},"password":{"type":"string","description":"The password of the user."},"redirect":{"type":"string","description":"The redirect url after the user is created."}}}}}},"responses":{"303":{"description":"The redirect to the specified url in the form with a code parameter added."}},"method":"post","path":"/authenticate","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to authenticate the user.","description":{"content":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","type":"text/plain"},"url":{"path":["authenticate"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/x-www-form-urlencoded"}],"method":"POST","body":{"mode":"urlencoded","urlencoded":[]}}}
 sidebar_class_name: "post api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

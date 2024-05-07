@@ -5,10 +5,11 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Delete a node with the given node id."
 hide_title: true
 hide_table_of_contents: true
-api: eJzFU1GL1DAQ/ithnnQJ11V80CCCeCsciMi5+rK3HNnttImmSS+ZrruU/neZtKt7pxynCD41nUxmvm++b3ooMW2jbckGDwpms8W+xWgb9KTdbKbE0tgkXn+4EDYJH0gk0huHQvtSNLY2JDYoUrf5glsSoRJbo32NZy83sXh15c/RIaHQwocSxTdLRpBBUdsd+jFmy7MrDxJI1wnUCjh43Wiva2QMsJbQ6qgbJIyc0IPXDYKCOurWXNsSJFhG3moyIAH3umkdJ1R2D/IOvaXhjujJVhYj481wuBRIiHjT2YglKIodSkhbg40G1QMdWi6ZKFpfwzDIHzAy3l9QPKQrv/yjpmtOTm3wCRPfP50/48/tXu/zUJMo8+RLxgoNkgklKBiDIEeYCorMvOiPsxwKBlX0E6kBJCSMu+Pku+hAgSFqkyqK3oREg+rbEIkzdzpatkbGxncjuEp3jkCBC1vtcniQwG9uXz9/MZ/DkElaX4XM31IW8q3diwu/Q08hHsSbEFFcLj4u2ZTcFmMaqX9+MpZO1GjPBSaJHmTCu6L1sA2e2IH/cylGBxDuqWidtp4JZhX6ScIVHM2rThZispY6mnMtJ0FW0PcbnfBTdMPA4ZsO4wHUav1Tvyx1aROfS1CVdgnvGc6jy8nAj8X92/VbMlNQ+0N2kOv4DyR8xcPpjvPC/UNI03z+AtFxosP6dK/OF+8WywUMw3ddfs2d
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a node with the given node id.\n","tags":["node_management"],"parameters":[{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}},{"name":"node_id","in":"path","description":"The identifier of the node","required":true,"schema":{"type":"string"}}],"responses":{"204":{"description":"Node is deleted"}},"method":"delete","path":"/graph/{graph_id}/node/{node_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete a node with the given node id.","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a node with the given node id.\n","type":"text/plain"},"url":{"path":["graph",":graph_id","node",":node_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"},{"disabled":false,"description":{"content":"(Required) The identifier of the node","type":"text/plain"},"type":"any","value":"","key":"node_id"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

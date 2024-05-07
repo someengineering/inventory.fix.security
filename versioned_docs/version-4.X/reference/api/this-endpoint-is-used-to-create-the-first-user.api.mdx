@@ -5,10 +5,11 @@ description: "Create the first user from the create first user login form."
 sidebar_label: "This endpoint is used to create the first user."
 hide_title: true
 hide_table_of_contents: true
-api: eJylVE2P0zAQ/SvWnNMPtBfIDVYg7YkVW7hUFXLjSWNwbO94st0S5b+jsctSdVmoRC7xx/PzmzczHoH1LkG9Bj1wF8j+0GyDh00FBlNDNuZpDdeEmlFxh6q1lFgNCUm1FPq81pTtky0XdtarNlA/hwoI7wdM/C6YA9QjNMEzepahjtHZJt+6eJzt9/uZnJkN5NA3waARUGo67LWM+BARagjbb9gwVBApRCS2mApvH7U/nAATk/U7OA9nJZoLWHnd4xymCtrBOZlcdlzQ+awKbfZAws482GvrLiPJ0GcEUae0D2Qu4/iFfpHmK2FEzZexFSyal2kJjSVx/0K+glYDOaVbRnpiUzYdC8fMYcqfsKcYfCr5vFpeye8vrBwyXYrY2NaiyddYXwo1F5+Q9shdMFBDDClXjeYOaliU22e5bGciCSpISA9I0hMjDOSgho45pnqxGLuQeKrHGIgnqOBBk9VbV6TKXtHa6sEx1OBCo11ellwEOtt+/Wa5lKg3FVjfhuymZSd2frCP6sY/oOdAB3UdCNWn93cr9fb2Rq5FSsWJL68KdeJeeyEo1QurziaF3sRgPYvLQ0IjVjV/6uL5ed5O+vN/+/5YH4yPvIhOWy+Cs6vjMQlreJ6ETXW0cw3juNUJP5ObJlm+H5AOUK83v92X2VRBh9og5ax9x4MoLzHMViJB4G4QKf9+byQjTwVz+/FuBRVsjw9XH4yQnKCr04lImaafVxrcGA==
+api: {"tags":["authorization"],"description":"Create the first user from the create first user login form.","requestBody":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"company":{"type":"string","description":"The company name."},"fullname":{"type":"string","description":"The full name of the user."},"email":{"type":"string","description":"The email of the user."},"password":{"type":"string","description":"The password of the user."},"password_repeat":{"type":"string","description":"The repeated password of the user."},"redirect":{"type":"string","description":"The redirect url after the user is created."}}}}}},"responses":{"303":{"description":"The redirect to the specified url in the form."}},"method":"post","path":"/create-first-user","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to create the first user.","description":{"content":"Create the first user from the create first user login form.","type":"text/plain"},"url":{"path":["create-first-user"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/x-www-form-urlencoded"}],"method":"POST","body":{"mode":"urlencoded","urlencoded":[]}}}
 sidebar_class_name: "post api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

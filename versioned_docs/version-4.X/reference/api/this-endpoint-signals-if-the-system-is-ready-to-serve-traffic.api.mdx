@@ -5,10 +5,11 @@ description: "This endpoint signals if the system is ready to serve traffic."
 sidebar_label: "This endpoint signals if the system is ready to serve traffic."
 hide_title: true
 hide_table_of_contents: true
-api: eJytkk1v3CAQhv8Kes+odnNKuUVVWkU9pEo3uax8IPZ4jYqBwOxqLYv/XoGTNKlyLBc0n7w8MytYHxLUHmlJTDM6iUgpeJcoQa24aNtyDZT6aAIb76Cwm0wSL2mi9wOJZA5O2yQFT5oFTyS2hqJm6mH5BIneOybHpSHTmZtgtXHFSv1Es67+JRAUEkfjDpCgs56DLa6LtlXi9gdyOfIjReSG4I3jFzHCjB8pEexFongiwVGPo+mLtJl48gMUDsSQCJonKDRbaVPrIFHLYuG14hgtFCbmkFTTrJNPnNUafOQMiZOORj/aDWKJbRRHfbQMBet7bas7S5Sa9+HLL21bPtpJGDf6CsZwxfDNnMWNO5FjHxfx1UcSd9e/duLq5015lmLaiDx83lonnnVl7PRM/4PUO/CvA3szzyw3NuszxdfdKqtVOHbymcge6/qoE91Hm3NxPx0pLlD77i/AYmWJifRAsYL/TQsUrvqeAlfS9vivgu7NQL9f75DzH/0p/vw=
+api: {"tags":["system"],"responses":{"200":{"description":"This response code signals, that the system is ready.","content":{"text/plain":{"schema":{"type":"string","example":"200: OK"}}}}},"description":"This endpoint signals if the system is ready to serve traffic.","method":"get","path":"/system/ready","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint signals if the system is ready to serve traffic.","description":{"type":"text/plain"},"url":{"path":["system","ready"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

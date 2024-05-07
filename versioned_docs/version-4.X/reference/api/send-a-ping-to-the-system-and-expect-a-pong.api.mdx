@@ -5,10 +5,11 @@ description: "Send a ping to the system and expect a pong."
 sidebar_label: "Send a ping to the system and expect a pong."
 hide_title: true
 hide_table_of_contents: true
-api: eJyVkj1PwzAQhv+K9c4WKUzgrUKAuiEoLFUGNzkSC8c29rU0ivzfkRPE14YX6+58H+9znsC6S1A7pDExDaglIqXgXaIENeFitSpXS6mJJrDxDgrbnkTwrhPapXeKkGi8Y3JcnjKduApWG1es1PQ06Nk/BoJC4mhcBwk66SHY4iqlkMuRfxo9kmuFFsG4TrAX3JNY5hTatYJOgRouce+6M0gMxL1vodARQyJo7qFQLSlVWPomikeKRfOEQ7RQ6JlDUlU19T5xVlPwkTMkjjoavbcLiBJbSLzog2UoWN9oO7uzRMn5Hb68Wq2KqlrCuBc/IzA8C741J7FxR3Ls4yiufSTxcPO4Fev7TWlLMS3yn8+X0okHPdN0eqD/Y/nF9GsRP/aU5UJi+kT29RskZmi1/JS/wzTtdaKnaHMu7rcDxRFqV3/TKlaW6Em3FGfKrzRCYd00FHjGag9/B6h/LO/uZoucPwBQNuHE
+api: {"tags":["system"],"responses":{"200":{"description":"The pong answer","content":{"text/plain":{"schema":{"type":"string","example":"pong"}}}}},"description":"Send a ping to the system and expect a pong.","method":"get","path":"/system/ping","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Send a ping to the system and expect a pong.","description":{"type":"text/plain"},"url":{"path":["system","ping"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

@@ -5,10 +5,11 @@ description: "Get root of a specific graph"
 sidebar_label: "Get root of a specific graph"
 hide_title: true
 hide_table_of_contents: true
-api: eJyFVMFu2zAM/RWBpw0QmrTrhk23buiKXoai63YJgkG16FitLakS0yUQ9O8DZTdNkaI72SYfycdH0hlIrxKoBayiDt2fQTu9wgEdwVJC0FEPSBgZkcHpAUFNSGtAgnWgIGjqQAJu9BB6BrR2AxIMpibaQNYz6KZDYQ06sq3FKHwrqENRU4GEiA9rG9GAorhGCanpcNCgMtA2cMpE0boVlLJkcAreJUzsP5nP+XFYrKYWfy11tVL0noTzBkFC4x1xhyqDDqG3jea42V3i4HxY3N/eYUMgQRtjGar7q+gDRrJMYqQc9iwZ7q0zh/RfE4WRoxw2VYJHUMqemhmsAQXHJx9OP36qUgUfCc1zFSBMdBQwMn/5NKWvmgbN342lLSi48NTpoeYmS3VOP1iOUth0Oj99S0bjkcmRwI1NVJO8hF4gjRL7VmiRAja2tc1uvgNS55nqClnHujEKZtU9y08LVUBCwvj4tG/r2IOCjigkNZvlzicqKnP7jHzU0erbftSbfWMDrV73BAp63+i+mosEjnnp/vxlPufel7zEra+zmmT5bjfi0j2iIx+34puPKK7Pf96Is6tLLosxjT3/Ph5Tpyq02t3Hf7R4IdxuQwg3NAu9to6T1s7zpNN0myBB7U5vKaeWF5DzrU74K/alsPlhjXELarF8VqiKaWzidwOq1X3CAx67o4B319M1vhdvX+2r1Cejdts6o37NXyDhHrf7/46yLBI61AZjpTe6z5oGA+0FHtwnD2y3TRfnN1DKP+t4nu8=
+api: {"tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"The graph with the root node","content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}}}},"404":{"description":"The graph does not exist"}},"description":"Get root of a specific graph","method":"get","path":"/graph/{graph_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get root of a specific graph","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";

@@ -5,10 +5,11 @@ description: "Create a new graph"
 sidebar_label: "Create a new graph"
 hide_title: true
 hide_table_of_contents: true
-api: eJx9U01v2zAM/SsGTxsgNGn3gU23rtiGXrag7XYJgoG1mFitLakSkyYw9N8Hym6aLsV8sS0+kY/vkT0wrhLoOawihuZPhw5X1JFjWCgIGLEjpiiIHhx2BHpEWgMKrAMNAbkBBbTFLrQCWNotKDCU6mgDWy+gm4Yqa8ixXVqKlV9W3FBVUoGCSA9rG8mA5rgmBaluqEPQPfAuSMrE0boV5LwQcAreJUoSP5tO5XVcrI6ETGYoUT1abkrF6D1XzhsCBbV3LJ3qHjCE1tYo9yd3SZL0xyT87R3VDArQGCtQbGfRB4pshcxAPRyc9HBvnTlu4zVxBDnIYlMheAI5H6jagzWg4fTs3fsPH4tkwUcm81wFmBKfBIrCXz259QW5Q/mvLe9Aw3fPDXYlN1sufv0QObI8/xK7KCJWWDl63JvVETde6gWfRI3iv4ZJiU/6p/HIoCBR3DxNzzq2oKFhDklPJn3jE2fdSxOC3GC0eNsOqklscHWJ65ZBQ+trbMtxViB3XoY/fZ5OpYOFjOTSF8XH5r7ZbXXpNuTYx1114SNVV1+vb6rz2aWUpZiGVn+fDqlTkUvvp/1VCV6otHeXacuT0KJ1kqr024/qjPsFCvR+fRZqbHQOfX+LiX7FNmc5flhT3IGeL551KRIam+TbgF5im+iIx36g4c3VuFFvq/9v3qvUx0N0u+JMu5Y/UHBPu8P9z4usoCE0FAu9IXxe1xT44OLRbolN+yGa/by+gZz/AlM0ixU=
+api: {"tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"The created graph with the root node","content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}}}}},"description":"Create a new graph","method":"post","path":"/graph/{graph_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Create a new graph","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"POST"}}
 sidebar_class_name: "post api-method"
 info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import ApiTabs from "@theme/ApiTabs";
