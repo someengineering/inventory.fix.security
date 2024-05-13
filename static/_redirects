@@ -2,7 +2,6 @@ https://fix-inventory.netlify.app/*           https://inventory.fix.security/:sp
 https://main--fix-inventory.netlify.app/*     https://inventory.fix.security/:splat 301!
 https://fixinventory.io/*                     https://inventory.fix.security/:splat 301!
 https://inventory.fix.tt/*                    https://inventory.fix.security/:splat 301!
-https://origin.inventory.fix.security/*       https://inventory.fix.security/:splat 301!
 
 /js/script.js                                 https://plausible.io/js/script.js 200
 /api/event                                    https://plausible.io/api/event 200
