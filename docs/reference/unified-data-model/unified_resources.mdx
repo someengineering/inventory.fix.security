@@ -228,6 +228,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_s3_bucket {
 }
+class azure_blob_container {
+}
 class bucket {
 }
 class digitalocean_space {
@@ -245,6 +247,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 bucket <|--- aws_s3_bucket
+bucket <|--- azure_blob_container
 resource <|--- bucket
 bucket <|--- digitalocean_space
 @enduml
@@ -1422,6 +1425,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_efs_file_system {
 }
+class azure_file_share {
+}
 class network_share {
 **share_encrypted**: boolean
 **share_iops**: int64
@@ -1443,6 +1448,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 network_share <|--- aws_efs_file_system
+network_share <|--- azure_file_share
 resource <|--- network_share
 @enduml
 ```
