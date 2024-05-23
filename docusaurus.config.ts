@@ -33,9 +33,6 @@ const config: Config = {
     isProd,
     posthogProjectApiKey: process.env.POSTHOG_PROJECT_API_KEY,
   },
-  stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap',
-  ],
   scripts: isProd
     ? [
         {

@@ -1,4 +1,5 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import '@fontsource-variable/plus-jakarta-sans';
 import CookieConsent from '@site/src/components/CookieConsent';
 import PosthogPageView from '@site/src/components/PosthogPageView';
 import { GithubProvider } from '@site/src/context/GithubContext';
