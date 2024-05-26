@@ -51,7 +51,7 @@ function BreadcrumbsItem({
 export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
 
-  if (!breadcrumbs || !breadcrumbs.length) {
+  if (!breadcrumbs || breadcrumbs.length < 2) {
     return null;
   }
 
