@@ -1962,7 +1962,7 @@ class aws_ec2_snapshot {
 }
 class aws_rds_snapshot {
 }
-class azure_snapshot {
+class azure_virtual_machine_snapshot {
 }
 class digitalocean_snapshot {
 }
@@ -1989,7 +1989,7 @@ class snapshot {
 }
 snapshot <|--- aws_ec2_snapshot
 snapshot <|--- aws_rds_snapshot
-snapshot <|--- azure_snapshot
+snapshot <|--- azure_virtual_machine_snapshot
 snapshot <|--- digitalocean_snapshot
 resource <|--- snapshot
 @enduml

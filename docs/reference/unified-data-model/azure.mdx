@@ -125,6 +125,8 @@ class azure_extended_location {
 }
 class azure_managed_service_identity {
 }
+class azure_principalid_clientid {
+}
 class azure_private_endpoint {
 }
 class azure_private_endpoint_ip_configuration {
@@ -134,8 +136,6 @@ class azure_private_link_service_connection {
 class azure_private_link_service_connection_state {
 }
 class azure_resource {
-}
-class azure_user_assigned_identity {
 }
 class gateway {
 }
@@ -271,6 +271,8 @@ class azure_extended_location {
 }
 class azure_managed_service_identity {
 }
+class azure_principalid_clientid {
+}
 class azure_private_endpoint {
 }
 class azure_private_endpoint_ip_configuration {
@@ -280,8 +282,6 @@ class azure_private_link_service_connection {
 class azure_private_link_service_connection_state {
 }
 class azure_subnet {
-}
-class azure_user_assigned_identity {
 }
 class azure_web_application_firewall_policy {
 }
@@ -1119,82 +1119,6 @@ class azure_dedicated_host_group_instance_view {
 </div>
 </details>
 
-## `azure_deleted_account`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_deleted_account data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_deleted_account {
-}
-class azure_resource {
-}
-class resource {
-}
-azure_resource <|--- azure_deleted_account
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_deleted_account resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_deleted_account {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
 ## `azure_disk`
 
 <ZoomPanPinch>
@@ -1320,8 +1244,6 @@ class azure_key_vault_and_secret_reference {
 }
 class azure_purchase_plan {
 }
-class azure_snapshot {
-}
 class azure_supported_capabilities {
 }
 class azure_virtual_machine {
@@ -1330,9 +1252,11 @@ class azure_virtual_machine_base {
 }
 class azure_virtual_machine_scale_set_instance {
 }
+class azure_virtual_machine_snapshot {
+}
 azure_disk -[#1A83AF]-> azure_disk_encryption_set
 azure_disk -[#1A83AF]-> azure_disk_type
-azure_disk -[#1A83AF]-> azure_snapshot
+azure_disk -[#1A83AF]-> azure_virtual_machine_snapshot
 azure_disk_access -[#1A83AF]-> azure_disk
 azure_virtual_machine -[#1A83AF]-> azure_disk
 azure_virtual_machine_base -[#1A83AF]-> azure_disk
@@ -2171,9 +2095,9 @@ class azure_express_route_port {
 }
 class azure_managed_service_identity {
 }
-class azure_resource {
+class azure_principalid_clientid {
 }
-class azure_user_assigned_identity {
+class azure_resource {
 }
 class resource {
 }
@@ -2221,7 +2145,7 @@ class azure_express_route_port {
 }
 class azure_managed_service_identity {
 }
-class azure_user_assigned_identity {
+class azure_principalid_clientid {
 }
 azure_express_route_circuit -[#1A83AF]-> azure_express_route_port
 @enduml
@@ -2599,9 +2523,9 @@ class azure_firewall_policy_transport_security {
 }
 class azure_managed_service_identity {
 }
-class azure_resource {
+class azure_principalid_clientid {
 }
-class azure_user_assigned_identity {
+class azure_resource {
 }
 class policy {
 }
@@ -2675,7 +2599,7 @@ class azure_firewall_policy_transport_security {
 }
 class azure_managed_service_identity {
 }
-class azure_user_assigned_identity {
+class azure_principalid_clientid {
 }
 azure_firewall -[#1A83AF]-> azure_firewall_policy
 @enduml
@@ -2722,9 +2646,9 @@ class azure_fleet_hub_profile {
 }
 class azure_managed_service_identity {
 }
-class azure_resource {
+class azure_principalid_clientid {
 }
-class azure_user_assigned_identity {
+class azure_resource {
 }
 class resource {
 }
@@ -2774,7 +2698,7 @@ class azure_managed_cluster {
 }
 class azure_managed_service_identity {
 }
-class azure_user_assigned_identity {
+class azure_principalid_clientid {
 }
 azure_fleet -[#1A83AF]-> azure_managed_cluster
 @enduml
@@ -3136,85 +3060,6 @@ class azure_ip_group {
 class azure_virtual_network {
 }
 azure_virtual_network -[#1A83AF]-> azure_ip_group
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `azure_kubernetes_snapshot`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_kubernetes_snapshot data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_kubernetes_snapshot {
-}
-class azure_resource {
-}
-class resource {
-}
-azure_resource <|--- azure_kubernetes_snapshot
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_kubernetes_snapshot resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_kubernetes_snapshot {
-}
-class azure_managed_cluster {
-}
-azure_managed_cluster -[#1A83AF]-> azure_kubernetes_snapshot
 @enduml
 ```
 
@@ -3674,8 +3519,6 @@ class azure_istio_plugin_certificate_authority {
 }
 class azure_istio_service_mesh {
 }
-class azure_kubernetes_snapshot {
-}
 class azure_load_balancer {
 }
 class azure_managed_cluster {
@@ -3724,6 +3567,8 @@ class azure_managed_cluster_service_principal_profile {
 }
 class azure_managed_cluster_sku {
 }
+class azure_managed_cluster_snapshot {
+}
 class azure_managed_cluster_storage_profile {
 }
 class azure_managed_cluster_windows_profile {
@@ -3751,9 +3596,88 @@ class azure_windows_gmsa_profile {
 azure_fleet -[#1A83AF]-> azure_managed_cluster
 azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
 azure_managed_cluster -[#1A83AF]-> azure_disk_encryption_set
-azure_managed_cluster -[#1A83AF]-> azure_kubernetes_snapshot
 azure_managed_cluster -[#1A83AF]-> azure_load_balancer
+azure_managed_cluster -[#1A83AF]-> azure_managed_cluster_snapshot
 azure_managed_cluster -[#1A83AF]-> azure_virtual_machine_scale_set
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_managed_cluster_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_managed_cluster_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_managed_cluster_snapshot {
+}
+class azure_resource {
+}
+class resource {
+}
+azure_resource <|--- azure_managed_cluster_snapshot
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_managed_cluster_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_managed_cluster {
+}
+class azure_managed_cluster_snapshot {
+}
+azure_managed_cluster -[#1A83AF]-> azure_managed_cluster_snapshot
 @enduml
 ```
 
@@ -4355,9 +4279,9 @@ class azure_network_virtual_appliance {
 }
 class azure_partner_managed_resource_properties {
 }
-class azure_resource {
+class azure_principalid_clientid {
 }
-class azure_user_assigned_identity {
+class azure_resource {
 }
 class azure_virtual_appliance_additional_nic_properties {
 }
@@ -4411,9 +4335,9 @@ class azure_network_virtual_appliance_sku {
 }
 class azure_partner_managed_resource_properties {
 }
-class azure_subnet {
+class azure_principalid_clientid {
 }
-class azure_user_assigned_identity {
+class azure_subnet {
 }
 class azure_virtual_appliance_additional_nic_properties {
 }
@@ -5791,141 +5715,6 @@ class azure_security_partner_provider {
 </div>
 </details>
 
-## `azure_snapshot`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_snapshot data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_copy_completion_error {
-}
-class azure_creation_data {
-}
-class azure_disk_security_profile {
-}
-class azure_encryption {
-}
-class azure_encryption_settings_collection {
-}
-class azure_encryption_settings_element {
-}
-class azure_extended_location {
-}
-class azure_image_disk_reference {
-}
-class azure_key_vault_and_key_reference {
-}
-class azure_key_vault_and_secret_reference {
-}
-class azure_purchase_plan {
-}
-class azure_resource {
-}
-class azure_snapshot {
-}
-class azure_snapshot_sku {
-}
-class azure_supported_capabilities {
-}
-class resource {
-}
-class snapshot {
-}
-resource <|--- azure_resource
-azure_resource <|--- azure_snapshot
-snapshot <|--- azure_snapshot
-resource <|--- snapshot
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_snapshot resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_copy_completion_error {
-}
-class azure_creation_data {
-}
-class azure_disk {
-}
-class azure_disk_security_profile {
-}
-class azure_encryption {
-}
-class azure_encryption_settings_collection {
-}
-class azure_encryption_settings_element {
-}
-class azure_extended_location {
-}
-class azure_image_disk_reference {
-}
-class azure_key_vault_and_key_reference {
-}
-class azure_key_vault_and_secret_reference {
-}
-class azure_purchase_plan {
-}
-class azure_snapshot {
-}
-class azure_snapshot_sku {
-}
-class azure_supported_capabilities {
-}
-azure_disk -[#1A83AF]-> azure_snapshot
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
 ## `azure_ssh_public_key_resource`
 
 <ZoomPanPinch>
@@ -6217,6 +6006,165 @@ azure_storage_account -[#1A83AF]-> azure_table
 </div>
 </details>
 
+## `azure_storage_account_deleted`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_account_deleted data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_storage_account_deleted {
+}
+class resource {
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_storage_account_deleted
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_account_deleted resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_storage_account_deleted {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_storage_account_usage`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_account_usage data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_storage_account_usage {
+}
+class azure_usage {
+}
+class azure_usage_name {
+}
+class resource {
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_storage_account_usage
+azure_usage <|--- azure_storage_account_usage
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_account_usage resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_storage_account_usage {
+}
+class azure_usage_name {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `azure_storage_sku`
 
 <ZoomPanPinch>
@@ -6297,89 +6245,6 @@ class azure_storage_account {
 class azure_storage_sku {
 }
 azure_storage_account -[#1A83AF]-> azure_storage_sku
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `azure_storage_usage`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_usage data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
-class azure_storage_usage {
-}
-class azure_usage {
-}
-class azure_usage_name {
-}
-class resource {
-}
-resource <|--- azure_resource
-azure_resource <|--- azure_storage_usage
-azure_usage <|--- azure_storage_usage
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_storage_usage resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_storage_usage {
-}
-class azure_usage_name {
-}
 @enduml
 ```
 
@@ -8457,6 +8322,141 @@ class azure_virtual_machine_size {
 azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
 azure_virtual_machine_base -[#1A83AF]-> azure_virtual_machine_size
 azure_virtual_machine_scale_set_instance -[#1A83AF]-> azure_virtual_machine_size
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_virtual_machine_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_copy_completion_error {
+}
+class azure_creation_data {
+}
+class azure_disk_security_profile {
+}
+class azure_encryption {
+}
+class azure_encryption_settings_collection {
+}
+class azure_encryption_settings_element {
+}
+class azure_extended_location {
+}
+class azure_image_disk_reference {
+}
+class azure_key_vault_and_key_reference {
+}
+class azure_key_vault_and_secret_reference {
+}
+class azure_purchase_plan {
+}
+class azure_resource {
+}
+class azure_snapshot_sku {
+}
+class azure_supported_capabilities {
+}
+class azure_virtual_machine_snapshot {
+}
+class resource {
+}
+class snapshot {
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_virtual_machine_snapshot
+snapshot <|--- azure_virtual_machine_snapshot
+resource <|--- snapshot
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_copy_completion_error {
+}
+class azure_creation_data {
+}
+class azure_disk {
+}
+class azure_disk_security_profile {
+}
+class azure_encryption {
+}
+class azure_encryption_settings_collection {
+}
+class azure_encryption_settings_element {
+}
+class azure_extended_location {
+}
+class azure_image_disk_reference {
+}
+class azure_key_vault_and_key_reference {
+}
+class azure_key_vault_and_secret_reference {
+}
+class azure_purchase_plan {
+}
+class azure_snapshot_sku {
+}
+class azure_supported_capabilities {
+}
+class azure_virtual_machine_snapshot {
+}
+azure_disk -[#1A83AF]-> azure_virtual_machine_snapshot
 @enduml
 ```
 
