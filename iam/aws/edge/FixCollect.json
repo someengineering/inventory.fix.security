@@ -46,6 +46,7 @@
         "cognito-idp:ListUsers",
         "config:DescribeConfigurationRecorderStatus",
         "config:DescribeConfigurationRecorders",
+        "dynamodb:DescribeContinuousBackups",
         "dynamodb:DescribeGlobalTable",
         "dynamodb:DescribeTable",
         "dynamodb:ListGlobalTables",
