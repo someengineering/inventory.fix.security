@@ -339,7 +339,7 @@ const config: Config = {
     ],
     tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
     announcementBar: {
-      content: `Don't want to manage your own Fix Inventory installation? <strong>Get started for free with <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Fix Inventory.</strong>`,
+      content: `Don't want to manage your own Fix Inventory installation? <strong>Get started for free with <a href="https://fix.security">Fix Security</a>, an all-in-one security dashboard built on top of Fix Inventory.</strong>`,
       isCloseable: false,
     },
     navbar: {
