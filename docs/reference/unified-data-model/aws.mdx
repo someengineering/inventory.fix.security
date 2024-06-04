@@ -8637,8 +8637,6 @@ class aws_sagemaker_compilation_job {
 }
 class aws_sagemaker_domain {
 }
-class aws_sagemaker_edge_packaging_job {
-}
 class aws_sagemaker_hyper_parameter_tuning_job {
 }
 class aws_sagemaker_image {
@@ -8673,7 +8671,6 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
 aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
-aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_image
 aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
@@ -8695,7 +8692,6 @@ aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
 aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
@@ -9128,8 +9124,6 @@ class aws_sagemaker_compilation_job {
 }
 class aws_sagemaker_domain {
 }
-class aws_sagemaker_edge_packaging_job {
-}
 class aws_sagemaker_endpoint {
 }
 class aws_sagemaker_hyper_parameter_tuning_job {
@@ -9181,7 +9175,6 @@ aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
 aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
 aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
@@ -11193,8 +11186,6 @@ class aws_sagemaker_compilation_job {
 }
 class aws_sagemaker_domain {
 }
-class aws_sagemaker_edge_packaging_job {
-}
 class aws_sagemaker_endpoint {
 }
 class aws_sagemaker_hyper_parameter_tuning_job {
@@ -11226,7 +11217,6 @@ aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
@@ -11236,7 +11226,6 @@ aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
@@ -12205,107 +12194,6 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
-## `aws_sagemaker_edge_packaging_job`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_edge_packaging_job data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class aws_resource {
-}
-class aws_sagemaker_edge_output_config {
-}
-class aws_sagemaker_edge_packaging_job {
-}
-class aws_sagemaker_edge_preset_deployment_output {
-}
-class aws_sagemaker_job {
-}
-class resource {
-}
-resource <|--- aws_resource
-aws_sagemaker_job <|--- aws_sagemaker_edge_packaging_job
-aws_resource <|--- aws_sagemaker_job
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_edge_packaging_job resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class aws_iam_role {
-}
-class aws_kms_key {
-}
-class aws_s3_bucket {
-}
-class aws_sagemaker_edge_output_config {
-}
-class aws_sagemaker_edge_packaging_job {
-}
-class aws_sagemaker_edge_preset_deployment_output {
-}
-class aws_sagemaker_model {
-}
-aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_model
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 @enduml
 ```
 
@@ -13399,8 +13287,6 @@ class aws_s3_bucket {
 }
 class aws_sagemaker_container_definition {
 }
-class aws_sagemaker_edge_packaging_job {
-}
 class aws_sagemaker_image_config {
 }
 class aws_sagemaker_labeling_job {
@@ -13415,14 +13301,11 @@ aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
-aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_model
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
