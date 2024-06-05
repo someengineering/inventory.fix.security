@@ -34,8 +34,21 @@ skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
 class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 class scarf_organization {
+**billing_email**: string
+**description**: string
+**website**: string
 }
 class scarf_resource {
 }
@@ -111,8 +124,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 class scarf_package {
+**library_type**: string
+**long_description**: string
+**owner**: string
+**pull_count**: int64
+**short_description**: string
+**website**: string
 }
 class scarf_resource {
 }
