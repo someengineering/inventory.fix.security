@@ -187,6 +187,8 @@ class aws_autoscaling_group {
 }
 class azure_virtual_machine_scale_set {
 }
+class gcp_autoscaler {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -202,6 +204,7 @@ class resource {
 resource <|--- autoscaling_group
 autoscaling_group <|--- aws_autoscaling_group
 autoscaling_group <|--- azure_virtual_machine_scale_set
+autoscaling_group <|--- gcp_autoscaler
 @enduml
 ```
 
@@ -242,6 +245,10 @@ class bucket {
 }
 class digitalocean_space {
 }
+class gcp_backend_bucket {
+}
+class gcp_bucket {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -258,6 +265,8 @@ bucket <|--- aws_s3_bucket
 bucket <|--- azure_blob_container
 resource <|--- bucket
 bucket <|--- digitalocean_space
+bucket <|--- gcp_backend_bucket
+bucket <|--- gcp_bucket
 @enduml
 ```
 
@@ -299,6 +308,8 @@ class certificate {
 }
 class digitalocean_certificate {
 }
+class gcp_ssl_certificate {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -314,6 +325,7 @@ class resource {
 certificate <|--- aws_iam_server_certificate
 resource <|--- certificate
 certificate <|--- digitalocean_certificate
+certificate <|--- gcp_ssl_certificate
 @enduml
 ```
 
@@ -353,7 +365,7 @@ class aws_rds_instance {
 class database {
 **db_endpoint**: string
 **db_publicly_accessible**: boolean
-**db_status**: string
+**db_status**: database_instance_status
 **db_type**: string
 **db_version**: string
 **instance_type**: string
@@ -362,6 +374,8 @@ class database {
 **volume_size**: int64
 }
 class digitalocean_database {
+}
+class gcp_sql_database_instance {
 }
 class resource {
 **age**: duration
@@ -379,6 +393,7 @@ database <|--- aws_rds_cluster
 database <|--- aws_rds_instance
 resource <|--- database
 database <|--- digitalocean_database
+database <|--- gcp_sql_database_instance
 @enduml
 ```
 
@@ -643,6 +658,8 @@ class azure_firewall {
 }
 class firewall {
 }
+class gcp_firewall {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -657,6 +674,7 @@ class resource {
 }
 firewall <|--- azure_firewall
 resource <|--- firewall
+firewall <|--- gcp_firewall
 @enduml
 ```
 
@@ -701,6 +719,10 @@ class azure_vpn_gateway {
 }
 class gateway {
 }
+class gcp_external_vpn_gateway {
+}
+class gcp_vpn_gateway {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -719,6 +741,8 @@ gateway <|--- azure_application_gateway
 gateway <|--- azure_express_route_gateway
 gateway <|--- azure_vpn_gateway
 resource <|--- gateway
+gateway <|--- gcp_external_vpn_gateway
+gateway <|--- gcp_vpn_gateway
 @enduml
 ```
 
@@ -804,6 +828,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_health_check {
+}
 class health_check {
 **check_interval**: int64
 **health_check_type**: string
@@ -823,6 +849,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+health_check <|--- gcp_health_check
 resource <|--- health_check
 @enduml
 ```
@@ -1061,6 +1088,8 @@ class aws_ec2_elastic_ip {
 }
 class digitalocean_floating_ip {
 }
+class gcp_address {
+}
 class ip_address {
 **ip_address**: string
 **ip_address_family**: string
@@ -1079,6 +1108,7 @@ class resource {
 }
 ip_address <|--- aws_ec2_elastic_ip
 ip_address <|--- digitalocean_floating_ip
+ip_address <|--- gcp_address
 resource <|--- ip_address
 @enduml
 ```
@@ -1171,6 +1201,8 @@ class azure_load_balancer {
 }
 class digitalocean_load_balancer {
 }
+class gcp_forwarding_rule {
+}
 class kubernetes_ingress {
 }
 class kubernetes_service {
@@ -1196,6 +1228,7 @@ load_balancer <|--- aws_alb
 load_balancer <|--- aws_elb
 load_balancer <|--- azure_load_balancer
 load_balancer <|--- digitalocean_load_balancer
+load_balancer <|--- gcp_forwarding_rule
 load_balancer <|--- kubernetes_ingress
 load_balancer <|--- kubernetes_service
 resource <|--- load_balancer
@@ -1295,6 +1328,8 @@ class azure_virtual_network {
 }
 class digitalocean_vpc {
 }
+class gcp_network {
+}
 class network {
 }
 class onprem_network {
@@ -1314,6 +1349,7 @@ class resource {
 network <|--- aws_vpc
 network <|--- azure_virtual_network
 network <|--- digitalocean_vpc
+network <|--- gcp_network
 resource <|--- network
 network <|--- onprem_network
 @enduml
@@ -2005,6 +2041,8 @@ class azure_virtual_machine_snapshot {
 }
 class digitalocean_snapshot {
 }
+class gcp_snapshot {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2030,6 +2068,7 @@ snapshot <|--- aws_ec2_snapshot
 snapshot <|--- aws_rds_snapshot
 snapshot <|--- azure_virtual_machine_snapshot
 snapshot <|--- digitalocean_snapshot
+snapshot <|--- gcp_snapshot
 resource <|--- snapshot
 @enduml
 ```
@@ -2118,6 +2157,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_subnet {
 }
+class gcp_subnetwork {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2133,6 +2174,7 @@ class resource {
 class subnet {
 }
 subnet <|--- aws_ec2_subnet
+subnet <|--- gcp_subnetwork
 resource <|--- subnet
 @enduml
 ```
@@ -2166,6 +2208,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_vpn_tunnel {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2180,6 +2224,7 @@ class resource {
 }
 class tunnel {
 }
+tunnel <|--- gcp_vpn_tunnel
 resource <|--- tunnel
 @enduml
 ```
