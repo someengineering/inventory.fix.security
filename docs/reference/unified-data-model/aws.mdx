@@ -4172,6 +4172,7 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_cloudwatch_metric_filter {
 **filter_pattern**: string
 **filter_transformations**: aws_cloudwatch_metric_transformation[]
+**log_group_name**: string
 }
 class aws_cloudwatch_metric_transformation {
 **default_value**: double
@@ -13034,7 +13035,7 @@ class aws_resource {
 class database {
 **db_endpoint**: string
 **db_publicly_accessible**: boolean
-**db_status**: string
+**db_status**: database_instance_status
 **db_type**: string
 **db_version**: string
 **instance_type**: string
@@ -13411,7 +13412,7 @@ class aws_resource {
 class database {
 **db_endpoint**: string
 **db_publicly_accessible**: boolean
-**db_status**: string
+**db_status**: database_instance_status
 **db_type**: string
 **db_version**: string
 **instance_type**: string
