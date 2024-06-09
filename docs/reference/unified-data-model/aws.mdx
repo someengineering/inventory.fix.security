@@ -21251,6 +21251,12 @@ class aws_waf_request_inspection_acfp {
 **username_field**: string
 }
 class aws_waf_response_inspection {
+**body_contains**: aws_waf_response_inspection_part
+**header**: aws_waf_response_inspection_part
+**json**: aws_waf_response_inspection_part
+**status_code**: aws_waf_response_inspection_part
+}
+class aws_waf_response_inspection_part {
 **failure_values**: string[]
 **identifier**: string
 **name**: string
@@ -21404,6 +21410,7 @@ aws_waf_regex_match_statement --> aws_waf_field_to_match
 aws_waf_regex_match_statement --> aws_waf_text_transformation
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_field_to_match
 aws_waf_regex_pattern_set_reference_statement --> aws_waf_text_transformation
+aws_waf_response_inspection --> aws_waf_response_inspection_part
 aws_waf_rule --> aws_waf_captcha_config
 aws_waf_rule --> aws_waf_challenge_config
 aws_waf_rule --> aws_waf_override_action
