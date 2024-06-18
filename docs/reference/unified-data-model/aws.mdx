@@ -131,7 +131,7 @@ class aws_s3_account_settings {
 }
 aws_account -[#1A83AF]-> aws_region
 aws_account -[#1A83AF]-> aws_root_user
-aws_s3_account_settings -[#1A83AF]-> aws_account
+aws_account -[#1A83AF]-> aws_s3_account_settings
 @enduml
 ```
 
@@ -1825,6 +1825,1282 @@ aws_region -[#1A83AF]-> aws_ec2_instance
 </div>
 </details>
 
+## `aws_backup_copy_job`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_copy_job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_copy_job {
+**account_id**: string
+**backup_size_in_bytes**: int64
+**child_jobs_in_state**: dictionary[string, int64]
+**completion_date**: datetime
+**composite_member_identifier**: string
+**copy_job_created_by**: aws_backup_recovery_point_creator
+**copy_job_id**: string
+**creation_date**: datetime
+**destination_backup_vault_arn**: string
+**destination_recovery_point_arn**: string
+**iam_role_arn**: string
+**is_parent**: boolean
+**message_category**: string
+**number_of_child_jobs**: int64
+**parent_job_id**: string
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+**source_backup_vault_arn**: string
+**source_recovery_point_arn**: string
+**state**: string
+**status_message**: string
+}
+class aws_backup_recovery_point_creator {
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_version**: string
+**backup_rule_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_copy_job --> aws_backup_recovery_point_creator
+aws_resource <|--- aws_backup_copy_job
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_copy_job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_copy_job {
+}
+class aws_backup_plan {
+}
+class aws_backup_recovery_point {
+}
+class aws_backup_vault {
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_plan -[#1A83AF]-> aws_backup_copy_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_framework`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_framework data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_framework {
+**creation_time**: datetime
+**framework_arn**: string
+**framework_deployment_status**: string
+**framework_description**: string
+**framework_name**: string
+**number_of_controls**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_framework
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_framework resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_framework {
+}
+class aws_backup_report_plan {
+}
+aws_backup_framework -[#1A83AF]-> aws_backup_report_plan
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_job`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_job {
+**account_id**: string
+**backup_job_id**: string
+**backup_options**: dictionary[string, string]
+**backup_size_in_bytes**: int64
+**backup_type**: string
+**backup_vault_arn**: string
+**backup_vault_name**: string
+**bytes_transferred**: int64
+**completion_date**: datetime
+**creation_date**: datetime
+**expected_completion_date**: datetime
+**iam_role_arn**: string
+**initiation_date**: datetime
+**is_parent**: boolean
+**job_created_by**: aws_backup_recovery_point_creator
+**message_category**: string
+**parent_job_id**: string
+**percent_done**: string
+**recovery_point_arn**: string
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+**start_by**: datetime
+**state**: string
+**status_message**: string
+}
+class aws_backup_recovery_point_creator {
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_version**: string
+**backup_rule_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_job --> aws_backup_recovery_point_creator
+aws_resource <|--- aws_backup_job
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_job {
+}
+class aws_backup_plan {
+}
+class aws_backup_protected_resource {
+}
+class aws_backup_recovery_point {
+}
+class aws_backup_vault {
+}
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_plan -[#1A83AF]-> aws_backup_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_legal_hold`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_legal_hold data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_legal_hold {
+**cancellation_date**: datetime
+**creation_date**: datetime
+**description**: string
+**legal_hold_arn**: string
+**legal_hold_id**: string
+**status**: string
+**title**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_legal_hold
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_legal_hold resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_legal_hold {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_plan`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_plan data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_advanced_backup_setting {
+**backup_options**: dictionary[string, string]
+**resource_type**: string
+}
+class aws_backup_plan {
+**advanced_backup_settings**: aws_backup_advanced_backup_setting[]
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_name**: string
+**creation_date**: datetime
+**creator_request_id**: string
+**deletion_date**: datetime
+**last_execution_date**: datetime
+**version_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_plan --> aws_backup_advanced_backup_setting
+aws_resource <|--- aws_backup_plan
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_plan resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_copy_job {
+}
+class aws_backup_job {
+}
+class aws_backup_plan {
+}
+class aws_backup_recovery_point {
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_plan -[#1A83AF]-> aws_backup_copy_job
+aws_backup_plan -[#1A83AF]-> aws_backup_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_protected_resource`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_protected_resource data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+**last_backup_time**: datetime
+**last_backup_vault_arn**: string
+**last_recovery_point_arn**: string
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_protected_resource
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_protected_resource resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_job {
+}
+class aws_backup_protected_resource {
+}
+class aws_backup_recovery_point {
+}
+class aws_backup_vault {
+}
+class aws_cloudformation_stack {
+}
+class aws_dynamodb_global_table {
+}
+class aws_dynamodb_table {
+}
+class aws_ec2_instance {
+}
+class aws_ec2_volume {
+}
+class aws_efs_file_system {
+}
+class aws_rds_cluster {
+}
+class aws_rds_instance {
+}
+class aws_redshift_cluster {
+}
+class aws_s3_bucket {
+}
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_protected_resource -[#1A83AF]-> aws_cloudformation_stack
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_global_table
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_table
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_volume
+aws_backup_protected_resource -[#1A83AF]-> aws_efs_file_system
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_cluster
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_redshift_cluster
+aws_backup_protected_resource -[#1A83AF]-> aws_s3_bucket
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_recovery_point`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_recovery_point data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_calculated_lifecycle {
+**delete_at**: datetime
+**move_to_cold_storage_at**: datetime
+}
+class aws_backup_lifecycle {
+**delete_after_days**: int64
+**move_to_cold_storage_after_days**: int64
+**opt_in_to_archive_for_supported_resources**: boolean
+}
+class aws_backup_recovery_point {
+**backup_size_in_bytes**: int64
+**backup_vault_arn**: string
+**backup_vault_name**: string
+**calculated_lifecycle**: aws_backup_calculated_lifecycle
+**completion_date**: datetime
+**composite_member_identifier**: string
+**creation_date**: datetime
+**encryption_key_arn**: string
+**iam_role_arn**: string
+**is_encrypted**: boolean
+**is_parent**: boolean
+**last_restore_time**: datetime
+**lifecycle**: aws_backup_lifecycle
+**parent_recovery_point_arn**: string
+**recovery_point_arn**: string
+**recovery_point_created_by**: aws_backup_recovery_point_creator
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+**source_backup_vault_arn**: string
+**status**: string
+**status_message**: string
+**vault_type**: string
+}
+class aws_backup_recovery_point_creator {
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_version**: string
+**backup_rule_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_recovery_point --> aws_backup_calculated_lifecycle
+aws_backup_recovery_point --> aws_backup_lifecycle
+aws_backup_recovery_point --> aws_backup_recovery_point_creator
+aws_resource <|--- aws_backup_recovery_point
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_recovery_point resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_copy_job {
+}
+class aws_backup_job {
+}
+class aws_backup_plan {
+}
+class aws_backup_protected_resource {
+}
+class aws_backup_recovery_point {
+}
+class aws_backup_restore_job {
+}
+class aws_backup_vault {
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_plan -[#1A83AF]-> aws_backup_copy_job
+aws_backup_plan -[#1A83AF]-> aws_backup_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_restore_job
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_report_plan`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_report_plan data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_report_delivery_channel {
+**formats**: string[]
+**s3_bucket_name**: string
+**s3_key_prefix**: string
+}
+class aws_backup_report_plan {
+**creation_time**: datetime
+**last_attempted_execution_time**: datetime
+**last_successful_execution_time**: datetime
+**plan_deployment_status**: string
+**report_delivery_channel**: aws_backup_report_delivery_channel
+**report_plan_arn**: string
+**report_plan_description**: string
+**report_plan_name**: string
+**report_setting**: aws_backup_report_setting
+}
+class aws_backup_report_setting {
+**accounts**: string[]
+**framework_arns**: string[]
+**number_of_frameworks**: int64
+**organization_units**: string[]
+**regions**: string[]
+**report_template**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_report_plan --> aws_backup_report_delivery_channel
+aws_backup_report_plan --> aws_backup_report_setting
+aws_resource <|--- aws_backup_report_plan
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_report_plan resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_framework {
+}
+class aws_backup_report_plan {
+}
+aws_backup_framework -[#1A83AF]-> aws_backup_report_plan
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_restore_job`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_restore_job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_restore_job {
+**account_id**: string
+**backup_size_in_bytes**: int64
+**completion_date**: datetime
+**created_resource_arn**: string
+**creation_date**: datetime
+**deletion_status**: string
+**deletion_status_message**: string
+**expected_completion_time_minutes**: int64
+**iam_role_arn**: string
+**percent_done**: string
+**recovery_point_arn**: string
+**recovery_point_creation_date**: datetime
+**resource_type**: string
+**restore_job_created_by**: string
+**restore_job_id**: string
+**status**: string
+**status_message**: string
+**validation_status**: string
+**validation_status_message**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_restore_job
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_restore_job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_recovery_point {
+}
+class aws_backup_restore_job {
+}
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_restore_job
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_restore_testing_plan`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_restore_testing_plan data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_restore_testing_plan {
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_restore_testing_plan
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_restore_testing_plan resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_restore_testing_plan {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_backup_vault`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_vault data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_vault {
+**backup_vault_arn**: string
+**backup_vault_name**: string
+**creation_date**: datetime
+**creator_request_id**: string
+**encryption_key_arn**: string
+**lock_date**: datetime
+**locked**: boolean
+**max_retention_days**: int64
+**min_retention_days**: int64
+**number_of_recovery_points**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_vault
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_backup_vault resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_copy_job {
+}
+class aws_backup_job {
+}
+class aws_backup_protected_resource {
+}
+class aws_backup_recovery_point {
+}
+class aws_backup_vault {
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_beanstalk_application`
 
 <ZoomPanPinch>
@@ -2480,12 +3756,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_cloudformation_stack {
 }
 class aws_region {
 }
 class aws_resource {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_cloudformation_stack
 aws_cloudformation_stack -[#1A83AF]-> aws_resource
 aws_region -[#1A83AF]-> aws_cloudformation_stack
 @enduml
@@ -4799,10 +6078,13 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_dynamodb_global_table {
 }
 class aws_kms_key {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_global_table
 aws_dynamodb_global_table -[#1A83AF]-> aws_kms_key
 @enduml
 ```
@@ -5020,6 +6302,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_dynamodb_table {
 }
 class aws_kinesis_stream {
@@ -5028,6 +6312,7 @@ class aws_kms_key {
 }
 class aws_ssm_resource_compliance {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_table
 aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
 aws_dynamodb_table -[#1A83AF]-> aws_kms_key
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
@@ -5822,6 +7107,8 @@ class aws_alb_target_group {
 }
 class aws_autoscaling_group {
 }
+class aws_backup_protected_resource {
+}
 class aws_beanstalk_environment {
 }
 class aws_cloudwatch_alarm {
@@ -5858,6 +7145,8 @@ class aws_vpc {
 }
 aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
 aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_volume
 aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
 aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
 aws_ec2_host -[#1A83AF]-> aws_ec2_instance
@@ -8055,6 +9344,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_ec2_instance {
 }
 class aws_ec2_snapshot {
@@ -8067,6 +9358,8 @@ class aws_kms_key {
 }
 class aws_region {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_volume
 aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
 aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
 aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
@@ -9764,12 +11057,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_efs_access_point {
 }
 class aws_efs_file_system {
 }
 class aws_kms_key {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_efs_file_system
 aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 aws_efs_file_system -[#1A83AF]-> aws_kms_key
 @enduml
@@ -13101,6 +14397,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_ec2_security_group {
 }
 class aws_kinesis_stream {
@@ -13111,6 +14409,8 @@ class aws_rds_cluster {
 }
 class aws_rds_instance {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_cluster
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_instance
 aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
@@ -13482,6 +14782,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_ec2_security_group {
 }
 class aws_ec2_subnet {
@@ -13496,6 +14798,8 @@ class aws_region {
 }
 class aws_vpc {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_cluster
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_instance
 aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
 aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
@@ -13915,6 +15219,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_backup_protected_resource {
+}
 class aws_ec2_security_group {
 }
 class aws_ec2_subnet {
@@ -13929,6 +15235,7 @@ class aws_sagemaker_processing_job {
 }
 class aws_vpc {
 }
+aws_backup_protected_resource -[#1A83AF]-> aws_redshift_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
@@ -14847,7 +16154,10 @@ class aws_account {
 }
 class aws_s3_account_settings {
 }
-aws_s3_account_settings -[#1A83AF]-> aws_account
+class aws_s3_bucket {
+}
+aws_account -[#1A83AF]-> aws_s3_account_settings
+aws_s3_account_settings -[#1A83AF]-> aws_s3_bucket
 @enduml
 ```
 
@@ -14995,6 +16305,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_athena_work_group {
 }
+class aws_backup_protected_resource {
+}
 class aws_cloud_trail {
 }
 class aws_cloudfront_distribution {
@@ -15004,6 +16316,8 @@ class aws_ec2_flow_log {
 class aws_ecs_cluster {
 }
 class aws_region {
+}
+class aws_s3_account_settings {
 }
 class aws_s3_bucket {
 }
@@ -15033,11 +16347,13 @@ class aws_ssm_resource_compliance {
 }
 aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
 aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_backup_protected_resource -[#1A83AF]-> aws_s3_bucket
 aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
 aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
 aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
 aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
 aws_region -[#1A83AF]-> aws_s3_bucket
+aws_s3_account_settings -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
