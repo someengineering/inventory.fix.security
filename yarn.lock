@@ -11330,10 +11330,10 @@ react-router@5.3.4, react-router@^5.3.4:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-zoom-pan-pinch@3.4.4:
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.4.4.tgz#5450b027dbf9f161773cde71b061423ff1109328"
-  integrity sha512-lGTu7D9lQpYEQ6sH+NSlLA7gicgKRW8j+D/4HO1AbSV2POvKRFzdWQ8eI0r3xmOsl4dYQcY+teV6MhULeg1xBw==
+react-zoom-pan-pinch@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.5.0.tgz#70b9e2497c0862be0fcd7f68651d8d4c52f7ffe0"
+  integrity sha512-JUbIW8yVEXQ3Ntx6WI8IJOVMH69KFUuoZrq23vqVOADeCLIhMY5xcyYUMzw4jDA1t9aNKS6NS3/QfcgHiRJ/HQ==
 
 react@18.3.1:
   version "18.3.1"
