@@ -4,9 +4,9 @@ sidebar_label: Clean Up AWS CloudWatch Alarms
 
 # How to Clean Up AWS CloudWatch Alarms
 
-When deleting EC2 instances, [CloudWatch](https://aws.amazon.com/cloudwatch) alarms are sometimes left behind.
+When deleting EC2 instances, [AWS CloudWatch](https://aws.amazon.com/cloudwatch) instance alarms are sometimes left behind.
 
-Fix Inventory's `cleanup_aws_alarms` plugin can find and delete these orphaned alarms.
+Fix Inventory's [`cleanup-aws-alarms` infrastructure app](../../reference/infrastructure-apps/cleanup-aws-alarms.mdx) can find and delete these orphaned alarms.
 
 ## Prerequisites
 
@@ -42,29 +42,68 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Update the `plugin_cleanup_aws_alarms` section with the desired target cloud account IDs and setting the `enabled` property to `true`:
+3. Use the [`app install` command](../../reference/cli/app/install.mdx) to install the `cleanup-aws-alarms` app:
 
-   ```yaml title="cleanup_aws_alarms plugin configuration"
-   plugin_cleanup_aws_alarms:
-     # Dictionary of key cloud with list of account IDs for which the plugin should be active as value
-     config:
-       aws:
-   # highlight-start
-         - '1234567'
-         - '567890'
-   # highlight-end
-     # Enable plugin?
-   # highlight-next-line
-     enabled: true
+   ```bash
+   > app install cleanup-aws-alarms
    ```
 
-The plugin will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+   :::info
 
-Each time the `cleanup_aws_alarms` plugin runs, orphaned CloudWatch alarms will be flagged for removal during the next cleanup run.
+   Fix Inventory will create a default config `fix.apps.cleanup_aws_alarms`.
+
+   :::
+
+4. Execute the following command in [Fix Inventory Shell](../../reference/components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_aws_alarms
+   ```
+
+5. Update the configuration with the desired target cloud account IDs:
+
+   ```yaml title="cleanup_aws_alarms configuration"
+   clouds_and_accounts:
+     aws:
+       - '1234567'
+       - '567890'
+   ```
+
+6. Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
+
+   ```bash
+   > app run cleanup-aws-alarms
+   ```
+
+   :::tip
+
+   Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+   :::
+
+   :::note
+
+   Items tagged with `expiration: never` will not be flagged for cleanup.
+
+   :::
+
+7. [Create an event-based job](../automation/create-an-event-based-job.mdx) to run the app automatically:
+
+   ```bash
+   > jobs create --name "Clean Up AWS Alarms" --wait-for-event cleanup_plan 'app run cleanup-aws-alarms'
+   ```
+
+   :::info
+
+   The [`cleanup-aws-alarms` infrastructure app](../../reference/infrastructure-apps/cleanup-aws-alarms.mdx) will now run each time Fix Inventory emits the `cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+
+   :::
+
+Each time the `cleanup-aws-alarms` infrastructure app runs, orphaned CloudWatch alarms will be flagged for removal during the next cleanup run.
 
 ## Further Reading
 
-- [`cleanup_aws_alarms` Plugin](../../reference/components/plugins/cleanup_aws_alarms.mdx)
+- [`cleanup-aws-alarms` Infrastructure App](../../reference/infrastructure-apps/cleanup-aws-alarms.mdx)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.mdx)
 - [Cloud Data Sync](../../concepts/cloud-data-sync/index.mdx)
 - [Configuration](../../reference/configuration/index.mdx)

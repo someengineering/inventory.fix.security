@@ -1,0 +1,79 @@
+---
+sidebar_label: cleanup-aws-vpcs
+---
+
+# `cleanup-aws-vpcs` Infrastructure App
+
+When a VPC is marked for cleanup, this infrastructure app marks its network resource dependencies for cleanup as well.
+
+Cleanup of the following dependent resources are currently handled by this infrastructure app:
+
+- AWS VPC Peering Connections
+- AWS EC2 Network ACLs
+- AWS EC2 Network Interfaces
+- AWS ELB
+- AWS ALB
+- AWS ALB Target Groups
+- AWS EC2 Subnets
+- AWS EC2 Security Groups
+- AWS EC2 Internet Gateways
+- AWS EC2 NAT Gateways
+- AWS EC2 Route Tables
+
+## Installation
+
+```bash
+
+> app install cleanup-aws-vpcs
+
+```
+
+:::info
+
+Upon installation, Fix Inventory will create a config `fix.apps.cleanup_aws_vpcs`.
+
+:::
+
+## Configuration
+
+1. Execute the following command in [Fix Inventory Shell](../components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+
+   > config edit fix.apps.cleanup_aws_vpcs
+
+   ```
+
+2. Update the configuration with the desired target cloud account IDs:
+
+   ```yaml title="cleanup_aws_vpcs configuration"
+   clouds_and_accounts:
+     aws:
+       - '1234567'
+       - '567890'
+   ```
+
+## Usage
+
+Run the app using the [`app run` command](../cli/app/run.mdx):
+
+```bash
+> app run cleanup-aws-vpcs
+```
+
+:::tip
+
+Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+:::
+
+:::note
+
+Items tagged with `expiration: never` will not be flagged for cleanup.
+
+:::
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)
+- [How to Clean Up AWS VPC Resources](../../how-to-guides/cleanup/clean-up-aws-vpc-resources.mdx)

@@ -1,0 +1,23 @@
+# Infrastructure Apps
+
+Fix Inventory infrastructure apps are low-code applications can be installed to extend Fix Inventory's functionality.
+
+Infrastructure apps can perform simple tasks like [cleaning up untagged resources](../../how-to-guides/cleanup/clean-up-untagged-resources.mdx), finding abandoned load balancers, or sending notifications to [Slack](../../how-to-guides/alerting/send-slack-notifications/index.mdx), [Discord](../../how-to-guides/alerting/send-discord-notifications/index.mdx), or [PagerDuty](../../how-to-guides/alerting/create-pagerduty-alerts/index.mdx).
+
+:::info[How safe are Fix Inventory infrastructure apps?]
+
+An infrastructure app can not execute any Fix Inventory commands directly. Instead, it generates Fix Inventory commands which are then executed by Fix Inventory.
+
+An app has read-only access to the Fix Inventory Infrastructure Graph using the `search()` function, meaning that it can only retrieve information about resources that are already known to Fix Inventory.
+
+To modify resources, an app needs to generate a Fix Inventory command that does so.
+
+:::
+
+## Available Apps
+
+<DocCardList />
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)

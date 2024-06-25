@@ -6,7 +6,7 @@ sidebar_label: Clean Up AWS Load Balancers
 
 When compute instances are removed, their load balancers are sometimes left behind.
 
-Fix Inventory's `cleanup_aws_loadbalancers` plugin can find and delete these orphaned load balancers.
+Fix Inventory's [`cleanup-aws-loadbalancers` infrastructure app](../../reference/infrastructure-apps/cleanup-aws-loadbalancers.mdx) can find and delete these orphaned load balancers.
 
 ## Prerequisites
 
@@ -42,30 +42,71 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Update the `plugin_cleanup_aws_loadbalancers` section, setting the `enabled` property to `true`:
+3. Use the [`app install` command](../../reference/cli/app/install.mdx) to install the `cleanup-aws-loadbalancers` app:
 
-   ```yaml title="cleanup_aws_loadbalancers plugin configuration"
-   plugin_cleanup_aws_loadbalancers:
-     # Enable plugin?
-   # highlight-next-line
-     enabled: true
-     # Minimum age of unused load balancers to cleanup
-     min_age: 7d
+   ```bash
+   > app install cleanup-aws-loadbalancers
+   ```
+
+   :::info
+
+   Fix Inventory will create a default config `fix.apps.cleanup_aws_loadbalancers`.
+
+   :::
+
+4. Execute the following command in [Fix Inventory Shell](../../reference/components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_aws_loadbalancers
+   ```
+
+5. Update the configuration and set the `min_age` property to the desired threshold for load balancer cleanup:
+
+   ```yaml title="cleanup_aws_loadbalancers configuration"
+   min_age: 7d
    ```
 
    :::note
 
-   The above plugin configuration cleans up ELBs, ALBs, and ALB target groups older than the minimum age with no attached backends. Items tagged with `expiration: never` will not be flagged for cleanup.
+   The above infrastructure app configuration cleans up ELBs, ALBs, and ALB target groups older than the minimum age with no attached backends. Items tagged with `expiration: never` will not be flagged for cleanup.
 
    :::
 
-The plugin will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+6. Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
 
-Each time the `cleanup_aws_loadbalancers` plugin runs, orphaned load balancers will be flagged for removal during the next cleanup run.
+   ```bash
+   > app run cleanup-aws-loadbalancers
+   ```
+
+   :::tip
+
+   Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+   :::
+
+   :::note
+
+   Items tagged with `expiration: never` will not be flagged for cleanup.
+
+   :::
+
+7. [Create an event-based job](../automation/create-an-event-based-job.mdx) to run the app automatically:
+
+   ```bash
+   > jobs create --name "Clean Up AWS Load Balancers" --wait-for-event cleanup_plan 'app run cleanup-aws-loadbalancers'
+   ```
+
+   :::info
+
+   The [`cleanup-aws-loadbalancers` infrastructure app](../../reference/infrastructure-apps/cleanup-aws-loadbalancers.mdx) will now run each time Fix Inventory emits the `cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+
+   :::
+
+Each time the `cleanup-aws-loadbalancers` infrastructure app runs, orphaned load balancers will be flagged for removal during the next cleanup run.
 
 ## Further Reading
 
-- [`cleanup_aws_loadbalancers` Plugin](../../reference/components/plugins/cleanup_aws_loadbalancers.mdx)
+- [`cleanup-aws-load-balancers` Infrastructure App](../../reference/infrastructure-apps/cleanup-aws-loadbalancers.mdx)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.mdx)
 - [Cloud Data Sync](../../concepts/cloud-data-sync/index.mdx)
 - [Configuration](../../reference/configuration/index.mdx)

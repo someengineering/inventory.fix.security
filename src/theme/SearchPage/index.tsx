@@ -282,7 +282,7 @@ function SearchPageContent(): JSX.Element {
 
           prevY.current = currentY;
         },
-        { thfixshold: 1 },
+        { threshold: 1 },
       ),
   );
 

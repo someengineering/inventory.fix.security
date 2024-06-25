@@ -31,17 +31,17 @@ In the `collect` phase, resources are collected from all configured cloud provid
 
 During the `cleanup_plan` phase, Fix Inventory computes which resources should be cleaned up, and marks them for deletion during the subsequent `cleanup` phase.
 
-:::note
+:::tip
 
-Fix Inventory ships with [built-in cleanup plugins](../components/plugins/index.mdx) that can be enabled in the `fix.worker` configuration.
+Fix Inventory has cleanup [infrastructure apps](../infrastructure-apps/index.mdx) that can be installed and scheduled to run during the `cleanup_plan` phase.
 
 :::
 
-| Event Name          | Event Description                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------------- |
-| `pre_cleanup_plan`  | This event is emitted before the cleanup is planned.                                                |
-| `cleanup_plan`      | Cleanup [plugins](../components/plugins/index.mdx) bundled with Fix Inventory listen on this event. |
-| `post_cleanup_plan` | This event is emitted after the cleanup is planned.                                                 |
+| Event Name          | Event Description                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| `pre_cleanup_plan`  | This event is emitted before the cleanup is planned.                                      |
+| `cleanup_plan`      | Cleanup [infrastructure apps](../infrastructure-apps/index.mdx) can listen on this event. |
+| `post_cleanup_plan` | This event is emitted after the cleanup is planned.                                       |
 
 ### `cleanup` Events
 

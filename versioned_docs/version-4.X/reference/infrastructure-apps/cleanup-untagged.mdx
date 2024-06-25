@@ -1,0 +1,114 @@
+---
+sidebar_label: cleanup-untagged
+---
+
+# `cleanup-untagged` Infrastructure App
+
+This infrastructure app deletes cloud resources that are missing mandatory tags after a defined amount of time has passed since their creation.
+
+## Installation
+
+```bash
+> app install cleanup-untagged
+```
+
+:::info
+
+Upon installation, Fix Inventory will create a config `fix.apps.cleanup_untagged`.
+
+The default minimum age threshold is 7 days. This means that if a load balancer is more than 7 days old and does not have any instances/backends attached, it will be flagged for cleanup.
+
+The age threshold is configurable via the `min_age` config value.
+
+:::
+
+## Configuration
+
+1. Execute the following command in [Fix Inventory Shell](../components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_untagged
+   ```
+
+2. Update the configuration:
+
+   ```yaml title="cleanup_untagged configuration"
+   default:
+     age: '2h'
+   tags:
+     - 'owner'
+     - 'expiration'
+    kinds:
+     - 'aws_ec2_instance'
+     - 'aws_ec2_volume'
+     - 'aws_vpc'
+     - 'aws_cloudformation_stack'
+     - 'aws_elb'
+     - 'aws_alb'
+     - 'aws_alb_target_group'
+     - 'aws_eks_cluster'
+     - 'aws_eks_nodegroup'
+     - 'example_instance'
+     - 'example_network'
+   accounts:
+     aws:
+       068564737731:
+         name: 'playground'
+         age: '7d'
+       '575584959047':
+         name: 'eng-sre'
+     example:
+       Example Account:
+         name: 'Example Account'
+   ```
+
+   :::info
+
+   Valid age units include:
+
+   - `weeks`
+   - `days`
+   - `hours`
+   - `minutes`
+
+   Age units can be abbreviated to a single letter (e.g., `7d`, `24h`, `60m`, etc.).
+
+   A space in between the numeric value and the unit is also optional, meaning that `7d` and `7 days` are equivalent.
+
+   :::
+
+   :::info
+
+   The config section consists of four sub-sections. `default`, `tags`, `classes`, and `accounts`.
+
+   1. The `default` section specifies the default `age` a resource must have before we enforce mandatory tags on it. For instance, if `age` is set to `2h` this means that whatever mechanism creates a resource has two hours to add those mandatory tags.
+   2. The `tags` section is a list of tag names that MUST exist on every resource class specified in `classes`.
+   3. The `classes` section is a list of resource class names for which tags specified in the `tags` list must exist.
+   4. The `accounts` section contains a dictionary with cloud IDs as keys (e.g. `aws`) and account IDs for which tags will be enforced as values (e.g. `068564737731`). Those in turn contain a `name` and optionally an `age` override.
+
+   :::
+
+## Usage
+
+Run the app using the [`app run` command](../cli/app/run.mdx):
+
+```bash
+> app run cleanup-untagged
+```
+
+:::tip
+
+Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+:::
+
+:::note
+
+This infrastructure app cleans up ELBs, ALBs, and ALB target groups older than the minimum age with no attached backends. Items tagged with `expiration: never` will not be flagged for cleanup.
+
+:::
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)
+- [How to Clean Up Untagged Resources](../../how-to-guides/cleanup/clean-up-untagged-resources.mdx)
