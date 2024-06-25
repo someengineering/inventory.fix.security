@@ -98,7 +98,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
      --region us-east-1 \
      --stack-name FixInventoryAccess \
      --template-url https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-stackset.template \
-     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixAccountID,ParameterValue=$FIXINVENTORY_ACCOUNT_ID
+     --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixInventoryAccountID,ParameterValue=$FIX_ACCOUNT_ID
    ```
 
    :::info

@@ -7,7 +7,7 @@ sidebar_position: 2
 
 Resource tags are an essential tool in finding and tracking an organization's cloud resources, but tags are only useful if applied consistently.
 
-Fix Inventory's [`cleanup_untagged` plugin](../../reference/components/plugins/cleanup_untagged.mdx) can enforce tagging policies by automatically cleaning up resources that do not have required tags (e.g., `owner` and `expiration`).
+Fix Inventory's [`cleanup-untagged` infrastructure app](../../reference/infrastructure-apps/cleanup-untagged.mdx) can enforce tagging policies by automatically cleaning up resources that do not have required tags (e.g., `owner` and `expiration`).
 
 ## Prerequisites
 
@@ -43,58 +43,111 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Update the `plugin_cleanup_untagged` section with the desired target AWS account IDs and setting the `enabled` property to `true`:
+3. Use the [`app install` command](../../reference/cli/app/install.mdx) to install the `cleanup-untagged` app:
 
-   ```yaml title="cleanup_untagged plugin configuration"
-   plugin_cleanup_untagged:
-     # Enable plugin?
-   # highlight-next-line
-     enabled: true
-     # Configuration for the plugin
-     config:
-       accounts:
-   # highlight-start
-         aws:
-           '068564737731':
-             name: 'playground'
-             age: '1d'
-           '575584959047':
-             name: 'eng-sre'
-         example:
-           Example Account:
-             name: 'Example Account'
-   # highlight-end
-       default:
-         age: '2h'
-       kinds:
-         - 'aws_ec2_instance'
-         - 'aws_ec2_volume'
-         - 'aws_vpc'
-         - 'aws_cloudformation_stack'
-         - 'aws_elb'
-         - 'aws_alb'
-         - 'aws_alb_target_group'
-         - 'aws_eks_cluster'
-         - 'aws_eks_nodegroup'
-         - 'example_instance'
-         - 'example_network'
-       tags:
-         - 'owner'
-         - 'expiration'
+   ```bash
+   > app install cleanup-untagged
    ```
 
    :::info
 
-   The `cleanup_untagged` plugin configuration has the following subsections:
-
-   - `default` specifies the default age of a resource before mandatory tags are enforced. For example, if `age` is set to `2h`, there is a 2-hour grace period to add the required tags after resource creation.
-   - `tags` lists tags that **must** exist on every [resource kind](../../concepts/asset-inventory-graph/index.mdx#resource-kinds) listed in the `kinds` subsection.
-   - `kinds` lists [resource kind](../../concepts/asset-inventory-graph/index.mdx#resource-kinds) for which tags listed in `tags` **must** exist.
-   - `accounts` contains a dictionary of cloud and account IDs for which tags will be enforced. For each account, a name is defined and the age defined in `default` can optionally be overridden.
+   Fix Inventory will create a default config `fix.apps.cleanup_untagged`.
 
    :::
 
-The plugin will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+4. Execute the following command in [Fix Inventory Shell](../../reference/components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_untagged
+   ```
+
+5. Update the configuration:
+
+   ```yaml title="cleanup_untagged configuration"
+   default:
+     age: '2h'
+   tags:
+     - 'owner'
+     - 'expiration'
+    kinds:
+     - 'aws_ec2_instance'
+     - 'aws_ec2_volume'
+     - 'aws_vpc'
+     - 'aws_cloudformation_stack'
+     - 'aws_elb'
+     - 'aws_alb'
+     - 'aws_alb_target_group'
+     - 'aws_eks_cluster'
+     - 'aws_eks_nodegroup'
+     - 'example_instance'
+     - 'example_network'
+   accounts:
+     aws:
+       068564737731:
+         name: 'playground'
+         age: '7d'
+       '575584959047':
+         name: 'eng-sre'
+     example:
+       Example Account:
+         name: 'Example Account'
+   ```
+
+   :::info
+
+   Valid age units include:
+
+   - `weeks`
+   - `days`
+   - `hours`
+   - `minutes`
+
+   Age units can be abbreviated to a single letter (e.g., `7d`, `24h`, `60m`, etc.).
+
+   A space in between the numeric value and the unit is also optional, meaning that `7d` and `7 days` are equivalent.
+
+   :::
+
+   :::info
+
+   The config section consists of four sub-sections. `default`, `tags`, `classes`, and `accounts`.
+
+   1. The `default` section specifies the default `age` a resource must have before we enforce mandatory tags on it. For instance, if `age` is set to `2h` this means that whatever mechanism creates a resource has two hours to add those mandatory tags.
+   2. The `tags` section is a list of tag names that MUST exist on every resource class specified in `classes`.
+   3. The `classes` section is a list of resource class names for which tags specified in the `tags` list must exist.
+   4. The `accounts` section contains a dictionary with cloud IDs as keys (e.g. `aws`) and account IDs for which tags will be enforced as values (e.g. `068564737731`). Those in turn contain a `name` and optionally an `age` override.
+
+   :::
+
+6. Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
+
+   ```bash
+   > app run cleanup-untagged
+   ```
+
+   :::tip
+
+   Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+   :::
+
+   :::note
+
+   Items tagged with `expiration: never` will not be flagged for cleanup.
+
+   :::
+
+7. [Create an event-based job](../automation/create-an-event-based-job.mdx) to run the app automatically:
+
+   ```bash
+   > jobs create --name "Clean Up Untagged Resources" --wait-for-event cleanup_plan 'app run cleanup-untagged'
+   ```
+
+   :::info
+
+   The [`cleanup-untagged` infrastructure app](../../reference/infrastructure-apps/cleanup-untagged.mdx) will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+
+   :::
 
 Each time the `cleanup_untagged` plugin runs, resources for which the specified tag requirements are not met will be flagged for removal during the next cleanup run.
 
@@ -104,7 +157,7 @@ Each time the `cleanup_untagged` plugin runs, resources for which the specified 
 
 ## Further Reading
 
-- [`cleanup_untagged` Plugin](../../reference/components/plugins/cleanup_untagged.mdx)
+- [`cleanup-untagged` Infrastructure App](../../reference/infrastructure-apps/cleanup-untagged.mdx)
 - [Resource Tagging](../../concepts/resource-management/tagging.mdx)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.mdx)
 - [Cloud Data Sync](../../concepts/cloud-data-sync/index.mdx)

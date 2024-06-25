@@ -49,7 +49,7 @@ The following are details on how Fix Inventory Worker works internally and how i
 
 ### Plugins
 
-Upon start up, Fix Inventory Worker discovers and loads all of the available [plugins](./plugins/index.mdx). There are two types of plugins. The first are collector plugins, which are responsible for collecting resources from a cloud. The second are action plugins, which wait for a certain action to occur and are responsible for things like flagging resources for cleanup, tagging or protecting them.
+Upon start up, Fix Inventory Worker discovers and loads all available collector plugins, which are responsible for collecting resources from a cloud provider.
 
 ### Actions and Tasks
 

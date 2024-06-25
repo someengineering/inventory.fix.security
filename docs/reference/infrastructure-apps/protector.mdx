@@ -1,0 +1,78 @@
+---
+sidebar_label: protector
+---
+
+# `protector` Infrastructure App
+
+This plugin protects important resources from deletion by Fix Inventory.
+
+:::info
+
+Each Fix Inventory resource has a boolean attribute `/metadata.protected`. By default, its value is `false`.
+
+Each Fix Inventory resource inherits `BaseResource`, which contains two methods for cleaning up a resource, `cleanup()` and `delete()`. Both methods will refuse to manipulate a resource if the `/metadata.protected` attribute is set to `true`, meaning that protected resources flagged for cleanup will not be deleted.
+
+:::
+
+## Installation
+
+```bash
+> app install protector
+```
+
+:::info
+
+Upon installation, Fix Inventory will create a config `fix.apps.protector`.
+
+:::
+
+## Configuration
+
+1. Execute the following command in [Fix Inventory Shell](../components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.protector
+   ```
+
+2. Update the configuration:
+
+   ```yaml title="protector configuration"
+   config:
+     aws:
+       '110465657741':
+         us-east-1:
+           aws_ec2_instance:
+             - 'i-0fcbe8974615bfd37'
+   ```
+
+   :::info
+
+   The format of the config section is as follows:
+
+   ```yaml
+   cloud.id:
+     account.id:
+       region.id:
+         kind:
+           - resource.id
+   ```
+
+   :::
+
+## Usage
+
+Run the app using the [`app run` command](../cli/app/run.mdx):
+
+```bash
+> app run protector
+```
+
+:::tip
+
+Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+:::
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)

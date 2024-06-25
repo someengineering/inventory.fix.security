@@ -7,7 +7,7 @@ sidebar_position: 1
 
 A resource can be tagged with an [expiration](../../concepts/resource-management/expiration.mdx) tag that instructs Fix Inventory to clean it up after it has reached a certain age. This can serve as a safety net for when a CI job fails or the IaC tool aborts halfway through its run, or even as the primary means of managing resource lifecycles.
 
-Fix Inventory's `cleanup_expired` plugin can find and delete expired resources.
+Fix Inventory's [`cleanup-expired` infrastructure app](../../reference/infrastructure-apps/cleanup-expired.mdx) can find and delete expired resources.
 
 ## Prerequisites
 
@@ -43,18 +43,43 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Update the `plugin_cleanup_expired` section, setting the `enabled` property to `true`:
+3. Use the [`app install` command](../../reference/cli/app/install.mdx) to install the `cleanup-expired` app:
 
-   ```yaml title="cleanup_expired plugin configuration"
-   plugin_cleanup_expired:
-     # Enable plugin?
-   # highlight-next-line
-     enabled: true
+   ```bash
+   > app install cleanup-expired
    ```
 
-The plugin will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+4. Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
 
-Each time the `cleanup_expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
+   ```bash
+   > app run cleanup-expired
+   ```
+
+   :::tip
+
+   Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+   :::
+
+   :::note
+
+   Items tagged with `expiration: never` will not be flagged for cleanup.
+
+   :::
+
+5. [Create an event-based job](../automation/create-an-event-based-job.mdx) to run the app automatically:
+
+   ```bash
+   > jobs create --name "Clean Up Expired Resources" --wait-for-event cleanup_plan 'app run cleanup-expired'
+   ```
+
+   :::info
+
+   The [`cleanup-expired` infrastructure app](../../reference/infrastructure-apps/cleanup-expired.mdx) will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+
+   :::
+
+Each time the `cleanup-expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
 
 :::info
 
@@ -83,7 +108,7 @@ If you would like to apply expiration tags to existing resources, [How to Find U
 
 ## Further Reading
 
-- [`cleanup_expired` Plugin](../../reference/components/plugins/cleanup_expired.mdx)
+- [`cleanup-expired` Infrastructure App](../../reference/infrastructure-apps/cleanup-expired.mdx)
 - [Resource Expiration](../../concepts/resource-management/expiration.mdx)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.mdx)
 - [Cloud Data Sync](../../concepts/cloud-data-sync/index.mdx)

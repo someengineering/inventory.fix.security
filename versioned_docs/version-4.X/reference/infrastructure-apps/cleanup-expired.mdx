@@ -1,0 +1,51 @@
+---
+sidebar_label: cleanup-expired
+---
+
+# `cleanup-expired` Infrastructure App
+
+This infrastructure app looks for resources with the tags `expiration` or `fix:expires` and flags them for cleanup if they are expired.
+
+:::info
+
+A resource's expiration time can be defined either with an [ISO 8601](https://iso.org/iso-8601-date-and-time-format.html) timestamp or time delta:
+
+| Tag Name                         | Description                                                              | Example                     |
+| -------------------------------- | ------------------------------------------------------------------------ | --------------------------- |
+| `fix:expires`                    | [ISO 8601](https://iso.org/iso-8601-date-and-time-format.html) timestamp | `2022-09-21T10:40:11+00:00` |
+| `fix:expiration` or `expiration` | Time delta from resource creation time                                   | `24h`                       |
+
+Please see the [Resource Expiration](../../concepts/resource-management/expiration.mdx) for more information about expiration tags.
+
+:::
+
+## Installation
+
+```bash
+> app install cleanup-expired
+```
+
+## Usage
+
+Run the app using the [`app run` command](../cli/app/run.mdx):
+
+```bash
+> app run cleanup-expired
+```
+
+:::tip
+
+Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+:::
+
+:::note
+
+Items tagged with `expiration: never` will not be flagged for cleanup.
+
+:::
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)
+- [How to Clean Up Expired Resources](../../how-to-guides/cleanup/clean-up-expired-resources.mdx)

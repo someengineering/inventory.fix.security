@@ -6,7 +6,7 @@ sidebar_label: Expiration
 
 Fix Inventory calculates the expiration time of a resource based on its expiration tag and stores the result as the value of the `metadata.expires` property.
 
-Cleanup can be performed manually in [Fix Inventory Shell](../../reference/components/shell.mdx), automatically using the [`cleanup_expired` plugin](../../reference/components/plugins/cleanup_expired.mdx), or via a scheduled [job](../automation/index.mdx#jobs).
+Cleanup can be performed using the [`cleanup-expired` infrastructure app](../../reference/infrastructure-apps/cleanup-expired.mdx).
 
 ## Supported Expiration Tags
 
@@ -35,3 +35,4 @@ Spaces within time delta strings are optional (e.g., `7d4h` and `7 days 4 hours`
 
 - [How to Find Expired Resources](../../how-to-guides/search/find-expired-resources.mdx)
 - [How to Clean Up Expired Resources](../../how-to-guides/cleanup/clean-up-expired-resources.mdx)
+- [`cleanup-expired` Infrastructure App](../../reference/infrastructure-apps/cleanup-expired.mdx)

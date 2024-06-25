@@ -1,0 +1,61 @@
+---
+sidebar_label: cleanup-aws-alarms
+---
+
+# `cleanup-aws-alarms` Infrastructure App
+
+This infrastructure app marks all orphaned AWS CloudWatch instance alarms (e.g., alarms associated with an EC2 instance that no longer exists) for cleanup.
+
+## Installation
+
+```bash
+> app install cleanup-aws-alarms
+```
+
+:::info
+
+Upon installation, Fix Inventory will create a config `fix.apps.cleanup_aws_alarms`.
+
+:::
+
+## Configuration
+
+1. Execute the following command in [Fix Inventory Shell](../components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_aws_alarms
+   ```
+
+2. Update the configuration with the desired target cloud account IDs:
+
+   ```yaml title="cleanup_aws_alarms configuration"
+   clouds_and_accounts:
+     aws:
+       - '1234567'
+       - '567890'
+   ```
+
+## Usage
+
+Run the app using the [`app run` command](../cli/app/run.mdx):
+
+```bash
+> app run cleanup-aws-alarms
+```
+
+:::tip
+
+Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+:::
+
+:::note
+
+Items tagged with `expiration: never` will not be flagged for cleanup.
+
+:::
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps.mdx)
+- [How to Clean Up AWS CloudWatch Alarms](../../how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms.mdx)

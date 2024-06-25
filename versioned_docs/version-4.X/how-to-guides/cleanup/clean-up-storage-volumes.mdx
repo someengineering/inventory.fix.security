@@ -1,0 +1,103 @@
+---
+sidebar_label: Clean Up Storage Volumes
+---
+
+# How to Clean Up Storage Volumes
+
+Storage volumes are sometimes left behind when compute instances are removed. Fix Inventory can find and delete these unused storage volumes.
+
+Fix Inventory's [`cleanup-volumes` infrastructure app](../../reference/infrastructure-apps/cleanup-volumes.mdx) can find and delete these orphaned storage volumes.
+
+## Prerequisites
+
+This guide assumes that you have already [installed](../../getting-started/install/index.mdx) and configured Fix Inventory to [collect your cloud resources](../../how-to-guides/data-sources/index.mdx).
+
+## Directions
+
+1. Execute the following command in [Fix Inventory Shell](../../reference/components/shell.mdx) to open the [Fix Inventory Worker](../../reference/components/worker.mdx) configuration for editing:
+
+   ```bash
+   > config edit fix.worker
+   ```
+
+2. Enable cleanup by modifying the `fixworker` section of the configuration as follows:
+
+   ```yaml
+   fixworker:
+     # Enable cleanup of resources
+   # highlight-next-line
+     cleanup: true
+     # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
+     cleanup_dry_run: false
+     # How many cleanup threads to run in parallel
+     cleanup_pool_size: 16
+   ```
+
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow), which runs each hour by default.
+
+   :::tip
+
+   Set `cleanup_dry_run` to `true` to simulate cleanup without actually deleting resources.
+
+   :::
+
+3. Use the [`app install` command](../../reference/cli/app/install.mdx) to install the `cleanup-volumes` app:
+
+   ```bash
+   > app install cleanup-volumes
+   ```
+
+   :::info
+
+   Fix Inventory will create a default config `fix.apps.cleanup_volumes`.
+
+   :::
+
+4. Execute the following command in [Fix Inventory Shell](../../reference/components/shell.mdx) to open the infrastructure app configuration for editing:
+
+   ```bash
+   > config edit fix.apps.cleanup_volumes
+   ```
+
+5. Update the configuration with the desired volume age threshold:
+
+   ```yaml title="cleanup_volumes configuration"
+   min_age: 14d
+   ```
+
+6. Run the app using the [`app run` command](../../reference/cli/app/run.mdx):
+
+   ```bash
+   > app run cleanup-volumes
+   ```
+
+   :::tip
+
+   Add the optional `--dry-run` flag to see what commands the app would perform, without actually executing them.
+
+   :::
+
+7. [Create an event-based job](../automation/create-an-event-based-job.mdx) to run the app automatically:
+
+   ```bash
+   > jobs create --name "Clean Up Storage Volumes" --wait-for-event cleanup_plan 'app run cleanup_volumes'
+   ```
+
+   :::info
+
+   The [`cleanup-volumes` infrastructure app](../../reference/infrastructure-apps/cleanup-volumes.mdx) will now run each time Fix Inventory emits the `post_cleanup_plan` [event](../../reference/events/index.mdx). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.mdx#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow).
+
+   :::
+
+Each time the `cleanup-volumes` infrastructure app runs, unused storage volumes will be flagged for removal during the next cleanup run.
+
+## Further Reading
+
+- [`cleanup-volumes` Infrastructure App](../../reference/infrastructure-apps/cleanup-volumes.mdx)
+- [Resource Cleanup](../../concepts/resource-management/cleanup.mdx)
+- [Cloud Data Sync](../../concepts/cloud-data-sync/index.mdx)
+- [Automation](../../concepts/automation/index.mdx)
+- [Search](../../reference/search/index.mdx)
+- [Configuration](../../reference/configuration/index.mdx)
+- [Command-Line Interface](../../reference/cli/index.mdx)
