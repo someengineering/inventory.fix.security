@@ -299,6 +299,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_acm_certificate {
+}
 class aws_iam_server_certificate {
 }
 class certificate {
@@ -322,6 +324,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+certificate <|--- aws_acm_certificate
 certificate <|--- aws_iam_server_certificate
 resource <|--- certificate
 certificate <|--- digitalocean_certificate
@@ -654,6 +657,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_waf_web_acl {
+}
 class azure_firewall {
 }
 class firewall {
@@ -672,6 +677,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+firewall <|--- aws_waf_web_acl
 firewall <|--- azure_firewall
 resource <|--- firewall
 firewall <|--- gcp_firewall
@@ -715,6 +721,8 @@ class azure_application_gateway {
 }
 class azure_express_route_gateway {
 }
+class azure_p2_s_vpn_gateway {
+}
 class azure_vpn_gateway {
 }
 class gateway {
@@ -739,6 +747,7 @@ gateway <|--- aws_ec2_internet_gateway
 gateway <|--- aws_ec2_nat_gateway
 gateway <|--- azure_application_gateway
 gateway <|--- azure_express_route_gateway
+gateway <|--- azure_p2_s_vpn_gateway
 gateway <|--- azure_vpn_gateway
 resource <|--- gateway
 gateway <|--- gcp_external_vpn_gateway
@@ -777,6 +786,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_iam_group {
 }
+class azure_resource_group {
+}
 class group {
 }
 class resource {
@@ -794,6 +805,7 @@ class resource {
 class slack_usergroup {
 }
 group <|--- aws_iam_group
+group <|--- azure_resource_group
 resource <|--- group
 group <|--- slack_usergroup
 @enduml
@@ -1086,6 +1098,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_elastic_ip {
 }
+class azure_public_ip_address {
+}
 class digitalocean_floating_ip {
 }
 class gcp_address {
@@ -1107,6 +1121,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 ip_address <|--- aws_ec2_elastic_ip
+ip_address <|--- azure_public_ip_address
 ip_address <|--- digitalocean_floating_ip
 ip_address <|--- gcp_address
 resource <|--- ip_address
@@ -1142,6 +1157,10 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_keypair {
+}
+class azure_ssh_public_key_resource {
+}
 class digitalocean_ssh_key {
 }
 class keypair {
@@ -1159,6 +1178,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+keypair <|--- aws_ec2_keypair
+keypair <|--- azure_ssh_public_key_resource
 keypair <|--- digitalocean_ssh_key
 resource <|--- keypair
 @enduml
@@ -1266,6 +1287,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_eks_cluster {
 }
+class azure_managed_cluster {
+}
 class digitalocean_kubernetes_cluster {
 }
 class gcp_container_cluster {
@@ -1287,6 +1310,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 managed_kubernetes_cluster_provider <|--- aws_eks_cluster
+managed_kubernetes_cluster_provider <|--- azure_managed_cluster
 managed_kubernetes_cluster_provider <|--- digitalocean_kubernetes_cluster
 managed_kubernetes_cluster_provider <|--- gcp_container_cluster
 resource <|--- managed_kubernetes_cluster_provider
@@ -1384,6 +1408,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_network_acl {
+}
 class network_acl {
 }
 class resource {
@@ -1398,6 +1424,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+network_acl <|--- aws_ec2_network_acl
 resource <|--- network_acl
 @enduml
 ```
@@ -1433,6 +1460,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_network_interface {
 }
+class azure_network_interface {
+}
 class network_interface {
 **description**: string
 **mac**: string
@@ -1455,6 +1484,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 network_interface <|--- aws_ec2_network_interface
+network_interface <|--- azure_network_interface
 resource <|--- network_interface
 @enduml
 ```
@@ -1836,6 +1866,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_iam_role {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1850,6 +1882,7 @@ class resource {
 }
 class role {
 }
+role <|--- aws_iam_role
 resource <|--- role
 @enduml
 ```
@@ -1935,6 +1968,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_security_group {
 }
+class azure_network_security_group {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1950,6 +1985,7 @@ class resource {
 class security_group {
 }
 security_group <|--- aws_ec2_security_group
+security_group <|--- azure_network_security_group
 resource <|--- security_group
 @enduml
 ```
@@ -1983,6 +2019,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_cloudfront_function {
+}
 class aws_lambda_function {
 }
 class resource {
@@ -1999,6 +2037,7 @@ class resource {
 }
 class serverless_function {
 }
+serverless_function <|--- aws_cloudfront_function
 serverless_function <|--- aws_lambda_function
 resource <|--- serverless_function
 @enduml
@@ -2037,6 +2076,8 @@ class aws_ec2_snapshot {
 }
 class aws_rds_snapshot {
 }
+class azure_managed_cluster_snapshot {
+}
 class azure_virtual_machine_snapshot {
 }
 class digitalocean_snapshot {
@@ -2066,6 +2107,7 @@ class snapshot {
 }
 snapshot <|--- aws_ec2_snapshot
 snapshot <|--- aws_rds_snapshot
+snapshot <|--- azure_managed_cluster_snapshot
 snapshot <|--- azure_virtual_machine_snapshot
 snapshot <|--- digitalocean_snapshot
 snapshot <|--- gcp_snapshot
@@ -2157,6 +2199,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_subnet {
 }
+class azure_subnet {
+}
 class gcp_subnetwork {
 }
 class resource {
@@ -2174,6 +2218,7 @@ class resource {
 class subnet {
 }
 subnet <|--- aws_ec2_subnet
+subnet <|--- azure_subnet
 subnet <|--- gcp_subnetwork
 resource <|--- subnet
 @enduml
