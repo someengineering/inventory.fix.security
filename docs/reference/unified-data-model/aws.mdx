@@ -217,6 +217,11 @@ class aws_acm_resource_record {
 class aws_resource {
 **arn**: string
 }
+class certificate {
+**dns_names**: string[]
+**expires**: datetime
+**sha1_fingerprint**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -233,9 +238,11 @@ aws_acm_certificate --> aws_acm_domain_validation
 aws_acm_certificate --> aws_acm_extended_key_usage
 aws_acm_certificate --> aws_acm_renewal_summary
 aws_resource <|--- aws_acm_certificate
+certificate <|--- aws_acm_certificate
 aws_acm_domain_validation --> aws_acm_resource_record
 aws_acm_renewal_summary --> aws_acm_domain_validation
 resource <|--- aws_resource
+resource <|--- certificate
 @enduml
 ```
 
@@ -4582,9 +4589,13 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class serverless_function {
+}
 aws_cloudfront_function --> aws_cloudfront_function_config
 aws_resource <|--- aws_cloudfront_function
+serverless_function <|--- aws_cloudfront_function
 resource <|--- aws_resource
+resource <|--- serverless_function
 @enduml
 ```
 
@@ -7575,6 +7586,9 @@ class aws_ec2_keypair {
 class aws_resource {
 **arn**: string
 }
+class keypair {
+**fingerprint**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -7588,7 +7602,9 @@ class resource {
 **tags**: dictionary[string, string]
 }
 aws_resource <|--- aws_ec2_keypair
+keypair <|--- aws_ec2_keypair
 resource <|--- aws_resource
+resource <|--- keypair
 @enduml
 ```
 
@@ -8160,6 +8176,8 @@ class aws_ec2_port_range {
 class aws_resource {
 **arn**: string
 }
+class network_acl {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -8175,9 +8193,11 @@ class resource {
 aws_ec2_network_acl --> aws_ec2_network_acl_association
 aws_ec2_network_acl --> aws_ec2_network_acl_entry
 aws_resource <|--- aws_ec2_network_acl
+network_acl <|--- aws_ec2_network_acl
 aws_ec2_network_acl_entry --> aws_ec2_icmp_type_code
 aws_ec2_network_acl_entry --> aws_ec2_port_range
 resource <|--- aws_resource
+resource <|--- network_acl
 @enduml
 ```
 
@@ -12811,11 +12831,15 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class role {
+}
 aws_iam_role --> aws_iam_attached_permissions_boundary
 aws_iam_role --> aws_iam_policy_detail
 aws_iam_role --> aws_iam_role_last_used
 aws_resource <|--- aws_iam_role
+role <|--- aws_iam_role
 resource <|--- aws_resource
+resource <|--- role
 @enduml
 ```
 
@@ -22663,6 +22687,8 @@ class aws_waf_xss_match_statement {
 **field_to_match**: aws_waf_field_to_match
 **text_transformations**: aws_waf_text_transformation[]
 }
+class firewall {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -22768,8 +22794,10 @@ aws_waf_web_acl --> aws_waf_firewall_manager_rule_group
 aws_waf_web_acl --> aws_waf_logging_configuration
 aws_waf_web_acl --> aws_waf_rule
 aws_waf_web_acl --> aws_waf_visibility_config
+firewall <|--- aws_waf_web_acl
 aws_waf_xss_match_statement --> aws_waf_field_to_match
 aws_waf_xss_match_statement --> aws_waf_text_transformation
+resource <|--- firewall
 @enduml
 ```
 

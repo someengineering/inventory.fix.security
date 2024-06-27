@@ -5049,6 +5049,10 @@ class azure_windows_gmsa_profile {
 **enabled**: boolean
 **root_domain_name**: string
 }
+class managed_kubernetes_cluster_provider {
+**endpoint**: string
+**version**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -5095,6 +5099,7 @@ azure_managed_cluster --> azure_private_link_resource
 azure_resource <|--- azure_managed_cluster
 azure_managed_cluster --> azure_service_mesh_profile
 azure_managed_cluster --> azure_user_assigned_identity
+managed_kubernetes_cluster_provider <|--- azure_managed_cluster
 azure_managed_cluster_addon_profile --> azure_user_assigned_identity
 azure_managed_cluster_azure_monitor_profile --> azure_managed_cluster_azure_monitor_profile_metrics
 azure_managed_cluster_azure_monitor_profile_metrics --> azure_managed_cluster_azure_monitor_profile_kube_state_metrics
@@ -5114,6 +5119,7 @@ azure_managed_cluster_security_profile --> azure_managed_cluster_security_profil
 azure_managed_cluster_windows_profile --> azure_windows_gmsa_profile
 resource <|--- azure_resource
 azure_service_mesh_profile --> azure_istio_service_mesh
+resource <|--- managed_kubernetes_cluster_provider
 @enduml
 ```
 
@@ -5202,6 +5208,7 @@ class azure_managed_cluster_snapshot {
 **creation_data_source_id**: string
 **enable_fips**: boolean
 **kubernetes_version**: string
+**location**: string
 **node_image_version**: string
 **os_sku**: string
 **os_type**: string
@@ -5222,8 +5229,19 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
 azure_resource <|--- azure_managed_cluster_snapshot
+snapshot <|--- azure_managed_cluster_snapshot
 resource <|--- azure_resource
+resource <|--- snapshot
 @enduml
 ```
 
@@ -5539,6 +5557,15 @@ class azure_private_link_service_connection_state {
 }
 class azure_resource {
 }
+class network_interface {
+**description**: string
+**mac**: string
+**network_interface_status**: string
+**network_interface_type**: string
+**private_ips**: string[]
+**public_ips**: string[]
+**v6_ips**: string[]
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -5558,6 +5585,7 @@ azure_network_interface --> azure_network_interface_ip_configuration
 azure_network_interface --> azure_network_interface_tap_configuration
 azure_network_interface --> azure_private_endpoint
 azure_resource <|--- azure_network_interface
+network_interface <|--- azure_network_interface
 azure_network_interface_ip_configuration --> azure_application_gateway_backend_address_pool
 azure_network_interface_ip_configuration --> azure_application_security_group
 azure_network_interface_ip_configuration --> azure_inbound_nat_rule
@@ -5569,6 +5597,7 @@ azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service_connection --> azure_private_link_service_connection_state
 resource <|--- azure_resource
+resource <|--- network_interface
 @enduml
 ```
 
@@ -5880,15 +5909,19 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class security_group {
+}
 azure_flow_log --> azure_flow_log_format_parameters
 azure_flow_log --> azure_retention_policy_parameters
 azure_flow_log --> azure_traffic_analytics_properties
 azure_network_security_group --> azure_flow_log
 azure_resource <|--- azure_network_security_group
 azure_network_security_group --> azure_security_rule
+security_group <|--- azure_network_security_group
 resource <|--- azure_resource
 azure_security_rule --> azure_application_security_group
 azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
+resource <|--- security_group
 @enduml
 ```
 
@@ -6499,6 +6532,8 @@ class azure_vpn_server_configuration_policy_group_member {
 **attribute_value**: string
 **name**: string
 }
+class gateway {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -6517,12 +6552,14 @@ azure_p2_s_connection_configuration --> azure_vpn_server_configuration_policy_gr
 azure_p2_s_vpn_gateway --> azure_p2_s_connection_configuration
 azure_resource <|--- azure_p2_s_vpn_gateway
 azure_p2_s_vpn_gateway --> azure_vpn_client_connection_health
+gateway <|--- azure_p2_s_vpn_gateway
 resource <|--- azure_resource
 azure_routing_configuration --> azure_propagated_route_table
 azure_routing_configuration --> azure_vnet_route
 azure_vnet_route --> azure_static_route
 azure_vnet_route --> azure_static_routes_config
 azure_vpn_server_configuration_policy_group --> azure_vpn_server_configuration_policy_group_member
+resource <|--- gateway
 @enduml
 ```
 
@@ -6929,7 +6966,6 @@ class azure_public_ip_address {
 **delete_option**: string
 **extended_location**: azure_extended_location
 **idle_timeout_in_minutes**: int64
-**ip_address**: string
 **ip_dns_settings**: azure_public_ip_address_dns_settings
 **ip_tags**: azure_ip_tag[]
 **location**: string
@@ -6955,6 +6991,10 @@ class azure_sku {
 **name**: string
 **tier**: string
 }
+class ip_address {
+**ip_address**: string
+**ip_address_family**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -6973,7 +7013,9 @@ azure_public_ip_address --> azure_ip_tag
 azure_public_ip_address --> azure_public_ip_address_dns_settings
 azure_resource <|--- azure_public_ip_address
 azure_public_ip_address --> azure_sku
+ip_address <|--- azure_public_ip_address
 resource <|--- azure_resource
+resource <|--- ip_address
 @enduml
 ```
 
@@ -7359,6 +7401,8 @@ class azure_resource {
 class azure_resource_group {
 **managed_by**: string
 }
+class group {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -7373,6 +7417,8 @@ class resource {
 }
 resource <|--- azure_resource
 azure_resource <|--- azure_resource_group
+group <|--- azure_resource_group
+resource <|--- group
 @enduml
 ```
 
@@ -8053,6 +8099,9 @@ class azure_resource {
 class azure_ssh_public_key_resource {
 **properties**: string
 }
+class keypair {
+**fingerprint**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -8067,6 +8116,8 @@ class resource {
 }
 resource <|--- azure_resource
 azure_resource <|--- azure_ssh_public_key_resource
+keypair <|--- azure_ssh_public_key_resource
+resource <|--- keypair
 @enduml
 ```
 
@@ -8968,6 +9019,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class subnet {
+}
 azure_private_endpoint --> azure_application_security_group
 azure_private_endpoint --> azure_custom_dns_config_properties_format
 azure_private_endpoint --> azure_extended_location
@@ -8987,6 +9040,8 @@ azure_subnet --> azure_route_table
 azure_subnet --> azure_service_association_link
 azure_subnet --> azure_service_endpoint_policy
 azure_subnet --> azure_service_endpoint_properties_format
+subnet <|--- azure_subnet
+resource <|--- subnet
 @enduml
 ```
 
