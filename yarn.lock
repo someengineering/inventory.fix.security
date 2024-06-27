@@ -2314,9 +2314,9 @@
     uri-js "^4.2.2"
 
 "@redocly/config@^0.6.0":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@redocly/config/-/config-0.6.1.tgz#931da21d6cbf8e73a873ca12ae690902d848cbb5"
-  integrity sha512-p4mlj+CD3Byec3wOxDlDln0B0gOcNvEkpl4jn3/e9y8h11ogzXnWxnlJAtE5Kcr1ByujS/7Mbt01df9z1xfMbg==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@redocly/config/-/config-0.6.2.tgz#b5180ccb407673ee048b818c3be9a4f9d0636a64"
+  integrity sha512-c3K5u64eMnr2ootPcpEI0ioIRLE8QP8ptvLxG9MwAmb2sU8HMRfVwXDU3AZiMVY2w4Ts0mDc+Xv4HTIk8DRqFw==
 
 "@redocly/openapi-core@^1.10.5":
   version "1.16.0"
@@ -2820,9 +2820,9 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "20.14.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.8.tgz#45c26a2a5de26c3534a9504530ddb3b27ce031ac"
-  integrity sha512-DO+2/jZinXfROG7j7WKFn/3C6nFwxy2lLpgLjEXJz+0XKphZlTLJ14mo8Vfg8X5BWN6XjyESXq+LcYdT7tR3bA==
+  version "20.14.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.9.tgz#12e8e765ab27f8c421a1820c99f5f313a933b420"
+  integrity sha512-06OCtnTXtWOZBJlRApleWndH4JsRVs1pDCc8dLSQp+7PpUpX3ePdHyeNSFTeSe7FtKyQkrlPvHwJOW3SLd8Oyg==
   dependencies:
     undici-types "~5.26.4"
 
@@ -4057,9 +4057,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001599, caniuse-lite@^1.0.30001629:
-  version "1.0.30001636"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001636.tgz#b15f52d2bdb95fad32c2f53c0b68032b85188a78"
-  integrity sha512-bMg2vmr8XBsbL6Lr0UHXy/21m84FTxDLWn2FSqMd5PrlbMxwJlQnC2YWYxVgp66PZE+BBNF2jYQUBKCo1FDeZg==
+  version "1.0.30001638"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001638.tgz#598e1f0c2ac36f37ebc3f5b8887a32ca558e5d56"
+  integrity sha512-5SuJUJ7cZnhPpeLHaH0c/HPAnAHZvS6ElWyHK9GSIbVOQABLzowiI2pjmpvZ1WEbkyz46iFd4UXlOHR5SqgfMQ==
 
 ccount@^2.0.0:
   version "2.0.1"
@@ -4891,9 +4891,9 @@ cytoscape-cose-bilkent@^4.1.0:
     cose-base "^1.0.0"
 
 cytoscape@^3.28.1:
-  version "3.29.2"
-  resolved "https://registry.yarnpkg.com/cytoscape/-/cytoscape-3.29.2.tgz#c99f42513c80a75e2e94858add32896c860202ac"
-  integrity sha512-2G1ycU28Nh7OHT9rkXRLpCDP30MKH1dXJORZuBhtEhEW7pKwgPi77ImqlCWinouyE1PNepIOGZBOrE84DG7LyQ==
+  version "3.30.0"
+  resolved "https://registry.yarnpkg.com/cytoscape/-/cytoscape-3.30.0.tgz#5b0c13f7bb305481e2c70414d4c5f149d92eda82"
+  integrity sha512-l590mjTHT6/Cbxp13dGPC2Y7VXdgc+rUeF8AnF/JPzhjNevbDJfObnJgaSjlldOgBQZbue+X6IUZ7r5GAgvauQ==
 
 cz-conventional-changelog@3.3.0:
   version "3.3.0"
@@ -5483,10 +5483,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-docusaurus-plugin-openapi-docs@0.0.0-beta.736:
-  version "0.0.0-beta.736"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-0.0.0-beta.736.tgz#0f127ac1042da6be9ba1b972fbfc9b6cbaae73f5"
-  integrity sha512-27F0Kk1Cf2g9QtX/vAkTJAmEQsJTH81fENXJcHmiquZslfhe6WVJoUV7IVIjtioOiZbETZBEV0vClGuVvu8aOw==
+docusaurus-plugin-openapi-docs@0.0.0-beta.740:
+  version "0.0.0-beta.740"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-0.0.0-beta.740.tgz#30e1455bfd465548e79f18f15ffb0bb8beba7e24"
+  integrity sha512-bCgcOPEXGUKKmplzmjrOoVm/u2bEoP20A605N8bYsKGBYEK2C9yMA2QEOw0NKbgZQTJ1R3VDRSM8KdnkBsf/Dw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^11.5.4"
     "@docusaurus/plugin-content-docs" "^3.0.1"
@@ -5514,10 +5514,10 @@ docusaurus-plugin-sass@^0.2.3:
   dependencies:
     sass-loader "^10.1.1"
 
-docusaurus-theme-openapi-docs@0.0.0-beta.736:
-  version "0.0.0-beta.736"
-  resolved "https://registry.yarnpkg.com/docusaurus-theme-openapi-docs/-/docusaurus-theme-openapi-docs-0.0.0-beta.736.tgz#f8c123e4724365cb5b485cf37f6041c809c4a45c"
-  integrity sha512-0kMM19c9a1yEYmm773UwZVqDFcA9WR6axTyUOQBl3VQyWKBez46IOxRwDkt8ZSpEvQL1zk8phIEdgXKfNFMUDQ==
+docusaurus-theme-openapi-docs@0.0.0-beta.740:
+  version "0.0.0-beta.740"
+  resolved "https://registry.yarnpkg.com/docusaurus-theme-openapi-docs/-/docusaurus-theme-openapi-docs-0.0.0-beta.740.tgz#875a504751950ebadcda1656f4ff7bbfe6620eb8"
+  integrity sha512-ETZ4ZM9r3P+djgI5gQRm8rqMZr5bpgWAgYC9uoFbv80GwNp8Qtzjsw4Ghl9Est4u5ihBB2WbkouaiBIDJzaqcg==
   dependencies:
     "@docusaurus/theme-common" "^3.0.1"
     "@hookform/error-message" "^2.0.1"
@@ -5527,7 +5527,7 @@ docusaurus-theme-openapi-docs@0.0.0-beta.736:
     clsx "^1.1.1"
     copy-text-to-clipboard "^3.1.0"
     crypto-js "^4.1.1"
-    docusaurus-plugin-openapi-docs "0.0.0-beta.736"
+    docusaurus-plugin-openapi-docs "0.0.0-beta.740"
     docusaurus-plugin-sass "^0.2.3"
     file-saver "^2.0.5"
     lodash "^4.17.20"
@@ -5662,9 +5662,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.796:
-  version "1.4.811"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.811.tgz#031c8b101e7d0a7cde1dfdb0623dbdb5e19655cd"
-  integrity sha512-CDyzcJ5XW78SHzsIOdn27z8J4ist8eaFLhdto2hSMSJQgsiwvbv2fbizcKUICryw1Wii1TI/FEkvzvJsR3awrA==
+  version "1.4.812"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.812.tgz#21b78709c5a13af5d5c688d135a22dcea7617acf"
+  integrity sha512-7L8fC2Ey/b6SePDFKR2zHAy4mbdp1/38Yk5TsARO66W3hC5KEaeKMMHoxwtuH+jcu2AYLSn9QX04i95t6Fl1Hg==
 
 elkjs@^0.9.0:
   version "0.9.3"
@@ -9840,9 +9840,9 @@ minimatch@^5.0.1:
     brace-expansion "^2.0.1"
 
 minimatch@^9.0.4:
-  version "9.0.4"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.4.tgz#8e49c731d1749cbec05050ee5145147b32496a51"
-  integrity sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==
+  version "9.0.5"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.5.tgz#d74f9dd6b57d83d8e98cfb82133b03978bc929e5"
+  integrity sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -10927,10 +10927,10 @@ postcss@8.4.38, postcss@^8.4.21, postcss@^8.4.24, postcss@^8.4.26, postcss@^8.4.
     picocolors "^1.0.0"
     source-map-js "^1.2.0"
 
-posthog-js@1.141.3:
-  version "1.141.3"
-  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.141.3.tgz#c0b78e62567b5de15e400254905d2b72544e3618"
-  integrity sha512-LZ+I6wJS82yX/SZVaK20V2WV4MEfB2G9fT2ZJoWlzwN5L3wsbpmjD9F2dVW818deBV3ms1w0Ho7rnlJtBGHx2g==
+posthog-js@1.141.4:
+  version "1.141.4"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.141.4.tgz#c3fcc8bf312c8baaed2b9032cd5fb527a712283b"
+  integrity sha512-e8rUFEnAR1MB+YqrjWLEmvm0d1X90cebCPNyby6oNX1cp36s/PpxeTx+Up7bArJmRv2N+rT1Kd5sJ7jpXWAonA==
   dependencies:
     fflate "^0.4.8"
     preact "^10.19.3"
@@ -11264,9 +11264,9 @@ react-lifecycles-compat@^3.0.0:
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
 react-live@^4.0.0:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/react-live/-/react-live-4.1.6.tgz#6d9b7d381bd2b359ca859767501135112b6bab33"
-  integrity sha512-2oq3MADi3rupqZcdoHMrV9p+Eg/92BDds278ZuoOz8d68qw6ct0xZxX89MRxeChrnFHy1XPr8BVknDJNJNdvVw==
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/react-live/-/react-live-4.1.7.tgz#a451054bee78e6c9b4410dfc3940b318d9bc7880"
+  integrity sha512-NTzl0POOAW3dkp7+QL30duOrIu2Vzf2LHdx4TaQ0BqOAtQcSTKEXujfm9jR2VoCHko0oi35PYp38yKQBXz4mrg==
   dependencies:
     prism-react-renderer "^2.0.6"
     sucrase "^3.31.0"
@@ -11369,10 +11369,10 @@ react-router@5.3.4, react-router@^5.3.4:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-zoom-pan-pinch@3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.5.1.tgz#7f010c620c4714b05739cf3bf8b7a61426c54b77"
-  integrity sha512-Ehak8lZUwM4SH+19sQzVa7S95QdRTXjIdJRiVzlpYlCFjXCw1k+Eh/RdeytaiarqDEZdEfSoV7FSOqtsRTC9cg==
+react-zoom-pan-pinch@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.6.0.tgz#aea299a27d120a96b832fd953b2490ca9bfc4954"
+  integrity sha512-qLAFbDmlRwwJ7F3KXIoT5zxVZD34ZO0a5jI65URmTUjthapoQ0UCAF8oxpSJV0bSVszI5T3WV/U4Jd6ypwOnAQ==
 
 react@18.3.1:
   version "18.3.1"
