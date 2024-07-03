@@ -1,0 +1,221 @@
+---
+sidebar_label: Collect Azure Resource Data
+---
+
+# How to Collect Azure Resource Data
+
+The [Azure](../../../reference/unified-data-model/azure.mdx) collector is configured within the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) via the [`config` command](../../../reference/cli/config/index.mdx) in [Fix Inventory Shell](../../../reference/components/shell.mdx).
+
+## Prerequisites
+
+This guide assumes that you have already [installed](../../../getting-started/install/index.mdx) Fix Inventory.
+
+## Directions
+
+### 1. Enable the Azure Collector
+
+1.  Open the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) via the [`config` command](../../../reference/cli/config) in [Fix Inventory Shell](../../../reference/components/shell):
+
+    ```bash
+    > config edit fix.worker
+    ```
+
+2.  Add `azure` to the list of collectors by modifying the configuration as follows:
+
+    ```yaml
+    fixworker:
+      ...
+      # List of collectors to run
+      collector:
+    # highlight-next-line
+        - 'azure'
+        ...
+    ...
+    ```
+
+### 2. Configure Azure
+
+1.  Navigate to **Subscriptions** in the Azure console and note the ID of the subscription you want to use:
+
+    ![Azure subscriptions](./img/subscription-id.png)
+
+2.  In the search box, type **App registrations** and select the **App registrations** service:
+
+    ![Azure app registrations](./img/app-registrations.png)
+
+3.  Click **New registration**:
+
+    ![Azure new registration](./img/new-registration.png)
+
+4.  Enter a name for the application and click the **Register** button:
+
+    ![Azure register application](./img/register-application.png)
+
+5.  Make note of the displayed **Application (client) ID** and **Directory (tenant) ID**:
+
+    ![Azure application (client) ID & directory (tenant) ID](./img/app-essentials.png)
+
+    :::note
+
+    These values will be provided as `client_id` and `tenant_id` to the Azure collector.
+
+    :::
+
+6.  Click on **Certificates & secrets** in the left-hand menu:
+
+    ![Azure certificates & secrets](./img/certificates-secrets.png)
+
+7.  Click **New client secret**:
+
+    ![Azure new client secret](./img/new-client-secret.png)
+
+8.  Enter a description for the secret, select an expiration period, and click the **Add** button:
+
+    ![Azure add client secret](./img/add-client-secret.png)
+
+9.  Make note of the displayed **Value** of the created secret:
+
+    ![Azure client secret value](./img/client-secret-value.png)
+
+    :::note
+
+    This value will be provided as `client_secret` to the Azure collector.
+
+    :::
+
+10. Click on **API permissions** in the left-hand menu:
+
+    ![Azure API permissions](./img/api-permissions.png)
+
+11. Click **Add a permission**:
+
+    ![Azure add a permission](./img/add-permission.png)
+
+12. Click **Azure Service Management**:
+
+    ![Azure service management](./img/service-management.png)
+
+13. Select the **user_impersonation** permission:
+
+    ![Azure user impersonation permission](./img/user-impersonation.png)
+
+14. Click the **Add permissions** button:
+
+    ![Azure add permissions](./img/add-permissions.png)
+
+15. In the search box, type **Subscriptions** and select the **Subscriptions** service:
+
+    ![Azure subscriptions](./img/subscriptions.png)
+
+16. Click on your subscription:
+
+    ![Azure subscription](./img/subscription.png)
+
+17. Click **Access control (IAM)** in the left-hand menu:
+
+    ![Azure access control (IAM)](./img/access-control.png)
+
+18. Click **Add role assignment**:
+
+    ![Azure add role assignment](./img/add-role-assignment.png)
+
+19. In the **Role** tab, select the **Reader** role:
+
+    ![Azure reader role](./img/reader-role.png)
+
+20. Click the **Next** button:
+
+    ![Azure next button](./img/next-button.png)
+
+21. In the **Members** tab, click **Select members**:
+
+    ![Azure select members](./img/role-assignment-members.png)
+
+22. Search for the application you created earlier:
+
+    ![Azure search application](./img/select-members-search.png)
+
+23. Click the application and click the **Select** button:
+
+    ![Azure select button](./img/select-members.png)
+
+24. Click the **Review + assign** button:
+
+    ![Azure review + assign](./img/review-assign.png)
+
+### 3. Authenticate with Azure
+
+<Tabs>
+<TabItem value="configuration" label="Fix Inventory Worker Configuration">
+
+1.  Open the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) via the [`config` command](../../../reference/cli/config) in [Fix Inventory Shell](../../../reference/components/shell):
+
+    ```bash
+    > config edit fix.worker
+    ```
+
+2.  Modify the `azure` section of the configuration as follows, adding your API tokens and/or access keys:
+
+    ```yaml
+    azure:
+    # highlight-start
+      accounts:
+        default:
+          client_secret:
+            tenant_id: '<tenant ID>'
+            client_id: '<client ID>'
+            client_secret: '<client secret>'
+    # highlight-end
+    ```
+
+</TabItem>
+<TabItem value="environment" label="Environment Variables">
+
+**Instead of specifying API tokens or secret access keys in the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) directly, it is possible to define them using the [`--override` flag or `FIXWORKER_OVERRIDE` environment variable](../../../reference/configuration/index.mdx#overriding-individual-properties).**
+
+1.  Set the `FIXWORKER_OVERRIDE` environment variable:
+
+    - Add a environment variable definition to the `fixworker` service in `docker-compose.yaml`:
+
+      ```yaml title="docker-compose.yaml"
+      services:
+        ...
+        fixworker:
+      # highlight-start
+          environment:
+            - FIXWORKER_OVERRIDE="azure.accounts.default.client_secret.tenant_id=<tenant ID> azure.accounts.default.client_secret.client_id=<client ID> azure.accounts.default.client_secret.client_secret=<client secret>"
+      # highlight-end
+        ...
+      ...
+      ```
+
+    - Recreate the `fixworker` container with the updated service definition:
+
+      ```bash
+      $ docker-compose up -d
+      ```
+
+      :::note
+
+      [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+      In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+      :::
+
+</TabItem>
+</Tabs>
+
+### 4. Trigger Resource Collection
+
+1.  By default, Fix Inventory performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../../reference/cli/workflow/run.mdx) in [Fix Inventory Shell](../../../reference/components/shell):
+
+    ```bash
+    > workflow run collect
+    ```
+
+2.  Once the collect run completes, you can view a summary of collected [Azure resources](../../../reference/unified-data-model/azure.mdx) using the following search:
+
+    ```bash
+    > search is(azure_resource) | count kind
+    ```
