@@ -5436,10 +5436,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-docusaurus-plugin-openapi-docs@3.0.0, docusaurus-plugin-openapi-docs@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-3.0.0.tgz#376e9814154af6910f3b12df62f5d4b3ed17cdfc"
-  integrity sha512-SdZTGJIr5D8nJzTMmBDlhg5aJVwweexleFGgs843xezG7PyPyWou00oiPX5Ui4vOdAjLWKq+pE1UPO1MxynEZA==
+docusaurus-plugin-openapi-docs@3.0.1, docusaurus-plugin-openapi-docs@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-3.0.1.tgz#954fdc4103d7e47133aede210a98353b3e0f0f99"
+  integrity sha512-6SRqwey/TXMNu2G02mbWgxrifhpjGOjDr30N+58AR0Ytgc+HXMqlPAUIvTe+e7sOBfAtBbiNlmOWv5KSYIjf3w==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^11.5.4"
     "@docusaurus/plugin-content-docs" "^3.0.1"
