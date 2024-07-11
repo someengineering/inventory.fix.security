@@ -485,9 +485,9 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_resource {
-}
 class gateway {
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -530,8 +530,8 @@ azure_application_gateway --> azure_application_gateway_trusted_root_certificate
 azure_application_gateway --> azure_application_gateway_url_path_map
 azure_application_gateway --> azure_application_gateway_web_application_firewall_configuration
 azure_application_gateway --> azure_managed_service_identity
-azure_resource <|--- azure_application_gateway
 gateway <|--- azure_application_gateway
+microsoft_resource <|--- azure_application_gateway
 azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
 azure_application_gateway_backend_http_settings --> azure_application_gateway_connection_draining
 azure_application_gateway_http_listener --> azure_application_gateway_custom_error
@@ -557,8 +557,8 @@ azure_private_endpoint --> azure_extended_location
 azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
 resource <|--- gateway
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -651,7 +651,7 @@ class azure_application_gateway_firewall_rule_set {
 **rule_set_version**: string
 **tiers**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -667,8 +667,8 @@ class resource {
 }
 azure_application_gateway_firewall_rule_group --> azure_application_gateway_firewall_rule
 azure_application_gateway_firewall_rule_set --> azure_application_gateway_firewall_rule_group
-azure_resource <|--- azure_application_gateway_firewall_rule_set
-resource <|--- azure_resource
+microsoft_resource <|--- azure_application_gateway_firewall_rule_set
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -752,13 +752,13 @@ class azure_instance_view_status {
 **message**: string
 **time**: datetime
 }
-class azure_resource {
-}
 class azure_sku {
 **capacity**: int64
 **family**: string
 **name**: string
 **tier**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -773,9 +773,9 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_availability_set --> azure_instance_view_status
-azure_resource <|--- azure_availability_set
 azure_availability_set --> azure_sku
-resource <|--- azure_resource
+microsoft_resource <|--- azure_availability_set
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -878,7 +878,7 @@ class azure_bastion_host_ip_configuration {
 class azure_ip_rules {
 **ip_rules**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -894,8 +894,8 @@ class resource {
 }
 azure_bastion_host --> azure_bastion_host_ip_configuration
 azure_bastion_host --> azure_ip_rules
-azure_resource <|--- azure_bastion_host
-resource <|--- azure_resource
+microsoft_resource <|--- azure_bastion_host
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1018,8 +1018,6 @@ class azure_protected_append_writes_history {
 **allow_protected_append_writes_all**: boolean
 **timestamp**: datetime
 }
-class azure_resource {
-}
 class azure_tag_property {
 **object_identifier**: string
 **tag**: string
@@ -1039,6 +1037,8 @@ class azure_update_history_property {
 }
 class bucket {
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1054,13 +1054,13 @@ class resource {
 azure_blob_container --> azure_immutability_policy_properties
 azure_blob_container --> azure_immutable_storage_with_versioning
 azure_blob_container --> azure_legal_hold_properties
-azure_resource <|--- azure_blob_container
 bucket <|--- azure_blob_container
+microsoft_resource <|--- azure_blob_container
 azure_immutability_policy_properties --> azure_update_history_property
 azure_legal_hold_properties --> azure_protected_append_writes_history
 azure_legal_hold_properties --> azure_tag_property
-resource <|--- azure_resource
 resource <|--- bucket
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1140,7 +1140,7 @@ class azure_capacity_reservation_group {
 class azure_capacity_reservation_group_instance_view {
 **capacity_reservations**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1155,8 +1155,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_capacity_reservation_group --> azure_capacity_reservation_group_instance_view
-azure_resource <|--- azure_capacity_reservation_group
-resource <|--- azure_resource
+microsoft_resource <|--- azure_capacity_reservation_group
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1297,8 +1297,6 @@ class azure_load_balancer_frontend_ip_configuration {
 **public_ip_address**: string
 **subnet**: string
 }
-class azure_resource {
-}
 class azure_system_data {
 **created_at**: datetime
 **created_by**: string
@@ -1306,6 +1304,8 @@ class azure_system_data {
 **last_modified_at**: datetime
 **last_modified_by**: string
 **last_modified_by_type**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1323,8 +1323,8 @@ azure_cloud_service --> azure_cloud_service_extension_profile
 azure_cloud_service --> azure_cloud_service_network_profile
 azure_cloud_service --> azure_cloud_service_os_profile
 azure_cloud_service --> azure_cloud_service_role_profile
-azure_resource <|--- azure_cloud_service
 azure_cloud_service --> azure_system_data
+microsoft_resource <|--- azure_cloud_service
 azure_cloud_service_extension_profile --> azure_extension
 azure_cloud_service_network_profile --> azure_load_balancer_configuration
 azure_cloud_service_os_profile --> azure_cloud_service_vault_secret_group
@@ -1332,7 +1332,7 @@ azure_cloud_service_role_profile --> azure_cloud_service_role_profile_properties
 azure_cloud_service_role_profile_properties --> azure_cloud_service_role_sku
 azure_extension --> azure_cloud_service_vault_and_secret_reference
 azure_load_balancer_configuration --> azure_load_balancer_frontend_ip_configuration
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1422,7 +1422,7 @@ class azure_extended_location {
 **name**: string
 **type**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1437,8 +1437,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_custom_ip_prefix --> azure_extended_location
-azure_resource <|--- azure_custom_ip_prefix
-resource <|--- azure_resource
+microsoft_resource <|--- azure_custom_ip_prefix
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1512,7 +1512,7 @@ class azure_ddos_protection_plan {
 **resource_guid**: string
 **virtual_networks**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1526,8 +1526,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_ddos_protection_plan
-resource <|--- azure_resource
+microsoft_resource <|--- azure_ddos_protection_plan
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1612,7 +1612,7 @@ class azure_dedicated_host_group {
 class azure_dedicated_host_group_instance_view {
 **hosts**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1627,8 +1627,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_dedicated_host_group --> azure_dedicated_host_group_instance_view
-azure_resource <|--- azure_dedicated_host_group
-resource <|--- azure_resource
+microsoft_resource <|--- azure_dedicated_host_group
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -1793,12 +1793,12 @@ class azure_purchase_plan {
 **promotion_code**: string
 **publisher**: string
 }
-class azure_resource {
-}
 class azure_supported_capabilities {
 **accelerated_network**: boolean
 **architecture**: string
 **disk_controller_types**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1829,13 +1829,13 @@ azure_disk --> azure_encryption
 azure_disk --> azure_encryption_settings_collection
 azure_disk --> azure_extended_location
 azure_disk --> azure_purchase_plan
-azure_resource <|--- azure_disk
 azure_disk --> azure_supported_capabilities
+microsoft_resource <|--- azure_disk
 volume <|--- azure_disk
 azure_encryption_settings_collection --> azure_encryption_settings_element
 azure_encryption_settings_element --> azure_key_vault_and_key_reference
 azure_encryption_settings_element --> azure_key_vault_and_secret_reference
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- volume
 @enduml
 ```
@@ -1948,7 +1948,7 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -1964,9 +1964,9 @@ class resource {
 }
 azure_disk_access --> azure_disk_access_private_endpoint_connection
 azure_disk_access --> azure_extended_location
-azure_resource <|--- azure_disk_access
+microsoft_resource <|--- azure_disk_access
 azure_disk_access_private_endpoint_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2078,7 +2078,7 @@ class azure_principal_client {
 **client_id**: string
 **principal_id**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -2097,9 +2097,9 @@ azure_api_error --> azure_inner_error
 azure_disk_encryption_set --> azure_api_error
 azure_disk_encryption_set --> azure_encryption_set_identity
 azure_disk_encryption_set --> azure_key_for_disk_encryption_set
-azure_resource <|--- azure_disk_encryption_set
+microsoft_resource <|--- azure_disk_encryption_set
 azure_encryption_set_identity --> azure_principal_client
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2188,7 +2188,7 @@ class azure_disk_type {
 **volume_size**: int64
 **volume_throughput**: int64
 }
-class azure_resource {
+class microsoft_resource {
 }
 class phantom_resource {
 }
@@ -2215,9 +2215,9 @@ class volume_type {
 **ondemand_cost**: double
 **volume_type**: string
 }
-azure_resource <|--- azure_disk_type
+microsoft_resource <|--- azure_disk_type
 volume_type <|--- azure_disk_type
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- phantom_resource
 phantom_resource <|--- quota
 quota <|--- type
@@ -2307,7 +2307,7 @@ class azure_pricing_offers {
 **ultra_ssd_stored**: dictionary[string, any]
 **ultra_ssd_throughput**: dictionary[string, any]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -2323,8 +2323,8 @@ class resource {
 }
 azure_disk_type_pricing --> azure_pricing_graduated_offers
 azure_disk_type_pricing --> azure_pricing_offers
-azure_resource <|--- azure_disk_type_pricing
-resource <|--- azure_resource
+microsoft_resource <|--- azure_disk_type_pricing
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2420,7 +2420,7 @@ class azure_qos_port_range {
 **end**: int64
 **start**: int64
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -2437,10 +2437,10 @@ class resource {
 azure_dscp_configuration --> azure_qos_definition
 azure_dscp_configuration --> azure_qos_ip_range
 azure_dscp_configuration --> azure_qos_port_range
-azure_resource <|--- azure_dscp_configuration
+microsoft_resource <|--- azure_dscp_configuration
 azure_qos_definition --> azure_qos_ip_range
 azure_qos_definition --> azure_qos_port_range
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2620,13 +2620,13 @@ class azure_peer_express_route_circuit_connection {
 **provisioning_state**: string
 **type**: string
 }
-class azure_resource {
-}
 class azure_sku {
 **capacity**: int64
 **family**: string
 **name**: string
 **tier**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -2643,8 +2643,8 @@ class resource {
 azure_express_route_circuit --> azure_express_route_circuit_authorization
 azure_express_route_circuit --> azure_express_route_circuit_peering
 azure_express_route_circuit --> azure_express_route_circuit_service_provider_properties
-azure_resource <|--- azure_express_route_circuit
 azure_express_route_circuit --> azure_sku
+microsoft_resource <|--- azure_express_route_circuit
 azure_express_route_circuit_connection --> azure_ipv6_circuit_connection_config
 azure_express_route_circuit_peering --> azure_express_route_circuit_connection
 azure_express_route_circuit_peering --> azure_express_route_circuit_peering_config
@@ -2652,7 +2652,7 @@ azure_express_route_circuit_peering --> azure_express_route_circuit_stats
 azure_express_route_circuit_peering --> azure_ipv6_express_route_circuit_peering_config
 azure_express_route_circuit_peering --> azure_peer_express_route_circuit_connection
 azure_ipv6_express_route_circuit_peering_config --> azure_express_route_circuit_peering_config
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2772,7 +2772,7 @@ class azure_ipv6_express_route_circuit_peering_config {
 **secondary_peer_address_prefix**: string
 **state**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -2787,11 +2787,11 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_express_route_cross_connection --> azure_express_route_cross_connection_peering
-azure_resource <|--- azure_express_route_cross_connection
+microsoft_resource <|--- azure_express_route_cross_connection
 azure_express_route_cross_connection_peering --> azure_express_route_circuit_peering_config
 azure_express_route_cross_connection_peering --> azure_ipv6_express_route_circuit_peering_config
 azure_ipv6_express_route_circuit_peering_config --> azure_express_route_circuit_peering_config
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -2888,8 +2888,6 @@ class azure_propagated_route_table {
 **ids**: string[]
 **labels**: string[]
 }
-class azure_resource {
-}
 class azure_routing_configuration {
 **associated_route_table**: string
 **inbound_route_map**: string
@@ -2913,6 +2911,8 @@ class azure_vnet_route {
 }
 class gateway {
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2929,14 +2929,14 @@ azure_bounds --> azure_min_max
 azure_express_route_connection --> azure_routing_configuration
 azure_express_route_gateway --> azure_bounds
 azure_express_route_gateway --> azure_express_route_connection
-azure_resource <|--- azure_express_route_gateway
 gateway <|--- azure_express_route_gateway
-resource <|--- azure_resource
+microsoft_resource <|--- azure_express_route_gateway
 azure_routing_configuration --> azure_propagated_route_table
 azure_routing_configuration --> azure_vnet_route
 azure_vnet_route --> azure_static_route
 azure_vnet_route --> azure_static_routes_config
 resource <|--- gateway
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -3051,7 +3051,7 @@ class azure_principal_client {
 **client_id**: string
 **principal_id**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -3068,9 +3068,9 @@ class resource {
 azure_express_route_link --> azure_express_route_link_mac_sec_config
 azure_express_route_port --> azure_express_route_link
 azure_express_route_port --> azure_managed_service_identity
-azure_resource <|--- azure_express_route_port
+microsoft_resource <|--- azure_express_route_port
 azure_managed_service_identity --> azure_principal_client
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -3151,7 +3151,7 @@ class azure_express_route_ports_location_bandwidths {
 **offer_name**: string
 **value_in_gbps**: int64
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -3166,8 +3166,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_express_route_ports_location --> azure_express_route_ports_location_bandwidths
-azure_resource <|--- azure_express_route_ports_location
-resource <|--- azure_resource
+microsoft_resource <|--- azure_express_route_ports_location
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -3265,11 +3265,11 @@ class azure_file_share {
 **type**: string
 **version**: string
 }
-class azure_resource {
-}
 class azure_signed_identifier {
 **access_policy**: azure_access_policy
 **id**: string
+}
+class microsoft_resource {
 }
 class network_share {
 **share_encrypted**: boolean
@@ -3291,11 +3291,11 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_file_share
 azure_file_share --> azure_signed_identifier
+microsoft_resource <|--- azure_file_share
 network_share <|--- azure_file_share
-resource <|--- azure_resource
 azure_signed_identifier --> azure_access_policy
+resource <|--- microsoft_resource
 resource <|--- network_share
 @enduml
 ```
@@ -3467,9 +3467,9 @@ class azure_hub_public_ip_addresses {
 **addresses**: string[]
 **count**: int64
 }
-class azure_resource {
-}
 class firewall {
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -3490,15 +3490,15 @@ azure_firewall --> azure_firewall_nat_rule_collection
 azure_firewall --> azure_firewall_network_rule_collection
 azure_firewall --> azure_firewall_sku
 azure_firewall --> azure_hub_ip_addresses
-azure_resource <|--- azure_firewall
 firewall <|--- azure_firewall
+microsoft_resource <|--- azure_firewall
 azure_firewall_application_rule --> azure_firewall_application_rule_protocol
 azure_firewall_application_rule_collection --> azure_firewall_application_rule
 azure_firewall_nat_rule_collection --> azure_firewall_nat_rule
 azure_firewall_network_rule_collection --> azure_firewall_network_rule
 azure_hub_ip_addresses --> azure_hub_public_ip_addresses
-resource <|--- azure_resource
 resource <|--- firewall
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -3668,7 +3668,7 @@ class azure_principal_client {
 **client_id**: string
 **principal_id**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class policy {
 }
@@ -3692,7 +3692,7 @@ azure_firewall_policy --> azure_firewall_policy_snat
 azure_firewall_policy --> azure_firewall_policy_threat_intel_whitelist
 azure_firewall_policy --> azure_firewall_policy_transport_security
 azure_firewall_policy --> azure_managed_service_identity
-azure_resource <|--- azure_firewall_policy
+microsoft_resource <|--- azure_firewall_policy
 policy <|--- azure_firewall_policy
 azure_firewall_policy_insights --> azure_firewall_policy_log_analytics_resources
 azure_firewall_policy_intrusion_detection --> azure_firewall_policy_intrusion_detection_configuration
@@ -3701,7 +3701,7 @@ azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_polic
 azure_firewall_policy_log_analytics_resources --> azure_firewall_policy_log_analytics_workspace
 azure_firewall_policy_transport_security --> azure_firewall_policy_certificate_authority
 azure_managed_service_identity --> azure_principal_client
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- policy
 @enduml
 ```
@@ -3808,7 +3808,7 @@ class azure_principal_client {
 **client_id**: string
 **principal_id**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -3824,11 +3824,11 @@ class resource {
 }
 azure_fleet --> azure_fleet_hub_profile
 azure_fleet --> azure_managed_service_identity
-azure_resource <|--- azure_fleet
+microsoft_resource <|--- azure_fleet
 azure_fleet_hub_profile --> azure_agent_profile
 azure_fleet_hub_profile --> azure_api_server_access_profile
 azure_managed_service_identity --> azure_principal_client
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -3920,8 +3920,6 @@ class azure_regional_sharing_status {
 **region**: string
 **state**: string
 }
-class azure_resource {
-}
 class azure_sharing_profile {
 **community_gallery_info**: azure_community_gallery_info
 **groups**: azure_sharing_profile_group[]
@@ -3935,6 +3933,8 @@ class azure_sharing_status {
 **aggregated_state**: string
 **summary**: azure_regional_sharing_status[]
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -3947,13 +3947,13 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_gallery
 azure_gallery --> azure_sharing_profile
 azure_gallery --> azure_sharing_status
-resource <|--- azure_resource
+microsoft_resource <|--- azure_gallery
 azure_sharing_profile --> azure_community_gallery_info
 azure_sharing_profile --> azure_sharing_profile_group
 azure_sharing_status --> azure_regional_sharing_status
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -4041,10 +4041,10 @@ class azure_image_storage_profile {
 **os_disk**: azure_image_os_disk
 **zone_resilient**: boolean
 }
-class azure_resource {
-}
 class azure_sub_resource {
 **id**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -4060,10 +4060,10 @@ class resource {
 }
 azure_image --> azure_extended_location
 azure_image --> azure_image_storage_profile
-azure_resource <|--- azure_image
+microsoft_resource <|--- azure_image
 azure_image_os_disk --> azure_sub_resource
 azure_image_storage_profile --> azure_image_os_disk
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -4150,7 +4150,7 @@ class azure_ip_allocation {
 **subnet**: string
 **virtual_network**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -4164,8 +4164,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_ip_allocation
-resource <|--- azure_resource
+microsoft_resource <|--- azure_ip_allocation
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -4246,7 +4246,7 @@ class azure_ip_group {
 **firewalls**: string[]
 **ip_addresses**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -4260,8 +4260,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_ip_group
-resource <|--- azure_resource
+microsoft_resource <|--- azure_ip_group
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -4476,8 +4476,6 @@ class azure_probe {
 **request_path**: string
 **type**: string
 }
-class azure_resource {
-}
 class azure_sku {
 **capacity**: int64
 **family**: string
@@ -4488,6 +4486,8 @@ class load_balancer {
 **backends**: string[]
 **lb_type**: string
 **public_ip_address**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -4511,12 +4511,12 @@ azure_load_balancer --> azure_inbound_nat_rule
 azure_load_balancer --> azure_load_balancing_rule
 azure_load_balancer --> azure_outbound_rule
 azure_load_balancer --> azure_probe
-azure_resource <|--- azure_load_balancer
 azure_load_balancer --> azure_sku
 load_balancer <|--- azure_load_balancer
+microsoft_resource <|--- azure_load_balancer
 azure_load_balancer_backend_address --> azure_nat_rule_port_mapping
-resource <|--- azure_resource
 resource <|--- load_balancer
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -4640,7 +4640,7 @@ class azure_paired_region {
 **name**: string
 **subscription_id**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class phantom_resource {
 }
@@ -4663,10 +4663,10 @@ class resource {
 }
 azure_location --> azure_availability_zone_mappings
 azure_location --> azure_location_metadata
-azure_resource <|--- azure_location
+microsoft_resource <|--- azure_location
 region <|--- azure_location
 azure_location_metadata --> azure_paired_region
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- phantom_resource
 phantom_resource <|--- region
 @enduml
@@ -5028,8 +5028,6 @@ class azure_public_i_ps {
 class azure_public_ip_prefixes {
 **public_ip_prefixes**: string[]
 }
-class azure_resource {
-}
 class azure_service_mesh_profile {
 **istio**: azure_istio_service_mesh
 **mode**: string
@@ -5052,6 +5050,8 @@ class azure_windows_gmsa_profile {
 class managed_kubernetes_cluster_provider {
 **endpoint**: string
 **version**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -5096,10 +5096,10 @@ azure_managed_cluster --> azure_managed_cluster_storage_profile
 azure_managed_cluster --> azure_managed_cluster_windows_profile
 azure_managed_cluster --> azure_managed_cluster_workload_auto_scaler_profile
 azure_managed_cluster --> azure_private_link_resource
-azure_resource <|--- azure_managed_cluster
 azure_managed_cluster --> azure_service_mesh_profile
 azure_managed_cluster --> azure_user_assigned_identity
 managed_kubernetes_cluster_provider <|--- azure_managed_cluster
+microsoft_resource <|--- azure_managed_cluster
 azure_managed_cluster_addon_profile --> azure_user_assigned_identity
 azure_managed_cluster_azure_monitor_profile --> azure_managed_cluster_azure_monitor_profile_metrics
 azure_managed_cluster_azure_monitor_profile_metrics --> azure_managed_cluster_azure_monitor_profile_kube_state_metrics
@@ -5117,9 +5117,9 @@ azure_managed_cluster_security_profile --> azure_azure_key_vault_kms
 azure_managed_cluster_security_profile --> azure_managed_cluster_security_profile_defender
 azure_managed_cluster_security_profile --> azure_managed_cluster_security_profile_image_cleaner
 azure_managed_cluster_windows_profile --> azure_windows_gmsa_profile
-resource <|--- azure_resource
 azure_service_mesh_profile --> azure_istio_service_mesh
 resource <|--- managed_kubernetes_cluster_provider
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -5215,7 +5215,7 @@ class azure_managed_cluster_snapshot {
 **snapshot_type**: string
 **vm_size**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -5238,9 +5238,9 @@ class snapshot {
 **volume_id**: string
 **volume_size**: int64
 }
-azure_resource <|--- azure_managed_cluster_snapshot
+microsoft_resource <|--- azure_managed_cluster_snapshot
 snapshot <|--- azure_managed_cluster_snapshot
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- snapshot
 @enduml
 ```
@@ -5324,7 +5324,7 @@ class azure_nat_gateway {
 **type**: string
 **zones**: string[]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -5338,8 +5338,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_nat_gateway
-resource <|--- azure_resource
+microsoft_resource <|--- azure_nat_gateway
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -5555,7 +5555,7 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class network_interface {
 **description**: string
@@ -5584,7 +5584,7 @@ azure_network_interface --> azure_network_interface_dns_settings
 azure_network_interface --> azure_network_interface_ip_configuration
 azure_network_interface --> azure_network_interface_tap_configuration
 azure_network_interface --> azure_private_endpoint
-azure_resource <|--- azure_network_interface
+microsoft_resource <|--- azure_network_interface
 network_interface <|--- azure_network_interface
 azure_network_interface_ip_configuration --> azure_application_gateway_backend_address_pool
 azure_network_interface_ip_configuration --> azure_application_security_group
@@ -5596,7 +5596,7 @@ azure_private_endpoint --> azure_extended_location
 azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- network_interface
 @enduml
 ```
@@ -5726,7 +5726,7 @@ class azure_network_profile {
 **container_network_interfaces**: azure_container_network_interface[]
 **resource_guid**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -5746,8 +5746,8 @@ azure_container_network_interface --> azure_container_network_interface_ip_confi
 azure_container_network_interface_configuration --> azure_ip_configuration_profile
 azure_network_profile --> azure_container_network_interface
 azure_network_profile --> azure_container_network_interface_configuration
-azure_resource <|--- azure_network_profile
-resource <|--- azure_resource
+microsoft_resource <|--- azure_network_profile
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -5860,8 +5860,6 @@ class azure_network_security_group {
 **resource_guid**: string
 **security_rules**: azure_security_rule[]
 }
-class azure_resource {
-}
 class azure_retention_policy_parameters {
 **days**: int64
 **enabled**: boolean
@@ -5897,6 +5895,8 @@ class azure_traffic_analytics_configuration_properties {
 class azure_traffic_analytics_properties {
 **network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -5915,12 +5915,12 @@ azure_flow_log --> azure_flow_log_format_parameters
 azure_flow_log --> azure_retention_policy_parameters
 azure_flow_log --> azure_traffic_analytics_properties
 azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
 azure_network_security_group --> azure_security_rule
+microsoft_resource <|--- azure_network_security_group
 security_group <|--- azure_network_security_group
-resource <|--- azure_resource
 azure_security_rule --> azure_application_security_group
 azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
+resource <|--- microsoft_resource
 resource <|--- security_group
 @enduml
 ```
@@ -6013,18 +6013,17 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_network_usage {
 }
-class azure_resource {
-}
 class azure_usage {
 **current_value**: int64
 **limit**: int64
-**name**: string
 **unit**: string
 **usage_name**: azure_usage_name
 }
 class azure_usage_name {
 **localized_value**: string
 **value**: string
+}
+class microsoft_resource {
 }
 class network_quota {
 }
@@ -6047,12 +6046,12 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_network_usage
 azure_usage <|--- azure_network_usage
 azure_network_usage --> azure_usage_name
+microsoft_resource <|--- azure_network_usage
 network_quota <|--- azure_network_usage
-resource <|--- azure_resource
 azure_usage --> azure_usage_name
+resource <|--- microsoft_resource
 quota <|--- network_quota
 resource <|--- phantom_resource
 phantom_resource <|--- quota
@@ -6162,8 +6161,6 @@ class azure_principal_client {
 **client_id**: string
 **principal_id**: string
 }
-class azure_resource {
-}
 class azure_virtual_appliance_additional_nic_properties {
 **has_public_ip**: boolean
 **name**: string
@@ -6178,6 +6175,8 @@ class azure_virtual_appliance_sku_properties {
 **bundled_scale_unit**: string
 **market_place_version**: string
 **vendor**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -6195,11 +6194,11 @@ azure_managed_service_identity --> azure_principal_client
 azure_network_virtual_appliance --> azure_delegation_properties
 azure_network_virtual_appliance --> azure_managed_service_identity
 azure_network_virtual_appliance --> azure_partner_managed_resource_properties
-azure_resource <|--- azure_network_virtual_appliance
 azure_network_virtual_appliance --> azure_virtual_appliance_additional_nic_properties
 azure_network_virtual_appliance --> azure_virtual_appliance_nic_properties
 azure_network_virtual_appliance --> azure_virtual_appliance_sku_properties
-resource <|--- azure_resource
+microsoft_resource <|--- azure_network_virtual_appliance
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6283,7 +6282,7 @@ class azure_network_virtual_appliance_sku_instances {
 **instance_count**: int64
 **scale_unit**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -6298,8 +6297,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_network_virtual_appliance_sku --> azure_network_virtual_appliance_sku_instances
-azure_resource <|--- azure_network_virtual_appliance_sku
-resource <|--- azure_resource
+microsoft_resource <|--- azure_network_virtual_appliance_sku
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6375,7 +6374,7 @@ class azure_network_watcher {
 **location**: string
 **properties**: string
 }
-class azure_resource {
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -6389,8 +6388,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_network_watcher
-resource <|--- azure_resource
+microsoft_resource <|--- azure_network_watcher
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6488,8 +6487,6 @@ class azure_propagated_route_table {
 **ids**: string[]
 **labels**: string[]
 }
-class azure_resource {
-}
 class azure_routing_configuration {
 **associated_route_table**: string
 **inbound_route_map**: string
@@ -6534,6 +6531,8 @@ class azure_vpn_server_configuration_policy_group_member {
 }
 class gateway {
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -6550,16 +6549,16 @@ azure_p2_s_connection_configuration --> azure_address_space
 azure_p2_s_connection_configuration --> azure_routing_configuration
 azure_p2_s_connection_configuration --> azure_vpn_server_configuration_policy_group
 azure_p2_s_vpn_gateway --> azure_p2_s_connection_configuration
-azure_resource <|--- azure_p2_s_vpn_gateway
 azure_p2_s_vpn_gateway --> azure_vpn_client_connection_health
 gateway <|--- azure_p2_s_vpn_gateway
-resource <|--- azure_resource
+microsoft_resource <|--- azure_p2_s_vpn_gateway
 azure_routing_configuration --> azure_propagated_route_table
 azure_routing_configuration --> azure_vnet_route
 azure_vnet_route --> azure_static_route
 azure_vnet_route --> azure_static_routes_config
 azure_vpn_server_configuration_policy_group --> azure_vpn_server_configuration_policy_group_member
 resource <|--- gateway
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6691,9 +6690,9 @@ class azure_private_link_service {
 **fqdns**: string[]
 **link_service_ip_configurations**: azure_private_link_service_ip_configuration[]
 **link_service_private_endpoint_connections**: azure_link_service_private_endpoint_connection[]
+**link_visibility**: azure_resource_set
 **location**: string
 **type**: string
-**visibility**: azure_resource_set
 }
 class azure_private_link_service_connection {
 **etag**: string
@@ -6720,10 +6719,10 @@ class azure_private_link_service_ip_configuration {
 **provisioning_state**: string
 **type**: string
 }
-class azure_resource {
-}
 class azure_resource_set {
 **subscriptions**: string[]
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -6747,10 +6746,10 @@ azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service --> azure_extended_location
 azure_private_link_service --> azure_link_service_private_endpoint_connection
 azure_private_link_service --> azure_private_link_service_ip_configuration
-azure_resource <|--- azure_private_link_service
 azure_private_link_service --> azure_resource_set
+microsoft_resource <|--- azure_private_link_service
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6837,13 +6836,13 @@ class azure_proximity_placement_group {
 **virtual_machine_scale_sets**: azure_sub_resource_with_colocation_status[]
 **virtual_machines_status**: azure_sub_resource_with_colocation_status[]
 }
-class azure_resource {
-}
 class azure_sub_resource_with_colocation_status {
 **colocation_status**: azure_instance_view_status
 }
 class azure_vm_sizes {
 **vm_sizes**: string[]
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -6858,11 +6857,11 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_proximity_placement_group --> azure_instance_view_status
-azure_resource <|--- azure_proximity_placement_group
 azure_proximity_placement_group --> azure_sub_resource_with_colocation_status
 azure_proximity_placement_group --> azure_vm_sizes
-resource <|--- azure_resource
+microsoft_resource <|--- azure_proximity_placement_group
 azure_sub_resource_with_colocation_status --> azure_instance_view_status
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -6983,8 +6982,6 @@ class azure_public_ip_address_dns_settings {
 **fqdn**: string
 **reverse_fqdn**: string
 }
-class azure_resource {
-}
 class azure_sku {
 **capacity**: int64
 **family**: string
@@ -6994,6 +6991,8 @@ class azure_sku {
 class ip_address {
 **ip_address**: string
 **ip_address_family**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -7011,11 +7010,11 @@ azure_public_ip_address --> azure_ddos_settings
 azure_public_ip_address --> azure_extended_location
 azure_public_ip_address --> azure_ip_tag
 azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
 azure_public_ip_address --> azure_sku
 ip_address <|--- azure_public_ip_address
-resource <|--- azure_resource
+microsoft_resource <|--- azure_public_ip_address
 resource <|--- ip_address
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -7119,13 +7118,13 @@ class azure_public_ip_prefix {
 **public_ip_addresses**: string[]
 **resource_guid**: string
 }
-class azure_resource {
-}
 class azure_sku {
 **capacity**: int64
 **family**: string
 **name**: string
 **tier**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -7141,9 +7140,9 @@ class resource {
 }
 azure_public_ip_prefix --> azure_extended_location
 azure_public_ip_prefix --> azure_ip_tag
-azure_resource <|--- azure_public_ip_prefix
 azure_public_ip_prefix --> azure_sku
-resource <|--- azure_resource
+microsoft_resource <|--- azure_public_ip_prefix
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -7219,7 +7218,7 @@ class azure_queue {
 **approximate_message_count**: int64
 **queue_metadata**: dictionary[string, string]
 }
-class azure_resource {
+class microsoft_resource {
 }
 class queue {
 }
@@ -7235,9 +7234,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_queue
+microsoft_resource <|--- azure_queue
 queue <|--- azure_queue
-resource <|--- azure_resource
+resource <|--- microsoft_resource
 resource <|--- queue
 @enduml
 ```
@@ -7283,92 +7282,6 @@ azure_storage_account -[#1A83AF]-> azure_queue
 </div>
 </details>
 
-## `azure_resource`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_resource data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_resource resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
-class azure_resource_group {
-}
-azure_resource_group -[#1A83AF]-> azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
 ## `azure_resource_group`
 
 <ZoomPanPinch>
@@ -7396,12 +7309,12 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_resource_group {
 **managed_by**: string
 }
 class group {
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -7415,10 +7328,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_resource_group
 group <|--- azure_resource_group
+microsoft_resource <|--- azure_resource_group
 resource <|--- group
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -7451,11 +7364,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_resource_group {
 }
-azure_resource_group -[#1A83AF]-> azure_resource
+class microsoft_resource {
+}
+azure_resource_group -[#1A83AF]-> microsoft_resource
 @enduml
 ```
 
@@ -7577,8 +7490,6 @@ class azure_patch_settings {
 **enable_hotpatching**: boolean
 **patch_mode**: string
 }
-class azure_resource {
-}
 class azure_restore_point {
 **consistency_mode**: string
 **exclude_disks**: string[]
@@ -7695,6 +7606,8 @@ class azure_windows_vm_guest_patch_automatic_by_platform_settings {
 **bypass_platform_safety_checks_on_user_schedule**: boolean
 **reboot_setting**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -7724,12 +7637,11 @@ azure_os_profile --> azure_linux_configuration
 azure_os_profile --> azure_vault_secret_group
 azure_os_profile --> azure_windows_configuration
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
-resource <|--- azure_resource
 azure_restore_point --> azure_restore_point_instance_view
 azure_restore_point --> azure_restore_point_source_metadata
-azure_resource <|--- azure_restore_point_collection
 azure_restore_point_collection --> azure_restore_point
 azure_restore_point_collection --> azure_restore_point_collection_source_properties
+microsoft_resource <|--- azure_restore_point_collection
 azure_restore_point_encryption --> azure_sub_resource
 azure_restore_point_instance_view --> azure_disk_restore_point_instance_view
 azure_restore_point_instance_view --> azure_instance_view_status
@@ -7753,6 +7665,7 @@ azure_win_rm_configuration --> azure_win_rm_listener
 azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -7898,8 +7811,6 @@ class azure_peer_express_route_circuit_connection {
 **provisioning_state**: string
 **type**: string
 }
-class azure_resource {
-}
 class azure_route_filter {
 **filter_peerings**: azure_express_route_circuit_peering[]
 **filter_rules**: azure_route_filter_rule[]
@@ -7913,6 +7824,8 @@ class azure_route_filter_rule {
 **name**: string
 **provisioning_state**: string
 **route_filter_rule_type**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -7933,10 +7846,10 @@ azure_express_route_circuit_peering --> azure_express_route_circuit_stats
 azure_express_route_circuit_peering --> azure_ipv6_express_route_circuit_peering_config
 azure_express_route_circuit_peering --> azure_peer_express_route_circuit_connection
 azure_ipv6_express_route_circuit_peering_config --> azure_express_route_circuit_peering_config
-resource <|--- azure_resource
 azure_route_filter --> azure_express_route_circuit_peering
-azure_resource <|--- azure_route_filter
 azure_route_filter --> azure_route_filter_rule
+microsoft_resource <|--- azure_route_filter
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8005,12 +7918,12 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_security_partner_provider {
 **connection_status**: string
 **security_provider_name**: string
 **virtual_hub**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -8024,8 +7937,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_security_partner_provider
+microsoft_resource <|--- azure_security_partner_provider
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8094,13 +8007,13 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_ssh_public_key_resource {
 **properties**: string
 }
 class keypair {
 **fingerprint**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -8114,10 +8027,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_ssh_public_key_resource
 keypair <|--- azure_ssh_public_key_resource
+microsoft_resource <|--- azure_ssh_public_key_resource
 resource <|--- keypair
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8307,8 +8220,6 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_resource {
-}
 class azure_resource_access_rule {
 **resource_id**: string
 **tenant_id**: string
@@ -8415,6 +8326,8 @@ class azure_virtual_network_rule {
 **id**: string
 **state**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -8439,7 +8352,6 @@ azure_network_rule_set --> azure_ip_rule
 azure_network_rule_set --> azure_resource_access_rule
 azure_network_rule_set --> azure_virtual_network_rule
 azure_private_endpoint_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
 azure_storage_account --> azure_azure_files_identity_based_authentication
 azure_storage_account --> azure_blob_restore_status
 azure_storage_account --> azure_custom_domain
@@ -8451,15 +8363,16 @@ azure_storage_account --> azure_immutable_storage_account
 azure_storage_account --> azure_key_creation_time
 azure_storage_account --> azure_network_rule_set
 azure_storage_account --> azure_private_endpoint_connection
-azure_resource <|--- azure_storage_account
 azure_storage_account --> azure_routing_preference
 azure_storage_account --> azure_sas_policy
 azure_storage_account --> azure_sku
 azure_storage_account --> azure_storage_account_sku_conversion_status
 azure_storage_account --> azure_storage_encryption
+microsoft_resource <|--- azure_storage_account
 azure_storage_encryption --> azure_encryption_identity
 azure_storage_encryption --> azure_encryption_services
 azure_storage_encryption --> azure_key_vault_properties
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8543,14 +8456,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_storage_account_deleted {
 **creation_time**: datetime
 **deletion_time**: datetime
 **restore_reference**: string
 **storage_account_resource_id**: string
 **type**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -8564,8 +8477,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_storage_account_deleted
+microsoft_resource <|--- azure_storage_account_deleted
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8634,20 +8547,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_storage_account_usage {
 }
 class azure_usage {
 **current_value**: int64
 **limit**: int64
-**name**: string
 **unit**: string
 **usage_name**: azure_usage_name
 }
 class azure_usage_name {
 **localized_value**: string
 **value**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -8661,11 +8573,11 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_storage_account_usage
 azure_usage <|--- azure_storage_account_usage
 azure_storage_account_usage --> azure_usage_name
+microsoft_resource <|--- azure_storage_account_usage
 azure_usage --> azure_usage_name
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8734,8 +8646,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_restriction {
 **reason_code**: string
 **type**: string
@@ -8753,6 +8663,8 @@ class azure_storage_sku {
 **sku_restrictions**: azure_restriction[]
 **tier**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -8765,10 +8677,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_storage_sku
 azure_storage_sku --> azure_restriction
 azure_storage_sku --> azure_sku_capability
+microsoft_resource <|--- azure_storage_sku
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -8918,8 +8830,6 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_resource {
-}
 class azure_resource_navigation_link {
 **etag**: string
 **link**: string
@@ -9007,6 +8917,8 @@ class azure_subnet {
 **service_endpoints**: azure_service_endpoint_properties_format[]
 **type**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -9027,20 +8939,20 @@ azure_private_endpoint --> azure_extended_location
 azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-resource <|--- azure_resource
 azure_route_table --> azure_route
 azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
 azure_subnet --> azure_application_gateway_ip_configuration
 azure_subnet --> azure_delegation
 azure_subnet --> azure_ip_configuration_profile
 azure_subnet --> azure_private_endpoint
-azure_resource <|--- azure_subnet
 azure_subnet --> azure_resource_navigation_link
 azure_subnet --> azure_route_table
 azure_subnet --> azure_service_association_link
 azure_subnet --> azure_service_endpoint_policy
 azure_subnet --> azure_service_endpoint_properties_format
+microsoft_resource <|--- azure_subnet
 subnet <|--- azure_subnet
+resource <|--- microsoft_resource
 resource <|--- subnet
 @enduml
 ```
@@ -9169,8 +9081,6 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class account {
 }
-class azure_resource {
-}
 class azure_subscription {
 **account_name**: string
 **authorization_source**: string
@@ -9186,6 +9096,8 @@ class azure_subscription_policies {
 **quota_id**: string
 **spending_limit**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -9199,10 +9111,10 @@ class resource {
 **tags**: dictionary[string, string]
 }
 resource <|--- account
-resource <|--- azure_resource
 account <|--- azure_subscription
-azure_resource <|--- azure_subscription
 azure_subscription --> azure_subscription_policies
+microsoft_resource <|--- azure_subscription
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -9271,8 +9183,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_table {
 **table_name**: string
 **table_signed_identifiers**: azure_table_signed_identifier[]
@@ -9286,6 +9196,8 @@ class azure_table_signed_identifier {
 **access_policy**: azure_table_access_policy
 **id**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -9298,10 +9210,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_table
 azure_table --> azure_table_signed_identifier
+microsoft_resource <|--- azure_table
 azure_table_signed_identifier --> azure_table_access_policy
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -9373,8 +9285,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_virtual_hub {
 **address_prefix**: string
 **allow_branch_to_branch_traffic**: boolean
@@ -9419,6 +9329,8 @@ class azure_virtual_hub_route_v2 {
 **next_hop_type**: string
 **next_hops**: string[]
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -9431,12 +9343,12 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_virtual_hub
 azure_virtual_hub --> azure_virtual_hub_route_table
 azure_virtual_hub --> azure_virtual_hub_route_table_v2
+microsoft_resource <|--- azure_virtual_hub
 azure_virtual_hub_route_table --> azure_virtual_hub_route
 azure_virtual_hub_route_table_v2 --> azure_virtual_hub_route_v2
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -9735,8 +9647,6 @@ class azure_public_ip_address_sku {
 **name**: string
 **tier**: string
 }
-class azure_resource {
-}
 class azure_scheduled_events_profile {
 **os_image_notification_profile**: azure_os_image_notification_profile
 **terminate_notification_profile**: azure_terminate_notification_profile
@@ -9963,6 +9873,8 @@ class instance {
 **instance_status**: instance_status
 **instance_type**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -10003,7 +9915,6 @@ azure_os_profile --> azure_linux_configuration
 azure_os_profile --> azure_vault_secret_group
 azure_os_profile --> azure_windows_configuration
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
-resource <|--- azure_resource
 azure_scheduled_events_profile --> azure_os_image_notification_profile
 azure_scheduled_events_profile --> azure_terminate_notification_profile
 azure_security_profile --> azure_uefi_settings
@@ -10038,7 +9949,6 @@ azure_virtual_machine_base --> azure_extended_location
 azure_virtual_machine_base --> azure_hardware_profile
 azure_virtual_machine_base --> azure_os_profile
 azure_virtual_machine_base --> azure_plan
-azure_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_base --> azure_scheduled_events_profile
 azure_virtual_machine_base --> azure_security_profile
 azure_virtual_machine_base --> azure_storage_profile
@@ -10047,6 +9957,7 @@ azure_virtual_machine_base --> azure_virtual_machine_identity
 azure_virtual_machine_base --> azure_virtual_machine_instance_view
 azure_virtual_machine_base --> azure_virtual_machine_network_profile
 instance <|--- azure_virtual_machine_base
+microsoft_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
 azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
@@ -10077,6 +9988,7 @@ azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
 resource <|--- instance
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -10384,8 +10296,6 @@ class azure_public_ip_address_sku {
 **name**: string
 **tier**: string
 }
-class azure_resource {
-}
 class azure_scheduled_events_profile {
 **os_image_notification_profile**: azure_os_image_notification_profile
 **terminate_notification_profile**: azure_terminate_notification_profile
@@ -10610,6 +10520,8 @@ class instance {
 **instance_status**: instance_status
 **instance_type**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -10650,7 +10562,6 @@ azure_os_profile --> azure_linux_configuration
 azure_os_profile --> azure_vault_secret_group
 azure_os_profile --> azure_windows_configuration
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
-resource <|--- azure_resource
 azure_scheduled_events_profile --> azure_os_image_notification_profile
 azure_scheduled_events_profile --> azure_terminate_notification_profile
 azure_security_profile --> azure_uefi_settings
@@ -10669,7 +10580,6 @@ azure_virtual_machine_base --> azure_extended_location
 azure_virtual_machine_base --> azure_hardware_profile
 azure_virtual_machine_base --> azure_os_profile
 azure_virtual_machine_base --> azure_plan
-azure_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_base --> azure_scheduled_events_profile
 azure_virtual_machine_base --> azure_security_profile
 azure_virtual_machine_base --> azure_storage_profile
@@ -10678,6 +10588,7 @@ azure_virtual_machine_base --> azure_virtual_machine_identity
 azure_virtual_machine_base --> azure_virtual_machine_instance_view
 azure_virtual_machine_base --> azure_virtual_machine_network_profile
 instance <|--- azure_virtual_machine_base
+microsoft_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
 azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
@@ -10708,6 +10619,7 @@ azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
 resource <|--- instance
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -10925,8 +10837,6 @@ class azure_priority_mix_policy {
 class azure_public_ip_address_sku {
 **name**: string
 **tier**: string
-}
-class azure_resource {
 }
 class azure_rolling_upgrade_policy {
 **enable_cross_zone_upgrade**: boolean
@@ -11216,6 +11126,8 @@ class azure_windows_vm_guest_patch_automatic_by_platform_settings {
 **bypass_platform_safety_checks_on_user_schedule**: boolean
 **reboot_setting**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -11236,7 +11148,6 @@ azure_linux_configuration --> azure_linux_patch_settings
 azure_linux_configuration --> azure_ssh_configuration
 azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
-resource <|--- azure_resource
 azure_scheduled_events_profile --> azure_os_image_notification_profile
 azure_scheduled_events_profile --> azure_terminate_notification_profile
 azure_security_posture_reference --> azure_virtual_machine_extension
@@ -11254,13 +11165,13 @@ azure_virtual_machine_scale_set --> azure_automatic_repairs_policy
 azure_virtual_machine_scale_set --> azure_extended_location
 azure_virtual_machine_scale_set --> azure_plan
 azure_virtual_machine_scale_set --> azure_priority_mix_policy
-azure_resource <|--- azure_virtual_machine_scale_set
 azure_virtual_machine_scale_set --> azure_scale_in_policy
 azure_virtual_machine_scale_set --> azure_sku
 azure_virtual_machine_scale_set --> azure_spot_restore_policy
 azure_virtual_machine_scale_set --> azure_upgrade_policy
 azure_virtual_machine_scale_set --> azure_virtual_machine_scale_set_identity
 azure_virtual_machine_scale_set --> azure_virtual_machine_scale_set_vm_profile
+microsoft_resource <|--- azure_virtual_machine_scale_set
 azure_virtual_machine_scale_set_data_disk --> azure_virtual_machine_scale_set_managed_disk_parameters
 azure_virtual_machine_scale_set_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_scale_set_extension_profile --> azure_virtual_machine_scale_set_extension
@@ -11298,6 +11209,7 @@ azure_win_rm_configuration --> azure_win_rm_listener
 azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -11598,8 +11510,6 @@ class azure_public_ip_address_sku {
 **name**: string
 **tier**: string
 }
-class azure_resource {
-}
 class azure_scheduled_events_profile {
 **os_image_notification_profile**: azure_os_image_notification_profile
 **terminate_notification_profile**: azure_terminate_notification_profile
@@ -11826,6 +11736,8 @@ class instance {
 **instance_status**: instance_status
 **instance_type**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -11866,7 +11778,6 @@ azure_os_profile --> azure_linux_configuration
 azure_os_profile --> azure_vault_secret_group
 azure_os_profile --> azure_windows_configuration
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
-resource <|--- azure_resource
 azure_scheduled_events_profile --> azure_os_image_notification_profile
 azure_scheduled_events_profile --> azure_terminate_notification_profile
 azure_security_profile --> azure_uefi_settings
@@ -11885,7 +11796,6 @@ azure_virtual_machine_base --> azure_extended_location
 azure_virtual_machine_base --> azure_hardware_profile
 azure_virtual_machine_base --> azure_os_profile
 azure_virtual_machine_base --> azure_plan
-azure_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_base --> azure_scheduled_events_profile
 azure_virtual_machine_base --> azure_security_profile
 azure_virtual_machine_base --> azure_storage_profile
@@ -11894,6 +11804,7 @@ azure_virtual_machine_base --> azure_virtual_machine_identity
 azure_virtual_machine_base --> azure_virtual_machine_instance_view
 azure_virtual_machine_base --> azure_virtual_machine_network_profile
 instance <|--- azure_virtual_machine_base
+microsoft_resource <|--- azure_virtual_machine_base
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
 azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
@@ -11940,6 +11851,7 @@ azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
 resource <|--- instance
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -12041,8 +11953,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_virtual_machine_size {
 **location**: string
 **max_data_disk_count**: int64
@@ -12057,6 +11967,8 @@ class instance_type {
 **instance_type**: string
 **ondemand_cost**: double
 **reservations**: int64
+}
+class microsoft_resource {
 }
 class phantom_resource {
 }
@@ -12079,10 +11991,10 @@ class resource {
 }
 class type {
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_virtual_machine_size
 instance_type <|--- azure_virtual_machine_size
+microsoft_resource <|--- azure_virtual_machine_size
 type <|--- instance_type
+resource <|--- microsoft_resource
 resource <|--- phantom_resource
 phantom_resource <|--- quota
 quota <|--- type
@@ -12221,8 +12133,6 @@ class azure_purchase_plan {
 **promotion_code**: string
 **publisher**: string
 }
-class azure_resource {
-}
 class azure_snapshot_sku {
 **name**: string
 **tier**: string
@@ -12259,6 +12169,8 @@ class azure_virtual_machine_snapshot {
 **time_created**: datetime
 **unique_id**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -12284,7 +12196,6 @@ azure_creation_data --> azure_image_disk_reference
 azure_encryption_settings_collection --> azure_encryption_settings_element
 azure_encryption_settings_element --> azure_key_vault_and_key_reference
 azure_encryption_settings_element --> azure_key_vault_and_secret_reference
-resource <|--- azure_resource
 azure_virtual_machine_snapshot --> azure_copy_completion_error
 azure_virtual_machine_snapshot --> azure_creation_data
 azure_virtual_machine_snapshot --> azure_disk_security_profile
@@ -12292,10 +12203,11 @@ azure_virtual_machine_snapshot --> azure_encryption
 azure_virtual_machine_snapshot --> azure_encryption_settings_collection
 azure_virtual_machine_snapshot --> azure_extended_location
 azure_virtual_machine_snapshot --> azure_purchase_plan
-azure_resource <|--- azure_virtual_machine_snapshot
 azure_virtual_machine_snapshot --> azure_snapshot_sku
 azure_virtual_machine_snapshot --> azure_supported_capabilities
+microsoft_resource <|--- azure_virtual_machine_snapshot
 snapshot <|--- azure_virtual_machine_snapshot
+resource <|--- microsoft_resource
 resource <|--- snapshot
 @enduml
 ```
@@ -12398,8 +12310,6 @@ class azure_flow_log_format_parameters {
 **type**: string
 **version**: int64
 }
-class azure_resource {
-}
 class azure_retention_policy_parameters {
 **days**: int64
 **enabled**: boolean
@@ -12457,6 +12367,8 @@ class azure_virtual_network_peering {
 **type**: string
 **use_remote_gateways**: boolean
 }
+class microsoft_resource {
+}
 class network {
 }
 class resource {
@@ -12474,20 +12386,20 @@ class resource {
 azure_flow_log --> azure_flow_log_format_parameters
 azure_flow_log --> azure_retention_policy_parameters
 azure_flow_log --> azure_traffic_analytics_properties
-resource <|--- azure_resource
 azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
 azure_virtual_network --> azure_address_space
 azure_virtual_network --> azure_dhcp_options
 azure_virtual_network --> azure_extended_location
 azure_virtual_network --> azure_flow_log
-azure_resource <|--- azure_virtual_network
 azure_virtual_network --> azure_virtual_network_bgp_communities
 azure_virtual_network --> azure_virtual_network_encryption
 azure_virtual_network --> azure_virtual_network_peering
+microsoft_resource <|--- azure_virtual_network
 network <|--- azure_virtual_network
 azure_virtual_network_peering --> azure_address_space
 azure_virtual_network_peering --> azure_virtual_network_bgp_communities
 azure_virtual_network_peering --> azure_virtual_network_encryption
+resource <|--- microsoft_resource
 resource <|--- network
 @enduml
 ```
@@ -12603,8 +12515,6 @@ class azure_network_interface_tap_configuration {
 **properties**: string
 **type**: string
 }
-class azure_resource {
-}
 class azure_virtual_network_tap {
 **destination_load_balancer_front_end_ip_configuration**: azure_frontend_ip_configuration
 **destination_port**: int64
@@ -12612,6 +12522,8 @@ class azure_virtual_network_tap {
 **network_interface_tap_configurations**: azure_network_interface_tap_configuration[]
 **resource_guid**: string
 **type**: string
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -12625,10 +12537,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
 azure_virtual_network_tap --> azure_frontend_ip_configuration
 azure_virtual_network_tap --> azure_network_interface_tap_configuration
-azure_resource <|--- azure_virtual_network_tap
+microsoft_resource <|--- azure_virtual_network_tap
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -12700,14 +12612,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_virtual_router {
 **hosted_gateway**: string
 **hosted_subnet**: string
 **peerings**: string[]
 **virtual_router_asn**: int64
 **virtual_router_ips**: string[]
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -12721,8 +12633,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_virtual_router
+microsoft_resource <|--- azure_virtual_router
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -12791,8 +12703,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_resource {
-}
 class azure_virtual_wan {
 **allow_branch_to_branch_traffic**: boolean
 **allow_vnet_to_vnet_traffic**: boolean
@@ -12800,6 +12710,8 @@ class azure_virtual_wan {
 **office365_local_breakout_category**: string
 **virtual_hubs**: string[]
 **vpn_sites**: string[]
+}
+class microsoft_resource {
 }
 class resource {
 **age**: duration
@@ -12813,8 +12725,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
-azure_resource <|--- azure_virtual_wan
+microsoft_resource <|--- azure_virtual_wan
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -12918,8 +12830,6 @@ class azure_ipsec_policy {
 class azure_propagated_route_table {
 **ids**: string[]
 **labels**: string[]
-}
-class azure_resource {
 }
 class azure_routing_configuration {
 **associated_route_table**: string
@@ -13025,6 +12935,8 @@ class azure_vpn_site_link_connection {
 }
 class gateway {
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -13038,7 +12950,6 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_bgp_settings --> azure_ip_configuration_bgp_peering_address
-resource <|--- azure_resource
 azure_routing_configuration --> azure_propagated_route_table
 azure_routing_configuration --> azure_vnet_route
 azure_vnet_route --> azure_static_route
@@ -13048,15 +12959,16 @@ azure_vpn_connection --> azure_routing_configuration
 azure_vpn_connection --> azure_traffic_selector_policy
 azure_vpn_connection --> azure_vpn_site_link_connection
 azure_vpn_gateway --> azure_bgp_settings
-azure_resource <|--- azure_vpn_gateway
 azure_vpn_gateway --> azure_vpn_connection
 azure_vpn_gateway --> azure_vpn_gateway_ip_configuration
 azure_vpn_gateway --> azure_vpn_gateway_nat_rule
 gateway <|--- azure_vpn_gateway
+microsoft_resource <|--- azure_vpn_gateway
 azure_vpn_gateway_nat_rule --> azure_vpn_nat_rule_mapping
 azure_vpn_site_link_connection --> azure_gateway_custom_bgp_ip_address_ip_configuration
 azure_vpn_site_link_connection --> azure_ipsec_policy
 resource <|--- gateway
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -13148,8 +13060,6 @@ class azure_radius_server {
 **radius_server_score**: int64
 **radius_server_secret**: string
 }
-class azure_resource {
-}
 class azure_vpn_server_config_radius_client_root_certificate {
 **name**: string
 **thumbprint**: string
@@ -13195,6 +13105,8 @@ class azure_vpn_server_configuration_policy_group_member {
 **attribute_value**: string
 **name**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -13207,17 +13119,17 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-resource <|--- azure_resource
 azure_vpn_server_configuration --> azure_aad_authentication_parameters
 azure_vpn_server_configuration --> azure_ipsec_policy
 azure_vpn_server_configuration --> azure_radius_server
-azure_resource <|--- azure_vpn_server_configuration
 azure_vpn_server_configuration --> azure_vpn_server_config_radius_client_root_certificate
 azure_vpn_server_configuration --> azure_vpn_server_config_radius_server_root_certificate
 azure_vpn_server_configuration --> azure_vpn_server_config_vpn_client_revoked_certificate
 azure_vpn_server_configuration --> azure_vpn_server_config_vpn_client_root_certificate
 azure_vpn_server_configuration --> azure_vpn_server_configuration_policy_group
+microsoft_resource <|--- azure_vpn_server_configuration
 azure_vpn_server_configuration_policy_group --> azure_vpn_server_configuration_policy_group_member
+resource <|--- microsoft_resource
 @enduml
 ```
 
@@ -13314,8 +13226,6 @@ class azure_o365_break_out_category_policies {
 class azure_o365_policy_properties {
 **break_out_categories**: azure_o365_break_out_category_policies
 }
-class azure_resource {
-}
 class azure_vpn_link_bgp_settings {
 **asn**: int64
 **bgp_peering_address**: string
@@ -13345,6 +13255,8 @@ class azure_vpn_site_link {
 **provisioning_state**: string
 **type**: string
 }
+class microsoft_resource {
+}
 class peering_connection {
 }
 class resource {
@@ -13361,16 +13273,16 @@ class resource {
 }
 azure_bgp_settings --> azure_ip_configuration_bgp_peering_address
 azure_o365_policy_properties --> azure_o365_break_out_category_policies
-resource <|--- azure_resource
 azure_vpn_site --> azure_address_space
 azure_vpn_site --> azure_bgp_settings
 azure_vpn_site --> azure_device_properties
 azure_vpn_site --> azure_o365_policy_properties
-azure_resource <|--- azure_vpn_site
 azure_vpn_site --> azure_vpn_site_link
+microsoft_resource <|--- azure_vpn_site
 peering_connection <|--- azure_vpn_site
 azure_vpn_site_link --> azure_vpn_link_bgp_settings
 azure_vpn_site_link --> azure_vpn_link_provider_properties
+resource <|--- microsoft_resource
 resource <|--- peering_connection
 @enduml
 ```
@@ -13503,8 +13415,6 @@ class azure_policy_settings {
 **request_body_inspect_limit_in_kb**: int64
 **state**: string
 }
-class azure_resource {
-}
 class azure_state_scrubbingrules {
 **scrubbing_rules**: azure_web_application_firewall_scrubbing_rules[]
 **state**: string
@@ -13535,6 +13445,8 @@ class azure_web_application_firewall_scrubbing_rules {
 **selector_match_operator**: string
 **state**: string
 }
+class microsoft_resource {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -13555,14 +13467,14 @@ azure_managed_rules_definition --> azure_owasp_crs_exclusion_entry
 azure_match_condition --> azure_match_variable
 azure_owasp_crs_exclusion_entry --> azure_exclusion_managed_rule_set
 azure_policy_settings --> azure_state_scrubbingrules
-resource <|--- azure_resource
 azure_state_scrubbingrules --> azure_web_application_firewall_scrubbing_rules
 azure_web_application_firewall_custom_rule --> azure_group_by_user_session
 azure_web_application_firewall_custom_rule --> azure_match_condition
 azure_web_application_firewall_policy --> azure_managed_rules_definition
 azure_web_application_firewall_policy --> azure_policy_settings
-azure_resource <|--- azure_web_application_firewall_policy
 azure_web_application_firewall_policy --> azure_web_application_firewall_custom_rule
+microsoft_resource <|--- azure_web_application_firewall_policy
+resource <|--- microsoft_resource
 @enduml
 ```
 
