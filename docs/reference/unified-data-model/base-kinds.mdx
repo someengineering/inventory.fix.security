@@ -109,6 +109,8 @@ class github_account {
 }
 class kubernetes_cluster {
 }
+class microsoft_graph_organization {
+}
 class onelogin_account {
 }
 class onprem_location {
@@ -141,6 +143,7 @@ account <|--- dockerhub_namespace
 account <|--- gcp_project
 account <|--- github_account
 account <|--- kubernetes_cluster
+account <|--- microsoft_graph_organization
 account <|--- onelogin_account
 account <|--- onprem_location
 account <|--- posthog_project
@@ -1795,6 +1798,8 @@ class github_region {
 }
 class kubernetes_namespace {
 }
+class microsoft_graph_organization_root {
+}
 class onelogin_region {
 }
 class onprem_region {
@@ -1828,6 +1833,7 @@ region <|--- digitalocean_region
 region <|--- gcp_region
 region <|--- github_region
 region <|--- kubernetes_namespace
+region <|--- microsoft_graph_organization_root
 region <|--- onelogin_region
 region <|--- onprem_region
 resource <|--- phantom_resource
@@ -1868,6 +1874,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_iam_role {
 }
+class microsoft_graph_role {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1883,6 +1891,7 @@ class resource {
 class role {
 }
 role <|--- aws_iam_role
+role <|--- microsoft_graph_role
 resource <|--- role
 @enduml
 ```
