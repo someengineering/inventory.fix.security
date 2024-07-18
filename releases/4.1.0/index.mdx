@@ -1,0 +1,124 @@
+---
+date: 2024-07-18
+---
+
+# 4.1.0
+
+## What's Changed
+
+### Features
+
+- [`4093b0ab`](https://github.com/someengineering/fixinventory/commit/4093b0ab) <span class="badge badge--secondary">azure</span> Add authorization (#2135)
+- [`012138f0`](https://github.com/someengineering/fixinventory/commit/012138f0) <span class="badge badge--secondary">azure</span> Collect security resources (#2139)
+- [`f593e93c`](https://github.com/someengineering/fixinventory/commit/f593e93c) <span class="badge badge--secondary">azure</span> Case insensitive connect (#2140)
+- [`869d5d60`](https://github.com/someengineering/fixinventory/commit/869d5d60) <span class="badge badge--secondary">azure</span> Add new resources for collect to existing base resources (#2127)
+- [`526b5492`](https://github.com/someengineering/fixinventory/commit/526b5492) <span class="badge badge--secondary">core</span> Merge deferred edges via API (#2136)
+- [`09fc5ed1`](https://github.com/someengineering/fixinventory/commit/09fc5ed1) <span class="badge badge--secondary">core</span> Use view to query the graph (#2101)
+- [`f3eacc69`](https://github.com/someengineering/fixinventory/commit/f3eacc69) <span class="badge badge--secondary">azure</span> Add Microsoft Graph collector (#2133)
+- [`ab1561b6`](https://github.com/someengineering/fixinventory/commit/ab1561b6) <span class="badge badge--secondary">core</span> TimeSeries: allow defining a factor for computing the average (#2126)
+- [`bfb80adb`](https://github.com/someengineering/fixinventory/commit/bfb80adb) <span class="badge badge--secondary">aws</span> Add tag deletion/updating and resource deletion for backup service (#2119)
+- [`b884916f`](https://github.com/someengineering/fixinventory/commit/b884916f) <span class="badge badge--secondary">worker</span> Fix description for cycle (#2117)
+- [`48acc1c3`](https://github.com/someengineering/fixinventory/commit/48acc1c3) <span class="badge badge--secondary">aws</span> Integrate Backup Service collection (#2106)
+- [`a132841a`](https://github.com/someengineering/fixinventory/commit/a132841a) <span class="badge badge--secondary">aws</span> Edge: s3 account settings --> s3 bucket (#2112)
+- [`51305567`](https://github.com/someengineering/fixinventory/commit/51305567) Check baseresource implementations in plugins (#2104)
+- [`1ad2be65`](https://github.com/someengineering/fixinventory/commit/1ad2be65) <span class="badge badge--secondary">shell</span> Add more benchmark stats (#2102)
+- [`b65eacc6`](https://github.com/someengineering/fixinventory/commit/b65eacc6) <span class="badge badge--secondary">core</span> Add query stats as HTTP Header (#2100)
+- [`5371e1d2`](https://github.com/someengineering/fixinventory/commit/5371e1d2) <span class="badge badge--secondary">gcp</span> : Add baseresoruces to the GCP (#2085)
+- [`cdd1c34c`](https://github.com/someengineering/fixinventory/commit/cdd1c34c) <span class="badge badge--secondary">core</span> Rewrite queries to make them more efficient (#2093)
+- [`39d55003`](https://github.com/someengineering/fixinventory/commit/39d55003) <span class="badge badge--secondary">shell</span> Add --benchmark arg (#2095)
+- [`98014724`](https://github.com/someengineering/fixinventory/commit/98014724) <span class="badge badge--secondary">lib</span> Export categories (#2087)
+- [`e46e21ff`](https://github.com/someengineering/fixinventory/commit/e46e21ff) <span class="badge badge--secondary">aws</span> Add dynamodb continuous backup (#2090)
+- [`8253e123`](https://github.com/someengineering/fixinventory/commit/8253e123) <span class="badge badge--secondary">aws</span> Add region_in_use property for region (#2086)
+- [`1076b182`](https://github.com/someengineering/fixinventory/commit/1076b182) <span class="badge badge--secondary">core</span> Improve update index efficiency (#2083)
+- [`6255c40b`](https://github.com/someengineering/fixinventory/commit/6255c40b) <span class="badge badge--secondary">azure</span> : Add safety read/write access to the graph (#2082)
+- [`21afa20e`](https://github.com/someengineering/fixinventory/commit/21afa20e) <span class="badge badge--secondary">aws</span> Provide VPC in use flag (#2081)
+- [`043ad3a8`](https://github.com/someengineering/fixinventory/commit/043ad3a8) <span class="badge badge--secondary">azure</span> Align names of the azure resources (#2079)
+- [`d62b4eae`](https://github.com/someengineering/fixinventory/commit/d62b4eae) <span class="badge badge--secondary">azure</span> Azure Storage `collect_usage_metrics` implementation (#2074)
+- [`e9026439`](https://github.com/someengineering/fixinventory/commit/e9026439) <span class="badge badge--secondary">core</span> Improve the display name of the property (#2073)
+- [`ff760a01`](https://github.com/someengineering/fixinventory/commit/ff760a01) <span class="badge badge--secondary">aws</span> Revert "[feat][aws] Add more resources to done in parallel (#2066)" (#2070)
+- [`718fa3e1`](https://github.com/someengineering/fixinventory/commit/718fa3e1) <span class="badge badge--secondary">aws</span> Add more resources to done in parallel (#2066)
+- [`3355f872`](https://github.com/someengineering/fixinventory/commit/3355f872) <span class="badge badge--secondary">core</span> Allow filtering benchmarks (#2069)
+- [`45961cd6`](https://github.com/someengineering/fixinventory/commit/45961cd6) Add ability to specify max number of resources per account (#2062)
+- [`9553b723`](https://github.com/someengineering/fixinventory/commit/9553b723) <span class="badge badge--secondary">aws</span> : Update `collect` method implementation (#2051)
+- [`96e5a227`](https://github.com/someengineering/fixinventory/commit/96e5a227) <span class="badge badge--secondary">azure</span> Add Azure Storage resource collection (#2044)
+- [`8fceaf1d`](https://github.com/someengineering/fixinventory/commit/8fceaf1d) <span class="badge badge--secondary">aws</span> Bump Fix Inventory Data (#2061)
+- [`537c659d`](https://github.com/someengineering/fixinventory/commit/537c659d) <span class="badge badge--secondary">aws</span> Add io2 pricing (#2060)
+- [`dda621f9`](https://github.com/someengineering/fixinventory/commit/dda621f9) <span class="badge badge--secondary">aws</span> Add S3 bucket location property (#2050)
+- [`d44667b1`](https://github.com/someengineering/fixinventory/commit/d44667b1) <span class="badge badge--secondary">core</span> Allow update node with force (#2047)
+
+### Fixes
+
+- [`5e7611ff`](https://github.com/someengineering/fixinventory/commit/5e7611ff) <span class="badge badge--secondary">core</span> Turn off regexp rewriting (#2142)
+- [`398ba01c`](https://github.com/someengineering/fixinventory/commit/398ba01c) <span class="badge badge--secondary">azure</span> : Reimplemented fleet and clusters connection (#2137)
+- [`9e329d44`](https://github.com/someengineering/fixinventory/commit/9e329d44) <span class="badge badge--secondary">core</span> Render empty sections (#2131)
+- [`a2cd15f5`](https://github.com/someengineering/fixinventory/commit/a2cd15f5) <span class="badge badge--secondary">aws</span> Ignore rds_latest_restorable_time for history (#2130)
+- [`8511ba56`](https://github.com/someengineering/fixinventory/commit/8511ba56) <span class="badge badge--secondary">core</span> Simplify and fix owner lookup (#2128)
+- [`91855cd9`](https://github.com/someengineering/fixinventory/commit/91855cd9) [azure] Add missing relationships between base and cloud resources (#2125)
+- [`9666a4d7`](https://github.com/someengineering/fixinventory/commit/9666a4d7) <span class="badge badge--secondary">core</span> Model: resolve hierarchy not bases (#2124)
+- [`09c24b2a`](https://github.com/someengineering/fixinventory/commit/09c24b2a) <span class="badge badge--secondary">core</span> Backup: correct endpoint when using https (#2123)
+- [`c5ce6bef`](https://github.com/someengineering/fixinventory/commit/c5ce6bef) <span class="badge badge--secondary">core</span> Maintain db config in tenant config (#2122)
+- [`d41709ea`](https://github.com/someengineering/fixinventory/commit/d41709ea) <span class="badge badge--secondary">aws</span> : Fix non acyclic graph connection (#2118)
+- [`4df872b7`](https://github.com/someengineering/fixinventory/commit/4df872b7) <span class="badge badge--secondary">core</span> Stable node ids for benchmark results (#2114)
+- [`c362e700`](https://github.com/someengineering/fixinventory/commit/c362e700) <span class="badge badge--secondary">shell</span> Define graph and section (#2113)
+- [`7ed8a34a`](https://github.com/someengineering/fixinventory/commit/7ed8a34a) Collect the correct subscription id (#2109)
+- [`c22a26f0`](https://github.com/someengineering/fixinventory/commit/c22a26f0) Use a single lock for the Azure graph builder (#2108)
+- [`f10ad0bf`](https://github.com/someengineering/fixinventory/commit/f10ad0bf) <span class="badge badge--secondary">core</span> Fix and improve with statements (#2107)
+- [`9f606bab`](https://github.com/someengineering/fixinventory/commit/9f606bab) Fix typo in basechecker workflow (#2105)
+- [`3c944e89`](https://github.com/someengineering/fixinventory/commit/3c944e89) <span class="badge badge--secondary">lib</span> Fix kind names (#2103)
+- [`b222517c`](https://github.com/someengineering/fixinventory/commit/b222517c) <span class="badge badge--secondary">aws</span> : Change `_keys` method implementation for `AwsCloudwatchMetricFilter` and `AwsApiGatewayResource` (#2096)
+- [`e93cd56f`](https://github.com/someengineering/fixinventory/commit/e93cd56f) <span class="badge badge--secondary">core</span> Only combine terms for properties in the reported section (#2099)
+- [`b825649c`](https://github.com/someengineering/fixinventory/commit/b825649c) <span class="badge badge--secondary">core</span> model creation (#2097)
+- [`4f5e6230`](https://github.com/someengineering/fixinventory/commit/4f5e6230) <span class="badge badge--secondary">aws</span> Add clear names and fix `BucketSize` collection of the S3 resource (#2094)
+- [`76c72aaf`](https://github.com/someengineering/fixinventory/commit/76c72aaf) <span class="badge badge--secondary">core</span> Wait lock timeout (#2092)
+- [`b74087e2`](https://github.com/someengineering/fixinventory/commit/b74087e2) <span class="badge badge--secondary">aws</span> Update log level info -> debug for task def skipping (#2091)
+- [`0a1116d4`](https://github.com/someengineering/fixinventory/commit/0a1116d4) <span class="badge badge--secondary">aws</span> Fix parallel collection (#2071)
+- [`9245b9d8`](https://github.com/someengineering/fixinventory/commit/9245b9d8) <span class="badge badge--secondary">core</span> Treat optional config properties as such (#2088)
+- [`f8dc977b`](https://github.com/someengineering/fixinventory/commit/f8dc977b) <span class="badge badge--secondary">core</span> Context query with array with or (#2084)
+- [`8fb295a6`](https://github.com/someengineering/fixinventory/commit/8fb295a6) <span class="badge badge--secondary">core</span> Increase timeout for getting transaction barriers (#2077)
+- [`71fe4be6`](https://github.com/someengineering/fixinventory/commit/71fe4be6) <span class="badge badge--secondary">core</span> Add whitespace to operation (#2068)
+- [`3fa936a5`](https://github.com/someengineering/fixinventory/commit/3fa936a5) <span class="badge badge--secondary">core</span> Fix PlantUML settings (#2064)
+- [`b23c4cec`](https://github.com/someengineering/fixinventory/commit/b23c4cec) <span class="badge badge--secondary">core</span> Plantuml settings (#2063)
+- [`b3ac2e7b`](https://github.com/someengineering/fixinventory/commit/b3ac2e7b) <span class="badge badge--secondary">aws</span> Add test for s3 storage metrics (#2059)
+- [`d690de0f`](https://github.com/someengineering/fixinventory/commit/d690de0f) <span class="badge badge--secondary">aws</span> S3 metrics for all storage types (#2058)
+- [`29017fb5`](https://github.com/someengineering/fixinventory/commit/29017fb5) <span class="badge badge--secondary">core</span> sort with `with` clause (#2056)
+- [`d45dfa95`](https://github.com/someengineering/fixinventory/commit/d45dfa95) <span class="badge badge--secondary">aws</span> wait for all ecs task definitions (#2057)
+- [`72b79c8f`](https://github.com/someengineering/fixinventory/commit/72b79c8f) <span class="badge badge--secondary">aws</span> Only collect latest task definition (#2055)
+- [`08926f0d`](https://github.com/someengineering/fixinventory/commit/08926f0d) <span class="badge badge--secondary">aws</span> Collection S3 cloudwatch metrics in the corresponding regions (#2052)
+- [`c663eafe`](https://github.com/someengineering/fixinventory/commit/c663eafe) <span class="badge badge--secondary">aws</span> Retry using retrying only (#2054)
+- [`7436666a`](https://github.com/someengineering/fixinventory/commit/7436666a) <span class="badge badge--secondary">aws</span> Fix S3 storage metrics retrieval (#2049)
+- [`62e3f8aa`](https://github.com/someengineering/fixinventory/commit/62e3f8aa) <span class="badge badge--secondary">aws</span> : Fix query stat for cloudwatch metric requests (#2048)
+- [`dc7d2fac`](https://github.com/someengineering/fixinventory/commit/dc7d2fac) <span class="badge badge--secondary">ci</span> Limit concurrent publish workflow runs on main (#2043)
+
+### Chores
+
+- [`75133b9a`](https://github.com/someengineering/fixinventory/commit/75133b9a) Bump version (#2143)
+- [`327e6a00`](https://github.com/someengineering/fixinventory/commit/327e6a00) Bump Libs (#2134)
+- [`f981fb7d`](https://github.com/someengineering/fixinventory/commit/f981fb7d) Bump fixcompliance to latest
+- [`f087ca10`](https://github.com/someengineering/fixinventory/commit/f087ca10) Bump Libraries (#2129)
+- [`f4ef5f38`](https://github.com/someengineering/fixinventory/commit/f4ef5f38) Bump fixcompliance to latest
+- [`32d82a51`](https://github.com/someengineering/fixinventory/commit/32d82a51) Bump fixcompliance to latest
+- [`5e2dbb39`](https://github.com/someengineering/fixinventory/commit/5e2dbb39) Bump fixcompliance to latest
+- [`cc530651`](https://github.com/someengineering/fixinventory/commit/cc530651) Bump fixcompliance to latest
+- [`1b557e66`](https://github.com/someengineering/fixinventory/commit/1b557e66) Bump fixcompliance to latest
+- [`24baaee8`](https://github.com/someengineering/fixinventory/commit/24baaee8) <span class="badge badge--secondary">aws</span> Ignore props for history (#2121)
+- [`084f66fa`](https://github.com/someengineering/fixinventory/commit/084f66fa) Bump fixcompliance to latest
+- [`d9b5197c`](https://github.com/someengineering/fixinventory/commit/d9b5197c) Bump libs (#2120)
+- [`41c1db8d`](https://github.com/someengineering/fixinventory/commit/41c1db8d) <span class="badge badge--secondary">sh</span> resh->fixsh (#2115)
+- [`c5ec8f78`](https://github.com/someengineering/fixinventory/commit/c5ec8f78) Bump fixcompliance to latest
+- [`71afa690`](https://github.com/someengineering/fixinventory/commit/71afa690) Bump fixcompliance to latest
+- [`221960f6`](https://github.com/someengineering/fixinventory/commit/221960f6) Bump libs (#2111)
+- [`0d14a492`](https://github.com/someengineering/fixinventory/commit/0d14a492) Bump libs (#2089)
+- [`6fb06a51`](https://github.com/someengineering/fixinventory/commit/6fb06a51) Bump Libs (#2078)
+- [`5bd2fe59`](https://github.com/someengineering/fixinventory/commit/5bd2fe59) Bump fixcompliance to latest
+- [`c19facb6`](https://github.com/someengineering/fixinventory/commit/c19facb6) Bump fixcompliance to latest
+- [`54c23f50`](https://github.com/someengineering/fixinventory/commit/54c23f50) Bump libs (#2072)
+- [`e7cf2e36`](https://github.com/someengineering/fixinventory/commit/e7cf2e36) Bump 4.0.6 (#2046)
+
+{/* truncate */}
+
+## Docker Images
+
+- `somecr.io/someengineering/fixcore:4.1.0`
+- `somecr.io/someengineering/fixworker:4.1.0`
+- `somecr.io/someengineering/fixshell:4.1.0`
+- `somecr.io/someengineering/fixmetrics:4.1.0`

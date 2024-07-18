@@ -167,6 +167,10 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class ip_address {
+**ip_address**: string
+**ip_address_family**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -181,8 +185,10 @@ class resource {
 }
 gcp_address --> gcp_deprecation_status
 gcp_resource <|--- gcp_address
+ip_address <|--- gcp_address
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- ip_address
 @enduml
 ```
 
@@ -254,6 +260,10 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class autoscaling_group {
+**max_size**: int64
+**min_size**: int64
+}
 class gcp_autoscaler {
 **autoscaler_autoscaling_policy**: gcp_autoscaling_policy
 **autoscaler_recommended_size**: int64
@@ -335,6 +345,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- autoscaling_group
+autoscaling_group <|--- gcp_autoscaler
 gcp_autoscaler --> gcp_autoscaler_status_details
 gcp_autoscaler --> gcp_autoscaling_policy
 gcp_autoscaler --> gcp_deprecation_status
@@ -418,6 +430,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class bucket {
+}
 class gcp_backend_bucket {
 **backend_bucket_cdn_policy**: gcp_backend_bucket_cdn_policy
 **bucket_name**: string
@@ -473,6 +487,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- bucket
+bucket <|--- gcp_backend_bucket
 gcp_backend_bucket --> gcp_backend_bucket_cdn_policy
 gcp_backend_bucket --> gcp_deprecation_status
 gcp_resource <|--- gcp_backend_bucket
@@ -942,6 +958,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class bucket {
+}
 class gcp_action {
 **storage_class**: string
 **type**: string
@@ -1084,6 +1102,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- bucket
+bucket <|--- gcp_bucket
 gcp_bucket --> gcp_autoclass
 gcp_bucket --> gcp_bucket_access_control
 gcp_bucket --> gcp_cors
@@ -2321,6 +2341,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gateway {
+}
 class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
@@ -2354,6 +2376,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- gateway
+gateway <|--- gcp_external_vpn_gateway
 gcp_external_vpn_gateway --> gcp_deprecation_status
 gcp_external_vpn_gateway --> gcp_external_vpn_gateway_interface
 gcp_resource <|--- gcp_external_vpn_gateway
@@ -2427,6 +2451,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class firewall {
+}
 class gcp_allowed {
 **ip_protocol**: string
 **ports**: string[]
@@ -2479,6 +2505,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- firewall
+firewall <|--- gcp_firewall
 gcp_firewall --> gcp_allowed
 gcp_firewall --> gcp_denied
 gcp_firewall --> gcp_deprecation_status
@@ -2758,6 +2786,11 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2774,9 +2807,11 @@ gcp_forwarding_rule --> gcp_deprecation_status
 gcp_forwarding_rule --> gcp_forwarding_rule_service_directory_registration
 gcp_forwarding_rule --> gcp_metadata_filter
 gcp_resource <|--- gcp_forwarding_rule
+load_balancer <|--- gcp_forwarding_rule
 gcp_metadata_filter --> gcp_metadata_filter_label_match
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- load_balancer
 @enduml
 ```
 
@@ -2887,7 +2922,6 @@ class gcp_health_check {
 **check_interval_sec**: int64
 **grpc_health_check**: gcp_grpc_health_check
 **health_check_log_config**: boolean
-**healthy_threshold**: int64
 **http2_health_check**: gcp_http2_health_check
 **http_health_check**: gcp_http_health_check_spec
 **https_health_check**: gcp_https_health_check_spec
@@ -2895,7 +2929,6 @@ class gcp_health_check {
 **tcp_health_check**: gcp_tcp_health_check
 **timeout_sec**: int64
 **type**: string
-**unhealthy_threshold**: int64
 }
 class gcp_http2_health_check {
 **host**: string
@@ -2946,6 +2979,13 @@ class gcp_tcp_health_check {
 **request**: string
 **response**: string
 }
+class health_check {
+**check_interval**: int64
+**health_check_type**: string
+**healthy_threshold**: int64
+**timeout**: int64
+**unhealthy_threshold**: int64
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2966,8 +3006,10 @@ gcp_health_check --> gcp_https_health_check_spec
 gcp_resource <|--- gcp_health_check
 gcp_health_check --> gcp_ssl_health_check
 gcp_health_check --> gcp_tcp_health_check
+health_check <|--- gcp_health_check
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- health_check
 @enduml
 ```
 
@@ -5484,6 +5526,8 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class network {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -5499,8 +5543,10 @@ class resource {
 gcp_network --> gcp_deprecation_status
 gcp_network --> gcp_network_peering
 gcp_resource <|--- gcp_network
+network <|--- gcp_network
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- network
 @enduml
 ```
 
@@ -8649,7 +8695,6 @@ class gcp_snapshot {
 **snapshot_source_disk_id**: string
 **snapshot_source_snapshot_schedule_policy**: string
 **snapshot_source_snapshot_schedule_policy_id**: string
-**snapshot_status**: string
 **snapshot_storage_bytes**: string
 **snapshot_storage_bytes_status**: string
 **snapshot_storage_locations**: string[]
@@ -8666,11 +8711,22 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
 gcp_snapshot --> gcp_customer_encryption_key
 gcp_snapshot --> gcp_deprecation_status
 gcp_resource <|--- gcp_snapshot
+snapshot <|--- gcp_snapshot
+resource <|--- snapshot
 @enduml
 ```
 
@@ -8972,6 +9028,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
 class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
@@ -9022,7 +9089,6 @@ class gcp_sql_database_instance {
 **failover_replica**: gcp_sql_failoverreplica
 **gce_zone**: string
 **instance_ip_addresses**: gcp_sql_ip_mapping[]
-**instance_type**: string
 **ipv6_address**: string
 **maintenance_version**: string
 **master_instance_name**: string
@@ -9186,9 +9252,11 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- database
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
 gcp_sql_backup_configuration --> gcp_sql_backup_retention_settings
+database <|--- gcp_sql_database_instance
 gcp_sql_database_instance --> gcp_deprecation_status
 gcp_resource <|--- gcp_sql_database_instance
 gcp_sql_database_instance --> gcp_sql_failoverreplica
@@ -9595,6 +9663,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class certificate {
+**dns_names**: string[]
+**expires**: datetime
+**sha1_fingerprint**: string
+}
 class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
@@ -9638,8 +9711,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- certificate
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+certificate <|--- gcp_ssl_certificate
 gcp_ssl_certificate --> gcp_deprecation_status
 gcp_resource <|--- gcp_ssl_certificate
 gcp_ssl_certificate --> gcp_ssl_certificate_managed_ssl_certificate
@@ -9896,12 +9971,16 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class subnet {
+}
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
 gcp_subnetwork --> gcp_deprecation_status
 gcp_resource <|--- gcp_subnetwork
 gcp_subnetwork --> gcp_subnetwork_log_config
 gcp_subnetwork --> gcp_subnetwork_secondary_range
+subnet <|--- gcp_subnetwork
+resource <|--- subnet
 @enduml
 ```
 
@@ -11185,6 +11264,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gateway {
+}
 class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
@@ -11220,8 +11301,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- gateway
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+gateway <|--- gcp_vpn_gateway
 gcp_vpn_gateway --> gcp_deprecation_status
 gcp_resource <|--- gcp_vpn_gateway
 gcp_vpn_gateway --> gcp_vpn_gateway_vpn_gateway_interface
@@ -11344,10 +11427,14 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class tunnel {
+}
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
 gcp_vpn_tunnel --> gcp_deprecation_status
 gcp_resource <|--- gcp_vpn_tunnel
+tunnel <|--- gcp_vpn_tunnel
+resource <|--- tunnel
 @enduml
 ```
 
