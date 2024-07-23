@@ -123,6 +123,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'version-4.X/reference/api/merge-deferred-edges-by-a-given-task-id',
+          label: 'Merge deferred edges by a given task id',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
           id: 'version-4.X/reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes-as-batch-update',
           label:
             'Merge a given graph with the existing graph under marked merge nodes as batch update.',
@@ -202,25 +208,6 @@ const sidebar: SidebarsConfig = {
         id: 'version-4.X/reference/api/model',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'version-4.X/reference/api/deprecated-get-the-currently-defined-model',
-          label: '[Deprecated] Get the currently defined model.',
-          className: 'menu__list-item--deprecated api-method get',
-        },
-        {
-          type: 'doc',
-          id: 'version-4.X/reference/api/deprecated-add-or-update-the-current-defined-model',
-          label: '[Deprecated] Add or update the current defined model.',
-          className: 'menu__list-item--deprecated api-method patch',
-        },
-        {
-          type: 'doc',
-          id: 'version-4.X/reference/api/deprecated-get-the-currently-defined-model-as-svg-uml-image',
-          label:
-            '[Deprecated] Get the currently defined model as svg uml image.',
-          className: 'menu__list-item--deprecated api-method get',
-        },
         {
           type: 'doc',
           id: 'version-4.X/reference/api/get-the-currently-defined-model',
