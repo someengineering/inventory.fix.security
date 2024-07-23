@@ -503,6 +503,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_route53_resource_record_set {
 }
+class azure_dns_record_set {
+}
 class dns_record_set {
 **record_ttl**: int64
 **record_type**: string
@@ -521,6 +523,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 dns_record_set <|--- aws_route53_resource_record_set
+dns_record_set <|--- azure_dns_record_set
 resource <|--- dns_record_set
 @enduml
 ```
@@ -556,6 +559,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_route53_zone {
 }
+class azure_dns_zone {
+}
 class digitalocean_domain {
 }
 class dns_zone {
@@ -573,6 +578,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 dns_zone <|--- aws_route53_zone
+dns_zone <|--- azure_dns_zone
 dns_zone <|--- digitalocean_domain
 resource <|--- dns_zone
 @enduml
@@ -724,9 +730,13 @@ class azure_application_gateway {
 }
 class azure_express_route_gateway {
 }
+class azure_local_network_gateway {
+}
 class azure_p2_s_vpn_gateway {
 }
-class azure_vpn_gateway {
+class azure_virtual_network_gateway {
+}
+class azure_virtual_wan_vpn_gateway {
 }
 class gateway {
 }
@@ -750,8 +760,10 @@ gateway <|--- aws_ec2_internet_gateway
 gateway <|--- aws_ec2_nat_gateway
 gateway <|--- azure_application_gateway
 gateway <|--- azure_express_route_gateway
+gateway <|--- azure_local_network_gateway
 gateway <|--- azure_p2_s_vpn_gateway
-gateway <|--- azure_vpn_gateway
+gateway <|--- azure_virtual_network_gateway
+gateway <|--- azure_virtual_wan_vpn_gateway
 resource <|--- gateway
 gateway <|--- gcp_external_vpn_gateway
 gateway <|--- gcp_vpn_gateway
@@ -793,6 +805,8 @@ class azure_resource_group {
 }
 class group {
 }
+class microsoft_graph_group {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -810,6 +824,7 @@ class slack_usergroup {
 group <|--- aws_iam_group
 group <|--- azure_resource_group
 resource <|--- group
+group <|--- microsoft_graph_group
 group <|--- slack_usergroup
 @enduml
 ```
@@ -843,6 +858,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_load_balancer_probe {
+}
 class gcp_health_check {
 }
 class health_check {
@@ -864,6 +881,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+health_check <|--- azure_load_balancer_probe
 health_check <|--- gcp_health_check
 resource <|--- health_check
 @enduml
@@ -1874,6 +1892,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_iam_role {
 }
+class azure_role_definition {
+}
 class microsoft_graph_role {
 }
 class resource {
@@ -1891,6 +1911,7 @@ class resource {
 class role {
 }
 role <|--- aws_iam_role
+role <|--- azure_role_definition
 role <|--- microsoft_graph_role
 resource <|--- role
 @enduml
@@ -1927,6 +1948,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_route_table {
 }
+class azure_route_table {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1942,6 +1965,7 @@ class resource {
 class routing_table {
 }
 routing_table <|--- aws_ec2_route_table
+routing_table <|--- azure_route_table
 resource <|--- routing_table
 @enduml
 ```
@@ -2262,6 +2286,10 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_network_gateway_connection {
+}
+class azure_virtual_wan_vpn_connection {
+}
 class gcp_vpn_tunnel {
 }
 class resource {
@@ -2278,6 +2306,8 @@ class resource {
 }
 class tunnel {
 }
+tunnel <|--- azure_virtual_network_gateway_connection
+tunnel <|--- azure_virtual_wan_vpn_connection
 tunnel <|--- gcp_vpn_tunnel
 resource <|--- tunnel
 @enduml
@@ -2400,6 +2430,8 @@ class aws_root_user {
 }
 class github_user {
 }
+class microsoft_graph_user {
+}
 class onelogin_user {
 }
 class resource {
@@ -2422,6 +2454,7 @@ user <|--- aws_cognito_user
 user <|--- aws_iam_user
 user <|--- aws_root_user
 user <|--- github_user
+user <|--- microsoft_graph_user
 user <|--- onelogin_user
 user <|--- slack_user
 resource <|--- user

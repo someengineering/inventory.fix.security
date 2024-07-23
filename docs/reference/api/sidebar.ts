@@ -123,6 +123,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'reference/api/merge-deferred-edges-by-a-given-task-id',
+          label: 'Merge deferred edges by a given task id',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
           id: 'reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes-as-batch-update',
           label:
             'Merge a given graph with the existing graph under marked merge nodes as batch update.',
