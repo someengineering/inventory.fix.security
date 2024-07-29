@@ -2070,12 +2070,12 @@ class gcp_disk {
 **licenses**: string[]
 **location_hint**: string
 **options**: string
-**physical_block_size_bytes**: string
+**physical_block_size_bytes**: int64
 **provisioned_iops**: int64
 **replica_zones**: string[]
 **resource_policies**: string[]
 **satisfies_pzs**: boolean
-**size_gb**: string
+**size_gb**: int64
 **source_disk**: string
 **source_disk_id**: string
 **source_image**: string
@@ -8681,9 +8681,9 @@ class gcp_snapshot {
 **snapshot_architecture**: string
 **snapshot_auto_created**: boolean
 **snapshot_chain_name**: string
-**snapshot_creation_size_bytes**: string
+**snapshot_creation_size_bytes**: int64
 **snapshot_disk_size_gb**: int64
-**snapshot_download_bytes**: string
+**snapshot_download_bytes**: int64
 **snapshot_license_codes**: string[]
 **snapshot_licenses**: string[]
 **snapshot_location_hint**: string
@@ -8695,7 +8695,7 @@ class gcp_snapshot {
 **snapshot_source_disk_id**: string
 **snapshot_source_snapshot_schedule_policy**: string
 **snapshot_source_snapshot_schedule_policy_id**: string
-**snapshot_storage_bytes**: string
+**snapshot_storage_bytes**: int64
 **snapshot_storage_bytes_status**: string
 **snapshot_storage_locations**: string[]
 }
@@ -9080,7 +9080,7 @@ class gcp_sql_database_instance {
 **backend_type**: string
 **connection_name**: string
 **create_time**: datetime
-**current_disk_size**: string
+**current_disk_size**: int64
 **database_installed_version**: string
 **database_version**: string
 **disk_encryption_configuration**: string
@@ -9092,7 +9092,7 @@ class gcp_sql_database_instance {
 **ipv6_address**: string
 **maintenance_version**: string
 **master_instance_name**: string
-**max_disk_size**: string
+**max_disk_size**: int64
 **on_premises_configuration**: gcp_sql_on_premises_configuration
 **out_of_disk_report**: gcp_sql_sql_out_of_disk_report
 **project**: string

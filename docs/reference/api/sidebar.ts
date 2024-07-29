@@ -48,6 +48,13 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'reference/api/search-history-events-and-provide-the-number-of-events-over-time',
+          label:
+            'Search history events and provide the number of events over time.',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
           id: 'reference/api/search-all-history-events-and-return-them',
           label: 'Search all history events and return them.',
           className: 'api-method post',

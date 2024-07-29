@@ -368,6 +368,12 @@ class aws_rds_cluster {
 }
 class aws_rds_instance {
 }
+class azure_mysql_server {
+}
+class azure_sql_server_database {
+}
+class azure_sql_server_managed_instance_database {
+}
 class database {
 **db_endpoint**: string
 **db_publicly_accessible**: boolean
@@ -397,6 +403,9 @@ class resource {
 }
 database <|--- aws_rds_cluster
 database <|--- aws_rds_instance
+database <|--- azure_mysql_server
+database <|--- azure_sql_server_database
+database <|--- azure_sql_server_managed_instance_database
 resource <|--- database
 database <|--- digitalocean_database
 database <|--- gcp_sql_database_instance
@@ -1046,7 +1055,11 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance_type {
 }
+class azure_mysql_server_type {
+}
 class azure_virtual_machine_size {
+}
+class database_instance_type {
 }
 class digitalocean_droplet_size {
 }
@@ -1078,7 +1091,9 @@ class resource {
 class type {
 }
 instance_type <|--- aws_ec2_instance_type
+database_instance_type <|--- azure_mysql_server_type
 instance_type <|--- azure_virtual_machine_size
+instance_type <|--- database_instance_type
 instance_type <|--- digitalocean_droplet_size
 instance_type <|--- gcp_machine_type
 type <|--- instance_type
@@ -2348,7 +2363,11 @@ class aws_ec2_volume_type {
 }
 class azure_disk_type {
 }
+class azure_mysql_server_type {
+}
 class azure_virtual_machine_size {
+}
+class database_instance_type {
 }
 class digitalocean_droplet_size {
 }
@@ -2381,7 +2400,9 @@ class volume_type {
 instance_type <|--- aws_ec2_instance_type
 volume_type <|--- aws_ec2_volume_type
 volume_type <|--- azure_disk_type
+database_instance_type <|--- azure_mysql_server_type
 instance_type <|--- azure_virtual_machine_size
+instance_type <|--- database_instance_type
 instance_type <|--- digitalocean_droplet_size
 volume_type <|--- gcp_disk_type
 instance_type <|--- gcp_machine_type

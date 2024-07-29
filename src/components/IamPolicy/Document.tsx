@@ -21,7 +21,7 @@ export default function IamPolicyDocument({
   const version =
     versionMetadata?.version === 'current'
       ? 'edge'
-      : versionMetadata?.version ?? versions[0];
+      : (versionMetadata?.version ?? versions[0]);
   const policy = useStoredJson(`${provider}-${version}-${policyName}`);
 
   return (

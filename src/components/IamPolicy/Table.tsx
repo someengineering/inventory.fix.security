@@ -22,7 +22,7 @@ export default function IamPolicyTable({
   const version =
     versionMetadata?.version === 'current'
       ? 'edge'
-      : versionMetadata?.version ?? versions[0];
+      : (versionMetadata?.version ?? versions[0]);
 
   const groupedActions: {
     [policyName: string]: { [namespace: string]: string[] };
