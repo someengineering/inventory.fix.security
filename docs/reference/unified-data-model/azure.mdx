@@ -5951,131 +5951,6 @@ azure_managed_cluster -[#1A83AF]-> azure_managed_cluster_snapshot
 </div>
 </details>
 
-## `azure_mysql_capability`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_mysql_capability data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_mysql_capability {
-**capability_zone**: string
-**location_name**: string
-**supported_flexible_server_editions**: azure_server_edition_capability[]
-**supported_geo_backup_regions**: string[]
-**supported_ha_mode**: string[]
-}
-class azure_server_edition_capability {
-**default_sku**: string
-**default_storage_size**: int64
-**name**: string
-**supported_server_versions**: azure_server_version_capability[]
-**supported_skus**: azure_sku_capability[]
-**supported_storage_editions**: azure_storage_edition_capability[]
-}
-class azure_server_version_capability {
-**name**: string
-**supported_skus**: azure_sku_capability[]
-}
-class azure_sku_capability {
-**name**: string
-**supported_ha_mode**: string[]
-**supported_iops**: int64
-**supported_memory_per_v_core_mb**: int64
-**supported_zones**: string[]
-**v_cores**: int64
-}
-class azure_storage_edition_capability {
-**max_backup_interval_hours**: int64
-**max_backup_retention_days**: int64
-**max_storage_size**: int64
-**min_backup_interval_hours**: int64
-**min_backup_retention_days**: int64
-**min_storage_size**: int64
-**name**: string
-}
-class microsoft_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-azure_mysql_capability --> azure_server_edition_capability
-microsoft_resource <|--- azure_mysql_capability
-azure_server_edition_capability --> azure_server_version_capability
-azure_server_edition_capability --> azure_sku_capability
-azure_server_edition_capability --> azure_storage_edition_capability
-azure_server_version_capability --> azure_sku_capability
-resource <|--- microsoft_resource
-@enduml
-```
-
-</ZoomPanPinch>
-<details>
-<summary>Relationships to Other Resources</summary>
-<div>
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_mysql_capability resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_mysql_capability {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-</div>
-</details>
-
 ## `azure_mysql_server`
 
 <ZoomPanPinch>
@@ -6103,35 +5978,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_backup {
-**backup_interval_hours**: int64
-**backup_retention_days**: int64
-**earliest_restore_date**: datetime
-**geo_redundant_backup**: string
-}
-class azure_data_encryption {
-**geo_backup_key_uri**: string
-**geo_backup_user_assigned_identity_id**: string
-**primary_key_uri**: string
-**primary_user_assigned_identity_id**: string
-**type**: string
-}
-class azure_high_availability {
-**mode**: string
-**standby_availability_zone**: string
-**state**: string
-}
 class azure_import_source_properties {
 **data_dir_path**: string
 **sas_token**: string
 **storage_type**: string
 **storage_url**: string
-}
-class azure_maintenance_window {
-**custom_window**: string
-**day_of_week**: int64
-**start_hour**: int64
-**start_minute**: int64
 }
 class azure_my_sql_server_identity {
 **principal_id**: string
@@ -6139,19 +5990,15 @@ class azure_my_sql_server_identity {
 **type**: string
 **user_assigned_identities**: dictionary[string, any]
 }
-class azure_my_sql_server_sku {
-**name**: string
-**tier**: string
-}
 class azure_mysql_server {
 **administrator_login**: string
 **administrator_login_password**: string
 **availability_zone**: string
-**backup**: azure_backup
+**backup**: azure_server_backup
 **create_mode**: string
-**data_encryption**: azure_data_encryption
+**data_encryption**: azure_server_data_encryption
 **fully_qualified_domain_name**: string
-**high_availability**: azure_high_availability
+**high_availability**: azure_server_high_availability
 **import_source_properties**: azure_import_source_properties
 **location**: string
 **mysql_server_identity**: azure_my_sql_server_identity
@@ -6159,20 +6006,15 @@ class azure_mysql_server {
 **replica_capacity**: int64
 **replication_role**: string
 **restore_point_in_time**: datetime
-**server_maintenance_window**: azure_maintenance_window
-**server_network**: azure_network
-**server_sku**: azure_my_sql_server_sku
+**server_maintenance_window**: azure_server_maintenance_window
+**server_network**: azure_server_network
+**server_sku**: azure_sku
 **source_server_resource_id**: string
 **state**: string
 **storage**: azure_storage
 **system_data**: azure_system_data
 **type**: string
 **version**: string
-}
-class azure_network {
-**delegated_subnet_resource_id**: string
-**private_dns_zone_resource_id**: string
-**public_network_access**: string
 }
 class azure_private_endpoint_connection {
 **group_ids**: string[]
@@ -6188,6 +6030,42 @@ class azure_private_link_service_connection_state {
 **actions_required**: string
 **description**: string
 **status**: string
+}
+class azure_server_backup {
+**backup_interval_hours**: int64
+**backup_retention_days**: int64
+**earliest_restore_date**: datetime
+**geo_redundant_backup**: string
+}
+class azure_server_data_encryption {
+**geo_backup_key_uri**: string
+**geo_backup_user_assigned_identity_id**: string
+**primary_key_uri**: string
+**primary_user_assigned_identity_id**: string
+**type**: string
+}
+class azure_server_high_availability {
+**mode**: string
+**standby_availability_zone**: string
+**state**: string
+}
+class azure_server_maintenance_window {
+**custom_window**: string
+**day_of_week**: int64
+**start_hour**: int64
+**start_minute**: int64
+}
+class azure_server_network {
+**delegated_subnet_resource_id**: string
+**private_dns_zone_resource_id**: string
+**public_network_access**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
 }
 class azure_storage {
 **auto_grow**: string
@@ -6230,15 +6108,15 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_mysql_server --> azure_backup
-azure_mysql_server --> azure_data_encryption
-azure_mysql_server --> azure_high_availability
 azure_mysql_server --> azure_import_source_properties
-azure_mysql_server --> azure_maintenance_window
 azure_mysql_server --> azure_my_sql_server_identity
-azure_mysql_server --> azure_my_sql_server_sku
-azure_mysql_server --> azure_network
 azure_mysql_server --> azure_private_endpoint_connection
+azure_mysql_server --> azure_server_backup
+azure_mysql_server --> azure_server_data_encryption
+azure_mysql_server --> azure_server_high_availability
+azure_mysql_server --> azure_server_maintenance_window
+azure_mysql_server --> azure_server_network
+azure_mysql_server --> azure_sku
 azure_mysql_server --> azure_storage
 azure_mysql_server --> azure_system_data
 database <|--- azure_mysql_server
@@ -6297,6 +6175,10 @@ class azure_mysql_server_maintenance {
 }
 class azure_mysql_server_type {
 }
+class microsoft_graph_service_principal {
+}
+class microsoft_graph_user {
+}
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_ad_administrator
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_backup
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_configuration
@@ -6305,6 +6187,8 @@ azure_mysql_server -[#1A83AF]-> azure_mysql_server_firewall_rule
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_log_file
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_maintenance
 azure_mysql_server -[#1A83AF]-> azure_mysql_server_type
+azure_mysql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_mysql_server -[#1A83AF]-> microsoft_graph_user
 @enduml
 ```
 
@@ -7082,10 +6966,11 @@ skinparam stereotypeIBackgroundColor #e98df7
 class azure_mysql_server_type {
 **capability_sku**: azure_sku_capability
 **capability_zone**: string
-**display_location**: string
+**location**: string
 **server_edition_name**: string
 **server_version**: string
 **storage_edition**: azure_storage_edition_capability
+**supported_geo_backup_regions**: string[]
 **supported_ha_mode**: string[]
 }
 class azure_sku_capability {
@@ -8508,6 +8393,896 @@ azure_p2_s_vpn_gateway -[#1A83AF]-> azure_virtual_hub
 </div>
 </details>
 
+## `azure_postgresql_ad_administrator`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_ad_administrator data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_ad_administrator {
+**object_id**: string
+**principal_name**: string
+**principal_type**: string
+**tenant_id**: string
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_postgresql_ad_administrator
+azure_postgresql_ad_administrator --> azure_system_data
+microsoft_resource <|--- azure_postgresql_ad_administrator
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_ad_administrator resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_ad_administrator {
+}
+class azure_postgresql_server {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_ad_administrator
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_auth_config {
+**active_directory_auth**: string
+**password_auth**: string
+**tenant_id**: string
+}
+class azure_postgresql_server {
+**administrator_login**: string
+**administrator_login_password**: string
+**auth_config**: azure_auth_config
+**availability_zone**: string
+**create_mode**: string
+**data_encryption**: azure_server_data_encryption
+**fully_qualified_domain_name**: string
+**high_availability**: azure_server_high_availability
+**minor_version**: string
+**point_in_time_utc**: datetime
+**replica_capacity**: int64
+**replication_role**: string
+**server_backup**: azure_server_backup
+**server_maintenance_window**: azure_server_maintenance_window
+**server_network**: azure_server_network
+**server_sku**: azure_sku
+**source_server_resource_id**: string
+**state**: string
+**storage_size_gb**: int64
+**storage_tier**: string
+**user_identity**: azure_resource_identity
+**version**: string
+}
+class azure_resource_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_identity]
+}
+class azure_server_backup {
+**backup_interval_hours**: int64
+**backup_retention_days**: int64
+**earliest_restore_date**: datetime
+**geo_redundant_backup**: string
+}
+class azure_server_data_encryption {
+**geo_backup_key_uri**: string
+**geo_backup_user_assigned_identity_id**: string
+**primary_key_uri**: string
+**primary_user_assigned_identity_id**: string
+**type**: string
+}
+class azure_server_high_availability {
+**mode**: string
+**standby_availability_zone**: string
+**state**: string
+}
+class azure_server_maintenance_window {
+**custom_window**: string
+**day_of_week**: int64
+**start_hour**: int64
+**start_minute**: int64
+}
+class azure_server_network {
+**delegated_subnet_resource_id**: string
+**private_dns_zone_resource_id**: string
+**public_network_access**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_tracked_resource {
+**location**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_postgresql_server --> azure_auth_config
+azure_postgresql_server --> azure_resource_identity
+azure_postgresql_server --> azure_server_backup
+azure_postgresql_server --> azure_server_data_encryption
+azure_postgresql_server --> azure_server_high_availability
+azure_postgresql_server --> azure_server_maintenance_window
+azure_postgresql_server --> azure_server_network
+azure_postgresql_server --> azure_sku
+azure_postgresql_server --> azure_system_data
+azure_tracked_resource <|--- azure_postgresql_server
+database <|--- azure_postgresql_server
+microsoft_resource <|--- azure_postgresql_server
+azure_resource_identity --> azure_user_identity
+azure_tracked_resource --> azure_system_data
+resource <|--- database
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_ad_administrator {
+}
+class azure_postgresql_server {
+}
+class azure_postgresql_server_backup {
+}
+class azure_postgresql_server_configuration {
+}
+class azure_postgresql_server_database {
+}
+class azure_postgresql_server_firewall_rule {
+}
+class azure_postgresql_server_type {
+}
+class microsoft_graph_service_principal {
+}
+class microsoft_graph_user {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_ad_administrator
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_backup
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_configuration
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_database
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_firewall_rule
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_type
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_user
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server_backup`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_backup data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server_backup {
+**backup_source**: string
+**backup_type**: string
+**completed_time**: datetime
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_postgresql_server_backup
+azure_postgresql_server_backup --> azure_system_data
+microsoft_resource <|--- azure_postgresql_server_backup
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_backup resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server {
+}
+class azure_postgresql_server_backup {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_backup
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server_configuration`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_configuration data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server_configuration {
+**allowed_values**: string
+**configuration_source**: string
+**data_type**: string
+**default_value**: string
+**description**: string
+**documentation_link**: string
+**is_config_pending_restart**: boolean
+**is_dynamic_config**: boolean
+**is_read_only**: boolean
+**unit**: string
+**value**: string
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_postgresql_server_configuration
+azure_postgresql_server_configuration --> azure_system_data
+microsoft_resource <|--- azure_postgresql_server_configuration
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_configuration resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server {
+}
+class azure_postgresql_server_configuration {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_configuration
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server_database`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_database data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server_database {
+**charset**: string
+**collation**: string
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_postgresql_server_database
+azure_postgresql_server_database --> azure_system_data
+microsoft_resource <|--- azure_postgresql_server_database
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_database resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server {
+}
+class azure_postgresql_server_database {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_database
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server_firewall_rule`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_firewall_rule data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server_firewall_rule {
+**end_ip_address**: string
+**start_ip_address**: string
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_postgresql_server_firewall_rule
+azure_postgresql_server_firewall_rule --> azure_system_data
+microsoft_resource <|--- azure_postgresql_server_firewall_rule
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_firewall_rule resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server {
+}
+class azure_postgresql_server_firewall_rule {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_firewall_rule
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `azure_postgresql_server_type`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_type data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server_type {
+**capability_zone**: string
+**fast_provisioning_supported**: boolean
+**geo_backup_supported**: boolean
+**location**: string
+**sku_name**: string
+**sku_tier**: string
+**status**: string
+**storage_iops**: int64
+**storage_size_gb**: int64
+**storage_tier**: string
+**storage_type**: string
+**supported_ha_mode**: string[]
+**zone_redundant_ha_and_geo_backup_supported**: boolean
+**zone_redundant_ha_supported**: boolean
+}
+class database_instance_type {
+}
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class microsoft_resource {
+}
+class phantom_resource {
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+}
+database_instance_type <|--- azure_postgresql_server_type
+microsoft_resource <|--- azure_postgresql_server_type
+instance_type <|--- database_instance_type
+type <|--- instance_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+@enduml
+```
+
+</ZoomPanPinch>
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_postgresql_server_type resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_postgresql_server {
+}
+class azure_postgresql_server_type {
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_type
+@enduml
+```
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `azure_private_link_service`
 
 <ZoomPanPinch>
@@ -9476,6 +10251,14 @@ class azure_ssh_public_key {
 class azure_sub_resource {
 **id**: string
 }
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
 class azure_uefi_settings {
 **secure_boot_enabled**: boolean
 **v_tpm_enabled**: boolean
@@ -9549,6 +10332,7 @@ azure_os_profile --> azure_windows_configuration
 azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
 azure_restore_point --> azure_restore_point_instance_view
 azure_restore_point --> azure_restore_point_source_metadata
+azure_restore_point --> azure_system_data
 azure_restore_point_collection --> azure_restore_point
 azure_restore_point_collection --> azure_restore_point_collection_source_properties
 microsoft_resource <|--- azure_restore_point_collection
@@ -10658,7 +11442,7 @@ class azure_resource_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, any]
+**user_assigned_identities**: dictionary[string, azure_user_identity]
 }
 class azure_server_external_administrator {
 **administrator_type**: string
@@ -10719,6 +11503,10 @@ class azure_sql_server_blob_auditing_policy {
 **storage_account_subscription_id**: string
 **storage_endpoint**: string
 }
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
 class microsoft_resource {
 }
 class resource {
@@ -10733,6 +11521,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+azure_resource_identity --> azure_user_identity
 azure_server_private_endpoint_connection --> azure_private_link_service_connection_state
 azure_sql_server --> azure_resource_identity
 azure_sql_server --> azure_server_external_administrator
@@ -11932,7 +12721,7 @@ class azure_resource_identity {
 **principal_id**: string
 **tenant_id**: string
 **type**: string
-**user_assigned_identities**: dictionary[string, any]
+**user_assigned_identities**: dictionary[string, azure_user_identity]
 }
 class azure_service_principal {
 **client_id**: string
@@ -11982,6 +12771,10 @@ class azure_sql_server_managed_instance {
 **v_cores**: int64
 **zone_redundant**: boolean
 }
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
 class microsoft_resource {
 }
 class resource {
@@ -11997,6 +12790,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_managed_instance_pec_property --> azure_managed_instance_private_link_service_connection_state_property
+azure_resource_identity --> azure_user_identity
 azure_sql_server_managed_instance --> azure_managed_instance_external_administrator
 azure_sql_server_managed_instance --> azure_managed_instance_pec_property
 azure_sql_server_managed_instance --> azure_resource_identity
