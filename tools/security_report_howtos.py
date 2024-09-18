@@ -127,9 +127,11 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 
 if __name__ == "__main__":
-    for check_json in get_url("https://localhost:8900/report/checks", params={"category": "security"}).json():
+    for check_json in get_url(
+        "https://localhost:8900/report/checks", params={"category": "security"}
+    ).json():
         detect = check_json["detect"]
-        if detect.get("resoto"):
-            howto_from_command(check_json, "search " + detect["resoto"].strip())
-        elif detect.get("resoto_cmd"):
-            howto_from_command(check_json, detect["resoto_cmd"].strip())
+        if detect.get("fix"):
+            howto_from_command(check_json, "search " + detect["fix"].strip())
+        elif detect.get("fix_cmd"):
+            howto_from_command(check_json, detect["fix_cmd"].strip())

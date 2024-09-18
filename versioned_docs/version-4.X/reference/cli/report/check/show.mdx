@@ -31,8 +31,8 @@ categories:
 # Default values for the check. Will be merged with the values from the config.
 default_values: null
 # Defines possible detection methods.
-# `resoto` defines a Fix Inventory search, `resoto_cmd` a Fix Inventory CLI command.
-#  At least one of `resoto` or `resoto_cmd` must be defined.
+# `fix` defines a Fix Inventory search, `fix_cmd` a Fix Inventory CLI command.
+#  At least one of `fix` or `fix_cmd` must be defined.
 # Additional keys can be defined on top.
 detect:
   fix: 'is(aws_ec2_security_group) and group_ip_permissions[*].{(ip_protocol=-1 or (from_port>=22 and to_port<=22 and ip_protocol=tcp)) and ip_ranges[*].cidr_ip="0.0.0.0/0"}'
@@ -43,9 +43,9 @@ related: []
 # Remediation action for the check.
 remediation:
   # Remediation actions with tool as key.
-  # Example tools: resoto_cmd, awscli, gcloud, terraform
+  # Example tools: fix_cmd, awscli, gcloud, terraform
   action: null
-  kind: 'resoto_core_report_check_remediation'
+  kind: 'fix_core_report_check_remediation'
   # Textual description of the remediation.
   text: 'Apply Zero Trust approach. Implement a process to scan and remediate unrestricted or overly permissive network acls. Recommended best practices is to narrow the definition for the minimum ports required.'
   # URL that documents the remediation action.

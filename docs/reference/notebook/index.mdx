@@ -8,10 +8,10 @@ Fix Inventory Notebook is a library that allows you to interact with [Fix Invent
 
 ## Installation
 
-Simply install the `resotonotebook` package and [Jupyter](https://jupyter.org)'s `notebook` package using [pip](https://pip.pypa.io):
+Simply install the `fixnotebook` package and [Jupyter](https://jupyter.org)'s `notebook` package using [pip](https://pip.pypa.io):
 
 ```bash
-pip install notebook resotonotebook
+pip install notebook fixnotebook
 ```
 
 Then, start [Jupyter](https://jupyter.org) Notebook:
@@ -28,11 +28,11 @@ First, create a new notebook by clicking `New` &rarr; `Python 3`:
 
 ![Create a new notebook](./img/create_new_notebook.png)
 
-Then, instantiate the `ResotoNotebook` object with the URL and PSK (if configured) of your [Fix Inventory Core](../components/core.mdx) instance:
+Then, instantiate the `FixNotebook` object with the URL and PSK (if configured) of your [Fix Inventory Core](../components/core.mdx) instance:
 
 ```python
-from resotonotebook import ResotoNotebook
-rnb = ResotoNotebook("https://localhost:8900", psk=None)
+from fixnotebook import FixNotebook
+rnb = FixNotebook("https://localhost:8900", psk=None)
 ```
 
 ### Visualization
