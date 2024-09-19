@@ -48,7 +48,7 @@ We will evaluate the search before executing it for demonstration. We also intro
 ```
 
 ```bash title="Typo"
-> echo 'graph=resoto search is("resource") limit1' | http :8900/cli/evaluate
+> echo 'graph=fix search is("resource") limit1' | http :8900/cli/evaluate
 # highlight-start
 ​HTTP/1.1 400 Bad Request
 ​Content-Length: 151
@@ -64,7 +64,7 @@ We will evaluate the search before executing it for demonstration. We also intro
 ## Execute
 
 ```bash title="Correct"
-> echo 'graph=resoto search is("resource") limit 1' | http :8900/cli/execute
+> echo 'graph=fix search is("resource") limit 1' | http :8900/cli/execute
 # highlight-start
 ​HTTP/1.1 200 OK
 ​Content-Type: application/json
@@ -98,7 +98,7 @@ We will evaluate the search before executing it for demonstration. We also intro
 ```
 
 ```bash title="Typo"
-> echo 'graph=resoto search is("resource") limit1' | http :8900/cli/execute
+> echo 'graph=fix search is("resource") limit1' | http :8900/cli/execute
 # highlight-start
 ​HTTP/1.1 400 Bad Request
 ​Content-Length: 151

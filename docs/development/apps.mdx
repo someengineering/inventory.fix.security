@@ -48,7 +48,7 @@ Using [`fixinventoryappbundler`](https://github.com/someengineering/fixinventory
     You can perform a dry run of the `cleanup-untagged` app for sample infrastructure app output:
 
     ```bash
-    $ resotoapprunner --path fixinventory-apps/cleanup-untagged/
+    $ fixinventoryapprunner --path fixinventory-apps/cleanup-untagged/
     ```
 
     :::
@@ -56,7 +56,7 @@ Using [`fixinventoryappbundler`](https://github.com/someengineering/fixinventory
 6.  Bundle all apps into a single `index.json` file:
 
     ```bash
-    $ resotoappbundler --path fixinventory-apps/ --discover > index.json
+    $ fixinventoryappbundler --path fixinventory-apps/ --discover > index.json
     ```
 
 7.  From within [Fix Inventory Shell](../reference/components/shell.mdx), install an app using the [`app install` command](../reference/cli/app/install.mdx):
