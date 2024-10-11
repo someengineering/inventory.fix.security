@@ -1,0 +1,198 @@
+---
+sidebar_label: Location
+---
+
+# `azure_location`
+
+- Categories: Management
+- Service: resources
+- Provider Link: [Location](https://learn.microsoft.com/en-us/azure/virtual-machines/regions)
+
+## Description
+
+Azure Location is a geographic area containing one or more Azure data centers. It represents a specific region where customers can deploy and run their cloud resources. Azure Locations provide options for data residency, compliance, and reduced latency by allowing users to choose where their applications and data are stored and processed within Microsoft's global infrastructure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Location"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_location {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class region {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_location
+region <|--- azure_location
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Location resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_location {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Location data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_availability_zone_mappings {
+**logical_zone**: string
+**physical_zone**: string
+}
+class azure_location {
+**availability_zone_mappings**: azure_availability_zone_mappings[]
+**display_name**: string
+**location_metadata**: azure_location_metadata
+**regional_display_name**: string
+**subscription_id**: string
+}
+class azure_location_metadata {
+**geography**: string
+**geography_group**: string
+**home_location**: string
+**latitude**: string
+**longitude**: string
+**paired_region**: azure_paired_region[]
+**physical_location**: string
+**region_category**: string
+**region_type**: string
+}
+class azure_paired_region {
+**id**: string
+**name**: string
+**subscription_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class region {
+**latitude**: double
+**long_name**: string
+**longitude**: double
+**region_in_use**: boolean
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_location --> azure_availability_zone_mappings
+azure_location --> azure_location_metadata
+microsoft_resource <|--- azure_location
+region <|--- azure_location
+azure_location_metadata --> azure_paired_region
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>

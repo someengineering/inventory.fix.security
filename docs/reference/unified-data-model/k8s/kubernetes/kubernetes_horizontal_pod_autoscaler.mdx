@@ -1,0 +1,172 @@
+---
+sidebar_label: Horizontal Pod Autoscaler
+---
+
+# `kubernetes_horizontal_pod_autoscaler`
+
+- Categories: Other
+- Service: kubernetes
+
+## Description
+
+The Kubernetes Horizontal Pod Autoscaler automatically scales the number of pods in a deployment up or down based on CPU usage or other specified metrics.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Horizontal Pod Autoscaler"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_horizontal_pod_autoscaler {
+
+}
+class kubernetes_resource {
+
+}
+class resource {
+
+}
+kubernetes_resource <|--- kubernetes_horizontal_pod_autoscaler
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Horizontal Pod Autoscaler resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_horizontal_pod_autoscaler {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Horizontal Pod Autoscaler data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cross_version_object_reference {
+**api_version**: string
+**name**: string
+**resource_kind**: string
+}
+class kubernetes_horizontal_pod_autoscaler {
+**horizontal_pod_autoscaler_spec**: kubernetes_horizontal_pod_autoscaler_spec
+**horizontal_pod_autoscaler_status**: kubernetes_horizontal_pod_autoscaler_status
+}
+class kubernetes_horizontal_pod_autoscaler_spec {
+**max_replicas**: int64
+**min_replicas**: int64
+**scale_target_ref**: kubernetes_cross_version_object_reference
+**target_cpu_utilization_percentage**: int64
+}
+class kubernetes_horizontal_pod_autoscaler_status {
+**current_cpu_utilization_percentage**: int64
+**current_replicas**: int64
+**desired_replicas**: int64
+**last_scale_time**: datetime
+**observed_generation**: int64
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+kubernetes_horizontal_pod_autoscaler --> kubernetes_horizontal_pod_autoscaler_spec
+kubernetes_horizontal_pod_autoscaler --> kubernetes_horizontal_pod_autoscaler_status
+kubernetes_resource <|--- kubernetes_horizontal_pod_autoscaler
+kubernetes_horizontal_pod_autoscaler_spec --> kubernetes_cross_version_object_reference
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

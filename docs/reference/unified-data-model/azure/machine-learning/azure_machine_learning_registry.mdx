@@ -1,0 +1,283 @@
+---
+sidebar_label: Machine Learning Registry
+---
+
+# `azure_machine_learning_registry`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Registry](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-model-registry)
+
+## Description
+
+Azure Machine Learning Registry is a centralized repository for storing and managing machine learning models, datasets, and components. It provides version control, collaboration features, and integration with Azure Machine Learning workflows. Users can publish, share, and deploy models across their organization, ensuring reproducibility and governance in machine learning projects.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Registry"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_registry {
+
+}
+class azure_tracked_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_tracked_resource <|--- azure_machine_learning_registry
+microsoft_resource <|--- azure_machine_learning_registry
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Registry resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_registry {
+
+}
+class azure_machine_learning_registry_code_container {
+
+}
+class azure_machine_learning_registry_component_container {
+
+}
+class azure_machine_learning_registry_data_container {
+
+}
+class azure_machine_learning_registry_environment_container {
+
+}
+class azure_machine_learning_registry_model_container {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_machine_learning_registry -[#1A83AF]-> azure_machine_learning_registry_code_container
+azure_machine_learning_registry -[#1A83AF]-> azure_machine_learning_registry_component_container
+azure_machine_learning_registry -[#1A83AF]-> azure_machine_learning_registry_data_container
+azure_machine_learning_registry -[#1A83AF]-> azure_machine_learning_registry_environment_container
+azure_machine_learning_registry -[#1A83AF]-> azure_machine_learning_registry_model_container
+azure_machine_learning_registry -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_registry -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Registry data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_acr_details {
+**system_created_acr_account**: azure_system_created_acr_account
+**user_created_acr_account**: azure_user_created_acr_account
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_machine_learning_registry {
+**azure_kind**: string
+**azure_sku**: azure_sku
+**discovery_url**: string
+**identity**: azure_identity
+**intellectual_property_publisher**: string
+**managed_resource_group**: string
+**ml_flow_registry_uri**: string
+**public_network_access**: string
+**region_details**: azure_registry_region_arm_details[]
+**registry_private_endpoint_connections**: azure_registry_private_endpoint_connection[]
+}
+class azure_registry_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**location**: string
+**private_endpoint**: string
+**provisioning_state**: string
+**registry_private_link_service_connection_state**: azure_registry_private_link_service_connection_state
+}
+class azure_registry_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_registry_region_arm_details {
+**acr_details**: azure_acr_details[]
+**location**: string
+**storage_account_details**: azure_storage_account_details[]
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_storage_account_details {
+**system_created_storage_account**: azure_system_created_storage_account
+**user_created_storage_account**: azure_user_created_storage_account
+}
+class azure_system_created_acr_account {
+**acr_account_name**: string
+**acr_account_sku**: string
+**arm_resource_id**: string
+}
+class azure_system_created_storage_account {
+**allow_blob_public_access**: boolean
+**arm_resource_id**: string
+**storage_account_hns_enabled**: boolean
+**storage_account_name**: string
+**storage_account_type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_tracked_resource {
+**location**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_user_created_acr_account {
+**arm_resource_id**: string
+}
+class azure_user_created_storage_account {
+**arm_resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_acr_details --> azure_system_created_acr_account
+azure_acr_details --> azure_user_created_acr_account
+azure_identity --> azure_user_assigned_identity
+azure_machine_learning_registry --> azure_identity
+azure_machine_learning_registry --> azure_registry_private_endpoint_connection
+azure_machine_learning_registry --> azure_registry_region_arm_details
+azure_machine_learning_registry --> azure_sku
+azure_machine_learning_registry --> azure_system_data
+azure_tracked_resource <|--- azure_machine_learning_registry
+microsoft_resource <|--- azure_machine_learning_registry
+azure_registry_private_endpoint_connection --> azure_registry_private_link_service_connection_state
+azure_registry_region_arm_details --> azure_acr_details
+azure_registry_region_arm_details --> azure_storage_account_details
+azure_storage_account_details --> azure_system_created_storage_account
+azure_storage_account_details --> azure_user_created_storage_account
+azure_tracked_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

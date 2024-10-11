@@ -1,0 +1,173 @@
+---
+sidebar_label: Cosmos DB PostgreSQL Cluster Server Configuration
+---
+
+# `azure_cosmos_db_postgresql_cluster_server_configuration`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB PostgreSQL Cluster Server Configuration](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/how-to-manage-server-configuration)
+
+## Description
+
+Azure Cosmos DB PostgreSQL Cluster Server Configuration is a setting within Azure Cosmos DB that manages PostgreSQL clusters. It controls server parameters, resource allocation, and performance settings for PostgreSQL databases. Users can adjust these configurations to optimize database operations, manage workloads, and customize the PostgreSQL environment according to their specific application requirements and performance needs.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB PostgreSQL Cluster Server Configuration"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster_server_configuration {
+
+}
+class azure_proxy_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_proxy_resource <|--- azure_cosmos_db_postgresql_cluster_server_configuration
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_server_configuration
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB PostgreSQL Cluster Server Configuration resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster_server {
+
+}
+class azure_cosmos_db_postgresql_cluster_server_configuration {
+
+}
+azure_cosmos_db_postgresql_cluster_server -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_server_configuration
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB PostgreSQL Cluster Server Configuration data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster_server_configuration {
+**config**: dictionary[string, any]
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_cosmos_db_postgresql_cluster_server_configuration
+azure_cosmos_db_postgresql_cluster_server_configuration --> azure_system_data
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_server_configuration
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

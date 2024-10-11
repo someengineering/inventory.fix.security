@@ -1,0 +1,202 @@
+---
+sidebar_label: Key Vault Key
+---
+
+# `azure_key_vault_key`
+
+- Categories: Management
+- Service: key-vault
+- Provider Link: [Key Vault Key](https://learn.microsoft.com/en-us/azure/key-vault/keys/)
+
+## Description
+
+Azure Key Vault Key is a secure storage and management service for cryptographic keys in Microsoft Azure. It provides encryption for sensitive data, supports key rotation, and integrates with Azure services. Users can create, import, and control access to keys, while the service handles key storage, backup, and compliance requirements.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Key Vault Key"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_vault_key {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_key_vault_key
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Key Vault Key resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_account {
+
+}
+class azure_key_vault {
+
+}
+class azure_key_vault_key {
+
+}
+azure_key_vault -[#1A83AF]-> azure_key_vault_key
+azure_key_vault_key -[#1A83AF]-> azure_cosmos_db_account
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Key Vault Key data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_release_policy {
+**content_type**: string
+**data**: string
+}
+class azure_key_rotation_policy {
+**attributes**: azure_key_rotation_policy_attributes
+**lifetime_actions**: azure_key_vault_lifetime_action[]
+}
+class azure_key_rotation_policy_attributes {
+**created**: int64
+**expiry_time**: string
+**updated**: int64
+}
+class azure_key_vault_attributes {
+**created**: datetime
+**enabled**: boolean
+**expire**: datetime
+**exportable**: boolean
+**nbf**: int64
+**recovery_level**: string
+**updated**: datetime
+}
+class azure_key_vault_key {
+**curve_name**: string
+**key_attributes**: azure_key_vault_attributes
+**key_ops**: string[]
+**key_size**: int64
+**key_uri**: string
+**key_uri_with_version**: string
+**kty**: string
+**release_policy**: azure_key_release_policy
+**rotation_policy**: azure_key_rotation_policy
+}
+class azure_key_vault_lifetime_action {
+**action**: string
+**trigger**: azure_key_vault_trigger
+}
+class azure_key_vault_trigger {
+**time_after_create**: string
+**time_before_expiry**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_key_rotation_policy --> azure_key_rotation_policy_attributes
+azure_key_rotation_policy --> azure_key_vault_lifetime_action
+azure_key_vault_key --> azure_key_release_policy
+azure_key_vault_key --> azure_key_rotation_policy
+azure_key_vault_key --> azure_key_vault_attributes
+microsoft_resource <|--- azure_key_vault_key
+azure_key_vault_lifetime_action --> azure_key_vault_trigger
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

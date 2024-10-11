@@ -1,0 +1,198 @@
+---
+sidebar_label: Q Business Application
+---
+
+# `aws_q_business_application`
+
+- Categories: Machine Learning & AI
+- Service: qbusiness
+- Provider Link: [Q Business Application](https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/create-app.html)
+
+## Description
+
+An AWS Q Business Application is a specialized AI assistant tailored for specific business functions or roles. It integrates with an organization's data sources and systems to provide contextual responses and perform tasks within a particular domain. Q Business Applications support users in accessing information, solving problems, and completing work activities relevant to their operational area.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Q Business Application"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_business_application {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_q_business_application
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Q Business Application resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_apps {
+
+}
+class aws_q_apps_library_item {
+
+}
+class aws_q_business_application {
+
+}
+class aws_q_business_conversation {
+
+}
+class aws_q_business_data_source {
+
+}
+class aws_q_business_data_source_sync_job {
+
+}
+class aws_q_business_document {
+
+}
+class aws_q_business_indice {
+
+}
+class aws_q_business_message {
+
+}
+class aws_q_business_plugin {
+
+}
+class aws_q_business_retriever {
+
+}
+class aws_q_business_web_experience {
+
+}
+aws_q_apps -[#1A83AF]-> aws_q_apps_library_item
+aws_q_business_application -[#1A83AF]-> aws_q_apps
+aws_q_business_application -[#1A83AF]-> aws_q_apps_library_item
+aws_q_business_application -[#1A83AF]-> aws_q_business_conversation
+aws_q_business_application -[#1A83AF]-> aws_q_business_data_source
+aws_q_business_application -[#1A83AF]-> aws_q_business_data_source_sync_job
+aws_q_business_application -[#1A83AF]-> aws_q_business_document
+aws_q_business_application -[#1A83AF]-> aws_q_business_indice
+aws_q_business_application -[#1A83AF]-> aws_q_business_message
+aws_q_business_application -[#1A83AF]-> aws_q_business_plugin
+aws_q_business_application -[#1A83AF]-> aws_q_business_retriever
+aws_q_business_application -[#1A83AF]-> aws_q_business_web_experience
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Q Business Application data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_business_application {
+**application_id**: string
+**created_at**: datetime
+**display_name**: string
+**status**: string
+**updated_at**: datetime
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_q_business_application
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

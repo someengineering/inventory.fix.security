@@ -1,0 +1,365 @@
+---
+sidebar_label: Region
+---
+
+# `aws_region`
+
+- Categories: Management
+
+- Provider Link: [Region](https://docs.aws.amazon.com/general/latest/gr/rande.html)
+
+## Description
+
+An AWS Region is a geographic area containing multiple data centers called Availability Zones. It provides a distinct set of AWS services and infrastructure. Regions are isolated from each other, enhancing fault tolerance and stability. Users can deploy resources in different Regions to reduce latency and meet data residency requirements.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Region"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_region {
+
+}
+class aws_resource {
+
+}
+class phantom_resource {
+
+}
+class region {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_region
+region <|--- aws_region
+resource <|--- aws_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Region resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_account {
+
+}
+class aws_alb {
+
+}
+class aws_alb_target_group {
+
+}
+class aws_autoscaling_group {
+
+}
+class aws_cloudformation_stack {
+
+}
+class aws_cloudformation_stack_set {
+
+}
+class aws_cloudwatch_alarm {
+
+}
+class aws_ec2_elastic_ip {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_instance_type {
+
+}
+class aws_ec2_internet_gateway {
+
+}
+class aws_ec2_keypair {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class aws_ec2_network_acl {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_route_table {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_snapshot {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_ec2_volume {
+
+}
+class aws_ec2_volume_type {
+
+}
+class aws_eks_cluster {
+
+}
+class aws_elb {
+
+}
+class aws_iam_group {
+
+}
+class aws_iam_instance_profile {
+
+}
+class aws_iam_policy {
+
+}
+class aws_iam_role {
+
+}
+class aws_iam_server_certificate {
+
+}
+class aws_iam_user {
+
+}
+class aws_rds_instance {
+
+}
+class aws_region {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_service_quota {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+class aws_vpc_peering_connection {
+
+}
+aws_account -[#1A83AF]-> aws_region
+aws_alb -[#1A83AF]-> aws_alb_target_group
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
+aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_iam_group -[#1A83AF]-> aws_iam_policy
+aws_iam_group -[#1A83AF]-> aws_iam_user
+aws_iam_instance_profile -[#1A83AF]-> aws_ec2_instance
+aws_iam_role -[#1A83AF]-> aws_eks_cluster
+aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
+aws_iam_role -[#1A83AF]-> aws_iam_policy
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_autoscaling_group
+aws_region -[#1A83AF]-> aws_cloudformation_stack
+aws_region -[#1A83AF]-> aws_cloudformation_stack_set
+aws_region -[#1A83AF]-> aws_cloudwatch_alarm
+aws_region -[#1A83AF]-> aws_ec2_elastic_ip
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_instance_type
+aws_region -[#1A83AF]-> aws_ec2_internet_gateway
+aws_region -[#1A83AF]-> aws_ec2_keypair
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_ec2_volume_type
+aws_region -[#1A83AF]-> aws_eks_cluster
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_iam_group
+aws_region -[#1A83AF]-> aws_iam_instance_profile
+aws_region -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_role
+aws_region -[#1A83AF]-> aws_iam_server_certificate
+aws_region -[#1A83AF]-> aws_iam_user
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_s3_bucket
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
+aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_route_table
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_vpc_peering_connection
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Region data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_region {
+
+}
+class aws_resource {
+**arn**: string
+}
+class phantom_resource {
+
+}
+class region {
+**latitude**: double
+**long_name**: string
+**longitude**: double
+**region_in_use**: boolean
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_region
+region <|--- aws_region
+resource <|--- aws_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>

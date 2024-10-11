@@ -1,0 +1,317 @@
+---
+sidebar_label: VPC
+---
+
+# `aws_vpc`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [VPC](https://docs.aws.amazon.com/vpc/)
+
+## Description
+
+AWS VPC (Amazon Virtual Private Cloud) is a network service that creates isolated cloud environments within AWS. It lets users define virtual networks, configure IP ranges, set up subnets, and manage network gateways. VPC provides control over network architecture, enhances security through access controls, and supports connectivity between AWS resources and on-premises infrastructure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of VPC"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_vpc {
+
+}
+class network {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_vpc
+network <|--- aws_vpc
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of VPC resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_alb_target_group {
+
+}
+class aws_ec2_flow_log {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_internet_gateway {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class aws_ec2_network_acl {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_route_table {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_elb {
+
+}
+class aws_lambda_function {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_rds_cluster_snapshot {
+
+}
+class aws_rds_instance {
+
+}
+class aws_rds_snapshot {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_region {
+
+}
+class aws_service_quota {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+class aws_vpc_peering_connection {
+
+}
+aws_alb -[#1A83AF]-> aws_alb_target_group
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
+aws_ec2_security_group -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_rds_instance -[#1A83AF]-> aws_rds_snapshot
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_internet_gateway
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_flow_log
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_route_table
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_opensearch_domain
+aws_vpc -[#1A83AF]-> aws_rds_cluster_snapshot
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_rds_snapshot
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_vpc_peering_connection
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of VPC data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_vpc {
+**vpc_cidr_block**: string
+**vpc_cidr_block_association_set**: aws_vpc_cidr_block_association[]
+**vpc_dhcp_options_id**: string
+**vpc_in_use**: boolean
+**vpc_instance_tenancy**: string
+**vpc_ipv6_cidr_block_association_set**: aws_vpc_ipv6_cidr_block_association[]
+**vpc_is_default**: boolean
+**vpc_state**: string
+}
+class aws_vpc_cidr_block_association {
+**association_id**: string
+**cidr_block**: string
+**cidr_block_state**: aws_vpc_cidr_block_state
+}
+class aws_vpc_cidr_block_state {
+**state**: string
+**status_message**: string
+}
+class aws_vpc_ipv6_cidr_block_association {
+**association_id**: string
+**ipv6_cidr_block**: string
+**ipv6_cidr_block_state**: aws_vpc_cidr_block_state
+**ipv6_pool**: string
+**network_border_group**: string
+}
+class network {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_vpc
+aws_vpc --> aws_vpc_cidr_block_association
+aws_vpc --> aws_vpc_ipv6_cidr_block_association
+network <|--- aws_vpc
+aws_vpc_cidr_block_association --> aws_vpc_cidr_block_state
+aws_vpc_ipv6_cidr_block_association --> aws_vpc_cidr_block_state
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>

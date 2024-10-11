@@ -1,0 +1,281 @@
+---
+sidebar_label: ELB
+---
+
+# `aws_elb`
+
+- Categories: Networking
+- Service: elb
+- Provider Link: [ELB](https://docs.aws.amazon.com/elasticloadbalancing/)
+
+## Description
+
+AWS Elastic Load Balancing (ELB) is a service that distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses. It automatically adjusts capacity based on traffic patterns, provides health checks for connected resources, and supports various load balancing algorithms to optimize application performance and availability in Amazon Web Services environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ELB"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elb {
+
+}
+class aws_resource {
+
+}
+class load_balancer {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_elb
+load_balancer <|--- aws_elb
+resource <|--- aws_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ELB resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_ecs_service {
+
+}
+class aws_elb {
+
+}
+class aws_region {
+
+}
+class aws_service_quota {
+
+}
+class aws_vpc {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_elb
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ELB data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elb {
+**elb_attributes**: aws_elb_load_balancer_attributes
+**elb_availability_zones**: string[]
+**elb_backend_server_descriptions**: aws_elb_backend_server_description[]
+**elb_canonical_hosted_zone_name**: string
+**elb_canonical_hosted_zone_name_id**: string
+**elb_health_check**: aws_elb_health_check
+**elb_listener_descriptions**: aws_elb_listener_description[]
+**elb_policies**: aws_elb_policies
+**elb_source_security_group**: aws_elb_source_security_group
+**scheme**: string
+}
+class aws_elb_access_log {
+**emit_interval**: int64
+**enabled**: boolean
+**s3_bucket_name**: string
+**s3_bucket_prefix**: string
+}
+class aws_elb_additional_attribute {
+**key**: string
+**value**: string
+}
+class aws_elb_app_cookie_stickiness_policy {
+**cookie_name**: string
+**policy_name**: string
+}
+class aws_elb_backend_server_description {
+**instance_port**: int64
+**policy_names**: string[]
+}
+class aws_elb_connection_draining {
+**enabled**: boolean
+**timeout**: int64
+}
+class aws_elb_health_check {
+**healthy_threshold**: int64
+**interval**: int64
+**target**: string
+**timeout**: int64
+**unhealthy_threshold**: int64
+}
+class aws_elb_lb_cookie_stickiness_policy {
+**cookie_expiration_period**: int64
+**policy_name**: string
+}
+class aws_elb_listener {
+**instance_port**: int64
+**instance_protocol**: string
+**load_balancer_port**: int64
+**protocol**: string
+**ssl_certificate_id**: string
+}
+class aws_elb_listener_description {
+**listener**: aws_elb_listener
+**policy_names**: string[]
+}
+class aws_elb_load_balancer_attributes {
+**access_log**: aws_elb_access_log
+**additional_attributes**: aws_elb_additional_attribute[]
+**connection_draining**: aws_elb_connection_draining
+**connection_settings**: int64
+**cross_zone_load_balancing**: boolean
+}
+class aws_elb_policies {
+**app_cookie_stickiness_policies**: aws_elb_app_cookie_stickiness_policy[]
+**lb_cookie_stickiness_policies**: aws_elb_lb_cookie_stickiness_policy[]
+**other_policies**: string[]
+}
+class aws_elb_source_security_group {
+**group_name**: string
+**owner_alias**: string
+}
+class aws_resource {
+**arn**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_elb --> aws_elb_backend_server_description
+aws_elb --> aws_elb_health_check
+aws_elb --> aws_elb_listener_description
+aws_elb --> aws_elb_load_balancer_attributes
+aws_elb --> aws_elb_policies
+aws_elb --> aws_elb_source_security_group
+aws_resource <|--- aws_elb
+load_balancer <|--- aws_elb
+aws_elb_listener_description --> aws_elb_listener
+aws_elb_load_balancer_attributes --> aws_elb_access_log
+aws_elb_load_balancer_attributes --> aws_elb_additional_attribute
+aws_elb_load_balancer_attributes --> aws_elb_connection_draining
+aws_elb_policies --> aws_elb_app_cookie_stickiness_policy
+aws_elb_policies --> aws_elb_lb_cookie_stickiness_policy
+resource <|--- aws_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>

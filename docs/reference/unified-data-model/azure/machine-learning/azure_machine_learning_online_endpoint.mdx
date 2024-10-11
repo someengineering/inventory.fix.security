@@ -1,0 +1,220 @@
+---
+sidebar_label: Machine Learning Online Endpoint
+---
+
+# `azure_machine_learning_online_endpoint`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Online Endpoint](https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints)
+
+## Description
+
+Azure Machine Learning Online Endpoint is a cloud-based service for deploying and hosting machine learning models. It provides a secure, managed environment for serving real-time predictions. Users can deploy models, manage versions, and scale compute resources as needed. The endpoint handles incoming requests, processes data, and returns predictions using the deployed model.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Online Endpoint"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_tracked_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_tracked_resource <|--- azure_machine_learning_online_endpoint
+microsoft_resource <|--- azure_machine_learning_online_endpoint
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Online Endpoint resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Online Endpoint data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_machine_learning_online_endpoint {
+**azure_kind**: string
+**azure_sku**: azure_sku
+**compute**: string
+**identity**: azure_identity
+**mirror_traffic**: dictionary[string, int64]
+**public_network_access**: string
+**traffic**: dictionary[string, int64]
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_tracked_resource {
+**location**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_machine_learning_online_endpoint --> azure_identity
+azure_machine_learning_online_endpoint --> azure_sku
+azure_machine_learning_online_endpoint --> azure_system_data
+azure_tracked_resource <|--- azure_machine_learning_online_endpoint
+microsoft_resource <|--- azure_machine_learning_online_endpoint
+azure_tracked_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,85 @@
+---
+sidebar_label: AI Model
+---
+
+# `ai_model`
+
+- Categories: Machine Learning & AI, Compute
+
+## Description
+
+An AI Model resource.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of AI Model data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_bedrock_foundation_model {
+
+}
+class azure_machine_learning_registry_model_container {
+
+}
+class azure_machine_learning_workspace_model_container {
+
+}
+class gcp_vertex_ai_model {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+ai_model <|--- aws_bedrock_custom_model
+ai_model <|--- aws_bedrock_foundation_model
+ai_model <|--- azure_machine_learning_registry_model_container
+ai_model <|--- azure_machine_learning_workspace_model_container
+ai_model <|--- gcp_vertex_ai_model
+
+@enduml
+```
+
+</ZoomPanPinch>

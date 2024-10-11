@@ -1,0 +1,193 @@
+---
+sidebar_label: Bedrock Agent Prompt
+---
+
+# `aws_bedrock_agent_prompt`
+
+- Categories: Machine Learning & AI
+- Service: bedrock-agent
+- Provider Link: [Bedrock Agent Prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-prompt.html)
+
+## Description
+
+AWS Bedrock Agent Prompt is a feature that helps developers create AI agents within the AWS Bedrock service. It provides a framework for defining agent behaviors, integrating with foundation models, and handling user interactions. The prompt system guides the creation of agents that can perform tasks, answer questions, and assist users in various applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Agent Prompt"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_prompt {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_bedrock_agent_prompt
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Prompt resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_prompt {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_kms_key {
+
+}
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_bedrock_custom_model
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_kms_key
+aws_bedrock_custom_model -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Prompt data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_prompt {
+**created_at**: datetime
+**customer_encryption_key_arn**: string
+**default_variant**: string
+**description**: string
+**prompt_variants**: aws_bedrock_prompt_variant[]
+**updated_at**: datetime
+**version**: string
+}
+class aws_bedrock_prompt_inference_configuration {
+**text**: aws_bedrock_prompt_model_inference_configuration
+}
+class aws_bedrock_prompt_model_inference_configuration {
+**max_tokens**: int64
+**stop_sequences**: string[]
+**temperature**: double
+**top_k**: int64
+**top_p**: double
+}
+class aws_bedrock_prompt_template_configuration {
+**text**: aws_bedrock_text_prompt_template_configuration
+}
+class aws_bedrock_prompt_variant {
+**inference_configuration**: aws_bedrock_prompt_inference_configuration
+**model_id**: string
+**name**: string
+**template_configuration**: aws_bedrock_prompt_template_configuration
+**template_type**: string
+}
+class aws_bedrock_text_prompt_template_configuration {
+**input_variables**: string[]
+**text**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_bedrock_agent_prompt --> aws_bedrock_prompt_variant
+aws_resource <|--- aws_bedrock_agent_prompt
+aws_bedrock_prompt_inference_configuration --> aws_bedrock_prompt_model_inference_configuration
+aws_bedrock_prompt_template_configuration --> aws_bedrock_text_prompt_template_configuration
+aws_bedrock_prompt_variant --> aws_bedrock_prompt_inference_configuration
+aws_bedrock_prompt_variant --> aws_bedrock_prompt_template_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

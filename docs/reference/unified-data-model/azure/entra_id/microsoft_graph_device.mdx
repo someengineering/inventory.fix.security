@@ -1,0 +1,210 @@
+---
+sidebar_label: Graph Device
+---
+
+# `microsoft_graph_device`
+
+- Categories: Access Control
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph Device"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_device {
+
+}
+class microsoft_graph_entity {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_graph_entity <|--- microsoft_graph_device
+microsoft_resource <|--- microsoft_graph_entity
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Device resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_assignment {
+
+}
+class microsoft_graph_device {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_graph_role {
+
+}
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_device
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_group
+microsoft_graph_device -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_device
+microsoft_graph_role -[#1A83AF]-> microsoft_graph_role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Device data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_alternative_security_id {
+**identity_provider**: string
+**key**: string
+**type**: int64
+}
+class microsoft_graph_device {
+**account_enabled**: boolean
+**alternative_security_ids**: microsoft_graph_alternative_security_id[]
+**approximate_last_sign_in_date_time**: datetime
+**compliance_expiration_date_time**: datetime
+**device_category**: string
+**device_id**: string
+**device_kind**: string
+**device_metadata**: string
+**device_ownership**: string
+**device_version**: int64
+**display_name**: string
+**domain_name**: string
+**enrollment_profile_name**: string
+**enrollment_type**: string
+**extension_attributes**: dictionary[string, string]
+**hostnames**: string[]
+**is_compliant**: boolean
+**is_managed**: boolean
+**is_management_restricted**: boolean
+**is_rooted**: boolean
+**management_type**: string
+**manufacturer**: string
+**mdm_app_id**: string
+**model**: string
+**on_premises_last_sync_date_time**: datetime
+**on_premises_security_identifier**: string
+**on_premises_sync_enabled**: boolean
+**operating_system**: string
+**operating_system_version**: string
+**physical_ids**: string[]
+**platform**: string
+**profile_type**: string
+**registration_date_time**: datetime
+**status**: string
+**system_labels**: string[]
+**trust_type**: string
+}
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+microsoft_graph_device --> microsoft_graph_alternative_security_id
+microsoft_graph_entity <|--- microsoft_graph_device
+microsoft_resource <|--- microsoft_graph_entity
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

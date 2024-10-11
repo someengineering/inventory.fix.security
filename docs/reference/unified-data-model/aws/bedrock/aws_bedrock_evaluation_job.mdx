@@ -1,0 +1,242 @@
+---
+sidebar_label: Bedrock Evaluation Job
+---
+
+# `aws_bedrock_evaluation_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: bedrock
+- Provider Link: [Bedrock Evaluation Job](https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-jobs.html)
+
+## Description
+
+AWS Bedrock Evaluation Job is a feature that assesses the performance of foundation models in AWS Bedrock. It runs a set of predefined or custom tasks on selected models, comparing their outputs against human-generated responses. The job generates metrics and reports to help users evaluate model quality and suitability for specific use cases.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Evaluation Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_evaluation_job {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- aws_bedrock_evaluation_job
+aws_resource <|--- aws_bedrock_evaluation_job
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Evaluation Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_evaluation_job {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+aws_bedrock_evaluation_job -[#1A83AF]-> aws_kms_key
+aws_bedrock_evaluation_job -[#1A83AF]-> aws_s3_bucket
+aws_iam_role -[#1A83AF]-> aws_bedrock_evaluation_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Evaluation Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_automated_evaluation_config {
+**dataset_metric_configs**: aws_bedrock_evaluation_dataset_metric_config[]
+}
+class aws_bedrock_evaluation_bedrock_model {
+**inference_params**: string
+**model_identifier**: string
+}
+class aws_bedrock_evaluation_config {
+**automated**: aws_bedrock_automated_evaluation_config
+**human**: aws_bedrock_human_evaluation_config
+}
+class aws_bedrock_evaluation_dataset {
+**dataset_location**: string
+**name**: string
+}
+class aws_bedrock_evaluation_dataset_metric_config {
+**dataset**: aws_bedrock_evaluation_dataset
+**metric_names**: string[]
+**task_type**: string
+}
+class aws_bedrock_evaluation_inference_config {
+**models**: aws_bedrock_evaluation_model_config[]
+}
+class aws_bedrock_evaluation_job {
+**creation_time**: datetime
+**customer_encryption_key_arn**: string
+**evaluation_config**: aws_bedrock_evaluation_config
+**failure_messages**: string[]
+**job_arn**: string
+**job_description**: string
+**job_inference_config**: aws_bedrock_evaluation_inference_config
+**job_name**: string
+**job_type**: string
+**last_modified_time**: datetime
+**output_data_config**: string
+**role_arn**: string
+**status**: string
+}
+class aws_bedrock_evaluation_model_config {
+**bedrock_model**: aws_bedrock_evaluation_bedrock_model
+}
+class aws_bedrock_human_evaluation_config {
+**custom_metrics**: aws_bedrock_human_evaluation_custom_metric[]
+**dataset_metric_configs**: aws_bedrock_evaluation_dataset_metric_config[]
+**human_workflow_config**: aws_bedrock_human_workflow_config
+}
+class aws_bedrock_human_evaluation_custom_metric {
+**description**: string
+**name**: string
+**rating_method**: string
+}
+class aws_bedrock_human_workflow_config {
+**flow_definition_arn**: string
+**instructions**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+aws_bedrock_automated_evaluation_config --> aws_bedrock_evaluation_dataset_metric_config
+aws_bedrock_evaluation_config --> aws_bedrock_automated_evaluation_config
+aws_bedrock_evaluation_config --> aws_bedrock_human_evaluation_config
+aws_bedrock_evaluation_dataset_metric_config --> aws_bedrock_evaluation_dataset
+aws_bedrock_evaluation_inference_config --> aws_bedrock_evaluation_model_config
+ai_job <|--- aws_bedrock_evaluation_job
+aws_bedrock_evaluation_job --> aws_bedrock_evaluation_config
+aws_bedrock_evaluation_job --> aws_bedrock_evaluation_inference_config
+aws_resource <|--- aws_bedrock_evaluation_job
+aws_bedrock_evaluation_model_config --> aws_bedrock_evaluation_bedrock_model
+aws_bedrock_human_evaluation_config --> aws_bedrock_evaluation_dataset_metric_config
+aws_bedrock_human_evaluation_config --> aws_bedrock_human_evaluation_custom_metric
+aws_bedrock_human_evaluation_config --> aws_bedrock_human_workflow_config
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

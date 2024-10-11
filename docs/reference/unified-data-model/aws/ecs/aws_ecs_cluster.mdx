@@ -1,0 +1,229 @@
+---
+sidebar_label: ECS Cluster
+---
+
+# `aws_ecs_cluster`
+
+- Categories: Compute
+- Service: ecs
+- Provider Link: [ECS Cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_clusters.html)
+
+## Description
+
+AWS ECS Cluster is a container management service that organizes and runs Docker containers on EC2 instances. It handles container deployment, scheduling, and scaling across multiple instances. ECS Cluster manages the underlying infrastructure, monitors container health, and balances workloads. It integrates with other AWS services for networking, storage, and security.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ECS Cluster"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_cluster {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ecs_cluster
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_capacity_provider {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_ecs_container_instance {
+
+}
+class aws_ecs_service {
+
+}
+class aws_ecs_task {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_cluster -[#1A83AF]-> aws_kms_key
+aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
+aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_attachment {
+**details**: aws_ecs_key_value_pair[]
+**id**: string
+**status**: string
+**type**: string
+}
+class aws_ecs_capacity_provider_strategy_item {
+**base**: int64
+**capacity_provider**: string
+**weight**: int64
+}
+class aws_ecs_cluster {
+**cluster_active_services_count**: int64
+**cluster_attachments**: aws_ecs_attachment[]
+**cluster_attachments_status**: string
+**cluster_capacity_providers**: string[]
+**cluster_configuration**: aws_ecs_cluster_configuration
+**cluster_default_capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
+**cluster_pending_tasks_count**: int64
+**cluster_registered_container_instances_count**: int64
+**cluster_running_tasks_count**: int64
+**cluster_settings**: aws_ecs_cluster_setting[]
+**cluster_statistics**: aws_ecs_key_value_pair[]
+**cluster_status**: string
+}
+class aws_ecs_cluster_configuration {
+**execute_command_configuration**: aws_ecs_execute_command_configuration
+}
+class aws_ecs_cluster_setting {
+**name**: string
+**value**: string
+}
+class aws_ecs_execute_command_configuration {
+**kms_key_id**: string
+**log_configuration**: aws_ecs_execute_command_log_configuration
+**logging**: string
+}
+class aws_ecs_execute_command_log_configuration {
+**cloud_watch_encryption_enabled**: boolean
+**cloud_watch_log_group_name**: string
+**s3_bucket_name**: string
+**s3_encryption_enabled**: boolean
+**s3_key_prefix**: string
+}
+class aws_ecs_key_value_pair {
+**name**: string
+**value**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecs_attachment --> aws_ecs_key_value_pair
+aws_ecs_cluster --> aws_ecs_attachment
+aws_ecs_cluster --> aws_ecs_capacity_provider_strategy_item
+aws_ecs_cluster --> aws_ecs_cluster_configuration
+aws_ecs_cluster --> aws_ecs_cluster_setting
+aws_ecs_cluster --> aws_ecs_key_value_pair
+aws_resource <|--- aws_ecs_cluster
+aws_ecs_cluster_configuration --> aws_ecs_execute_command_configuration
+aws_ecs_execute_command_configuration --> aws_ecs_execute_command_log_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

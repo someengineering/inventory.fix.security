@@ -1,0 +1,219 @@
+---
+sidebar_label: SageMaker Compilation Job
+---
+
+# `aws_sagemaker_compilation_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Compilation Job](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-job-compilation.html)
+
+## Description
+
+AWS SageMaker Compilation Job is a service that optimizes machine learning models for specific target hardware. It converts models trained in SageMaker or other platforms into an executable format, reducing the model's size and improving inference performance. This process adapts the model for deployment on various devices, from cloud instances to edge devices with limited resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Compilation Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_sagemaker_job <|--- aws_sagemaker_compilation_job
+aws_resource <|--- aws_sagemaker_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Compilation Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_sagemaker_compilation_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Compilation Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_compilation_job {
+**compilation_job_end_time**: datetime
+**compilation_job_failure_reason**: string
+**compilation_job_inference_image**: string
+**compilation_job_input_config**: aws_sagemaker_input_config
+**compilation_job_model_artifacts**: string
+**compilation_job_model_digests**: string
+**compilation_job_model_package_version_arn**: string
+**compilation_job_output_config**: aws_sagemaker_output_config
+**compilation_job_start_time**: datetime
+**compilation_job_status**: string
+**compilation_job_stopping_condition**: aws_sagemaker_stopping_condition
+**compilation_job_vpc_config**: aws_sagemaker_neo_vpc_config
+}
+class aws_sagemaker_input_config {
+**data_input_config**: string
+**framework**: string
+**framework_version**: string
+**s3_uri**: string
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_neo_vpc_config {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
+class aws_sagemaker_output_config {
+**compiler_options**: string
+**kms_key_id**: string
+**s3_output_location**: string
+**target_device**: string
+**target_platform**: aws_sagemaker_target_platform
+}
+class aws_sagemaker_stopping_condition {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
+}
+class aws_sagemaker_target_platform {
+**accelerator**: string
+**arch**: string
+**os**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_compilation_job --> aws_sagemaker_input_config
+aws_sagemaker_job <|--- aws_sagemaker_compilation_job
+aws_sagemaker_compilation_job --> aws_sagemaker_neo_vpc_config
+aws_sagemaker_compilation_job --> aws_sagemaker_output_config
+aws_sagemaker_compilation_job --> aws_sagemaker_stopping_condition
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_output_config --> aws_sagemaker_target_platform
+
+@enduml
+```
+
+</ZoomPanPinch>

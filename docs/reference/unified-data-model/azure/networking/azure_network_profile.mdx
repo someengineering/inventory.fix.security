@@ -1,0 +1,202 @@
+---
+sidebar_label: Network Profile
+---
+
+# `azure_network_profile`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Profile](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#network-interface-overview)
+
+## Description
+
+Azure Network Profile is a configuration template for network resources in Microsoft Azure. It defines settings for virtual networks, subnets, network security groups, and other network components. Network Profiles simplify the deployment and management of consistent network configurations across multiple Azure resources, reducing setup time and potential configuration errors in cloud environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Profile"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_profile {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_profile
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Profile resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_base {
+
+}
+class azure_network_profile {
+
+}
+class azure_network_subnet {
+
+}
+azure_network_profile -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_subnet -[#1A83AF]-> azure_network_profile
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Profile data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_network_interface {
+**container**: azure_sub_resource
+**container_network_interface_configuration**: azure_container_network_interface_configuration
+**etag**: string
+**ip_configurations**: azure_container_network_interface_ip_configuration[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_container_network_interface_configuration {
+**container_network_interfaces**: string[]
+**etag**: string
+**ip_configurations**: azure_ip_configuration_profile[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_container_network_interface_ip_configuration {
+**etag**: string
+**name**: string
+**properties**: string
+**type**: string
+}
+class azure_ip_configuration_profile {
+**etag**: string
+**name**: string
+**properties**: string
+**type**: string
+}
+class azure_network_profile {
+**container_network_interface_configurations**: azure_container_network_interface_configuration[]
+**container_network_interfaces**: azure_container_network_interface[]
+**resource_guid**: string
+}
+class azure_sub_resource {
+**id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_container_network_interface --> azure_container_network_interface_configuration
+azure_container_network_interface --> azure_container_network_interface_ip_configuration
+azure_sub_resource <|--- azure_container_network_interface
+azure_container_network_interface --> azure_sub_resource
+azure_container_network_interface_configuration --> azure_ip_configuration_profile
+azure_sub_resource <|--- azure_container_network_interface_configuration
+azure_sub_resource <|--- azure_ip_configuration_profile
+azure_network_profile --> azure_container_network_interface
+azure_network_profile --> azure_container_network_interface_configuration
+microsoft_resource <|--- azure_network_profile
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

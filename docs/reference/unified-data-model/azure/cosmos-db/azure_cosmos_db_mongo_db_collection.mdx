@@ -1,0 +1,202 @@
+---
+sidebar_label: Cosmos DB Mongo DB Collection
+---
+
+# `azure_cosmos_db_mongo_db_collection`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Mongo DB Collection](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/)
+
+## Description
+
+Azure Cosmos DB MongoDB Collection is a storage container within Azure Cosmos DB that supports MongoDB API. It stores JSON-like documents and provides querying, indexing, and CRUD operations compatible with MongoDB. Users can interact with the collection using MongoDB drivers, tools, and protocols while benefiting from Azure Cosmos DB's global distribution and performance capabilities.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Mongo DB Collection"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_mongo_db_collection {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_mongo_db_collection
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Mongo DB Collection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_mongo_db_collection {
+
+}
+class azure_cosmos_db_mongo_db_database {
+
+}
+azure_cosmos_db_mongo_db_database -[#1A83AF]-> azure_cosmos_db_mongo_db_collection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Mongo DB Collection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_auto_upgrade_policy_resource {
+**throughput_policy**: azure_throughput_policy_resource
+}
+class azure_autoscale_settings_resource {
+**auto_upgrade_policy**: azure_auto_upgrade_policy_resource
+**max_throughput**: int64
+**target_max_throughput**: int64
+}
+class azure_cosmos_db_mongo_db_collection {
+**mongodb_collection_options**: azure_options_resource
+**mongodb_collection_resource**: azure_mongo_db_collection
+}
+class azure_mongo_db_collection {
+**analytical_storage_ttl**: int64
+**create_mode**: string
+**id**: string
+**indexes**: azure_mongo_index[]
+**restore_parameters**: azure_resource_restore_parameters
+**shard_key**: dictionary[string, string]
+}
+class azure_mongo_index {
+**key**: azure_mongo_index_keys
+**options**: azure_mongo_index_options
+}
+class azure_mongo_index_keys {
+**keys**: string[]
+}
+class azure_mongo_index_options {
+**expire_after_seconds**: int64
+**unique**: boolean
+}
+class azure_options_resource {
+**autoscale_settings**: int64
+**throughput**: int64
+}
+class azure_resource_restore_parameters {
+
+}
+class azure_throughput_policy_resource {
+**increment_percent**: int64
+**is_enabled**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_auto_upgrade_policy_resource --> azure_throughput_policy_resource
+azure_autoscale_settings_resource --> azure_auto_upgrade_policy_resource
+azure_cosmos_db_mongo_db_collection --> azure_mongo_db_collection
+azure_cosmos_db_mongo_db_collection --> azure_options_resource
+microsoft_resource <|--- azure_cosmos_db_mongo_db_collection
+azure_mongo_db_collection --> azure_autoscale_settings_resource
+azure_mongo_db_collection --> azure_mongo_index
+azure_mongo_db_collection --> azure_resource_restore_parameters
+azure_mongo_index --> azure_mongo_index_keys
+azure_mongo_index --> azure_mongo_index_options
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

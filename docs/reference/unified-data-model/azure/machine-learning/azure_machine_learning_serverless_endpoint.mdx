@@ -1,0 +1,228 @@
+---
+sidebar_label: Machine Learning Serverless Endpoint
+---
+
+# `azure_machine_learning_serverless_endpoint`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Serverless Endpoint](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-managed-online-endpoint-serverless)
+
+## Description
+
+Azure Machine Learning Serverless Endpoint is a deployment option for machine learning models in Azure. It provides on-demand compute resources for model inference without the need to manage infrastructure. Users can deploy models, send requests, and receive predictions while paying only for the compute time used during inference operations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Serverless Endpoint"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_tracked_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_tracked_resource <|--- azure_machine_learning_serverless_endpoint
+microsoft_resource <|--- azure_machine_learning_serverless_endpoint
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Serverless Endpoint resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_registry_model_version {
+
+}
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_machine_learning_workspace_model_version {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> azure_machine_learning_registry_model_version
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> azure_machine_learning_workspace_model_version
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_serverless_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Serverless Endpoint data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_machine_learning_serverless_endpoint {
+**auth_mode**: string
+**azure_kind**: string
+**azure_sku**: azure_sku
+**content_safety**: string
+**endpoint_state**: string
+**identity**: azure_identity
+**inference_endpoint**: azure_serverless_inference_endpoint
+**marketplace_subscription_id**: string
+**model_settings**: string
+}
+class azure_serverless_inference_endpoint {
+**headers**: dictionary[string, string]
+**uri**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_tracked_resource {
+**location**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_machine_learning_serverless_endpoint --> azure_identity
+azure_machine_learning_serverless_endpoint --> azure_serverless_inference_endpoint
+azure_machine_learning_serverless_endpoint --> azure_sku
+azure_machine_learning_serverless_endpoint --> azure_system_data
+azure_tracked_resource <|--- azure_machine_learning_serverless_endpoint
+microsoft_resource <|--- azure_machine_learning_serverless_endpoint
+azure_tracked_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

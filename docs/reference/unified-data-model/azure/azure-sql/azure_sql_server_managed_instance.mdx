@@ -1,0 +1,268 @@
+---
+sidebar_label: SQL Server Managed Instance
+---
+
+# `azure_sql_server_managed_instance`
+
+- Categories: Database
+- Service: azure-sql
+- Provider Link: [SQL Server Managed Instance](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/)
+
+## Description
+
+Azure SQL Server Managed Instance is a cloud database service that provides SQL Server compatibility with automated management features. It offers a near-complete parity with on-premises SQL Server instances, including native virtual network support and full SQL Server engine compatibility, while handling routine database management tasks such as backups, patching, and monitoring.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Server Managed Instance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_managed_instance {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_sql_server_managed_instance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Managed Instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_subnet {
+
+}
+class azure_sql_server_managed_instance {
+
+}
+class azure_sql_server_managed_instance_ad_administrator {
+
+}
+class azure_sql_server_managed_instance_database {
+
+}
+class azure_sql_server_managed_instance_failover_group {
+
+}
+class azure_sql_server_managed_instance_pool {
+
+}
+class azure_sql_server_trust_group {
+
+}
+class azure_sql_server_virtual_cluster {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_network_subnet -[#1A83AF]-> azure_sql_server_managed_instance
+azure_network_subnet -[#1A83AF]-> azure_sql_server_managed_instance_pool
+azure_network_subnet -[#1A83AF]-> azure_sql_server_virtual_cluster
+azure_sql_server_managed_instance -[#1A83AF]-> azure_sql_server_managed_instance_ad_administrator
+azure_sql_server_managed_instance -[#1A83AF]-> azure_sql_server_managed_instance_database
+azure_sql_server_managed_instance -[#1A83AF]-> azure_sql_server_managed_instance_failover_group
+azure_sql_server_managed_instance -[#1A83AF]-> azure_sql_server_trust_group
+azure_sql_server_managed_instance -[#1A83AF]-> microsoft_graph_service_principal
+azure_sql_server_managed_instance -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_managed_instance_pool -[#1A83AF]-> azure_sql_server_managed_instance
+azure_sql_server_virtual_cluster -[#1A83AF]-> azure_sql_server_managed_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Managed Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_managed_instance_external_administrator {
+**administrator_type**: string
+**azure_ad_only_authentication**: boolean
+**login**: string
+**principal_type**: string
+**sid**: string
+**tenant_id**: string
+}
+class azure_managed_instance_pec_property {
+**id**: string
+**private_endpoint_id**: string
+**private_link_service_connection_state**: azure_managed_instance_private_link_service_connection_state_property
+**provisioning_state**: string
+}
+class azure_managed_instance_private_link_service_connection_state_property {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_identity]
+}
+class azure_service_principal {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_sql_server_managed_instance {
+**administrator_login**: string
+**administrator_login_password**: string
+**collation**: string
+**current_backup_storage_redundancy**: string
+**dns_zone**: string
+**dns_zone_partner**: string
+**fully_qualified_domain_name**: string
+**instance_pool_id**: string
+**instance_private_endpoint_connections**: azure_managed_instance_pec_property[]
+**key_id**: string
+**license_type**: string
+**location**: string
+**maintenance_configuration_id**: string
+**managed_instance_administrators**: azure_managed_instance_external_administrator
+**managed_instance_create_mode**: string
+**managed_instance_identity**: azure_resource_identity
+**managed_instance_sku**: azure_sku
+**minimal_tls_version**: string
+**primary_user_assigned_identity_id**: string
+**proxy_override**: string
+**public_data_endpoint_enabled**: boolean
+**requested_backup_storage_redundancy**: string
+**restore_point_in_time**: datetime
+**service_principal**: azure_service_principal
+**source_managed_instance_id**: string
+**state**: string
+**storage_size_in_gb**: int64
+**subnet_id**: string
+**timezone_id**: string
+**type**: string
+**v_cores**: int64
+**zone_redundant**: boolean
+}
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_managed_instance_pec_property --> azure_managed_instance_private_link_service_connection_state_property
+azure_resource_identity --> azure_user_identity
+azure_sql_server_managed_instance --> azure_managed_instance_external_administrator
+azure_sql_server_managed_instance --> azure_managed_instance_pec_property
+azure_sql_server_managed_instance --> azure_resource_identity
+azure_sql_server_managed_instance --> azure_service_principal
+azure_sql_server_managed_instance --> azure_sku
+microsoft_resource <|--- azure_sql_server_managed_instance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

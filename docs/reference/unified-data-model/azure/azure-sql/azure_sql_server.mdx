@@ -1,0 +1,280 @@
+---
+sidebar_label: SQL Server
+---
+
+# `azure_sql_server`
+
+- Categories: Database
+- Service: azure-sql
+- Provider Link: [SQL Server](https://learn.microsoft.com/en-us/azure/azure-sql/database/)
+
+## Description
+
+Azure SQL Server is a cloud-based relational database service provided by Microsoft. It offers SQL Server functionality in a managed environment, including automatic updates, backups, and performance optimization. Users can create, scale, and maintain databases without managing infrastructure, while benefiting from built-in security features and integration with other Azure services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Server"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_sql_server
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server {
+
+}
+class azure_sql_server_advisor {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_elastic_pool {
+
+}
+class azure_sql_server_failover_group {
+
+}
+class azure_sql_server_firewall_rule {
+
+}
+class azure_sql_server_job_agent {
+
+}
+class azure_sql_server_virtual_network_rule {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_sql_server -[#1A83AF]-> azure_sql_server_advisor
+azure_sql_server -[#1A83AF]-> azure_sql_server_database
+azure_sql_server -[#1A83AF]-> azure_sql_server_elastic_pool
+azure_sql_server -[#1A83AF]-> azure_sql_server_failover_group
+azure_sql_server -[#1A83AF]-> azure_sql_server_firewall_rule
+azure_sql_server -[#1A83AF]-> azure_sql_server_job_agent
+azure_sql_server -[#1A83AF]-> azure_sql_server_virtual_network_rule
+azure_sql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_sql_server -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_advisor
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_failover_group
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_job_agent
+azure_sql_server_database -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_elastic_pool -[#1A83AF]-> azure_sql_server_database
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_identity]
+}
+class azure_server_external_administrator {
+**administrator_type**: string
+**azure_ad_only_authentication**: boolean
+**login**: string
+**principal_type**: string
+**sid**: string
+**tenant_id**: string
+}
+class azure_sql_encryption_protector {
+**auto_rotation_enabled**: boolean
+**protector_kind**: string
+**server_key_name**: string
+**server_key_type**: string
+**subregion**: string
+**thumbprint**: string
+**uri**: string
+}
+class azure_sql_server {
+**administrator_login**: string
+**administrator_login_password**: string
+**blob_auditing_policy**: azure_sql_server_blob_auditing_policy
+**encryption_protector**: azure_sql_encryption_protector
+**federated_client_id**: string
+**fully_qualified_domain_name**: string
+**key_id**: string
+**location**: string
+**minimal_tls_version**: string
+**primary_user_assigned_identity_id**: string
+**public_network_access**: string
+**restrict_outbound_network_access**: string
+**server_administrators**: azure_server_external_administrator
+**server_identity**: azure_resource_identity
+**server_kind**: string
+**server_private_endpoint_connections**: azure_private_endpoint_connection[]
+**state**: string
+**type**: string
+**version**: string
+**workspace_feature**: string
+}
+class azure_sql_server_blob_auditing_policy {
+**audit_actions_and_groups**: string[]
+**is_azure_monitor_target_enabled**: boolean
+**is_devops_audit_enabled**: boolean
+**is_managed_identity_in_use**: boolean
+**is_storage_secondary_key_in_use**: boolean
+**queue_delay_ms**: int64
+**retention_days**: int64
+**state**: string
+**storage_account_access_key**: string
+**storage_account_subscription_id**: string
+**storage_endpoint**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+azure_resource_identity --> azure_user_identity
+azure_sql_server --> azure_private_endpoint_connection
+azure_sql_server --> azure_resource_identity
+azure_sql_server --> azure_server_external_administrator
+azure_sql_server --> azure_sql_encryption_protector
+azure_sql_server --> azure_sql_server_blob_auditing_policy
+microsoft_resource <|--- azure_sql_server
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

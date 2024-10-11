@@ -1,0 +1,201 @@
+---
+sidebar_label: Web Domain
+---
+
+# `azure_web_domain`
+
+- Categories: Networking
+- Service: app-service
+- Provider Link: [Web Domain](https://learn.microsoft.com/en-us/azure/app-service/manage-custom-dns-buy-domain)
+
+## Description
+
+Azure Web Domain is a service provided by Microsoft Azure that manages domain names for web applications. It offers domain registration, DNS configuration, and integration with other Azure services. Users can purchase domains, set up DNS records, and connect their domains to Azure-hosted websites or applications, simplifying web hosting and domain management within the Azure ecosystem.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web Domain"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_domain {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_domain
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Domain resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_domain {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Domain data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_address {
+**address1**: string
+**address2**: string
+**city**: string
+**country**: string
+**postal_code**: string
+**state**: string
+}
+class azure_contact {
+**address_mailing**: azure_address
+**email**: string
+**fax**: string
+**job_title**: string
+**name_first**: string
+**name_last**: string
+**name_middle**: string
+**organization**: string
+**phone**: string
+}
+class azure_domain_purchase_consent {
+**agreed_at**: datetime
+**agreed_by**: string
+**agreement_keys**: string[]
+}
+class azure_host_name {
+**azure_resource_name**: string
+**azure_resource_type**: string
+**custom_host_name_dns_record_type**: string
+**host_name_type**: string
+**name**: string
+**site_names**: string[]
+}
+class azure_web_domain {
+**auto_renew**: boolean
+**azure_kind**: string
+**consent**: azure_domain_purchase_consent
+**contact_admin**: azure_contact
+**contact_billing**: azure_contact
+**contact_registrant**: azure_contact
+**contact_tech**: azure_contact
+**created_time**: datetime
+**domain_not_renewable_reasons**: string[]
+**expiration_time**: datetime
+**last_renewed_time**: datetime
+**managed_host_names**: azure_host_name[]
+**name_servers**: string[]
+**privacy**: boolean
+**ready_for_dns_record_management**: boolean
+**registration_status**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_contact --> azure_address
+azure_web_domain --> azure_contact
+azure_web_domain --> azure_domain_purchase_consent
+azure_web_domain --> azure_host_name
+microsoft_resource <|--- azure_web_domain
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,178 @@
+---
+sidebar_label: Elastic Beanstalk Application
+---
+
+# `aws_beanstalk_application`
+
+- Categories: Compute
+- Service: elasticbeanstalk
+- Provider Link: [Elastic Beanstalk Application](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)
+
+## Description
+
+AWS Elastic Beanstalk Application is a service that deploys and manages web applications. It handles infrastructure provisioning, capacity adjustment, load balancing, and health monitoring. Developers can upload their code, and Elastic Beanstalk automatically handles deployment details. It supports multiple programming languages and web servers, simplifying the process of running applications in the AWS cloud.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Elastic Beanstalk Application"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_application {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_beanstalk_application
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Elastic Beanstalk Application resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_application {
+
+}
+class aws_beanstalk_environment {
+
+}
+aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Elastic Beanstalk Application data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_application {
+**beanstalk_configuration_templates**: string[]
+**beanstalk_resource_lifecycle_config**: aws_beanstalk_application_resource_lifecycle_config
+**beanstalk_versions**: string[]
+**description**: string
+}
+class aws_beanstalk_application_resource_lifecycle_config {
+**service_role**: string
+**version_lifecycle_config**: aws_beanstalk_application_version_lifecycle_config
+}
+class aws_beanstalk_application_version_lifecycle_config {
+**max_age_rule**: aws_beanstalk_max_age_rule
+**max_count_rule**: aws_beanstalk_max_count_rule
+}
+class aws_beanstalk_max_age_rule {
+**delete_source_from_s3**: boolean
+**enabled**: boolean
+**max_age_in_days**: int64
+}
+class aws_beanstalk_max_count_rule {
+**delete_source_from_s3**: boolean
+**enabled**: boolean
+**max_count**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_beanstalk_application --> aws_beanstalk_application_resource_lifecycle_config
+aws_resource <|--- aws_beanstalk_application
+aws_beanstalk_application_resource_lifecycle_config --> aws_beanstalk_application_version_lifecycle_config
+aws_beanstalk_application_version_lifecycle_config --> aws_beanstalk_max_age_rule
+aws_beanstalk_application_version_lifecycle_config --> aws_beanstalk_max_count_rule
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

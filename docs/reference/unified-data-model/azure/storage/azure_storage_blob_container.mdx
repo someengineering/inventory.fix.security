@@ -1,0 +1,228 @@
+---
+sidebar_label: Storage Blob Container
+---
+
+# `azure_storage_blob_container`
+
+- Categories: Storage
+- Service: storage
+- Provider Link: [Storage Blob Container](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
+
+## Description
+
+Azure Storage Blob Container is a Microsoft Azure service that stores unstructured data as objects. It organizes and manages large amounts of binary or text data, such as documents, images, and videos. Users can access, upload, and download files via HTTP/HTTPS, with options for public or private access. It supports data redundancy and integrates with other Azure services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Storage Blob Container"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_storage_blob_container {
+
+}
+class bucket {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+bucket <|--- azure_storage_blob_container
+microsoft_resource <|--- azure_storage_blob_container
+resource <|--- bucket
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage Blob Container resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_storage_account {
+
+}
+class azure_storage_blob_container {
+
+}
+azure_storage_account -[#1A83AF]-> azure_storage_blob_container
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage Blob Container data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_immutability_policy_properties {
+**allow_protected_append_writes**: boolean
+**allow_protected_append_writes_all**: boolean
+**etag**: string
+**immutability_period_since_creation_in_days**: int64
+**state**: string
+**update_history**: azure_update_history_property[]
+}
+class azure_immutable_storage_with_versioning {
+**enabled**: boolean
+**migration_state**: string
+**time_stamp**: datetime
+}
+class azure_legal_hold_properties {
+**has_legal_hold**: boolean
+**protected_append_writes_history**: azure_protected_append_writes_history
+**tags**: azure_tag_property[]
+}
+class azure_protected_append_writes_history {
+**allow_protected_append_writes_all**: boolean
+**timestamp**: datetime
+}
+class azure_storage_blob_container {
+**blob_immutable_storage_with_versioning**: azure_immutable_storage_with_versioning
+**blob_metadata**: dictionary[string, string]
+**default_encryption_scope**: string
+**deleted**: boolean
+**deleted_time**: datetime
+**deny_encryption_scope_override**: boolean
+**enable_nfs_v3_all_squash**: boolean
+**enable_nfs_v3_root_squash**: boolean
+**has_immutability_policy**: boolean
+**has_legal_hold**: boolean
+**immutability_policy**: azure_immutability_policy_properties
+**last_modified_time**: datetime
+**lease_duration**: string
+**lease_state**: string
+**lease_status**: string
+**legal_hold**: azure_legal_hold_properties
+**public_access**: string
+**remaining_retention_days**: int64
+**type**: string
+**version**: string
+}
+class azure_tag_property {
+**object_identifier**: string
+**tag**: string
+**tenant_id**: string
+**timestamp**: datetime
+**upn**: string
+}
+class azure_update_history_property {
+**allow_protected_append_writes**: boolean
+**allow_protected_append_writes_all**: boolean
+**immutability_period_since_creation_in_days**: int64
+**object_identifier**: string
+**tenant_id**: string
+**timestamp**: datetime
+**update**: string
+**upn**: string
+}
+class bucket {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_immutability_policy_properties --> azure_update_history_property
+azure_legal_hold_properties --> azure_protected_append_writes_history
+azure_legal_hold_properties --> azure_tag_property
+azure_storage_blob_container --> azure_immutability_policy_properties
+azure_storage_blob_container --> azure_immutable_storage_with_versioning
+azure_storage_blob_container --> azure_legal_hold_properties
+bucket <|--- azure_storage_blob_container
+microsoft_resource <|--- azure_storage_blob_container
+resource <|--- bucket
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,300 @@
+---
+sidebar_label: Compute Disk
+---
+
+# `azure_compute_disk`
+
+- Categories: Storage
+- Service: compute
+- Provider Link: [Compute Disk](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview)
+
+## Description
+
+Azure Compute Disk is a storage service for virtual machines in Microsoft Azure. It provides persistent block storage for Azure VMs, offering various disk types with different performance levels and capacities. Users can select disk options based on their workload requirements, attach multiple disks to VMs, and manage data storage and retrieval for their cloud-based applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Disk"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class volume {
+
+}
+microsoft_resource <|--- azure_compute_disk
+volume <|--- azure_compute_disk
+resource <|--- microsoft_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class azure_compute_disk_encryption_set {
+
+}
+class azure_compute_disk_type {
+
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_compute_virtual_machine_snapshot {
+
+}
+azure_compute_disk -[#1A83AF]-> azure_compute_disk_encryption_set
+azure_compute_disk -[#1A83AF]-> azure_compute_disk_type
+azure_compute_disk -[#1A83AF]-> azure_compute_virtual_machine_snapshot
+azure_compute_virtual_machine -[#1A83AF]-> azure_compute_disk
+azure_compute_virtual_machine_base -[#1A83AF]-> azure_compute_disk
+azure_compute_virtual_machine_scale_set_instance -[#1A83AF]-> azure_compute_disk
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+**bursting_enabled**: boolean
+**bursting_enabled_time**: datetime
+**completion_percent**: double
+**creation_data**: azure_creation_data
+**data_access_auth_mode**: string
+**disk_access_id**: string
+**disk_encryption**: azure_encryption
+**disk_iops_read_only**: int64
+**disk_iops_read_write**: int64
+**disk_m_bps_read_only**: int64
+**disk_m_bps_read_write**: int64
+**disk_security_profile**: azure_disk_security_profile
+**disk_size_bytes**: int64
+**disk_size_gb**: int64
+**disk_sku**: azure_disk_sku
+**disk_state**: string
+**encryption_settings_collection**: azure_encryption_settings_collection
+**extended_location**: azure_extended_location
+**hyper_v_generation**: string
+**location**: string
+**managed_by**: string
+**managed_by_extended**: string[]
+**max_shares**: int64
+**network_access_policy**: string
+**optimized_for_frequent_attach**: boolean
+**os_type**: string
+**property_updates_in_progress**: string
+**public_network_access**: string
+**purchase_plan**: azure_purchase_plan
+**share_info**: string[]
+**supported_capabilities**: azure_supported_capabilities
+**supports_hibernation**: boolean
+**tier**: string
+**tier_name**: string
+**time_created**: datetime
+**unique_id**: string
+}
+class azure_creation_data {
+**create_option**: string
+**gallery_image_reference**: azure_image_disk_reference
+**image_reference**: azure_image_disk_reference
+**logical_sector_size**: int64
+**performance_plus**: boolean
+**security_data_uri**: string
+**source_resource_id**: string
+**source_unique_id**: string
+**source_uri**: string
+**storage_account_id**: string
+**upload_size_bytes**: int64
+}
+class azure_disk_security_profile {
+**secure_vm_disk_encryption_set_id**: string
+**security_type**: string
+}
+class azure_disk_sku {
+**name**: string
+**tier**: string
+}
+class azure_encryption {
+**disk_encryption_set_id**: string
+**type**: string
+}
+class azure_encryption_settings_collection {
+**enabled**: boolean
+**encryption_settings**: azure_encryption_settings_element[]
+**encryption_settings_version**: string
+}
+class azure_encryption_settings_element {
+**disk_encryption_key**: azure_key_vault_and_secret_reference
+**key_encryption_key**: azure_key_vault_and_key_reference
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image_disk_reference {
+**community_gallery_image_id**: string
+**id**: string
+**lun**: int64
+**shared_gallery_image_id**: string
+}
+class azure_key_vault_and_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_purchase_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_supported_capabilities {
+**accelerated_network**: boolean
+**architecture**: string
+**disk_controller_types**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+azure_compute_disk --> azure_creation_data
+azure_compute_disk --> azure_disk_security_profile
+azure_compute_disk --> azure_disk_sku
+azure_compute_disk --> azure_encryption
+azure_compute_disk --> azure_encryption_settings_collection
+azure_compute_disk --> azure_extended_location
+azure_compute_disk --> azure_purchase_plan
+azure_compute_disk --> azure_supported_capabilities
+microsoft_resource <|--- azure_compute_disk
+volume <|--- azure_compute_disk
+azure_creation_data --> azure_image_disk_reference
+azure_encryption_settings_collection --> azure_encryption_settings_element
+azure_encryption_settings_element --> azure_key_vault_and_key_reference
+azure_encryption_settings_element --> azure_key_vault_and_secret_reference
+resource <|--- microsoft_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>

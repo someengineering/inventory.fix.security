@@ -1,0 +1,195 @@
+---
+sidebar_label: User
+---
+
+# `github_user`
+
+- Categories: Access Control
+
+## Description
+
+A Github User.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of User"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_resource {
+
+}
+class github_user {
+
+}
+class resource {
+
+}
+class user {
+
+}
+github_resource <|--- github_user
+user <|--- github_user
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of User resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_user {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of User data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_resource {
+
+}
+class github_user {
+**avatar_url**: string
+**bio**: string
+**blog**: string
+**collaborators**: int64
+**company**: string
+**contributions**: int64
+**created_at**: datetime
+**disk_usage**: int64
+**email**: string
+**events_url**: string
+**followers**: int64
+**followers_url**: string
+**following**: int64
+**following_url**: string
+**gists_url**: string
+**gravatar_id**: string
+**hireable**: boolean
+**html_url**: string
+**invitation_teams_url**: string
+**login**: string
+**node_id**: int64
+**organizations_url**: string
+**owned_private_repos**: int64
+**private_gists**: int64
+**public_gists**: int64
+**public_repos**: int64
+**received_events_url**: string
+**repos_url**: string
+**role**: string
+**site_admin**: boolean
+**starred_url**: string
+**subscriptions_url**: string
+**suspended_at**: datetime
+**team_count**: int64
+**total_private_repos**: int64
+**twitter_username**: string
+**updated_at**: datetime
+**url**: string
+**user_id**: int64
+**user_location**: string
+**user_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+
+}
+github_resource <|--- github_user
+user <|--- github_user
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>

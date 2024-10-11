@@ -1,0 +1,196 @@
+---
+sidebar_label: Graph Role
+---
+
+# `microsoft_graph_role`
+
+- Categories: Access Control
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph Role"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_role {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class role {
+
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_entity <|--- microsoft_graph_role
+role <|--- microsoft_graph_role
+resource <|--- microsoft_resource
+resource <|--- role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Role resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_device {
+
+}
+class microsoft_graph_role {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+microsoft_graph_device -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_role -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_service_principal -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_user -[#1A83AF]-> microsoft_graph_role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Role data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_graph_role {
+**allowed_principal_types**: string
+**assignment_mode**: string
+**description**: string
+**display_name**: string
+**graph_role_permissions**: microsoft_graph_unified_role_permission[]
+**is_built_in**: boolean
+**is_enabled**: boolean
+**is_privileged**: boolean
+**resource_scopes**: string[]
+**rich_description**: string
+**role_categories**: string
+**template_id**: string
+**version**: string
+}
+class microsoft_graph_unified_role_permission {
+**allowed_resource_actions**: string[]
+**condition**: string
+**excluded_resource_actions**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class role {
+
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_entity <|--- microsoft_graph_role
+microsoft_graph_role --> microsoft_graph_unified_role_permission
+role <|--- microsoft_graph_role
+resource <|--- microsoft_resource
+resource <|--- role
+
+@enduml
+```
+
+</ZoomPanPinch>

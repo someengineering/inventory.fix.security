@@ -1,0 +1,178 @@
+---
+sidebar_label: Container Service Managed Cluster Snapshot
+---
+
+# `azure_container_service_managed_cluster_snapshot`
+
+- Categories: Managed Kubernetes, Storage
+- Service: containers
+- Provider Link: [Container Service Managed Cluster Snapshot](https://learn.microsoft.com/en-us/azure/aks/managed-cluster-snapshot)
+
+## Description
+
+Azure Container Service Managed Cluster Snapshot is a feature that creates point-in-time copies of Azure Kubernetes Service (AKS) clusters. It captures the cluster's configuration, workloads, and associated resources. These snapshots can be used for backup, disaster recovery, or to replicate cluster environments. Users can restore clusters to previous states or create new clusters from snapshots.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Container Service Managed Cluster Snapshot"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_service_managed_cluster_snapshot {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class snapshot {
+
+}
+microsoft_resource <|--- azure_container_service_managed_cluster_snapshot
+snapshot <|--- azure_container_service_managed_cluster_snapshot
+resource <|--- microsoft_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Service Managed Cluster Snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_service_managed_cluster {
+
+}
+class azure_container_service_managed_cluster_snapshot {
+
+}
+azure_container_service_managed_cluster -[#1A83AF]-> azure_container_service_managed_cluster_snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Service Managed Cluster Snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_service_managed_cluster_snapshot {
+**creation_data_source_id**: string
+**enable_fips**: boolean
+**kubernetes_version**: string
+**location**: string
+**node_image_version**: string
+**os_sku**: string
+**os_type**: string
+**snapshot_type**: string
+**vm_size**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
+microsoft_resource <|--- azure_container_service_managed_cluster_snapshot
+snapshot <|--- azure_container_service_managed_cluster_snapshot
+resource <|--- microsoft_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>

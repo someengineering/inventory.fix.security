@@ -1,0 +1,178 @@
+---
+sidebar_label: Machine Learning Compute Node
+---
+
+# `azure_machine_learning_compute_node`
+
+- Categories: Compute
+- Service: machine-learning
+- Provider Link: [Machine Learning Compute Node](https://learn.microsoft.com/en-us/azure/machine-learning/concept-compute-target)
+
+## Description
+
+Azure Machine Learning Compute Node is a managed compute resource for running machine learning workloads. It provides a dedicated virtual machine environment for training models, conducting experiments, and deploying solutions. Users can configure the node's specifications, including CPU, GPU, and memory, to match their computational needs. It integrates with other Azure ML services for data processing and model management.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Compute Node"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute_node {
+
+}
+class azure_proxy_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_proxy_resource <|--- azure_machine_learning_compute_node
+microsoft_resource <|--- azure_machine_learning_compute_node
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Compute Node resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_compute_node {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_compute_node
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Compute Node data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute_node {
+**compute_node_id**: string
+**compute_node_state**: string
+**compute_run_id**: string
+**port**: int64
+**private_ip_address**: string
+**public_ip_address**: string
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proxy_resource <|--- azure_machine_learning_compute_node
+azure_machine_learning_compute_node --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_compute_node
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,591 @@
+---
+sidebar_label: WAF Web ACL
+---
+
+# `aws_waf_web_acl`
+
+- Categories: Networking, Security
+- Service: wafv2
+- Provider Link: [WAF Web ACL](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html)
+
+## Description
+
+AWS WAF Web ACL is a security tool that protects web applications from common attacks. It filters incoming web traffic based on customizable rules, blocking malicious requests and permitting legitimate ones. Users can define conditions to inspect various aspects of HTTP requests, such as IP addresses, headers, and content, to control access to their web resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of WAF Web ACL"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_waf_web_acl {
+
+}
+class firewall {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_waf_web_acl
+firewall <|--- aws_waf_web_acl
+resource <|--- firewall
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of WAF Web ACL resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_apigateway_rest_api {
+
+}
+class aws_cloudfront_distribution {
+
+}
+class aws_cognito_user_pool {
+
+}
+class aws_waf_web_acl {
+
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_waf_web_acl
+aws_waf_web_acl -[#1A83AF]-> aws_alb
+aws_waf_web_acl -[#1A83AF]-> aws_apigateway_rest_api
+aws_waf_web_acl -[#1A83AF]-> aws_cognito_user_pool
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of WAF Web ACL data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_waf_and_statement {
+**statements**: aws_waf_statement[]
+}
+class aws_waf_aws_managed_rules_acfp_rule_set {
+**creation_path**: string
+**enable_regex_in_path**: boolean
+**registration_page_path**: string
+**request_inspection**: aws_waf_request_inspection_acfp
+**response_inspection**: aws_waf_response_inspection
+}
+class aws_waf_aws_managed_rules_atp_rule_set {
+**enable_regex_in_path**: boolean
+**login_path**: string
+**request_inspection**: aws_waf_request_inspection
+**response_inspection**: aws_waf_response_inspection
+}
+class aws_waf_aws_managed_rules_bot_control_rule_set {
+**enable_machine_learning**: boolean
+**inspection_level**: string
+}
+class aws_waf_byte_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**positional_constraint**: string
+**search_string**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_captcha_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_captcha_config {
+**immunity_time_property**: int64
+}
+class aws_waf_challenge_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_challenge_config {
+**immunity_time_property**: int64
+}
+class aws_waf_condition {
+**action_condition**: string
+**label_name_condition**: string
+}
+class aws_waf_cookie_match_pattern {
+**all**: dictionary[string, any]
+**excluded_cookies**: string[]
+**included_cookies**: string[]
+}
+class aws_waf_cookies {
+**match_pattern**: aws_waf_cookie_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_count_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_custom_http_header {
+**name**: string
+**value**: string
+}
+class aws_waf_custom_response {
+**custom_response_body_key**: string
+**response_code**: int64
+**response_headers**: aws_waf_custom_http_header[]
+}
+class aws_waf_custom_response_body {
+**content**: string
+**content_type**: string
+}
+class aws_waf_default_action {
+**allow**: aws_waf_custom_http_header[]
+**block**: aws_waf_custom_response
+}
+class aws_waf_field_to_match {
+**all_query_arguments**: dictionary[string, any]
+**body**: string
+**cookies**: aws_waf_cookies
+**header_order**: string
+**headers**: aws_waf_headers
+**ja3_fingerprint**: string
+**json_body**: aws_waf_json_body
+**method**: dictionary[string, any]
+**query_string**: dictionary[string, any]
+**single_header**: string
+**single_query_argument**: string
+**uri_path**: dictionary[string, any]
+}
+class aws_waf_filter {
+**behavior**: string
+**conditions**: aws_waf_condition[]
+**requirement**: string
+}
+class aws_waf_firewall_manager_rule_group {
+**firewall_manager_statement**: aws_waf_firewall_manager_statement
+**name**: string
+**override_action**: aws_waf_override_action
+**priority**: int64
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_firewall_manager_statement {
+**managed_rule_group_statement**: aws_waf_managed_rule_group_statement
+**rule_group_reference_statement**: aws_waf_rule_group_reference_statement
+}
+class aws_waf_forwarded_ip_config {
+**fallback_behavior**: string
+**header_name**: string
+}
+class aws_waf_geo_match_statement {
+**country_codes**: string[]
+**forwarded_ip_config**: aws_waf_forwarded_ip_config
+}
+class aws_waf_header_match_pattern {
+**all**: dictionary[string, any]
+**excluded_headers**: string[]
+**included_headers**: string[]
+}
+class aws_waf_headers {
+**match_pattern**: aws_waf_header_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_ip_set_forwarded_ip_config {
+**fallback_behavior**: string
+**header_name**: string
+**position**: string
+}
+class aws_waf_ip_set_reference_statement {
+**arn**: string
+**ip_set_forwarded_ip_config**: aws_waf_ip_set_forwarded_ip_config
+}
+class aws_waf_json_body {
+**invalid_fallback_behavior**: string
+**match_pattern**: aws_waf_json_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_json_match_pattern {
+**all**: dictionary[string, any]
+**included_paths**: string[]
+}
+class aws_waf_label_match_statement {
+**key**: string
+**scope**: string
+}
+class aws_waf_logging_configuration {
+**log_destination_configs**: string[]
+**logging_filter**: aws_waf_logging_filter
+**managed_by_firewall_manager**: boolean
+**redacted_fields**: aws_waf_field_to_match[]
+}
+class aws_waf_logging_filter {
+**default_behavior**: string
+**filters**: aws_waf_filter[]
+}
+class aws_waf_managed_rule_group_config {
+**aws_managed_rules_acfp_rule_set**: aws_waf_aws_managed_rules_acfp_rule_set
+**aws_managed_rules_atp_rule_set**: aws_waf_aws_managed_rules_atp_rule_set
+**aws_managed_rules_bot_control_rule_set**: aws_waf_aws_managed_rules_bot_control_rule_set
+**login_path**: string
+**password_field**: string
+**payload_type**: string
+**username_field**: string
+}
+class aws_waf_managed_rule_group_statement {
+**excluded_rules**: string[]
+**managed_rule_group_configs**: aws_waf_managed_rule_group_config[]
+**name**: string
+**rule_action_overrides**: aws_waf_rule_action_override[]
+**scope_down_statement**: aws_waf_statement
+**vendor_name**: string
+**version**: string
+}
+class aws_waf_not_statement {
+**statement**: aws_waf_statement
+}
+class aws_waf_or_statement {
+**statements**: aws_waf_statement[]
+}
+class aws_waf_override_action {
+**count**: aws_waf_count_action
+**none**: dictionary[string, any]
+}
+class aws_waf_rate_based_statement {
+**aggregate_key_type**: string
+**custom_keys**: aws_waf_rate_based_statement_custom_key[]
+**forwarded_ip_config**: aws_waf_forwarded_ip_config
+**limit**: int64
+**scope_down_statement**: aws_waf_statement
+}
+class aws_waf_rate_based_statement_custom_key {
+**cookie**: aws_waf_rate_limit
+**forwarded_ip**: dictionary[string, any]
+**header**: aws_waf_rate_limit
+**http_method**: dictionary[string, any]
+**ip**: dictionary[string, any]
+**label_namespace**: string
+**query_argument**: aws_waf_rate_limit
+**query_string**: aws_waf_rate_limit
+**uri_path**: aws_waf_rate_limit_uri_path
+}
+class aws_waf_rate_limit {
+**name**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_rate_limit_uri_path {
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_regex_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**regex_string**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_regex_pattern_set_reference_statement {
+**arn**: string
+**field_to_match**: aws_waf_field_to_match
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_request_inspection {
+**password_field**: string
+**payload_type**: string
+**username_field**: string
+}
+class aws_waf_request_inspection_acfp {
+**address_fields**: string[]
+**email_field**: string
+**password_field**: string
+**payload_type**: string
+**phone_number_fields**: string[]
+**username_field**: string
+}
+class aws_waf_response_inspection {
+**body_contains**: aws_waf_response_inspection_part
+**header**: aws_waf_response_inspection_part
+**json**: aws_waf_response_inspection_part
+**status_code**: aws_waf_response_inspection_part
+}
+class aws_waf_response_inspection_part {
+**failure_values**: string[]
+**identifier**: string
+**name**: string
+**success_values**: string[]
+}
+class aws_waf_rule {
+**action**: aws_waf_rule_action
+**captcha_config**: aws_waf_captcha_config
+**challenge_config**: aws_waf_challenge_config
+**name**: string
+**override_action**: aws_waf_override_action
+**priority**: int64
+**rule_labels**: string[]
+**statement**: aws_waf_statement
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_rule_action {
+**allow**: aws_waf_custom_http_header[]
+**block**: aws_waf_custom_response
+**captcha**: aws_waf_captcha_action
+**challenge**: aws_waf_challenge_action
+**count**: aws_waf_count_action
+}
+class aws_waf_rule_action_override {
+**action_to_use**: aws_waf_rule_action
+**name**: string
+}
+class aws_waf_rule_group_reference_statement {
+**arn**: string
+**excluded_rules**: string[]
+**rule_action_overrides**: aws_waf_rule_action_override[]
+}
+class aws_waf_size_constraint_statement {
+**comparison_operator**: string
+**field_to_match**: aws_waf_field_to_match
+**size**: int64
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_sqli_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**sensitivity_level**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_statement {
+**and_statement**: aws_waf_and_statement
+**byte_match_statement**: aws_waf_byte_match_statement
+**geo_match_statement**: aws_waf_geo_match_statement
+**ip_set_reference_statement**: aws_waf_ip_set_reference_statement
+**label_match_statement**: aws_waf_label_match_statement
+**managed_rule_group_statement**: aws_waf_managed_rule_group_statement
+**not_statement**: aws_waf_not_statement
+**or_statement**: aws_waf_or_statement
+**rate_based_statement**: aws_waf_rate_based_statement
+**regex_match_statement**: aws_waf_regex_match_statement
+**regex_pattern_set_reference_statement**: aws_waf_regex_pattern_set_reference_statement
+**rule_group_reference_statement**: aws_waf_rule_group_reference_statement
+**size_constraint_statement**: aws_waf_size_constraint_statement
+**sqli_match_statement**: aws_waf_sqli_match_statement
+**xss_match_statement**: aws_waf_xss_match_statement
+}
+class aws_waf_text_transformation {
+**priority**: int64
+**type**: string
+}
+class aws_waf_visibility_config {
+**cloud_watch_metrics_enabled**: boolean
+**metric_name**: string
+**sampled_requests_enabled**: boolean
+}
+class aws_waf_web_acl {
+**association_inspection_limit**: string
+**capacity**: int64
+**captcha_config**: aws_waf_captcha_config
+**challenge_config**: aws_waf_challenge_config
+**custom_response_bodies**: dictionary[string, aws_waf_custom_response_body]
+**default_action**: aws_waf_default_action
+**description**: string
+**label_namespace**: string
+**logging_configuration**: aws_waf_logging_configuration
+**managed_by_firewall_manager**: boolean
+**post_process_firewall_manager_rule_groups**: aws_waf_firewall_manager_rule_group[]
+**pre_process_firewall_manager_rule_groups**: aws_waf_firewall_manager_rule_group[]
+**rules**: aws_waf_rule[]
+**token_domains**: string[]
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_xss_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**text_transformations**: aws_waf_text_transformation[]
+}
+class firewall {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_waf_and_statement --> aws_waf_statement
+aws_waf_aws_managed_rules_acfp_rule_set --> aws_waf_request_inspection_acfp
+aws_waf_aws_managed_rules_acfp_rule_set --> aws_waf_response_inspection
+aws_waf_aws_managed_rules_atp_rule_set --> aws_waf_request_inspection
+aws_waf_aws_managed_rules_atp_rule_set --> aws_waf_response_inspection
+aws_waf_byte_match_statement --> aws_waf_field_to_match
+aws_waf_byte_match_statement --> aws_waf_text_transformation
+aws_waf_captcha_action --> aws_waf_custom_http_header
+aws_waf_challenge_action --> aws_waf_custom_http_header
+aws_waf_cookies --> aws_waf_cookie_match_pattern
+aws_waf_count_action --> aws_waf_custom_http_header
+aws_waf_custom_response --> aws_waf_custom_http_header
+aws_waf_default_action --> aws_waf_custom_http_header
+aws_waf_default_action --> aws_waf_custom_response
+aws_waf_field_to_match --> aws_waf_cookies
+aws_waf_field_to_match --> aws_waf_headers
+aws_waf_field_to_match --> aws_waf_json_body
+aws_waf_filter --> aws_waf_condition
+aws_waf_firewall_manager_rule_group --> aws_waf_firewall_manager_statement
+aws_waf_firewall_manager_rule_group --> aws_waf_override_action
+aws_waf_firewall_manager_rule_group --> aws_waf_visibility_config
+aws_waf_firewall_manager_statement --> aws_waf_managed_rule_group_statement
+aws_waf_firewall_manager_statement --> aws_waf_rule_group_reference_statement
+aws_waf_geo_match_statement --> aws_waf_forwarded_ip_config
+aws_waf_headers --> aws_waf_header_match_pattern
+aws_waf_ip_set_reference_statement --> aws_waf_ip_set_forwarded_ip_config
+aws_waf_json_body --> aws_waf_json_match_pattern
+aws_waf_logging_configuration --> aws_waf_field_to_match
+aws_waf_logging_configuration --> aws_waf_logging_filter
+aws_waf_logging_filter --> aws_waf_filter
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_acfp_rule_set
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_atp_rule_set
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_bot_control_rule_set
+aws_waf_managed_rule_group_statement --> aws_waf_managed_rule_group_config
+aws_waf_managed_rule_group_statement --> aws_waf_rule_action_override
+aws_waf_managed_rule_group_statement --> aws_waf_statement
+aws_waf_not_statement --> aws_waf_statement
+aws_waf_or_statement --> aws_waf_statement
+aws_waf_override_action --> aws_waf_count_action
+aws_waf_rate_based_statement --> aws_waf_forwarded_ip_config
+aws_waf_rate_based_statement --> aws_waf_rate_based_statement_custom_key
+aws_waf_rate_based_statement --> aws_waf_statement
+aws_waf_rate_based_statement_custom_key --> aws_waf_rate_limit
+aws_waf_rate_based_statement_custom_key --> aws_waf_rate_limit_uri_path
+aws_waf_rate_limit --> aws_waf_text_transformation
+aws_waf_rate_limit_uri_path --> aws_waf_text_transformation
+aws_waf_regex_match_statement --> aws_waf_field_to_match
+aws_waf_regex_match_statement --> aws_waf_text_transformation
+aws_waf_regex_pattern_set_reference_statement --> aws_waf_field_to_match
+aws_waf_regex_pattern_set_reference_statement --> aws_waf_text_transformation
+aws_waf_response_inspection --> aws_waf_response_inspection_part
+aws_waf_rule --> aws_waf_captcha_config
+aws_waf_rule --> aws_waf_challenge_config
+aws_waf_rule --> aws_waf_override_action
+aws_waf_rule --> aws_waf_rule_action
+aws_waf_rule --> aws_waf_statement
+aws_waf_rule --> aws_waf_visibility_config
+aws_waf_rule_action --> aws_waf_captcha_action
+aws_waf_rule_action --> aws_waf_challenge_action
+aws_waf_rule_action --> aws_waf_count_action
+aws_waf_rule_action --> aws_waf_custom_http_header
+aws_waf_rule_action --> aws_waf_custom_response
+aws_waf_rule_action_override --> aws_waf_rule_action
+aws_waf_rule_group_reference_statement --> aws_waf_rule_action_override
+aws_waf_size_constraint_statement --> aws_waf_field_to_match
+aws_waf_size_constraint_statement --> aws_waf_text_transformation
+aws_waf_sqli_match_statement --> aws_waf_field_to_match
+aws_waf_sqli_match_statement --> aws_waf_text_transformation
+aws_waf_statement --> aws_waf_and_statement
+aws_waf_statement --> aws_waf_byte_match_statement
+aws_waf_statement --> aws_waf_geo_match_statement
+aws_waf_statement --> aws_waf_ip_set_reference_statement
+aws_waf_statement --> aws_waf_label_match_statement
+aws_waf_statement --> aws_waf_managed_rule_group_statement
+aws_waf_statement --> aws_waf_not_statement
+aws_waf_statement --> aws_waf_or_statement
+aws_waf_statement --> aws_waf_rate_based_statement
+aws_waf_statement --> aws_waf_regex_match_statement
+aws_waf_statement --> aws_waf_regex_pattern_set_reference_statement
+aws_waf_statement --> aws_waf_rule_group_reference_statement
+aws_waf_statement --> aws_waf_size_constraint_statement
+aws_waf_statement --> aws_waf_sqli_match_statement
+aws_waf_statement --> aws_waf_xss_match_statement
+aws_resource <|--- aws_waf_web_acl
+aws_waf_web_acl --> aws_waf_captcha_config
+aws_waf_web_acl --> aws_waf_challenge_config
+aws_waf_web_acl --> aws_waf_custom_response_body
+aws_waf_web_acl --> aws_waf_default_action
+aws_waf_web_acl --> aws_waf_firewall_manager_rule_group
+aws_waf_web_acl --> aws_waf_logging_configuration
+aws_waf_web_acl --> aws_waf_rule
+aws_waf_web_acl --> aws_waf_visibility_config
+firewall <|--- aws_waf_web_acl
+aws_waf_xss_match_statement --> aws_waf_field_to_match
+aws_waf_xss_match_statement --> aws_waf_text_transformation
+resource <|--- firewall
+
+@enduml
+```
+
+</ZoomPanPinch>

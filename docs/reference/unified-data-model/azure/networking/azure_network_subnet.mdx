@@ -1,0 +1,422 @@
+---
+sidebar_label: Network Subnet
+---
+
+# `azure_network_subnet`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Subnet](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-subnet)
+
+## Description
+
+Azure Network Subnet is a logical subdivision of an Azure virtual network. It segments the network address space, organizing resources and controlling traffic flow. Subnets define IP address ranges for devices and services, enabling network isolation and security. They facilitate communication between resources within the same subnet and manage access to other subnets or external networks.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Subnet"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_subnet {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class subnet {
+
+}
+microsoft_resource <|--- azure_network_subnet
+subnet <|--- azure_network_subnet
+resource <|--- microsoft_resource
+resource <|--- subnet
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Subnet resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_cosmos_db_account {
+
+}
+class azure_cosmos_db_cassandra_cluster {
+
+}
+class azure_cosmos_db_cassandra_cluster_data_center {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_network_application_gateway {
+
+}
+class azure_network_bastion_host {
+
+}
+class azure_network_dscp_configuration {
+
+}
+class azure_network_firewall {
+
+}
+class azure_network_ip_allocation {
+
+}
+class azure_network_load_balancer {
+
+}
+class azure_network_nat_gateway {
+
+}
+class azure_network_profile {
+
+}
+class azure_network_route_table {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_appliance {
+
+}
+class azure_network_virtual_network {
+
+}
+class azure_sql_server_managed_instance {
+
+}
+class azure_sql_server_managed_instance_pool {
+
+}
+class azure_sql_server_virtual_cluster {
+
+}
+azure_compute_virtual_machine_scale_set -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_cosmos_db_cassandra_cluster -[#1A83AF]-> azure_cosmos_db_cassandra_cluster_data_center
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_profile -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_account
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_cassandra_cluster
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_cassandra_cluster_data_center
+azure_network_subnet -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_subnet -[#1A83AF]-> azure_network_application_gateway
+azure_network_subnet -[#1A83AF]-> azure_network_bastion_host
+azure_network_subnet -[#1A83AF]-> azure_network_dscp_configuration
+azure_network_subnet -[#1A83AF]-> azure_network_firewall
+azure_network_subnet -[#1A83AF]-> azure_network_ip_allocation
+azure_network_subnet -[#1A83AF]-> azure_network_load_balancer
+azure_network_subnet -[#1A83AF]-> azure_network_nat_gateway
+azure_network_subnet -[#1A83AF]-> azure_network_profile
+azure_network_subnet -[#1A83AF]-> azure_network_route_table
+azure_network_subnet -[#1A83AF]-> azure_network_security_group
+azure_network_subnet -[#1A83AF]-> azure_network_virtual_appliance
+azure_network_subnet -[#1A83AF]-> azure_sql_server_managed_instance
+azure_network_subnet -[#1A83AF]-> azure_sql_server_managed_instance_pool
+azure_network_subnet -[#1A83AF]-> azure_sql_server_virtual_cluster
+azure_network_virtual_network -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_virtual_network -[#1A83AF]-> azure_network_bastion_host
+azure_network_virtual_network -[#1A83AF]-> azure_network_ip_allocation
+azure_network_virtual_network -[#1A83AF]-> azure_network_load_balancer
+azure_network_virtual_network -[#1A83AF]-> azure_network_subnet
+azure_sql_server_managed_instance_pool -[#1A83AF]-> azure_sql_server_managed_instance
+azure_sql_server_virtual_cluster -[#1A83AF]-> azure_sql_server_managed_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Subnet data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_application_gateway_ip_configuration {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**subnet**: string
+**type**: string
+}
+class azure_application_security_group {
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**provisioning_state**: string
+**resource_guid**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_custom_dns_config_properties_format {
+**fqdn**: string
+**ip_addresses**: string[]
+}
+class azure_delegation {
+**actions**: string[]
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**service_name**: string
+**type**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_ip_configuration_profile {
+**etag**: string
+**name**: string
+**properties**: string
+**type**: string
+}
+class azure_network_subnet {
+**address_prefix**: string
+**address_prefixes**: string[]
+**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
+**default_outbound_access**: boolean
+**delegations**: azure_delegation[]
+**ip_allocations**: string[]
+**ip_configuration_profiles**: azure_ip_configuration_profile[]
+**private_endpoint_network_policies**: string
+**private_endpoints**: azure_private_endpoint[]
+**private_link_service_network_policies**: string
+**purpose**: string
+**resource_navigation_links**: azure_resource_navigation_link[]
+**service_association_links**: azure_service_association_link[]
+**service_endpoint_policies**: azure_service_endpoint_policy[]
+**service_endpoints**: azure_service_endpoint_properties_format[]
+**type**: string
+}
+class azure_private_endpoint {
+**application_security_groups**: azure_application_security_group[]
+**custom_dns_configs**: azure_custom_dns_config_properties_format[]
+**custom_network_interface_name**: string
+**etag**: string
+**extended_location**: azure_extended_location
+**id**: string
+**ip_configurations**: azure_private_endpoint_ip_configuration[]
+**location**: string
+**manual_private_link_service_connections**: azure_private_link_service_connection[]
+**name**: string
+**private_link_service_connections**: azure_private_link_service_connection[]
+**provisioning_state**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_private_endpoint_ip_configuration {
+**etag**: string
+**group_id**: string
+**member_name**: string
+**name**: string
+**private_ip_address**: string
+**type**: string
+}
+class azure_private_link_service_connection {
+**etag**: string
+**group_ids**: string[]
+**name**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**private_link_service_id**: string
+**provisioning_state**: string
+**request_message**: string
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource_navigation_link {
+**etag**: string
+**link**: string
+**linked_resource_type**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_service_association_link {
+**allow_delete**: boolean
+**etag**: string
+**link**: string
+**linked_resource_type**: string
+**locations**: string[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_service_endpoint_policy {
+**contextual_service_endpoint_policies**: string[]
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**policy_kind**: string
+**provisioning_state**: string
+**resource_guid**: string
+**service_alias**: string
+**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_service_endpoint_policy_definition {
+**description**: string
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**service**: string
+**service_resources**: string[]
+**type**: string
+}
+class azure_service_endpoint_properties_format {
+**locations**: string[]
+**provisioning_state**: string
+**service**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class subnet {
+
+}
+azure_network_subnet --> azure_application_gateway_ip_configuration
+azure_network_subnet --> azure_delegation
+azure_network_subnet --> azure_ip_configuration_profile
+azure_network_subnet --> azure_private_endpoint
+azure_network_subnet --> azure_resource_navigation_link
+azure_network_subnet --> azure_service_association_link
+azure_network_subnet --> azure_service_endpoint_policy
+azure_network_subnet --> azure_service_endpoint_properties_format
+microsoft_resource <|--- azure_network_subnet
+subnet <|--- azure_network_subnet
+azure_private_endpoint --> azure_application_security_group
+azure_private_endpoint --> azure_custom_dns_config_properties_format
+azure_private_endpoint --> azure_extended_location
+azure_private_endpoint --> azure_private_endpoint_ip_configuration
+azure_private_endpoint --> azure_private_link_service_connection
+azure_private_link_service_connection --> azure_private_link_service_connection_state
+azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
+resource <|--- microsoft_resource
+resource <|--- subnet
+
+@enduml
+```
+
+</ZoomPanPinch>

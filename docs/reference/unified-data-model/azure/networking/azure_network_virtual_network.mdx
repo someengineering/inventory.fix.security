@@ -1,0 +1,290 @@
+---
+sidebar_label: Network Virtual Network
+---
+
+# `azure_network_virtual_network`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)
+
+## Description
+
+Azure Network Virtual Network is a service in Microsoft Azure that creates isolated, private networks in the cloud. It lets users define IP address ranges, subnets, and network security policies. Virtual Network connects Azure resources, enables communication between them, and provides connectivity to on-premises networks through VPN or ExpressRoute. It supports network segmentation and traffic filtering.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual Network"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_network {
+
+}
+class microsoft_resource {
+
+}
+class network {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_virtual_network
+network <|--- azure_network_virtual_network
+resource <|--- microsoft_resource
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_workspace {
+
+}
+class azure_network_bastion_host {
+
+}
+class azure_network_ddos_protection_plan {
+
+}
+class azure_network_ip_allocation {
+
+}
+class azure_network_ip_group {
+
+}
+class azure_network_load_balancer {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_network {
+
+}
+class azure_network_watcher {
+
+}
+azure_network_ddos_protection_plan -[#1A83AF]-> azure_network_virtual_network
+azure_network_subnet -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_subnet -[#1A83AF]-> azure_network_bastion_host
+azure_network_subnet -[#1A83AF]-> azure_network_ip_allocation
+azure_network_subnet -[#1A83AF]-> azure_network_load_balancer
+azure_network_virtual_network -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_virtual_network -[#1A83AF]-> azure_network_bastion_host
+azure_network_virtual_network -[#1A83AF]-> azure_network_ip_allocation
+azure_network_virtual_network -[#1A83AF]-> azure_network_ip_group
+azure_network_virtual_network -[#1A83AF]-> azure_network_load_balancer
+azure_network_virtual_network -[#1A83AF]-> azure_network_subnet
+azure_network_virtual_network -[#1A83AF]-> azure_network_watcher
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_address_space {
+**address_prefixes**: string[]
+}
+class azure_dhcp_options {
+**dns_servers**: string[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_flow_log_format_parameters {
+**type**: string
+**version**: int64
+}
+class azure_network_flow_log {
+**enabled**: boolean
+**flow_analytics_configuration**: azure_traffic_analytics_properties
+**flow_log_format**: azure_flow_log_format_parameters
+**location**: string
+**retention_policy_parameters**: azure_retention_policy_parameters
+**storage_id**: string
+**target_resource_guid**: string
+**target_resource_id**: string
+**type**: string
+}
+class azure_network_virtual_network {
+**address_space**: azure_address_space
+**bgp_communities**: azure_virtual_network_bgp_communities
+**ddos_protection_plan**: string
+**dhcp_options**: azure_dhcp_options
+**enable_ddos_protection**: boolean
+**enable_vm_protection**: boolean
+**extended_location**: azure_extended_location
+**flow_logs**: azure_network_flow_log[]
+**flow_timeout_in_minutes**: int64
+**ip_allocations**: string[]
+**location**: string
+**resource_guid**: string
+**virtual_network_encryption**: azure_virtual_network_encryption
+**virtual_network_peerings**: azure_virtual_network_peering[]
+}
+class azure_retention_policy_parameters {
+**days**: int64
+**enabled**: boolean
+}
+class azure_traffic_analytics_configuration_properties {
+**enabled**: boolean
+**traffic_analytics_interval**: int64
+**workspace_id**: string
+**workspace_region**: string
+**workspace_resource_id**: string
+}
+class azure_traffic_analytics_properties {
+**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
+}
+class azure_virtual_network_bgp_communities {
+**regional_community**: string
+**virtual_network_community**: string
+}
+class azure_virtual_network_encryption {
+**enabled**: boolean
+**enforcement**: string
+}
+class azure_virtual_network_peering {
+**allow_forwarded_traffic**: boolean
+**allow_gateway_transit**: boolean
+**allow_virtual_network_access**: boolean
+**do_not_verify_remote_gateways**: boolean
+**etag**: string
+**name**: string
+**peering_state**: string
+**peering_sync_level**: string
+**provisioning_state**: string
+**remote_address_space**: azure_address_space
+**remote_bgp_communities**: azure_virtual_network_bgp_communities
+**remote_virtual_network**: string
+**remote_virtual_network_address_space**: azure_address_space
+**remote_virtual_network_encryption**: azure_virtual_network_encryption
+**resource_guid**: string
+**type**: string
+**use_remote_gateways**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class network {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_flow_log --> azure_flow_log_format_parameters
+azure_network_flow_log --> azure_retention_policy_parameters
+azure_network_flow_log --> azure_traffic_analytics_properties
+microsoft_resource <|--- azure_network_flow_log
+azure_network_virtual_network --> azure_address_space
+azure_network_virtual_network --> azure_dhcp_options
+azure_network_virtual_network --> azure_extended_location
+azure_network_virtual_network --> azure_network_flow_log
+azure_network_virtual_network --> azure_virtual_network_bgp_communities
+azure_network_virtual_network --> azure_virtual_network_encryption
+azure_network_virtual_network --> azure_virtual_network_peering
+microsoft_resource <|--- azure_network_virtual_network
+network <|--- azure_network_virtual_network
+azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
+azure_virtual_network_peering --> azure_address_space
+azure_virtual_network_peering --> azure_virtual_network_bgp_communities
+azure_virtual_network_peering --> azure_virtual_network_encryption
+resource <|--- microsoft_resource
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,345 @@
+---
+sidebar_label: Network Load Balancer
+---
+
+# `azure_network_load_balancer`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)
+
+## Description
+
+Azure Network Load Balancer is a Layer 4 load balancing service for Azure resources. It distributes incoming network traffic across multiple instances of an application, improving availability and fault tolerance. The service supports both inbound and outbound scenarios, can handle millions of flows, and works with virtual machines in virtual networks or internet-facing services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Load Balancer"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_load_balancer {
+
+}
+class load_balancer {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+load_balancer <|--- azure_network_load_balancer
+microsoft_resource <|--- azure_network_load_balancer
+resource <|--- load_balancer
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Load Balancer resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_container_service_managed_cluster {
+
+}
+class azure_network_load_balancer {
+
+}
+class azure_network_load_balancer_probe {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_network {
+
+}
+azure_compute_virtual_machine_scale_set -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_container_service_managed_cluster -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_container_service_managed_cluster -[#1A83AF]-> azure_network_load_balancer
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_load_balancer -[#1A83AF]-> azure_network_load_balancer_probe
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_subnet -[#1A83AF]-> azure_network_load_balancer
+azure_network_virtual_network -[#1A83AF]-> azure_network_load_balancer
+azure_network_virtual_network -[#1A83AF]-> azure_network_subnet
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Load Balancer data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_backend_address_pool {
+**drain_period_in_seconds**: int64
+**etag**: string
+**inbound_nat_rules**: string[]
+**load_balancer_backend_addresses**: azure_load_balancer_backend_address[]
+**load_balancing_rules**: string[]
+**location**: string
+**name**: string
+**outbound_rule**: string
+**outbound_rules**: string[]
+**provisioning_state**: string
+**sync_mode**: string
+**tunnel_interfaces**: azure_gateway_load_balancer_tunnel_interface[]
+**type**: string
+**virtual_network**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_frontend_ip_configuration {
+**etag**: string
+**gateway_load_balancer**: string
+**inbound_nat_pools**: string[]
+**inbound_nat_rules**: string[]
+**load_balancing_rules**: string[]
+**name**: string
+**outbound_rules**: string[]
+**private_ip_address**: string
+**private_ip_address_version**: string
+**private_ip_allocation_method**: string
+**provisioning_state**: string
+**public_ip_prefix**: string
+**type**: string
+**zones**: string[]
+}
+class azure_gateway_load_balancer_tunnel_interface {
+**identifier**: int64
+**port**: int64
+**protocol**: string
+**type**: string
+}
+class azure_inbound_nat_pool {
+**backend_port**: int64
+**enable_floating_ip**: boolean
+**enable_tcp_reset**: boolean
+**etag**: string
+**frontend_ip_configuration**: string
+**frontend_port_range_end**: int64
+**frontend_port_range_start**: int64
+**idle_timeout_in_minutes**: int64
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_inbound_nat_rule {
+**backend_address_pool**: string
+**backend_port**: int64
+**enable_floating_ip**: boolean
+**enable_tcp_reset**: boolean
+**etag**: string
+**frontend_ip_configuration**: string
+**frontend_port**: int64
+**frontend_port_range_end**: int64
+**frontend_port_range_start**: int64
+**idle_timeout_in_minutes**: int64
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_load_balancer_backend_address {
+**admin_state**: string
+**inbound_nat_rules_port_mapping**: azure_nat_rule_port_mapping[]
+**ip_address**: string
+**load_balancer_frontend_ip_configuration**: string
+**name**: string
+**network_interface_ip_configuration**: string
+**subnet**: string
+**virtual_network**: string
+}
+class azure_load_balancing_rule {
+**backend_address_pool**: string
+**backend_address_pools**: string[]
+**backend_port**: int64
+**disable_outbound_snat**: boolean
+**enable_floating_ip**: boolean
+**enable_tcp_reset**: boolean
+**etag**: string
+**frontend_ip_configuration**: string
+**frontend_port**: int64
+**idle_timeout_in_minutes**: int64
+**load_distribution**: string
+**name**: string
+**probe**: string
+**protocol**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_nat_rule_port_mapping {
+**backend_port**: int64
+**frontend_port**: int64
+**inbound_nat_rule_name**: string
+}
+class azure_network_load_balancer {
+**aks_public_ip_address**: string
+**azure_sku**: azure_sku
+**backend_address_pools**: azure_backend_address_pool[]
+**extended_location**: azure_extended_location
+**inbound_nat_pools**: azure_inbound_nat_pool[]
+**inbound_nat_rules**: azure_inbound_nat_rule[]
+**lb_frontend_ip_configurations**: azure_frontend_ip_configuration[]
+**load_balancing_rules**: azure_load_balancing_rule[]
+**outbound_rules**: azure_outbound_rule[]
+**resource_guid**: string
+}
+class azure_outbound_rule {
+**allocated_outbound_ports**: int64
+**backend_address_pool**: string
+**enable_tcp_reset**: boolean
+**etag**: string
+**frontend_ip_configurations**: string[]
+**idle_timeout_in_minutes**: int64
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_backend_address_pool --> azure_gateway_load_balancer_tunnel_interface
+azure_backend_address_pool --> azure_load_balancer_backend_address
+azure_load_balancer_backend_address --> azure_nat_rule_port_mapping
+azure_network_load_balancer --> azure_backend_address_pool
+azure_network_load_balancer --> azure_extended_location
+azure_network_load_balancer --> azure_frontend_ip_configuration
+azure_network_load_balancer --> azure_inbound_nat_pool
+azure_network_load_balancer --> azure_inbound_nat_rule
+azure_network_load_balancer --> azure_load_balancing_rule
+azure_network_load_balancer --> azure_outbound_rule
+azure_network_load_balancer --> azure_sku
+load_balancer <|--- azure_network_load_balancer
+microsoft_resource <|--- azure_network_load_balancer
+resource <|--- load_balancer
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

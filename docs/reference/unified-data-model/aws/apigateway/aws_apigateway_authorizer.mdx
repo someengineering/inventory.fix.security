@@ -1,0 +1,176 @@
+---
+sidebar_label: API Gateway Authorizer
+---
+
+# `aws_apigateway_authorizer`
+
+- Categories: Networking
+- Service: apigateway
+- Provider Link: [API Gateway Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+
+## Description
+
+AWS API Gateway Authorizer is a security feature that controls access to API endpoints. It validates incoming requests by examining tokens or other credentials, applying custom logic to determine authorization. Authorizers can integrate with various authentication systems and provide fine-grained access control, ensuring only authenticated and authorized clients can access protected API resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of API Gateway Authorizer"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_authorizer {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_apigateway_authorizer
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Authorizer resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_authorizer {
+
+}
+class aws_apigateway_resource {
+
+}
+class aws_apigateway_rest_api {
+
+}
+class aws_iam_role {
+
+}
+class aws_lambda_function {
+
+}
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_iam_role -[#1A83AF]-> aws_apigateway_authorizer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Authorizer data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_authorizer {
+**api_link**: string
+**authorizer_auth_type**: string
+**authorizer_credentials**: string
+**authorizer_identity_source**: string
+**authorizer_identity_validation_expression**: string
+**authorizer_provider_arns**: string[]
+**authorizer_result_ttl_in_seconds**: int64
+**authorizer_type**: string
+**authorizer_uri**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_apigateway_authorizer
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

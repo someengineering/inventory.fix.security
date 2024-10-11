@@ -1,0 +1,256 @@
+---
+sidebar_label: ElastiCache Cache Cluster
+---
+
+# `aws_elasticache_cache_cluster`
+
+- Categories: Database
+- Service: elasticache
+- Provider Link: [ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html)
+
+## Description
+
+AWS ElastiCache Cache Cluster is a managed service that deploys and operates in-memory cache engines Redis or Memcached in the cloud. It stores frequently accessed data in memory, reducing database load and improving application response times. Users can create, configure, and maintain cache clusters without managing the underlying infrastructure or software installation.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ElastiCache Cache Cluster"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elasticache_cache_cluster {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_elasticache_cache_cluster
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ElastiCache Cache Cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_elasticache_cache_cluster {
+
+}
+class aws_elasticache_replication_group {
+
+}
+class aws_sns_topic {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_elasticache_cache_cluster
+aws_elasticache_cache_cluster -[#1A83AF]-> aws_sns_topic
+aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ElastiCache Cache Cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elasticache_cache_cluster {
+**cluster_at_rest_encryption_enabled**: boolean
+**cluster_auth_token_enabled**: boolean
+**cluster_auth_token_last_modified_date**: datetime
+**cluster_auto_minor_version_upgrade**: boolean
+**cluster_cache_cluster_status**: string
+**cluster_cache_node_type**: string
+**cluster_cache_nodes**: aws_elasticache_cache_node[]
+**cluster_cache_parameter_group**: aws_elasticache_cache_parameter_group_status
+**cluster_cache_security_groups**: aws_elasticache_cache_security_group_membership[]
+**cluster_cache_subnet_group_name**: string
+**cluster_client_download_landing_page**: string
+**cluster_configuration_endpoint**: aws_elasticache_endpoint
+**cluster_engine**: string
+**cluster_engine_version**: string
+**cluster_log_delivery_configurations**: aws_elasticache_log_delivery_configuration[]
+**cluster_notification_configuration**: aws_elasticache_notification_configuration
+**cluster_num_cache_nodes**: int64
+**cluster_pending_modified_values**: aws_elasticache_pending_modified_values
+**cluster_preferred_availability_zone**: string
+**cluster_preferred_maintenance_window**: string
+**cluster_preferred_outpost_arn**: string
+**cluster_replication_group_id**: string
+**cluster_replication_group_log_delivery_enabled**: boolean
+**cluster_security_groups**: aws_elasticache_security_group_membership[]
+**cluster_snapshot_retention_limit**: int64
+**cluster_snapshot_window**: string
+**cluster_transit_encryption_enabled**: boolean
+}
+class aws_elasticache_cache_node {
+**cache_node_create_time**: datetime
+**cache_node_id**: string
+**cache_node_status**: string
+**customer_availability_zone**: string
+**customer_outpost_arn**: string
+**endpoint**: aws_elasticache_endpoint
+**parameter_group_status**: string
+**source_cache_node_id**: string
+}
+class aws_elasticache_cache_parameter_group_status {
+**cache_node_ids_to_reboot**: string[]
+**cache_parameter_group_name**: string
+**parameter_apply_status**: string
+}
+class aws_elasticache_cache_security_group_membership {
+**cache_security_group_name**: string
+**status**: string
+}
+class aws_elasticache_destination_details {
+**cloud_watch_logs_details**: string
+**kinesis_firehose_details**: string
+}
+class aws_elasticache_endpoint {
+**address**: string
+**port**: int64
+}
+class aws_elasticache_log_delivery_configuration {
+**destination_details**: aws_elasticache_destination_details
+**destination_type**: string
+**log_format**: string
+**log_type**: string
+**message**: string
+**status**: string
+}
+class aws_elasticache_notification_configuration {
+**topic_arn**: string
+**topic_status**: string
+}
+class aws_elasticache_pending_log_delivery_configuration {
+**destination_details**: aws_elasticache_destination_details
+**destination_type**: string
+**log_format**: string
+**log_type**: string
+}
+class aws_elasticache_pending_modified_values {
+**auth_token_status**: string
+**cache_node_ids_to_remove**: string[]
+**cache_node_type**: string
+**engine_version**: string
+**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
+**num_cache_nodes**: int64
+}
+class aws_elasticache_security_group_membership {
+**security_group_id**: string
+**status**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_elasticache_cache_cluster --> aws_elasticache_cache_node
+aws_elasticache_cache_cluster --> aws_elasticache_cache_parameter_group_status
+aws_elasticache_cache_cluster --> aws_elasticache_cache_security_group_membership
+aws_elasticache_cache_cluster --> aws_elasticache_endpoint
+aws_elasticache_cache_cluster --> aws_elasticache_log_delivery_configuration
+aws_elasticache_cache_cluster --> aws_elasticache_notification_configuration
+aws_elasticache_cache_cluster --> aws_elasticache_pending_modified_values
+aws_elasticache_cache_cluster --> aws_elasticache_security_group_membership
+aws_resource <|--- aws_elasticache_cache_cluster
+aws_elasticache_cache_node --> aws_elasticache_endpoint
+aws_elasticache_log_delivery_configuration --> aws_elasticache_destination_details
+aws_elasticache_pending_log_delivery_configuration --> aws_elasticache_destination_details
+aws_elasticache_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

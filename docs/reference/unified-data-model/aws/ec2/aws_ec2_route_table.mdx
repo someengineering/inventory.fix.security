@@ -1,0 +1,210 @@
+---
+sidebar_label: EC2 Route Table
+---
+
+# `aws_ec2_route_table`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [EC2 Route Table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+
+## Description
+
+An AWS EC2 Route Table is a networking component in Amazon Web Services that directs traffic between subnets within a Virtual Private Cloud (VPC) and to external networks. It contains rules, called routes, which determine where network traffic is sent based on its destination IP address. Route tables control both inbound and outbound traffic for associated subnets.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Route Table"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_route_table {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+class routing_table {
+
+}
+aws_resource <|--- aws_ec2_route_table
+routing_table <|--- aws_ec2_route_table
+resource <|--- aws_resource
+resource <|--- routing_table
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Route Table resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_route_table {
+
+}
+class aws_region {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_ec2_route_table
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Route Table data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_route {
+**carrier_gateway_id**: string
+**core_network_arn**: string
+**destination_cidr_block**: string
+**destination_ipv6_cidr_block**: string
+**destination_prefix_list_id**: string
+**egress_only_internet_gateway_id**: string
+**gateway_id**: string
+**instance_id**: string
+**instance_owner_id**: string
+**local_gateway_id**: string
+**nat_gateway_id**: string
+**network_interface_id**: string
+**origin**: string
+**state**: string
+**transit_gateway_id**: string
+**vpc_peering_connection_id**: string
+}
+class aws_ec2_route_table {
+**owner_id**: string
+**route_table_associations**: aws_ec2_route_table_association[]
+**route_table_propagating_vgws**: string[]
+**route_table_routes**: aws_ec2_route[]
+}
+class aws_ec2_route_table_association {
+**association_state**: aws_ec2_route_table_association_state
+**gateway_id**: string
+**main**: boolean
+**route_table_association_id**: string
+**route_table_id**: string
+**subnet_id**: string
+}
+class aws_ec2_route_table_association_state {
+**state**: string
+**status_message**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class routing_table {
+
+}
+aws_ec2_route_table --> aws_ec2_route
+aws_ec2_route_table --> aws_ec2_route_table_association
+aws_resource <|--- aws_ec2_route_table
+routing_table <|--- aws_ec2_route_table
+aws_ec2_route_table_association --> aws_ec2_route_table_association_state
+resource <|--- aws_resource
+resource <|--- routing_table
+
+@enduml
+```
+
+</ZoomPanPinch>

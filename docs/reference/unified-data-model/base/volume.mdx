@@ -1,0 +1,87 @@
+---
+sidebar_label: Volume
+---
+
+# `volume`
+
+- Categories: Storage
+
+## Description
+
+A volume.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Volume data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_volume {
+
+}
+class azure_compute_disk {
+
+}
+class digitalocean_volume {
+
+}
+class gcp_disk {
+
+}
+class kubernetes_persistent_volume {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+volume <|--- aws_ec2_volume
+volume <|--- azure_compute_disk
+volume <|--- digitalocean_volume
+volume <|--- gcp_disk
+volume <|--- kubernetes_persistent_volume
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>

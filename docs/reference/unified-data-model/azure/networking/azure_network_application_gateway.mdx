@@ -1,0 +1,626 @@
+---
+sidebar_label: Network Application Gateway
+---
+
+# `azure_network_application_gateway`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/)
+
+## Description
+
+Azure Network Application Gateway is a web traffic load balancer operating at the application layer. It routes incoming requests to appropriate backend pools based on URL paths, host headers, or other criteria. It provides SSL termination, web application firewall protection, and session affinity. The gateway supports both HTTP and HTTPS traffic.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Application Gateway"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_application_gateway {
+
+}
+class gateway {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+gateway <|--- azure_network_application_gateway
+microsoft_resource <|--- azure_network_application_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_application_gateway {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_web_application_firewall_policy {
+
+}
+azure_network_application_gateway -[#1A83AF]-> azure_network_web_application_firewall_policy
+azure_network_subnet -[#1A83AF]-> azure_network_application_gateway
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_application_gateway_authentication_certificate {
+**data**: string
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_autoscale_configuration {
+**max_capacity**: int64
+**min_capacity**: int64
+}
+class azure_application_gateway_backend_address {
+**fqdn**: string
+**ip_address**: string
+}
+class azure_application_gateway_backend_address_pool {
+**backend_addresses**: azure_application_gateway_backend_address[]
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_backend_http_settings {
+**affinity_cookie_name**: string
+**authentication_certificates**: string[]
+**connection_draining**: azure_application_gateway_connection_draining
+**cookie_based_affinity**: string
+**etag**: string
+**host_name**: string
+**name**: string
+**path**: string
+**pick_host_name_from_backend_address**: boolean
+**port**: int64
+**probe**: string
+**probe_enabled**: boolean
+**protocol**: string
+**provisioning_state**: string
+**request_timeout**: int64
+**trusted_root_certificates**: string[]
+**type**: string
+}
+class azure_application_gateway_backend_settings {
+**etag**: string
+**host_name**: string
+**name**: string
+**pick_host_name_from_backend_address**: boolean
+**port**: int64
+**probe**: string
+**protocol**: string
+**provisioning_state**: string
+**timeout**: int64
+**trusted_root_certificates**: string[]
+**type**: string
+}
+class azure_application_gateway_client_auth_configuration {
+**verify_client_cert_issuer_dn**: boolean
+**verify_client_revocation**: string
+}
+class azure_application_gateway_connection_draining {
+**drain_timeout_in_sec**: int64
+**enabled**: boolean
+}
+class azure_application_gateway_custom_error {
+**custom_error_page_url**: string
+**status_code**: string
+}
+class azure_application_gateway_firewall_disabled_rule_group {
+**rule_group_name**: string
+**rules**: int64[]
+}
+class azure_application_gateway_firewall_exclusion {
+**match_variable**: string
+**selector**: string
+**selector_match_operator**: string
+}
+class azure_application_gateway_frontend_ip_configuration {
+**etag**: string
+**name**: string
+**private_ip_address**: string
+**private_ip_allocation_method**: string
+**private_link_configuration**: string
+**provisioning_state**: string
+**public_ip_address**: string
+**subnet**: string
+**type**: string
+}
+class azure_application_gateway_frontend_port {
+**etag**: string
+**name**: string
+**port**: int64
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_global_configuration {
+**enable_request_buffering**: boolean
+**enable_response_buffering**: boolean
+}
+class azure_application_gateway_header_configuration {
+**header_name**: string
+**header_value**: string
+}
+class azure_application_gateway_http_listener {
+**custom_error_configurations**: azure_application_gateway_custom_error[]
+**etag**: string
+**firewall_policy**: string
+**frontend_ip_configuration**: string
+**frontend_port**: string
+**host_name**: string
+**host_names**: string[]
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**require_server_name_indication**: boolean
+**ssl_certificate**: string
+**ssl_profile**: string
+**type**: string
+}
+class azure_application_gateway_ip_configuration {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**subnet**: string
+**type**: string
+}
+class azure_application_gateway_listener {
+**etag**: string
+**frontend_ip_configuration**: string
+**frontend_port**: string
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**ssl_certificate**: string
+**ssl_profile**: string
+**type**: string
+}
+class azure_application_gateway_load_distribution_policy {
+**etag**: string
+**load_distribution_algorithm**: string
+**load_distribution_targets**: azure_application_gateway_load_distribution_target[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_load_distribution_target {
+**backend_address_pool**: string
+**etag**: string
+**name**: string
+**type**: string
+**weight_per_server**: int64
+}
+class azure_application_gateway_path_rule {
+**backend_address_pool**: string
+**backend_http_settings**: string
+**etag**: string
+**firewall_policy**: string
+**load_distribution_policy**: string
+**name**: string
+**paths**: string[]
+**provisioning_state**: string
+**redirect_configuration**: string
+**rewrite_rule_set**: string
+**type**: string
+}
+class azure_application_gateway_private_link_configuration {
+**etag**: string
+**link_ip_configurations**: azure_application_gateway_private_link_ip_configuration[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_private_link_ip_configuration {
+**etag**: string
+**name**: string
+**primary**: boolean
+**private_ip_address**: string
+**private_ip_allocation_method**: string
+**provisioning_state**: string
+**subnet**: string
+**type**: string
+}
+class azure_application_gateway_probe {
+**etag**: string
+**host**: string
+**interval**: int64
+**match**: azure_application_gateway_probe_health_response_match
+**min_servers**: int64
+**name**: string
+**path**: string
+**pick_host_name_from_backend_http_settings**: boolean
+**pick_host_name_from_backend_settings**: boolean
+**port**: int64
+**protocol**: string
+**provisioning_state**: string
+**timeout**: int64
+**type**: string
+**unhealthy_threshold**: int64
+}
+class azure_application_gateway_probe_health_response_match {
+**body**: string
+**status_codes**: string[]
+}
+class azure_application_gateway_redirect_configuration {
+**etag**: string
+**include_path**: boolean
+**include_query_string**: boolean
+**name**: string
+**path_rules**: string[]
+**redirect_type**: string
+**request_routing_rules**: string[]
+**target_listener**: string
+**target_url**: string
+**type**: string
+**url_path_maps**: string[]
+}
+class azure_application_gateway_request_routing_rule {
+**backend_address_pool**: string
+**backend_http_settings**: string
+**etag**: string
+**http_listener**: string
+**load_distribution_policy**: string
+**name**: string
+**priority**: int64
+**provisioning_state**: string
+**redirect_configuration**: string
+**rewrite_rule_set**: string
+**rule_type**: string
+**type**: string
+**url_path_map**: string
+}
+class azure_application_gateway_rewrite_rule {
+**action_set**: azure_application_gateway_rewrite_rule_action_set
+**conditions**: azure_application_gateway_rewrite_rule_condition[]
+**name**: string
+**rule_sequence**: int64
+}
+class azure_application_gateway_rewrite_rule_action_set {
+**request_header_configurations**: azure_application_gateway_header_configuration[]
+**response_header_configurations**: azure_application_gateway_header_configuration[]
+**url_configuration**: azure_application_gateway_url_configuration
+}
+class azure_application_gateway_rewrite_rule_condition {
+**ignore_case**: boolean
+**negate**: boolean
+**pattern**: string
+**variable**: string
+}
+class azure_application_gateway_rewrite_rule_set {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**rewrite_rules**: azure_application_gateway_rewrite_rule[]
+}
+class azure_application_gateway_routing_rule {
+**backend_address_pool**: string
+**backend_settings**: string
+**etag**: string
+**listener**: string
+**name**: string
+**priority**: int64
+**provisioning_state**: string
+**rule_type**: string
+**type**: string
+}
+class azure_application_gateway_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class azure_application_gateway_ssl_certificate {
+**data**: string
+**etag**: string
+**key_vault_secret_id**: string
+**name**: string
+**password**: string
+**provisioning_state**: string
+**public_cert_data**: string
+**type**: string
+}
+class azure_application_gateway_ssl_policy {
+**cipher_suites**: string[]
+**disabled_ssl_protocols**: string[]
+**min_protocol_version**: string
+**policy_name**: string
+**policy_type**: string
+}
+class azure_application_gateway_ssl_profile {
+**client_auth_configuration**: azure_application_gateway_client_auth_configuration
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**ssl_policy**: azure_application_gateway_ssl_policy
+**trusted_client_certificates**: string[]
+**type**: string
+}
+class azure_application_gateway_trusted_client_certificate {
+**client_cert_issuer_dn**: string
+**data**: string
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+**validated_cert_data**: string
+}
+class azure_application_gateway_trusted_root_certificate {
+**data**: string
+**etag**: string
+**key_vault_secret_id**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_url_configuration {
+**modified_path**: string
+**modified_query_string**: string
+**reroute**: boolean
+}
+class azure_application_gateway_url_path_map {
+**default_backend_address_pool**: string
+**default_backend_http_settings**: string
+**default_load_distribution_policy**: string
+**default_redirect_configuration**: string
+**default_rewrite_rule_set**: string
+**etag**: string
+**name**: string
+**path_rules**: azure_application_gateway_path_rule[]
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_gateway_web_application_firewall_configuration {
+**disabled_rule_groups**: azure_application_gateway_firewall_disabled_rule_group[]
+**enabled**: boolean
+**exclusions**: azure_application_gateway_firewall_exclusion[]
+**file_upload_limit_in_mb**: int64
+**firewall_mode**: string
+**max_request_body_size**: int64
+**max_request_body_size_in_kb**: int64
+**request_body_check**: boolean
+**rule_set_type**: string
+**rule_set_version**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_network_application_gateway {
+**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
+**authentication_certificates**: azure_application_gateway_authentication_certificate[]
+**autoscale_configuration**: azure_application_gateway_autoscale_configuration
+**backend_http_settings_collection**: azure_application_gateway_backend_http_settings[]
+**backend_settings_collection**: azure_application_gateway_backend_settings[]
+**custom_error_configurations**: azure_application_gateway_custom_error[]
+**default_predefined_ssl_policy**: string
+**enable_fips**: boolean
+**enable_http2**: boolean
+**firewall_policy**: string
+**force_firewall_policy_association**: boolean
+**frontend_ip_configurations**: azure_application_gateway_frontend_ip_configuration[]
+**frontend_ports**: azure_application_gateway_frontend_port[]
+**gateway_backend_address_pools**: azure_application_gateway_backend_address_pool[]
+**gateway_private_endpoint_connections**: azure_private_endpoint_connection[]
+**gateway_probes**: azure_application_gateway_probe[]
+**gateway_sku**: azure_application_gateway_sku
+**gateway_ssl_certificates**: azure_application_gateway_ssl_certificate[]
+**gateway_ssl_policy**: azure_application_gateway_ssl_policy
+**global_configuration**: azure_application_gateway_global_configuration
+**http_listeners**: azure_application_gateway_http_listener[]
+**identity**: azure_identity
+**listeners**: azure_application_gateway_listener[]
+**load_distribution_policies**: azure_application_gateway_load_distribution_policy[]
+**operational_state**: string
+**private_link_configurations**: azure_application_gateway_private_link_configuration[]
+**redirect_configurations**: azure_application_gateway_redirect_configuration[]
+**request_routing_rules**: azure_application_gateway_request_routing_rule[]
+**resource_guid**: string
+**rewrite_rule_sets**: azure_application_gateway_rewrite_rule_set[]
+**routing_rules**: azure_application_gateway_routing_rule[]
+**ssl_profiles**: azure_application_gateway_ssl_profile[]
+**trusted_client_certificates**: azure_application_gateway_trusted_client_certificate[]
+**trusted_root_certificates**: azure_application_gateway_trusted_root_certificate[]
+**url_path_maps**: azure_application_gateway_url_path_map[]
+**web_application_firewall_configuration**: azure_application_gateway_web_application_firewall_configuration
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class gateway {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
+azure_application_gateway_backend_http_settings --> azure_application_gateway_connection_draining
+azure_application_gateway_http_listener --> azure_application_gateway_custom_error
+azure_application_gateway_load_distribution_policy --> azure_application_gateway_load_distribution_target
+azure_application_gateway_private_link_configuration --> azure_application_gateway_private_link_ip_configuration
+azure_application_gateway_probe --> azure_application_gateway_probe_health_response_match
+azure_application_gateway_rewrite_rule --> azure_application_gateway_rewrite_rule_action_set
+azure_application_gateway_rewrite_rule --> azure_application_gateway_rewrite_rule_condition
+azure_application_gateway_rewrite_rule_action_set --> azure_application_gateway_header_configuration
+azure_application_gateway_rewrite_rule_action_set --> azure_application_gateway_url_configuration
+azure_application_gateway_rewrite_rule_set --> azure_application_gateway_rewrite_rule
+azure_application_gateway_ssl_profile --> azure_application_gateway_client_auth_configuration
+azure_application_gateway_ssl_profile --> azure_application_gateway_ssl_policy
+azure_application_gateway_url_path_map --> azure_application_gateway_path_rule
+azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_disabled_rule_group
+azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_exclusion
+azure_identity --> azure_user_assigned_identity
+azure_network_application_gateway --> azure_application_gateway_authentication_certificate
+azure_network_application_gateway --> azure_application_gateway_autoscale_configuration
+azure_network_application_gateway --> azure_application_gateway_backend_address_pool
+azure_network_application_gateway --> azure_application_gateway_backend_http_settings
+azure_network_application_gateway --> azure_application_gateway_backend_settings
+azure_network_application_gateway --> azure_application_gateway_custom_error
+azure_network_application_gateway --> azure_application_gateway_frontend_ip_configuration
+azure_network_application_gateway --> azure_application_gateway_frontend_port
+azure_network_application_gateway --> azure_application_gateway_global_configuration
+azure_network_application_gateway --> azure_application_gateway_http_listener
+azure_network_application_gateway --> azure_application_gateway_ip_configuration
+azure_network_application_gateway --> azure_application_gateway_listener
+azure_network_application_gateway --> azure_application_gateway_load_distribution_policy
+azure_network_application_gateway --> azure_application_gateway_private_link_configuration
+azure_network_application_gateway --> azure_application_gateway_probe
+azure_network_application_gateway --> azure_application_gateway_redirect_configuration
+azure_network_application_gateway --> azure_application_gateway_request_routing_rule
+azure_network_application_gateway --> azure_application_gateway_rewrite_rule_set
+azure_network_application_gateway --> azure_application_gateway_routing_rule
+azure_network_application_gateway --> azure_application_gateway_sku
+azure_network_application_gateway --> azure_application_gateway_ssl_certificate
+azure_network_application_gateway --> azure_application_gateway_ssl_policy
+azure_network_application_gateway --> azure_application_gateway_ssl_profile
+azure_network_application_gateway --> azure_application_gateway_trusted_client_certificate
+azure_network_application_gateway --> azure_application_gateway_trusted_root_certificate
+azure_network_application_gateway --> azure_application_gateway_url_path_map
+azure_network_application_gateway --> azure_application_gateway_web_application_firewall_configuration
+azure_network_application_gateway --> azure_identity
+azure_network_application_gateway --> azure_private_endpoint_connection
+gateway <|--- azure_network_application_gateway
+microsoft_resource <|--- azure_network_application_gateway
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

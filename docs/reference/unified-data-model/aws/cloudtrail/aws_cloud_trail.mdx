@@ -1,0 +1,230 @@
+---
+sidebar_label: CloudTrail
+---
+
+# `aws_cloud_trail`
+
+- Categories: Management
+- Service: cloudtrail
+- Provider Link: [CloudTrail](https://docs.aws.amazon.com/cloudtrail/)
+
+## Description
+
+AWS CloudTrail is a service that records API calls and events in AWS accounts. It provides an audit trail of actions taken by users, roles, and services. CloudTrail logs these activities, stores them securely, and offers tools for analysis and compliance. Users can monitor account activity, investigate security incidents, and meet regulatory requirements using CloudTrail's data.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of CloudTrail"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloud_trail {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_cloud_trail
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudTrail resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloud_trail {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sns_topic {
+
+}
+aws_cloud_trail -[#1A83AF]-> aws_kms_key
+aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
+aws_cloud_trail -[#1A83AF]-> aws_sns_topic
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudTrail data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloud_trail {
+**trail_cloud_watch_logs_log_group_arn**: string
+**trail_cloud_watch_logs_role_arn**: string
+**trail_event_selectors**: aws_cloud_trail_event_selectors
+**trail_has_custom_event_selectors**: boolean
+**trail_has_insight_selectors**: boolean
+**trail_home_region**: string
+**trail_include_global_service_events**: boolean
+**trail_insight_selectors**: string[]
+**trail_is_multi_region_trail**: boolean
+**trail_is_organization_trail**: boolean
+**trail_kms_key_id**: string
+**trail_log_file_validation_enabled**: boolean
+**trail_s3_bucket_name**: string
+**trail_s3_key_prefix**: string
+**trail_sns_topic_arn**: string
+**trail_sns_topic_name**: string
+**trail_status**: aws_cloud_trail_status
+}
+class aws_cloud_trail_advanced_event_selector {
+**field_selectors**: aws_cloud_trail_advanced_field_selector[]
+**name**: string
+}
+class aws_cloud_trail_advanced_field_selector {
+**ends_with**: string[]
+**equals**: string[]
+**not_ends_with**: string[]
+**not_equals**: string[]
+**not_starts_with**: string[]
+**selector_field**: string
+**starts_with**: string[]
+}
+class aws_cloud_trail_data_resource {
+**type**: string
+**values**: string[]
+}
+class aws_cloud_trail_event_selector {
+**data_resources**: aws_cloud_trail_data_resource[]
+**exclude_management_event_sources**: string[]
+**include_management_events**: boolean
+**read_write_type**: string
+}
+class aws_cloud_trail_event_selectors {
+**advanced_event_selectors**: aws_cloud_trail_advanced_event_selector[]
+**event_selectors**: aws_cloud_trail_event_selector[]
+}
+class aws_cloud_trail_status {
+**is_logging**: boolean
+**latest_cloud_watch_logs_delivery_error**: string
+**latest_cloud_watch_logs_delivery_time**: datetime
+**latest_delivery_attempt_succeeded**: datetime
+**latest_delivery_attempt_time**: datetime
+**latest_delivery_error**: string
+**latest_delivery_time**: datetime
+**latest_digest_delivery_error**: string
+**latest_digest_delivery_time**: datetime
+**latest_notification_attempt_succeeded**: datetime
+**latest_notification_attempt_time**: datetime
+**latest_notification_error**: string
+**latest_notification_time**: datetime
+**start_logging_time**: datetime
+**stop_logging_time**: datetime
+**time_logging_started**: datetime
+**time_logging_stopped**: datetime
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_cloud_trail --> aws_cloud_trail_event_selectors
+aws_cloud_trail --> aws_cloud_trail_status
+aws_resource <|--- aws_cloud_trail
+aws_cloud_trail_advanced_event_selector --> aws_cloud_trail_advanced_field_selector
+aws_cloud_trail_event_selector --> aws_cloud_trail_data_resource
+aws_cloud_trail_event_selectors --> aws_cloud_trail_advanced_event_selector
+aws_cloud_trail_event_selectors --> aws_cloud_trail_event_selector
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

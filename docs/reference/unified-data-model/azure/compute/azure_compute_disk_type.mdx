@@ -1,0 +1,202 @@
+---
+sidebar_label: Compute Disk Type
+---
+
+# `azure_compute_disk_type`
+
+- Categories: Storage
+- Service: compute
+- Provider Link: [Compute Disk Type](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)
+
+## Description
+
+Azure Compute Disk Types are storage options for virtual machines in Microsoft Azure. They provide persistent block storage for data and applications. Users can choose from different disk types, including standard HDD, standard SSD, and premium SSD, each offering varying performance levels and capacities to meet specific workload requirements and budget constraints.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Disk Type"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk_type {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+class type {
+
+}
+class volume_type {
+
+}
+microsoft_resource <|--- azure_compute_disk_type
+volume_type <|--- azure_compute_disk_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+type <|--- volume_type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk Type resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class azure_compute_disk_type {
+
+}
+azure_compute_disk -[#1A83AF]-> azure_compute_disk_type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk Type data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk_type {
+**full_name**: string
+**information_name**: string
+**iops_price**: double
+**location**: string
+**product_name**: string
+**redundancy**: string
+**size_price**: double
+**throughput_price**: double
+**tier**: string
+**volume_iops**: int64
+**volume_size**: int64
+**volume_throughput**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+
+}
+class volume_type {
+**ondemand_cost**: double
+**volume_type**: string
+}
+microsoft_resource <|--- azure_compute_disk_type
+volume_type <|--- azure_compute_disk_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+type <|--- volume_type
+
+@enduml
+```
+
+</ZoomPanPinch>

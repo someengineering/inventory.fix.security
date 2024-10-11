@@ -1,0 +1,212 @@
+---
+sidebar_label: Network Virtual WAN VPN Gateway
+---
+
+# `azure_network_virtual_wan_vpn_gateway`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual WAN VPN Gateway](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about)
+
+## Description
+
+Azure Network Virtual WAN VPN Gateway is a managed service that connects on-premises networks to Azure through site-to-site VPN tunnels. It provides encrypted communication between remote locations and Azure virtual networks, supporting both policy-based and route-based VPN connections. The service handles routing, encryption, and high availability for secure and reliable connectivity across distributed environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual WAN VPN Gateway"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+class gateway {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+gateway <|--- azure_network_virtual_wan_vpn_gateway
+microsoft_resource <|--- azure_network_virtual_wan_vpn_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual WAN VPN Gateway resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_hub {
+
+}
+class azure_network_virtual_wan_vpn_connection {
+
+}
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+azure_network_virtual_wan_vpn_gateway -[#1A83AF]-> azure_network_virtual_hub
+azure_network_virtual_wan_vpn_gateway -[#1A83AF]-> azure_network_virtual_wan_vpn_connection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual WAN VPN Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_bgp_settings {
+**asn**: int64
+**bgp_peering_address**: string
+**bgp_peering_addresses**: azure_ip_configuration_bgp_peering_address[]
+**peer_weight**: int64
+}
+class azure_ip_configuration_bgp_peering_address {
+**custom_bgp_ip_addresses**: string[]
+**default_bgp_ip_addresses**: string[]
+**ipconfiguration_id**: string
+**tunnel_ip_addresses**: string[]
+}
+class azure_network_virtual_wan_vpn_gateway {
+**bgp_settings**: azure_bgp_settings
+**enable_bgp_route_translation_for_nat**: boolean
+**gateway_ip_configurations**: azure_vpn_gateway_ip_configuration[]
+**is_routing_preference_internet**: boolean
+**virtual_hub**: string
+**vpn_gateway_scale_unit**: int64
+**wan_gateway_nat_rules**: azure_vpn_gateway_nat_rule[]
+}
+class azure_vpn_gateway_ip_configuration {
+**id**: string
+**private_ip_address**: string
+**public_ip_address**: string
+}
+class azure_vpn_gateway_nat_rule {
+**egress_vpn_site_link_connections**: string[]
+**etag**: string
+**external_mappings**: azure_vpn_nat_rule_mapping[]
+**ingress_vpn_site_link_connections**: string[]
+**internal_mappings**: azure_vpn_nat_rule_mapping[]
+**ip_configuration_id**: string
+**mode**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_vpn_nat_rule_mapping {
+**address_space**: string
+**port_range**: string
+}
+class gateway {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_bgp_settings --> azure_ip_configuration_bgp_peering_address
+azure_network_virtual_wan_vpn_gateway --> azure_bgp_settings
+azure_network_virtual_wan_vpn_gateway --> azure_vpn_gateway_ip_configuration
+azure_network_virtual_wan_vpn_gateway --> azure_vpn_gateway_nat_rule
+gateway <|--- azure_network_virtual_wan_vpn_gateway
+microsoft_resource <|--- azure_network_virtual_wan_vpn_gateway
+azure_vpn_gateway_nat_rule --> azure_vpn_nat_rule_mapping
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

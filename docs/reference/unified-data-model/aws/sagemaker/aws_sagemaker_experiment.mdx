@@ -1,0 +1,175 @@
+---
+sidebar_label: SageMaker Experiment
+---
+
+# `aws_sagemaker_experiment`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Experiment](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html)
+
+## Description
+
+AWS SageMaker Experiment is a feature of Amazon SageMaker that helps data scientists and machine learning engineers organize, track, and compare machine learning experiments. It records metadata, parameters, and artifacts for each experiment run, facilitating reproducibility and analysis. Users can visualize results, compare different runs, and share findings with team members to improve collaboration and decision-making in ML projects.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Experiment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_experiment {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_experiment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Experiment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_sagemaker_experiment {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class aws_sagemaker_trial {
+
+}
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_transform_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Experiment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_experiment {
+**experiment_display_name**: string
+**experiment_source**: aws_sagemaker_experiment_source
+}
+class aws_sagemaker_experiment_source {
+**source_arn**: string
+**source_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_experiment
+aws_sagemaker_experiment --> aws_sagemaker_experiment_source
+
+@enduml
+```
+
+</ZoomPanPinch>

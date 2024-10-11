@@ -1,0 +1,198 @@
+---
+sidebar_label: SSM Resource Compliance
+---
+
+# `aws_ssm_resource_compliance`
+
+- Categories: Management
+- Service: ssm
+- Provider Link: [SSM Resource Compliance](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html)
+
+## Description
+
+AWS SSM Resource Compliance is a feature within AWS Systems Manager that evaluates and reports on the compliance status of AWS resources. It checks resources against predefined or custom rules, identifying non-compliant configurations and security issues. Users can view compliance data, generate reports, and take corrective actions to maintain resource adherence to organizational standards and best practices.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SSM Resource Compliance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_resource_compliance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Resource Compliance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamodb_table {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_ssm_document {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+aws_ssm_resource_compliance -[#1A83AF]-> aws_dynamodb_table
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ec2_instance
+aws_ssm_resource_compliance -[#1A83AF]-> aws_s3_bucket
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ssm_document
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Resource Compliance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_compliance_execution_summary {
+**execution_id**: string
+**execution_time**: datetime
+**execution_type**: string
+}
+class aws_ssm_compliant_summary {
+**compliant_count**: int64
+**severity_summary**: aws_ssm_severity_summary
+}
+class aws_ssm_non_compliant_summary {
+**non_compliant_count**: int64
+**severity_summary**: aws_ssm_severity_summary
+}
+class aws_ssm_resource_compliance {
+**compliance_type**: string
+**compliant_summary**: aws_ssm_compliant_summary
+**execution_summary**: aws_ssm_compliance_execution_summary
+**non_compliant_summary**: aws_ssm_non_compliant_summary
+**overall_severity**: string
+**resource_id**: string
+**resource_type**: string
+**status**: string
+}
+class aws_ssm_severity_summary {
+**critical_count**: int64
+**high_count**: int64
+**informational_count**: int64
+**low_count**: int64
+**medium_count**: int64
+**unspecified_count**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_ssm_compliant_summary --> aws_ssm_severity_summary
+aws_ssm_non_compliant_summary --> aws_ssm_severity_summary
+aws_resource <|--- aws_ssm_resource_compliance
+aws_ssm_resource_compliance --> aws_ssm_compliance_execution_summary
+aws_ssm_resource_compliance --> aws_ssm_compliant_summary
+aws_ssm_resource_compliance --> aws_ssm_non_compliant_summary
+
+@enduml
+```
+
+</ZoomPanPinch>

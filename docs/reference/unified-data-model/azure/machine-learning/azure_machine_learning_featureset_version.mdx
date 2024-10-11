@@ -1,0 +1,216 @@
+---
+sidebar_label: Machine Learning Featureset Version
+---
+
+# `azure_machine_learning_featureset_version`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Featureset Version](https://learn.microsoft.com/en-us/azure/machine-learning/concept-feature-store)
+
+## Description
+
+Azure Machine Learning Featureset Version is a component of Azure Machine Learning that manages and tracks versions of feature sets. It stores feature definitions, data, and metadata, enabling data scientists to reproduce experiments, compare model performance across versions, and maintain consistency in machine learning pipelines. This versioning system supports collaboration and helps ensure data lineage in ML projects.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Featureset Version"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_featureset_version {
+
+}
+class azure_proxy_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_proxy_resource <|--- azure_machine_learning_featureset_version
+microsoft_resource <|--- azure_machine_learning_featureset_version
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Featureset Version resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_feature {
+
+}
+class azure_machine_learning_featureset_container {
+
+}
+class azure_machine_learning_featureset_version {
+
+}
+azure_machine_learning_featureset_container -[#1A83AF]-> azure_machine_learning_featureset_version
+azure_machine_learning_featureset_version -[#1A83AF]-> azure_machine_learning_feature
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Featureset Version data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_featureset_version {
+**description**: string
+**entities**: string[]
+**is_anonymous**: boolean
+**is_archived**: boolean
+**materialization_settings**: azure_materialization_settings
+**properties**: dictionary[string, any]
+**specification**: string
+**stage**: string
+}
+class azure_materialization_settings {
+**notification**: azure_notification_setting
+**resource**: string
+**schedule**: azure_recurrence_trigger
+**spark_configuration**: dictionary[string, string]
+**store_type**: string
+}
+class azure_notification_setting {
+**email_on**: string[]
+**emails**: string[]
+**webhooks**: dictionary[string, azure_webhook]
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_recurrence_schedule {
+**hours**: int64[]
+**minutes**: int64[]
+**month_days**: int64[]
+**week_days**: string[]
+}
+class azure_recurrence_trigger {
+**frequency**: string
+**interval**: int64
+**schedule**: azure_recurrence_schedule
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_webhook {
+**event_type**: string
+**webhook_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_machine_learning_featureset_version --> azure_materialization_settings
+azure_proxy_resource <|--- azure_machine_learning_featureset_version
+azure_machine_learning_featureset_version --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_featureset_version
+azure_materialization_settings --> azure_notification_setting
+azure_materialization_settings --> azure_recurrence_trigger
+azure_notification_setting --> azure_webhook
+azure_proxy_resource --> azure_system_data
+azure_recurrence_trigger --> azure_recurrence_schedule
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

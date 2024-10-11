@@ -1,0 +1,267 @@
+---
+sidebar_label: Bedrock Agent Knowledge Base
+---
+
+# `aws_bedrock_agent_knowledge_base`
+
+- Categories: Machine Learning & AI
+- Service: bedrock-agent
+- Provider Link: [Bedrock Agent Knowledge Base](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-knowledge-base.html)
+
+## Description
+
+AWS Bedrock Agent Knowledge Base is a feature that stores and manages information for AI agents. It provides a structured repository for data, documents, and facts that agents can access and use to answer questions, make decisions, and perform tasks. The knowledge base supports natural language queries and helps maintain context during interactions.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Agent Knowledge Base"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_knowledge_base {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_bedrock_agent_knowledge_base
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Knowledge Base resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent {
+
+}
+class aws_bedrock_agent_knowledge_base {
+
+}
+class aws_iam_role {
+
+}
+class aws_rds_cluster {
+
+}
+class aws_rds_instance {
+
+}
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_knowledge_base
+aws_bedrock_agent_knowledge_base -[#1A83AF]-> aws_rds_cluster
+aws_bedrock_agent_knowledge_base -[#1A83AF]-> aws_rds_instance
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent_knowledge_base
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Knowledge Base data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_knowledge_base {
+**created_at**: datetime
+**description**: string
+**failure_reasons**: string[]
+**knowledge_base_arn**: string
+**knowledge_base_configuration**: aws_bedrock_knowledge_base_configuration
+**knowledge_base_id**: string
+**role_arn**: string
+**status**: string
+**storage_configuration**: aws_bedrock_storage_configuration
+**updated_at**: datetime
+}
+class aws_bedrock_embedding_model_configuration {
+**bedrock_embedding_model_configuration**: int64
+}
+class aws_bedrock_knowledge_base_configuration {
+**type**: string
+**vector_knowledge_base_configuration**: aws_bedrock_vector_knowledge_base_configuration
+}
+class aws_bedrock_mongo_db_atlas_configuration {
+**collection_name**: string
+**credentials_secret_arn**: string
+**database_name**: string
+**endpoint**: string
+**endpoint_service_name**: string
+**field_mapping**: aws_bedrock_mongo_db_atlas_field_mapping
+**vector_index_name**: string
+}
+class aws_bedrock_mongo_db_atlas_field_mapping {
+**metadata_field**: string
+**text_field**: string
+**vector_field**: string
+}
+class aws_bedrock_open_search_serverless_configuration {
+**collection_arn**: string
+**field_mapping**: aws_bedrock_open_search_serverless_field_mapping
+**vector_index_name**: string
+}
+class aws_bedrock_open_search_serverless_field_mapping {
+**metadata_field**: string
+**text_field**: string
+**vector_field**: string
+}
+class aws_bedrock_pinecone_configuration {
+**connection_string**: string
+**credentials_secret_arn**: string
+**field_mapping**: aws_bedrock_pinecone_field_mapping
+**namespace**: string
+}
+class aws_bedrock_pinecone_field_mapping {
+**metadata_field**: string
+**text_field**: string
+}
+class aws_bedrock_rds_configuration {
+**credentials_secret_arn**: string
+**database_name**: string
+**field_mapping**: aws_bedrock_rds_field_mapping
+**resource_arn**: string
+**table_name**: string
+}
+class aws_bedrock_rds_field_mapping {
+**metadata_field**: string
+**primary_key_field**: string
+**text_field**: string
+**vector_field**: string
+}
+class aws_bedrock_redis_enterprise_cloud_configuration {
+**credentials_secret_arn**: string
+**endpoint**: string
+**field_mapping**: aws_bedrock_redis_enterprise_cloud_field_mapping
+**vector_index_name**: string
+}
+class aws_bedrock_redis_enterprise_cloud_field_mapping {
+**metadata_field**: string
+**text_field**: string
+**vector_field**: string
+}
+class aws_bedrock_storage_configuration {
+**mongo_db_atlas_configuration**: aws_bedrock_mongo_db_atlas_configuration
+**opensearch_serverless_configuration**: aws_bedrock_open_search_serverless_configuration
+**pinecone_configuration**: aws_bedrock_pinecone_configuration
+**rds_configuration**: aws_bedrock_rds_configuration
+**redis_enterprise_cloud_configuration**: aws_bedrock_redis_enterprise_cloud_configuration
+**type**: string
+}
+class aws_bedrock_vector_knowledge_base_configuration {
+**embedding_model_arn**: string
+**embedding_model_configuration**: aws_bedrock_embedding_model_configuration
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_bedrock_agent_knowledge_base --> aws_bedrock_knowledge_base_configuration
+aws_bedrock_agent_knowledge_base --> aws_bedrock_storage_configuration
+aws_resource <|--- aws_bedrock_agent_knowledge_base
+aws_bedrock_knowledge_base_configuration --> aws_bedrock_vector_knowledge_base_configuration
+aws_bedrock_mongo_db_atlas_configuration --> aws_bedrock_mongo_db_atlas_field_mapping
+aws_bedrock_open_search_serverless_configuration --> aws_bedrock_open_search_serverless_field_mapping
+aws_bedrock_pinecone_configuration --> aws_bedrock_pinecone_field_mapping
+aws_bedrock_rds_configuration --> aws_bedrock_rds_field_mapping
+aws_bedrock_redis_enterprise_cloud_configuration --> aws_bedrock_redis_enterprise_cloud_field_mapping
+aws_bedrock_storage_configuration --> aws_bedrock_mongo_db_atlas_configuration
+aws_bedrock_storage_configuration --> aws_bedrock_open_search_serverless_configuration
+aws_bedrock_storage_configuration --> aws_bedrock_pinecone_configuration
+aws_bedrock_storage_configuration --> aws_bedrock_rds_configuration
+aws_bedrock_storage_configuration --> aws_bedrock_redis_enterprise_cloud_configuration
+aws_bedrock_vector_knowledge_base_configuration --> aws_bedrock_embedding_model_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

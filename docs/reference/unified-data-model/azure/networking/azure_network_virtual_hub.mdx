@@ -1,0 +1,219 @@
+---
+sidebar_label: Network Virtual Hub
+---
+
+# `azure_network_virtual_hub`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual Hub](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about)
+
+## Description
+
+Azure Network Virtual Hub is a managed networking service in Microsoft Azure. It serves as a central connection point for virtual networks and on-premises networks. The hub facilitates secure communication between connected networks, implements routing, and integrates with other Azure networking services. It supports site-to-site VPN, ExpressRoute, and point-to-site VPN connections.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual Hub"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_hub {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_virtual_hub
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Hub resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_gateway {
+
+}
+class azure_network_firewall {
+
+}
+class azure_network_p2_s_vpn_gateway {
+
+}
+class azure_network_public_ip_address {
+
+}
+class azure_network_virtual_hub {
+
+}
+class azure_network_virtual_wan {
+
+}
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+azure_network_express_route_gateway -[#1A83AF]-> azure_network_virtual_hub
+azure_network_firewall -[#1A83AF]-> azure_network_virtual_hub
+azure_network_p2_s_vpn_gateway -[#1A83AF]-> azure_network_virtual_hub
+azure_network_virtual_hub -[#1A83AF]-> azure_network_public_ip_address
+azure_network_virtual_wan -[#1A83AF]-> azure_network_virtual_hub
+azure_network_virtual_wan_vpn_gateway -[#1A83AF]-> azure_network_virtual_hub
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Hub data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_hub {
+**address_prefix**: string
+**allow_branch_to_branch_traffic**: boolean
+**azure_network_firewall**: string
+**bgp_connections**: string[]
+**express_route_gateway**: string
+**hub_kind**: string
+**hub_routing_preference**: string
+**ip_configuration_ids**: string[]
+**p2s_vpn_gateway**: string
+**preferred_routing_gateway**: string
+**route_maps**: string[]
+**routing_state**: string
+**security_partner_provider**: string
+**security_provider_name**: string
+**sku**: string
+**virtual_hub_route_table**: azure_virtual_hub_route_table
+**virtual_hub_route_table_v2s**: azure_virtual_hub_route_table_v2[]
+**virtual_router_asn**: int64
+**virtual_router_auto_scale_configuration**: int64
+**virtual_router_ips**: string[]
+**virtual_wan**: string
+**vpn_gateway**: string
+}
+class azure_virtual_hub_route {
+**address_prefixes**: string[]
+**next_hop_ip_address**: string
+}
+class azure_virtual_hub_route_table {
+**routes**: azure_virtual_hub_route[]
+}
+class azure_virtual_hub_route_table_v2 {
+**attached_connections**: string[]
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**routes**: azure_virtual_hub_route_v2[]
+}
+class azure_virtual_hub_route_v2 {
+**destination_type**: string
+**destinations**: string[]
+**next_hop_type**: string
+**next_hops**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_virtual_hub --> azure_virtual_hub_route_table
+azure_network_virtual_hub --> azure_virtual_hub_route_table_v2
+microsoft_resource <|--- azure_network_virtual_hub
+azure_virtual_hub_route_table --> azure_virtual_hub_route
+azure_virtual_hub_route_table_v2 --> azure_virtual_hub_route_v2
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

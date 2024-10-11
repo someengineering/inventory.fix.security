@@ -1,0 +1,206 @@
+---
+sidebar_label: Cognito User Pool
+---
+
+# `aws_cognito_user_pool`
+
+- Categories: Access Control
+- Service: cognito-idp
+- Provider Link: [Cognito User Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)
+
+## Description
+
+AWS Cognito User Pool is a managed service for user authentication and authorization. It handles user sign-up, sign-in, and access control for web and mobile applications. The service stores user profiles, supports multi-factor authentication, and integrates with social identity providers. It also offers customizable UI components and SDKs for various programming languages.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cognito User Pool"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cognito_user_pool {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_cognito_user_pool
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cognito User Pool resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cognito_group {
+
+}
+class aws_cognito_user {
+
+}
+class aws_cognito_user_pool {
+
+}
+class aws_kms_key {
+
+}
+class aws_lambda_function {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_sagemaker_workteam {
+
+}
+class aws_waf_web_acl {
+
+}
+aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
+aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
+aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
+aws_lambda_function -[#1A83AF]-> aws_kms_key
+aws_opensearch_domain -[#1A83AF]-> aws_cognito_user_pool
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
+aws_waf_web_acl -[#1A83AF]-> aws_cognito_user_pool
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cognito User Pool data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cognito_custom_email_lambda_version_config_type {
+**lambda_arn**: string
+**lambda_version**: string
+}
+class aws_cognito_custom_sms_lambda_version_config_type {
+**lambda_arn**: string
+**lambda_version**: string
+}
+class aws_cognito_lambda_config_type {
+**create_auth_challenge**: string
+**custom_email_sender**: aws_cognito_custom_email_lambda_version_config_type
+**custom_message**: string
+**custom_sms_sender**: aws_cognito_custom_sms_lambda_version_config_type
+**define_auth_challenge**: string
+**kms_key_id**: string
+**post_authentication**: string
+**post_confirmation**: string
+**pre_authentication**: string
+**pre_sign_up**: string
+**pre_token_generation**: string
+**user_migration**: string
+**verify_auth_challenge_response**: string
+}
+class aws_cognito_user_pool {
+**lambda_config**: aws_cognito_lambda_config_type
+**status**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_cognito_lambda_config_type --> aws_cognito_custom_email_lambda_version_config_type
+aws_cognito_lambda_config_type --> aws_cognito_custom_sms_lambda_version_config_type
+aws_cognito_user_pool --> aws_cognito_lambda_config_type
+aws_resource <|--- aws_cognito_user_pool
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

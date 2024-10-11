@@ -1,0 +1,207 @@
+---
+sidebar_label: Web App Service Plan
+---
+
+# `azure_web_app_service_plan`
+
+- Categories: Other
+- Service: app-service
+- Provider Link: [Web App Service Plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans)
+
+## Description
+
+Azure Web App Service Plan is a resource that defines the compute capacity for running web apps in Azure. It specifies the number of virtual machines, their size, and features available to the hosted applications. Users can choose from various tiers, each offering different performance levels, storage options, and additional capabilities to match their application requirements.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web App Service Plan"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_app_service_plan {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_app_service_plan
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App Service Plan resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_app {
+
+}
+class azure_web_app_service_plan {
+
+}
+class azure_web_certificate {
+
+}
+azure_web_app -[#1A83AF]-> azure_web_app_service_plan
+azure_web_app_service_plan -[#1A83AF]-> azure_web_certificate
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App Service Plan data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_hosting_environment_profile {
+**id**: string
+**name**: string
+**type**: string
+}
+class azure_kube_environment_profile {
+**id**: string
+**name**: string
+**type**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_web_app_service_plan {
+**azure_kind**: string
+**azure_sku**: azure_sku
+**elastic_scale_enabled**: boolean
+**extended_location**: azure_extended_location
+**free_offer_expiration_time**: datetime
+**geo_region**: string
+**hosting_environment_profile**: azure_hosting_environment_profile
+**hyper_v**: boolean
+**is_spot**: boolean
+**is_xenon**: boolean
+**kube_environment_profile**: azure_kube_environment_profile
+**maximum_elastic_worker_count**: int64
+**maximum_number_of_workers**: int64
+**number_of_sites**: int64
+**number_of_workers**: int64
+**per_site_scaling**: boolean
+**reserved**: boolean
+**resource_group**: string
+**spot_expiration_time**: datetime
+**status**: string
+**subscription**: string
+**target_worker_count**: int64
+**target_worker_size_id**: int64
+**worker_tier_name**: string
+**zone_redundant**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_web_app_service_plan --> azure_extended_location
+azure_web_app_service_plan --> azure_hosting_environment_profile
+azure_web_app_service_plan --> azure_kube_environment_profile
+azure_web_app_service_plan --> azure_sku
+microsoft_resource <|--- azure_web_app_service_plan
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

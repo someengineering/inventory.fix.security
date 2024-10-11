@@ -1,0 +1,180 @@
+---
+sidebar_label: CloudFront Field-Level Encryption Configuration
+---
+
+# `aws_cloudfront_field_level_encryption_config`
+
+- Categories: Networking
+- Service: cloudfront
+- Provider Link: [CloudFront Field-Level Encryption Configuration](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html)
+
+## Description
+
+AWS CloudFront Field-Level Encryption Configuration is a security feature that encrypts sensitive data fields in web forms before transmission to origin servers. It uses public key cryptography to protect specific information, ensuring that only authorized applications with the corresponding private key can decrypt the data, enhancing security for sensitive user input during transit.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of CloudFront Field-Level Encryption Configuration"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_field_level_encryption_config {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_cloudfront_field_level_encryption_config
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudFront Field-Level Encryption Configuration resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_distribution {
+
+}
+class aws_cloudfront_field_level_encryption_config {
+
+}
+class aws_cloudfront_field_level_encryption_profile {
+
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_config
+aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_level_encryption_profile
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudFront Field-Level Encryption Configuration data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_content_type_profile {
+**content_type**: string
+**format**: string
+**profile_id**: string
+}
+class aws_cloudfront_content_type_profile_config {
+**content_type_profiles**: aws_cloudfront_content_type_profile[]
+**forward_when_content_type_is_unknown**: boolean
+}
+class aws_cloudfront_field_level_encryption_config {
+**field_level_encryption_config_comment**: string
+**field_level_encryption_config_content_type_profile_config**: aws_cloudfront_content_type_profile_config
+**field_level_encryption_config_query_arg_profile_config**: aws_cloudfront_query_arg_profile_config
+}
+class aws_cloudfront_query_arg_profile {
+**profile_id**: string
+**query_arg**: string
+}
+class aws_cloudfront_query_arg_profile_config {
+**forward_when_query_arg_profile_is_unknown**: boolean
+**query_arg_profiles**: aws_cloudfront_query_arg_profile[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_cloudfront_content_type_profile_config --> aws_cloudfront_content_type_profile
+aws_cloudfront_field_level_encryption_config --> aws_cloudfront_content_type_profile_config
+aws_cloudfront_field_level_encryption_config --> aws_cloudfront_query_arg_profile_config
+aws_resource <|--- aws_cloudfront_field_level_encryption_config
+aws_cloudfront_query_arg_profile_config --> aws_cloudfront_query_arg_profile
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,231 @@
+---
+sidebar_label: Graph Organization
+---
+
+# `microsoft_graph_organization`
+
+- Categories: Management
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph Organization"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_organization {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+resource <|--- account
+microsoft_resource <|--- microsoft_graph_entity
+account <|--- microsoft_graph_organization
+microsoft_graph_entity <|--- microsoft_graph_organization
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Organization resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_organization {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Organization data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class microsoft_graph_assigned_plan {
+**assigned_date_time**: datetime
+**capability_status**: string
+**service**: string
+**service_plan_id**: string
+}
+class microsoft_graph_certificate_connector_setting {
+**cert_expiry_time**: string
+**connector_version**: string
+**enrollment_error**: string
+**last_connector_connection_time**: string
+**last_upload_version**: int64
+**status**: int64
+}
+class microsoft_graph_directory_size_quota {
+**total**: int64
+**used**: int64
+}
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_graph_organization {
+**assigned_plans**: microsoft_graph_assigned_plan[]
+**business_phones**: string[]
+**certificate_connector_setting**: microsoft_graph_certificate_connector_setting
+**city**: string
+**country**: string
+**country_letter_code**: string
+**created_date_time**: datetime
+**default_usage_location**: string
+**directory_size_quota**: microsoft_graph_directory_size_quota
+**display_name**: string
+**is_multiple_data_locations_for_services_enabled**: boolean
+**marketing_notification_emails**: string[]
+**on_premises_last_password_sync_date_time**: datetime
+**on_premises_last_sync_date_time**: datetime
+**on_premises_sync_enabled**: boolean
+**partner_tenant_type**: string
+**postal_code**: string
+**preferred_language**: string
+**privacy_profile**: microsoft_graph_privacy_profile
+**provisioned_plans**: microsoft_graph_provisioned_plan[]
+**security_compliance_notification_mails**: string[]
+**security_compliance_notification_phones**: string[]
+**state**: string
+**street**: string
+**technical_notification_mails**: string[]
+**tenant_type**: string
+**verified_domains**: microsoft_graph_verified_domain[]
+}
+class microsoft_graph_privacy_profile {
+**contact_email**: string
+**statement_url**: string
+}
+class microsoft_graph_provisioned_plan {
+**capability_status**: string
+**provisioning_status**: string
+**service**: string
+}
+class microsoft_graph_verified_domain {
+**capabilities**: string
+**is_default**: boolean
+**is_initial**: boolean
+**name**: string
+**type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- account
+microsoft_resource <|--- microsoft_graph_entity
+account <|--- microsoft_graph_organization
+microsoft_graph_organization --> microsoft_graph_assigned_plan
+microsoft_graph_organization --> microsoft_graph_certificate_connector_setting
+microsoft_graph_organization --> microsoft_graph_directory_size_quota
+microsoft_graph_entity <|--- microsoft_graph_organization
+microsoft_graph_organization --> microsoft_graph_privacy_profile
+microsoft_graph_organization --> microsoft_graph_provisioned_plan
+microsoft_graph_organization --> microsoft_graph_verified_domain
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

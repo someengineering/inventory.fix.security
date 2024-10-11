@@ -1,0 +1,175 @@
+---
+sidebar_label: EC2 Flow Log
+---
+
+# `aws_ec2_flow_log`
+
+- Categories: Management
+- Service: ec2
+- Provider Link: [EC2 Flow Log](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
+
+## Description
+
+AWS EC2 Flow Logs capture network traffic information for EC2 instances, VPCs, and subnet interfaces. They record details about IP traffic, including source and destination addresses, ports, protocols, and packet counts. This data helps monitor network traffic patterns, troubleshoot connectivity issues, and enhance security by identifying potential threats or anomalies within AWS infrastructure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Flow Log"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_flow_log {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_flow_log
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Flow Log resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_flow_log {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_vpc {
+
+}
+aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
+aws_vpc -[#1A83AF]-> aws_ec2_flow_log
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Flow Log data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_destination_option {
+**file_format**: string
+**hive_compatible_partitions**: boolean
+**per_hour_partition**: boolean
+}
+class aws_ec2_flow_log {
+**deliver_cross_account_role**: string
+**deliver_logs_error_message**: string
+**deliver_logs_permission_arn**: string
+**deliver_logs_status**: string
+**destination_options**: aws_ec2_destination_option
+**flow_log_status**: string
+**log_destination**: string
+**log_destination_type**: string
+**log_format**: string
+**log_group_name**: string
+**max_aggregation_interval**: int64
+**resource_id**: string
+**traffic_type**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_flow_log --> aws_ec2_destination_option
+aws_resource <|--- aws_ec2_flow_log
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

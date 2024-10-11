@@ -1,0 +1,187 @@
+---
+sidebar_label: SageMaker Notebook
+---
+
+# `aws_sagemaker_notebook`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Notebook](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html)
+
+## Description
+
+AWS SageMaker Notebook is a cloud-based development environment for machine learning. It provides Jupyter notebooks with pre-configured kernels and libraries for data science and ML tasks. Users can create, edit, and run code, visualize data, and train models within the notebook interface. It integrates with other AWS services for data storage, processing, and model deployment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Notebook"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_notebook
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Notebook resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_sagemaker_code_repository {
+
+}
+class aws_sagemaker_notebook {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
+aws_iam_role -[#1A83AF]-> aws_sagemaker_notebook
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_notebook
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_sagemaker_notebook -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Notebook data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_notebook {
+**notebook_accelerator_types**: string[]
+**notebook_additional_code_repositories**: string[]
+**notebook_default_code_repository**: string
+**notebook_direct_internet_access**: string
+**notebook_failure_reason**: string
+**notebook_instance_lifecycle_config_name**: string
+**notebook_instance_metadata_service_configuration**: string
+**notebook_instance_status**: string
+**notebook_instance_type**: string
+**notebook_platform_identifier**: string
+**notebook_root_access**: string
+**notebook_url**: string
+**notebook_volume_size_in_gb**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_notebook
+
+@enduml
+```
+
+</ZoomPanPinch>

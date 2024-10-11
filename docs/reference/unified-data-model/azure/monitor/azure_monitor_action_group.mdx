@@ -1,0 +1,249 @@
+---
+sidebar_label: Monitor Action Group
+---
+
+# `azure_monitor_action_group`
+
+- Categories: Management
+- Service: monitor
+- Provider Link: [Monitor Action Group](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups)
+
+## Description
+
+Azure Monitor Action Group is a configuration service for automated responses to monitoring alerts. It defines a set of actions to be executed when specific conditions are met. These actions can include sending notifications via email, SMS, or voice calls, triggering automated processes, or integrating with external systems to manage and respond to issues in Azure resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Action Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_action_group {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_monitor_action_group
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Action Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_action_group {
+
+}
+class azure_monitor_activity_log_alert {
+
+}
+azure_monitor_action_group -[#1A83AF]-> azure_monitor_activity_log_alert
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Action Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_action_group {
+**arm_role_receivers**: azure_monitor_arm_role_receiver[]
+**automation_runbook_receivers**: azure_monitor_automation_runbook_receiver[]
+**azure_app_push_receivers**: azure_monitor_app_push_receiver[]
+**azure_function_receivers**: azure_monitor_function_receiver[]
+**email_receivers**: azure_monitor_email_receiver[]
+**enabled**: boolean
+**event_hub_receivers**: azure_monitor_event_hub_receiver[]
+**group_short_name**: string
+**itsm_receivers**: azure_monitor_itsm_receiver[]
+**logic_app_receivers**: azure_monitor_logic_app_receiver[]
+**sms_receivers**: azure_monitor_sms_receiver[]
+**voice_receivers**: azure_monitor_voice_receiver[]
+**webhook_receivers**: azure_monitor_webhook_receiver[]
+}
+class azure_monitor_app_push_receiver {
+**email_address**: string
+**name**: string
+}
+class azure_monitor_arm_role_receiver {
+**name**: string
+**role_id**: string
+**use_common_alert_schema**: boolean
+}
+class azure_monitor_automation_runbook_receiver {
+**automation_account_id**: string
+**is_global_runbook**: boolean
+**name**: string
+**runbook_name**: string
+**service_uri**: string
+**use_common_alert_schema**: boolean
+**webhook_resource_id**: string
+}
+class azure_monitor_email_receiver {
+**email_address**: string
+**name**: string
+**status**: string
+**use_common_alert_schema**: boolean
+}
+class azure_monitor_event_hub_receiver {
+**event_hub_name**: string
+**event_hub_name_space**: string
+**name**: string
+**subscription_id**: string
+**tenant_id**: string
+**use_common_alert_schema**: boolean
+}
+class azure_monitor_function_receiver {
+**function_app_resource_id**: string
+**function_name**: string
+**http_trigger_url**: string
+**name**: string
+**use_common_alert_schema**: boolean
+}
+class azure_monitor_itsm_receiver {
+**connection_id**: string
+**name**: string
+**region**: string
+**ticket_configuration**: string
+**workspace_id**: string
+}
+class azure_monitor_logic_app_receiver {
+**callback_url**: string
+**name**: string
+**resource_id**: string
+**use_common_alert_schema**: boolean
+}
+class azure_monitor_sms_receiver {
+**country_code**: string
+**name**: string
+**phone_number**: string
+**status**: string
+}
+class azure_monitor_voice_receiver {
+**country_code**: string
+**name**: string
+**phone_number**: string
+}
+class azure_monitor_webhook_receiver {
+**identifier_uri**: string
+**name**: string
+**object_id**: string
+**service_uri**: string
+**tenant_id**: string
+**use_aad_auth**: boolean
+**use_common_alert_schema**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_monitor_action_group --> azure_monitor_app_push_receiver
+azure_monitor_action_group --> azure_monitor_arm_role_receiver
+azure_monitor_action_group --> azure_monitor_automation_runbook_receiver
+azure_monitor_action_group --> azure_monitor_email_receiver
+azure_monitor_action_group --> azure_monitor_event_hub_receiver
+azure_monitor_action_group --> azure_monitor_function_receiver
+azure_monitor_action_group --> azure_monitor_itsm_receiver
+azure_monitor_action_group --> azure_monitor_logic_app_receiver
+azure_monitor_action_group --> azure_monitor_sms_receiver
+azure_monitor_action_group --> azure_monitor_voice_receiver
+azure_monitor_action_group --> azure_monitor_webhook_receiver
+microsoft_resource <|--- azure_monitor_action_group
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

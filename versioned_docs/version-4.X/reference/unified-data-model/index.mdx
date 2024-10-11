@@ -8,15 +8,15 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
 When working with multiple clouds, it can be tedious to what resource kinds and attributes are named. To implement org policies (such as "no unencrypted storage volumes" or "every compute instance must have a cost center tag"), you don't want to rewrite those checks for every cloud provider.
 
-While Fix Inventory has knowledge of cloud-specific resource kinds like [`aws_ec2_volume`](../../../../docs/reference/unified-data-model/aws.mdx#aws_ec2_volume) and [`gcp_disk`](../../../../docs/reference/unified-data-model/gcp.mdx#gcp_disk), both of those kinds inherit from the base `volume` kind, which in turn inherits from the [`resource` base kind](../../../../docs/reference/unified-data-model/index.mdx#resource-base-kind):
+While Fix Inventory has knowledge of cloud-specific resource kinds like [`aws_ec2_volume`](aws.mdx#aws_ec2_volume) and [`gcp_disk`](gcp.mdx#gcp_disk), both of those kinds inherit from the base `volume` kind, which in turn inherits from the [`resource` base kind](index.mdx#resource-base-kind):
 
 - The `resource` kind defines basic attributes common to all resources (e.g., name, creation time, etc.).
 
-- The [`volume`](../../../../docs/reference/unified-data-model/base-kinds.mdx#volume) kind defines properties that are common to most storage volumes.
+- The [`volume`](base-kinds.mdx#volume) kind defines properties that are common to most storage volumes.
 
-- The [`aws_ec2_volume`](../../../../docs/reference/unified-data-model/aws.mdx#aws_ec2_volume) and [`gcp_disk`](../../../../docs/reference/unified-data-model/gcp.mdx#gcp_disk) kinds define properties that are specific to AWS and Google Cloud, respectively.
+- The [`aws_ec2_volume`](aws.mdx#aws_ec2_volume) and [`gcp_disk`](gcp.mdx#gcp_disk) kinds define properties that are specific to AWS and Google Cloud, respectively.
 
-The information whether a volume is encrypted or not comes from a boolean of the [`volume`](../../../../docs/reference/unified-data-model/base-kinds.mdx#volume) kind.
+The information whether a volume is encrypted or not comes from a boolean of the [`volume`](base-kinds.mdx#volume) kind.
 
 When searching for unencrypted volumes, `search is(volume) and encrypted = false` will find _any_ unencrypted volume, no matter which cloud they were created in.
 
@@ -34,13 +34,13 @@ Fix Inventory has built-in support for resource types from the following cloud p
 
 **Every resource collected by Fix Inventory has the `resource` base kind, which defines properties common to all resources.**
 
-![Base Resource Data Model](../../../../docs/reference/unified-data-model/img/resource.svg)
+![Base Resource Data Model](img/resource.svg)
 
 | Property | Description |
 | --- | --- |
 | `id` | Resource identifier (does not need to be unique across all resources) |
 | `name` | Cloud-specific resource name |
-| `kind` | Resource kind in Fix Inventory<br /><br /><Admonition type="tip" title="Example">[AWS EC2 Volumes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html) are of kind [`aws_ec2_volume`](../../../../docs/reference/unified-data-model/aws.mdx#aws_ec2_volume).</Admonition> |
+| `kind` | Resource kind in Fix Inventory<br /><br /><Admonition type="tip" title="Example">[AWS EC2 Volumes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html) are of kind [`aws_ec2_volume`](aws.mdx#aws_ec2_volume).</Admonition> |
 | `tags` | Key-value `string` pairs held in a dictionary |
 | `ctime` | Resource creation time<br /><br /><Admonition type="note">Fix Inventory uses the time this resource was first discovered when the cloud provider does not provide this value.</Admonition> |
 | `atime` | Last accessed time as of the most recent [resource collection](../../../../docs/concepts/cloud-data-sync/index.mdx)<br /><br /><Admonition type="note">Fix Inventory attempts to synthesize the last access timestamp when the cloud provider does not provide this value.</Admonition> |
@@ -61,17 +61,17 @@ Fix Inventory also introduces abstract model classes for different resource type
 <div>
 <ZoomPanPinch>
 
-![Example Resource Model](../../../../docs/reference/unified-data-model/img/resource_example.svg)
+![Example Resource Model](img/resource_example.svg)
 
 </ZoomPanPinch>
 
-- **[`aws_ec2_volume`](../../../../docs/reference/unified-data-model/aws.mdx#aws_ec2_volume) inherits from the base [`volume`](../../../../docs/reference/unified-data-model/base-kinds.mdx#volume) kind, which itself inherits all properties from `resource`.**
+- **[`aws_ec2_volume`](aws.mdx#aws_ec2_volume) inherits from the base [`volume`](base-kinds.mdx#volume) kind, which itself inherits all properties from `resource`.**
 
-  As such, [`aws_ec2_volume`](../../../../docs/reference/unified-data-model/aws.mdx#aws_ec2_volume) has all properties of [`volume`](../../../../docs/reference/unified-data-model/base-kinds.mdx#volume) and `resource`, in addition to its own properties:
+  As such, [`aws_ec2_volume`](aws.mdx#aws_ec2_volume) has all properties of [`volume`](base-kinds.mdx#volume) and `resource`, in addition to its own properties:
 
-  ![aws_ec2_volume Example Data](../../../../docs/reference/unified-data-model/img/ec2_volume_example.svg)
+  ![aws_ec2_volume Example Data](img/ec2_volume_example.svg)
 
-- **[`gcp_disk`](../../../../docs/reference/unified-data-model/gcp.mdx#gcp_disk) is also a [`volume`](../../../../docs/reference/unified-data-model/base-kinds.mdx#volume).**
+- **[`gcp_disk`](gcp.mdx#gcp_disk) is also a [`volume`](base-kinds.mdx#volume).**
 
   A [Google Cloud Disk resource](https://cloud.google.com/compute/docs/reference/rest/v1/disks) is conceptually similar to an AWS EC2 Volume and the two resource types have many properties in common.
 

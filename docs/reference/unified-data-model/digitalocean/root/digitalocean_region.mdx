@@ -1,0 +1,240 @@
+---
+sidebar_label: Region
+---
+
+# `digitalocean_region`
+
+- Categories: Management
+
+## Description
+
+A region in DigitalOcean's cloud infrastructure where resources such as droplets, volumes, and networks can be deployed.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Region"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_region {
+
+}
+class digitalocean_resource {
+
+}
+class phantom_resource {
+
+}
+class region {
+
+}
+class resource {
+
+}
+digitalocean_resource <|--- digitalocean_region
+region <|--- digitalocean_region
+resource <|--- digitalocean_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Region resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_app {
+
+}
+class digitalocean_container_registry {
+
+}
+class digitalocean_database {
+
+}
+class digitalocean_droplet {
+
+}
+class digitalocean_floating_ip {
+
+}
+class digitalocean_image {
+
+}
+class digitalocean_kubernetes_cluster {
+
+}
+class digitalocean_load_balancer {
+
+}
+class digitalocean_region {
+
+}
+class digitalocean_snapshot {
+
+}
+class digitalocean_space {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_vpc {
+
+}
+digitalocean_database -[#1A83AF]-> digitalocean_app
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
+digitalocean_region -[#1A83AF]-> digitalocean_database
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Region data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_region {
+**do_region_droplet_sizes**: string[]
+**do_region_features**: string[]
+**do_region_slug**: string
+**is_available**: boolean
+}
+class digitalocean_resource {
+**urn**: string
+}
+class phantom_resource {
+
+}
+class region {
+**latitude**: double
+**long_name**: string
+**longitude**: double
+**region_in_use**: boolean
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+digitalocean_resource <|--- digitalocean_region
+region <|--- digitalocean_region
+resource <|--- digitalocean_resource
+resource <|--- phantom_resource
+phantom_resource <|--- region
+
+@enduml
+```
+
+</ZoomPanPinch>
