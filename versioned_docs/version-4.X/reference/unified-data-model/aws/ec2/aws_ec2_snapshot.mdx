@@ -1,0 +1,189 @@
+---
+sidebar_label: EC2 Snapshot
+---
+
+# `aws_ec2_snapshot`
+
+- Categories: Storage
+- Service: ec2
+- Provider Link: [EC2 Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+
+## Description
+
+AWS EC2 Snapshot is a backup tool for Amazon Elastic Compute Cloud (EC2) instances. It creates point-in-time copies of Elastic Block Store (EBS) volumes, preserving data at a specific moment. Users can restore snapshots to new EBS volumes, create images for launching new instances, or transfer data between AWS regions for disaster recovery and data migration purposes.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Snapshot"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_snapshot {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+class snapshot {
+
+}
+aws_resource <|--- aws_ec2_snapshot
+snapshot <|--- aws_ec2_snapshot
+resource <|--- aws_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_image {
+
+}
+class aws_ec2_snapshot {
+
+}
+class aws_ec2_volume {
+
+}
+class aws_kms_key {
+
+}
+class aws_region {
+
+}
+aws_ec2_image -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_region -[#1A83AF]-> aws_ec2_volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_snapshot {
+**snapshot_data_encryption_key_id**: string
+**snapshot_kms_key_id**: string
+**snapshot_outpost_arn**: string
+**snapshot_progress**: string
+**snapshot_restore_expiry_time**: datetime
+**snapshot_state_message**: string
+**snapshot_storage_tier**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
+aws_resource <|--- aws_ec2_snapshot
+snapshot <|--- aws_ec2_snapshot
+resource <|--- aws_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>

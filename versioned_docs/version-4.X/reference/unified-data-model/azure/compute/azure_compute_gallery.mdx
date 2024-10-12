@@ -1,0 +1,185 @@
+---
+sidebar_label: Compute Gallery
+---
+
+# `azure_compute_gallery`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Gallery](https://learn.microsoft.com/en-us/azure/virtual-machines/shared-image-galleries)
+
+## Description
+
+Azure Compute Gallery is a service for storing and managing virtual machine images and related artifacts. It provides a central repository for sharing, versioning, and replicating images across Azure regions and subscriptions. Users can create and maintain custom images, distribute them to different teams, and deploy virtual machines from these shared resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Gallery"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_gallery {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_gallery
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Gallery resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_gallery {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Gallery data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_community_gallery_info {
+**community_gallery_enabled**: boolean
+**eula**: string
+**public_name_prefix**: string
+**public_names**: string[]
+**publisher_contact**: string
+**publisher_uri**: string
+}
+class azure_compute_gallery {
+**description**: string
+**identifier**: string
+**sharing_profile**: azure_sharing_profile
+**sharing_status**: azure_sharing_status
+**soft_delete_policy**: boolean
+}
+class azure_regional_sharing_status {
+**details**: string
+**region**: string
+**state**: string
+}
+class azure_sharing_profile {
+**community_gallery_info**: azure_community_gallery_info
+**groups**: azure_sharing_profile_group[]
+**permissions**: string
+}
+class azure_sharing_profile_group {
+**ids**: string[]
+**type**: string
+}
+class azure_sharing_status {
+**aggregated_state**: string
+**summary**: azure_regional_sharing_status[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_compute_gallery --> azure_sharing_profile
+azure_compute_gallery --> azure_sharing_status
+microsoft_resource <|--- azure_compute_gallery
+azure_sharing_profile --> azure_community_gallery_info
+azure_sharing_profile --> azure_sharing_profile_group
+azure_sharing_status --> azure_regional_sharing_status
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

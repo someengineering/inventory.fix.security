@@ -1,0 +1,199 @@
+---
+sidebar_label: Ingress
+---
+
+# `kubernetes_ingress`
+
+- Categories: Networking
+- Service: kubernetes
+
+## Description
+
+Kubernetes Ingress is an API object that manages external access to services within a Kubernetes cluster.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Ingress"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_ingress {
+
+}
+class kubernetes_resource {
+
+}
+class load_balancer {
+
+}
+class resource {
+
+}
+kubernetes_resource <|--- kubernetes_ingress
+load_balancer <|--- kubernetes_ingress
+resource <|--- kubernetes_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Ingress resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_ingress {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Ingress data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_ingress {
+**ingress_spec**: kubernetes_ingress_spec
+**ingress_status**: kubernetes_ingress_status
+}
+class kubernetes_ingress_rule {
+**host**: string
+**http**: any
+}
+class kubernetes_ingress_spec {
+**ingress_class_name**: string
+**rules**: kubernetes_ingress_rule[]
+**tls**: kubernetes_ingress_tls[]
+}
+class kubernetes_ingress_status {
+**load_balancer**: kubernetes_ingress_status_loadbalancer
+}
+class kubernetes_ingress_status_loadbalancer {
+**ingress**: kubernetes_ingress_status_loadbalancer_ingress[]
+}
+class kubernetes_ingress_status_loadbalancer_ingress {
+**hostname**: string
+**ip**: string
+**ports**: kubernetes_ingress_status_loadbalancer_ingress_ports[]
+}
+class kubernetes_ingress_status_loadbalancer_ingress_ports {
+**error**: string
+**port**: int64
+**protocol**: string
+}
+class kubernetes_ingress_tls {
+**hosts**: string[]
+**secret_name**: string
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+kubernetes_ingress --> kubernetes_ingress_spec
+kubernetes_ingress --> kubernetes_ingress_status
+kubernetes_resource <|--- kubernetes_ingress
+load_balancer <|--- kubernetes_ingress
+kubernetes_ingress_spec --> kubernetes_ingress_rule
+kubernetes_ingress_spec --> kubernetes_ingress_tls
+kubernetes_ingress_status --> kubernetes_ingress_status_loadbalancer
+kubernetes_ingress_status_loadbalancer --> kubernetes_ingress_status_loadbalancer_ingress
+kubernetes_ingress_status_loadbalancer_ingress --> kubernetes_ingress_status_loadbalancer_ingress_ports
+resource <|--- kubernetes_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>

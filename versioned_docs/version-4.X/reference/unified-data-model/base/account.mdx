@@ -1,0 +1,117 @@
+---
+sidebar_label: Account
+---
+
+# `account`
+
+- Categories: Management
+
+## Description
+
+An account.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class aws_account {
+
+}
+class azure_subscription {
+
+}
+class digitalocean_team {
+
+}
+class dockerhub_namespace {
+
+}
+class gcp_project {
+
+}
+class github_account {
+
+}
+class kubernetes_cluster {
+
+}
+class microsoft_graph_organization {
+
+}
+class onelogin_account {
+
+}
+class onprem_location {
+
+}
+class posthog_project {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class scarf_organization {
+
+}
+class slack_team {
+
+}
+class vsphere_host {
+
+}
+resource <|--- account
+account <|--- aws_account
+account <|--- azure_subscription
+account <|--- digitalocean_team
+account <|--- dockerhub_namespace
+account <|--- gcp_project
+account <|--- github_account
+account <|--- kubernetes_cluster
+account <|--- microsoft_graph_organization
+account <|--- onelogin_account
+account <|--- onprem_location
+account <|--- posthog_project
+account <|--- scarf_organization
+account <|--- slack_team
+account <|--- vsphere_host
+
+@enduml
+```
+
+</ZoomPanPinch>

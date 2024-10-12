@@ -1,0 +1,299 @@
+---
+sidebar_label: Vertex AI Model Deployment Monitoring Job
+---
+
+# `gcp_vertex_ai_model_deployment_monitoring_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: aiplatform
+- Provider Link: [Vertex AI Model Deployment Monitoring Job](https://cloud.google.com/docs)
+
+## Description
+
+A Model Deployment Monitoring Job monitors the performance of machine learning models in production to detect data drift, model performance degradation, and other anomalies.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Model Deployment Monitoring Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_resource {
+
+}
+class gcp_vertex_ai_model_deployment_monitoring_job {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+resource <|--- gcp_resource
+ai_job <|--- gcp_vertex_ai_model_deployment_monitoring_job
+gcp_resource <|--- gcp_vertex_ai_model_deployment_monitoring_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Model Deployment Monitoring Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_endpoint {
+
+}
+class gcp_vertex_ai_model_deployment_monitoring_job {
+
+}
+gcp_vertex_ai_endpoint -[#1A83AF]-> gcp_vertex_ai_model_deployment_monitoring_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Model Deployment Monitoring Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_details {
+
+}
+class gcp_google_rpc_status {
+**code**: int64
+**details**: gcp_details[]
+**message**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_gcs_source {
+**uris**: string[]
+}
+class gcp_vertex_ai_model_deployment_monitoring_big_query_table {
+**bigquery_table_path**: string
+**log_source**: string
+**log_type**: string
+**request_response_logging_schema_version**: string
+}
+class gcp_vertex_ai_model_deployment_monitoring_job {
+**analysis_instance_schema_uri**: string
+**bigquery_tables**: gcp_vertex_ai_model_deployment_monitoring_big_query_table[]
+**create_time**: datetime
+**display_name**: string
+**enable_monitoring_pipeline_logs**: boolean
+**encryption_spec**: string
+**endpoint**: string
+**latest_monitoring_pipeline_metadata**: gcp_vertex_ai_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata
+**log_ttl**: string
+**logging_sampling_strategy**: gcp_vertex_ai_sampling_strategy
+**model_deployment_monitoring_objective_configs**: gcp_vertex_ai_model_deployment_monitoring_objective_config[]
+**model_deployment_monitoring_schedule_config**: gcp_vertex_ai_model_deployment_monitoring_schedule_config
+**model_monitoring_alert_config**: gcp_vertex_ai_model_monitoring_alert_config
+**next_schedule_time**: datetime
+**predict_instance_schema_uri**: string
+**rpc_error**: gcp_google_rpc_status
+**sample_predict_instance**: any
+**schedule_state**: string
+**state**: string
+**stats_anomalies_base_directory**: string
+**update_time**: datetime
+}
+class gcp_vertex_ai_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata {
+**run_time**: datetime
+**status**: gcp_google_rpc_status
+}
+class gcp_vertex_ai_model_deployment_monitoring_objective_config {
+**deployed_model_id**: string
+**objective_config**: gcp_vertex_ai_model_monitoring_objective_config
+}
+class gcp_vertex_ai_model_deployment_monitoring_schedule_config {
+**monitor_interval**: string
+**monitor_window**: string
+}
+class gcp_vertex_ai_model_monitoring_alert_config {
+**email_alert_config**: gcp_vertex_ai_model_monitoring_alert_config_email_alert_config
+**enable_logging**: boolean
+**notification_channels**: string[]
+}
+class gcp_vertex_ai_model_monitoring_alert_config_email_alert_config {
+**user_emails**: string[]
+}
+class gcp_vertex_ai_model_monitoring_objective_config {
+**explanation_config**: gcp_vertex_ai_model_monitoring_objective_config_explanation_config
+**prediction_drift_detection_config**: gcp_vertex_ai_model_monitoring_objective_config_prediction_drift_detection_config
+**training_dataset**: gcp_vertex_ai_model_monitoring_objective_config_training_dataset
+**training_prediction_skew_detection_config**: gcp_vertex_ai_model_monitoring_objective_config_training_prediction_skew_detection_config
+}
+class gcp_vertex_ai_model_monitoring_objective_config_explanation_config {
+**enable_feature_attributes**: boolean
+**explanation_baseline**: gcp_vertex_ai_model_monitoring_objective_config_explanation_config_explanation_baseline
+}
+class gcp_vertex_ai_model_monitoring_objective_config_explanation_config_explanation_baseline {
+**bigquery**: string
+**gcs**: string
+**prediction_format**: string
+}
+class gcp_vertex_ai_model_monitoring_objective_config_prediction_drift_detection_config {
+**attribution_score_drift_thresholds**: dictionary[string, gcp_vertex_ai_threshold_config]
+**default_drift_threshold**: double
+**drift_thresholds**: dictionary[string, gcp_vertex_ai_threshold_config]
+}
+class gcp_vertex_ai_model_monitoring_objective_config_training_dataset {
+**bigquery_source**: string
+**data_format**: string
+**dataset**: string
+**gcs_source**: gcp_vertex_ai_gcs_source
+**logging_sampling_strategy**: gcp_vertex_ai_sampling_strategy
+**target_field**: string
+}
+class gcp_vertex_ai_model_monitoring_objective_config_training_prediction_skew_detection_config {
+**attribution_score_skew_thresholds**: dictionary[string, gcp_vertex_ai_threshold_config]
+**default_skew_threshold**: double
+**skew_thresholds**: dictionary[string, gcp_vertex_ai_threshold_config]
+}
+class gcp_vertex_ai_sampling_strategy {
+**random_sample_config**: double
+}
+class gcp_vertex_ai_threshold_config {
+**value**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+gcp_google_rpc_status --> gcp_details
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+ai_job <|--- gcp_vertex_ai_model_deployment_monitoring_job
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_deprecation_status
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_google_rpc_status
+gcp_resource <|--- gcp_vertex_ai_model_deployment_monitoring_job
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_model_deployment_monitoring_big_query_table
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_model_deployment_monitoring_objective_config
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_model_deployment_monitoring_schedule_config
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_model_monitoring_alert_config
+gcp_vertex_ai_model_deployment_monitoring_job --> gcp_vertex_ai_sampling_strategy
+gcp_vertex_ai_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata --> gcp_google_rpc_status
+gcp_vertex_ai_model_deployment_monitoring_objective_config --> gcp_vertex_ai_model_monitoring_objective_config
+gcp_vertex_ai_model_monitoring_alert_config --> gcp_vertex_ai_model_monitoring_alert_config_email_alert_config
+gcp_vertex_ai_model_monitoring_objective_config --> gcp_vertex_ai_model_monitoring_objective_config_explanation_config
+gcp_vertex_ai_model_monitoring_objective_config --> gcp_vertex_ai_model_monitoring_objective_config_prediction_drift_detection_config
+gcp_vertex_ai_model_monitoring_objective_config --> gcp_vertex_ai_model_monitoring_objective_config_training_dataset
+gcp_vertex_ai_model_monitoring_objective_config --> gcp_vertex_ai_model_monitoring_objective_config_training_prediction_skew_detection_config
+gcp_vertex_ai_model_monitoring_objective_config_explanation_config --> gcp_vertex_ai_model_monitoring_objective_config_explanation_config_explanation_baseline
+gcp_vertex_ai_model_monitoring_objective_config_prediction_drift_detection_config --> gcp_vertex_ai_threshold_config
+gcp_vertex_ai_model_monitoring_objective_config_training_dataset --> gcp_vertex_ai_gcs_source
+gcp_vertex_ai_model_monitoring_objective_config_training_dataset --> gcp_vertex_ai_sampling_strategy
+gcp_vertex_ai_model_monitoring_objective_config_training_prediction_skew_detection_config --> gcp_vertex_ai_threshold_config
+
+@enduml
+```
+
+</ZoomPanPinch>

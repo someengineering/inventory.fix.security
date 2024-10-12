@@ -1,0 +1,393 @@
+---
+sidebar_label: Graph User
+---
+
+# `microsoft_graph_user`
+
+- Categories: Access Control
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph User"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_user {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class user {
+
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_entity <|--- microsoft_graph_user
+user <|--- microsoft_graph_user
+resource <|--- microsoft_resource
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph User resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_assignment {
+
+}
+class azure_cosmos_db_account {
+
+}
+class azure_machine_learning_batch_endpoint {
+
+}
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_private_endpoint_connection {
+
+}
+class azure_machine_learning_private_link {
+
+}
+class azure_machine_learning_registry {
+
+}
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_mysql_server {
+
+}
+class azure_mysql_server_ad_administrator {
+
+}
+class azure_postgresql_server {
+
+}
+class azure_sql_server {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_managed_instance {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_graph_role {
+
+}
+class microsoft_graph_user {
+
+}
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_group
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_user
+azure_cosmos_db_account -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_batch_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_private_endpoint_connection -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_private_link -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_registry -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_batch_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_endpoint_connection
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_link
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_serverless_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_user
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_ad_administrator
+azure_mysql_server -[#1A83AF]-> microsoft_graph_user
+azure_mysql_server_ad_administrator -[#1A83AF]-> microsoft_graph_user
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_user
+azure_sql_server -[#1A83AF]-> azure_sql_server_database
+azure_sql_server -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_database -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_managed_instance -[#1A83AF]-> microsoft_graph_user
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_user
+microsoft_graph_role -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_user -[#1A83AF]-> microsoft_graph_role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph User data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_assigned_license {
+**disabled_plans**: string[]
+**sku_id**: string
+}
+class microsoft_graph_assigned_plan {
+**assigned_date_time**: datetime
+**capability_status**: string
+**service**: string
+**service_plan_id**: string
+}
+class microsoft_graph_authorization_info {
+**certificate_user_ids**: string[]
+}
+class microsoft_graph_cloud_realtime_communication_info {
+**is_sip_enabled**: boolean
+}
+class microsoft_graph_device_key {
+**device_id**: string
+**key_material**: string
+**key_type**: string
+}
+class microsoft_graph_employee_org_data {
+**cost_center**: string
+**division**: string
+}
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_graph_license_assignment_state {
+**assigned_by_group**: string
+**disabled_plans**: string[]
+**error**: string
+**last_updated_date_time**: datetime
+**sku_id**: string
+**state**: string
+}
+class microsoft_graph_object_identity {
+**issuer**: string
+**issuer_assigned_id**: string
+**sign_in_type**: string
+}
+class microsoft_graph_on_premises_provisioning_error {
+**category**: string
+**occurred_date_time**: datetime
+**property_causing_error**: string
+**value**: string
+}
+class microsoft_graph_on_premises_sip_info {
+**is_sip_enabled**: boolean
+**sip_deployment_location**: string
+**sip_primary_address**: string
+}
+class microsoft_graph_password_profile {
+**force_change_password_next_sign_in**: boolean
+**force_change_password_next_sign_in_with_mfa**: boolean
+**password**: string
+}
+class microsoft_graph_provisioned_plan {
+**capability_status**: string
+**provisioning_status**: string
+**service**: string
+}
+class microsoft_graph_service_provisioning_error {
+**created_date_time**: datetime
+**is_resolved**: boolean
+**service_instance**: string
+}
+class microsoft_graph_user {
+**account_enabled**: boolean
+**age_group**: string
+**assigned_licenses**: microsoft_graph_assigned_license[]
+**assigned_plans**: microsoft_graph_assigned_plan[]
+**authorization_info**: microsoft_graph_authorization_info
+**business_phones**: string[]
+**city**: string
+**cloud_realtime_communication_info**: microsoft_graph_cloud_realtime_communication_info
+**company_name**: string
+**consent_provided_for_minor**: string
+**country**: string
+**created_date_time**: datetime
+**creation_type**: string
+**custom_security_attributes**: dictionary[string, string]
+**department**: string
+**device_keys**: microsoft_graph_device_key[]
+**display_name**: string
+**employee_hire_date**: string
+**employee_id**: string
+**employee_leave_date_time**: datetime
+**employee_org_data**: microsoft_graph_employee_org_data
+**employee_type**: string
+**external_user_state**: string
+**external_user_state_change_date_time**: datetime
+**fax_number**: string
+**given_name**: string
+**identities**: microsoft_graph_object_identity[]
+**im_addresses**: string[]
+**info_catalogs**: string[]
+**is_management_restricted**: boolean
+**is_resource_account**: boolean
+**job_title**: string
+**last_password_change_date_time**: datetime
+**legal_age_group_classification**: string
+**license_assignment_states**: microsoft_graph_license_assignment_state[]
+**mail**: string
+**mail_nickname**: string
+**mobile_phone**: string
+**office_location**: string
+**on_premises_distinguished_name**: string
+**on_premises_domain_name**: string
+**on_premises_extension_attributes**: dictionary[string, string]
+**on_premises_immutable_id**: string
+**on_premises_last_sync_date_time**: datetime
+**on_premises_provisioning_errors**: microsoft_graph_on_premises_provisioning_error[]
+**on_premises_sam_account_name**: string
+**on_premises_security_identifier**: string
+**on_premises_sip_info**: microsoft_graph_on_premises_sip_info
+**on_premises_sync_enabled**: boolean
+**on_premises_user_principal_name**: string
+**other_mails**: string[]
+**password_policies**: string
+**password_profile**: microsoft_graph_password_profile
+**postal_code**: string
+**preferred_data_location**: string
+**preferred_language**: string
+**provisioned_plans**: microsoft_graph_provisioned_plan[]
+**proxy_addresses**: string[]
+**refresh_tokens_valid_from_date_time**: datetime
+**security_identifier**: string
+**service_provisioning_errors**: microsoft_graph_service_provisioning_error[]
+**show_in_address_list**: boolean
+**sign_in_sessions_valid_from_date_time**: datetime
+**state**: string
+**street_address**: string
+**surname**: string
+**usage_location**: string
+**user_principal_name**: string
+**user_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_user --> microsoft_graph_assigned_license
+microsoft_graph_user --> microsoft_graph_assigned_plan
+microsoft_graph_user --> microsoft_graph_authorization_info
+microsoft_graph_user --> microsoft_graph_cloud_realtime_communication_info
+microsoft_graph_user --> microsoft_graph_device_key
+microsoft_graph_user --> microsoft_graph_employee_org_data
+microsoft_graph_entity <|--- microsoft_graph_user
+microsoft_graph_user --> microsoft_graph_license_assignment_state
+microsoft_graph_user --> microsoft_graph_object_identity
+microsoft_graph_user --> microsoft_graph_on_premises_provisioning_error
+microsoft_graph_user --> microsoft_graph_on_premises_sip_info
+microsoft_graph_user --> microsoft_graph_password_profile
+microsoft_graph_user --> microsoft_graph_provisioned_plan
+microsoft_graph_user --> microsoft_graph_service_provisioning_error
+user <|--- microsoft_graph_user
+resource <|--- microsoft_resource
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>

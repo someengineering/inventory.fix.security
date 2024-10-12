@@ -1,0 +1,225 @@
+---
+sidebar_label: SKU
+---
+
+# `gcp_sku`
+
+- Categories: Other
+- Service: cloudbilling
+- Provider Link: [SKU](https://cloud.google.com/skus)
+
+## Description
+
+GCP SKU (Google Cloud Platform Stock Keeping Unit) is a unique identifier for a specific product or service within Google Cloud. It represents a distinct billing unit for resources, features, or offerings. SKUs help users track and manage their cloud usage, costs, and resource allocation across different GCP services and configurations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SKU"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_resource {
+
+}
+class gcp_sku {
+
+}
+class resource {
+
+}
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_sku
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SKU resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_disk_type {
+
+}
+class gcp_machine_type {
+
+}
+class gcp_service {
+
+}
+class gcp_sku {
+
+}
+gcp_service -[#1A83AF]-> gcp_sku
+gcp_sku -[#1A83AF]-> gcp_disk_type
+gcp_sku -[#1A83AF]-> gcp_machine_type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SKU data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_aggregation_info {
+**aggregation_count**: int64
+**aggregation_interval**: string
+**aggregation_level**: string
+}
+class gcp_category {
+**resource_family**: string
+**resource_group**: string
+**service_display_name**: string
+**usage_type**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_geo_taxonomy {
+**regions**: string[]
+**type**: string
+}
+class gcp_money {
+**currency_code**: string
+**nanos**: int64
+**units**: string
+}
+class gcp_pricing_expression {
+**base_unit**: string
+**base_unit_conversion_factor**: double
+**base_unit_description**: string
+**display_quantity**: double
+**tiered_rates**: gcp_tier_rate[]
+**usage_unit**: string
+**usage_unit_description**: string
+}
+class gcp_pricing_info {
+**aggregation_info**: gcp_aggregation_info
+**currency_conversion_rate**: double
+**effective_time**: datetime
+**pricing_expression**: gcp_pricing_expression
+**summary**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_sku {
+**category**: gcp_category
+**geo_taxonomy**: gcp_geo_taxonomy
+**service_provider_name**: string
+**service_regions**: string[]
+**sku_pricing_info**: gcp_pricing_info[]
+**usage_unit_nanos**: int64
+}
+class gcp_tier_rate {
+**start_usage_amount**: double
+**unit_price**: gcp_money
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_pricing_expression --> gcp_tier_rate
+gcp_pricing_info --> gcp_aggregation_info
+gcp_pricing_info --> gcp_pricing_expression
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sku --> gcp_category
+gcp_sku --> gcp_deprecation_status
+gcp_sku --> gcp_geo_taxonomy
+gcp_sku --> gcp_pricing_info
+gcp_resource <|--- gcp_sku
+gcp_tier_rate --> gcp_money
+
+@enduml
+```
+
+</ZoomPanPinch>

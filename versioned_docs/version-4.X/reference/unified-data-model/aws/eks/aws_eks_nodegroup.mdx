@@ -1,0 +1,219 @@
+---
+sidebar_label: EKS Nodegroup
+---
+
+# `aws_eks_nodegroup`
+
+- Categories: Managed Kubernetes
+- Service: eks
+- Provider Link: [EKS Nodegroup](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+
+## Description
+
+AWS EKS Nodegroup is a feature of Amazon Elastic Kubernetes Service that manages groups of EC2 instances for Kubernetes clusters. It automates the provisioning and lifecycle of worker nodes, handles node updates and terminations, and integrates with other AWS services. Nodegroups simplify cluster management by reducing manual configuration and maintenance tasks for Kubernetes deployments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EKS Nodegroup"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_eks_nodegroup {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_eks_nodegroup
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EKS Nodegroup resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_autoscaling_group {
+
+}
+class aws_eks_cluster {
+
+}
+class aws_eks_nodegroup {
+
+}
+aws_eks_cluster -[#1A83AF]-> aws_eks_nodegroup
+aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EKS Nodegroup data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_eks_issue {
+**code**: string
+**message**: string
+**resource_ids**: string[]
+}
+class aws_eks_launch_template_specification {
+**id**: string
+**name**: string
+**version**: string
+}
+class aws_eks_nodegroup {
+**cluster_name**: string
+**group_ami_type**: string
+**group_capacity_type**: string
+**group_disk_size**: int64
+**group_health**: aws_eks_nodegroup_health
+**group_instance_types**: string[]
+**group_labels**: dictionary[string, string]
+**group_launch_template**: aws_eks_launch_template_specification
+**group_modified_at**: datetime
+**group_node_role**: string
+**group_nodegroup_arn**: string
+**group_release_version**: string
+**group_remote_access**: aws_eks_remote_access_config
+**group_resources**: aws_eks_nodegroup_resources
+**group_scaling_config**: aws_eks_nodegroup_scaling_config
+**group_status**: string
+**group_subnets**: string[]
+**group_taints**: aws_eks_taint[]
+**group_update_config**: aws_eks_nodegroup_update_config
+**group_version**: string
+}
+class aws_eks_nodegroup_health {
+**issues**: aws_eks_issue[]
+}
+class aws_eks_nodegroup_resources {
+**auto_scaling_groups**: string[]
+**remote_access_security_group**: string
+}
+class aws_eks_nodegroup_scaling_config {
+**desired_size**: int64
+**max_size**: int64
+**min_size**: int64
+}
+class aws_eks_nodegroup_update_config {
+**max_unavailable**: int64
+**max_unavailable_percentage**: int64
+}
+class aws_eks_remote_access_config {
+**ec2_ssh_key**: string
+**source_security_groups**: string[]
+}
+class aws_eks_taint {
+**effect**: string
+**key**: string
+**value**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_eks_nodegroup --> aws_eks_launch_template_specification
+aws_eks_nodegroup --> aws_eks_nodegroup_health
+aws_eks_nodegroup --> aws_eks_nodegroup_resources
+aws_eks_nodegroup --> aws_eks_nodegroup_scaling_config
+aws_eks_nodegroup --> aws_eks_nodegroup_update_config
+aws_eks_nodegroup --> aws_eks_remote_access_config
+aws_eks_nodegroup --> aws_eks_taint
+aws_resource <|--- aws_eks_nodegroup
+aws_eks_nodegroup_health --> aws_eks_issue
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

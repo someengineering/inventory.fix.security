@@ -1,0 +1,177 @@
+---
+sidebar_label: Network Application Gateway Firewall Rule Set
+---
+
+# `azure_network_application_gateway_firewall_rule_set`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Application Gateway Firewall Rule Set](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/waf-overview)
+
+## Description
+
+Azure Network Application Gateway Firewall Rule Set is a configuration component for Azure Application Gateway's Web Application Firewall. It defines a collection of security rules that protect web applications from common vulnerabilities and attacks. The rule set filters incoming traffic, blocking malicious requests and ensuring compliance with security standards for web applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Application Gateway Firewall Rule Set"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_application_gateway_firewall_rule_set {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_application_gateway_firewall_rule_set
+phantom_resource <|--- azure_network_application_gateway_firewall_rule_set
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway Firewall Rule Set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_application_gateway_firewall_rule_set {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway Firewall Rule Set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_application_gateway_firewall_rule {
+**action**: string
+**description**: string
+**rule_id**: int64
+**rule_id_string**: string
+**state**: string
+}
+class azure_application_gateway_firewall_rule_group {
+**description**: string
+**rule_group_name**: string
+**rules**: azure_application_gateway_firewall_rule[]
+}
+class azure_network_application_gateway_firewall_rule_set {
+**rule_groups**: azure_application_gateway_firewall_rule_group[]
+**rule_set_type**: string
+**rule_set_version**: string
+**tiers**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_application_gateway_firewall_rule_group --> azure_application_gateway_firewall_rule
+azure_network_application_gateway_firewall_rule_set --> azure_application_gateway_firewall_rule_group
+microsoft_resource <|--- azure_network_application_gateway_firewall_rule_set
+phantom_resource <|--- azure_network_application_gateway_firewall_rule_set
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

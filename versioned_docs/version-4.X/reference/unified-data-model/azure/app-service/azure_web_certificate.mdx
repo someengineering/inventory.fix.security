@@ -1,0 +1,185 @@
+---
+sidebar_label: Web Certificate
+---
+
+# `azure_web_certificate`
+
+- Categories: Compute
+- Service: app-service
+- Provider Link: [Web Certificate](https://learn.microsoft.com/en-us/azure/app-service/configure-ssl-certificate)
+
+## Description
+
+Azure Web Certificate is a digital credential issued by Microsoft Azure for websites hosted on its platform. It verifies the identity and security of web applications, ensuring encrypted connections between users and servers. This certificate helps protect data in transit, prevents unauthorized access, and enhances trust in Azure-hosted websites for both site owners and visitors.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web Certificate"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_certificate {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_certificate
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Certificate resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_vault {
+
+}
+class azure_web_app_service_plan {
+
+}
+class azure_web_certificate {
+
+}
+azure_key_vault -[#1A83AF]-> azure_web_certificate
+azure_web_app_service_plan -[#1A83AF]-> azure_web_certificate
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Certificate data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_hosting_environment_profile {
+**id**: string
+**name**: string
+**type**: string
+}
+class azure_web_certificate {
+**azure_kind**: string
+**canonical_name**: string
+**cer_blob**: string
+**domain_validation_method**: string
+**expiration_date**: datetime
+**friendly_name**: string
+**host_names**: string[]
+**hosting_environment_profile**: azure_hosting_environment_profile
+**issue_date**: datetime
+**issuer**: string
+**key_vault_id**: string
+**key_vault_secret_name**: string
+**key_vault_secret_status**: string
+**password**: string
+**pfx_blob**: string
+**public_key_hash**: string
+**self_link**: string
+**server_farm_id**: string
+**site_name**: string
+**subject_name**: string
+**thumbprint**: string
+**valid**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_web_certificate --> azure_hosting_environment_profile
+microsoft_resource <|--- azure_web_certificate
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

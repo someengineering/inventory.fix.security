@@ -1,0 +1,397 @@
+---
+sidebar_label: SageMaker Hyper Parameter Tuning Job
+---
+
+# `aws_sagemaker_hyper_parameter_tuning_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Hyper Parameter Tuning Job](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html)
+
+## Description
+
+AWS SageMaker Hyperparameter Tuning Job automates the process of finding optimal hyperparameters for machine learning models. It runs multiple training jobs with different hyperparameter combinations, evaluates model performance, and selects the best-performing configuration. This service helps data scientists and developers improve model accuracy and efficiency without manually testing numerous parameter sets.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Hyper Parameter Tuning Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_sagemaker_job <|--- aws_sagemaker_hyper_parameter_tuning_job
+aws_resource <|--- aws_sagemaker_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Hyper Parameter Tuning Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Hyper Parameter Tuning Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_categorical_parameter_range {
+**name**: string
+**values**: string[]
+}
+class aws_sagemaker_channel {
+**channel_name**: string
+**compression_type**: string
+**content_type**: string
+**data_source**: aws_sagemaker_data_source
+**input_mode**: string
+**record_wrapper_type**: string
+**shuffle_config**: int64
+}
+class aws_sagemaker_checkpoint_config {
+**local_path**: string
+**s3_uri**: string
+}
+class aws_sagemaker_data_source {
+**file_system_data_source**: aws_sagemaker_file_system_data_source
+**s3_data_source**: aws_sagemaker_s3_data_source
+}
+class aws_sagemaker_file_system_data_source {
+**directory_path**: string
+**file_system_access_mode**: string
+**file_system_id**: string
+**file_system_type**: string
+}
+class aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric {
+**metric_name**: string
+**type**: string
+**value**: double
+}
+class aws_sagemaker_hyper_parameter_algorithm_specification {
+**algorithm_name**: string
+**metric_definitions**: aws_sagemaker_metric_definition[]
+**training_image**: string
+**training_input_mode**: string
+}
+class aws_sagemaker_hyper_parameter_training_job_definition {
+**algorithm_specification**: aws_sagemaker_hyper_parameter_algorithm_specification
+**checkpoint_config**: aws_sagemaker_checkpoint_config
+**definition_name**: string
+**enable_inter_container_traffic_encryption**: boolean
+**enable_managed_spot_training**: boolean
+**enable_network_isolation**: boolean
+**hyper_parameter_ranges**: aws_sagemaker_parameter_ranges
+**hyper_parameter_tuning_resource_config**: aws_sagemaker_hyper_parameter_tuning_resource_config
+**input_data_config**: aws_sagemaker_channel[]
+**output_data_config**: aws_sagemaker_output_data_config
+**resource_config**: aws_sagemaker_resource_config
+**retry_strategy**: int64
+**role_arn**: string
+**static_hyper_parameters**: dictionary[string, string]
+**stopping_condition**: aws_sagemaker_stopping_condition
+**tuning_objective**: aws_sagemaker_hyper_parameter_tuning_job_objective
+**vpc_config**: aws_sagemaker_vpc_config
+}
+class aws_sagemaker_hyper_parameter_training_job_summary {
+**creation_time**: datetime
+**failure_reason**: string
+**final_hyper_parameter_tuning_job_objective_metric**: aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
+**objective_status**: string
+**training_end_time**: datetime
+**training_job_arn**: string
+**training_job_definition_name**: string
+**training_job_name**: string
+**training_job_status**: string
+**training_start_time**: datetime
+**tuned_hyper_parameters**: dictionary[string, string]
+**tuning_job_name**: string
+}
+class aws_sagemaker_hyper_parameter_tuning_instance_config {
+**instance_count**: int64
+**instance_type**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+**hyper_parameter_tuning_job_best_training_job**: aws_sagemaker_hyper_parameter_training_job_summary
+**hyper_parameter_tuning_job_config**: aws_sagemaker_hyper_parameter_tuning_job_config
+**hyper_parameter_tuning_job_failure_reason**: string
+**hyper_parameter_tuning_job_hyper_parameter_tuning_end_time**: datetime
+**hyper_parameter_tuning_job_objective_status_counters**: aws_sagemaker_objective_status_counters
+**hyper_parameter_tuning_job_overall_best_training_job**: aws_sagemaker_hyper_parameter_training_job_summary
+**hyper_parameter_tuning_job_status**: string
+**hyper_parameter_tuning_job_training_job_definition**: aws_sagemaker_hyper_parameter_training_job_definition
+**hyper_parameter_tuning_job_training_job_definitions**: aws_sagemaker_hyper_parameter_training_job_definition[]
+**hyper_parameter_tuning_job_training_job_status_counters**: aws_sagemaker_training_job_status_counters
+**hyper_parameter_tuning_job_warm_start_config**: aws_sagemaker_hyper_parameter_tuning_job_warm_start_config
+}
+class aws_sagemaker_hyper_parameter_tuning_job_config {
+**hyper_parameter_tuning_job_objective**: aws_sagemaker_hyper_parameter_tuning_job_objective
+**parameter_ranges**: aws_sagemaker_parameter_ranges
+**resource_limits**: aws_sagemaker_resource_limits
+**strategy**: string
+**strategy_config**: aws_sagemaker_hyper_parameter_tuning_job_strategy_config
+**training_job_early_stopping_type**: string
+**tuning_job_completion_criteria**: double
+}
+class aws_sagemaker_hyper_parameter_tuning_job_objective {
+**metric_name**: string
+**type**: string
+}
+class aws_sagemaker_hyper_parameter_tuning_job_strategy_config {
+**hyperband_strategy_config**: aws_sagemaker_hyperband_strategy_config
+}
+class aws_sagemaker_hyper_parameter_tuning_job_warm_start_config {
+**parent_hyper_parameter_tuning_jobs**: string[]
+**warm_start_type**: string
+}
+class aws_sagemaker_hyper_parameter_tuning_resource_config {
+**allocation_strategy**: string
+**instance_configs**: aws_sagemaker_hyper_parameter_tuning_instance_config[]
+**instance_count**: int64
+**instance_type**: string
+**volume_kms_key_id**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_hyperband_strategy_config {
+**max_resource**: int64
+**min_resource**: int64
+}
+class aws_sagemaker_instance_group {
+**instance_count**: int64
+**instance_group_name**: string
+**instance_type**: string
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_metric_definition {
+**name**: string
+**regex**: string
+}
+class aws_sagemaker_objective_status_counters {
+**failed**: int64
+**pending**: int64
+**succeeded**: int64
+}
+class aws_sagemaker_output_data_config {
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_parameter_ranges {
+**categorical_parameter_ranges**: aws_sagemaker_categorical_parameter_range[]
+**continuous_parameter_ranges**: aws_sagemaker_scaling_parameter_range[]
+**integer_parameter_ranges**: aws_sagemaker_scaling_parameter_range[]
+}
+class aws_sagemaker_resource_config {
+**instance_count**: int64
+**instance_groups**: aws_sagemaker_instance_group[]
+**instance_type**: string
+**keep_alive_period_in_seconds**: int64
+**volume_kms_key_id**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_resource_limits {
+**max_number_of_training_jobs**: int64
+**max_parallel_training_jobs**: int64
+}
+class aws_sagemaker_s3_data_source {
+**attribute_names**: string[]
+**instance_group_names**: string[]
+**s3_data_distribution_type**: string
+**s3_data_type**: string
+**s3_uri**: string
+}
+class aws_sagemaker_scaling_parameter_range {
+**max_value**: string
+**min_value**: string
+**name**: string
+**scaling_type**: string
+}
+class aws_sagemaker_stopping_condition {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
+}
+class aws_sagemaker_training_job_status_counters {
+**completed**: int64
+**in_progress**: int64
+**non_retryable_error**: int64
+**retryable_error**: int64
+**stopped**: int64
+}
+class aws_sagemaker_vpc_config {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_channel --> aws_sagemaker_data_source
+aws_sagemaker_data_source --> aws_sagemaker_file_system_data_source
+aws_sagemaker_data_source --> aws_sagemaker_s3_data_source
+aws_sagemaker_hyper_parameter_algorithm_specification --> aws_sagemaker_metric_definition
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_channel
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_checkpoint_config
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_hyper_parameter_algorithm_specification
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_hyper_parameter_tuning_job_objective
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_hyper_parameter_tuning_resource_config
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_output_data_config
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_parameter_ranges
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_resource_config
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_stopping_condition
+aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_vpc_config
+aws_sagemaker_hyper_parameter_training_job_summary --> aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_training_job_definition
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_training_job_summary
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_tuning_job_config
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_tuning_job_warm_start_config
+aws_sagemaker_job <|--- aws_sagemaker_hyper_parameter_tuning_job
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_objective_status_counters
+aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_training_job_status_counters
+aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_hyper_parameter_tuning_job_objective
+aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_hyper_parameter_tuning_job_strategy_config
+aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_parameter_ranges
+aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_resource_limits
+aws_sagemaker_hyper_parameter_tuning_job_strategy_config --> aws_sagemaker_hyperband_strategy_config
+aws_sagemaker_hyper_parameter_tuning_resource_config --> aws_sagemaker_hyper_parameter_tuning_instance_config
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_parameter_ranges --> aws_sagemaker_categorical_parameter_range
+aws_sagemaker_parameter_ranges --> aws_sagemaker_scaling_parameter_range
+aws_sagemaker_resource_config --> aws_sagemaker_instance_group
+
+@enduml
+```
+
+</ZoomPanPinch>

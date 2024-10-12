@@ -1,0 +1,214 @@
+---
+sidebar_label: API Gateway Resource
+---
+
+# `aws_apigateway_resource`
+
+- Categories: Networking
+- Service: apigateway
+- Provider Link: [API Gateway Resource](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html)
+
+## Description
+
+AWS API Gateway Resource is a component within Amazon Web Services that defines the structure and behavior of APIs. It represents a URL path segment and can be configured with methods, integrations, and authorizers. API Gateway Resources handle incoming requests, route them to backend services, and manage responses, facilitating the creation and management of APIs.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of API Gateway Resource"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_resource {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_apigateway_resource
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Resource resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_authorizer {
+
+}
+class aws_apigateway_resource {
+
+}
+class aws_apigateway_rest_api {
+
+}
+class aws_lambda_function {
+
+}
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Resource data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_integration {
+**cache_key_parameters**: string[]
+**cache_namespace**: string
+**connection_id**: string
+**connection_type**: string
+**content_handling**: string
+**credentials**: string
+**http_method**: string
+**integration_responses**: dictionary[string, aws_apigateway_integration_response]
+**integration_type**: string
+**passthrough_behavior**: string
+**request_parameters**: dictionary[string, string]
+**request_templates**: dictionary[string, string]
+**timeout_in_millis**: int64
+**tls_config**: boolean
+**uri**: string
+}
+class aws_apigateway_integration_response {
+**content_handling**: string
+**response_parameters**: dictionary[string, string]
+**response_templates**: dictionary[string, string]
+**selection_pattern**: string
+**status_code**: string
+}
+class aws_apigateway_method {
+**api_key_required**: boolean
+**authorization_scopes**: string[]
+**authorization_type**: string
+**authorizer_id**: string
+**http_method**: string
+**method_integration**: aws_apigateway_integration
+**method_responses**: dictionary[string, aws_apigateway_method_response]
+**operation_name**: string
+**request_models**: dictionary[string, string]
+**request_parameters**: dictionary[string, boolean]
+**request_validator_id**: string
+}
+class aws_apigateway_method_response {
+**response_models**: dictionary[string, string]
+**response_parameters**: dictionary[string, boolean]
+**status_code**: string
+}
+class aws_apigateway_resource {
+**api_link**: string
+**resource_methods**: dictionary[string, aws_apigateway_method]
+**resource_parent_id**: string
+**resource_path**: string
+**resource_path_part**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_apigateway_integration --> aws_apigateway_integration_response
+aws_apigateway_method --> aws_apigateway_integration
+aws_apigateway_method --> aws_apigateway_method_response
+aws_apigateway_resource --> aws_apigateway_method
+aws_resource <|--- aws_apigateway_resource
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

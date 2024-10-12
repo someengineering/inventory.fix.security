@@ -1,0 +1,188 @@
+---
+sidebar_label: Network Local Network Gateway
+---
+
+# `azure_network_local_network_gateway`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Local Network Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway#local-network-gateway)
+
+## Description
+
+Azure Network Local Network Gateway represents an on-premises network in Azure. It defines the IP address ranges of the local network and serves as a connection point for site-to-site VPN tunnels. This resource facilitates secure communication between Azure virtual networks and on-premises networks, enabling hybrid connectivity and data exchange across environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Local Network Gateway"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_local_network_gateway {
+
+}
+class gateway {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+gateway <|--- azure_network_local_network_gateway
+microsoft_resource <|--- azure_network_local_network_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Local Network Gateway resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_local_network_gateway {
+
+}
+class azure_network_virtual_network_gateway_connection {
+
+}
+azure_network_local_network_gateway -[#1A83AF]-> azure_network_virtual_network_gateway_connection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Local Network Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_address_space {
+**address_prefixes**: string[]
+}
+class azure_bgp_settings {
+**asn**: int64
+**bgp_peering_address**: string
+**bgp_peering_addresses**: azure_ip_configuration_bgp_peering_address[]
+**peer_weight**: int64
+}
+class azure_ip_configuration_bgp_peering_address {
+**custom_bgp_ip_addresses**: string[]
+**default_bgp_ip_addresses**: string[]
+**ipconfiguration_id**: string
+**tunnel_ip_addresses**: string[]
+}
+class azure_network_local_network_gateway {
+**bgp_settings**: azure_bgp_settings
+**fqdn**: string
+**gateway_ip_address**: string
+**local_network_address_space**: azure_address_space
+**location**: string
+**resource_guid**: string
+**type**: string
+}
+class gateway {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_bgp_settings --> azure_ip_configuration_bgp_peering_address
+azure_network_local_network_gateway --> azure_address_space
+azure_network_local_network_gateway --> azure_bgp_settings
+gateway <|--- azure_network_local_network_gateway
+microsoft_resource <|--- azure_network_local_network_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

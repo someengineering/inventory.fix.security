@@ -1,0 +1,212 @@
+---
+sidebar_label: EC2 Image
+---
+
+# `aws_ec2_image`
+
+- Categories: Compute
+- Service: ec2
+- Provider Link: [EC2 Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+
+## Description
+
+AWS EC2 Image is a pre-configured virtual machine template for Amazon Elastic Compute Cloud (EC2). It contains an operating system, applications, and settings, serving as a blueprint for launching EC2 instances. Users can create custom images or choose from a library of public images to quickly deploy virtual servers with specific configurations in the cloud.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Image"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_image {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_image
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Image resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_image {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_snapshot {
+
+}
+aws_ec2_image -[#1A83AF]-> aws_ec2_instance
+aws_ec2_image -[#1A83AF]-> aws_ec2_snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Image data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_block_device_mapping {
+**device_name**: string
+**ebs**: aws_ec2_ebs_block_device
+**no_device**: string
+**virtual_name**: string
+}
+class aws_ec2_ebs_block_device {
+**delete_on_termination**: boolean
+**encrypted**: boolean
+**iops**: int64
+**kms_key_id**: string
+**outpost_arn**: string
+**snapshot_id**: string
+**throughput**: int64
+**volume_size**: int64
+**volume_type**: string
+}
+class aws_ec2_image {
+**architecture**: string
+**block_device_mappings**: aws_ec2_block_device_mapping[]
+**boot_mode**: string
+**deprecation_time**: string
+**description**: string
+**ena_support**: boolean
+**hypervisor**: string
+**image_location**: string
+**image_owner_alias**: string
+**image_type**: string
+**imds_support**: string
+**kernel_id**: string
+**owner_id**: string
+**platform**: string
+**platform_details**: string
+**product_codes**: aws_ec2_product_code[]
+**public**: boolean
+**ramdisk_id**: string
+**root_device_name**: string
+**root_device_type**: string
+**source_instance_id**: string
+**sriov_net_support**: string
+**state**: string
+**state_reason**: aws_ec2_state_reason
+**tpm_support**: string
+**usage_operation**: string
+**virtualization_type**: string
+}
+class aws_ec2_product_code {
+**product_code_id**: string
+**product_code_type**: string
+}
+class aws_ec2_state_reason {
+**code**: string
+**message**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_block_device_mapping --> aws_ec2_ebs_block_device
+aws_ec2_image --> aws_ec2_block_device_mapping
+aws_ec2_image --> aws_ec2_product_code
+aws_ec2_image --> aws_ec2_state_reason
+aws_resource <|--- aws_ec2_image
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

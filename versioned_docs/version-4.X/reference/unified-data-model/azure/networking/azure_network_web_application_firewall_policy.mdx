@@ -1,0 +1,255 @@
+---
+sidebar_label: Network Web Application Firewall Policy
+---
+
+# `azure_network_web_application_firewall_policy`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Web Application Firewall Policy](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/policy-overview)
+
+## Description
+
+Azure Network Web Application Firewall Policy is a security configuration for web applications in Azure. It defines rules to protect against common web vulnerabilities and threats. The policy filters incoming traffic, blocks malicious requests, and enforces security measures. It can be applied to Azure Application Gateway, Azure Front Door, and Azure CDN to safeguard web applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Web Application Firewall Policy"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_web_application_firewall_policy {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_web_application_firewall_policy
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Web Application Firewall Policy resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_application_gateway {
+
+}
+class azure_network_web_application_firewall_policy {
+
+}
+azure_network_application_gateway -[#1A83AF]-> azure_network_web_application_firewall_policy
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Web Application Firewall Policy data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_exclusion_managed_rule_group {
+**rule_group_name**: string
+**rules**: string[]
+}
+class azure_exclusion_managed_rule_set {
+**rule_groups**: azure_exclusion_managed_rule_group[]
+**rule_set_type**: string
+**rule_set_version**: string
+}
+class azure_group_by_user_session {
+**group_by_variables**: string[]
+}
+class azure_managed_rule_group_override {
+**rule_group_name**: string
+**rules**: azure_managed_rule_override[]
+}
+class azure_managed_rule_override {
+**action**: string
+**rule_id**: string
+**state**: string
+}
+class azure_managed_rule_set {
+**rule_group_overrides**: azure_managed_rule_group_override[]
+**rule_set_type**: string
+**rule_set_version**: string
+}
+class azure_managed_rules_definition {
+**exclusions**: azure_owasp_crs_exclusion_entry[]
+**managed_rule_sets**: azure_managed_rule_set[]
+}
+class azure_match_condition {
+**match_values**: string[]
+**match_variables**: azure_match_variable[]
+**negation_conditon**: boolean
+**operator**: string
+**transforms**: string[]
+}
+class azure_match_variable {
+**selector**: string
+**variable_name**: string
+}
+class azure_network_web_application_firewall_policy {
+**custom_rules**: azure_web_application_firewall_custom_rule[]
+**gateway_http_listeners**: string[]
+**managed_rules**: azure_managed_rules_definition
+**path_based_rules**: string[]
+**policy_settings**: azure_policy_settings
+**resource_state**: string
+}
+class azure_owasp_crs_exclusion_entry {
+**exclusion_managed_rule_sets**: azure_exclusion_managed_rule_set[]
+**match_variable**: string
+**selector**: string
+**selector_match_operator**: string
+}
+class azure_policy_settings {
+**custom_block_response_body**: string
+**custom_block_response_status_code**: int64
+**file_upload_enforcement**: boolean
+**file_upload_limit_in_mb**: int64
+**log_scrubbing**: azure_state_scrubbingrules
+**max_request_body_size_in_kb**: int64
+**mode**: string
+**request_body_check**: boolean
+**request_body_enforcement**: boolean
+**request_body_inspect_limit_in_kb**: int64
+**state**: string
+}
+class azure_state_scrubbingrules {
+**scrubbing_rules**: azure_web_application_firewall_scrubbing_rules[]
+**state**: string
+}
+class azure_web_application_firewall_custom_rule {
+**action**: string
+**etag**: string
+**group_by_user_session**: azure_group_by_user_session[]
+**match_conditions**: azure_match_condition[]
+**name**: string
+**priority**: int64
+**rate_limit_duration**: string
+**rate_limit_threshold**: int64
+**rule_type**: string
+**state**: string
+}
+class azure_web_application_firewall_scrubbing_rules {
+**match_variable**: string
+**selector**: string
+**selector_match_operator**: string
+**state**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_exclusion_managed_rule_set --> azure_exclusion_managed_rule_group
+azure_managed_rule_group_override --> azure_managed_rule_override
+azure_managed_rule_set --> azure_managed_rule_group_override
+azure_managed_rules_definition --> azure_managed_rule_set
+azure_managed_rules_definition --> azure_owasp_crs_exclusion_entry
+azure_match_condition --> azure_match_variable
+azure_network_web_application_firewall_policy --> azure_managed_rules_definition
+azure_network_web_application_firewall_policy --> azure_policy_settings
+azure_network_web_application_firewall_policy --> azure_web_application_firewall_custom_rule
+microsoft_resource <|--- azure_network_web_application_firewall_policy
+azure_owasp_crs_exclusion_entry --> azure_exclusion_managed_rule_set
+azure_policy_settings --> azure_state_scrubbingrules
+azure_state_scrubbingrules --> azure_web_application_firewall_scrubbing_rules
+azure_web_application_firewall_custom_rule --> azure_group_by_user_session
+azure_web_application_firewall_custom_rule --> azure_match_condition
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

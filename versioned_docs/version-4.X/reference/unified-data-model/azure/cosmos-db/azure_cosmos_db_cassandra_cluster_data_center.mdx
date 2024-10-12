@@ -1,0 +1,191 @@
+---
+sidebar_label: Cosmos DB Cassandra Cluster Data Center
+---
+
+# `azure_cosmos_db_cassandra_cluster_data_center`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Cassandra Cluster Data Center](https://learn.microsoft.com/en-us/azure/cosmos-db/cassandra/manage-data-centers-multi-region)
+
+## Description
+
+Azure Cosmos DB Cassandra Cluster Data Center is a managed service within Microsoft's Azure cloud platform. It provides a distributed database system compatible with Apache Cassandra, offering multi-region replication and automatic scaling. The service handles data storage, querying, and management tasks, supporting applications that require low-latency access and global data distribution.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Cassandra Cluster Data Center"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_cassandra_cluster_data_center {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_data_center
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Cassandra Cluster Data Center resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_cassandra_cluster {
+
+}
+class azure_cosmos_db_cassandra_cluster_data_center {
+
+}
+class azure_network_subnet {
+
+}
+azure_cosmos_db_cassandra_cluster -[#1A83AF]-> azure_cosmos_db_cassandra_cluster_data_center
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_cassandra_cluster
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_cassandra_cluster_data_center
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Cassandra Cluster Data Center data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authentication_method_ldap {
+**connection_timeout_in_ms**: int64
+**search_base_distinguished_name**: string
+**search_filter_template**: string
+**server_certificates**: string[]
+**server_hostname**: string
+**server_port**: int64
+**service_user_distinguished_name**: string
+**service_user_password**: string
+}
+class azure_cassandra_error {
+**additional_error_info**: string
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_cosmos_db_cassandra_cluster_data_center {
+**authentication_method_ldap_properties**: azure_authentication_method_ldap
+**availability_zone_support**: boolean
+**backup_storage_customer_key_uri**: string
+**base64_encoded_cassandra_yaml_fragment**: string
+**data_center_location**: string
+**datacenter_deallocated**: boolean
+**datacenter_disk_sku**: string
+**datacenter_sku**: string
+**delegated_subnet_id**: string
+**disk_capacity**: int64
+**managed_disk_customer_key_uri**: string
+**node_count**: int64
+**private_endpoint_ip_address**: string
+**provision_error**: azure_cassandra_error
+**seed_nodes**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cosmos_db_cassandra_cluster_data_center --> azure_authentication_method_ldap
+azure_cosmos_db_cassandra_cluster_data_center --> azure_cassandra_error
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_data_center
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

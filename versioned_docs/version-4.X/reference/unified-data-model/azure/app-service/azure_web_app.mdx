@@ -1,0 +1,518 @@
+---
+sidebar_label: Web App
+---
+
+# `azure_web_app`
+
+- Categories: Compute
+- Service: app-service
+- Provider Link: [Web App](https://learn.microsoft.com/en-us/azure/app-service/)
+
+## Description
+
+Azure Web App is a cloud-based platform for hosting web applications. It supports multiple programming languages and frameworks, offering automatic scaling and load balancing. Users can deploy code directly from version control systems, configure custom domains, and implement SSL certificates. The service integrates with other Azure products for monitoring, security, and database connectivity.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web App"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_app {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class serverless_function {
+
+}
+microsoft_resource <|--- azure_web_app
+serverless_function <|--- azure_web_app
+resource <|--- microsoft_resource
+resource <|--- serverless_function
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class azure_web_app {
+
+}
+class azure_web_app_service_plan {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_web_app
+azure_web_app -[#1A83AF]-> azure_web_app_service_plan
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cloning_info {
+**app_settings_overrides**: dictionary[string, string]
+**clone_custom_host_names**: boolean
+**clone_source_control**: boolean
+**configure_load_balancing**: boolean
+**correlation_id**: string
+**hosting_environment**: string
+**overwrite**: boolean
+**source_web_app_id**: string
+**source_web_app_location**: string
+**traffic_manager_profile_id**: string
+**traffic_manager_profile_name**: string
+}
+class azure_conn_string_info {
+**connection_string**: string
+**name**: string
+**type**: string
+}
+class azure_cors_settings {
+**allowed_origins**: string[]
+**support_credentials**: boolean
+}
+class azure_dapr_config {
+**app_id**: string
+**app_port**: int64
+**enable_api_logging**: boolean
+**enabled**: boolean
+**http_max_request_size**: int64
+**http_read_buffer_size**: int64
+**log_level**: string
+}
+class azure_experiments {
+**ramp_up_rules**: azure_ramp_up_rule[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_function_app_config {
+**deployment**: azure_functions_deployment
+**runtime**: azure_functions_runtime
+**scale_and_concurrency**: azure_functions_scale_and_concurrency
+}
+class azure_functions_always_ready_config {
+**instance_count**: double
+**name**: string
+}
+class azure_functions_deployment {
+**storage**: azure_type_value_authentication
+}
+class azure_functions_runtime {
+**name**: string
+**version**: string
+}
+class azure_functions_scale_and_concurrency {
+**always_ready**: azure_functions_always_ready_config[]
+**http_trigger_instance_concurrency**: double
+**instance_memory_mb**: double
+**maximum_instance_count**: double
+}
+class azure_handler_mapping {
+**arguments**: string
+**extension**: string
+**script_processor**: string
+}
+class azure_host_name_ssl_state {
+**host_type**: string
+**name**: string
+**ssl_state**: string
+**thumbprint**: string
+**to_update**: boolean
+**virtual_ip**: string
+}
+class azure_hosting_environment_profile {
+**id**: string
+**name**: string
+**type**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_ip_security_restriction {
+**action**: string
+**description**: string
+**headers**: dictionary[string, any]
+**ip_address**: string
+**name**: string
+**priority**: int64
+**subnet_mask**: string
+**subnet_traffic_tag**: int64
+**tag**: string
+**vnet_subnet_resource_id**: string
+**vnet_traffic_tag**: int64
+}
+class azure_push_settings {
+**dynamic_tags_json**: string
+**is_push_enabled**: boolean
+**tag_whitelist_json**: string
+**tags_requiring_auth**: string
+}
+class azure_ramp_up_rule {
+**action_host_name**: string
+**change_decision_callback_url**: string
+**change_interval_in_minutes**: int64
+**change_step**: double
+**max_reroute_percentage**: double
+**min_reroute_percentage**: double
+**name**: string
+**reroute_percentage**: double
+}
+class azure_resource_config {
+**cpu**: double
+**memory**: string
+}
+class azure_site_config {
+**acr_use_managed_identity_creds**: boolean
+**acr_user_managed_identity_id**: string
+**always_on**: boolean
+**api_definition**: string
+**api_management_config**: string
+**app_command_line**: string
+**app_settings**: dictionary[string, any]
+**auto_heal_enabled**: boolean
+**auto_swap_slot_name**: string
+**azure_storage_accounts**: dictionary[string, azure_storage_info_value]
+**connection_strings**: azure_conn_string_info[]
+**cors**: azure_cors_settings
+**default_documents**: string[]
+**detailed_error_logging_enabled**: boolean
+**document_root**: string
+**elastic_web_app_scale_limit**: int64
+**experiments**: azure_experiments
+**ftps_state**: string
+**function_app_scale_limit**: int64
+**functions_runtime_scale_monitoring_enabled**: boolean
+**handler_mappings**: azure_handler_mapping[]
+**health_check_path**: string
+**http20_enabled**: boolean
+**http_logging_enabled**: boolean
+**ip_security_restrictions**: azure_ip_security_restriction[]
+**ip_security_restrictions_default_action**: string
+**java_container**: string
+**java_container_version**: string
+**java_version**: string
+**key_vault_reference_identity**: string
+**limits**: azure_site_limits
+**linux_fx_version**: string
+**load_balancing**: string
+**local_my_sql_enabled**: boolean
+**logs_directory_size_limit**: int64
+**machine_key**: azure_site_machine_key
+**managed_pipeline_mode**: string
+**managed_service_identity_id**: int64
+**metadata**: dictionary[string, any]
+**min_tls_cipher_suite**: string
+**min_tls_version**: string
+**minimum_elastic_instance_count**: int64
+**net_framework_version**: string
+**node_version**: string
+**number_of_workers**: int64
+**php_version**: string
+**power_shell_version**: string
+**pre_warmed_instance_count**: int64
+**public_network_access**: string
+**publishing_username**: string
+**push**: azure_push_settings
+**python_version**: string
+**remote_debugging_enabled**: boolean
+**remote_debugging_version**: string
+**request_tracing_enabled**: boolean
+**request_tracing_expiration_time**: datetime
+**scm_ip_security_restrictions**: azure_ip_security_restriction[]
+**scm_ip_security_restrictions_default_action**: string
+**scm_ip_security_restrictions_use_main**: boolean
+**scm_min_tls_version**: string
+**scm_type**: string
+**tracing_options**: string
+**use32_bit_worker_process**: boolean
+**virtual_applications**: azure_virtual_application[]
+**vnet_name**: string
+**vnet_private_ports_count**: int64
+**vnet_route_all_enabled**: boolean
+**web_sockets_enabled**: boolean
+**website_time_zone**: string
+**windows_fx_version**: string
+**x_managed_service_identity_id**: int64
+}
+class azure_site_dns_config {
+**dns_alt_server**: string
+**dns_legacy_sort_order**: boolean
+**dns_max_cache_timeout**: int64
+**dns_retry_attempt_count**: int64
+**dns_retry_attempt_timeout**: int64
+**dns_servers**: string[]
+}
+class azure_site_limits {
+**max_disk_size_in_mb**: int64
+**max_memory_in_mb**: int64
+**max_percentage_cpu**: double
+}
+class azure_site_machine_key {
+**decryption**: string
+**decryption_key**: string
+**validation**: string
+**validation_key**: string
+}
+class azure_slot_swap_status {
+**destination_slot_name**: string
+**source_slot_name**: string
+**timestamp_utc**: datetime
+}
+class azure_storage_info_value {
+**access_key**: string
+**account_name**: string
+**mount_path**: string
+**protocol**: string
+**share_name**: string
+**state**: string
+**type**: string
+}
+class azure_type_authentication {
+**storage_account_connection_string_name**: string
+**type**: string
+**user_assigned_identity_resource_id**: string
+}
+class azure_type_value_authentication {
+**authentication**: azure_type_authentication
+**type**: string
+**value**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_virtual_application {
+**physical_path**: string
+**preload_enabled**: boolean
+**virtual_directories**: azure_virtual_directory[]
+**virtual_path**: string
+}
+class azure_virtual_directory {
+**physical_path**: string
+**virtual_path**: string
+}
+class azure_web_app {
+**app_authentication_settings**: azure_web_app_auth_settings
+**availability_state**: string
+**azure_kind**: string
+**client_affinity_enabled**: boolean
+**client_cert_enabled**: boolean
+**client_cert_exclusion_paths**: string
+**client_cert_mode**: string
+**cloning_info**: azure_cloning_info
+**container_size**: int64
+**custom_domain_verification_id**: string
+**daily_memory_time_quota**: int64
+**dapr_config**: azure_dapr_config
+**default_host_name**: string
+**dns_configuration**: azure_site_dns_config
+**enabled**: boolean
+**enabled_host_names**: string[]
+**extended_location**: azure_extended_location
+**function_app_config**: azure_function_app_config
+**host_name_ssl_states**: azure_host_name_ssl_state[]
+**host_names**: string[]
+**host_names_disabled**: boolean
+**hosting_environment_profile**: azure_hosting_environment_profile
+**https_only**: boolean
+**hyper_v**: boolean
+**identity**: azure_identity
+**in_progress_operation_id**: string
+**is_default_container**: boolean
+**is_xenon**: boolean
+**key_vault_reference_identity**: string
+**last_modified_time_utc**: datetime
+**managed_environment_id**: string
+**max_number_of_workers**: int64
+**outbound_ip_addresses**: string
+**possible_outbound_ip_addresses**: string
+**public_network_access**: string
+**redundancy_mode**: string
+**repository_site_name**: string
+**reserved**: boolean
+**resource_config**: azure_resource_config
+**resource_group**: string
+**scm_site_also_stopped**: boolean
+**server_farm_id**: string
+**site_config**: azure_site_config
+**site_virtual_network_subnet_id**: string
+**slot_swap_status**: azure_slot_swap_status
+**state**: string
+**storage_account_required**: boolean
+**suspended_till**: datetime
+**target_swap_slot**: string
+**traffic_manager_host_names**: string[]
+**usage_state**: string
+**vnet_backup_restore_enabled**: boolean
+**vnet_content_share_enabled**: boolean
+**vnet_image_pull_enabled**: boolean
+**vnet_route_all_enabled**: boolean
+**workload_profile_name**: string
+}
+class azure_web_app_auth_identity_provider {
+**enabled**: boolean
+**login**: dictionary[string, any]
+**registration**: dictionary[string, any]
+**validation**: dictionary[string, any]
+}
+class azure_web_app_auth_settings {
+**enabled**: boolean
+**identity_provider**: dictionary[string, azure_web_app_auth_identity_provider]
+**require_authentication**: boolean
+**require_https**: boolean
+**runtime_version**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class serverless_function {
+
+}
+azure_experiments --> azure_ramp_up_rule
+azure_function_app_config --> azure_functions_deployment
+azure_function_app_config --> azure_functions_runtime
+azure_function_app_config --> azure_functions_scale_and_concurrency
+azure_functions_deployment --> azure_type_value_authentication
+azure_functions_scale_and_concurrency --> azure_functions_always_ready_config
+azure_identity --> azure_user_assigned_identity
+azure_site_config --> azure_conn_string_info
+azure_site_config --> azure_cors_settings
+azure_site_config --> azure_experiments
+azure_site_config --> azure_handler_mapping
+azure_site_config --> azure_ip_security_restriction
+azure_site_config --> azure_push_settings
+azure_site_config --> azure_site_limits
+azure_site_config --> azure_site_machine_key
+azure_site_config --> azure_storage_info_value
+azure_site_config --> azure_virtual_application
+azure_type_value_authentication --> azure_type_authentication
+azure_virtual_application --> azure_virtual_directory
+azure_web_app --> azure_cloning_info
+azure_web_app --> azure_dapr_config
+azure_web_app --> azure_extended_location
+azure_web_app --> azure_function_app_config
+azure_web_app --> azure_host_name_ssl_state
+azure_web_app --> azure_hosting_environment_profile
+azure_web_app --> azure_identity
+azure_web_app --> azure_resource_config
+azure_web_app --> azure_site_config
+azure_web_app --> azure_site_dns_config
+azure_web_app --> azure_slot_swap_status
+azure_web_app --> azure_web_app_auth_settings
+microsoft_resource <|--- azure_web_app
+serverless_function <|--- azure_web_app
+azure_web_app_auth_settings --> azure_web_app_auth_identity_provider
+resource <|--- microsoft_resource
+resource <|--- serverless_function
+
+@enduml
+```
+
+</ZoomPanPinch>

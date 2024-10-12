@@ -1,0 +1,333 @@
+---
+sidebar_label: SageMaker Processing Job
+---
+
+# `aws_sagemaker_processing_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Processing Job](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)
+
+## Description
+
+AWS SageMaker Processing Job is a feature that runs data processing, feature engineering, and model evaluation tasks on Amazon SageMaker. It provides a managed environment to execute scripts for data preparation, algorithm fine-tuning, and post-training analysis. Users can specify input data, output locations, and compute resources for their processing tasks within the SageMaker ecosystem.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Processing Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_job <|--- aws_sagemaker_processing_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Processing Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_data_catalog {
+
+}
+class aws_athena_work_group {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_experiment {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_trial {
+
+}
+aws_athena_data_catalog -[#1A83AF]-> aws_sagemaker_processing_job
+aws_athena_work_group -[#1A83AF]-> aws_kms_key
+aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_redshift_cluster
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Processing Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_app_specification {
+**container_arguments**: string[]
+**container_entrypoint**: string[]
+**image_uri**: string
+}
+class aws_sagemaker_athena_dataset_definition {
+**catalog**: string
+**database**: string
+**kms_key_id**: string
+**output_compression**: string
+**output_format**: string
+**output_s3_uri**: string
+**query_string**: string
+**work_group**: string
+}
+class aws_sagemaker_dataset_definition {
+**athena_dataset_definition**: aws_sagemaker_athena_dataset_definition
+**data_distribution_type**: string
+**input_mode**: string
+**local_path**: string
+**redshift_dataset_definition**: aws_sagemaker_redshift_dataset_definition
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_network_config {
+**enable_inter_container_traffic_encryption**: boolean
+**enable_network_isolation**: boolean
+**vpc_config**: aws_sagemaker_vpc_config
+}
+class aws_sagemaker_processing_cluster_config {
+**instance_count**: int64
+**instance_type**: string
+**volume_kms_key_id**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_processing_input {
+**app_managed**: boolean
+**dataset_definition**: aws_sagemaker_dataset_definition
+**input_name**: string
+**s3_input**: aws_sagemaker_processing_s3_input
+}
+class aws_sagemaker_processing_job {
+**processing_job_app_specification**: aws_sagemaker_app_specification
+**processing_job_auto_ml_job_arn**: string
+**processing_job_environment**: dictionary[string, string]
+**processing_job_exit_message**: string
+**processing_job_failure_reason**: string
+**processing_job_monitoring_schedule_arn**: string
+**processing_job_network_config**: aws_sagemaker_network_config
+**processing_job_processing_end_time**: datetime
+**processing_job_processing_inputs**: aws_sagemaker_processing_input[]
+**processing_job_processing_output_config**: aws_sagemaker_processing_output_config
+**processing_job_processing_resources**: aws_sagemaker_processing_resources
+**processing_job_processing_start_time**: datetime
+**processing_job_role_arn**: string
+**processing_job_status**: string
+**processing_job_stopping_condition**: int64
+**processing_job_trial_component_display_name**: string
+}
+class aws_sagemaker_processing_output {
+**app_managed**: boolean
+**feature_store_output**: string
+**output_name**: string
+**s3_output**: aws_sagemaker_processing_s3_output
+}
+class aws_sagemaker_processing_output_config {
+**kms_key_id**: string
+**outputs**: aws_sagemaker_processing_output[]
+}
+class aws_sagemaker_processing_resources {
+**cluster_config**: aws_sagemaker_processing_cluster_config
+}
+class aws_sagemaker_processing_s3_input {
+**local_path**: string
+**s3_compression_type**: string
+**s3_data_distribution_type**: string
+**s3_data_type**: string
+**s3_input_mode**: string
+**s3_uri**: string
+}
+class aws_sagemaker_processing_s3_output {
+**local_path**: string
+**s3_upload_mode**: string
+**s3_uri**: string
+}
+class aws_sagemaker_redshift_dataset_definition {
+**cluster_id**: string
+**cluster_role_arn**: string
+**database**: string
+**db_user**: string
+**kms_key_id**: string
+**output_compression**: string
+**output_format**: string
+**output_s3_uri**: string
+**query_string**: string
+}
+class aws_sagemaker_vpc_config {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_dataset_definition --> aws_sagemaker_athena_dataset_definition
+aws_sagemaker_dataset_definition --> aws_sagemaker_redshift_dataset_definition
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_network_config --> aws_sagemaker_vpc_config
+aws_sagemaker_processing_input --> aws_sagemaker_dataset_definition
+aws_sagemaker_processing_input --> aws_sagemaker_processing_s3_input
+aws_sagemaker_processing_job --> aws_sagemaker_app_specification
+aws_sagemaker_job <|--- aws_sagemaker_processing_job
+aws_sagemaker_processing_job --> aws_sagemaker_network_config
+aws_sagemaker_processing_job --> aws_sagemaker_processing_input
+aws_sagemaker_processing_job --> aws_sagemaker_processing_output_config
+aws_sagemaker_processing_job --> aws_sagemaker_processing_resources
+aws_sagemaker_processing_output --> aws_sagemaker_processing_s3_output
+aws_sagemaker_processing_output_config --> aws_sagemaker_processing_output
+aws_sagemaker_processing_resources --> aws_sagemaker_processing_cluster_config
+
+@enduml
+```
+
+</ZoomPanPinch>

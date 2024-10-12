@@ -1,0 +1,179 @@
+---
+sidebar_label: Backup Vault
+---
+
+# `aws_backup_vault`
+
+- Categories: Storage
+- Service: backup
+- Provider Link: [Backup Vault](https://docs.aws.amazon.com/aws-backup/latest/devguide/vaults.html)
+
+## Description
+
+AWS Backup Vault is a secure storage container for backup data in AWS Backup. It stores and organizes backup copies, providing encryption and access policies to protect backups. Users can create multiple vaults to separate backups by application, environment, or compliance requirements. AWS Backup Vault supports retention policies and lifecycle management for stored backups.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Backup Vault"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_vault {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_backup_vault
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Vault resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_copy_job {
+
+}
+class aws_backup_job {
+
+}
+class aws_backup_protected_resource {
+
+}
+class aws_backup_recovery_point {
+
+}
+class aws_backup_vault {
+
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Vault data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_vault {
+**backup_vault_arn**: string
+**backup_vault_name**: string
+**creation_date**: datetime
+**creator_request_id**: string
+**encryption_key_arn**: string
+**lock_date**: datetime
+**locked**: boolean
+**max_retention_days**: int64
+**min_retention_days**: int64
+**number_of_recovery_points**: int64
+**vault_policy**: dictionary[string, any]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_backup_vault
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

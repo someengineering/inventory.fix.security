@@ -1,0 +1,101 @@
+---
+sidebar_label: Gateway
+---
+
+# `gateway`
+
+- Categories: Networking
+
+## Description
+
+A gateway.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_internet_gateway {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class azure_network_application_gateway {
+
+}
+class azure_network_express_route_gateway {
+
+}
+class azure_network_local_network_gateway {
+
+}
+class azure_network_p2_s_vpn_gateway {
+
+}
+class azure_network_virtual_network_gateway {
+
+}
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+class gateway {
+
+}
+class gcp_external_vpn_gateway {
+
+}
+class gcp_vpn_gateway {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gateway <|--- aws_ec2_internet_gateway
+gateway <|--- aws_ec2_nat_gateway
+gateway <|--- azure_network_application_gateway
+gateway <|--- azure_network_express_route_gateway
+gateway <|--- azure_network_local_network_gateway
+gateway <|--- azure_network_p2_s_vpn_gateway
+gateway <|--- azure_network_virtual_network_gateway
+gateway <|--- azure_network_virtual_wan_vpn_gateway
+resource <|--- gateway
+gateway <|--- gcp_external_vpn_gateway
+gateway <|--- gcp_vpn_gateway
+
+@enduml
+```
+
+</ZoomPanPinch>

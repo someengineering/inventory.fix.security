@@ -1,0 +1,190 @@
+---
+sidebar_label: SQL Server Managed Instance Database
+---
+
+# `azure_sql_server_managed_instance_database`
+
+- Categories: Compute, Database
+- Service: azure-sql
+- Provider Link: [SQL Server Managed Instance Database](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/instance-create-quickstart)
+
+## Description
+
+Azure SQL Server Managed Instance Database is a cloud-based service that provides SQL Server functionality in Azure. It offers compatibility with on-premises SQL Server databases while handling maintenance, updates, and backups. Users can migrate existing databases to the cloud, retaining features and security settings, and benefit from Azure's infrastructure without managing hardware or software.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Server Managed Instance Database"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_managed_instance_database {
+
+}
+class database {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+database <|--- azure_sql_server_managed_instance_database
+microsoft_resource <|--- azure_sql_server_managed_instance_database
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Managed Instance Database resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_managed_instance {
+
+}
+class azure_sql_server_managed_instance_database {
+
+}
+azure_sql_server_managed_instance -[#1A83AF]-> azure_sql_server_managed_instance_database
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Managed Instance Database data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_managed_instance_database {
+**auto_complete_restore**: boolean
+**catalog_collation**: string
+**collation**: string
+**create_mode**: string
+**creation_date**: datetime
+**default_secondary_location**: string
+**earliest_restore_point**: datetime
+**failover_group_id**: string
+**last_backup_name**: string
+**location**: string
+**long_term_retention_backup_resource_id**: string
+**recoverable_database_id**: string
+**restorable_dropped_database_id**: string
+**restore_point_in_time**: datetime
+**source_database_id**: string
+**status**: string
+**storage_container_sas_token**: string
+**storage_container_uri**: string
+**type**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+database <|--- azure_sql_server_managed_instance_database
+microsoft_resource <|--- azure_sql_server_managed_instance_database
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,81 @@
+---
+sidebar_label: Storage Bucket
+---
+
+# `bucket`
+
+- Categories: Storage
+
+## Description
+
+A storage bucket.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage Bucket data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_s3_bucket {
+
+}
+class azure_storage_blob_container {
+
+}
+class bucket {
+
+}
+class digitalocean_space {
+
+}
+class gcp_backend_bucket {
+
+}
+class gcp_bucket {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+bucket <|--- aws_s3_bucket
+bucket <|--- azure_storage_blob_container
+resource <|--- bucket
+bucket <|--- digitalocean_space
+bucket <|--- gcp_backend_bucket
+bucket <|--- gcp_bucket
+
+@enduml
+```
+
+</ZoomPanPinch>

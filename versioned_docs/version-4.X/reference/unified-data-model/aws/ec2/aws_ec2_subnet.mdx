@@ -1,0 +1,317 @@
+---
+sidebar_label: EC2 Subnet
+---
+
+# `aws_ec2_subnet`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [EC2 Subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
+
+## Description
+
+An AWS EC2 Subnet is a segmented portion of a Virtual Private Cloud (VPC) network. It defines a range of IP addresses within the VPC and can be configured as public or private. Subnets help organize and isolate resources, control network traffic, and manage security settings. They operate in specific Availability Zones, supporting high availability and fault tolerance.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Subnet"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_subnet {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+class subnet {
+
+}
+aws_resource <|--- aws_ec2_subnet
+subnet <|--- aws_ec2_subnet
+resource <|--- aws_resource
+resource <|--- subnet
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Subnet resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class aws_ec2_network_acl {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_ecs_service {
+
+}
+class aws_elb {
+
+}
+class aws_lambda_function {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_rds_instance {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_region {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_model {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_domain
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_opensearch_domain
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Subnet data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_private_dns_name_options_on_launch {
+**enable_resource_name_dns_a_record**: boolean
+**enable_resource_name_dns_aaaa_record**: boolean
+**hostname_type**: string
+}
+class aws_ec2_subnet {
+**subnet_assign_ipv6_address_on_creation**: boolean
+**subnet_availability_zone**: string
+**subnet_availability_zone_id**: string
+**subnet_available_ip_address_count**: int64
+**subnet_cidr_block**: string
+**subnet_customer_owned_ipv4_pool**: string
+**subnet_default_for_az**: boolean
+**subnet_enable_dns64**: boolean
+**subnet_enable_lni_at_device_index**: int64
+**subnet_ipv6_cidr_block_association_set**: aws_ec2_subnet_ipv6_cidr_block_association[]
+**subnet_ipv6_native**: boolean
+**subnet_map_customer_owned_ip_on_launch**: boolean
+**subnet_map_public_ip_on_launch**: boolean
+**subnet_outpost_arn**: string
+**subnet_private_dns_name_options_on_launch**: aws_ec2_private_dns_name_options_on_launch
+**subnet_state**: string
+}
+class aws_ec2_subnet_cidr_block_state {
+**state**: string
+**status_message**: string
+}
+class aws_ec2_subnet_ipv6_cidr_block_association {
+**association_id**: string
+**ipv6_cidr_block**: string
+**ipv6_cidr_block_state**: aws_ec2_subnet_cidr_block_state
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class subnet {
+
+}
+aws_ec2_subnet --> aws_ec2_private_dns_name_options_on_launch
+aws_ec2_subnet --> aws_ec2_subnet_ipv6_cidr_block_association
+aws_resource <|--- aws_ec2_subnet
+subnet <|--- aws_ec2_subnet
+aws_ec2_subnet_ipv6_cidr_block_association --> aws_ec2_subnet_cidr_block_state
+resource <|--- aws_resource
+resource <|--- subnet
+
+@enduml
+```
+
+</ZoomPanPinch>

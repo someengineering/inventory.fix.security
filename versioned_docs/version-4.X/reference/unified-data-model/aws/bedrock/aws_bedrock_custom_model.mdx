@@ -1,0 +1,208 @@
+---
+sidebar_label: Bedrock Custom Model
+---
+
+# `aws_bedrock_custom_model`
+
+- Categories: Machine Learning & AI, Compute
+- Service: bedrock
+- Provider Link: [Bedrock Custom Model](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
+
+## Description
+
+AWS Bedrock Custom Model is a service that lets users create and deploy their own AI models on AWS infrastructure. It provides tools for model training, fine-tuning, and hosting. Users can build models for various tasks like natural language processing, image recognition, and predictive analytics. The service integrates with other AWS offerings for data storage and management.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Custom Model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+ai_model <|--- aws_bedrock_custom_model
+aws_resource <|--- aws_bedrock_custom_model
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Custom Model resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_prompt {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_bedrock_foundation_model {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_bedrock_provisioned_model_throughput {
+
+}
+class aws_kms_key {
+
+}
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_bedrock_custom_model
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_kms_key
+aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_provisioned_model_throughput
+aws_bedrock_custom_model -[#1A83AF]-> aws_kms_key
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_custom_model
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_provisioned_model_throughput
+aws_bedrock_model_customization_job -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Custom Model data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_custom_model {
+**base_model_arn**: string
+**creation_time**: datetime
+**customization_type**: string
+**hyper_parameters**: dictionary[string, string]
+**job_arn**: string
+**job_name**: string
+**model_arn**: string
+**model_kms_key_arn**: string
+**model_name**: string
+**output_data_config**: string
+**training_data_config**: string
+**training_metrics**: double
+**validation_data_config**: aws_bedrock_validation_data_config
+**validation_metrics**: double[]
+}
+class aws_bedrock_validation_data_config {
+**validators**: string[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+ai_model <|--- aws_bedrock_custom_model
+aws_bedrock_custom_model --> aws_bedrock_validation_data_config
+aws_resource <|--- aws_bedrock_custom_model
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

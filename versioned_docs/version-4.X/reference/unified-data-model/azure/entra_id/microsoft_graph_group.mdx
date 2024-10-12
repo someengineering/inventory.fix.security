@@ -1,0 +1,264 @@
+---
+sidebar_label: Graph Group
+---
+
+# `microsoft_graph_group`
+
+- Categories: Access Control
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class group {
+
+}
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+resource <|--- group
+microsoft_resource <|--- microsoft_graph_entity
+group <|--- microsoft_graph_group
+microsoft_graph_entity <|--- microsoft_graph_group
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_assignment {
+
+}
+class microsoft_graph_device {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_device
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_group
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_service_principal
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_user
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_device
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_service_principal
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class group {
+
+}
+class microsoft_graph_assigned_label {
+**display_name**: string
+**label_id**: string
+}
+class microsoft_graph_assigned_license {
+**disabled_plans**: string[]
+**sku_id**: string
+}
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_graph_group {
+**access_type**: string
+**assigned_labels**: microsoft_graph_assigned_label[]
+**assigned_licenses**: microsoft_graph_assigned_license[]
+**classification**: string
+**created_by_app_id**: string
+**created_date_time**: datetime
+**description**: string
+**display_name**: string
+**expiration_date_time**: datetime
+**group_types**: string[]
+**info_catalogs**: string[]
+**is_assignable_to_role**: boolean
+**is_favorite**: boolean
+**is_management_restricted**: boolean
+**license_processing_state**: microsoft_graph_license_processing_state
+**mail**: string
+**mail_enabled**: boolean
+**mail_nickname**: string
+**membership_rule**: string
+**membership_rule_processing_state**: string
+**membership_rule_processing_status**: microsoft_graph_membership_rule_processing_status
+**on_premises_domain_name**: string
+**on_premises_last_sync_date_time**: datetime
+**on_premises_net_bios_name**: string
+**on_premises_provisioning_errors**: microsoft_graph_on_premises_provisioning_error[]
+**on_premises_sam_account_name**: string
+**on_premises_security_identifier**: string
+**on_premises_sync_enabled**: boolean
+**organization_id**: string
+**preferred_data_location**: string
+**preferred_language**: string
+**proxy_addresses**: string[]
+**renewed_date_time**: datetime
+**resource_behavior_options**: string[]
+**resource_provisioning_options**: string[]
+**security_enabled**: boolean
+**security_identifier**: string
+**service_provisioning_errors**: microsoft_graph_service_provisioning_error[]
+**theme**: string
+**unique_name**: string
+**unseen_conversations_count**: int64
+**unseen_messages_count**: int64
+**visibility**: string
+**writeback_configuration**: microsoft_graph_group_writeback_configuration
+}
+class microsoft_graph_group_writeback_configuration {
+**on_premises_group_type**: string
+}
+class microsoft_graph_license_processing_state {
+**state**: string
+}
+class microsoft_graph_membership_rule_processing_status {
+**error_message**: string
+**last_membership_updated**: string
+**status**: string
+}
+class microsoft_graph_on_premises_provisioning_error {
+**category**: string
+**occurred_date_time**: datetime
+**property_causing_error**: string
+**value**: string
+}
+class microsoft_graph_service_provisioning_error {
+**created_date_time**: datetime
+**is_resolved**: boolean
+**service_instance**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- group
+microsoft_resource <|--- microsoft_graph_entity
+group <|--- microsoft_graph_group
+microsoft_graph_group --> microsoft_graph_assigned_label
+microsoft_graph_group --> microsoft_graph_assigned_license
+microsoft_graph_entity <|--- microsoft_graph_group
+microsoft_graph_group --> microsoft_graph_group_writeback_configuration
+microsoft_graph_group --> microsoft_graph_license_processing_state
+microsoft_graph_group --> microsoft_graph_membership_rule_processing_status
+microsoft_graph_group --> microsoft_graph_on_premises_provisioning_error
+microsoft_graph_group --> microsoft_graph_service_provisioning_error
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

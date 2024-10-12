@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: {"description":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","tags":["authorization"],"requestBody":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"email":{"type":"string","description":"The email of the user."},"password":{"type":"string","description":"The password of the user."},"redirect":{"type":"string","description":"The redirect url after the user is created."}}}}}},"responses":{"303":{"description":"The redirect to the specified url in the form with a code parameter added."}},"method":"post","path":"/authenticate","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to authenticate the user.","description":{"content":"Authenticate the user. This endpoint needs to be accessed from a browser! It is possible that the user is redirected to another authentication server.","type":"text/plain"},"url":{"path":["authenticate"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/x-www-form-urlencoded"}],"method":"POST","body":{"mode":"urlencoded","urlencoded":[]}}}
 sidebar_class_name: "post api-method"
-info_path: version-4.X/reference/api/fix-inventory-core-rest-api
+info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
 hide_send_button: true
 ---

@@ -1,0 +1,235 @@
+---
+sidebar_label: Web Container App
+---
+
+# `azure_web_container_app`
+
+- Categories: Compute
+- Service: app-service
+- Provider Link: [Web Container App](https://learn.microsoft.com/en-us/azure/container-apps/)
+
+## Description
+
+Azure Web Container App is a cloud service for deploying containerized web applications. It runs and manages containers in a serverless environment, handling infrastructure tasks like scaling and load balancing. The service supports various programming languages and frameworks, integrates with Azure services, and offers features for monitoring, security, and continuous deployment of containerized applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web Container App"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_container_app {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_container_app
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Container App resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_container_app {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Container App data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_configuration {
+**active_revisions_mode**: string
+**ingress**: azure_ingress
+**registries**: azure_registry_credentials[]
+**secrets**: dictionary[string, string]
+}
+class azure_container {
+**args**: string[]
+**command**: string[]
+**env**: azure_environment_var[]
+**image**: string
+**name**: string
+**resources**: azure_container_resources
+}
+class azure_container_resources {
+**cpu**: double
+**memory**: string
+}
+class azure_dapr {
+**app_id**: string
+**app_port**: int64
+**components**: azure_dapr_component[]
+**enabled**: boolean
+}
+class azure_dapr_component {
+**metadata**: azure_dapr_metadata[]
+**name**: string
+**type**: string
+**version**: string
+}
+class azure_dapr_metadata {
+**name**: string
+**secret_ref**: string
+**value**: string
+}
+class azure_environment_var {
+**name**: string
+**secret_ref**: string
+**value**: string
+}
+class azure_ingress {
+**allow_insecure**: boolean
+**external**: boolean
+**fqdn**: string
+**target_port**: int64
+**traffic**: azure_traffic_weight[]
+**transport**: string
+}
+class azure_registry_credentials {
+**password_secret_ref**: string
+**server**: string
+**username**: string
+}
+class azure_scale {
+**max_replicas**: int64
+**min_replicas**: int64
+}
+class azure_template {
+**containers**: azure_container[]
+**dapr**: azure_dapr
+**revision_suffix**: string
+**scale**: azure_scale
+}
+class azure_traffic_weight {
+**latest_revision**: boolean
+**revision_name**: string
+**weight**: int64
+}
+class azure_web_container_app {
+**azure_kind**: string
+**container_configuration**: azure_configuration
+**kube_environment_id**: string
+**latest_revision_fqdn**: string
+**latest_revision_name**: string
+**template**: azure_template
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_configuration --> azure_ingress
+azure_configuration --> azure_registry_credentials
+azure_container --> azure_container_resources
+azure_container --> azure_environment_var
+azure_dapr --> azure_dapr_component
+azure_dapr_component --> azure_dapr_metadata
+azure_ingress --> azure_traffic_weight
+azure_template --> azure_container
+azure_template --> azure_dapr
+azure_template --> azure_scale
+azure_web_container_app --> azure_configuration
+azure_web_container_app --> azure_template
+microsoft_resource <|--- azure_web_container_app
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

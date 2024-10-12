@@ -1,0 +1,407 @@
+---
+sidebar_label: Compute Restore Point Collection
+---
+
+# `azure_compute_restore_point_collection`
+
+- Categories: Storage
+- Service: compute
+- Provider Link: [Compute Restore Point Collection](https://learn.microsoft.com/en-us/azure/virtual-machines/restore-point-collections)
+
+## Description
+
+Azure Compute Restore Point Collection is a feature in Microsoft Azure that stores multiple restore points for virtual machines. It provides a way to capture and manage VM states at specific times, facilitating quick recovery or rollback to previous configurations. This collection helps users maintain system consistency and recover from errors or unwanted changes efficiently.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Restore Point Collection"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_restore_point_collection {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_restore_point_collection
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Restore Point Collection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_restore_point_collection {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+azure_compute_restore_point_collection -[#1A83AF]-> azure_compute_virtual_machine_base
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Restore Point Collection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_compute_restore_point_collection {
+**restore_point_collection_id**: string
+**restore_point_collection_resource**: azure_restore_point_collection_source_properties
+**restore_points**: azure_restore_point[]
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_restore_point_attributes {
+**encryption**: azure_restore_point_encryption
+**source_disk_restore_point**: string
+}
+class azure_disk_restore_point_instance_view {
+**id**: string
+**replication_status**: azure_disk_restore_point_replication_status
+}
+class azure_disk_restore_point_replication_status {
+**completion_percent**: int64
+**status**: azure_instance_view_status
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_sub_resource
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_restore_point {
+**consistency_mode**: string
+**exclude_disks**: string[]
+**provisioning_state**: string
+**restore_point_instance_view**: azure_restore_point_instance_view
+**source_metadata**: azure_restore_point_source_metadata
+**source_restore_point**: string
+**time_created**: datetime
+}
+class azure_restore_point_collection_source_properties {
+**id**: string
+**location**: string
+}
+class azure_restore_point_encryption {
+**disk_encryption_set**: azure_sub_resource
+**type**: string
+}
+class azure_restore_point_instance_view {
+**disk_restore_points**: azure_disk_restore_point_instance_view[]
+**statuses**: azure_instance_view_status[]
+}
+class azure_restore_point_source_metadata {
+**diagnostics_profile**: azure_diagnostics_profile
+**hardware_profile**: azure_hardware_profile
+**hyper_v_generation**: string
+**license_type**: string
+**location**: string
+**os_profile**: azure_os_profile
+**security_profile**: azure_security_profile
+**storage_profile**: azure_restore_point_source_vm_storage_profile
+**user_data**: string
+**vm_id**: string
+}
+class azure_restore_point_source_vm_data_disk {
+**caching**: string
+**disk_restore_point**: azure_disk_restore_point_attributes
+**disk_size_gb**: int64
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_restore_point_source_vm_storage_profile {
+**data_disks**: azure_restore_point_source_vm_data_disk[]
+**os_disk**: azure_restore_point_source_vmos_disk
+}
+class azure_restore_point_source_vmos_disk {
+**caching**: string
+**disk_restore_point**: azure_disk_restore_point_attributes
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_sub_resource {
+**id**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_sub_resource
+**security_encryption_type**: string
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_compute_restore_point_collection --> azure_restore_point
+azure_compute_restore_point_collection --> azure_restore_point_collection_source_properties
+microsoft_resource <|--- azure_compute_restore_point_collection
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_restore_point_attributes --> azure_restore_point_encryption
+azure_disk_restore_point_instance_view --> azure_disk_restore_point_replication_status
+azure_disk_restore_point_replication_status --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+azure_restore_point --> azure_restore_point_instance_view
+azure_restore_point --> azure_restore_point_source_metadata
+azure_restore_point --> azure_system_data
+azure_restore_point_encryption --> azure_sub_resource
+azure_restore_point_instance_view --> azure_disk_restore_point_instance_view
+azure_restore_point_instance_view --> azure_instance_view_status
+azure_restore_point_source_metadata --> azure_diagnostics_profile
+azure_restore_point_source_metadata --> azure_hardware_profile
+azure_restore_point_source_metadata --> azure_os_profile
+azure_restore_point_source_metadata --> azure_restore_point_source_vm_storage_profile
+azure_restore_point_source_metadata --> azure_security_profile
+azure_restore_point_source_vm_data_disk --> azure_disk_restore_point_attributes
+azure_restore_point_source_vm_data_disk --> azure_managed_disk_parameters
+azure_restore_point_source_vm_storage_profile --> azure_restore_point_source_vm_data_disk
+azure_restore_point_source_vm_storage_profile --> azure_restore_point_source_vmos_disk
+azure_restore_point_source_vmos_disk --> azure_disk_encryption_settings
+azure_restore_point_source_vmos_disk --> azure_disk_restore_point_attributes
+azure_restore_point_source_vmos_disk --> azure_managed_disk_parameters
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_vault_secret_group --> azure_vault_certificate
+azure_vm_disk_security_profile --> azure_sub_resource
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,190 @@
+---
+sidebar_label: SQS Queue
+---
+
+# `aws_sqs_queue`
+
+- Categories: Compute, Storage
+- Service: sqs
+- Provider Link: [SQS Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+
+## Description
+
+AWS SQS Queue is a managed message queuing service that facilitates communication between distributed system components. It stores messages from producers and delivers them to consumers, ensuring reliable data transfer. SQS supports multiple messaging patterns, including point-to-point and publish-subscribe, and handles message retention, delivery, and deletion. It integrates with other AWS services for building decoupled applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQS Queue"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sqs_queue {
+
+}
+class queue {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sqs_queue
+queue <|--- aws_sqs_queue
+resource <|--- queue
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQS Queue resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_environment {
+
+}
+class aws_kms_key {
+
+}
+class aws_sqs_queue {
+
+}
+aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
+aws_sqs_queue -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQS Queue data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sqs_queue {
+**sqs_approximate_number_of_messages**: int64
+**sqs_approximate_number_of_messages_delayed**: int64
+**sqs_approximate_number_of_messages_not_visible**: int64
+**sqs_content_based_deduplication**: boolean
+**sqs_deduplication_scope**: string
+**sqs_delay_seconds**: int64
+**sqs_fifo_queue**: boolean
+**sqs_fifo_throughput_limit**: string
+**sqs_kms_data_key_reuse_period_seconds**: int64
+**sqs_kms_master_key_id**: string
+**sqs_managed_sse_enabled**: boolean
+**sqs_maximum_message_size**: int64
+**sqs_message_retention_period**: int64
+**sqs_policy**: dictionary[string, any]
+**sqs_queue_url**: string
+**sqs_receive_message_wait_time_seconds**: int64
+**sqs_redrive_allow_policy**: string
+**sqs_redrive_policy**: aws_sqs_redrive_policy
+**sqs_visibility_timeout**: int64
+}
+class aws_sqs_redrive_policy {
+**dead_letter_target_arn**: string
+**max_receive_count**: int64
+}
+class queue {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sqs_queue
+aws_sqs_queue --> aws_sqs_redrive_policy
+queue <|--- aws_sqs_queue
+resource <|--- queue
+
+@enduml
+```
+
+</ZoomPanPinch>

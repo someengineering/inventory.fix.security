@@ -1,0 +1,193 @@
+---
+sidebar_label: Kinesis Stream
+---
+
+# `aws_kinesis_stream`
+
+- Categories: Compute
+- Service: kinesis
+- Provider Link: [Kinesis Stream](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+
+## Description
+
+AWS Kinesis Stream is a data streaming service that collects, processes, and analyzes real-time data at scale. It ingests data from multiple sources, stores it in shards, and makes it available for consumption by applications. Kinesis Stream supports various data types and can handle high-throughput data flows for analytics, monitoring, and machine learning purposes.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Kinesis Stream"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_kinesis_stream {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_kinesis_stream
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Kinesis Stream resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamodb_table {
+
+}
+class aws_kinesis_stream {
+
+}
+class aws_kms_key {
+
+}
+class aws_rds_cluster {
+
+}
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
+aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
+aws_rds_cluster -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Kinesis Stream data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_kinesis_enhanced_metrics {
+**shard_level_metrics**: string[]
+}
+class aws_kinesis_hash_key_range {
+**ending_hash_key**: string
+**starting_hash_key**: string
+}
+class aws_kinesis_sequence_number_range {
+**ending_sequence_number**: string
+**starting_sequence_number**: string
+}
+class aws_kinesis_shard {
+**adjacent_parent_shard_id**: string
+**hash_key_range**: aws_kinesis_hash_key_range
+**parent_shard_id**: string
+**sequence_number_range**: aws_kinesis_sequence_number_range
+**shard_id**: string
+}
+class aws_kinesis_stream {
+**kinesis_encryption_type**: string
+**kinesis_enhanced_monitoring**: aws_kinesis_enhanced_metrics[]
+**kinesis_has_more_shards**: boolean
+**kinesis_key_id**: string
+**kinesis_policy**: dictionary[string, any]
+**kinesis_retention_period_hours**: int64
+**kinesis_shards**: aws_kinesis_shard[]
+**kinesis_stream_mode_details**: string
+**kinesis_stream_status**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_kinesis_shard --> aws_kinesis_hash_key_range
+aws_kinesis_shard --> aws_kinesis_sequence_number_range
+aws_kinesis_stream --> aws_kinesis_enhanced_metrics
+aws_kinesis_stream --> aws_kinesis_shard
+aws_resource <|--- aws_kinesis_stream
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

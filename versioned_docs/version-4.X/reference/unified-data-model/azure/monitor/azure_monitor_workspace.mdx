@@ -1,0 +1,193 @@
+---
+sidebar_label: Monitor Workspace
+---
+
+# `azure_monitor_workspace`
+
+- Categories: Management
+- Service: monitor
+- Provider Link: [Monitor Workspace](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview)
+
+## Description
+
+Azure Monitor Workspace is a centralized data storage and analysis solution for Azure resources. It collects logs, metrics, and traces from multiple sources, providing a unified view of operational data. Users can query, visualize, and analyze this data to gain insights into application performance, infrastructure health, and security events across their Azure environment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Workspace"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_workspace {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_monitor_workspace
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Workspace resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_diagnostic_settings {
+
+}
+class azure_monitor_workspace {
+
+}
+azure_monitor_diagnostic_settings -[#1A83AF]-> azure_monitor_workspace
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Workspace data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_ingestion_settings {
+**data_collection_endpoint_resource_id**: string
+**data_collection_rule_resource_id**: string
+}
+class azure_monitor_metrics {
+**internal_id**: string
+**prometheus_query_endpoint**: string
+}
+class azure_monitor_workspace {
+**account_id**: string
+**default_ingestion_settings**: azure_monitor_ingestion_settings
+**metrics**: azure_monitor_metrics
+**workspace_private_endpoint_connections**: azure_private_endpoint_connection[]
+**workspace_public_network_access**: string
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_monitor_workspace --> azure_monitor_ingestion_settings
+azure_monitor_workspace --> azure_monitor_metrics
+azure_monitor_workspace --> azure_private_endpoint_connection
+microsoft_resource <|--- azure_monitor_workspace
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

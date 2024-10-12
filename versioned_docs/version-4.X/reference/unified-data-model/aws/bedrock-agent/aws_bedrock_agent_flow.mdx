@@ -1,0 +1,310 @@
+---
+sidebar_label: Bedrock Agent Flow
+---
+
+# `aws_bedrock_agent_flow`
+
+- Categories: Machine Learning & AI
+- Service: bedrock-agent
+- Provider Link: [Bedrock Agent Flow](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-flow.html)
+
+## Description
+
+AWS Bedrock Agent Flow is a tool for creating conversational AI agents. It provides a visual interface to define agent behaviors, integrate with external data sources and APIs, and configure conversation flows. Users can build agents that perform tasks, answer questions, and interact with users based on predefined rules and natural language understanding capabilities.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Agent Flow"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_flow {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_bedrock_agent_flow
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Flow resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_flow {
+
+}
+class aws_bedrock_agent_flow_version {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_lambda_function {
+
+}
+class aws_s3_bucket {
+
+}
+aws_bedrock_agent_flow -[#1A83AF]-> aws_bedrock_agent_flow_version
+aws_bedrock_agent_flow -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_flow -[#1A83AF]-> aws_lambda_function
+aws_bedrock_agent_flow -[#1A83AF]-> aws_s3_bucket
+aws_bedrock_agent_flow_version -[#1A83AF]-> aws_kms_key
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent_flow
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent_flow_version
+aws_lambda_function -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Flow data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_flow {
+**created_at**: datetime
+**customer_encryption_key_arn**: string
+**definition**: aws_bedrock_flow_definition
+**description**: string
+**execution_role_arn**: string
+**status**: string
+**updated_at**: datetime
+**validations**: aws_bedrock_flow_validation[]
+**version**: string
+}
+class aws_bedrock_condition_flow_node_configuration {
+**conditions**: aws_bedrock_flow_condition[]
+}
+class aws_bedrock_flow_condition {
+**expression**: string
+**name**: string
+}
+class aws_bedrock_flow_connection {
+**configuration**: aws_bedrock_flow_connection_configuration
+**name**: string
+**source**: string
+**target**: string
+**type**: string
+}
+class aws_bedrock_flow_connection_configuration {
+**conditional**: string
+**data**: aws_bedrock_flow_data_connection_configuration
+}
+class aws_bedrock_flow_data_connection_configuration {
+**source_output**: string
+**target_input**: string
+}
+class aws_bedrock_flow_definition {
+**connections**: aws_bedrock_flow_connection[]
+**nodes**: aws_bedrock_flow_node[]
+}
+class aws_bedrock_flow_node {
+**configuration**: aws_bedrock_flow_node_configuration
+**inputs**: aws_bedrock_flow_node_input[]
+**name**: string
+**outputs**: aws_bedrock_flow_node_output[]
+**type**: string
+}
+class aws_bedrock_flow_node_configuration {
+**agent**: string
+**condition**: aws_bedrock_condition_flow_node_configuration
+**knowledge_base**: aws_bedrock_knowledge_base_flow_node_configuration
+**lambda_function**: string
+**lex**: aws_bedrock_lex_flow_node_configuration
+**prompt**: aws_bedrock_prompt_flow_node_configuration
+**retrieval**: aws_bedrock_retrieval_flow_node_configuration
+**storage**: aws_bedrock_storage_flow_node_configuration
+}
+class aws_bedrock_flow_node_input {
+**expression**: string
+**name**: string
+**type**: string
+}
+class aws_bedrock_flow_node_output {
+**name**: string
+**type**: string
+}
+class aws_bedrock_flow_validation {
+**message**: string
+**severity**: string
+}
+class aws_bedrock_knowledge_base_flow_node_configuration {
+**knowledge_base_id**: string
+**model_id**: string
+}
+class aws_bedrock_lex_flow_node_configuration {
+**bot_alias_arn**: string
+**locale_id**: string
+}
+class aws_bedrock_prompt_flow_node_configuration {
+**source_configuration**: aws_bedrock_prompt_flow_node_source_configuration
+}
+class aws_bedrock_prompt_flow_node_inline_configuration {
+**inference_configuration**: aws_bedrock_prompt_inference_configuration
+**model_id**: string
+**template_configuration**: aws_bedrock_prompt_template_configuration
+**template_type**: string
+}
+class aws_bedrock_prompt_flow_node_source_configuration {
+**inline**: aws_bedrock_prompt_flow_node_inline_configuration
+**resource**: string
+}
+class aws_bedrock_prompt_inference_configuration {
+**text**: aws_bedrock_prompt_model_inference_configuration
+}
+class aws_bedrock_prompt_model_inference_configuration {
+**max_tokens**: int64
+**stop_sequences**: string[]
+**temperature**: double
+**top_k**: int64
+**top_p**: double
+}
+class aws_bedrock_prompt_template_configuration {
+**text**: aws_bedrock_text_prompt_template_configuration
+}
+class aws_bedrock_retrieval_flow_node_configuration {
+**service_configuration**: aws_bedrock_retrieval_flow_node_service_configuration
+}
+class aws_bedrock_retrieval_flow_node_service_configuration {
+**s3**: string
+}
+class aws_bedrock_storage_flow_node_configuration {
+**service_configuration**: aws_bedrock_storage_flow_node_service_configuration
+}
+class aws_bedrock_storage_flow_node_service_configuration {
+**s3**: string
+}
+class aws_bedrock_text_prompt_template_configuration {
+**input_variables**: string[]
+**text**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_bedrock_agent_flow --> aws_bedrock_flow_definition
+aws_bedrock_agent_flow --> aws_bedrock_flow_validation
+aws_resource <|--- aws_bedrock_agent_flow
+aws_bedrock_condition_flow_node_configuration --> aws_bedrock_flow_condition
+aws_bedrock_flow_connection --> aws_bedrock_flow_connection_configuration
+aws_bedrock_flow_connection_configuration --> aws_bedrock_flow_data_connection_configuration
+aws_bedrock_flow_definition --> aws_bedrock_flow_connection
+aws_bedrock_flow_definition --> aws_bedrock_flow_node
+aws_bedrock_flow_node --> aws_bedrock_flow_node_configuration
+aws_bedrock_flow_node --> aws_bedrock_flow_node_input
+aws_bedrock_flow_node --> aws_bedrock_flow_node_output
+aws_bedrock_flow_node_configuration --> aws_bedrock_condition_flow_node_configuration
+aws_bedrock_flow_node_configuration --> aws_bedrock_knowledge_base_flow_node_configuration
+aws_bedrock_flow_node_configuration --> aws_bedrock_lex_flow_node_configuration
+aws_bedrock_flow_node_configuration --> aws_bedrock_prompt_flow_node_configuration
+aws_bedrock_flow_node_configuration --> aws_bedrock_retrieval_flow_node_configuration
+aws_bedrock_flow_node_configuration --> aws_bedrock_storage_flow_node_configuration
+aws_bedrock_prompt_flow_node_configuration --> aws_bedrock_prompt_flow_node_source_configuration
+aws_bedrock_prompt_flow_node_inline_configuration --> aws_bedrock_prompt_inference_configuration
+aws_bedrock_prompt_flow_node_inline_configuration --> aws_bedrock_prompt_template_configuration
+aws_bedrock_prompt_flow_node_source_configuration --> aws_bedrock_prompt_flow_node_inline_configuration
+aws_bedrock_prompt_inference_configuration --> aws_bedrock_prompt_model_inference_configuration
+aws_bedrock_prompt_template_configuration --> aws_bedrock_text_prompt_template_configuration
+aws_bedrock_retrieval_flow_node_configuration --> aws_bedrock_retrieval_flow_node_service_configuration
+aws_bedrock_storage_flow_node_configuration --> aws_bedrock_storage_flow_node_service_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

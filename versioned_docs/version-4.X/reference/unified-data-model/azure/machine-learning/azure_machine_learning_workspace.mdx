@@ -1,0 +1,400 @@
+---
+sidebar_label: Machine Learning Workspace
+---
+
+# `azure_machine_learning_workspace`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Workspace](https://learn.microsoft.com/en-us/azure/machine-learning/concept-workspace)
+
+## Description
+
+Azure Machine Learning Workspace is a cloud-based environment for developing, training, and deploying machine learning models. It provides tools and services for data preparation, model creation, and experiment tracking. Users can collaborate on projects, manage datasets, and deploy models to production. The workspace integrates with other Azure services for enhanced functionality and resource management.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Workspace"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_workspace {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_machine_learning_workspace
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Workspace resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_vault {
+
+}
+class azure_machine_learning_batch_endpoint {
+
+}
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_datastore {
+
+}
+class azure_machine_learning_endpoint {
+
+}
+class azure_machine_learning_featureset_container {
+
+}
+class azure_machine_learning_featurestore_entity_container {
+
+}
+class azure_machine_learning_job {
+
+}
+class azure_machine_learning_labeling_job {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_private_endpoint_connection {
+
+}
+class azure_machine_learning_private_link {
+
+}
+class azure_machine_learning_schedule {
+
+}
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_machine_learning_workspace_code_container {
+
+}
+class azure_machine_learning_workspace_component_container {
+
+}
+class azure_machine_learning_workspace_connection {
+
+}
+class azure_machine_learning_workspace_data_container {
+
+}
+class azure_machine_learning_workspace_environment_container {
+
+}
+class azure_machine_learning_workspace_model_container {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_network {
+
+}
+class azure_storage_account {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_key_vault -[#1A83AF]-> azure_machine_learning_workspace
+azure_machine_learning_batch_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_batch_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_private_endpoint_connection -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_private_endpoint_connection -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_private_link -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_private_link -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_batch_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_datastore
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_featureset_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_featurestore_entity_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_labeling_job
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_endpoint_connection
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_link
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_schedule
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_serverless_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_code_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_component_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_connection
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_data_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_environment_container
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_workspace_model_container
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_user
+azure_network_subnet -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_virtual_network -[#1A83AF]-> azure_machine_learning_workspace
+azure_network_virtual_network -[#1A83AF]-> azure_network_subnet
+azure_storage_account -[#1A83AF]-> azure_machine_learning_workspace
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Workspace data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_encryption_key_vault_properties {
+**identity_client_id**: string
+**key_identifier**: string
+**key_vault_arm_id**: string
+}
+class azure_encryption_property {
+**identity**: string
+**key_vault_properties**: azure_encryption_key_vault_properties
+**status**: string
+}
+class azure_feature_store_settings {
+**compute_runtime**: string
+**offline_store_connection_name**: string
+**online_store_connection_name**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_machine_learning_workspace {
+**allow_public_access_when_behind_vnet**: boolean
+**application_insights**: string
+**associated_workspaces**: string[]
+**azure_kind**: string
+**azure_sku**: azure_sku
+**container_registry**: string
+**description**: string
+**discovery_url**: string
+**enable_data_isolation**: boolean
+**feature_store_settings**: azure_feature_store_settings
+**friendly_name**: string
+**hbi_workspace**: boolean
+**hub_resource_id**: string
+**identity**: azure_identity
+**image_build_compute**: string
+**key_vault**: string
+**managed_network**: azure_managed_network_settings
+**ml_flow_tracking_uri**: string
+**notebook_info**: azure_notebook_resource_info
+**primary_user_assigned_identity**: string
+**private_endpoint_connection_ids**: string[]
+**private_link_count**: int64
+**public_network_access**: string
+**serverless_compute_settings**: azure_serverless_compute_settings
+**service_managed_resources_settings**: azure_service_managed_resources_settings
+**service_provisioned_resource_group**: string
+**shared_private_link_resources**: azure_shared_private_link_resource[]
+**storage_account**: string
+**storage_hns_enabled**: boolean
+**system_data**: azure_system_data
+**tenant_id**: string
+**v1_legacy_mode**: boolean
+**workspace_encryption**: azure_encryption_property
+**workspace_hub_config**: azure_workspace_hub_config
+**workspace_id**: string
+}
+class azure_managed_network_outbound_rule {
+**category**: string
+**status**: string
+**type**: string
+}
+class azure_managed_network_provision_status {
+**spark_ready**: boolean
+**status**: string
+}
+class azure_managed_network_settings {
+**isolation_mode**: string
+**network_id**: string
+**outbound_rules**: dictionary[string, azure_managed_network_outbound_rule]
+**status**: azure_managed_network_provision_status
+}
+class azure_notebook_preparation_error {
+**error_message**: string
+**status_code**: int64
+}
+class azure_notebook_resource_info {
+**fqdn**: string
+**notebook_preparation_error**: azure_notebook_preparation_error
+**resource_id**: string
+}
+class azure_serverless_compute_settings {
+**serverless_compute_custom_subnet**: string
+**serverless_compute_no_public_ip**: boolean
+}
+class azure_service_managed_resources_settings {
+**cosmos_db**: int64
+}
+class azure_shared_private_link_resource {
+**group_id**: string
+**name**: string
+**private_link_resource_id**: string
+**request_message**: string
+**status**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_workspace_hub_config {
+**additional_workspace_storage_accounts**: string[]
+**default_workspace_resource_group**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_encryption_property --> azure_encryption_key_vault_properties
+azure_identity --> azure_user_assigned_identity
+azure_machine_learning_workspace --> azure_encryption_property
+azure_machine_learning_workspace --> azure_feature_store_settings
+azure_machine_learning_workspace --> azure_identity
+azure_machine_learning_workspace --> azure_managed_network_settings
+azure_machine_learning_workspace --> azure_notebook_resource_info
+azure_machine_learning_workspace --> azure_serverless_compute_settings
+azure_machine_learning_workspace --> azure_service_managed_resources_settings
+azure_machine_learning_workspace --> azure_shared_private_link_resource
+azure_machine_learning_workspace --> azure_sku
+azure_machine_learning_workspace --> azure_system_data
+azure_machine_learning_workspace --> azure_workspace_hub_config
+microsoft_resource <|--- azure_machine_learning_workspace
+azure_managed_network_settings --> azure_managed_network_outbound_rule
+azure_managed_network_settings --> azure_managed_network_provision_status
+azure_notebook_resource_info --> azure_notebook_preparation_error
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,187 @@
+---
+sidebar_label: Volume
+---
+
+# `digitalocean_volume`
+
+- Categories: Storage
+
+## Description
+
+DigitalOcean Volume is a block storage service provided by DigitalOcean that allows users to attach additional storage to their Droplets.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Volume"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_resource {
+
+}
+class digitalocean_volume {
+
+}
+class resource {
+
+}
+class volume {
+
+}
+resource <|--- digitalocean_resource
+digitalocean_resource <|--- digitalocean_volume
+volume <|--- digitalocean_volume
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Volume resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_droplet {
+
+}
+class digitalocean_project {
+
+}
+class digitalocean_snapshot {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_volume {
+
+}
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Volume data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_resource {
+**urn**: string
+}
+class digitalocean_volume {
+**description**: string
+**filesystem_label**: string
+**filesystem_type**: string
+**ondemand_cost**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+resource <|--- digitalocean_resource
+digitalocean_resource <|--- digitalocean_volume
+volume <|--- digitalocean_volume
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,313 @@
+---
+sidebar_label: ALB
+---
+
+# `aws_alb`
+
+- Categories: Networking
+- Service: elbv2
+- Provider Link: [ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
+
+## Description
+
+AWS Application Load Balancer (ALB) is a Layer 7 load balancing service that distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses. It supports content-based routing, can handle HTTP/HTTPS traffic, and provides features like SSL termination, health checks, and integration with other AWS services for improved application performance and availability.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ALB"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_resource {
+
+}
+class load_balancer {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_alb
+load_balancer <|--- aws_alb
+resource <|--- aws_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ALB resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_alb_target_group {
+
+}
+class aws_beanstalk_environment {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_region {
+
+}
+class aws_service_quota {
+
+}
+class aws_vpc {
+
+}
+class aws_waf_web_acl {
+
+}
+aws_alb -[#1A83AF]-> aws_alb_target_group
+aws_beanstalk_environment -[#1A83AF]-> aws_alb
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_waf_web_acl -[#1A83AF]-> aws_alb
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ALB data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+**alb_availability_zones**: aws_alb_availability_zone[]
+**alb_canonical_hosted_zone_id**: string
+**alb_customer_owned_ipv4_pool**: string
+**alb_dns_name**: string
+**alb_ip_address_type**: string
+**alb_listener**: aws_alb_listener[]
+**alb_scheme**: string
+**alb_security_groups**: string[]
+**alb_state**: aws_alb_load_balancer_state
+**alb_type**: string
+}
+class aws_alb_action {
+**authenticate_cognito_config**: aws_alb_authenticate_cognito_action_config
+**authenticate_oidc_config**: aws_alb_authenticate_oidc_action_config
+**fixed_response_config**: aws_alb_fixed_response_action_config
+**forward_config**: aws_alb_forward_action_config
+**order**: int64
+**redirect_config**: aws_alb_redirect_action_config
+**target_group_arn**: string
+**type**: string
+}
+class aws_alb_authenticate_cognito_action_config {
+**authentication_request_extra_params**: dictionary[string, string]
+**on_unauthenticated_request**: string
+**scope**: string
+**session_cookie_name**: string
+**session_timeout**: int64
+**user_pool_arn**: string
+**user_pool_client_id**: string
+**user_pool_domain**: string
+}
+class aws_alb_authenticate_oidc_action_config {
+**authentication_request_extra_params**: dictionary[string, string]
+**authorization_endpoint**: string
+**client_id**: string
+**client_secret**: string
+**issuer**: string
+**on_unauthenticated_request**: string
+**scope**: string
+**session_cookie_name**: string
+**session_timeout**: int64
+**token_endpoint**: string
+**use_existing_client_secret**: boolean
+**user_info_endpoint**: string
+}
+class aws_alb_availability_zone {
+**load_balancer_addresses**: aws_alb_load_balancer_address[]
+**outpost_id**: string
+**subnet_id**: string
+**zone_name**: string
+}
+class aws_alb_certificate {
+**certificate_arn**: string
+**is_default**: boolean
+}
+class aws_alb_fixed_response_action_config {
+**content_type**: string
+**message_body**: string
+**status_code**: string
+}
+class aws_alb_forward_action_config {
+**target_group_stickiness_config**: aws_alb_target_group_stickiness_config
+**target_groups**: aws_alb_target_group_tuple[]
+}
+class aws_alb_listener {
+**alpn_policy**: string[]
+**certificates**: aws_alb_certificate[]
+**default_actions**: aws_alb_action[]
+**listener_arn**: string
+**load_balancer_arn**: string
+**port**: int64
+**protocol**: string
+**ssl_policy**: string
+}
+class aws_alb_load_balancer_address {
+**allocation_id**: string
+**i_pv6_address**: string
+**ip_address**: string
+**private_i_pv4_address**: string
+}
+class aws_alb_load_balancer_state {
+**code**: string
+**reason**: string
+}
+class aws_alb_redirect_action_config {
+**host**: string
+**path**: string
+**port**: string
+**protocol**: string
+**query**: string
+**status_code**: string
+}
+class aws_alb_target_group_stickiness_config {
+**duration_seconds**: int64
+**enabled**: boolean
+}
+class aws_alb_target_group_tuple {
+**target_group_arn**: string
+**weight**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_alb --> aws_alb_availability_zone
+aws_alb --> aws_alb_listener
+aws_alb --> aws_alb_load_balancer_state
+aws_resource <|--- aws_alb
+load_balancer <|--- aws_alb
+aws_alb_action --> aws_alb_authenticate_cognito_action_config
+aws_alb_action --> aws_alb_authenticate_oidc_action_config
+aws_alb_action --> aws_alb_fixed_response_action_config
+aws_alb_action --> aws_alb_forward_action_config
+aws_alb_action --> aws_alb_redirect_action_config
+aws_alb_availability_zone --> aws_alb_load_balancer_address
+aws_alb_forward_action_config --> aws_alb_target_group_stickiness_config
+aws_alb_forward_action_config --> aws_alb_target_group_tuple
+aws_alb_listener --> aws_alb_action
+aws_alb_listener --> aws_alb_certificate
+resource <|--- aws_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>

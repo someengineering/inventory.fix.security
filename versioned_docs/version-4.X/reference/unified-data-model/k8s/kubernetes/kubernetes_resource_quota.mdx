@@ -1,0 +1,182 @@
+---
+sidebar_label: Resource Quota
+---
+
+# `kubernetes_resource_quota`
+
+- Categories: Management
+- Service: kubernetes
+
+## Description
+
+Kubernetes Resource Quota is a mechanism in Kubernetes for limiting and allocating resources to namespaces, ensuring fairness and preventing one namespace from using excessive resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Resource Quota"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource {
+
+}
+class kubernetes_resource_quota {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_resource_quota
+quota <|--- kubernetes_resource_quota
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Resource Quota resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource_quota {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Resource Quota data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class kubernetes_resource_quota {
+**resource_quota_spec**: kubernetes_resource_quota_spec
+**resource_quota_status**: kubernetes_resource_quota_status
+}
+class kubernetes_resource_quota_spec {
+**hard**: any
+**scope_selector**: any
+**scopes**: string[]
+}
+class kubernetes_resource_quota_status {
+**hard**: any
+**used**: any
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_resource_quota
+kubernetes_resource_quota --> kubernetes_resource_quota_spec
+kubernetes_resource_quota --> kubernetes_resource_quota_status
+quota <|--- kubernetes_resource_quota
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+
+@enduml
+```
+
+</ZoomPanPinch>

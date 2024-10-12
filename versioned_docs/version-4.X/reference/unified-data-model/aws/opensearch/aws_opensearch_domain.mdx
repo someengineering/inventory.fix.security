@@ -1,0 +1,308 @@
+---
+sidebar_label: OpenSearch Domain
+---
+
+# `aws_opensearch_domain`
+
+- Categories: Database
+- Service: opensearch
+- Provider Link: [OpenSearch Domain](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html)
+
+## Description
+
+AWS OpenSearch Domain is a managed service for deploying, operating, and scaling OpenSearch clusters. It provides a search and analytics engine for indexing, searching, and analyzing large volumes of data. OpenSearch Domain supports full-text search, log analytics, application monitoring, and security information and event management (SIEM) use cases across various data types.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of OpenSearch Domain"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_opensearch_domain {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_opensearch_domain
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of OpenSearch Domain resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cognito_user_pool {
+
+}
+class aws_ec2_instance_type {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_vpc {
+
+}
+aws_ec2_instance_type -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_security_group -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_subnet -[#1A83AF]-> aws_opensearch_domain
+aws_opensearch_domain -[#1A83AF]-> aws_cognito_user_pool
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_opensearch_domain
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of OpenSearch Domain data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_opensearch_advanced_security_options {
+**anonymous_auth_disable_date**: datetime
+**anonymous_auth_enabled**: boolean
+**enabled**: boolean
+**internal_user_database_enabled**: boolean
+**saml_options**: aws_opensearch_saml_options_output
+}
+class aws_opensearch_auto_tune_options_output {
+**error_message**: string
+**state**: string
+**use_off_peak_window**: boolean
+}
+class aws_opensearch_change_progress_details {
+**change_id**: string
+**message**: string
+}
+class aws_opensearch_cluster_config {
+**cold_storage_options**: boolean
+**dedicated_master_count**: int64
+**dedicated_master_enabled**: boolean
+**dedicated_master_type**: string
+**instance_count**: int64
+**instance_type**: string
+**multi_az_with_standby_enabled**: boolean
+**warm_count**: int64
+**warm_enabled**: boolean
+**warm_type**: string
+**zone_awareness_config**: int64
+**zone_awareness_enabled**: boolean
+}
+class aws_opensearch_cognito_options {
+**enabled**: boolean
+**identity_pool_id**: string
+**role_arn**: string
+**user_pool_id**: string
+}
+class aws_opensearch_domain {
+**access_policies**: dictionary[string, any]
+**advanced_options**: dictionary[string, string]
+**advanced_security_options**: aws_opensearch_advanced_security_options
+**auto_tune_options**: aws_opensearch_auto_tune_options_output
+**change_progress_details**: aws_opensearch_change_progress_details
+**cluster_config**: aws_opensearch_cluster_config
+**cognito_options**: aws_opensearch_cognito_options
+**created**: boolean
+**deleted**: boolean
+**domain_endpoint_options**: aws_opensearch_domain_endpoint_options
+**ebs_options**: aws_opensearch_ebs_options
+**encryption_at_rest_options**: aws_opensearch_encryption_at_rest_options
+**endpoint**: string
+**endpoint_v2**: string
+**endpoints**: dictionary[string, string]
+**engine_version**: string
+**ip_address_type**: string
+**log_publishing_options**: dictionary[string, aws_opensearch_log_publishing_option]
+**node_to_node_encryption_options**: boolean
+**off_peak_window_options**: aws_opensearch_off_peak_window_options
+**processing**: boolean
+**service_software_options**: aws_opensearch_service_software_options
+**snapshot_options**: int64
+**software_update_options**: boolean
+**upgrade_processing**: boolean
+**vpc_options**: aws_opensearch_vpc_derived_info
+}
+class aws_opensearch_domain_endpoint_options {
+**custom_endpoint**: string
+**custom_endpoint_certificate_arn**: string
+**custom_endpoint_enabled**: boolean
+**enforce_https**: boolean
+**tls_security_policy**: string
+}
+class aws_opensearch_ebs_options {
+**ebs_enabled**: boolean
+**iops**: int64
+**throughput**: int64
+**volume_size**: int64
+**volume_type**: string
+}
+class aws_opensearch_encryption_at_rest_options {
+**enabled**: boolean
+**kms_key_id**: string
+}
+class aws_opensearch_log_publishing_option {
+**cloud_watch_logs_log_group_arn**: string
+**enabled**: boolean
+}
+class aws_opensearch_off_peak_window {
+**window_start_time**: aws_opensearch_window_start_time
+}
+class aws_opensearch_off_peak_window_options {
+**enabled**: boolean
+**off_peak_window**: aws_opensearch_off_peak_window
+}
+class aws_opensearch_saml_idp {
+**entity_id**: string
+**metadata_content**: string
+}
+class aws_opensearch_saml_options_output {
+**enabled**: boolean
+**idp**: aws_opensearch_saml_idp
+**roles_key**: string
+**session_timeout_minutes**: int64
+**subject_key**: string
+}
+class aws_opensearch_service_software_options {
+**automated_update_date**: datetime
+**cancellable**: boolean
+**current_version**: string
+**description**: string
+**new_version**: string
+**optional_deployment**: boolean
+**update_available**: boolean
+**update_status**: string
+}
+class aws_opensearch_vpc_derived_info {
+**availability_zones**: string[]
+**security_group_ids**: string[]
+**subnet_ids**: string[]
+**vpc_id**: string
+}
+class aws_opensearch_window_start_time {
+**hours**: int64
+**minutes**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_opensearch_advanced_security_options --> aws_opensearch_saml_options_output
+aws_opensearch_domain --> aws_opensearch_advanced_security_options
+aws_opensearch_domain --> aws_opensearch_auto_tune_options_output
+aws_opensearch_domain --> aws_opensearch_change_progress_details
+aws_opensearch_domain --> aws_opensearch_cluster_config
+aws_opensearch_domain --> aws_opensearch_cognito_options
+aws_opensearch_domain --> aws_opensearch_domain_endpoint_options
+aws_opensearch_domain --> aws_opensearch_ebs_options
+aws_opensearch_domain --> aws_opensearch_encryption_at_rest_options
+aws_opensearch_domain --> aws_opensearch_log_publishing_option
+aws_opensearch_domain --> aws_opensearch_off_peak_window_options
+aws_opensearch_domain --> aws_opensearch_service_software_options
+aws_opensearch_domain --> aws_opensearch_vpc_derived_info
+aws_resource <|--- aws_opensearch_domain
+aws_opensearch_off_peak_window --> aws_opensearch_window_start_time
+aws_opensearch_off_peak_window_options --> aws_opensearch_off_peak_window
+aws_opensearch_saml_options_output --> aws_opensearch_saml_idp
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,197 @@
+---
+sidebar_label: Network Usage
+---
+
+# `azure_network_usage`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Usage](https://learn.microsoft.com/en-us/azure/networking/azure-network-usage)
+
+## Description
+
+Azure Network Usage is a monitoring feature in Microsoft Azure that tracks and reports network traffic data for virtual machines, virtual networks, and other Azure resources. It provides information on data transfer volumes, bandwidth consumption, and network connectivity patterns, helping users analyze and optimize their network resource utilization and costs within the Azure cloud environment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Usage"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_usage {
+
+}
+class azure_usage {
+
+}
+class microsoft_resource {
+
+}
+class network_quota {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+azure_usage <|--- azure_network_usage
+microsoft_resource <|--- azure_network_usage
+network_quota <|--- azure_network_usage
+phantom_resource <|--- azure_usage
+resource <|--- microsoft_resource
+quota <|--- network_quota
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Usage resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_usage {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Usage data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_usage {
+
+}
+class azure_usage {
+**current_value**: int64
+**limit**: int64
+**unit**: string
+**usage_name**: azure_usage_name
+}
+class azure_usage_name {
+**localized_value**: string
+**value**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class network_quota {
+
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_usage <|--- azure_network_usage
+azure_network_usage --> azure_usage_name
+microsoft_resource <|--- azure_network_usage
+network_quota <|--- azure_network_usage
+azure_usage --> azure_usage_name
+phantom_resource <|--- azure_usage
+resource <|--- microsoft_resource
+quota <|--- network_quota
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+
+@enduml
+```
+
+</ZoomPanPinch>

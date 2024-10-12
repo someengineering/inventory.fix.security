@@ -1,0 +1,305 @@
+---
+sidebar_label: Autoscaling Group
+---
+
+# `aws_autoscaling_group`
+
+- Categories: Compute, Management
+- Service: autoscaling
+- Provider Link: [Autoscaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html)
+
+## Description
+
+AWS Auto Scaling Group is a service that manages multiple EC2 instances as a collective unit. It automatically adjusts the number of instances based on defined conditions, ensuring optimal performance and resource utilization. It maintains a specified number of instances, replaces unhealthy ones, and scales capacity up or down according to demand or schedule.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Autoscaling Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class autoscaling_group {
+
+}
+class aws_autoscaling_group {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+resource <|--- autoscaling_group
+autoscaling_group <|--- aws_autoscaling_group
+aws_resource <|--- aws_autoscaling_group
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Autoscaling Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_autoscaling_group {
+
+}
+class aws_beanstalk_environment {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_launch_template {
+
+}
+class aws_ecs_capacity_provider {
+
+}
+class aws_eks_nodegroup {
+
+}
+class aws_region {
+
+}
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_launch_template
+aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
+aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
+aws_ecs_capacity_provider -[#1A83AF]-> aws_autoscaling_group
+aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
+aws_region -[#1A83AF]-> aws_autoscaling_group
+aws_region -[#1A83AF]-> aws_ec2_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Autoscaling Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class autoscaling_group {
+**max_size**: int64
+**min_size**: int64
+}
+class aws_autoscaling_enabled_metric {
+**granularity**: string
+**metric**: string
+}
+class aws_autoscaling_group {
+**autoscaling_availability_zones**: string[]
+**autoscaling_capacity_rebalance**: boolean
+**autoscaling_context**: string
+**autoscaling_default_cooldown**: int64
+**autoscaling_default_instance_warmup**: int64
+**autoscaling_desired_capacity_type**: string
+**autoscaling_enabled_metrics**: aws_autoscaling_enabled_metric[]
+**autoscaling_health_check_grace_period**: int64
+**autoscaling_health_check_type**: string
+**autoscaling_instances**: aws_autoscaling_instance[]
+**autoscaling_launch_configuration_name**: string
+**autoscaling_launch_template**: aws_autoscaling_launch_template_specification
+**autoscaling_load_balancer_names**: string[]
+**autoscaling_max_instance_lifetime**: int64
+**autoscaling_mixed_instances_policy**: aws_autoscaling_mixed_instances_policy
+**autoscaling_new_instances_protected_from_scale_in**: boolean
+**autoscaling_placement_group**: string
+**autoscaling_predicted_capacity**: int64
+**autoscaling_service_linked_role_arn**: string
+**autoscaling_status**: string
+**autoscaling_suspended_processes**: aws_autoscaling_suspended_process[]
+**autoscaling_target_group_ar_ns**: string[]
+**autoscaling_termination_policies**: string[]
+**autoscaling_vpc_zone_identifier**: string
+**autoscaling_warm_pool_configuration**: aws_autoscaling_warm_pool_configuration
+**autoscaling_warm_pool_size**: int64
+}
+class aws_autoscaling_instance {
+**availability_zone**: string
+**health_status**: string
+**instance_id**: string
+**instance_type**: string
+**launch_configuration_name**: string
+**launch_template**: aws_autoscaling_launch_template_specification
+**lifecycle_state**: string
+**protected_from_scale_in**: boolean
+**weighted_capacity**: string
+}
+class aws_autoscaling_instance_requirements {
+**accelerator_count**: aws_autoscaling_min_max
+**accelerator_manufacturers**: string[]
+**accelerator_names**: string[]
+**accelerator_total_memory_mi_b**: aws_autoscaling_min_max
+**accelerator_types**: string[]
+**bare_metal**: string
+**baseline_ebs_bandwidth_mbps**: aws_autoscaling_min_max
+**burstable_performance**: string
+**cpu_manufacturers**: string[]
+**excluded_instance_types**: string[]
+**instance_generations**: string[]
+**local_storage**: string
+**local_storage_types**: string[]
+**memory_gi_b_per_v_cpu**: aws_autoscaling_min_max
+**memory_mi_b**: aws_autoscaling_min_max
+**network_interface_count**: aws_autoscaling_min_max
+**on_demand_max_price_percentage_over_lowest_price**: int64
+**require_hibernate_support**: boolean
+**spot_max_price_percentage_over_lowest_price**: int64
+**total_local_storage_gb**: aws_autoscaling_min_max
+**v_cpu_count**: aws_autoscaling_min_max
+}
+class aws_autoscaling_instances_distribution {
+**on_demand_allocation_strategy**: string
+**on_demand_base_capacity**: int64
+**on_demand_percentage_above_base_capacity**: int64
+**spot_allocation_strategy**: string
+**spot_instance_pools**: int64
+**spot_max_price**: string
+}
+class aws_autoscaling_launch_template {
+**launch_template_specification**: aws_autoscaling_launch_template_specification
+**overrides**: aws_autoscaling_launch_template_overrides[]
+}
+class aws_autoscaling_launch_template_overrides {
+**instance_requirements**: aws_autoscaling_instance_requirements
+**instance_type**: string
+**launch_template_specification**: aws_autoscaling_launch_template_specification
+**weighted_capacity**: string
+}
+class aws_autoscaling_launch_template_specification {
+**launch_template_id**: string
+**launch_template_name**: string
+**version**: string
+}
+class aws_autoscaling_min_max {
+**max**: int64
+**min**: int64
+}
+class aws_autoscaling_mixed_instances_policy {
+**instances_distribution**: aws_autoscaling_instances_distribution
+**launch_template**: aws_autoscaling_launch_template
+}
+class aws_autoscaling_suspended_process {
+**process_name**: string
+**suspension_reason**: string
+}
+class aws_autoscaling_warm_pool_configuration {
+**instance_reuse_policy**: boolean
+**max_group_prepared_capacity**: int64
+**min_size**: int64
+**pool_state**: string
+**status**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- autoscaling_group
+autoscaling_group <|--- aws_autoscaling_group
+aws_autoscaling_group --> aws_autoscaling_enabled_metric
+aws_autoscaling_group --> aws_autoscaling_instance
+aws_autoscaling_group --> aws_autoscaling_launch_template_specification
+aws_autoscaling_group --> aws_autoscaling_mixed_instances_policy
+aws_autoscaling_group --> aws_autoscaling_suspended_process
+aws_autoscaling_group --> aws_autoscaling_warm_pool_configuration
+aws_resource <|--- aws_autoscaling_group
+aws_autoscaling_instance --> aws_autoscaling_launch_template_specification
+aws_autoscaling_instance_requirements --> aws_autoscaling_min_max
+aws_autoscaling_launch_template --> aws_autoscaling_launch_template_overrides
+aws_autoscaling_launch_template --> aws_autoscaling_launch_template_specification
+aws_autoscaling_launch_template_overrides --> aws_autoscaling_instance_requirements
+aws_autoscaling_launch_template_overrides --> aws_autoscaling_launch_template_specification
+aws_autoscaling_mixed_instances_policy --> aws_autoscaling_instances_distribution
+aws_autoscaling_mixed_instances_policy --> aws_autoscaling_launch_template
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

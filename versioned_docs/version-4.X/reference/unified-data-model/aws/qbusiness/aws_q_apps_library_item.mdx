@@ -1,0 +1,175 @@
+---
+sidebar_label: QApps Library Item
+---
+
+# `aws_q_apps_library_item`
+
+- Categories: Machine Learning & AI
+- Service: qbusiness
+- Provider Link: [QApps Library Item](https://docs.aws.amazon.com/amazonq/latest/api-reference/API_qapps_GetLibraryItem.html)
+
+## Description
+
+An AWS Q Apps Library Item is a component within the AWS Q Apps ecosystem that represents a specific resource or functionality. It can be a pre-built template, module, or configuration element used to construct or enhance Q Apps. These items are stored in a centralized library, facilitating reuse and standardization across different Q Apps within an organization.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of QApps Library Item"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_apps_library_item {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_q_apps_library_item
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of QApps Library Item resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_apps {
+
+}
+class aws_q_apps_library_item {
+
+}
+class aws_q_business_application {
+
+}
+aws_q_apps -[#1A83AF]-> aws_q_apps_library_item
+aws_q_business_application -[#1A83AF]-> aws_q_apps
+aws_q_business_application -[#1A83AF]-> aws_q_apps_library_item
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of QApps Library Item data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_apps_category {
+**id**: string
+**title**: string
+}
+class aws_q_apps_library_item {
+**app_id**: string
+**app_version**: int64
+**created_at**: datetime
+**created_by**: string
+**instance_id**: string
+**is_rated_by_user**: boolean
+**library_categories**: aws_q_apps_category[]
+**library_item_id**: string
+**rating_count**: int64
+**status**: string
+**updated_at**: datetime
+**updated_by**: string
+**user_count**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_q_apps_library_item --> aws_q_apps_category
+aws_resource <|--- aws_q_apps_library_item
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

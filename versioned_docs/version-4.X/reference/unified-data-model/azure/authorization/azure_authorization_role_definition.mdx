@@ -1,0 +1,189 @@
+---
+sidebar_label: Authorization Role Definition
+---
+
+# `azure_authorization_role_definition`
+
+- Categories: Access Control
+- Service: authorization
+- Provider Link: [Authorization Role Definition](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-definitions)
+
+## Description
+
+Azure Authorization Role Definition is a security component in Microsoft Azure that specifies a set of permissions for accessing and managing Azure resources. It defines what actions users or applications can perform on specific resources within a subscription or resource group. Role definitions are used to implement role-based access control (RBAC) in Azure environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Authorization Role Definition"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_definition {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class resource {
+
+}
+class role {
+
+}
+microsoft_resource <|--- azure_authorization_role_definition
+phantom_resource <|--- azure_authorization_role_definition
+role <|--- azure_authorization_role_definition
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+resource <|--- role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Authorization Role Definition resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_assignment {
+
+}
+class azure_authorization_role_definition {
+
+}
+azure_authorization_role_assignment -[#1A83AF]-> azure_authorization_role_definition
+azure_authorization_role_definition -[#1A83AF]-> azure_authorization_role_assignment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Authorization Role Definition data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_definition {
+**assignable_scopes**: string[]
+**azure_role_permissions**: azure_permission[]
+**created_by**: string
+**created_on**: datetime
+**description**: string
+**role_name**: string
+**updated_by**: string
+**updated_on**: datetime
+}
+class azure_permission {
+**actions**: string[]
+**data_actions**: string[]
+**not_actions**: string[]
+**not_data_actions**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class role {
+
+}
+azure_authorization_role_definition --> azure_permission
+microsoft_resource <|--- azure_authorization_role_definition
+phantom_resource <|--- azure_authorization_role_definition
+role <|--- azure_authorization_role_definition
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+resource <|--- role
+
+@enduml
+```
+
+</ZoomPanPinch>

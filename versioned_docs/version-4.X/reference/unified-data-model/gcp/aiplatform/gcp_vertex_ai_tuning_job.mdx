@@ -1,0 +1,298 @@
+---
+sidebar_label: Vertex AI Tuning Job
+---
+
+# `gcp_vertex_ai_tuning_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: aiplatform
+- Provider Link: [Vertex AI Tuning Job](https://cloud.google.com/docs)
+
+## Description
+
+A Tuning Job in Vertex AI refers to the hyperparameter tuning process that optimizes machine learning models by efficiently searching through hyperparameter values.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Tuning Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_resource {
+
+}
+class gcp_vertex_ai_tuning_job {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+resource <|--- gcp_resource
+ai_job <|--- gcp_vertex_ai_tuning_job
+gcp_resource <|--- gcp_vertex_ai_tuning_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Tuning Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_endpoint {
+
+}
+class gcp_vertex_ai_tuning_job {
+
+}
+gcp_vertex_ai_endpoint -[#1A83AF]-> gcp_vertex_ai_tuning_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Tuning Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_args {
+
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_details {
+
+}
+class gcp_google_rpc_status {
+**code**: int64
+**details**: gcp_details[]
+**message**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_blob {
+**data**: string
+**mime_type**: string
+}
+class gcp_vertex_ai_content {
+**parts**: gcp_vertex_ai_part[]
+**role**: string
+}
+class gcp_vertex_ai_file_data {
+**file_uri**: string
+**mime_type**: string
+}
+class gcp_vertex_ai_function_call {
+**args**: gcp_args
+**name**: string
+}
+class gcp_vertex_ai_function_response {
+**name**: string
+}
+class gcp_vertex_ai_part {
+**file_data**: gcp_vertex_ai_file_data
+**function_call**: gcp_vertex_ai_function_call
+**function_response**: gcp_vertex_ai_function_response
+**inline_data**: gcp_vertex_ai_blob
+**text**: string
+**video_metadata**: gcp_vertex_ai_video_metadata
+}
+class gcp_vertex_ai_supervised_hyper_parameters {
+**adapter_size**: string
+**epoch_count**: string
+**learning_rate_multiplier**: double
+}
+class gcp_vertex_ai_supervised_tuning_data_stats {
+**total_billable_character_count**: string
+**total_billable_token_count**: string
+**total_tuning_character_count**: string
+**tuning_dataset_example_count**: string
+**tuning_step_count**: string
+**user_dataset_examples**: gcp_vertex_ai_content[]
+**user_input_token_distribution**: gcp_vertex_ai_supervised_tuning_dataset_distribution
+**user_message_per_example_distribution**: gcp_vertex_ai_supervised_tuning_dataset_distribution
+**user_output_token_distribution**: gcp_vertex_ai_supervised_tuning_dataset_distribution
+}
+class gcp_vertex_ai_supervised_tuning_dataset_distribution {
+**billable_sum**: string
+**buckets**: gcp_vertex_ai_supervised_tuning_dataset_distribution_dataset_bucket[]
+**max**: double
+**mean**: double
+**median**: double
+**min**: double
+**p5**: double
+**p95**: double
+**sum**: string
+}
+class gcp_vertex_ai_supervised_tuning_dataset_distribution_dataset_bucket {
+**count**: double
+**left**: double
+**right**: double
+}
+class gcp_vertex_ai_supervised_tuning_spec {
+**hyper_parameters**: gcp_vertex_ai_supervised_hyper_parameters
+**training_dataset_uri**: string
+**validation_dataset_uri**: string
+}
+class gcp_vertex_ai_tuned_model {
+**endpoint**: string
+**model**: string
+}
+class gcp_vertex_ai_tuning_data_stats {
+**supervised_tuning_data_stats**: gcp_vertex_ai_supervised_tuning_data_stats
+}
+class gcp_vertex_ai_tuning_job {
+**base_model**: string
+**create_time**: datetime
+**encryption_spec**: string
+**end_time**: datetime
+**experiment**: string
+**rpc_error**: gcp_google_rpc_status
+**start_time**: datetime
+**state**: string
+**supervised_tuning_spec**: gcp_vertex_ai_supervised_tuning_spec
+**tuned_model**: gcp_vertex_ai_tuned_model
+**tuned_model_display_name**: string
+**tuning_data_stats**: gcp_vertex_ai_tuning_data_stats
+**update_time**: datetime
+}
+class gcp_vertex_ai_video_metadata {
+**end_offset**: string
+**start_offset**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+gcp_google_rpc_status --> gcp_details
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_content --> gcp_vertex_ai_part
+gcp_vertex_ai_function_call --> gcp_args
+gcp_vertex_ai_part --> gcp_vertex_ai_blob
+gcp_vertex_ai_part --> gcp_vertex_ai_file_data
+gcp_vertex_ai_part --> gcp_vertex_ai_function_call
+gcp_vertex_ai_part --> gcp_vertex_ai_function_response
+gcp_vertex_ai_part --> gcp_vertex_ai_video_metadata
+gcp_vertex_ai_supervised_tuning_data_stats --> gcp_vertex_ai_content
+gcp_vertex_ai_supervised_tuning_data_stats --> gcp_vertex_ai_supervised_tuning_dataset_distribution
+gcp_vertex_ai_supervised_tuning_dataset_distribution --> gcp_vertex_ai_supervised_tuning_dataset_distribution_dataset_bucket
+gcp_vertex_ai_supervised_tuning_spec --> gcp_vertex_ai_supervised_hyper_parameters
+gcp_vertex_ai_tuning_data_stats --> gcp_vertex_ai_supervised_tuning_data_stats
+ai_job <|--- gcp_vertex_ai_tuning_job
+gcp_vertex_ai_tuning_job --> gcp_deprecation_status
+gcp_vertex_ai_tuning_job --> gcp_google_rpc_status
+gcp_resource <|--- gcp_vertex_ai_tuning_job
+gcp_vertex_ai_tuning_job --> gcp_vertex_ai_supervised_tuning_spec
+gcp_vertex_ai_tuning_job --> gcp_vertex_ai_tuned_model
+gcp_vertex_ai_tuning_job --> gcp_vertex_ai_tuning_data_stats
+
+@enduml
+```
+
+</ZoomPanPinch>

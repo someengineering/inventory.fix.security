@@ -1,0 +1,204 @@
+---
+sidebar_label: Cosmos DB Cassandra Cluster Public Status
+---
+
+# `azure_cosmos_db_cassandra_cluster_public_status`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Cassandra Cluster Public Status](https://learn.microsoft.com/en-us/azure/cosmos-db/cassandra/)
+
+## Description
+
+Azure Cosmos DB Cassandra Cluster Public Status is a monitoring feature that displays the current operational condition of Cassandra clusters within Azure Cosmos DB. It provides real-time information about cluster health, availability, and performance metrics. Users can check this status to assess service reliability, identify potential issues, and make informed decisions about their database operations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Cassandra Cluster Public Status"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_cassandra_cluster_public_status {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_public_status
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Cassandra Cluster Public Status resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_cassandra_cluster {
+
+}
+class azure_cosmos_db_cassandra_cluster_public_status {
+
+}
+azure_cosmos_db_cassandra_cluster -[#1A83AF]-> azure_cosmos_db_cassandra_cluster_public_status
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Cassandra Cluster Public Status data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cassandra_error {
+**additional_error_info**: string
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_connection_error {
+**connection_state**: string
+**exception**: string
+**i_p_from**: string
+**i_p_to**: string
+**port**: int64
+}
+class azure_cosmos_db_cassandra_cluster_public_status {
+**connection_errors**: azure_connection_error[]
+**data_centers**: azure_cosmos_db_nodes[]
+**reaper_status**: azure_managed_cassandra_reaper_status
+**status_errors**: azure_cassandra_error[]
+}
+class azure_cosmos_db_node {
+**address**: string
+**cassandra_process_status**: string
+**cpu_usage**: double
+**disk_free_kb**: int64
+**disk_used_kb**: int64
+**host_id**: string
+**load**: string
+**memory_buffers_and_cached_kb**: int64
+**memory_free_kb**: int64
+**memory_total_kb**: int64
+**memory_used_kb**: int64
+**rack**: string
+**size**: int64
+**state**: string
+**status**: string
+**timestamp**: string
+**tokens**: string[]
+}
+class azure_cosmos_db_nodes {
+**name**: string
+**nodes**: azure_cosmos_db_node[]
+**seed_nodes**: string[]
+}
+class azure_managed_cassandra_reaper_status {
+**healthy**: boolean
+**repair_run_ids**: dictionary[string, string]
+**repair_schedules**: dictionary[string, string]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cosmos_db_cassandra_cluster_public_status --> azure_cassandra_error
+azure_cosmos_db_cassandra_cluster_public_status --> azure_connection_error
+azure_cosmos_db_cassandra_cluster_public_status --> azure_cosmos_db_nodes
+azure_cosmos_db_cassandra_cluster_public_status --> azure_managed_cassandra_reaper_status
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_public_status
+azure_cosmos_db_nodes --> azure_cosmos_db_node
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

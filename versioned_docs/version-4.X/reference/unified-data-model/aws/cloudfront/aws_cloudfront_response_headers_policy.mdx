@@ -1,0 +1,222 @@
+---
+sidebar_label: CloudFront Response Headers Policy
+---
+
+# `aws_cloudfront_response_headers_policy`
+
+- Categories: Networking
+- Service: cloudfront
+- Provider Link: [CloudFront Response Headers Policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/adding-response-headers.html)
+
+## Description
+
+AWS CloudFront Response Headers Policy is a configuration that controls HTTP headers in responses sent from CloudFront to viewers. It lets users add, modify, or remove headers for improved security, caching, and content delivery. This policy can be applied to multiple distributions, simplifying header management across CloudFront's content delivery network.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of CloudFront Response Headers Policy"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_response_headers_policy {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_cloudfront_response_headers_policy
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudFront Response Headers Policy resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_distribution {
+
+}
+class aws_cloudfront_response_headers_policy {
+
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of CloudFront Response Headers Policy data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudfront_response_headers_policy {
+**response_headers_policy_config**: aws_cloudfront_response_headers_policy_config
+**response_headers_policy_type**: string
+}
+class aws_cloudfront_response_headers_policy_config {
+**comment**: string
+**cors_config**: aws_cloudfront_response_headers_policy_cors_config
+**custom_headers_config**: aws_cloudfront_response_headers_policy_custom_header[]
+**name**: string
+**security_headers_config**: aws_cloudfront_response_headers_policy_security_headers_config
+**server_timing_headers_config**: aws_cloudfront_response_headers_policy_server_timing_headers_config
+}
+class aws_cloudfront_response_headers_policy_content_security_policy {
+**content_security_policy**: string
+**override**: boolean
+}
+class aws_cloudfront_response_headers_policy_cors_config {
+**access_control_allow_credentials**: boolean
+**access_control_allow_headers**: string[]
+**access_control_allow_methods**: string[]
+**access_control_allow_origins**: string[]
+**access_control_expose_headers**: string[]
+**access_control_max_age_sec**: int64
+**origin_override**: boolean
+}
+class aws_cloudfront_response_headers_policy_custom_header {
+**header**: string
+**override**: boolean
+**value**: string
+}
+class aws_cloudfront_response_headers_policy_frame_options {
+**frame_option**: string
+**override**: boolean
+}
+class aws_cloudfront_response_headers_policy_referrer_policy {
+**override**: boolean
+**referrer_policy**: string
+}
+class aws_cloudfront_response_headers_policy_security_headers_config {
+**content_security_policy**: aws_cloudfront_response_headers_policy_content_security_policy
+**content_type_options**: boolean
+**frame_options**: aws_cloudfront_response_headers_policy_frame_options
+**referrer_policy**: aws_cloudfront_response_headers_policy_referrer_policy
+**strict_transport_security**: aws_cloudfront_response_headers_policy_strict_transport_security
+**xss_protection**: aws_cloudfront_response_headers_policy_xss_protection
+}
+class aws_cloudfront_response_headers_policy_server_timing_headers_config {
+**enabled**: boolean
+**sampling_rate**: double
+}
+class aws_cloudfront_response_headers_policy_strict_transport_security {
+**access_control_max_age_sec**: int64
+**include_subdomains**: boolean
+**override**: boolean
+**preload**: boolean
+}
+class aws_cloudfront_response_headers_policy_xss_protection {
+**mode_block**: boolean
+**override**: boolean
+**protection**: boolean
+**report_uri**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_cloudfront_response_headers_policy --> aws_cloudfront_response_headers_policy_config
+aws_resource <|--- aws_cloudfront_response_headers_policy
+aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_headers_policy_cors_config
+aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_headers_policy_custom_header
+aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_headers_policy_security_headers_config
+aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_headers_policy_server_timing_headers_config
+aws_cloudfront_response_headers_policy_security_headers_config --> aws_cloudfront_response_headers_policy_content_security_policy
+aws_cloudfront_response_headers_policy_security_headers_config --> aws_cloudfront_response_headers_policy_frame_options
+aws_cloudfront_response_headers_policy_security_headers_config --> aws_cloudfront_response_headers_policy_referrer_policy
+aws_cloudfront_response_headers_policy_security_headers_config --> aws_cloudfront_response_headers_policy_strict_transport_security
+aws_cloudfront_response_headers_policy_security_headers_config --> aws_cloudfront_response_headers_policy_xss_protection
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

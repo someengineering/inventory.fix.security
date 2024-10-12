@@ -1,0 +1,185 @@
+---
+sidebar_label: EC2 Elastic IP
+---
+
+# `aws_ec2_elastic_ip`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [EC2 Elastic IP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+
+## Description
+
+AWS EC2 Elastic IP is a static IPv4 address for dynamic cloud computing. It provides a consistent public IP that can be associated with different EC2 instances, masking instance failures or replacements. Users can remap the address to other instances in their account, maintaining a fixed entry point for applications and services running on EC2.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Elastic IP"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_elastic_ip {
+
+}
+class aws_resource {
+
+}
+class ip_address {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_elastic_ip
+ip_address <|--- aws_ec2_elastic_ip
+resource <|--- aws_resource
+resource <|--- ip_address
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Elastic IP resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_elastic_ip {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_region {
+
+}
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_region -[#1A83AF]-> aws_ec2_elastic_ip
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Elastic IP data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_elastic_ip {
+**ip_allocation_id**: string
+**ip_association_id**: string
+**ip_carrier_ip**: string
+**ip_customer_owned_ip**: string
+**ip_customer_owned_ipv4_pool**: string
+**ip_domain**: string
+**ip_network_border_group**: string
+**ip_network_interface_id**: string
+**ip_public_ipv4_pool**: string
+**private_ip_address**: string
+**public_ip**: string
+}
+class aws_resource {
+**arn**: string
+}
+class ip_address {
+**ip_address**: string
+**ip_address_family**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_ec2_elastic_ip
+ip_address <|--- aws_ec2_elastic_ip
+resource <|--- aws_resource
+resource <|--- ip_address
+
+@enduml
+```
+
+</ZoomPanPinch>

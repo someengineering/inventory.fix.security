@@ -1,0 +1,180 @@
+---
+sidebar_label: IAM Group
+---
+
+# `aws_iam_group`
+
+- Categories: Access Control
+- Service: iam
+- Provider Link: [IAM Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html)
+
+## Description
+
+AWS IAM Group is a feature of Amazon Web Services Identity and Access Management that organizes users with similar access needs. It simplifies permissions management by assigning policies to groups rather than individual users. Administrators can add or remove users from groups, controlling access to AWS resources and services efficiently across multiple users.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of IAM Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_group {
+
+}
+class aws_resource {
+
+}
+class group {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_iam_group
+group <|--- aws_iam_group
+resource <|--- aws_resource
+resource <|--- group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of IAM Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_group {
+
+}
+class aws_iam_policy {
+
+}
+class aws_iam_user {
+
+}
+class aws_region {
+
+}
+aws_iam_group -[#1A83AF]-> aws_iam_policy
+aws_iam_group -[#1A83AF]-> aws_iam_user
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_group
+aws_region -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of IAM Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_group {
+**group_policies**: aws_iam_policy_detail[]
+**path**: string
+}
+class aws_iam_policy_detail {
+**policy_document**: dictionary[string, any]
+**policy_name**: string
+}
+class aws_resource {
+**arn**: string
+}
+class group {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_iam_group --> aws_iam_policy_detail
+aws_resource <|--- aws_iam_group
+group <|--- aws_iam_group
+resource <|--- aws_resource
+resource <|--- group
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,368 @@
+---
+sidebar_label: URL Map
+---
+
+# `gcp_url_map`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [URL Map](https://cloud.google.com/load-balancing/docs/url-map)
+
+## Description
+
+A GCP URL Map is a Google Cloud Platform resource that routes incoming HTTP(S) requests to specific backend services or buckets based on defined rules. It matches the URL path or host of requests to configured patterns and directs traffic accordingly, supporting load balancing and content-based routing across multiple backends within a single load balancer.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of URL Map"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_resource {
+
+}
+class gcp_url_map {
+
+}
+class resource {
+
+}
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_url_map
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of URL Map resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_backend_service {
+
+}
+class gcp_target_grpc_proxy {
+
+}
+class gcp_target_http_proxy {
+
+}
+class gcp_target_https_proxy {
+
+}
+class gcp_url_map {
+
+}
+gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
+gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
+gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
+gcp_url_map -[#1A83AF]-> gcp_backend_service
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of URL Map data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_cors_policy {
+**allow_credentials**: boolean
+**allow_headers**: string[]
+**allow_methods**: string[]
+**allow_origin_regexes**: string[]
+**allow_origins**: string[]
+**disabled**: boolean
+**expose_headers**: string[]
+**max_age**: int64
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_duration {
+**nanos**: int64
+**seconds**: string
+}
+class gcp_host_rule {
+**description**: string
+**hosts**: string[]
+**path_matcher**: string
+}
+class gcp_http_fault_abort {
+**http_status**: int64
+**percentage**: double
+}
+class gcp_http_fault_delay {
+**fixed_delay**: gcp_duration
+**percentage**: double
+}
+class gcp_http_fault_injection {
+**abort**: gcp_http_fault_abort
+**delay**: gcp_http_fault_delay
+}
+class gcp_http_header_action {
+**request_headers_to_add**: gcp_http_header_option[]
+**request_headers_to_remove**: string[]
+**response_headers_to_add**: gcp_http_header_option[]
+**response_headers_to_remove**: string[]
+}
+class gcp_http_header_match {
+**exact_match**: string
+**header_name**: string
+**invert_match**: boolean
+**prefix_match**: string
+**present_match**: boolean
+**range_match**: gcp_int64_range_match
+**regex_match**: string
+**suffix_match**: string
+}
+class gcp_http_header_option {
+**header_name**: string
+**header_value**: string
+**replace**: boolean
+}
+class gcp_http_query_parameter_match {
+**exact_match**: string
+**name**: string
+**present_match**: boolean
+**regex_match**: string
+}
+class gcp_http_redirect_action {
+**host_redirect**: string
+**https_redirect**: boolean
+**path_redirect**: string
+**prefix_redirect**: string
+**redirect_response_code**: string
+**strip_query**: boolean
+}
+class gcp_http_retry_policy {
+**num_retries**: int64
+**per_try_timeout**: gcp_duration
+**retry_conditions**: string[]
+}
+class gcp_http_route_action {
+**cors_policy**: gcp_cors_policy
+**fault_injection_policy**: gcp_http_fault_injection
+**max_stream_duration**: gcp_duration
+**request_mirror_policy**: string
+**retry_policy**: gcp_http_retry_policy
+**timeout**: gcp_duration
+**url_rewrite**: gcp_url_rewrite
+**weighted_backend_services**: gcp_weighted_backend_service[]
+}
+class gcp_http_route_rule {
+**description**: string
+**header_action**: gcp_http_header_action
+**match_rules**: gcp_http_route_rule_match[]
+**priority**: int64
+**route_action**: gcp_http_route_action
+**service**: string
+**url_redirect**: gcp_http_redirect_action
+}
+class gcp_http_route_rule_match {
+**full_path_match**: string
+**header_matches**: gcp_http_header_match[]
+**ignore_case**: boolean
+**metadata_filters**: gcp_metadata_filter[]
+**prefix_match**: string
+**query_parameter_matches**: gcp_http_query_parameter_match[]
+**regex_match**: string
+}
+class gcp_int64_range_match {
+**range_end**: string
+**range_start**: string
+}
+class gcp_metadata_filter {
+**filter_labels**: gcp_metadata_filter_label_match[]
+**filter_match_criteria**: string
+}
+class gcp_metadata_filter_label_match {
+**name**: string
+**value**: string
+}
+class gcp_path_matcher {
+**default_route_action**: gcp_http_route_action
+**default_service**: string
+**default_url_redirect**: gcp_http_redirect_action
+**description**: string
+**header_action**: gcp_http_header_action
+**name**: string
+**path_rules**: gcp_path_rule[]
+**route_rules**: gcp_http_route_rule[]
+}
+class gcp_path_rule {
+**paths**: string[]
+**route_action**: gcp_http_route_action
+**service**: string
+**url_redirect**: gcp_http_redirect_action
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_url_map {
+**default_route_action**: gcp_http_route_action
+**default_service**: string
+**default_url_redirect**: gcp_http_redirect_action
+**fingerprint**: string
+**header_action**: gcp_http_header_action
+**host_rules**: gcp_host_rule[]
+**map_tests**: gcp_url_map_test[]
+**path_matchers**: gcp_path_matcher[]
+}
+class gcp_url_map_test {
+**description**: string
+**expected_output_url**: string
+**expected_redirect_response_code**: int64
+**headers**: gcp_url_map_test_header[]
+**host**: string
+**path**: string
+**service**: string
+}
+class gcp_url_map_test_header {
+**name**: string
+**value**: string
+}
+class gcp_url_rewrite {
+**host_rewrite**: string
+**path_prefix_rewrite**: string
+}
+class gcp_weighted_backend_service {
+**backend_service**: string
+**header_action**: gcp_http_header_action
+**weight**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_http_fault_delay --> gcp_duration
+gcp_http_fault_injection --> gcp_http_fault_abort
+gcp_http_fault_injection --> gcp_http_fault_delay
+gcp_http_header_action --> gcp_http_header_option
+gcp_http_header_match --> gcp_int64_range_match
+gcp_http_retry_policy --> gcp_duration
+gcp_http_route_action --> gcp_cors_policy
+gcp_http_route_action --> gcp_duration
+gcp_http_route_action --> gcp_http_fault_injection
+gcp_http_route_action --> gcp_http_retry_policy
+gcp_http_route_action --> gcp_url_rewrite
+gcp_http_route_action --> gcp_weighted_backend_service
+gcp_http_route_rule --> gcp_http_header_action
+gcp_http_route_rule --> gcp_http_redirect_action
+gcp_http_route_rule --> gcp_http_route_action
+gcp_http_route_rule --> gcp_http_route_rule_match
+gcp_http_route_rule_match --> gcp_http_header_match
+gcp_http_route_rule_match --> gcp_http_query_parameter_match
+gcp_http_route_rule_match --> gcp_metadata_filter
+gcp_metadata_filter --> gcp_metadata_filter_label_match
+gcp_path_matcher --> gcp_http_header_action
+gcp_path_matcher --> gcp_http_redirect_action
+gcp_path_matcher --> gcp_http_route_action
+gcp_path_matcher --> gcp_http_route_rule
+gcp_path_matcher --> gcp_path_rule
+gcp_path_rule --> gcp_http_redirect_action
+gcp_path_rule --> gcp_http_route_action
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_url_map --> gcp_deprecation_status
+gcp_url_map --> gcp_host_rule
+gcp_url_map --> gcp_http_header_action
+gcp_url_map --> gcp_http_redirect_action
+gcp_url_map --> gcp_http_route_action
+gcp_url_map --> gcp_path_matcher
+gcp_resource <|--- gcp_url_map
+gcp_url_map --> gcp_url_map_test
+gcp_url_map_test --> gcp_url_map_test_header
+gcp_weighted_backend_service --> gcp_http_header_action
+
+@enduml
+```
+
+</ZoomPanPinch>

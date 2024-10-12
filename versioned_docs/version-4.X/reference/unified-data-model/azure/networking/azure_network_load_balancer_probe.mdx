@@ -1,0 +1,175 @@
+---
+sidebar_label: Network Load Balancer Probe
+---
+
+# `azure_network_load_balancer_probe`
+
+- Categories: Monitoring, Networking
+- Service: networking
+- Provider Link: [Network Load Balancer Probe](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)
+
+## Description
+
+Azure Network Load Balancer Probe is a component that checks the health of backend instances in a load-balanced pool. It sends periodic requests to each instance and monitors responses. Based on these checks, the probe determines which instances are healthy and can receive traffic, ensuring that requests are only routed to functioning servers within the load balancer's backend pool.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Load Balancer Probe"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_load_balancer_probe {
+
+}
+class health_check {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+health_check <|--- azure_network_load_balancer_probe
+microsoft_resource <|--- azure_network_load_balancer_probe
+resource <|--- health_check
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Load Balancer Probe resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_load_balancer {
+
+}
+class azure_network_load_balancer_probe {
+
+}
+azure_network_load_balancer -[#1A83AF]-> azure_network_load_balancer_probe
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Load Balancer Probe data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_load_balancer_probe {
+**interval_in_seconds**: int64
+**load_balancing_rules_ids**: string[]
+**no_healthy_backends_behavior**: string
+**number_of_probes**: int64
+**port**: int64
+**probe_threshold**: int64
+**protocol**: string
+**request_path**: string
+}
+class health_check {
+**check_interval**: int64
+**health_check_type**: string
+**healthy_threshold**: int64
+**timeout**: int64
+**unhealthy_threshold**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+health_check <|--- azure_network_load_balancer_probe
+microsoft_resource <|--- azure_network_load_balancer_probe
+resource <|--- health_check
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

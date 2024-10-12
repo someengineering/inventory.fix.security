@@ -1,0 +1,319 @@
+---
+sidebar_label: ECS Service
+---
+
+# `aws_ecs_service`
+
+- Categories: Compute
+- Service: ecs
+- Provider Link: [ECS Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+
+## Description
+
+AWS ECS Service is a container management feature within Amazon Elastic Container Service. It maintains and scales a specified number of task instances, automatically replaces failed tasks, and integrates with Elastic Load Balancing for distributing traffic. ECS Service handles task placement, scheduling, and service discovery, simplifying the deployment and management of containerized applications on AWS infrastructure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ECS Service"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_service {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ecs_service
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Service resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb_target_group {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_ecs_capacity_provider {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_ecs_service {
+
+}
+class aws_elb {
+
+}
+class aws_iam_role {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
+aws_ecs_service -[#1A83AF]-> aws_alb_target_group
+aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_iam_role -[#1A83AF]-> aws_ecs_service
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Service data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_aws_vpc_configuration {
+**assign_public_ip**: string
+**security_groups**: string[]
+**subnets**: string[]
+}
+class aws_ecs_capacity_provider_strategy_item {
+**base**: int64
+**capacity_provider**: string
+**weight**: int64
+}
+class aws_ecs_deployment {
+**capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
+**created_at**: datetime
+**desired_count**: int64
+**failed_tasks**: int64
+**id**: string
+**launch_type**: string
+**network_configuration**: aws_ecs_network_configuration
+**pending_count**: int64
+**platform_family**: string
+**platform_version**: string
+**rollout_state**: string
+**rollout_state_reason**: string
+**running_count**: int64
+**status**: string
+**task_definition**: string
+**updated_at**: datetime
+}
+class aws_ecs_deployment_circuit_breaker {
+**enable**: boolean
+**rollback**: boolean
+}
+class aws_ecs_deployment_configuration {
+**deployment_circuit_breaker**: aws_ecs_deployment_circuit_breaker
+**maximum_percent**: int64
+**minimum_healthy_percent**: int64
+}
+class aws_ecs_load_balancer {
+**container_name**: string
+**container_port**: int64
+**load_balancer_name**: string
+**target_group_arn**: string
+}
+class aws_ecs_network_configuration {
+**awsvpc_configuration**: aws_ecs_aws_vpc_configuration
+}
+class aws_ecs_placement_constraint {
+**expression**: string
+**type**: string
+}
+class aws_ecs_placement_strategy {
+**field**: string
+**type**: string
+}
+class aws_ecs_scale {
+**unit**: string
+**value**: double
+}
+class aws_ecs_service {
+**cluster_arn**: string
+**service_capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
+**service_created_by**: string
+**service_deployment_configuration**: aws_ecs_deployment_configuration
+**service_deployment_controller**: string
+**service_deployments**: aws_ecs_deployment[]
+**service_desired_count**: int64
+**service_enable_ecs_managed_tags**: boolean
+**service_enable_execute_command**: boolean
+**service_events**: aws_ecs_service_event[]
+**service_health_check_grace_period_seconds**: int64
+**service_launch_type**: string
+**service_load_balancers**: aws_ecs_load_balancer[]
+**service_network_configuration**: aws_ecs_network_configuration
+**service_pending_count**: int64
+**service_placement_constraints**: aws_ecs_placement_constraint[]
+**service_placement_strategy**: aws_ecs_placement_strategy[]
+**service_platform_family**: string
+**service_platform_version**: string
+**service_propagate_tags**: string
+**service_registries**: aws_ecs_service_registry[]
+**service_role_arn**: string
+**service_running_count**: int64
+**service_scheduling_strategy**: string
+**service_task_definition**: string
+**service_task_sets**: aws_ecs_task_set[]
+**status**: string
+}
+class aws_ecs_service_event {
+**created_at**: datetime
+**id**: string
+**message**: string
+}
+class aws_ecs_service_registry {
+**container_name**: string
+**container_port**: int64
+**port**: int64
+**registry_arn**: string
+}
+class aws_ecs_task_set {
+**capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
+**cluster_arn**: string
+**computed_desired_count**: int64
+**created_at**: datetime
+**external_id**: string
+**id**: string
+**launch_type**: string
+**load_balancers**: aws_ecs_load_balancer[]
+**network_configuration**: aws_ecs_network_configuration
+**pending_count**: int64
+**platform_family**: string
+**platform_version**: string
+**running_count**: int64
+**scale**: aws_ecs_scale
+**service_arn**: string
+**service_registries**: aws_ecs_service_registry[]
+**stability_status**: string
+**stability_status_at**: datetime
+**started_by**: string
+**status**: string
+**task_definition**: string
+**task_set_arn**: string
+**updated_at**: datetime
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecs_deployment --> aws_ecs_capacity_provider_strategy_item
+aws_ecs_deployment --> aws_ecs_network_configuration
+aws_ecs_deployment_configuration --> aws_ecs_deployment_circuit_breaker
+aws_ecs_network_configuration --> aws_ecs_aws_vpc_configuration
+aws_ecs_service --> aws_ecs_capacity_provider_strategy_item
+aws_ecs_service --> aws_ecs_deployment
+aws_ecs_service --> aws_ecs_deployment_configuration
+aws_ecs_service --> aws_ecs_load_balancer
+aws_ecs_service --> aws_ecs_network_configuration
+aws_ecs_service --> aws_ecs_placement_constraint
+aws_ecs_service --> aws_ecs_placement_strategy
+aws_ecs_service --> aws_ecs_service_event
+aws_ecs_service --> aws_ecs_service_registry
+aws_ecs_service --> aws_ecs_task_set
+aws_resource <|--- aws_ecs_service
+aws_ecs_task_set --> aws_ecs_capacity_provider_strategy_item
+aws_ecs_task_set --> aws_ecs_load_balancer
+aws_ecs_task_set --> aws_ecs_network_configuration
+aws_ecs_task_set --> aws_ecs_scale
+aws_ecs_task_set --> aws_ecs_service_registry
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

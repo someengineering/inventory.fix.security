@@ -1,0 +1,273 @@
+---
+sidebar_label: Instance Group Manager
+---
+
+# `gcp_instance_group_manager`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Instance Group Manager](https://cloud.google.com/compute/docs/instance-groups/working-with-managed-instance-groups)
+
+## Description
+
+GCP Instance Group Manager is a Google Cloud Platform service that automates the creation, management, and scaling of virtual machine instances. It maintains a specified number of instances, replaces unhealthy ones, and adjusts the group size based on defined rules. The service handles load balancing, rolling updates, and auto-scaling to meet application demands.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Instance Group Manager"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_instance_group_manager {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_instance_group_manager
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Instance Group Manager resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_autoscaler {
+
+}
+class gcp_health_check {
+
+}
+class gcp_http_health_check {
+
+}
+class gcp_https_health_check {
+
+}
+class gcp_instance_group {
+
+}
+class gcp_instance_group_manager {
+
+}
+gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
+gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
+gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
+gcp_instance_group_manager -[#1A83AF]-> gcp_http_health_check
+gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Instance Group Manager data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_distribution_policy {
+**target_shape**: string
+**zones**: string[]
+}
+class gcp_fixed_or_percent {
+**calculated**: int64
+**fixed**: int64
+**percent**: int64
+}
+class gcp_instance_group_manager {
+**auto_healing_policies**: gcp_instance_group_manager_auto_healing_policy[]
+**base_instance_name**: string
+**current_actions**: gcp_instance_group_manager_actions_summary
+**distribution_policy**: gcp_distribution_policy
+**fingerprint**: string
+**instance_group**: string
+**instance_group_manager_status**: gcp_instance_group_manager_status
+**instance_template**: string
+**list_managed_instances_results**: string
+**named_ports**: gcp_named_port[]
+**stateful_policy**: gcp_stateful_policy
+**target_pools**: string[]
+**target_size**: int64
+**update_policy**: gcp_instance_group_manager_update_policy
+**versions**: gcp_instance_group_manager_version[]
+}
+class gcp_instance_group_manager_actions_summary {
+**abandoning**: int64
+**creating**: int64
+**creating_without_retries**: int64
+**deleting**: int64
+**none**: int64
+**recreating**: int64
+**refreshing**: int64
+**restarting**: int64
+**resuming**: int64
+**starting**: int64
+**stopping**: int64
+**suspending**: int64
+**verifying**: int64
+}
+class gcp_instance_group_manager_auto_healing_policy {
+**health_check**: string
+**initial_delay_sec**: int64
+}
+class gcp_instance_group_manager_status {
+**autoscaler**: string
+**is_stable**: boolean
+**stateful**: gcp_instance_group_manager_status_stateful
+**version_target**: boolean
+}
+class gcp_instance_group_manager_status_stateful {
+**has_stateful_config**: boolean
+**per_instance_configs**: boolean
+}
+class gcp_instance_group_manager_update_policy {
+**instance_redistribution_type**: string
+**max_surge**: gcp_fixed_or_percent
+**max_unavailable**: gcp_fixed_or_percent
+**minimal_action**: string
+**most_disruptive_allowed_action**: string
+**replacement_method**: string
+**type**: string
+}
+class gcp_instance_group_manager_version {
+**instance_template**: string
+**name**: string
+**target_size**: gcp_fixed_or_percent
+}
+class gcp_named_port {
+**name**: string
+**port**: int64
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_stateful_policy {
+**preserved_state**: gcp_stateful_policy_preserved_state
+}
+class gcp_stateful_policy_preserved_state {
+**stateful_policy_preserved_state_disks**: dictionary[string, gcp_stateful_policy_preserved_state_disk_device]
+}
+class gcp_stateful_policy_preserved_state_disk_device {
+**auto_delete**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_instance_group_manager --> gcp_deprecation_status
+gcp_instance_group_manager --> gcp_distribution_policy
+gcp_instance_group_manager --> gcp_instance_group_manager_actions_summary
+gcp_instance_group_manager --> gcp_instance_group_manager_auto_healing_policy
+gcp_instance_group_manager --> gcp_instance_group_manager_status
+gcp_instance_group_manager --> gcp_instance_group_manager_update_policy
+gcp_instance_group_manager --> gcp_instance_group_manager_version
+gcp_instance_group_manager --> gcp_named_port
+gcp_resource <|--- gcp_instance_group_manager
+gcp_instance_group_manager --> gcp_stateful_policy
+gcp_instance_group_manager_status --> gcp_instance_group_manager_status_stateful
+gcp_instance_group_manager_update_policy --> gcp_fixed_or_percent
+gcp_instance_group_manager_version --> gcp_fixed_or_percent
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_stateful_policy --> gcp_stateful_policy_preserved_state
+gcp_stateful_policy_preserved_state --> gcp_stateful_policy_preserved_state_disk_device
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,278 @@
+---
+sidebar_label: Network Express Route Circuit
+---
+
+# `azure_network_express_route_circuit`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Express Route Circuit](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-circuit-peerings)
+
+## Description
+
+Azure Network Express Route Circuit is a service that creates a private connection between an organization's on-premises network and Microsoft Azure data centers. It bypasses the public internet, offering more reliable connectivity, lower latency, and higher security for data transfer. This service supports various connectivity models and can be integrated with virtual networks.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Express Route Circuit"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_circuit {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_express_route_circuit
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Circuit resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_circuit {
+
+}
+class azure_network_express_route_port {
+
+}
+class azure_network_express_route_ports_location {
+
+}
+azure_network_express_route_circuit -[#1A83AF]-> azure_network_express_route_port
+azure_network_express_route_circuit -[#1A83AF]-> azure_network_express_route_ports_location
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Circuit data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_express_route_circuit_authorization {
+**authorization_key**: string
+**authorization_use_status**: string
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_express_route_circuit_connection {
+**address_prefix**: string
+**authorization_key**: string
+**circuit_connection_status**: string
+**etag**: string
+**express_route_circuit_peering**: string
+**ipv6_circuit_connection_config**: azure_ipv6_circuit_connection_config
+**name**: string
+**peer_express_route_circuit_peering**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_express_route_circuit_peering {
+**azure_asn**: int64
+**connections**: azure_express_route_circuit_connection[]
+**etag**: string
+**express_route_connection**: string
+**gateway_manager_etag**: string
+**ipv6_peering_config**: azure_ipv6_express_route_circuit_peering_config
+**last_modified_by**: string
+**microsoft_peering_config**: azure_express_route_circuit_peering_config
+**name**: string
+**peer_asn**: int64
+**peered_connections**: azure_peer_express_route_circuit_connection[]
+**peering_type**: string
+**primary_azure_port**: string
+**primary_peer_address_prefix**: string
+**provisioning_state**: string
+**route_filter**: string
+**secondary_azure_port**: string
+**secondary_peer_address_prefix**: string
+**shared_key**: string
+**state**: string
+**stats**: azure_express_route_circuit_stats
+**type**: string
+**vlan_id**: int64
+}
+class azure_express_route_circuit_peering_config {
+**advertised_communities**: string[]
+**advertised_public_prefixes**: string[]
+**advertised_public_prefixes_state**: string
+**customer_asn**: int64
+**legacy_mode**: int64
+**routing_registry_name**: string
+}
+class azure_express_route_circuit_service_provider_properties {
+**bandwidth_in_mbps**: int64
+**peering_location**: string
+**service_provider_name**: string
+}
+class azure_express_route_circuit_stats {
+**primarybytes_in**: int64
+**primarybytes_out**: int64
+**secondarybytes_in**: int64
+**secondarybytes_out**: int64
+}
+class azure_ipv6_circuit_connection_config {
+**address_prefix**: string
+**circuit_connection_status**: string
+}
+class azure_ipv6_express_route_circuit_peering_config {
+**microsoft_peering_config**: azure_express_route_circuit_peering_config
+**primary_peer_address_prefix**: string
+**route_filter**: string
+**secondary_peer_address_prefix**: string
+**state**: string
+}
+class azure_network_express_route_circuit {
+**allow_classic_operations**: boolean
+**authorization_key**: string
+**authorization_status**: string
+**authorizations**: azure_express_route_circuit_authorization[]
+**azure_sku**: azure_sku
+**bandwidth_in_gbps**: double
+**circuit_peerings**: azure_express_route_circuit_peering[]
+**circuit_provisioning_state**: string
+**express_route_port**: string
+**gateway_manager_etag**: string
+**global_reach_enabled**: boolean
+**service_key**: string
+**service_provider_notes**: string
+**service_provider_properties**: azure_express_route_circuit_service_provider_properties
+**service_provider_provisioning_state**: string
+**stag**: int64
+}
+class azure_peer_express_route_circuit_connection {
+**address_prefix**: string
+**auth_resource_guid**: string
+**circuit_connection_status**: string
+**connection_name**: string
+**etag**: string
+**express_route_circuit_peering**: string
+**name**: string
+**peer_express_route_circuit_peering**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_express_route_circuit_connection --> azure_ipv6_circuit_connection_config
+azure_express_route_circuit_peering --> azure_express_route_circuit_connection
+azure_express_route_circuit_peering --> azure_express_route_circuit_peering_config
+azure_express_route_circuit_peering --> azure_express_route_circuit_stats
+azure_express_route_circuit_peering --> azure_ipv6_express_route_circuit_peering_config
+azure_express_route_circuit_peering --> azure_peer_express_route_circuit_connection
+azure_ipv6_express_route_circuit_peering_config --> azure_express_route_circuit_peering_config
+azure_network_express_route_circuit --> azure_express_route_circuit_authorization
+azure_network_express_route_circuit --> azure_express_route_circuit_peering
+azure_network_express_route_circuit --> azure_express_route_circuit_service_provider_properties
+azure_network_express_route_circuit --> azure_sku
+microsoft_resource <|--- azure_network_express_route_circuit
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

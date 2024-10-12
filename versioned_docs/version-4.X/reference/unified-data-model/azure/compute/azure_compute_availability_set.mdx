@@ -1,0 +1,180 @@
+---
+sidebar_label: Compute Availability Set
+---
+
+# `azure_compute_availability_set`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Availability Set](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview)
+
+## Description
+
+Azure Compute Availability Set is a feature that groups virtual machines to distribute them across multiple physical servers, racks, storage units, and network switches. This configuration helps maintain service continuity during planned maintenance or hardware failures by ensuring that at least one virtual machine remains operational, reducing downtime and improving overall reliability for applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Availability Set"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_availability_set {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_availability_set
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Availability Set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_availability_set {
+
+}
+class azure_compute_proximity_placement_group {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+azure_compute_availability_set -[#1A83AF]-> azure_compute_proximity_placement_group
+azure_compute_availability_set -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine_base
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Availability Set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_availability_set {
+**azure_sku**: azure_sku
+**platform_fault_domain_count**: int64
+**platform_update_domain_count**: int64
+**proximity_placement_group**: string
+**statuses**: azure_instance_view_status[]
+**virtual_machines_availability**: string[]
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_compute_availability_set --> azure_instance_view_status
+azure_compute_availability_set --> azure_sku
+microsoft_resource <|--- azure_compute_availability_set
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

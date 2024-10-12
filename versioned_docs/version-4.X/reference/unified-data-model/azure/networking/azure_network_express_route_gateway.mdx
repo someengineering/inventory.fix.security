@@ -1,0 +1,218 @@
+---
+sidebar_label: Network Express Route Gateway
+---
+
+# `azure_network_express_route_gateway`
+
+- Categories: Access Control, Networking
+- Service: networking
+- Provider Link: [Network Express Route Gateway](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways)
+
+## Description
+
+Azure Network Express Route Gateway is a service that connects on-premises networks to Microsoft Azure using dedicated private connections. It provides a direct route to Azure services, bypassing the public internet for improved performance and security. The gateway facilitates data transfer between on-premises infrastructure and Azure virtual networks, supporting various connectivity options and protocols.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Express Route Gateway"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_gateway {
+
+}
+class gateway {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+gateway <|--- azure_network_express_route_gateway
+microsoft_resource <|--- azure_network_express_route_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Gateway resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_gateway {
+
+}
+class azure_network_virtual_hub {
+
+}
+azure_network_express_route_gateway -[#1A83AF]-> azure_network_virtual_hub
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_bounds {
+**bounds**: azure_min_max
+}
+class azure_express_route_connection {
+**authorization_key**: string
+**enable_internet_security**: boolean
+**enable_private_link_fast_path**: boolean
+**express_route_circuit_peering**: string
+**express_route_gateway_bypass**: boolean
+**name**: string
+**provisioning_state**: string
+**routing_configuration**: azure_routing_configuration
+**routing_weight**: int64
+}
+class azure_min_max {
+**max**: int64
+**min**: int64
+}
+class azure_network_express_route_gateway {
+**allow_non_virtual_wan_traffic**: boolean
+**auto_scale_configuration**: azure_bounds
+**express_route_connections**: azure_express_route_connection[]
+**virtual_hub**: string
+}
+class azure_propagated_route_table {
+**ids**: string[]
+**labels**: string[]
+}
+class azure_routing_configuration {
+**associated_route_table**: string
+**inbound_route_map**: string
+**outbound_route_map**: string
+**propagated_route_tables**: azure_propagated_route_table
+**vnet_routes**: azure_vnet_route
+}
+class azure_static_route {
+**address_prefixes**: string[]
+**name**: string
+**next_hop_ip_address**: string
+}
+class azure_static_routes_config {
+**propagate_static_routes**: boolean
+**vnet_local_route_override_criteria**: string
+}
+class azure_vnet_route {
+**bgp_connections**: string[]
+**static_routes**: azure_static_route[]
+**static_routes_config**: azure_static_routes_config
+}
+class gateway {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_bounds --> azure_min_max
+azure_express_route_connection --> azure_routing_configuration
+azure_network_express_route_gateway --> azure_bounds
+azure_network_express_route_gateway --> azure_express_route_connection
+gateway <|--- azure_network_express_route_gateway
+microsoft_resource <|--- azure_network_express_route_gateway
+azure_routing_configuration --> azure_propagated_route_table
+azure_routing_configuration --> azure_vnet_route
+azure_vnet_route --> azure_static_route
+azure_vnet_route --> azure_static_routes_config
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

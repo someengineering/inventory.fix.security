@@ -1,0 +1,188 @@
+---
+sidebar_label: Cosmos DB SQL Database Client Encryption Key
+---
+
+# `azure_cosmos_db_sql_database_client_encryption_key`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB SQL Database Client Encryption Key](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-client-side-encryption)
+
+## Description
+
+Azure Cosmos DB SQL Database Client Encryption Key is a security feature that encrypts sensitive data on the client side before sending it to the database. It provides an additional layer of protection for confidential information by ensuring data remains encrypted at rest and in transit, with decryption occurring only on authorized clients using the specified encryption key.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB SQL Database Client Encryption Key"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_sql_database_client_encryption_key {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_sql_database_client_encryption_key
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB SQL Database Client Encryption Key resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_sql_database {
+
+}
+class azure_cosmos_db_sql_database_client_encryption_key {
+
+}
+class azure_cosmos_db_sql_database_container {
+
+}
+azure_cosmos_db_sql_database -[#1A83AF]-> azure_cosmos_db_sql_database_client_encryption_key
+azure_cosmos_db_sql_database -[#1A83AF]-> azure_cosmos_db_sql_database_container
+azure_cosmos_db_sql_database_container -[#1A83AF]-> azure_cosmos_db_sql_database_client_encryption_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB SQL Database Client Encryption Key data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_auto_upgrade_policy_resource {
+**throughput_policy**: azure_throughput_policy_resource
+}
+class azure_autoscale_settings_resource {
+**auto_upgrade_policy**: azure_auto_upgrade_policy_resource
+**max_throughput**: int64
+**target_max_throughput**: int64
+}
+class azure_client_encryption_key {
+**encryption_algorithm**: string
+**id**: string
+**key_wrap_metadata**: azure_key_wrap_metadata
+**wrapped_data_encryption_key**: string
+}
+class azure_cosmos_db_sql_database_client_encryption_key {
+**encryption_key_resource**: azure_client_encryption_key
+}
+class azure_key_wrap_metadata {
+**algorithm**: string
+**name**: string
+**type**: string
+**value**: string
+}
+class azure_throughput_policy_resource {
+**increment_percent**: int64
+**is_enabled**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_auto_upgrade_policy_resource --> azure_throughput_policy_resource
+azure_autoscale_settings_resource --> azure_auto_upgrade_policy_resource
+azure_client_encryption_key --> azure_autoscale_settings_resource
+azure_client_encryption_key --> azure_key_wrap_metadata
+azure_cosmos_db_sql_database_client_encryption_key --> azure_client_encryption_key
+microsoft_resource <|--- azure_cosmos_db_sql_database_client_encryption_key
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

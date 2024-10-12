@@ -1,0 +1,192 @@
+---
+sidebar_label: Network Flow Log
+---
+
+# `azure_network_flow_log`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Flow Log](https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
+
+## Description
+
+Azure Network Flow Log is a feature that records information about IP traffic flowing through Azure network security groups. It captures data on allowed and denied connections, including source and destination IP addresses, ports, protocols, and traffic direction. This log helps administrators monitor network activity, troubleshoot connectivity issues, and enhance security posture.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Flow Log"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_flow_log {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_flow_log
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Flow Log resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_flow_log {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_watcher {
+
+}
+class azure_storage_account {
+
+}
+azure_network_security_group -[#1A83AF]-> azure_network_flow_log
+azure_network_watcher -[#1A83AF]-> azure_network_flow_log
+azure_storage_account -[#1A83AF]-> azure_network_flow_log
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Flow Log data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_flow_log_format_parameters {
+**type**: string
+**version**: int64
+}
+class azure_network_flow_log {
+**enabled**: boolean
+**flow_analytics_configuration**: azure_traffic_analytics_properties
+**flow_log_format**: azure_flow_log_format_parameters
+**location**: string
+**retention_policy_parameters**: azure_retention_policy_parameters
+**storage_id**: string
+**target_resource_guid**: string
+**target_resource_id**: string
+**type**: string
+}
+class azure_retention_policy_parameters {
+**days**: int64
+**enabled**: boolean
+}
+class azure_traffic_analytics_configuration_properties {
+**enabled**: boolean
+**traffic_analytics_interval**: int64
+**workspace_id**: string
+**workspace_region**: string
+**workspace_resource_id**: string
+}
+class azure_traffic_analytics_properties {
+**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_flow_log --> azure_flow_log_format_parameters
+azure_network_flow_log --> azure_retention_policy_parameters
+azure_network_flow_log --> azure_traffic_analytics_properties
+microsoft_resource <|--- azure_network_flow_log
+azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

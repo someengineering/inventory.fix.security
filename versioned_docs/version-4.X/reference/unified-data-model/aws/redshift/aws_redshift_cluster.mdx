@@ -1,0 +1,373 @@
+---
+sidebar_label: Redshift Cluster
+---
+
+# `aws_redshift_cluster`
+
+- Categories: Analytics, Database, Storage
+- Service: redshift
+- Provider Link: [Redshift Cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html)
+
+## Description
+
+An Amazon Redshift Cluster is a managed data warehouse service that stores and processes large datasets. It uses columnar storage and parallel query execution to analyze data across multiple nodes. Amazon Redshift can handle structured and semi-structured data, integrates with various data analysis tools, and offers options for scaling compute and storage resources independently.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Redshift Cluster"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_redshift_cluster {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_redshift_cluster
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Redshift Cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_vpc {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_redshift_cluster
+aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
+aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Redshift Cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_redshift_aqua_configuration {
+**aqua_configuration_status**: string
+**aqua_status**: string
+}
+class aws_redshift_cluster {
+**redshift_allow_version_upgrade**: boolean
+**redshift_aqua_configuration**: aws_redshift_aqua_configuration
+**redshift_automated_snapshot_retention_period**: int64
+**redshift_availability_zone**: string
+**redshift_availability_zone_relocation_status**: string
+**redshift_cluster_availability_status**: string
+**redshift_cluster_namespace_arn**: string
+**redshift_cluster_nodes**: aws_redshift_cluster_node[]
+**redshift_cluster_parameter_groups**: aws_redshift_cluster_parameter_group_status[]
+**redshift_cluster_public_key**: string
+**redshift_cluster_revision_number**: string
+**redshift_cluster_security_groups**: aws_redshift_cluster_security_group_membership[]
+**redshift_cluster_snapshot_copy_status**: aws_redshift_cluster_snapshot_copy_status
+**redshift_cluster_status**: string
+**redshift_cluster_subnet_group_name**: string
+**redshift_cluster_version**: string
+**redshift_data_transfer_progress**: aws_redshift_data_transfer_progress
+**redshift_db_name**: string
+**redshift_default_iam_role_arn**: string
+**redshift_deferred_maintenance_windows**: aws_redshift_deferred_maintenance_window[]
+**redshift_elastic_ip_status**: aws_redshift_elastic_ip_status
+**redshift_elastic_resize_number_of_node_options**: string
+**redshift_encrypted**: boolean
+**redshift_endpoint**: aws_redshift_endpoint
+**redshift_enhanced_vpc_routing**: boolean
+**redshift_expected_next_snapshot_schedule_time**: datetime
+**redshift_expected_next_snapshot_schedule_time_status**: string
+**redshift_hsm_status**: aws_redshift_hsm_status
+**redshift_iam_roles**: aws_redshift_cluster_iam_role[]
+**redshift_kms_key_id**: string
+**redshift_logging_status**: aws_redshift_logging_status
+**redshift_maintenance_track_name**: string
+**redshift_manual_snapshot_retention_period**: int64
+**redshift_master_username**: string
+**redshift_modify_status**: string
+**redshift_next_maintenance_window_start_time**: datetime
+**redshift_node_type**: string
+**redshift_number_of_nodes**: int64
+**redshift_pending_actions**: string[]
+**redshift_pending_modified_values**: aws_redshift_pending_modified_values
+**redshift_preferred_maintenance_window**: string
+**redshift_publicly_accessible**: boolean
+**redshift_reserved_node_exchange_status**: aws_redshift_reserved_node_exchange_status
+**redshift_resize_info**: aws_redshift_resize_info
+**redshift_restore_status**: aws_redshift_restore_status
+**redshift_snapshot_schedule_identifier**: string
+**redshift_snapshot_schedule_state**: string
+**redshift_total_storage_capacity_in_mega_bytes**: int64
+**redshift_vpc_id**: string
+**redshift_vpc_security_groups**: aws_redshift_vpc_security_group_membership[]
+}
+class aws_redshift_cluster_iam_role {
+**apply_status**: string
+**iam_role_arn**: string
+}
+class aws_redshift_cluster_node {
+**node_role**: string
+**private_ip_address**: string
+**public_ip_address**: string
+}
+class aws_redshift_cluster_parameter_group_status {
+**cluster_parameter_status_list**: aws_redshift_cluster_parameter_status[]
+**parameter_apply_status**: string
+**parameter_group_name**: string
+}
+class aws_redshift_cluster_parameter_status {
+**parameter_apply_error_description**: string
+**parameter_apply_status**: string
+**parameter_name**: string
+}
+class aws_redshift_cluster_security_group_membership {
+**cluster_security_group_name**: string
+**status**: string
+}
+class aws_redshift_cluster_snapshot_copy_status {
+**destination_region**: string
+**manual_snapshot_retention_period**: int64
+**retention_period**: int64
+**snapshot_copy_grant_name**: string
+}
+class aws_redshift_data_transfer_progress {
+**current_rate_in_mega_bytes_per_second**: double
+**data_transferred_in_mega_bytes**: int64
+**elapsed_time_in_seconds**: int64
+**estimated_time_to_completion_in_seconds**: int64
+**status**: string
+**total_data_in_mega_bytes**: int64
+}
+class aws_redshift_deferred_maintenance_window {
+**defer_maintenance_end_time**: datetime
+**defer_maintenance_identifier**: string
+**defer_maintenance_start_time**: datetime
+}
+class aws_redshift_elastic_ip_status {
+**elastic_ip**: string
+**status**: string
+}
+class aws_redshift_endpoint {
+**address**: string
+**port**: int64
+**vpc_endpoints**: aws_redshift_vpc_endpoint[]
+}
+class aws_redshift_hsm_status {
+**hsm_client_certificate_identifier**: string
+**hsm_configuration_identifier**: string
+**status**: string
+}
+class aws_redshift_logging_status {
+**bucket_name**: string
+**last_failure_message**: string
+**last_failure_time**: datetime
+**last_successful_delivery_time**: datetime
+**log_destination_type**: string
+**log_exports**: string[]
+**logging_enabled**: boolean
+**s3_key_prefix**: string
+}
+class aws_redshift_network_interface {
+**availability_zone**: string
+**network_interface_id**: string
+**private_ip_address**: string
+**subnet_id**: string
+}
+class aws_redshift_pending_modified_values {
+**automated_snapshot_retention_period**: int64
+**cluster_identifier**: string
+**cluster_type**: string
+**cluster_version**: string
+**encryption_type**: string
+**enhanced_vpc_routing**: boolean
+**maintenance_track_name**: string
+**master_user_password**: string
+**node_type**: string
+**number_of_nodes**: int64
+**publicly_accessible**: boolean
+}
+class aws_redshift_reserved_node_exchange_status {
+**request_time**: datetime
+**reserved_node_exchange_request_id**: string
+**source_reserved_node_count**: int64
+**source_reserved_node_id**: string
+**source_reserved_node_type**: string
+**status**: string
+**target_reserved_node_count**: int64
+**target_reserved_node_offering_id**: string
+**target_reserved_node_type**: string
+}
+class aws_redshift_resize_info {
+**allow_cancel_resize**: boolean
+**resize_type**: string
+}
+class aws_redshift_restore_status {
+**current_restore_rate_in_mega_bytes_per_second**: double
+**elapsed_time_in_seconds**: int64
+**estimated_time_to_completion_in_seconds**: int64
+**progress_in_mega_bytes**: int64
+**snapshot_size_in_mega_bytes**: int64
+**status**: string
+}
+class aws_redshift_vpc_endpoint {
+**network_interfaces**: aws_redshift_network_interface[]
+**vpc_endpoint_id**: string
+**vpc_id**: string
+}
+class aws_redshift_vpc_security_group_membership {
+**status**: string
+**vpc_security_group_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_redshift_cluster --> aws_redshift_aqua_configuration
+aws_redshift_cluster --> aws_redshift_cluster_iam_role
+aws_redshift_cluster --> aws_redshift_cluster_node
+aws_redshift_cluster --> aws_redshift_cluster_parameter_group_status
+aws_redshift_cluster --> aws_redshift_cluster_security_group_membership
+aws_redshift_cluster --> aws_redshift_cluster_snapshot_copy_status
+aws_redshift_cluster --> aws_redshift_data_transfer_progress
+aws_redshift_cluster --> aws_redshift_deferred_maintenance_window
+aws_redshift_cluster --> aws_redshift_elastic_ip_status
+aws_redshift_cluster --> aws_redshift_endpoint
+aws_redshift_cluster --> aws_redshift_hsm_status
+aws_redshift_cluster --> aws_redshift_logging_status
+aws_redshift_cluster --> aws_redshift_pending_modified_values
+aws_redshift_cluster --> aws_redshift_reserved_node_exchange_status
+aws_redshift_cluster --> aws_redshift_resize_info
+aws_redshift_cluster --> aws_redshift_restore_status
+aws_redshift_cluster --> aws_redshift_vpc_security_group_membership
+aws_resource <|--- aws_redshift_cluster
+aws_redshift_cluster_parameter_group_status --> aws_redshift_cluster_parameter_status
+aws_redshift_endpoint --> aws_redshift_vpc_endpoint
+aws_redshift_vpc_endpoint --> aws_redshift_network_interface
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

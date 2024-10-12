@@ -1,0 +1,297 @@
+---
+sidebar_label: DynamoDB Table
+---
+
+# `aws_dynamodb_table`
+
+- Categories: Database
+- Service: dynamodb
+- Provider Link: [DynamoDB Table](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html)
+
+## Description
+
+AWS DynamoDB Table is a fully managed NoSQL database service that stores and retrieves data. It supports key-value and document data models, offering automatic scaling and low-latency performance. DynamoDB Tables handle data storage, indexing, and querying, providing consistent read and write throughput. They offer data encryption, backup, and recovery features for secure and reliable data management.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of DynamoDB Table"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamodb_table {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_dynamodb_table
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of DynamoDB Table resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_dynamodb_table {
+
+}
+class aws_kinesis_stream {
+
+}
+class aws_kms_key {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_table
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
+aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_ssm_resource_compliance -[#1A83AF]-> aws_dynamodb_table
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of DynamoDB Table data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamo_db_continuous_backup {
+**point_in_time_recovery**: aws_dynamo_db_point_in_time_recovery
+**status**: string
+}
+class aws_dynamo_db_point_in_time_recovery {
+**earliest_restorable_date_time**: datetime
+**latest_restorable_date_time**: datetime
+**status**: string
+}
+class aws_dynamodb_archival_summary {
+**archival_backup_arn**: string
+**archival_date_time**: datetime
+**archival_reason**: string
+}
+class aws_dynamodb_attribute_definition {
+**attribute_name**: string
+**attribute_type**: string
+}
+class aws_dynamodb_billing_mode_summary {
+**billing_mode**: string
+**last_update_to_pay_per_request_date_time**: datetime
+}
+class aws_dynamodb_global_secondary_index_description {
+**backfilling**: boolean
+**index_arn**: string
+**index_name**: string
+**index_size_bytes**: int64
+**index_status**: string
+**item_count**: int64
+**key_schema**: aws_dynamodb_key_schema_element[]
+**projection**: aws_dynamodb_projection
+**provisioned_throughput**: aws_dynamodb_provisioned_throughput_description
+}
+class aws_dynamodb_key_schema_element {
+**attribute_name**: string
+**key_type**: string
+}
+class aws_dynamodb_local_secondary_index_description {
+**index_arn**: string
+**index_name**: string
+**index_size_bytes**: int64
+**item_count**: int64
+**key_schema**: aws_dynamodb_key_schema_element[]
+**projection**: aws_dynamodb_projection
+}
+class aws_dynamodb_projection {
+**non_key_attributes**: string[]
+**projection_type**: string
+}
+class aws_dynamodb_provisioned_throughput_description {
+**last_decrease_date_time**: datetime
+**last_increase_date_time**: datetime
+**number_of_decreases_today**: int64
+**read_capacity_units**: int64
+**write_capacity_units**: int64
+}
+class aws_dynamodb_replica_description {
+**global_secondary_indexes**: aws_dynamodb_replica_global_secondary_index_description[]
+**kms_master_key_id**: string
+**provisioned_throughput_override**: int64
+**region_name**: string
+**replica_inaccessible_date_time**: datetime
+**replica_status**: string
+**replica_status_description**: string
+**replica_status_percent_progress**: string
+**replica_table_class_summary**: aws_dynamodb_table_class_summary
+}
+class aws_dynamodb_replica_global_secondary_index_description {
+**index_name**: string
+**provisioned_throughput_override**: int64
+}
+class aws_dynamodb_restore_summary {
+**restore_date_time**: datetime
+**restore_in_progress**: boolean
+**source_backup_arn**: string
+**source_table_arn**: string
+}
+class aws_dynamodb_sse_description {
+**inaccessible_encryption_date_time**: datetime
+**kms_master_key_arn**: string
+**sse_type**: string
+**status**: string
+}
+class aws_dynamodb_stream_specification {
+**stream_enabled**: boolean
+**stream_view_type**: string
+}
+class aws_dynamodb_table {
+**dynamodb_archival_summary**: aws_dynamodb_archival_summary
+**dynamodb_attribute_definitions**: aws_dynamodb_attribute_definition[]
+**dynamodb_billing_mode_summary**: aws_dynamodb_billing_mode_summary
+**dynamodb_continuous_backup**: aws_dynamo_db_continuous_backup
+**dynamodb_global_secondary_indexes**: aws_dynamodb_global_secondary_index_description[]
+**dynamodb_global_table_version**: string
+**dynamodb_item_count**: int64
+**dynamodb_key_schema**: aws_dynamodb_key_schema_element[]
+**dynamodb_latest_stream_arn**: string
+**dynamodb_latest_stream_label**: string
+**dynamodb_local_secondary_indexes**: aws_dynamodb_local_secondary_index_description[]
+**dynamodb_policy**: dictionary[string, any]
+**dynamodb_provisioned_throughput**: aws_dynamodb_provisioned_throughput_description
+**dynamodb_replicas**: aws_dynamodb_replica_description[]
+**dynamodb_restore_summary**: aws_dynamodb_restore_summary
+**dynamodb_sse_description**: aws_dynamodb_sse_description
+**dynamodb_stream_specification**: aws_dynamodb_stream_specification
+**dynamodb_table_class_summary**: aws_dynamodb_table_class_summary
+**dynamodb_table_size_bytes**: int64
+**dynamodb_table_status**: string
+}
+class aws_dynamodb_table_class_summary {
+**last_update_date_time**: datetime
+**table_class**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_dynamo_db_continuous_backup --> aws_dynamo_db_point_in_time_recovery
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_key_schema_element
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_projection
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_provisioned_throughput_description
+aws_dynamodb_local_secondary_index_description --> aws_dynamodb_key_schema_element
+aws_dynamodb_local_secondary_index_description --> aws_dynamodb_projection
+aws_dynamodb_replica_description --> aws_dynamodb_replica_global_secondary_index_description
+aws_dynamodb_replica_description --> aws_dynamodb_table_class_summary
+aws_dynamodb_table --> aws_dynamo_db_continuous_backup
+aws_dynamodb_table --> aws_dynamodb_archival_summary
+aws_dynamodb_table --> aws_dynamodb_attribute_definition
+aws_dynamodb_table --> aws_dynamodb_billing_mode_summary
+aws_dynamodb_table --> aws_dynamodb_global_secondary_index_description
+aws_dynamodb_table --> aws_dynamodb_key_schema_element
+aws_dynamodb_table --> aws_dynamodb_local_secondary_index_description
+aws_dynamodb_table --> aws_dynamodb_provisioned_throughput_description
+aws_dynamodb_table --> aws_dynamodb_replica_description
+aws_dynamodb_table --> aws_dynamodb_restore_summary
+aws_dynamodb_table --> aws_dynamodb_sse_description
+aws_dynamodb_table --> aws_dynamodb_stream_specification
+aws_dynamodb_table --> aws_dynamodb_table_class_summary
+aws_resource <|--- aws_dynamodb_table
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

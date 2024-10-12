@@ -1,0 +1,183 @@
+---
+sidebar_label: EFS File System
+---
+
+# `aws_efs_file_system`
+
+- Categories: Storage
+- Service: efs
+- Provider Link: [EFS File System](https://docs.aws.amazon.com/efs/latest/ug/)
+
+## Description
+
+AWS EFS (Elastic File System) is a cloud-based network file storage service for Amazon EC2 instances. It provides a shared file system that can be accessed by multiple EC2 instances simultaneously. EFS automatically scales storage capacity as files are added or removed, and users pay only for the storage they use.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EFS File System"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_efs_file_system {
+
+}
+class aws_resource {
+
+}
+class network_share {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_efs_file_system
+network_share <|--- aws_efs_file_system
+resource <|--- aws_resource
+resource <|--- network_share
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EFS File System resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_efs_access_point {
+
+}
+class aws_efs_file_system {
+
+}
+class aws_kms_key {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_efs_file_system
+aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
+aws_efs_file_system -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EFS File System data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_efs_file_system {
+**availability_zone_name**: string
+**creation_token**: string
+**file_system_policy**: dictionary[string, any]
+**number_of_mount_targets**: int64
+**owner_id**: string
+**performance_mode**: string
+**provisioned_throughput_in_mibps**: double
+**throughput_mode**: string
+}
+class aws_resource {
+**arn**: string
+}
+class network_share {
+**share_encrypted**: boolean
+**share_iops**: int64
+**share_size**: int64
+**share_status**: string
+**share_throughput**: double
+**share_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_efs_file_system
+network_share <|--- aws_efs_file_system
+resource <|--- aws_resource
+resource <|--- network_share
+
+@enduml
+```
+
+</ZoomPanPinch>

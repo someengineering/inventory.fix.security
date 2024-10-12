@@ -1,0 +1,196 @@
+---
+sidebar_label: Route53 Resource Record Set
+---
+
+# `aws_route53_resource_record_set`
+
+- Categories: DNS, Networking
+- Service: route53
+- Provider Link: [Route53 Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html)
+
+## Description
+
+AWS Route 53 Resource Record Set is a collection of DNS records for a domain. It defines how traffic is routed to resources like websites, email servers, or other services. These records include types such as A, AAAA, CNAME, MX, and TXT, each serving specific purposes in DNS resolution and domain configuration.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Route53 Resource Record Set"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_route53_resource_record_set {
+
+}
+class dns_record_set {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_route53_resource_record_set
+dns_record_set <|--- aws_route53_resource_record_set
+resource <|--- dns_record_set
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Route53 Resource Record Set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_route53_resource_record {
+
+}
+class aws_route53_resource_record_set {
+
+}
+class aws_route53_zone {
+
+}
+aws_route53_resource_record_set -[#1A83AF]-> aws_route53_resource_record
+aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Route53 Resource Record Set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_route53_alias_target {
+**dns_name**: string
+**evaluate_target_health**: boolean
+**hosted_zone_id**: string
+}
+class aws_route53_cidr_routing_config {
+**collection_id**: string
+**location_name**: string
+}
+class aws_route53_geo_location {
+**continent_code**: string
+**country_code**: string
+**subdivision_code**: string
+}
+class aws_route53_resource_record_set {
+**record_alias_target**: aws_route53_alias_target
+**record_cidr_routing_config**: aws_route53_cidr_routing_config
+**record_fail_over**: string
+**record_geo_location**: aws_route53_geo_location
+**record_health_check_id**: string
+**record_multi_value_answer**: boolean
+**record_name**: string
+**record_region**: string
+**record_set_identifier**: string
+**record_traffic_policy_instance_id**: string
+**record_weight**: int64
+}
+class dns_record_set {
+**record_ttl**: int64
+**record_type**: string
+**record_values**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_route53_resource_record_set
+aws_route53_resource_record_set --> aws_route53_alias_target
+aws_route53_resource_record_set --> aws_route53_cidr_routing_config
+aws_route53_resource_record_set --> aws_route53_geo_location
+dns_record_set <|--- aws_route53_resource_record_set
+resource <|--- dns_record_set
+
+@enduml
+```
+
+</ZoomPanPinch>

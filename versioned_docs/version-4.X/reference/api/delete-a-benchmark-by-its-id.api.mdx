@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: {"description":"Delete a benchmark by its id.","tags":["report"],"parameters":[{"name":"benchmark","in":"path","description":"The ID of the benchmark.","schema":{"type":"string"},"example":"aws_cis_1_5","required":true}],"responses":{"204":{"description":"Empty."}},"method":"delete","path":"/report/benchmark/{benchmark}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete a benchmark by its id.","description":{"content":"Delete a benchmark by its id.","type":"text/plain"},"url":{"path":["report","benchmark",":benchmark"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The ID of the benchmark.","type":"text/plain"},"type":"any","value":"","key":"benchmark"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
-info_path: version-4.X/reference/api/fix-inventory-core-rest-api
+info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
 hide_send_button: true
 ---

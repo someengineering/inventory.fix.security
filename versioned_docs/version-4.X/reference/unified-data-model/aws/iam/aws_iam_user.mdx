@@ -1,0 +1,207 @@
+---
+sidebar_label: IAM User
+---
+
+# `aws_iam_user`
+
+- Categories: Access Control
+- Service: iam
+- Provider Link: [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html)
+
+## Description
+
+AWS IAM User is an identity within Amazon Web Services that represents a person or application. It has associated credentials and permissions that determine its access to AWS services and resources. IAM Users can be assigned to groups, given specific policies, and authenticated using passwords or access keys for programmatic access to AWS.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of IAM User"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_user {
+
+}
+class aws_resource {
+
+}
+class iam_principal {
+
+}
+class resource {
+
+}
+class user {
+
+}
+aws_resource <|--- aws_iam_user
+iam_principal <|--- aws_iam_user
+user <|--- aws_iam_user
+resource <|--- aws_resource
+resource <|--- iam_principal
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of IAM User resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_group {
+
+}
+class aws_iam_policy {
+
+}
+class aws_iam_user {
+
+}
+class aws_region {
+
+}
+aws_iam_group -[#1A83AF]-> aws_iam_policy
+aws_iam_group -[#1A83AF]-> aws_iam_user
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_group
+aws_region -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of IAM User data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_attached_permissions_boundary {
+**permissions_boundary_arn**: string
+**permissions_boundary_type**: string
+}
+class aws_iam_policy_detail {
+**policy_document**: dictionary[string, any]
+**policy_name**: string
+}
+class aws_iam_user {
+**mfa_active**: boolean
+**password_enabled**: boolean
+**password_last_changed**: datetime
+**password_last_used**: datetime
+**password_next_rotation**: datetime
+**path**: string
+**user_permissions_boundary**: aws_iam_attached_permissions_boundary
+**user_policies**: aws_iam_policy_detail[]
+**user_virtual_mfa_devices**: aws_iam_virtual_mfa_device[]
+}
+class aws_iam_virtual_mfa_device {
+**enable_date**: datetime
+**serial_number**: string
+}
+class aws_resource {
+**arn**: string
+}
+class iam_principal {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+
+}
+aws_iam_user --> aws_iam_attached_permissions_boundary
+aws_iam_user --> aws_iam_policy_detail
+aws_iam_user --> aws_iam_virtual_mfa_device
+aws_resource <|--- aws_iam_user
+iam_principal <|--- aws_iam_user
+user <|--- aws_iam_user
+resource <|--- aws_resource
+resource <|--- iam_principal
+resource <|--- user
+
+@enduml
+```
+
+</ZoomPanPinch>

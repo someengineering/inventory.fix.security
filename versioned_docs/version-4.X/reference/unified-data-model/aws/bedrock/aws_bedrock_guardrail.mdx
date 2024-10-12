@@ -1,0 +1,232 @@
+---
+sidebar_label: Bedrock Guardrail
+---
+
+# `aws_bedrock_guardrail`
+
+- Categories: Machine Learning & AI
+- Service: bedrock
+- Provider Link: [Bedrock Guardrail](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html)
+
+## Description
+
+AWS Bedrock Guardrail is a feature that helps manage and control access to foundation models in AWS Bedrock. It applies filters to user inputs and model outputs, enforcing content policies and preventing misuse. Administrators can set rules to block specific topics, limit personal information sharing, and ensure appropriate content generation across applications using AWS Bedrock.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Guardrail"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_guardrail {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_bedrock_guardrail
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Guardrail resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent {
+
+}
+class aws_bedrock_agent_version {
+
+}
+class aws_bedrock_guardrail {
+
+}
+class aws_kms_key {
+
+}
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
+aws_bedrock_guardrail -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Guardrail data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_guardrail {
+**blocked_input_messaging**: string
+**blocked_outputs_messaging**: string
+**content_policy**: aws_bedrock_guardrail_content_policy
+**contextual_grounding_policy**: aws_bedrock_guardrail_contextual_grounding_policy
+**created_at**: datetime
+**description**: string
+**failure_recommendations**: string[]
+**guardrail_arn**: string
+**guardrail_id**: string
+**kms_key_arn**: string
+**sensitive_information_policy**: aws_bedrock_guardrail_sensitive_information_policy
+**status**: string
+**status_reasons**: string[]
+**topic_policy**: aws_bedrock_guardrail_topic_policy
+**updated_at**: datetime
+**version**: string
+**word_policy**: aws_bedrock_guardrail_word_policy
+}
+class aws_bedrock_guardrail_content_filter {
+**input_strength**: string
+**output_strength**: string
+**type**: string
+}
+class aws_bedrock_guardrail_content_policy {
+**filters**: aws_bedrock_guardrail_content_filter[]
+}
+class aws_bedrock_guardrail_contextual_grounding_filter {
+**threshold**: double
+**type**: string
+}
+class aws_bedrock_guardrail_contextual_grounding_policy {
+**filters**: aws_bedrock_guardrail_contextual_grounding_filter[]
+}
+class aws_bedrock_guardrail_pii_entity {
+**action**: string
+**type**: string
+}
+class aws_bedrock_guardrail_regex {
+**action**: string
+**description**: string
+**name**: string
+**pattern**: string
+}
+class aws_bedrock_guardrail_sensitive_information_policy {
+**pii_entities**: aws_bedrock_guardrail_pii_entity[]
+**regexes**: aws_bedrock_guardrail_regex[]
+}
+class aws_bedrock_guardrail_topic {
+**definition**: string
+**examples**: string[]
+**name**: string
+**type**: string
+}
+class aws_bedrock_guardrail_topic_policy {
+**topics**: aws_bedrock_guardrail_topic[]
+}
+class aws_bedrock_guardrail_word_policy {
+**managed_word_lists**: string[]
+**words**: string[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_bedrock_guardrail --> aws_bedrock_guardrail_content_policy
+aws_bedrock_guardrail --> aws_bedrock_guardrail_contextual_grounding_policy
+aws_bedrock_guardrail --> aws_bedrock_guardrail_sensitive_information_policy
+aws_bedrock_guardrail --> aws_bedrock_guardrail_topic_policy
+aws_bedrock_guardrail --> aws_bedrock_guardrail_word_policy
+aws_resource <|--- aws_bedrock_guardrail
+aws_bedrock_guardrail_content_policy --> aws_bedrock_guardrail_content_filter
+aws_bedrock_guardrail_contextual_grounding_policy --> aws_bedrock_guardrail_contextual_grounding_filter
+aws_bedrock_guardrail_sensitive_information_policy --> aws_bedrock_guardrail_pii_entity
+aws_bedrock_guardrail_sensitive_information_policy --> aws_bedrock_guardrail_regex
+aws_bedrock_guardrail_topic_policy --> aws_bedrock_guardrail_topic
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

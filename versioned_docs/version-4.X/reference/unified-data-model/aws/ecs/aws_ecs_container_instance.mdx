@@ -1,0 +1,223 @@
+---
+sidebar_label: ECS Container Instance
+---
+
+# `aws_ecs_container_instance`
+
+- Categories: Compute
+- Service: ecs
+- Provider Link: [ECS Container Instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_instances.html)
+
+## Description
+
+An AWS ECS Container Instance is a virtual machine that runs the Amazon ECS container agent and Docker daemon. It serves as a host for containers managed by Amazon ECS. These instances provide compute resources for running containers, handle container scheduling, and communicate with the ECS service to manage tasks and report instance status.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ECS Container Instance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_container_instance {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ecs_container_instance
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Container Instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_ecs_container_instance {
+
+}
+class aws_ecs_task {
+
+}
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_container_instance -[#1A83AF]-> aws_ec2_instance
+aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Container Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_attachment {
+**details**: aws_ecs_key_value_pair[]
+**id**: string
+**status**: string
+**type**: string
+}
+class aws_ecs_attribute {
+**name**: string
+**target_id**: string
+**target_type**: string
+**value**: string
+}
+class aws_ecs_container_instance {
+**agent_connected**: boolean
+**agent_update_status**: string
+**attachments**: aws_ecs_attachment[]
+**attributes**: aws_ecs_attribute[]
+**capacity_provider_name**: string
+**cluster_link**: string
+**ec2_instance_id**: string
+**health_status**: aws_ecs_container_instance_health_status
+**pending_tasks_count**: int64
+**registered_resources**: aws_ecs_resource[]
+**remaining_resources**: aws_ecs_resource[]
+**running_tasks_count**: int64
+**status**: string
+**status_reason**: string
+**version**: string
+**version_info**: aws_ecs_version_info
+}
+class aws_ecs_container_instance_health_status {
+**details**: aws_ecs_instance_health_check_result[]
+**overall_status**: string
+}
+class aws_ecs_instance_health_check_result {
+**last_status_change**: datetime
+**last_updated**: datetime
+**status**: string
+**type**: string
+}
+class aws_ecs_key_value_pair {
+**name**: string
+**value**: string
+}
+class aws_ecs_resource {
+**double_value**: double
+**integer_value**: int64
+**long_value**: int64
+**name**: string
+**string_set_value**: string[]
+**type**: string
+}
+class aws_ecs_version_info {
+**agent_hash**: string
+**agent_version**: string
+**docker_version**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecs_attachment --> aws_ecs_key_value_pair
+aws_ecs_container_instance --> aws_ecs_attachment
+aws_ecs_container_instance --> aws_ecs_attribute
+aws_ecs_container_instance --> aws_ecs_container_instance_health_status
+aws_ecs_container_instance --> aws_ecs_resource
+aws_ecs_container_instance --> aws_ecs_version_info
+aws_resource <|--- aws_ecs_container_instance
+aws_ecs_container_instance_health_status --> aws_ecs_instance_health_check_result
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

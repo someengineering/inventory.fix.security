@@ -1,0 +1,245 @@
+---
+sidebar_label: Security Policy
+---
+
+# `gcp_security_policy`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [Security Policy](https://cloud.google.com/vpc/docs/security-policies)
+
+## Description
+
+GCP Security Policy is a set of rules and configurations that define access controls and network security for Google Cloud Platform resources. It manages firewall rules, network traffic, and user permissions across projects and organizations. This policy helps protect cloud infrastructure from unauthorized access and potential threats while enforcing compliance requirements.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Security Policy"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_resource {
+
+}
+class gcp_security_policy {
+
+}
+class resource {
+
+}
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_security_policy
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Security Policy resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_security_policy {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Security Policy data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_expr {
+**description**: string
+**expression**: string
+**location**: string
+**title**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_security_policy {
+**adaptive_protection_config**: gcp_security_policy_adaptive_protection_config
+**advanced_options_config**: gcp_security_policy_advanced_options_config
+**ddos_protection_config**: string
+**fingerprint**: string
+**recaptcha_options_config**: string
+**security_policy_rules**: gcp_security_policy_rule[]
+**type**: string
+}
+class gcp_security_policy_adaptive_protection_config {
+**layer7_ddos_defense_config**: gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
+}
+class gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config {
+**enable**: boolean
+**rule_visibility**: string
+}
+class gcp_security_policy_advanced_options_config {
+**json_custom_config**: gcp_security_policy_advanced_options_config_json_custom_config
+**json_parsing**: string
+**log_level**: string
+}
+class gcp_security_policy_advanced_options_config_json_custom_config {
+**content_types**: string[]
+}
+class gcp_security_policy_rule {
+**action**: string
+**description**: string
+**header_action**: gcp_security_policy_rule_http_header_action
+**match**: gcp_security_policy_rule_matcher
+**preview**: boolean
+**priority**: int64
+**rate_limit_options**: gcp_security_policy_rule_rate_limit_options
+**redirect_options**: gcp_security_policy_rule_redirect_options
+}
+class gcp_security_policy_rule_http_header_action {
+**request_headers_to_adds**: gcp_security_policy_rule_http_header_action_http_header_option[]
+}
+class gcp_security_policy_rule_http_header_action_http_header_option {
+**header_name**: string
+**header_value**: string
+}
+class gcp_security_policy_rule_matcher {
+**config**: gcp_security_policy_rule_matcher_config
+**expr**: gcp_expr
+**versioned_expr**: string
+}
+class gcp_security_policy_rule_matcher_config {
+**src_ip_ranges**: string[]
+}
+class gcp_security_policy_rule_rate_limit_options {
+**ban_duration_sec**: int64
+**ban_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
+**conform_action**: string
+**enforce_on_key**: string
+**enforce_on_key_name**: string
+**exceed_action**: string
+**exceed_redirect_options**: gcp_security_policy_rule_redirect_options
+**rate_limit_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
+}
+class gcp_security_policy_rule_rate_limit_options_threshold {
+**count**: int64
+**interval_sec**: int64
+}
+class gcp_security_policy_rule_redirect_options {
+**target**: string
+**type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_security_policy --> gcp_deprecation_status
+gcp_resource <|--- gcp_security_policy
+gcp_security_policy --> gcp_security_policy_adaptive_protection_config
+gcp_security_policy --> gcp_security_policy_advanced_options_config
+gcp_security_policy --> gcp_security_policy_rule
+gcp_security_policy_adaptive_protection_config --> gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
+gcp_security_policy_advanced_options_config --> gcp_security_policy_advanced_options_config_json_custom_config
+gcp_security_policy_rule --> gcp_security_policy_rule_http_header_action
+gcp_security_policy_rule --> gcp_security_policy_rule_matcher
+gcp_security_policy_rule --> gcp_security_policy_rule_rate_limit_options
+gcp_security_policy_rule --> gcp_security_policy_rule_redirect_options
+gcp_security_policy_rule_http_header_action --> gcp_security_policy_rule_http_header_action_http_header_option
+gcp_security_policy_rule_matcher --> gcp_expr
+gcp_security_policy_rule_matcher --> gcp_security_policy_rule_matcher_config
+gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_rate_limit_options_threshold
+gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_redirect_options
+
+@enduml
+```
+
+</ZoomPanPinch>

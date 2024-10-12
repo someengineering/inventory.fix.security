@@ -1,0 +1,182 @@
+---
+sidebar_label: Cosmos DB Restorable Account
+---
+
+# `azure_cosmos_db_restorable_account`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Restorable Account](https://learn.microsoft.com/en-us/azure/cosmos-db/configure-periodic-backup-restore)
+
+## Description
+
+Azure Cosmos DB Restorable Account is a feature that provides data recovery capabilities for Azure Cosmos DB databases. It creates periodic backups of your database, letting you restore your account to a specific point in time within the last 30 days. This helps protect against accidental deletions, modifications, or other data loss scenarios.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Restorable Account"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_restorable_account {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_restorable_account
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Restorable Account resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_location {
+
+}
+class azure_cosmos_db_restorable_account {
+
+}
+class azure_cosmos_db_restorable_gremlin_database {
+
+}
+class azure_cosmos_db_restorable_mongo_db_database {
+
+}
+class azure_cosmos_db_restorable_sql_database {
+
+}
+class azure_cosmos_db_restorable_table {
+
+}
+azure_cosmos_db_location -[#1A83AF]-> azure_cosmos_db_restorable_account
+azure_cosmos_db_restorable_account -[#1A83AF]-> azure_cosmos_db_restorable_gremlin_database
+azure_cosmos_db_restorable_account -[#1A83AF]-> azure_cosmos_db_restorable_mongo_db_database
+azure_cosmos_db_restorable_account -[#1A83AF]-> azure_cosmos_db_restorable_sql_database
+azure_cosmos_db_restorable_account -[#1A83AF]-> azure_cosmos_db_restorable_table
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Restorable Account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_restorable_account {
+**account_name**: string
+**api_type**: string
+**creation_time**: datetime
+**deletion_time**: datetime
+**oldest_restorable_time**: datetime
+**restorable_locations**: azure_restorable_location_resource[]
+}
+class azure_restorable_location_resource {
+**creation_time**: datetime
+**deletion_time**: datetime
+**location_name**: string
+**regional_database_account_instance_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cosmos_db_restorable_account --> azure_restorable_location_resource
+microsoft_resource <|--- azure_cosmos_db_restorable_account
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

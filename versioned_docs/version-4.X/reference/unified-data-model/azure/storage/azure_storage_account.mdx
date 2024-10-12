@@ -1,0 +1,449 @@
+---
+sidebar_label: Storage Account
+---
+
+# `azure_storage_account`
+
+- Categories: Storage
+- Service: storage
+- Provider Link: [Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+## Description
+
+Azure Storage Account is a Microsoft cloud service that provides data storage for various applications. It offers different storage types including blob, file, queue, and table storage. Users can store and retrieve data securely, manage access controls, and integrate with other Azure services. The account supports data redundancy and encryption for data protection.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Storage Account"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_storage_account {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_storage_account
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage Account resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_workspace {
+
+}
+class azure_monitor_diagnostic_settings {
+
+}
+class azure_network_flow_log {
+
+}
+class azure_storage_account {
+
+}
+class azure_storage_blob_container {
+
+}
+class azure_storage_file_share {
+
+}
+class azure_storage_queue {
+
+}
+class azure_storage_sku {
+
+}
+class azure_storage_table {
+
+}
+azure_monitor_diagnostic_settings -[#1A83AF]-> azure_storage_account
+azure_storage_account -[#1A83AF]-> azure_machine_learning_workspace
+azure_storage_account -[#1A83AF]-> azure_network_flow_log
+azure_storage_account -[#1A83AF]-> azure_storage_blob_container
+azure_storage_account -[#1A83AF]-> azure_storage_file_share
+azure_storage_account -[#1A83AF]-> azure_storage_queue
+azure_storage_account -[#1A83AF]-> azure_storage_sku
+azure_storage_account -[#1A83AF]-> azure_storage_table
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage Account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_account_immutability_policy_properties {
+**allow_protected_append_writes**: boolean
+**immutability_period_since_creation_in_days**: int64
+**state**: string
+}
+class azure_active_directory_properties {
+**account_type**: string
+**azure_storage_sid**: string
+**domain_guid**: string
+**domain_name**: string
+**domain_sid**: string
+**forest_name**: string
+**net_bios_domain_name**: string
+**sam_account_name**: string
+}
+class azure_blob_restore_parameters {
+**blob_ranges**: azure_blob_restore_range[]
+**time_to_restore**: datetime
+}
+class azure_blob_restore_range {
+**end_range**: string
+**start_range**: string
+}
+class azure_blob_restore_status {
+**failure_reason**: string
+**parameters**: azure_blob_restore_parameters
+**restore_id**: string
+**status**: string
+}
+class azure_custom_domain {
+**name**: string
+**use_sub_domain_name**: boolean
+}
+class azure_encryption_identity {
+**federated_identity_client_id**: string
+**user_assigned_identity**: string
+}
+class azure_encryption_service {
+**enabled**: boolean
+**key_type**: string
+**last_enabled_time**: datetime
+}
+class azure_encryption_services {
+**blob**: azure_encryption_service
+**file**: azure_encryption_service
+**queue**: azure_encryption_service
+**table**: azure_encryption_service
+}
+class azure_endpoints {
+**blob**: string
+**dfs**: string
+**file**: string
+**internet_endpoints**: azure_storage_account_internet_endpoints
+**microsoft_endpoints**: azure_storage_account_microsoft_endpoints
+**queue**: string
+**table**: string
+**web**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_files_identity_based_authentication {
+**active_directory_properties**: azure_active_directory_properties
+**default_share_permission**: string
+**directory_service_options**: string
+}
+class azure_geo_replication_stats {
+**can_failover**: boolean
+**can_planned_failover**: boolean
+**last_sync_time**: datetime
+**post_failover_redundancy**: string
+**post_planned_failover_redundancy**: string
+**status**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_immutable_storage_account {
+**enabled**: boolean
+**immutability_policy**: azure_account_immutability_policy_properties
+}
+class azure_ip_rule {
+**action**: string
+**value**: string
+}
+class azure_key_creation_time {
+**key1**: datetime
+**key2**: datetime
+}
+class azure_key_vault_properties {
+**current_versioned_key_expiration_timestamp**: datetime
+**current_versioned_key_identifier**: string
+**keyname**: string
+**keyvaulturi**: string
+**keyversion**: string
+**last_key_rotation_timestamp**: datetime
+}
+class azure_network_rule_set {
+**bypass**: string
+**default_action**: string
+**ip_rules**: azure_ip_rule[]
+**resource_access_rules**: azure_resource_access_rule[]
+**virtual_network_rules**: azure_virtual_network_rule[]
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource_access_rule {
+**resource_id**: string
+**tenant_id**: string
+}
+class azure_routing_preference {
+**publish_internet_endpoints**: boolean
+**publish_microsoft_endpoints**: boolean
+**routing_choice**: string
+}
+class azure_sas_policy {
+**expiration_action**: string
+**sas_expiration_period**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_storage_account {
+**access_tier**: string
+**account_migration_in_progress**: boolean
+**allow_blob_public_access**: boolean
+**allow_cross_tenant_replication**: boolean
+**allow_shared_key_access**: boolean
+**allowed_copy_scope**: string
+**azure_files_identity_based_authentication**: azure_files_identity_based_authentication
+**azure_sku**: azure_sku
+**blob_restore_status**: azure_blob_restore_status
+**creation_time**: datetime
+**default_to_oauth_authentication**: boolean
+**dns_endpoint_type**: string
+**extended_location**: azure_extended_location
+**failover_in_progress**: boolean
+**geo_replication_stats**: azure_geo_replication_stats
+**immutable_storage_with_versioning**: azure_immutable_storage_account
+**is_hns_enabled**: boolean
+**is_local_user_enabled**: boolean
+**is_nfs_v3_enabled**: boolean
+**is_sftp_enabled**: boolean
+**is_sku_conversion_blocked**: boolean
+**key_creation_time**: azure_key_creation_time
+**key_expiration_period_in_days**: int64
+**large_file_shares_state**: string
+**last_geo_failover_time**: datetime
+**location**: string
+**minimum_tls_version**: string
+**primary_endpoints**: azure_endpoints
+**primary_location**: string
+**public_network_access**: string
+**resource_kind**: string
+**routing_preference**: azure_routing_preference
+**sas_policy**: azure_sas_policy
+**secondary_endpoints**: azure_endpoints
+**secondary_location**: string
+**status_of_primary**: string
+**status_of_secondary**: string
+**storage_account_sku_conversion_status**: azure_storage_account_sku_conversion_status
+**storage_custom_domain**: azure_custom_domain
+**storage_encryption**: azure_storage_encryption
+**storage_identity**: azure_identity
+**storage_network_acls**: azure_network_rule_set
+**storage_private_endpoint_connections**: azure_private_endpoint_connection[]
+**storage_sku_name**: string
+**storage_sku_tier**: string
+**supports_https_traffic_only**: boolean
+**type**: string
+}
+class azure_storage_account_internet_endpoints {
+**blob**: string
+**dfs**: string
+**file**: string
+**web**: string
+}
+class azure_storage_account_microsoft_endpoints {
+**blob**: string
+**dfs**: string
+**file**: string
+**queue**: string
+**table**: string
+**web**: string
+}
+class azure_storage_account_sku_conversion_status {
+**end_time**: string
+**sku_conversion_status**: string
+**start_time**: string
+**target_sku_name**: string
+}
+class azure_storage_encryption {
+**identity**: azure_encryption_identity
+**key_source**: string
+**keyvaultproperties**: azure_key_vault_properties
+**require_infrastructure_encryption**: boolean
+**services**: azure_encryption_services
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_virtual_network_rule {
+**action**: string
+**id**: string
+**state**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_blob_restore_parameters --> azure_blob_restore_range
+azure_blob_restore_status --> azure_blob_restore_parameters
+azure_encryption_services --> azure_encryption_service
+azure_endpoints --> azure_storage_account_internet_endpoints
+azure_endpoints --> azure_storage_account_microsoft_endpoints
+azure_files_identity_based_authentication --> azure_active_directory_properties
+azure_identity --> azure_user_assigned_identity
+azure_immutable_storage_account --> azure_account_immutability_policy_properties
+azure_network_rule_set --> azure_ip_rule
+azure_network_rule_set --> azure_resource_access_rule
+azure_network_rule_set --> azure_virtual_network_rule
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+azure_storage_account --> azure_blob_restore_status
+azure_storage_account --> azure_custom_domain
+azure_storage_account --> azure_endpoints
+azure_storage_account --> azure_extended_location
+azure_storage_account --> azure_files_identity_based_authentication
+azure_storage_account --> azure_geo_replication_stats
+azure_storage_account --> azure_identity
+azure_storage_account --> azure_immutable_storage_account
+azure_storage_account --> azure_key_creation_time
+azure_storage_account --> azure_network_rule_set
+azure_storage_account --> azure_private_endpoint_connection
+azure_storage_account --> azure_routing_preference
+azure_storage_account --> azure_sas_policy
+azure_storage_account --> azure_sku
+azure_storage_account --> azure_storage_account_sku_conversion_status
+azure_storage_account --> azure_storage_encryption
+microsoft_resource <|--- azure_storage_account
+azure_storage_encryption --> azure_encryption_identity
+azure_storage_encryption --> azure_encryption_services
+azure_storage_encryption --> azure_key_vault_properties
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
