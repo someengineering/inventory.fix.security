@@ -8,7 +8,7 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
 When working with multiple clouds, it can be tedious to what resource kinds and attributes are named. To implement org policies (such as "no unencrypted storage volumes" or "every compute instance must have a cost center tag"), you don't want to rewrite those checks for every cloud provider.
 
-While Fix Inventory has knowledge of cloud-specific resource kinds like [`aws_ec2_volume`](aws.mdx#aws_ec2_volume) and [`gcp_disk`](gcp.mdx#gcp_disk), both of those kinds inherit from the base `volume` kind, which in turn inherits from the [`resource` base kind](index.mdx#resource-base-kind):
+While Fix Inventory has knowledge of cloud-specific resource kinds like [`aws_ec2_volume`](aws.mdx#aws_ec2_volume) and [`gcp_disk`](gcp.mdx#gcp_disk), both of those kinds inherit from the base `volume` kind, which in turn inherits from the [`resource` base kind](base-kinds.mdx):
 
 - The `resource` kind defines basic attributes common to all resources (e.g., name, creation time, etc.).
 
