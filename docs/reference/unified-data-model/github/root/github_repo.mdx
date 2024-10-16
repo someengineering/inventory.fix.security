@@ -1,0 +1,263 @@
+---
+sidebar_label: Repository
+---
+
+# `github_repo`
+
+- Categories: Other
+
+## Description
+
+A Github Repository.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Repository"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_repo {
+
+}
+class github_resource {
+
+}
+class resource {
+
+}
+github_resource <|--- github_repo
+resource <|--- github_repo
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Repository resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_repo {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Repository data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class github_repo {
+**allow_merge_commit**: boolean
+**allow_rebase_merge**: boolean
+**allow_squash_merge**: boolean
+**archive_url**: string
+**archived**: boolean
+**assignees_url**: string
+**blobs_url**: string
+**branches_url**: string
+**clone_url**: string
+**clones_traffic**: github_repo_clones_traffic
+**collaborators_url**: string
+**comments_url**: string
+**commits_url**: string
+**compare_url**: string
+**contents_url**: string
+**contributors_count**: int64
+**contributors_url**: string
+**created_at**: datetime
+**default_branch**: string
+**delete_branch_on_merge**: boolean
+**deployments_url**: string
+**description**: string
+**downloads_url**: string
+**events_url**: string
+**fork**: boolean
+**forks**: int64
+**forks_count**: int64
+**forks_url**: string
+**full_name**: string
+**git_commits_url**: string
+**git_refs_url**: string
+**git_tags_url**: string
+**git_url**: string
+**has_downloads**: boolean
+**has_issues**: boolean
+**has_pages**: boolean
+**has_projects**: boolean
+**has_wiki**: boolean
+**homepage**: string
+**hooks_url**: string
+**html_url**: string
+**issue_comment_url**: string
+**issue_events_url**: string
+**issues_url**: string
+**keys_url**: string
+**labels_url**: string
+**language**: string
+**languages_url**: string
+**master_branch**: string
+**merges_url**: string
+**milestones_url**: string
+**mirror_url**: string
+**network_count**: int64
+**notifications_url**: string
+**open_issues**: int64
+**open_issues_count**: int64
+**private**: boolean
+**pulls_url**: string
+**pushed_at**: datetime
+**releases_url**: string
+**repo_id**: int64
+**size**: int64
+**ssh_url**: string
+**stargazers_count**: int64
+**stargazers_url**: string
+**statuses_url**: string
+**subscribers_count**: int64
+**subscribers_url**: string
+**subscription_url**: string
+**svn_url**: string
+**tags_url**: string
+**teams_url**: string
+**top_paths**: github_repo_top_path[]
+**top_referrers**: github_repo_top_referrer[]
+**trees_url**: string
+**updated_at**: datetime
+**url**: string
+**views_traffic**: github_repo_views_traffic
+**watchers**: int64
+**watchers_count**: int64
+}
+class github_repo_clones {
+**count**: int64
+**timestamp**: datetime
+**uniques**: int64
+}
+class github_repo_clones_traffic {
+**clones**: github_repo_clones[]
+**count**: int64
+**uniques**: int64
+}
+class github_repo_top_path {
+**count**: int64
+**path**: string
+**title**: string
+**uniques**: int64
+}
+class github_repo_top_referrer {
+**count**: int64
+**referrer**: string
+**uniques**: int64
+}
+class github_repo_view {
+**count**: int64
+**timestamp**: datetime
+**uniques**: int64
+}
+class github_repo_views_traffic {
+**count**: int64
+**uniques**: int64
+**views**: github_repo_view[]
+}
+class github_resource {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+github_repo --> github_repo_clones_traffic
+github_repo --> github_repo_top_path
+github_repo --> github_repo_top_referrer
+github_repo --> github_repo_views_traffic
+github_resource <|--- github_repo
+resource <|--- github_repo
+github_repo_clones_traffic --> github_repo_clones
+github_repo_views_traffic --> github_repo_view
+
+@enduml
+```
+
+</ZoomPanPinch>

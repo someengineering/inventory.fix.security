@@ -1,0 +1,366 @@
+---
+sidebar_label: Vertex AI Model
+---
+
+# `gcp_vertex_ai_model`
+
+- Categories: Machine Learning & AI, Compute
+- Service: aiplatform
+- Provider Link: [Vertex AI Model](https://cloud.google.com/docs)
+
+## Description
+
+A Model represents a trained machine learning model in Vertex AI. It can be deployed to an endpoint for online predictions or used to generate batch predictions.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class gcp_resource {
+
+}
+class gcp_vertex_ai_model {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+resource <|--- gcp_resource
+ai_model <|--- gcp_vertex_ai_model
+gcp_resource <|--- gcp_vertex_ai_model
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Model resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_batch_prediction_job {
+
+}
+class gcp_vertex_ai_custom_job {
+
+}
+class gcp_vertex_ai_dataset {
+
+}
+class gcp_vertex_ai_dataset_version {
+
+}
+class gcp_vertex_ai_endpoint {
+
+}
+class gcp_vertex_ai_hyperparameter_tuning_job {
+
+}
+class gcp_vertex_ai_model {
+
+}
+class gcp_vertex_ai_model_evaluation {
+
+}
+class gcp_vertex_ai_training_pipeline {
+
+}
+gcp_vertex_ai_dataset -[#1A83AF]-> gcp_vertex_ai_dataset_version
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_batch_prediction_job
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_custom_job
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_dataset
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_dataset_version
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_endpoint
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_hyperparameter_tuning_job
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_model_evaluation
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_training_pipeline
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Model data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_deployed_model_ref {
+**deployed_model_id**: string
+**endpoint**: string
+}
+class gcp_vertex_ai_env_var {
+**name**: string
+**value**: string
+}
+class gcp_vertex_ai_examples {
+**example_gcs_source**: gcp_vertex_ai_examples_example_gcs_source
+**nearest_neighbor_search_config**: any
+**neighbor_count**: int64
+**presets**: gcp_vertex_ai_presets
+}
+class gcp_vertex_ai_examples_example_gcs_source {
+**data_format**: string
+**gcs_source**: gcp_vertex_ai_gcs_source
+}
+class gcp_vertex_ai_explanation_parameters {
+**examples**: gcp_vertex_ai_examples
+**integrated_gradients_attribution**: gcp_vertex_ai_integrated_gradients_attribution
+**sampled_shapley_attribution**: int64
+**top_k**: int64
+**xrai_attribution**: gcp_vertex_ai_xrai_attribution
+}
+class gcp_vertex_ai_explanation_spec {
+**parameters**: gcp_vertex_ai_explanation_parameters
+}
+class gcp_vertex_ai_feature_noise_sigma {
+**noise_sigma**: gcp_vertex_ai_feature_noise_sigma_noise_sigma_for_feature[]
+}
+class gcp_vertex_ai_feature_noise_sigma_noise_sigma_for_feature {
+**name**: string
+**sigma**: double
+}
+class gcp_vertex_ai_gcs_source {
+**uris**: string[]
+}
+class gcp_vertex_ai_integrated_gradients_attribution {
+**blur_baseline_config**: double
+**smooth_grad_config**: gcp_vertex_ai_smooth_grad_config
+**step_count**: int64
+}
+class gcp_vertex_ai_model {
+**artifact_uri**: string
+**base_model_source**: gcp_vertex_ai_model_base_model_source
+**container_spec**: gcp_vertex_ai_model_container_spec
+**create_time**: datetime
+**data_stats**: gcp_vertex_ai_model_data_stats
+**display_name**: string
+**encryption_spec**: string
+**endpoint_deployed_model_refs**: gcp_vertex_ai_deployed_model_ref[]
+**etag**: string
+**explanation_spec**: gcp_vertex_ai_explanation_spec
+**metadata_artifact**: string
+**metadata_schema_uri**: string
+**model_source_info**: gcp_vertex_ai_model_source_info
+**original_model_info**: string
+**pipeline_job**: string
+**predict_schemata**: gcp_vertex_ai_predict_schemata
+**satisfies_pzi**: boolean
+**satisfies_pzs**: boolean
+**supported_deployment_resources_types**: string[]
+**supported_export_formats**: gcp_vertex_ai_model_export_format[]
+**supported_input_storage_formats**: string[]
+**supported_output_storage_formats**: string[]
+**training_pipeline**: string
+**update_time**: datetime
+**version_aliases**: string[]
+**version_create_time**: datetime
+**version_description**: string
+**version_id**: string
+**version_update_time**: datetime
+}
+class gcp_vertex_ai_model_base_model_source {
+**genie_source**: string
+**model_garden_source**: string
+}
+class gcp_vertex_ai_model_container_spec {
+**args**: string[]
+**command**: string[]
+**deployment_timeout**: string
+**env**: gcp_vertex_ai_env_var[]
+**grpc_ports**: int64[]
+**health_probe**: gcp_vertex_ai_probe
+**health_route**: string
+**image_uri**: string
+**ports**: int64[]
+**predict_route**: string
+**shared_memory_size_mb**: string
+**startup_probe**: gcp_vertex_ai_probe
+}
+class gcp_vertex_ai_model_data_stats {
+**test_annotations_count**: string
+**test_data_items_count**: string
+**training_annotations_count**: string
+**training_data_items_count**: string
+**validation_annotations_count**: string
+**validation_data_items_count**: string
+}
+class gcp_vertex_ai_model_export_format {
+**exportable_contents**: string[]
+**id**: string
+}
+class gcp_vertex_ai_model_source_info {
+**copy**: boolean
+**source_type**: string
+}
+class gcp_vertex_ai_predict_schemata {
+**instance_schema_uri**: string
+**parameters_schema_uri**: string
+**prediction_schema_uri**: string
+}
+class gcp_vertex_ai_presets {
+**modality**: string
+**query**: string
+}
+class gcp_vertex_ai_probe {
+**exec**: gcp_vertex_ai_probe_exec_action
+**period_seconds**: int64
+**timeout_seconds**: int64
+}
+class gcp_vertex_ai_probe_exec_action {
+**command**: string[]
+}
+class gcp_vertex_ai_smooth_grad_config {
+**feature_noise_sigma**: gcp_vertex_ai_feature_noise_sigma
+**noise_sigma**: double
+**noisy_sample_count**: int64
+}
+class gcp_vertex_ai_xrai_attribution {
+**blur_baseline_config**: double
+**smooth_grad_config**: gcp_vertex_ai_smooth_grad_config
+**step_count**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_examples --> gcp_vertex_ai_examples_example_gcs_source
+gcp_vertex_ai_examples --> gcp_vertex_ai_presets
+gcp_vertex_ai_examples_example_gcs_source --> gcp_vertex_ai_gcs_source
+gcp_vertex_ai_explanation_parameters --> gcp_vertex_ai_examples
+gcp_vertex_ai_explanation_parameters --> gcp_vertex_ai_integrated_gradients_attribution
+gcp_vertex_ai_explanation_parameters --> gcp_vertex_ai_xrai_attribution
+gcp_vertex_ai_explanation_spec --> gcp_vertex_ai_explanation_parameters
+gcp_vertex_ai_feature_noise_sigma --> gcp_vertex_ai_feature_noise_sigma_noise_sigma_for_feature
+gcp_vertex_ai_integrated_gradients_attribution --> gcp_vertex_ai_smooth_grad_config
+ai_model <|--- gcp_vertex_ai_model
+gcp_vertex_ai_model --> gcp_deprecation_status
+gcp_resource <|--- gcp_vertex_ai_model
+gcp_vertex_ai_model --> gcp_vertex_ai_deployed_model_ref
+gcp_vertex_ai_model --> gcp_vertex_ai_explanation_spec
+gcp_vertex_ai_model --> gcp_vertex_ai_model_base_model_source
+gcp_vertex_ai_model --> gcp_vertex_ai_model_container_spec
+gcp_vertex_ai_model --> gcp_vertex_ai_model_data_stats
+gcp_vertex_ai_model --> gcp_vertex_ai_model_export_format
+gcp_vertex_ai_model --> gcp_vertex_ai_model_source_info
+gcp_vertex_ai_model --> gcp_vertex_ai_predict_schemata
+gcp_vertex_ai_model_container_spec --> gcp_vertex_ai_env_var
+gcp_vertex_ai_model_container_spec --> gcp_vertex_ai_probe
+gcp_vertex_ai_probe --> gcp_vertex_ai_probe_exec_action
+gcp_vertex_ai_smooth_grad_config --> gcp_vertex_ai_feature_noise_sigma
+gcp_vertex_ai_xrai_attribution --> gcp_vertex_ai_smooth_grad_config
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,236 @@
+---
+sidebar_label: Machine Learning Job
+---
+
+# `azure_machine_learning_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: machine-learning
+- Provider Link: [Machine Learning Job](https://learn.microsoft.com/en-us/azure/machine-learning/concept-ml-job)
+
+## Description
+
+Azure Machine Learning Job is a task execution unit within Azure Machine Learning service. It encapsulates the code, data, and compute resources required to run a machine learning workflow. Jobs can perform various operations like data preparation, model training, and evaluation. They support different compute targets and can be monitored, managed, and tracked through the Azure ML platform.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class azure_machine_learning_job {
+
+}
+class azure_proxy_resource {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- azure_machine_learning_job
+azure_proxy_resource <|--- azure_machine_learning_job
+microsoft_resource <|--- azure_machine_learning_job
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_job {
+
+}
+class azure_machine_learning_registry_component_version {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_machine_learning_workspace_component_version {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_registry_component_version -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_workspace_component_version -[#1A83AF]-> azure_machine_learning_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class azure_job_service {
+**endpoint**: string
+**error_message**: string
+**job_service_type**: string
+**nodes**: string
+**port**: int64
+**properties**: dictionary[string, any]
+**status**: string
+}
+class azure_machine_learning_job {
+**component_id**: string
+**compute_id**: string
+**description**: string
+**display_name**: string
+**experiment_name**: string
+**identity_type**: string
+**is_archived**: boolean
+**job_type**: string
+**notification_setting**: azure_notification_setting
+**properties**: dictionary[string, any]
+**services**: dictionary[string, azure_job_service]
+**status**: string
+}
+class azure_notification_setting {
+**email_on**: string[]
+**emails**: string[]
+**webhooks**: dictionary[string, azure_webhook]
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_webhook {
+**event_type**: string
+**webhook_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- azure_machine_learning_job
+azure_machine_learning_job --> azure_job_service
+azure_machine_learning_job --> azure_notification_setting
+azure_proxy_resource <|--- azure_machine_learning_job
+azure_machine_learning_job --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_job
+azure_notification_setting --> azure_webhook
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,255 @@
+---
+sidebar_label: SageMaker Transform Job
+---
+
+# `aws_sagemaker_transform_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Transform Job](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+## Description
+
+AWS SageMaker Transform Job is a batch processing feature that applies machine learning models to large datasets. It takes input data, processes it through a trained model, and generates predictions or inferences. Transform Jobs can handle various data formats, distribute workloads across multiple instances, and output results to specified locations, facilitating efficient large-scale data processing and analysis.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Transform Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_job <|--- aws_sagemaker_transform_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Transform Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_experiment {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_model {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class aws_sagemaker_trial {
+
+}
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_transform_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Transform Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_batch_data_capture_config {
+**destination_s3_uri**: string
+**generate_inference_id**: boolean
+**kms_key_id**: string
+}
+class aws_sagemaker_data_processing {
+**input_filter**: string
+**join_source**: string
+**output_filter**: string
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_model_client_config {
+**invocations_max_retries**: int64
+**invocations_timeout_in_seconds**: int64
+}
+class aws_sagemaker_transform_data_source {
+**s3_data_source**: aws_sagemaker_transform_s3_data_source
+}
+class aws_sagemaker_transform_input {
+**compression_type**: string
+**content_type**: string
+**data_source**: aws_sagemaker_transform_data_source
+**split_type**: string
+}
+class aws_sagemaker_transform_job {
+**transform_job_auto_ml_job_arn**: string
+**transform_job_batch_strategy**: string
+**transform_job_data_capture_config**: aws_sagemaker_batch_data_capture_config
+**transform_job_data_processing**: aws_sagemaker_data_processing
+**transform_job_environment**: dictionary[string, string]
+**transform_job_failure_reason**: string
+**transform_job_labeling_job_arn**: string
+**transform_job_max_concurrent_transforms**: int64
+**transform_job_max_payload_in_mb**: int64
+**transform_job_model_client_config**: aws_sagemaker_model_client_config
+**transform_job_model_name**: string
+**transform_job_status**: string
+**transform_job_transform_end_time**: datetime
+**transform_job_transform_input**: aws_sagemaker_transform_input
+**transform_job_transform_output**: aws_sagemaker_transform_output
+**transform_job_transform_resources**: aws_sagemaker_transform_resources
+**transform_job_transform_start_time**: datetime
+**transform_job_trial_component_display_name**: string
+}
+class aws_sagemaker_transform_output {
+**accept**: string
+**assemble_with**: string
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_transform_resources {
+**instance_count**: int64
+**instance_type**: string
+**volume_kms_key_id**: string
+}
+class aws_sagemaker_transform_s3_data_source {
+**s3_data_type**: string
+**s3_uri**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_transform_data_source --> aws_sagemaker_transform_s3_data_source
+aws_sagemaker_transform_input --> aws_sagemaker_transform_data_source
+aws_sagemaker_transform_job --> aws_sagemaker_batch_data_capture_config
+aws_sagemaker_transform_job --> aws_sagemaker_data_processing
+aws_sagemaker_job <|--- aws_sagemaker_transform_job
+aws_sagemaker_transform_job --> aws_sagemaker_model_client_config
+aws_sagemaker_transform_job --> aws_sagemaker_transform_input
+aws_sagemaker_transform_job --> aws_sagemaker_transform_output
+aws_sagemaker_transform_job --> aws_sagemaker_transform_resources
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,194 @@
+---
+sidebar_label: Web Kube Environment
+---
+
+# `azure_web_kube_environment`
+
+- Categories: Managed Kubernetes
+- Service: app-service
+- Provider Link: [Web Kube Environment](https://learn.microsoft.com/en-us/azure/app-service/environment/overview)
+
+## Description
+
+Azure Web Kube Environment is a service for deploying and managing containerized web applications on Azure Kubernetes Service. It provides tools for configuring, monitoring, and scaling applications in Kubernetes clusters. Users can deploy applications, set up networking, manage container registries, and handle application updates through this integrated platform.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web Kube Environment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_kube_environment {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_kube_environment
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Kube Environment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_kube_environment {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Kube Environment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_app_logs_configuration {
+**destination**: string
+**log_analytics_configuration**: azure_log_analytics_configuration
+}
+class azure_arc_configuration {
+**artifact_storage_access_mode**: string
+**artifact_storage_class_name**: string
+**artifact_storage_mount_path**: string
+**artifact_storage_node_name**: string
+**artifacts_storage_type**: string
+**front_end_service_configuration**: string
+**kube_config**: string
+}
+class azure_container_apps_configuration {
+**app_subnet_resource_id**: string
+**control_plane_subnet_resource_id**: string
+**dapr_ai_instrumentation_key**: string
+**docker_bridge_cidr**: string
+**platform_reserved_cidr**: string
+**platform_reserved_dns_ip**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_log_analytics_configuration {
+**customer_id**: string
+**shared_key**: string
+}
+class azure_web_kube_environment {
+**aks_resource_id**: string
+**app_logs_configuration**: azure_app_logs_configuration
+**arc_configuration**: azure_arc_configuration
+**azure_kind**: string
+**container_apps_configuration**: azure_container_apps_configuration
+**default_domain**: string
+**deployment_errors**: string
+**environment_type**: string
+**extended_location**: azure_extended_location
+**internal_load_balancer_enabled**: boolean
+**static_ip**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_app_logs_configuration --> azure_log_analytics_configuration
+azure_web_kube_environment --> azure_app_logs_configuration
+azure_web_kube_environment --> azure_arc_configuration
+azure_web_kube_environment --> azure_container_apps_configuration
+azure_web_kube_environment --> azure_extended_location
+microsoft_resource <|--- azure_web_kube_environment
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

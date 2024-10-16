@@ -1,0 +1,301 @@
+---
+sidebar_label: Bucket
+---
+
+# `gcp_bucket`
+
+- Categories: Storage
+- Service: storage
+- Provider Link: [Bucket](https://cloud.google.com/storage/docs/buckets)
+
+## Description
+
+A GCP Bucket is a cloud storage container in Google Cloud Platform. It stores and organizes data objects, such as files and folders. Users can upload, download, and manage data in buckets through APIs or web interfaces. Buckets offer access control, versioning, and lifecycle management features. They support various data types and can be accessed globally.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bucket"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class bucket {
+
+}
+class gcp_bucket {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+resource <|--- bucket
+bucket <|--- gcp_bucket
+gcp_resource <|--- gcp_bucket
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bucket resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_bucket {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bucket data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class bucket {
+
+}
+class gcp_action {
+**storage_class**: string
+**type**: string
+}
+class gcp_autoclass {
+**enabled**: boolean
+**toggle_time**: datetime
+}
+class gcp_bucket {
+**acl**: gcp_bucket_access_control[]
+**autoclass**: gcp_autoclass
+**bucket_owner**: gcp_owner
+**bucket_website**: gcp_website
+**cors**: gcp_cors[]
+**custom_placement_config_data_locations**: string[]
+**default_event_based_hold**: boolean
+**default_object_acl**: gcp_object_access_control[]
+**encryption_default_kms_key_name**: string
+**etag**: string
+**iam_configuration**: gcp_iamconfiguration
+**lifecycle_rule**: gcp_rule[]
+**location**: string
+**location_type**: string
+**logging**: gcp_logging
+**metageneration**: string
+**project_number**: string
+**requester_pays**: boolean
+**retention_policy**: gcp_retentionpolicy
+**rpo**: string
+**satisfies_pzs**: boolean
+**storage_class**: string
+**time_created**: datetime
+**updated**: datetime
+**versioning_enabled**: boolean
+}
+class gcp_bucket_access_control {
+**bucket**: string
+**domain**: string
+**email**: string
+**entity**: string
+**entity_id**: string
+**etag**: string
+**project_team**: gcp_projectteam
+**role**: string
+}
+class gcp_bucketpolicyonly {
+**enabled**: boolean
+**locked_time**: datetime
+}
+class gcp_condition {
+**age**: int64
+**created_before**: string
+**custom_time_before**: string
+**days_since_custom_time**: datetime
+**days_since_noncurrent_time**: datetime
+**is_live**: boolean
+**matches_pattern**: string
+**matches_prefix**: string[]
+**matches_storage_class**: string[]
+**matches_suffix**: string[]
+**noncurrent_time_before**: string
+**num_newer_versions**: int64
+}
+class gcp_cors {
+**max_age_seconds**: int64
+**method**: string[]
+**origin**: string[]
+**response_header**: string[]
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_iamconfiguration {
+**bucket_policy_only**: gcp_bucketpolicyonly
+**public_access_prevention**: string
+**uniform_bucket_level_access**: gcp_uniformbucketlevelaccess
+}
+class gcp_logging {
+**log_bucket**: string
+**log_object_prefix**: string
+}
+class gcp_object_access_control {
+**bucket**: string
+**domain**: string
+**email**: string
+**entity**: string
+**entity_id**: string
+**etag**: string
+**generation**: string
+**id**: string
+**object**: string
+**project_team**: gcp_projectteam
+**role**: string
+**self_link**: string
+}
+class gcp_owner {
+**entity**: string
+**entity_id**: string
+}
+class gcp_projectteam {
+**project_number**: string
+**team**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_retentionpolicy {
+**effective_time**: datetime
+**is_locked**: boolean
+**retention_period**: string
+}
+class gcp_rule {
+**action**: gcp_action
+**condition**: gcp_condition
+}
+class gcp_uniformbucketlevelaccess {
+**enabled**: boolean
+**locked_time**: datetime
+}
+class gcp_website {
+**main_page_suffix**: string
+**not_found_page**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- bucket
+bucket <|--- gcp_bucket
+gcp_bucket --> gcp_autoclass
+gcp_bucket --> gcp_bucket_access_control
+gcp_bucket --> gcp_cors
+gcp_bucket --> gcp_deprecation_status
+gcp_bucket --> gcp_iamconfiguration
+gcp_bucket --> gcp_logging
+gcp_bucket --> gcp_object_access_control
+gcp_bucket --> gcp_owner
+gcp_resource <|--- gcp_bucket
+gcp_bucket --> gcp_retentionpolicy
+gcp_bucket --> gcp_rule
+gcp_bucket --> gcp_website
+gcp_bucket_access_control --> gcp_projectteam
+gcp_iamconfiguration --> gcp_bucketpolicyonly
+gcp_iamconfiguration --> gcp_uniformbucketlevelaccess
+gcp_object_access_control --> gcp_projectteam
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_rule --> gcp_action
+gcp_rule --> gcp_condition
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,198 @@
+---
+sidebar_label: Storage File Share
+---
+
+# `azure_storage_file_share`
+
+- Categories: Storage
+- Service: storage
+- Provider Link: [Storage File Share](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
+
+## Description
+
+Azure Storage File Share is a cloud-based file storage service provided by Microsoft Azure. It offers shared access to files across multiple virtual machines and applications using the Server Message Block (SMB) protocol. Users can mount file shares on Windows, Linux, and macOS systems, and access them like traditional network drives.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Storage File Share"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_storage_file_share {
+
+}
+class microsoft_resource {
+
+}
+class network_share {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_storage_file_share
+network_share <|--- azure_storage_file_share
+resource <|--- microsoft_resource
+resource <|--- network_share
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage File Share resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_storage_account {
+
+}
+class azure_storage_file_share {
+
+}
+azure_storage_account -[#1A83AF]-> azure_storage_file_share
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Storage File Share data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_access_policy {
+**expiry_time**: datetime
+**permission**: string
+**start_time**: datetime
+}
+class azure_signed_identifier {
+**access_policy**: azure_access_policy
+**id**: string
+}
+class azure_storage_file_share {
+**access_tier**: string
+**access_tier_change_time**: datetime
+**access_tier_status**: string
+**deleted**: boolean
+**deleted_time**: datetime
+**enabled_protocols**: string
+**file_share_metadata**: dictionary[string, string]
+**file_signed_identifiers**: azure_signed_identifier[]
+**last_modified_time**: datetime
+**lease_duration**: string
+**lease_state**: string
+**lease_status**: string
+**remaining_retention_days**: int64
+**root_squash**: string
+**share_quota**: int64
+**share_usage_bytes**: int64
+**snapshot_time**: datetime
+**type**: string
+**version**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class network_share {
+**share_encrypted**: boolean
+**share_iops**: int64
+**share_size**: int64
+**share_status**: string
+**share_throughput**: double
+**share_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_signed_identifier --> azure_access_policy
+azure_storage_file_share --> azure_signed_identifier
+microsoft_resource <|--- azure_storage_file_share
+network_share <|--- azure_storage_file_share
+resource <|--- microsoft_resource
+resource <|--- network_share
+
+@enduml
+```
+
+</ZoomPanPinch>

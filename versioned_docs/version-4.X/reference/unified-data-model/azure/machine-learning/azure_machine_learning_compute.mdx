@@ -1,0 +1,251 @@
+---
+sidebar_label: Machine Learning Compute
+---
+
+# `azure_machine_learning_compute`
+
+- Categories: Compute
+- Service: machine-learning
+- Provider Link: [Machine Learning Compute](https://docs.microsoft.com/en-us/azure/machine-learning/concept-compute-target)
+
+## Description
+
+Azure Machine Learning Compute is a cloud-based service for running machine learning workloads. It provides managed compute resources for training and deploying models. Users can create and manage compute clusters, select virtual machine sizes, and autoscale resources as needed. The service supports various machine learning frameworks and integrates with other Azure services for data processing and model deployment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Compute"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_machine_learning_compute
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Compute resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_base {
+
+}
+class azure_container_service_managed_cluster {
+
+}
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_compute_node {
+
+}
+class azure_machine_learning_job {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_virtual_machine_size {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_web_app {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_machine_learning_compute -[#1A83AF]-> azure_container_service_managed_cluster
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_compute_node
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_virtual_machine_size
+azure_machine_learning_compute -[#1A83AF]-> azure_web_app
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_user
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_job
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Compute data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_error_detail {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_error_response {
+**error**: azure_error_detail
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_machine_learning_compute {
+**azure_sku**: azure_sku
+**compute_location**: string
+**compute_type**: string
+**created_on**: datetime
+**description**: string
+**disable_local_auth**: boolean
+**identity**: azure_identity
+**is_attached_compute**: boolean
+**location**: string
+**modified_on**: datetime
+**properties**: dictionary[string, any]
+**provisioning_errors**: azure_error_response[]
+**resource_id**: string
+**system_data**: azure_system_data
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_error_response --> azure_error_detail
+azure_identity --> azure_user_assigned_identity
+azure_machine_learning_compute --> azure_error_response
+azure_machine_learning_compute --> azure_identity
+azure_machine_learning_compute --> azure_sku
+azure_machine_learning_compute --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_compute
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

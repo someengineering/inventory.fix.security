@@ -4,7 +4,7 @@ sidebar_label: Collect Azure Resource Data
 
 # How to Collect Azure Resource Data
 
-The [Azure](../../../reference/unified-data-model/azure.mdx) collector is configured within the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) via the [`config` command](../../../reference/cli/config/index.mdx) in [Fix Inventory Shell](../../../reference/components/shell.mdx).
+The [Azure](../../../reference/unified-data-model/azure/index.mdx) collector is configured within the [Fix Inventory Worker configuration](../../../reference/configuration/index.mdx) via the [`config` command](../../../reference/cli/config/index.mdx) in [Fix Inventory Shell](../../../reference/components/shell.mdx).
 
 ## Prerequisites
 
@@ -212,7 +212,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
     > workflow run collect
     ```
 
-2.  Once the collect run completes, you can view a summary of collected [Azure resources](../../../reference/unified-data-model/azure.mdx) using the following search:
+2.  Once the collect run completes, you can view a summary of collected [Azure resources](../../../reference/unified-data-model/azure/index.mdx) using the following search:
 
     ```bash
     > search is(azure_resource) | count kind

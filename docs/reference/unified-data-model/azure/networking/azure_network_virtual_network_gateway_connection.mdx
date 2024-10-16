@@ -1,0 +1,222 @@
+---
+sidebar_label: Network Virtual Network Gateway Connection
+---
+
+# `azure_network_virtual_network_gateway_connection`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual Network Gateway Connection](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings)
+
+## Description
+
+Azure Network Virtual Network Gateway Connection is a service that links on-premises networks with Azure virtual networks through secure VPN tunnels. It establishes encrypted connections over the internet or private peering, facilitating data transfer and resource access between local infrastructure and Azure cloud environments. This service supports site-to-site, point-to-site, and VNet-to-VNet connectivity options.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual Network Gateway Connection"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_network_gateway_connection {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class tunnel {
+
+}
+microsoft_resource <|--- azure_network_virtual_network_gateway_connection
+tunnel <|--- azure_network_virtual_network_gateway_connection
+resource <|--- microsoft_resource
+resource <|--- tunnel
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network Gateway Connection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_local_network_gateway {
+
+}
+class azure_network_virtual_network_gateway {
+
+}
+class azure_network_virtual_network_gateway_connection {
+
+}
+azure_network_local_network_gateway -[#1A83AF]-> azure_network_virtual_network_gateway_connection
+azure_network_virtual_network_gateway -[#1A83AF]-> azure_network_virtual_network_gateway_connection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network Gateway Connection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_gateway_custom_bgp_ip_address_ip_configuration {
+**custom_bgp_ip_address**: string
+**ip_configuration_id**: string
+}
+class azure_ipsec_policy {
+**dh_group**: string
+**ike_encryption**: string
+**ike_integrity**: string
+**ipsec_encryption**: string
+**ipsec_integrity**: string
+**pfs_group**: string
+**sa_data_size_kilobytes**: int64
+**sa_life_time_seconds**: int64
+}
+class azure_network_virtual_network_gateway_connection {
+**authorization_key**: string
+**connection_mode**: string
+**connection_protocol**: string
+**connection_status**: string
+**connection_type**: string
+**dpd_timeout_seconds**: int64
+**egress_bytes_transferred**: int64
+**egress_nat_rules**: string[]
+**enable_bgp**: boolean
+**enable_private_link_fast_path**: boolean
+**express_route_gateway_bypass**: boolean
+**gateway_custom_bgp_ip_addresses**: azure_gateway_custom_bgp_ip_address_ip_configuration[]
+**ingress_bytes_transferred**: int64
+**ingress_nat_rules**: string[]
+**ipsec_policies**: azure_ipsec_policy[]
+**local_network_gateway2**: string
+**peer**: string
+**resource_guid**: string
+**routing_weight**: int64
+**shared_key**: string
+**traffic_selector_policies**: azure_traffic_selector_policy[]
+**tunnel_connection_status**: azure_tunnel_connection_health[]
+**use_local_azure_ip_address**: boolean
+**use_policy_based_traffic_selectors**: boolean
+**virtual_network_gateway1_id**: string
+**virtual_network_gateway2_id**: string
+}
+class azure_traffic_selector_policy {
+**local_address_ranges**: string[]
+**remote_address_ranges**: string[]
+}
+class azure_tunnel_connection_health {
+**connection_status**: string
+**egress_bytes_transferred**: int64
+**ingress_bytes_transferred**: int64
+**last_connection_established_utc_time**: string
+**tunnel**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class tunnel {
+
+}
+azure_network_virtual_network_gateway_connection --> azure_gateway_custom_bgp_ip_address_ip_configuration
+azure_network_virtual_network_gateway_connection --> azure_ipsec_policy
+azure_network_virtual_network_gateway_connection --> azure_traffic_selector_policy
+azure_network_virtual_network_gateway_connection --> azure_tunnel_connection_health
+microsoft_resource <|--- azure_network_virtual_network_gateway_connection
+tunnel <|--- azure_network_virtual_network_gateway_connection
+resource <|--- microsoft_resource
+resource <|--- tunnel
+
+@enduml
+```
+
+</ZoomPanPinch>

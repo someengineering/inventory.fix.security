@@ -1,0 +1,198 @@
+---
+sidebar_label: Interconnect Attachment
+---
+
+# `gcp_interconnect_attachment`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [Interconnect Attachment](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview)
+
+## Description
+
+GCP Interconnect Attachment is a networking component in Google Cloud Platform that connects on-premises networks to Google's network. It establishes a direct, private connection between a customer's data center and Google's infrastructure, bypassing the public internet. This connection provides increased security, reduced latency, and improved network performance for data transfer and cloud resource access.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Interconnect Attachment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_interconnect_attachment {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_interconnect_attachment
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Interconnect Attachment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_interconnect_attachment {
+
+}
+class gcp_vpn_gateway {
+
+}
+gcp_vpn_gateway -[#1A83AF]-> gcp_interconnect_attachment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Interconnect Attachment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_interconnect_attachment {
+**admin_enabled**: boolean
+**bandwidth**: string
+**candidate_ipv6_subnets**: string[]
+**candidate_subnets**: string[]
+**cloud_router_ip_address**: string
+**cloud_router_ipv6_address**: string
+**cloud_router_ipv6_interface_id**: string
+**customer_router_ip_address**: string
+**customer_router_ipv6_address**: string
+**customer_router_ipv6_interface_id**: string
+**dataplane_version**: int64
+**edge_availability_domain**: string
+**encryption**: string
+**google_reference_id**: string
+**interconnect**: string
+**interconnect_attachment_state**: string
+**ipsec_internal_addresses**: string[]
+**mtu**: int64
+**operational_status**: string
+**pairing_key**: string
+**partner_asn**: string
+**partner_metadata**: gcp_interconnect_attachment_partner_metadata
+**private_interconnect_info**: int64
+**router**: string
+**satisfies_pzs**: boolean
+**stack_type**: string
+**type**: string
+**vlan_tag8021q**: int64
+}
+class gcp_interconnect_attachment_partner_metadata {
+**interconnect_name**: string
+**partner_name**: string
+**portal_url**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_interconnect_attachment --> gcp_deprecation_status
+gcp_interconnect_attachment --> gcp_interconnect_attachment_partner_metadata
+gcp_resource <|--- gcp_interconnect_attachment
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

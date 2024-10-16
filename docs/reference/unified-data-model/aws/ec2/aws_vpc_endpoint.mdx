@@ -1,0 +1,223 @@
+---
+sidebar_label: VPC Endpoint
+---
+
+# `aws_vpc_endpoint`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [VPC Endpoint](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
+
+## Description
+
+An AWS VPC Endpoint is a service that provides private connectivity between Amazon Virtual Private Clouds (VPCs) and supported AWS services. It routes traffic within the Amazon network, bypassing the public internet. VPC Endpoints improve security by keeping data within the AWS infrastructure and can reduce data transfer costs for certain services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of VPC Endpoint"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_vpc_endpoint {
+
+}
+class endpoint {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_vpc_endpoint
+endpoint <|--- aws_vpc_endpoint
+resource <|--- endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of VPC Endpoint resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_domain_name {
+
+}
+class aws_apigateway_rest_api {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_route_table {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_region {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_apigateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+aws_apigateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_route_table
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of VPC Endpoint data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_dns_entry {
+**dns_name**: string
+**hosted_zone_id**: string
+}
+class aws_ec2_last_error {
+**code**: string
+**message**: string
+}
+class aws_resource {
+**arn**: string
+}
+class aws_vpc_endpoint {
+**endpoint_creation_timestamp**: datetime
+**endpoint_dns_entries**: aws_ec2_dns_entry[]
+**endpoint_dns_options**: string
+**endpoint_ip_address_type**: string
+**endpoint_last_error**: aws_ec2_last_error
+**endpoint_owner_id**: string
+**endpoint_policy_document**: string
+**endpoint_private_dns_enabled**: boolean
+**endpoint_requester_managed**: boolean
+**endpoint_service_name**: string
+**endpoint_state**: string
+**vpc_endpoint_type**: string
+}
+class endpoint {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_vpc_endpoint --> aws_ec2_dns_entry
+aws_vpc_endpoint --> aws_ec2_last_error
+aws_resource <|--- aws_vpc_endpoint
+endpoint <|--- aws_vpc_endpoint
+resource <|--- endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>

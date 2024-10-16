@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: {"tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","example":"fix","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"The graph with the root node","content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}}}},"404":{"description":"The graph does not exist"}},"description":"Get root of a specific graph","method":"get","path":"/graph/{graph_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get root of a specific graph","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
-info_path: version-4.X/reference/api/fix-inventory-core-rest-api
+info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
 hide_send_button: true
 ---

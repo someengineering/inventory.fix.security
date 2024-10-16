@@ -1,0 +1,209 @@
+---
+sidebar_label: EC2 Volume
+---
+
+# `aws_ec2_volume`
+
+- Categories: Storage
+- Service: ec2
+- Provider Link: [EC2 Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html)
+
+## Description
+
+AWS EC2 Volume Type refers to the storage options available for Amazon Elastic Compute Cloud (EC2) instances. These volume types include General Purpose SSD, Provisioned IOPS SSD, Throughput Optimized HDD, and Cold HDD. Each type offers different performance characteristics and pricing, catering to various workload requirements such as database storage, log processing, and data archiving.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Volume"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_volume {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+class volume {
+
+}
+aws_resource <|--- aws_ec2_volume
+volume <|--- aws_ec2_volume
+resource <|--- aws_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Volume resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_snapshot {
+
+}
+class aws_ec2_volume {
+
+}
+class aws_ec2_volume_type {
+
+}
+class aws_kms_key {
+
+}
+class aws_region {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_instance
+aws_backup_protected_resource -[#1A83AF]-> aws_ec2_volume
+aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_region -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_ec2_volume_type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Volume data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_volume {
+**availability_zone**: string
+**volume_attachments**: aws_ec2_volume_attachment[]
+**volume_fast_restored**: boolean
+**volume_kms_key_id**: string
+**volume_multi_attach_enabled**: boolean
+**volume_outpost_arn**: string
+**volume_snapshot_id**: string
+}
+class aws_ec2_volume_attachment {
+**attach_time**: datetime
+**delete_on_termination**: boolean
+**device**: string
+**instance_id**: string
+**state**: string
+**volume_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+aws_ec2_volume --> aws_ec2_volume_attachment
+aws_resource <|--- aws_ec2_volume
+volume <|--- aws_ec2_volume
+resource <|--- aws_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>

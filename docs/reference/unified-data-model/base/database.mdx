@@ -1,0 +1,109 @@
+---
+sidebar_label: Database
+---
+
+# `database`
+
+- Categories: Compute, Database
+
+## Description
+
+A database.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Database data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_rds_cluster {
+
+}
+class aws_rds_instance {
+
+}
+class azure_cosmos_db_account {
+
+}
+class azure_cosmos_db_postgresql_cluster_server {
+
+}
+class azure_mysql_server {
+
+}
+class azure_postgresql_server {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_managed_instance_database {
+
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class digitalocean_database {
+
+}
+class gcp_sql_database_instance {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+database <|--- aws_rds_cluster
+database <|--- aws_rds_instance
+database <|--- azure_cosmos_db_account
+database <|--- azure_cosmos_db_postgresql_cluster_server
+database <|--- azure_mysql_server
+database <|--- azure_postgresql_server
+database <|--- azure_sql_server_database
+database <|--- azure_sql_server_managed_instance_database
+resource <|--- database
+database <|--- digitalocean_database
+database <|--- gcp_sql_database_instance
+
+@enduml
+```
+
+</ZoomPanPinch>

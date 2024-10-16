@@ -1,0 +1,302 @@
+---
+sidebar_label: Monitor Data Collection Rule
+---
+
+# `azure_monitor_data_collection_rule`
+
+- Categories: Management
+- Service: monitor
+- Provider Link: [Monitor Data Collection Rule](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-overview)
+
+## Description
+
+Azure Monitor Data Collection Rule is a configuration resource that defines how monitoring data is collected and processed in Azure. It specifies the data sources, collection settings, and destinations for log and metric data. Data Collection Rules help manage and organize monitoring across multiple resources, ensuring consistent data collection and routing within Azure environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Data Collection Rule"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_data_collection_rule {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_monitor_data_collection_rule
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Data Collection Rule resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_data_collection_rule {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Data Collection Rule data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_metadata {
+**provisioned_by**: string
+**provisioned_by_immutable_id**: string
+**provisioned_by_resource_id**: string
+}
+class azure_microsoft_fabric_destination {
+**artifact_id**: string
+**database_name**: string
+**ingestion_uri**: string
+**name**: string
+**tenant_id**: string
+}
+class azure_monitor_adx_destination {
+**database_name**: string
+**ingestion_uri**: string
+**name**: string
+**resource_id**: string
+}
+class azure_monitor_agent_setting {
+**name**: string
+**value**: string
+}
+class azure_monitor_column_definition {
+**name**: string
+**type**: string
+}
+class azure_monitor_data_collection_rule {
+**agent_settings**: azure_monitor_agent_setting[]
+**data_collection_endpoint_id**: string
+**data_flows**: azure_monitor_data_flow[]
+**description**: string
+**destinations**: azure_monitor_destinations_spec
+**endpoints**: azure_monitor_endpoints_spec
+**identity**: azure_identity
+**immutable_id**: string
+**references**: azure_monitor_references_spec
+**rule_kind**: string
+**rule_metadata**: azure_metadata
+**stream_declarations**: dictionary[string, azure_monitor_stream_declaration]
+**system_data**: azure_system_data
+}
+class azure_monitor_data_flow {
+**built_in_transform**: string
+**capture_overflow**: boolean
+**destinations**: string[]
+**output_stream**: string
+**streams**: string[]
+**transform_kql**: string
+}
+class azure_monitor_destinations_spec {
+**azure_data_explorer**: azure_monitor_adx_destination[]
+**azure_monitor_metrics**: azure_monitor_metrics
+**event_hubs**: azure_monitor_event_hub_destination[]
+**event_hubs_direct**: azure_monitor_event_hub_direct_destination[]
+**log_analytics**: azure_monitor_log_analytics_destination[]
+**microsoft_fabric**: azure_microsoft_fabric_destination[]
+**monitoring_accounts**: azure_monitoring_account_destination[]
+**storage_accounts**: azure_monitor_storage_blob_destination[]
+**storage_blobs_direct**: azure_monitor_storage_blob_destination[]
+**storage_tables_direct**: azure_monitor_storage_table_destination[]
+}
+class azure_monitor_endpoints_spec {
+**logs_ingestion**: string
+**metrics_ingestion**: string
+}
+class azure_monitor_enrichment_data {
+**storage_blobs**: azure_monitor_storage_blob[]
+}
+class azure_monitor_event_hub_destination {
+**event_hub_resource_id**: string
+**name**: string
+}
+class azure_monitor_event_hub_direct_destination {
+**event_hub_resource_id**: string
+**name**: string
+}
+class azure_monitor_log_analytics_destination {
+**name**: string
+**workspace_id**: string
+**workspace_resource_id**: string
+}
+class azure_monitor_metrics {
+**internal_id**: string
+**prometheus_query_endpoint**: string
+}
+class azure_monitor_references_spec {
+**enrichment_data**: azure_monitor_enrichment_data
+}
+class azure_monitor_storage_blob {
+**blob_url**: string
+**lookup_type**: string
+**name**: string
+**resource_id**: string
+}
+class azure_monitor_storage_blob_destination {
+**container_name**: string
+**name**: string
+**storage_account_resource_id**: string
+}
+class azure_monitor_storage_table_destination {
+**name**: string
+**storage_account_resource_id**: string
+**table_name**: string
+}
+class azure_monitor_stream_declaration {
+**columns**: azure_monitor_column_definition[]
+}
+class azure_monitoring_account_destination {
+**account_id**: string
+**account_resource_id**: string
+**name**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_monitor_data_collection_rule --> azure_identity
+azure_monitor_data_collection_rule --> azure_metadata
+azure_monitor_data_collection_rule --> azure_monitor_agent_setting
+azure_monitor_data_collection_rule --> azure_monitor_data_flow
+azure_monitor_data_collection_rule --> azure_monitor_destinations_spec
+azure_monitor_data_collection_rule --> azure_monitor_endpoints_spec
+azure_monitor_data_collection_rule --> azure_monitor_references_spec
+azure_monitor_data_collection_rule --> azure_monitor_stream_declaration
+azure_monitor_data_collection_rule --> azure_system_data
+microsoft_resource <|--- azure_monitor_data_collection_rule
+azure_monitor_destinations_spec --> azure_microsoft_fabric_destination
+azure_monitor_destinations_spec --> azure_monitor_adx_destination
+azure_monitor_destinations_spec --> azure_monitor_event_hub_destination
+azure_monitor_destinations_spec --> azure_monitor_event_hub_direct_destination
+azure_monitor_destinations_spec --> azure_monitor_log_analytics_destination
+azure_monitor_destinations_spec --> azure_monitor_metrics
+azure_monitor_destinations_spec --> azure_monitor_storage_blob_destination
+azure_monitor_destinations_spec --> azure_monitor_storage_table_destination
+azure_monitor_destinations_spec --> azure_monitoring_account_destination
+azure_monitor_enrichment_data --> azure_monitor_storage_blob
+azure_monitor_references_spec --> azure_monitor_enrichment_data
+azure_monitor_stream_declaration --> azure_monitor_column_definition
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

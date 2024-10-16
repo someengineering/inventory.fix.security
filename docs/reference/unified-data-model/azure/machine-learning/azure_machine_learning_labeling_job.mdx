@@ -1,0 +1,240 @@
+---
+sidebar_label: Machine Learning Labeling Job
+---
+
+# `azure_machine_learning_labeling_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: machine-learning
+- Provider Link: [Machine Learning Labeling Job](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-labeling-projects)
+
+## Description
+
+Azure Machine Learning Labeling Job is a feature that helps users annotate data for machine learning projects. It provides tools for tagging images, text, or other data types, and supports collaboration among team members. The job organizes tasks, tracks progress, and manages the labeling workflow to prepare datasets for model training and evaluation.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Labeling Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class azure_machine_learning_labeling_job {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- azure_machine_learning_labeling_job
+microsoft_resource <|--- azure_machine_learning_labeling_job
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Labeling Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_labeling_job {
+
+}
+class azure_machine_learning_workspace {
+
+}
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_labeling_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Labeling Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class azure_compute_binding {
+**compute_id**: string
+**node_count**: int64
+}
+class azure_label_category {
+**allow_multi_select**: boolean
+**classes**: dictionary[string, azure_label_class]
+**display_name**: string
+}
+class azure_label_class {
+**display_name**: string
+**subclasses**: dictionary[string, any]
+}
+class azure_labeling_dataset_configuration {
+**asset_name**: string
+**dataset_version**: string
+**enable_incremental_dataset_refresh**: boolean
+}
+class azure_labeling_job_image_properties {
+
+}
+class azure_machine_learning_labeling_job {
+**created_time_utc**: datetime
+**dataset_configuration**: azure_labeling_dataset_configuration
+**job_instructions**: string
+**job_project_id**: string
+**label_categories**: dictionary[string, azure_label_category]
+**labeling_job_media_properties**: azure_labeling_job_image_properties
+**ml_assist_configuration**: azure_ml_assist_configuration
+**progress_metrics**: azure_progress_metrics
+**properties**: dictionary[string, any]
+**status**: string
+**status_messages**: azure_status_message[]
+**system_data**: azure_system_data
+}
+class azure_ml_assist_configuration {
+**inferencing_compute_binding**: azure_compute_binding
+**ml_assist_enabled**: boolean
+**model_name_prefix**: string
+**prelabel_accuracy_threshold**: double
+**training_compute_binding**: azure_compute_binding
+}
+class azure_progress_metrics {
+**completed_datapoint_count**: int64
+**incremental_dataset_last_refresh_time**: datetime
+**skipped_datapoint_count**: int64
+**total_datapoint_count**: int64
+}
+class azure_status_message {
+**code**: string
+**created_time_utc**: datetime
+**level**: string
+**message**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+azure_label_category --> azure_label_class
+ai_job <|--- azure_machine_learning_labeling_job
+azure_machine_learning_labeling_job --> azure_label_category
+azure_machine_learning_labeling_job --> azure_labeling_dataset_configuration
+azure_machine_learning_labeling_job --> azure_labeling_job_image_properties
+azure_machine_learning_labeling_job --> azure_ml_assist_configuration
+azure_machine_learning_labeling_job --> azure_progress_metrics
+azure_machine_learning_labeling_job --> azure_status_message
+azure_machine_learning_labeling_job --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_labeling_job
+azure_ml_assist_configuration --> azure_compute_binding
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

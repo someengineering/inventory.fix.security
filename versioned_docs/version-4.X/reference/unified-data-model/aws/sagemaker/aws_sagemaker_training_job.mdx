@@ -1,0 +1,423 @@
+---
+sidebar_label: SageMaker Training Job
+---
+
+# `aws_sagemaker_training_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Training Job](https://docs.aws.amazon.com/sagemaker/latest/dg/train-model.html)
+
+## Description
+
+AWS SageMaker Training Job is a service that trains machine learning models using specified algorithms and datasets. It provisions and manages the necessary compute resources, executes the training process, and stores the resulting model artifacts. Users can configure training parameters, input data sources, and output locations. The service supports various machine learning frameworks and algorithms.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Training Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_job <|--- aws_sagemaker_training_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Training Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_algorithm {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_experiment {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_trial {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Training Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_algorithm_specification {
+**algorithm_name**: string
+**container_arguments**: string[]
+**container_entrypoint**: string[]
+**enable_sage_maker_metrics_time_series**: boolean
+**metric_definitions**: aws_sagemaker_metric_definition[]
+**training_image**: string
+**training_input_mode**: string
+}
+class aws_sagemaker_channel {
+**channel_name**: string
+**compression_type**: string
+**content_type**: string
+**data_source**: aws_sagemaker_data_source
+**input_mode**: string
+**record_wrapper_type**: string
+**shuffle_config**: int64
+}
+class aws_sagemaker_checkpoint_config {
+**local_path**: string
+**s3_uri**: string
+}
+class aws_sagemaker_collection_configuration {
+**collection_name**: string
+**collection_parameters**: dictionary[string, string]
+}
+class aws_sagemaker_data_source {
+**file_system_data_source**: aws_sagemaker_file_system_data_source
+**s3_data_source**: aws_sagemaker_s3_data_source
+}
+class aws_sagemaker_debug_hook_config {
+**collection_configurations**: aws_sagemaker_collection_configuration[]
+**hook_parameters**: dictionary[string, string]
+**local_path**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_debug_rule_configuration {
+**instance_type**: string
+**local_path**: string
+**rule_configuration_name**: string
+**rule_evaluator_image**: string
+**rule_parameters**: dictionary[string, string]
+**s3_output_path**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_debug_rule_evaluation_status {
+**last_modified_time**: datetime
+**rule_configuration_name**: string
+**rule_evaluation_job_arn**: string
+**rule_evaluation_status**: string
+**status_details**: string
+}
+class aws_sagemaker_file_system_data_source {
+**directory_path**: string
+**file_system_access_mode**: string
+**file_system_id**: string
+**file_system_type**: string
+}
+class aws_sagemaker_instance_group {
+**instance_count**: int64
+**instance_group_name**: string
+**instance_type**: string
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_metric_data {
+**metric_name**: string
+**timestamp**: datetime
+**value**: double
+}
+class aws_sagemaker_metric_definition {
+**name**: string
+**regex**: string
+}
+class aws_sagemaker_output_data_config {
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_profiler_config {
+**profiling_interval_in_milliseconds**: int64
+**profiling_parameters**: dictionary[string, string]
+**s3_output_path**: string
+}
+class aws_sagemaker_profiler_rule_configuration {
+**instance_type**: string
+**local_path**: string
+**rule_configuration_name**: string
+**rule_evaluator_image**: string
+**rule_parameters**: dictionary[string, string]
+**s3_output_path**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_profiler_rule_evaluation_status {
+**last_modified_time**: datetime
+**rule_configuration_name**: string
+**rule_evaluation_job_arn**: string
+**rule_evaluation_status**: string
+**status_details**: string
+}
+class aws_sagemaker_resource_config {
+**instance_count**: int64
+**instance_groups**: aws_sagemaker_instance_group[]
+**instance_type**: string
+**keep_alive_period_in_seconds**: int64
+**volume_kms_key_id**: string
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_s3_data_source {
+**attribute_names**: string[]
+**instance_group_names**: string[]
+**s3_data_distribution_type**: string
+**s3_data_type**: string
+**s3_uri**: string
+}
+class aws_sagemaker_secondary_status_transition {
+**end_time**: datetime
+**start_time**: datetime
+**status**: string
+**status_message**: string
+}
+class aws_sagemaker_stopping_condition {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
+}
+class aws_sagemaker_tensor_board_output_config {
+**local_path**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_training_job {
+**training_job_algorithm_specification**: aws_sagemaker_algorithm_specification
+**training_job_auto_ml_job_arn**: string
+**training_job_billable_time_in_seconds**: int64
+**training_job_checkpoint_config**: aws_sagemaker_checkpoint_config
+**training_job_debug_hook_config**: aws_sagemaker_debug_hook_config
+**training_job_debug_rule_configurations**: aws_sagemaker_debug_rule_configuration[]
+**training_job_debug_rule_evaluation_statuses**: aws_sagemaker_debug_rule_evaluation_status[]
+**training_job_enable_inter_container_traffic_encryption**: boolean
+**training_job_enable_managed_spot_training**: boolean
+**training_job_enable_network_isolation**: boolean
+**training_job_environment**: dictionary[string, string]
+**training_job_failure_reason**: string
+**training_job_final_metric_data_list**: aws_sagemaker_metric_data[]
+**training_job_hyper_parameters**: dictionary[string, string]
+**training_job_input_data_config**: aws_sagemaker_channel[]
+**training_job_labeling_job_arn**: string
+**training_job_model_artifacts**: string
+**training_job_output_data_config**: aws_sagemaker_output_data_config
+**training_job_profiler_config**: aws_sagemaker_profiler_config
+**training_job_profiler_rule_configurations**: aws_sagemaker_profiler_rule_configuration[]
+**training_job_profiler_rule_evaluation_statuses**: aws_sagemaker_profiler_rule_evaluation_status[]
+**training_job_profiling_status**: string
+**training_job_resource_config**: aws_sagemaker_resource_config
+**training_job_retry_strategy**: int64
+**training_job_secondary_status**: string
+**training_job_secondary_status_transitions**: aws_sagemaker_secondary_status_transition[]
+**training_job_stopping_condition**: aws_sagemaker_stopping_condition
+**training_job_tensor_board_output_config**: aws_sagemaker_tensor_board_output_config
+**training_job_training_end_time**: datetime
+**training_job_training_job_status**: string
+**training_job_training_start_time**: datetime
+**training_job_training_time_in_seconds**: int64
+**training_job_trial_component_display_name**: string
+**training_job_tuning_job_arn**: string
+**training_job_vpc_config**: aws_sagemaker_vpc_config
+**training_job_warm_pool_status**: aws_sagemaker_warm_pool_status
+}
+class aws_sagemaker_vpc_config {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
+class aws_sagemaker_warm_pool_status {
+**resource_retained_billable_time_in_seconds**: int64
+**reused_by_job**: string
+**status**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_algorithm_specification --> aws_sagemaker_metric_definition
+aws_sagemaker_channel --> aws_sagemaker_data_source
+aws_sagemaker_data_source --> aws_sagemaker_file_system_data_source
+aws_sagemaker_data_source --> aws_sagemaker_s3_data_source
+aws_sagemaker_debug_hook_config --> aws_sagemaker_collection_configuration
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_resource_config --> aws_sagemaker_instance_group
+aws_sagemaker_training_job --> aws_sagemaker_algorithm_specification
+aws_sagemaker_training_job --> aws_sagemaker_channel
+aws_sagemaker_training_job --> aws_sagemaker_checkpoint_config
+aws_sagemaker_training_job --> aws_sagemaker_debug_hook_config
+aws_sagemaker_training_job --> aws_sagemaker_debug_rule_configuration
+aws_sagemaker_training_job --> aws_sagemaker_debug_rule_evaluation_status
+aws_sagemaker_job <|--- aws_sagemaker_training_job
+aws_sagemaker_training_job --> aws_sagemaker_metric_data
+aws_sagemaker_training_job --> aws_sagemaker_output_data_config
+aws_sagemaker_training_job --> aws_sagemaker_profiler_config
+aws_sagemaker_training_job --> aws_sagemaker_profiler_rule_configuration
+aws_sagemaker_training_job --> aws_sagemaker_profiler_rule_evaluation_status
+aws_sagemaker_training_job --> aws_sagemaker_resource_config
+aws_sagemaker_training_job --> aws_sagemaker_secondary_status_transition
+aws_sagemaker_training_job --> aws_sagemaker_stopping_condition
+aws_sagemaker_training_job --> aws_sagemaker_tensor_board_output_config
+aws_sagemaker_training_job --> aws_sagemaker_vpc_config
+aws_sagemaker_training_job --> aws_sagemaker_warm_pool_status
+
+@enduml
+```
+
+</ZoomPanPinch>

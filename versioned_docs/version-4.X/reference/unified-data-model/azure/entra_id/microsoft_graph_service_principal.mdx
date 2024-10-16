@@ -1,0 +1,348 @@
+---
+sidebar_label: Graph Service Principal
+---
+
+# `microsoft_graph_service_principal`
+
+- Categories: Access Control
+- Service: entra_id
+
+## Description
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Graph Service Principal"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_entity <|--- microsoft_graph_service_principal
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Service Principal resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_role_assignment {
+
+}
+class azure_cosmos_db_account {
+
+}
+class azure_cosmos_db_cassandra_cluster {
+
+}
+class azure_cosmos_db_sql_role_assignment {
+
+}
+class azure_machine_learning_batch_endpoint {
+
+}
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_private_endpoint_connection {
+
+}
+class azure_machine_learning_private_link {
+
+}
+class azure_machine_learning_registry {
+
+}
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_mysql_server {
+
+}
+class azure_postgresql_server {
+
+}
+class azure_sql_server {
+
+}
+class azure_sql_server_managed_instance {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_graph_role {
+
+}
+class microsoft_graph_service_principal {
+
+}
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_group
+azure_authorization_role_assignment -[#1A83AF]-> microsoft_graph_service_principal
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_sql_role_assignment
+azure_cosmos_db_account -[#1A83AF]-> microsoft_graph_service_principal
+azure_cosmos_db_cassandra_cluster -[#1A83AF]-> microsoft_graph_service_principal
+azure_cosmos_db_sql_role_assignment -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_batch_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_compute -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_online_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_private_endpoint_connection -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_private_link -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_registry -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_serverless_endpoint -[#1A83AF]-> microsoft_graph_service_principal
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_batch_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_compute
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_online_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_endpoint_connection
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_private_link
+azure_machine_learning_workspace -[#1A83AF]-> azure_machine_learning_serverless_endpoint
+azure_machine_learning_workspace -[#1A83AF]-> microsoft_graph_service_principal
+azure_mysql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_sql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_sql_server_managed_instance -[#1A83AF]-> microsoft_graph_service_principal
+microsoft_graph_group -[#1A83AF]-> microsoft_graph_service_principal
+microsoft_graph_role -[#1A83AF]-> microsoft_graph_role
+microsoft_graph_service_principal -[#1A83AF]-> microsoft_graph_role
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Graph Service Principal data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class microsoft_graph_add_in {
+**id**: string
+**properties**: dictionary[string, string][]
+**type**: string
+}
+class microsoft_graph_app_role {
+**allowed_member_types**: string[]
+**description**: string
+**display_name**: string
+**id**: string
+**is_enabled**: boolean
+**origin**: string
+**value**: string
+}
+class microsoft_graph_entity {
+**deleted_date_time**: datetime
+}
+class microsoft_graph_informational_url {
+**logo_url**: string
+**marketing_url**: string
+**privacy_statement_url**: string
+**support_url**: string
+**terms_of_service_url**: string
+}
+class microsoft_graph_key_credential {
+**custom_key_identifier**: string
+**display_name**: string
+**end_date_time**: datetime
+**key**: string
+**key_id**: string
+**start_date_time**: datetime
+**type**: string
+**usage**: string
+}
+class microsoft_graph_password_credential {
+**custom_key_identifier**: string
+**display_name**: string
+**end_date_time**: datetime
+**hint**: string
+**key_id**: string
+**secret_text**: string
+**start_date_time**: datetime
+}
+class microsoft_graph_password_single_sign_on_field {
+**customized_label**: string
+**default_label**: string
+**field_id**: string
+**type**: string
+}
+class microsoft_graph_permission_scope {
+**admin_consent_description**: string
+**admin_consent_display_name**: string
+**id**: string
+**is_enabled**: boolean
+**origin**: string
+**type**: string
+**user_consent_description**: string
+**user_consent_display_name**: string
+**value**: string
+}
+class microsoft_graph_saml_single_sign_on_settings {
+**relay_state**: string
+}
+class microsoft_graph_service_principal {
+**account_enabled**: boolean
+**add_ins**: microsoft_graph_add_in[]
+**alternative_names**: string[]
+**app_description**: string
+**app_display_name**: string
+**app_id**: string
+**app_owner_organization_id**: string
+**app_role_assignment_required**: boolean
+**app_roles**: microsoft_graph_app_role[]
+**application_template_id**: string
+**custom_security_attributes**: dictionary[string, string]
+**description**: string
+**device_tags**: string[]
+**disabled_by_microsoft_status**: string
+**display_name**: string
+**error_url**: string
+**homepage**: string
+**info**: microsoft_graph_informational_url
+**key_credentials**: microsoft_graph_key_credential[]
+**login_url**: string
+**logout_url**: string
+**notes**: string
+**notification_email_addresses**: string[]
+**password_credentials**: microsoft_graph_password_credential[]
+**password_single_sign_on_settings**: microsoft_graph_password_single_sign_on_field[]
+**preferred_single_sign_on_mode**: string
+**preferred_token_signing_key_end_date_time**: datetime
+**preferred_token_signing_key_thumbprint**: string
+**published_permission_scopes**: microsoft_graph_permission_scope[]
+**publisher_name**: string
+**reply_urls**: string[]
+**saml_metadata_url**: string
+**saml_single_sign_on_settings**: microsoft_graph_saml_single_sign_on_settings
+**service_principal_names**: string[]
+**service_principal_type**: string
+**sign_in_audience**: string
+**token_encryption_key_id**: string
+**verified_publisher**: microsoft_graph_verified_publisher
+}
+class microsoft_graph_verified_publisher {
+**added_date_time**: datetime
+**display_name**: string
+**verified_publisher_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+microsoft_resource <|--- microsoft_graph_entity
+microsoft_graph_service_principal --> microsoft_graph_add_in
+microsoft_graph_service_principal --> microsoft_graph_app_role
+microsoft_graph_entity <|--- microsoft_graph_service_principal
+microsoft_graph_service_principal --> microsoft_graph_informational_url
+microsoft_graph_service_principal --> microsoft_graph_key_credential
+microsoft_graph_service_principal --> microsoft_graph_password_credential
+microsoft_graph_service_principal --> microsoft_graph_password_single_sign_on_field
+microsoft_graph_service_principal --> microsoft_graph_permission_scope
+microsoft_graph_service_principal --> microsoft_graph_saml_single_sign_on_settings
+microsoft_graph_service_principal --> microsoft_graph_verified_publisher
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

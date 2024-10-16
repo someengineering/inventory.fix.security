@@ -1,0 +1,224 @@
+---
+sidebar_label: Vertex AI Training Pipeline
+---
+
+# `gcp_vertex_ai_training_pipeline`
+
+- Categories: Machine Learning & AI
+- Service: aiplatform
+- Provider Link: [Vertex AI Training Pipeline](https://cloud.google.com/docs)
+
+## Description
+
+A Training Pipeline in Vertex AI defines the steps necessary to train a machine learning model, including data preprocessing, model training, and evaluation.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Training Pipeline"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_resource {
+
+}
+class gcp_vertex_ai_training_pipeline {
+
+}
+class resource {
+
+}
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_vertex_ai_training_pipeline
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Training Pipeline resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_model {
+
+}
+class gcp_vertex_ai_training_pipeline {
+
+}
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_training_pipeline
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Training Pipeline data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_details {
+
+}
+class gcp_google_rpc_status {
+**code**: int64
+**details**: gcp_details[]
+**message**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_fraction_split {
+**test_fraction**: double
+**training_fraction**: double
+**validation_fraction**: double
+}
+class gcp_vertex_ai_input_data_config {
+**annotation_schema_uri**: string
+**annotations_filter**: string
+**bigquery_destination**: string
+**dataset_id**: string
+**filter_split**: any
+**fraction_split**: gcp_vertex_ai_fraction_split
+**gcs_destination**: string
+**persist_ml_use_assignment**: boolean
+**predefined_split**: string
+**saved_query_id**: string
+**stratified_split**: gcp_vertex_ai_stratified_split
+**timestamp_split**: gcp_vertex_ai_timestamp_split
+}
+class gcp_vertex_ai_stratified_split {
+**key**: string
+**test_fraction**: double
+**training_fraction**: double
+**validation_fraction**: double
+}
+class gcp_vertex_ai_timestamp_split {
+**key**: string
+**test_fraction**: double
+**training_fraction**: double
+**validation_fraction**: double
+}
+class gcp_vertex_ai_training_pipeline {
+**create_time**: datetime
+**display_name**: string
+**encryption_spec**: string
+**end_time**: datetime
+**input_data_config**: gcp_vertex_ai_input_data_config
+**model_id**: string
+**model_to_upload**: string
+**parent_model**: string
+**rpc_error**: gcp_google_rpc_status
+**start_time**: datetime
+**state**: string
+**training_task_definition**: string
+**training_task_inputs**: any
+**training_task_metadata**: any
+**update_time**: datetime
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_google_rpc_status --> gcp_details
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_input_data_config --> gcp_vertex_ai_fraction_split
+gcp_vertex_ai_input_data_config --> gcp_vertex_ai_stratified_split
+gcp_vertex_ai_input_data_config --> gcp_vertex_ai_timestamp_split
+gcp_vertex_ai_training_pipeline --> gcp_deprecation_status
+gcp_vertex_ai_training_pipeline --> gcp_google_rpc_status
+gcp_resource <|--- gcp_vertex_ai_training_pipeline
+gcp_vertex_ai_training_pipeline --> gcp_vertex_ai_input_data_config
+
+@enduml
+```
+
+</ZoomPanPinch>

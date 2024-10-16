@@ -1,0 +1,269 @@
+---
+sidebar_label: SQL Server Database
+---
+
+# `azure_sql_server_database`
+
+- Categories: Compute, Database
+- Service: azure-sql
+- Provider Link: [SQL Server Database](https://learn.microsoft.com/en-us/azure/azure-sql/database/)
+
+## Description
+
+Azure SQL Server Database is a cloud-based relational database service provided by Microsoft. It offers SQL Server functionality in a managed environment, handling tasks like backups, updates, and scaling. Users can store and retrieve structured data, run complex queries, and integrate with applications while Microsoft maintains the underlying infrastructure and ensures data security and availability.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Server Database"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_database {
+
+}
+class database {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+database <|--- azure_sql_server_database
+microsoft_resource <|--- azure_sql_server_database
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Database resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server {
+
+}
+class azure_sql_server_advisor {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_database_geo_backup_policy {
+
+}
+class azure_sql_server_database_workload_group {
+
+}
+class azure_sql_server_elastic_pool {
+
+}
+class azure_sql_server_failover_group {
+
+}
+class azure_sql_server_job_agent {
+
+}
+class microsoft_graph_user {
+
+}
+azure_sql_server -[#1A83AF]-> azure_sql_server_advisor
+azure_sql_server -[#1A83AF]-> azure_sql_server_database
+azure_sql_server -[#1A83AF]-> azure_sql_server_elastic_pool
+azure_sql_server -[#1A83AF]-> azure_sql_server_failover_group
+azure_sql_server -[#1A83AF]-> azure_sql_server_job_agent
+azure_sql_server -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_advisor
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_database_geo_backup_policy
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_database_workload_group
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_failover_group
+azure_sql_server_database -[#1A83AF]-> azure_sql_server_job_agent
+azure_sql_server_database -[#1A83AF]-> microsoft_graph_user
+azure_sql_server_elastic_pool -[#1A83AF]-> azure_sql_server_database
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Database data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_database_identity {
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_database_user_identity]
+}
+class azure_database_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_sql_server_database {
+**auto_pause_delay**: int64
+**catalog_collation**: string
+**collation**: string
+**create_mode**: string
+**creation_date**: datetime
+**current_backup_storage_redundancy**: string
+**current_service_objective_name**: string
+**current_sku**: azure_sku
+**database_id**: string
+**database_identity**: azure_database_identity
+**database_kind**: string
+**database_sku**: azure_sku
+**default_secondary_location**: string
+**earliest_restore_date**: datetime
+**elastic_pool_id**: string
+**failover_group_id**: string
+**federated_client_id**: string
+**high_availability_replica_count**: int64
+**is_infra_encryption_enabled**: boolean
+**is_ledger_on**: boolean
+**license_type**: string
+**location**: string
+**long_term_retention_backup_resource_id**: string
+**maintenance_configuration_id**: string
+**managed_by**: string
+**max_log_size_bytes**: int64
+**max_size_bytes**: int64
+**min_capacity**: double
+**paused_date**: datetime
+**read_scale**: string
+**recoverable_database_id**: string
+**recovery_services_recovery_point_id**: string
+**requested_backup_storage_redundancy**: string
+**requested_service_objective_name**: string
+**restorable_dropped_database_id**: string
+**restore_point_in_time**: datetime
+**resumed_date**: datetime
+**sample_name**: string
+**secondary_type**: string
+**source_database_deletion_date**: datetime
+**source_database_id**: string
+**source_resource_id**: string
+**status**: string
+**transparent_data_encryption_status**: string
+**type**: string
+**zone_redundant**: boolean
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_database_identity --> azure_database_user_identity
+azure_sql_server_database --> azure_database_identity
+azure_sql_server_database --> azure_sku
+database <|--- azure_sql_server_database
+microsoft_resource <|--- azure_sql_server_database
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

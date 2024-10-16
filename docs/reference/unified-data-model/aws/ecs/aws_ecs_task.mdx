@@ -1,0 +1,301 @@
+---
+sidebar_label: ECS Task
+---
+
+# `aws_ecs_task`
+
+- Categories: Compute
+- Service: ecs
+- Provider Link: [ECS Task](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+
+## Description
+
+An AWS ECS Task is a configuration that defines one or more containers to run together on Amazon Elastic Container Service. It specifies the Docker image, CPU and memory requirements, network settings, and other parameters for each container. Tasks are used to deploy and manage applications within ECS clusters.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ECS Task"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_task {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ecs_task
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Task resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_capacity_provider {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_ecs_container_instance {
+
+}
+class aws_ecs_task {
+
+}
+class aws_ecs_task_definition {
+
+}
+class aws_iam_role {
+
+}
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
+aws_iam_role -[#1A83AF]-> aws_ecs_task
+aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Task data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_attachment {
+**details**: aws_ecs_key_value_pair[]
+**id**: string
+**status**: string
+**type**: string
+}
+class aws_ecs_attribute {
+**name**: string
+**target_id**: string
+**target_type**: string
+**value**: string
+}
+class aws_ecs_container {
+**container_arn**: string
+**cpu**: string
+**exit_code**: int64
+**gpu_ids**: string[]
+**health_status**: string
+**image**: string
+**image_digest**: string
+**last_status**: string
+**managed_agents**: aws_ecs_managed_agent[]
+**memory**: string
+**memory_reservation**: string
+**name**: string
+**network_bindings**: aws_ecs_network_binding[]
+**network_interfaces**: aws_ecs_network_interface[]
+**reason**: string
+**runtime_id**: string
+**task_arn**: string
+}
+class aws_ecs_container_override {
+**command**: string[]
+**cpu**: int64
+**environment**: aws_ecs_key_value_pair[]
+**environment_files**: aws_ecs_environment_file[]
+**memory**: int64
+**memory_reservation**: int64
+**name**: string
+**resource_requirements**: aws_ecs_resource_requirement[]
+}
+class aws_ecs_environment_file {
+**type**: string
+**value**: string
+}
+class aws_ecs_inference_accelerator {
+**device_name**: string
+**device_type**: string
+}
+class aws_ecs_key_value_pair {
+**name**: string
+**value**: string
+}
+class aws_ecs_managed_agent {
+**last_started_at**: datetime
+**last_status**: string
+**name**: string
+**reason**: string
+}
+class aws_ecs_network_binding {
+**bind_ip**: string
+**container_port**: int64
+**host_port**: int64
+**protocol**: string
+}
+class aws_ecs_network_interface {
+**attachment_id**: string
+**ipv6_address**: string
+**private_ipv4_address**: string
+}
+class aws_ecs_resource_requirement {
+**type**: string
+**value**: string
+}
+class aws_ecs_task {
+**task_attachments**: aws_ecs_attachment[]
+**task_attributes**: aws_ecs_attribute[]
+**task_availability_zone**: string
+**task_capacity_provider_name**: string
+**task_cluster_arn**: string
+**task_connectivity**: string
+**task_connectivity_at**: datetime
+**task_container_instance_arn**: string
+**task_containers**: aws_ecs_container[]
+**task_cpu**: string
+**task_definition_arn**: string
+**task_desired_status**: string
+**task_enable_execute_command**: boolean
+**task_ephemeral_storage**: int64
+**task_execution_stopped_at**: datetime
+**task_group**: string
+**task_health_status**: string
+**task_inference_accelerators**: aws_ecs_inference_accelerator[]
+**task_last_status**: string
+**task_launch_type**: string
+**task_memory**: string
+**task_overrides**: aws_ecs_task_override
+**task_platform_family**: string
+**task_platform_version**: string
+**task_pull_started_at**: datetime
+**task_pull_stopped_at**: datetime
+**task_started_at**: datetime
+**task_started_by**: string
+**task_stop_code**: string
+**task_stopped_at**: datetime
+**task_stopped_reason**: string
+**task_stopping_at**: datetime
+**task_version**: int64
+}
+class aws_ecs_task_override {
+**container_overrides**: aws_ecs_container_override[]
+**cpu**: string
+**ephemeral_storage**: int64
+**execution_role_arn**: string
+**inference_accelerator_overrides**: aws_ecs_inference_accelerator[]
+**memory**: string
+**task_role_arn**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecs_attachment --> aws_ecs_key_value_pair
+aws_ecs_container --> aws_ecs_managed_agent
+aws_ecs_container --> aws_ecs_network_binding
+aws_ecs_container --> aws_ecs_network_interface
+aws_ecs_container_override --> aws_ecs_environment_file
+aws_ecs_container_override --> aws_ecs_key_value_pair
+aws_ecs_container_override --> aws_ecs_resource_requirement
+aws_ecs_task --> aws_ecs_attachment
+aws_ecs_task --> aws_ecs_attribute
+aws_ecs_task --> aws_ecs_container
+aws_ecs_task --> aws_ecs_inference_accelerator
+aws_ecs_task --> aws_ecs_task_override
+aws_resource <|--- aws_ecs_task
+aws_ecs_task_override --> aws_ecs_container_override
+aws_ecs_task_override --> aws_ecs_inference_accelerator
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

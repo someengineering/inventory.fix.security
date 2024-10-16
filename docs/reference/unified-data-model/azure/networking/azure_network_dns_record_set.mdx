@@ -1,0 +1,211 @@
+---
+sidebar_label: Network DNS Record Set
+---
+
+# `azure_network_dns_record_set`
+
+- Categories: DNS, Networking
+- Service: networking
+- Provider Link: [Network DNS Record Set](https://learn.microsoft.com/en-us/azure/dns/dns-zones-records)
+
+## Description
+
+Azure Network DNS Record Set is a collection of DNS records within a specific domain hosted in Azure DNS. It contains multiple records of the same type (e.g., A, CNAME, MX) for a given name. This feature manages and organizes DNS entries, facilitating domain name resolution and routing for Azure resources and external services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network DNS Record Set"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_dns_record_set {
+
+}
+class dns_record_set {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+dns_record_set <|--- azure_network_dns_record_set
+microsoft_resource <|--- azure_network_dns_record_set
+resource <|--- dns_record_set
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network DNS Record Set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_dns_record_set {
+
+}
+class azure_network_dns_zone {
+
+}
+azure_network_dns_zone -[#1A83AF]-> azure_network_dns_record_set
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network DNS Record Set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_caa_record {
+**flags**: int64
+**tag**: string
+**value**: string
+}
+class azure_mx_record {
+**exchange**: string
+**preference**: int64
+}
+class azure_network_dns_record_set {
+**a_records**: string[]
+**aaaa_records**: string[]
+**caa_records**: azure_caa_record[]
+**cname_record**: string
+**fqdn**: string
+**mx_records**: azure_mx_record[]
+**ns_records**: string[]
+**ptr_records**: string[]
+**record_set_metadata**: dictionary[string, string]
+**soa_record**: azure_soa_record
+**srv_records**: azure_srv_record[]
+**target_resource**: string
+**ttl**: int64
+**txt_records**: azure_txt_record[]
+}
+class azure_soa_record {
+**email**: string
+**expire_time**: int64
+**host**: string
+**minimum_ttl**: int64
+**refresh_time**: int64
+**retry_time**: int64
+**serial_number**: int64
+}
+class azure_srv_record {
+**port**: int64
+**priority**: int64
+**target**: string
+**weight**: int64
+}
+class azure_txt_record {
+**value**: string[]
+}
+class dns_record_set {
+**record_ttl**: int64
+**record_type**: string
+**record_values**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_dns_record_set --> azure_caa_record
+azure_network_dns_record_set --> azure_mx_record
+azure_network_dns_record_set --> azure_soa_record
+azure_network_dns_record_set --> azure_srv_record
+azure_network_dns_record_set --> azure_txt_record
+dns_record_set <|--- azure_network_dns_record_set
+microsoft_resource <|--- azure_network_dns_record_set
+resource <|--- dns_record_set
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

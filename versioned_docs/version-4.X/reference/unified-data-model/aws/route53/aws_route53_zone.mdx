@@ -1,0 +1,186 @@
+---
+sidebar_label: Route53 Zone
+---
+
+# `aws_route53_zone`
+
+- Categories: DNS, Networking
+- Service: route53
+- Provider Link: [Route53 Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html)
+
+## Description
+
+AWS Route 53 Zone is a DNS hosting service that manages domain names and routes internet traffic. It translates human-readable domain names into IP addresses, stores DNS records, and handles DNS queries. Route 53 Zone supports various record types, provides global distribution for low-latency responses, and integrates with other AWS services for DNS management.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Route53 Zone"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_route53_zone {
+
+}
+class dns_zone {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_route53_zone
+dns_zone <|--- aws_route53_zone
+resource <|--- dns_zone
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Route53 Zone resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_domain_name {
+
+}
+class aws_route53_resource_record_set {
+
+}
+class aws_route53_zone {
+
+}
+aws_apigateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Route53 Zone data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_route53_linked_service {
+**description**: string
+**service_principal**: string
+}
+class aws_route53_logging_config {
+**cloud_watch_logs_log_group_arn**: string
+**id**: string
+}
+class aws_route53_zone {
+**zone_caller_reference**: string
+**zone_config**: aws_route53_zone_config
+**zone_linked_service**: aws_route53_linked_service
+**zone_logging_config**: aws_route53_logging_config
+**zone_resource_record_set_count**: int64
+}
+class aws_route53_zone_config {
+**comment**: string
+**private_zone**: boolean
+}
+class dns_zone {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_route53_zone
+aws_route53_zone --> aws_route53_linked_service
+aws_route53_zone --> aws_route53_logging_config
+aws_route53_zone --> aws_route53_zone_config
+dns_zone <|--- aws_route53_zone
+resource <|--- dns_zone
+
+@enduml
+```
+
+</ZoomPanPinch>

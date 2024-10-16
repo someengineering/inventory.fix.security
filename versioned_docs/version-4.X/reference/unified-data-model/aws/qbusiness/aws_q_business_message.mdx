@@ -1,0 +1,225 @@
+---
+sidebar_label: Q Business Message
+---
+
+# `aws_q_business_message`
+
+- Categories: Machine Learning & AI
+- Service: qbusiness
+- Provider Link: [Q Business Message](https://docs.aws.amazon.com/qbusiness/latest/adminguide/what-is-qbusiness.html)
+
+## Description
+
+AWS Q Business Message is a generative AI-powered tool for business communication within Amazon Web Services. It helps users create professional messages, emails, and documents by understanding context and generating appropriate content. The service aims to improve communication efficiency and quality while maintaining consistency with company standards and guidelines.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Q Business Message"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_business_message {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_q_business_message
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Q Business Message resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_business_application {
+
+}
+class aws_q_business_message {
+
+}
+aws_q_business_application -[#1A83AF]-> aws_q_business_message
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Q Business Message data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_q_business_action_execution {
+**payload**: dictionary[string, aws_q_business_action_execution_payload_field]
+**payload_field_name_separator**: string
+**plugin_id**: string
+}
+class aws_q_business_action_execution_payload_field {
+**value**: aws_q_business_action_payload_field_value
+}
+class aws_q_business_action_payload_field_value {
+
+}
+class aws_q_business_action_review {
+**payload**: dictionary[string, aws_q_business_action_review_payload_field]
+**payload_field_name_separator**: string
+**plugin_id**: string
+**plugin_type**: string
+}
+class aws_q_business_action_review_payload_field {
+**allowed_format**: string
+**allowed_values**: aws_q_business_action_review_payload_field_allowed_value[]
+**display_description**: string
+**display_name**: string
+**display_order**: int64
+**required**: boolean
+**type**: string
+**value**: aws_q_business_action_payload_field_value
+}
+class aws_q_business_action_review_payload_field_allowed_value {
+**display_value**: aws_q_business_action_payload_field_value
+**value**: aws_q_business_action_payload_field_value
+}
+class aws_q_business_attachment_output {
+**error**: aws_q_business_error_detail
+**name**: string
+**status**: string
+}
+class aws_q_business_error_detail {
+**error_code**: string
+**error_message**: string
+}
+class aws_q_business_message {
+**action_execution**: aws_q_business_action_execution
+**action_review**: aws_q_business_action_review
+**body**: string
+**message_attachments**: aws_q_business_attachment_output[]
+**message_id**: string
+**source_attribution**: aws_q_business_source_attribution[]
+**time**: datetime
+**type**: string
+}
+class aws_q_business_source_attribution {
+**citation_number**: int64
+**snippet**: string
+**text_message_segments**: aws_q_business_text_segment[]
+**title**: string
+**updated_at**: datetime
+**url**: string
+}
+class aws_q_business_text_segment {
+**begin_offset**: int64
+**end_offset**: int64
+**snippet_excerpt**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_q_business_action_execution --> aws_q_business_action_execution_payload_field
+aws_q_business_action_execution_payload_field --> aws_q_business_action_payload_field_value
+aws_q_business_action_review --> aws_q_business_action_review_payload_field
+aws_q_business_action_review_payload_field --> aws_q_business_action_payload_field_value
+aws_q_business_action_review_payload_field --> aws_q_business_action_review_payload_field_allowed_value
+aws_q_business_action_review_payload_field_allowed_value --> aws_q_business_action_payload_field_value
+aws_q_business_attachment_output --> aws_q_business_error_detail
+aws_q_business_message --> aws_q_business_action_execution
+aws_q_business_message --> aws_q_business_action_review
+aws_q_business_message --> aws_q_business_attachment_output
+aws_q_business_message --> aws_q_business_source_attribution
+aws_resource <|--- aws_q_business_message
+aws_q_business_source_attribution --> aws_q_business_text_segment
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,257 @@
+---
+sidebar_label: Network Virtual WAN VPN Connection
+---
+
+# `azure_network_virtual_wan_vpn_connection`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual WAN VPN Connection](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-site-to-site-portal)
+
+## Description
+
+Azure Network Virtual WAN VPN Connection is a service that establishes secure tunnels between on-premises networks and Azure's Virtual WAN. It creates encrypted connections over the internet, facilitating data transfer and resource access across distributed locations. This service integrates with Azure's global network infrastructure to provide connectivity for branch offices and remote sites.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual WAN VPN Connection"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_wan_vpn_connection {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class tunnel {
+
+}
+microsoft_resource <|--- azure_network_virtual_wan_vpn_connection
+tunnel <|--- azure_network_virtual_wan_vpn_connection
+resource <|--- microsoft_resource
+resource <|--- tunnel
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual WAN VPN Connection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_wan_vpn_connection {
+
+}
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+azure_network_virtual_wan_vpn_gateway -[#1A83AF]-> azure_network_virtual_wan_vpn_connection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual WAN VPN Connection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_gateway_custom_bgp_ip_address_ip_configuration {
+**custom_bgp_ip_address**: string
+**ip_configuration_id**: string
+}
+class azure_ipsec_policy {
+**dh_group**: string
+**ike_encryption**: string
+**ike_integrity**: string
+**ipsec_encryption**: string
+**ipsec_integrity**: string
+**pfs_group**: string
+**sa_data_size_kilobytes**: int64
+**sa_life_time_seconds**: int64
+}
+class azure_network_virtual_wan_vpn_connection {
+**connection_bandwidth**: int64
+**connection_status**: string
+**dpd_timeout_seconds**: int64
+**egress_bytes_transferred**: int64
+**enable_bgp**: boolean
+**enable_internet_security**: boolean
+**enable_rate_limiting**: boolean
+**ingress_bytes_transferred**: int64
+**ipsec_policies**: azure_ipsec_policy[]
+**remote_vpn_site**: string
+**routing_configuration**: azure_routing_configuration
+**routing_weight**: int64
+**shared_key**: string
+**traffic_selector_policies**: azure_traffic_selector_policy[]
+**use_local_azure_ip_address**: boolean
+**use_policy_based_traffic_selectors**: boolean
+**vpn_connection_protocol_type**: string
+**vpn_link_connections**: azure_vpn_site_link_connection[]
+}
+class azure_propagated_route_table {
+**ids**: string[]
+**labels**: string[]
+}
+class azure_routing_configuration {
+**associated_route_table**: string
+**inbound_route_map**: string
+**outbound_route_map**: string
+**propagated_route_tables**: azure_propagated_route_table
+**vnet_routes**: azure_vnet_route
+}
+class azure_static_route {
+**address_prefixes**: string[]
+**name**: string
+**next_hop_ip_address**: string
+}
+class azure_static_routes_config {
+**propagate_static_routes**: boolean
+**vnet_local_route_override_criteria**: string
+}
+class azure_traffic_selector_policy {
+**local_address_ranges**: string[]
+**remote_address_ranges**: string[]
+}
+class azure_vnet_route {
+**bgp_connections**: string[]
+**static_routes**: azure_static_route[]
+**static_routes_config**: azure_static_routes_config
+}
+class azure_vpn_site_link_connection {
+**connection_bandwidth**: int64
+**connection_status**: string
+**egress_bytes_transferred**: int64
+**egress_nat_rules**: string[]
+**enable_bgp**: boolean
+**enable_rate_limiting**: boolean
+**etag**: string
+**ingress_bytes_transferred**: int64
+**ingress_nat_rules**: string[]
+**ipsec_policies**: azure_ipsec_policy[]
+**name**: string
+**provisioning_state**: string
+**routing_weight**: int64
+**shared_key**: string
+**type**: string
+**use_local_azure_ip_address**: boolean
+**use_policy_based_traffic_selectors**: boolean
+**vpn_connection_protocol_type**: string
+**vpn_gateway_custom_bgp_addresses**: azure_gateway_custom_bgp_ip_address_ip_configuration[]
+**vpn_link_connection_mode**: string
+**vpn_site_link**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class tunnel {
+
+}
+azure_network_virtual_wan_vpn_connection --> azure_ipsec_policy
+azure_network_virtual_wan_vpn_connection --> azure_routing_configuration
+azure_network_virtual_wan_vpn_connection --> azure_traffic_selector_policy
+azure_network_virtual_wan_vpn_connection --> azure_vpn_site_link_connection
+microsoft_resource <|--- azure_network_virtual_wan_vpn_connection
+tunnel <|--- azure_network_virtual_wan_vpn_connection
+azure_routing_configuration --> azure_propagated_route_table
+azure_routing_configuration --> azure_vnet_route
+azure_vnet_route --> azure_static_route
+azure_vnet_route --> azure_static_routes_config
+azure_vpn_site_link_connection --> azure_gateway_custom_bgp_ip_address_ip_configuration
+azure_vpn_site_link_connection --> azure_ipsec_policy
+resource <|--- microsoft_resource
+resource <|--- tunnel
+
+@enduml
+```
+
+</ZoomPanPinch>

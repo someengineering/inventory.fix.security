@@ -1,0 +1,172 @@
+---
+sidebar_label: API Gateway Stage
+---
+
+# `aws_apigateway_stage`
+
+- Categories: Networking
+- Service: apigateway
+- Provider Link: [API Gateway Stage](https://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html)
+
+## Description
+
+AWS API Gateway Stage represents a deployment snapshot of an API, providing a distinct endpoint for client access. It acts as a named reference to a deployment, allowing version control and management of different API iterations. Stages facilitate the separation of development, testing, and production environments, enabling API versioning and controlled updates to API configurations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of API Gateway Stage"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_stage {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_apigateway_stage
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Stage resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_deployment {
+
+}
+class aws_apigateway_stage {
+
+}
+aws_apigateway_deployment -[#1A83AF]-> aws_apigateway_stage
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Stage data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_canary_setting {
+**deployment_id**: string
+**percent_traffic**: int64
+**stage_variable_overrides**: dictionary[string, string]
+**use_stage_cache**: boolean
+}
+class aws_apigateway_stage {
+**api_link**: string
+**description**: string
+**stage_access_log_settings**: dictionary[string, string]
+**stage_cache_cluster_enabled**: boolean
+**stage_cache_cluster_size**: string
+**stage_cache_status**: string
+**stage_canary_settings**: aws_apigateway_canary_setting
+**stage_client_certificate_id**: string
+**stage_documentation_version**: string
+**stage_method_settings**: dictionary[string, dictionary[string, any]]
+**stage_tracing_enabled**: boolean
+**stage_variables**: dictionary[string, string]
+**stage_web_acl_arn**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_apigateway_stage --> aws_apigateway_canary_setting
+aws_resource <|--- aws_apigateway_stage
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

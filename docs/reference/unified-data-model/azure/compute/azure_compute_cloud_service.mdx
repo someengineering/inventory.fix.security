@@ -1,0 +1,236 @@
+---
+sidebar_label: Compute Cloud Service
+---
+
+# `azure_compute_cloud_service`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Cloud Service](https://learn.microsoft.com/en-us/azure/cloud-services/)
+
+## Description
+
+Azure Compute Cloud Service is a Platform as a Service (PaaS) offering from Microsoft Azure. It provides a hosting environment for applications without the need to manage underlying infrastructure. Users can deploy, manage, and scale applications using virtual machines that run on Microsoft's data centers, with automatic OS and security updates.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Cloud Service"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_cloud_service {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_cloud_service
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Cloud Service resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_cloud_service {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Cloud Service data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cloud_service_extension_profile {
+**extensions**: azure_extension[]
+}
+class azure_cloud_service_network_profile {
+**load_balancer_configurations**: azure_load_balancer_configuration[]
+**slot_type**: string
+**swappable_cloud_service**: string
+}
+class azure_cloud_service_os_profile {
+**secrets**: azure_cloud_service_vault_secret_group[]
+}
+class azure_cloud_service_role_profile {
+**roles**: azure_cloud_service_role_profile_properties[]
+}
+class azure_cloud_service_role_profile_properties {
+**name**: string
+**sku**: azure_cloud_service_role_sku
+}
+class azure_cloud_service_role_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class azure_cloud_service_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_cloud_service_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: string[]
+}
+class azure_compute_cloud_service {
+**allow_model_override**: boolean
+**cloud_service_network_profile**: azure_cloud_service_network_profile
+**configuration**: string
+**configuration_url**: string
+**extension_profile**: azure_cloud_service_extension_profile
+**os_profile**: azure_cloud_service_os_profile
+**package_url**: string
+**role_profile**: azure_cloud_service_role_profile
+**start_cloud_service**: boolean
+**system_data**: azure_system_data
+**unique_id**: string
+**upgrade_mode**: string
+}
+class azure_extension {
+**auto_upgrade_minor_version**: boolean
+**force_update_tag**: string
+**name**: string
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_cloud_service_vault_and_secret_reference
+**provisioning_state**: string
+**publisher**: string
+**roles_applied_to**: string[]
+**settings**: any
+**type**: string
+**type_handler_version**: string
+}
+class azure_load_balancer_configuration {
+**frontend_ip_configurations**: azure_load_balancer_frontend_ip_configuration[]
+**id**: string
+**name**: string
+}
+class azure_load_balancer_frontend_ip_configuration {
+**name**: string
+**private_ip_address**: string
+**public_ip_address**: string
+**subnet**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cloud_service_extension_profile --> azure_extension
+azure_cloud_service_network_profile --> azure_load_balancer_configuration
+azure_cloud_service_os_profile --> azure_cloud_service_vault_secret_group
+azure_cloud_service_role_profile --> azure_cloud_service_role_profile_properties
+azure_cloud_service_role_profile_properties --> azure_cloud_service_role_sku
+azure_compute_cloud_service --> azure_cloud_service_extension_profile
+azure_compute_cloud_service --> azure_cloud_service_network_profile
+azure_compute_cloud_service --> azure_cloud_service_os_profile
+azure_compute_cloud_service --> azure_cloud_service_role_profile
+azure_compute_cloud_service --> azure_system_data
+microsoft_resource <|--- azure_compute_cloud_service
+azure_extension --> azure_cloud_service_vault_and_secret_reference
+azure_load_balancer_configuration --> azure_load_balancer_frontend_ip_configuration
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

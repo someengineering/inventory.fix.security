@@ -1,0 +1,318 @@
+---
+sidebar_label: EC2 Security Group
+---
+
+# `aws_ec2_security_group`
+
+- Categories: Access Control, Networking, Security
+- Service: ec2
+- Provider Link: [EC2 Security Group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
+
+## Description
+
+AWS EC2 Security Groups are virtual firewalls that control inbound and outbound traffic for EC2 instances. They act at the instance level, specifying which protocols, ports, and IP ranges can communicate with the associated instances. Security Groups operate on a deny-all-by-default principle, requiring explicit rules to permit traffic, and can be modified while instances are running.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Security Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+class security_group {
+
+}
+aws_resource <|--- aws_ec2_security_group
+security_group <|--- aws_ec2_security_group
+resource <|--- aws_resource
+resource <|--- security_group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Security Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ecs_service {
+
+}
+class aws_elasticache_cache_cluster {
+
+}
+class aws_elb {
+
+}
+class aws_lambda_function {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_rds_cluster {
+
+}
+class aws_rds_instance {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_region {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_model {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_ec2_security_group -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_ec2_security_group -[#1A83AF]-> aws_elasticache_cache_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
+aws_ec2_security_group -[#1A83AF]-> aws_opensearch_domain
+aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_opensearch_domain
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Security Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_ip_permission {
+**from_port**: int64
+**ip_protocol**: string
+**ip_ranges**: aws_ec2_ip_range[]
+**ipv6_ranges**: aws_ec2_ipv6_range[]
+**prefix_list_ids**: aws_ec2_prefix_list_id[]
+**to_port**: int64
+**user_id_group_pairs**: aws_ec2_user_id_group_pair[]
+}
+class aws_ec2_ip_range {
+**cidr_ip**: string
+**description**: string
+}
+class aws_ec2_ipv6_range {
+**cidr_ipv6**: string
+**description**: string
+}
+class aws_ec2_prefix_list_id {
+**description**: string
+**prefix_list_id**: string
+}
+class aws_ec2_security_group {
+**description**: string
+**group_ip_permissions**: aws_ec2_ip_permission[]
+**group_ip_permissions_egress**: aws_ec2_ip_permission[]
+}
+class aws_ec2_user_id_group_pair {
+**description**: string
+**group_id**: string
+**group_name**: string
+**peering_status**: string
+**user_id**: string
+**vpc_id**: string
+**vpc_peering_connection_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class security_group {
+
+}
+aws_ec2_ip_permission --> aws_ec2_ip_range
+aws_ec2_ip_permission --> aws_ec2_ipv6_range
+aws_ec2_ip_permission --> aws_ec2_prefix_list_id
+aws_ec2_ip_permission --> aws_ec2_user_id_group_pair
+aws_ec2_security_group --> aws_ec2_ip_permission
+aws_resource <|--- aws_ec2_security_group
+security_group <|--- aws_ec2_security_group
+resource <|--- aws_resource
+resource <|--- security_group
+
+@enduml
+```
+
+</ZoomPanPinch>

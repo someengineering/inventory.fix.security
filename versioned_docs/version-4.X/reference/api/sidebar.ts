@@ -4,78 +4,85 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: 'doc',
-      id: 'version-4.X/reference/api/fix-inventory-core-rest-api',
+      id: 'reference/api/fix-inventory-core-rest-api',
     },
     {
       type: 'category',
       label: 'graph_search',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/graph-search',
+        id: 'reference/api/graph-search',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-graph-and-return-all-nodes-as-list-this-will-not-contain-any-edges',
+          id: 'reference/api/search-the-graph-and-return-all-nodes-as-list-this-will-not-contain-any-edges',
           label:
             'Search the graph and return all nodes as list (this will not contain any edges)',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-graph-and-return-the-resulting-graph',
+          id: 'reference/api/search-the-graph-and-return-the-resulting-graph',
           label: 'Search the graph and return the resulting graph.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-aggregate-function-on-the-specified-graph-and-return-the-aggregation-result',
+          id: 'reference/api/search-the-aggregate-function-on-the-specified-graph-and-return-the-aggregation-result',
           label:
             'Search the aggregate function on the specified graph and return the aggregation result.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/show-the-structure-of-the-search',
+          id: 'reference/api/show-the-structure-of-the-search',
           label: 'Show the structure of the search',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/explain-the-search-execution-plan',
+          id: 'reference/api/explain-the-search-execution-plan',
           label: 'Explain the search execution plan',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-all-history-events-and-return-them',
+          id: 'reference/api/search-history-events-and-provide-the-number-of-events-over-time',
+          label:
+            'Search history events and provide the number of events over time.',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/search-all-history-events-and-return-them',
           label: 'Search all history events and return them.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-and-aggregate-history-events-and-return-the-aggregation-result',
+          id: 'reference/api/search-and-aggregate-history-events-and-return-the-aggregation-result',
           label:
             'Search and aggregate history events and return the aggregation result.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-graph-and-return-all-possible-attribute-names-for-given-property-path',
+          id: 'reference/api/search-the-graph-and-return-all-possible-attribute-names-for-given-property-path',
           label:
             'Search the graph and return all possible attribute names for given property path.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+          id: 'reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
           label:
             'Search the graph and return all possible attribute values for given property path.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+          id: 'reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
           label:
             'Search the graph and return all possible attribute values for given property path.',
           className: 'api-method post',
@@ -87,68 +94,68 @@ const sidebar: SidebarsConfig = {
       label: 'graph_management',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/graph-management',
+        id: 'reference/api/graph-management',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-graphs',
+          id: 'reference/api/list-all-graphs',
           label: 'List all graphs',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-root-of-a-specific-graph',
+          id: 'reference/api/get-root-of-a-specific-graph',
           label: 'Get root of a specific graph',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/create-a-new-graph',
+          id: 'reference/api/create-a-new-graph',
           label: 'Create a new graph',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-an-existing-graph',
+          id: 'reference/api/delete-an-existing-graph',
           label: 'Delete an existing graph',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes',
+          id: 'reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes',
           label:
             'Merge a given graph with the existing graph under marked merge nodes.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/merge-deferred-edges-by-a-given-task-id',
+          id: 'reference/api/merge-deferred-edges-by-a-given-task-id',
           label: 'Merge deferred edges by a given task id',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes-as-batch-update',
+          id: 'reference/api/merge-a-given-graph-with-the-existing-graph-under-marked-merge-nodes-as-batch-update',
           label:
             'Merge a given graph with the existing graph under marked merge nodes as batch update.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-list-of-all-running-batch-updates',
+          id: 'reference/api/get-a-list-of-all-running-batch-updates',
           label: 'Get a list of all running batch updates',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/commit-a-batch-update',
+          id: 'reference/api/commit-a-batch-update',
           label: 'Commit a batch update',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/abort-a-batch-update',
+          id: 'reference/api/abort-a-batch-update',
           label: 'Abort a batch update',
           className: 'api-method delete',
         },
@@ -159,42 +166,42 @@ const sidebar: SidebarsConfig = {
       label: 'node_management',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/node-management',
+        id: 'reference/api/node-management',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/patch-a-list-of-nodes',
+          id: 'reference/api/patch-a-list-of-nodes',
           label: 'Patch a list of nodes.',
           className: 'api-method patch',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/create-a-new-node-under-the-given-parent-node',
+          id: 'reference/api/create-a-new-node-under-the-given-parent-node',
           label: 'Create a new node under the given parent node',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-node-with-the-given-node-id',
+          id: 'reference/api/get-a-node-with-the-given-node-id',
           label: 'Get a node with the given node id',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/update-a-node-with-the-given-node-id',
+          id: 'reference/api/update-a-node-with-the-given-node-id',
           label: 'Update a node with the given node id',
           className: 'api-method patch',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-a-node-with-the-given-node-id',
+          id: 'reference/api/delete-a-node-with-the-given-node-id',
           label: 'Delete a node with the given node id.',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/patch-a-node-with-the-given-node-id-in-given-section',
+          id: 'reference/api/patch-a-node-with-the-given-node-id-in-given-section',
           label: 'Patch a node with the given node id in given section',
           className: 'api-method patch',
         },
@@ -205,24 +212,24 @@ const sidebar: SidebarsConfig = {
       label: 'model',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/model',
+        id: 'reference/api/model',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-the-currently-defined-model',
+          id: 'reference/api/get-the-currently-defined-model',
           label: 'Get the currently defined model.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/add-or-update-the-current-defined-model',
+          id: 'reference/api/add-or-update-the-current-defined-model',
           label: 'Add or update the current defined model.',
           className: 'api-method patch',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-the-currently-defined-model-as-svg-uml-image',
+          id: 'reference/api/get-the-currently-defined-model-as-svg-uml-image',
           label: 'Get the currently defined model as svg uml image.',
           className: 'api-method get',
         },
@@ -233,36 +240,36 @@ const sidebar: SidebarsConfig = {
       label: 'config',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/config',
+        id: 'reference/api/config',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-all-configuration-keys',
+          id: 'reference/api/get-all-configuration-keys',
           label: 'Get all configuration keys',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-configuration-by-its-id',
+          id: 'reference/api/get-a-configuration-by-its-id',
           label: 'Get a configuration by its id',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/replace-a-configuration-with-given-id',
+          id: 'reference/api/replace-a-configuration-with-given-id',
           label: 'Replace a configuration with given id',
           className: 'api-method put',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/patch-a-configuration-by-its-id',
+          id: 'reference/api/patch-a-configuration-by-its-id',
           label: 'Patch a configuration by its id',
           className: 'api-method patch',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-a-configuration-by-its-id',
+          id: 'reference/api/delete-a-configuration-by-its-id',
           label: 'Delete a configuration by its id',
           className: 'api-method delete',
         },
@@ -273,36 +280,36 @@ const sidebar: SidebarsConfig = {
       label: 'config_validation',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/config-validation',
+        id: 'reference/api/config-validation',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-the-currently-defined-configuration-model',
+          id: 'reference/api/get-the-currently-defined-configuration-model',
           label: 'Get the currently defined configuration model.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/add-or-update-the-current-defined-configuration-model',
+          id: 'reference/api/add-or-update-the-current-defined-configuration-model',
           label: 'Add or update the current defined configuration model.',
           className: 'api-method patch',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-all-configuration-keys-that-have-a-model-defined',
+          id: 'reference/api/get-all-configuration-keys-that-have-a-model-defined',
           label: 'Get all configuration keys that have a model defined.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-configuration-validation-by-its-id',
+          id: 'reference/api/get-a-configuration-validation-by-its-id',
           label: 'Get a configuration validation by its id',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/replace-a-configuration-validation-with-given-id',
+          id: 'reference/api/replace-a-configuration-validation-with-given-id',
           label: 'Replace a configuration validation with given id',
           className: 'api-method put',
         },
@@ -313,24 +320,24 @@ const sidebar: SidebarsConfig = {
       label: 'cli',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/cli',
+        id: 'reference/api/cli',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/evaluate-a-cli-command',
+          id: 'reference/api/evaluate-a-cli-command',
           label: 'Evaluate a cli command',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/execute-a-cli-command',
+          id: 'reference/api/execute-a-cli-command',
           label: 'Execute a cli command',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-information-about-cli',
+          id: 'reference/api/get-information-about-cli',
           label: 'Get information about CLI',
           className: 'api-method get',
         },
@@ -341,54 +348,54 @@ const sidebar: SidebarsConfig = {
       label: 'subscriptions',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/subscriptions',
+        id: 'reference/api/subscriptions',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-subscriptions',
+          id: 'reference/api/list-all-subscriptions',
           label: 'List all subscriptions',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-subscribers-for-a-given-event-type',
+          id: 'reference/api/list-all-subscribers-for-a-given-event-type',
           label: 'List all subscribers for a given event type',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-subscriber-by-id',
+          id: 'reference/api/get-subscriber-by-id',
           label: 'Get subscriber by id',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/define-subscriber-with-all-subscriptions',
+          id: 'reference/api/define-subscriber-with-all-subscriptions',
           label: 'Define subscriber with all subscriptions',
           className: 'api-method put',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-by-id',
+          id: 'reference/api/delete-by-id',
           label: 'Delete by id',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/add-subscription-to-subscriber',
+          id: 'reference/api/add-subscription-to-subscriber',
           label: 'Add subscription to subscriber',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-a-specific-subscription-from-the-subscriber',
+          id: 'reference/api/delete-a-specific-subscription-from-the-subscriber',
           label: 'Delete a specific subscription from the subscriber.',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/web-socket-listen-to-registered-events-of-given-subscriber',
+          id: 'reference/api/web-socket-listen-to-registered-events-of-given-subscriber',
           label: '[WebSocket] Listen to registered events of given subscriber',
           className: 'api-method get',
         },
@@ -399,18 +406,18 @@ const sidebar: SidebarsConfig = {
       label: 'work_queue',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/work-queue',
+        id: 'reference/api/work-queue',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/web-socket-attach-to-the-working-queue',
+          id: 'reference/api/web-socket-attach-to-the-working-queue',
           label: '[WebSocket] Attach to the working queue',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-outstanding-work-items',
+          id: 'reference/api/list-all-outstanding-work-items',
           label: 'List all outstanding work items',
           className: 'api-method get',
         },
@@ -421,18 +428,18 @@ const sidebar: SidebarsConfig = {
       label: 'certificate',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/certificate',
+        id: 'reference/api/certificate',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/retrieve-the-certificate-authorities-public-certificate',
+          id: 'reference/api/retrieve-the-certificate-authorities-public-certificate',
           label: 'Retrieve the certificate authorities public certificate.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/sign-a-certificate-request',
+          id: 'reference/api/sign-a-certificate-request',
           label: 'Sign a certificate request.',
           className: 'api-method post',
         },
@@ -443,72 +450,72 @@ const sidebar: SidebarsConfig = {
       label: 'report',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/report',
+        id: 'reference/api/report',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-checks',
+          id: 'reference/api/list-all-checks',
           label: 'List all checks.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-check-by-its-id',
+          id: 'reference/api/get-a-check-by-its-id',
           label: 'Get a check by its id.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/create-or-replace-a-check-by-its-id',
+          id: 'reference/api/create-or-replace-a-check-by-its-id',
           label: 'Create or replace a check by its id.',
           className: 'api-method put',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-a-check-by-its-id',
+          id: 'reference/api/delete-a-check-by-its-id',
           label: 'Delete a check by its id.',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-available-benchmarks',
+          id: 'reference/api/list-available-benchmarks',
           label: 'List available benchmarks.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-a-benchmark-by-its-id',
+          id: 'reference/api/get-a-benchmark-by-its-id',
           label: 'Get a benchmark by its id.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/create-or-replace-a-benchmark-by-its-id',
+          id: 'reference/api/create-or-replace-a-benchmark-by-its-id',
           label: 'Create or replace a benchmark by its id.',
           className: 'api-method put',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/delete-a-benchmark-by-its-id',
+          id: 'reference/api/delete-a-benchmark-by-its-id',
           label: 'Delete a benchmark by its id.',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/perform-a-benchmark-on-a-graph',
+          id: 'reference/api/perform-a-benchmark-on-a-graph',
           label: 'Perform a benchmark on a graph.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/list-all-resources-that-match-a-given-check',
+          id: 'reference/api/list-all-resources-that-match-a-given-check',
           label: 'List all resources that match a given check.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/perform-a-dynamically-assembled-benchmark-on-a-graph',
+          id: 'reference/api/perform-a-dynamically-assembled-benchmark-on-a-graph',
           label: 'Perform a dynamically assembled benchmark on a graph.',
           className: 'api-method get',
         },
@@ -519,32 +526,32 @@ const sidebar: SidebarsConfig = {
       label: 'system',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/system',
+        id: 'reference/api/system',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/send-analytics-events-to-the-server',
+          id: 'reference/api/send-analytics-events-to-the-server',
           label: 'Send analytics events to the server',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/web-socket-register-as-event-listener-and-receive-all-events',
+          id: 'reference/api/web-socket-register-as-event-listener-and-receive-all-events',
           label:
             '[WebSocket] Register as event listener and receive all events.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-signals-if-the-system-is-ready-to-serve-traffic',
+          id: 'reference/api/this-endpoint-signals-if-the-system-is-ready-to-serve-traffic',
           label:
             'This endpoint signals if the system is ready to serve traffic.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/send-a-ping-to-the-system-and-expect-a-pong',
+          id: 'reference/api/send-a-ping-to-the-system-and-expect-a-pong',
           label: 'Send a ping to the system and expect a pong.',
           className: 'api-method get',
         },
@@ -555,12 +562,12 @@ const sidebar: SidebarsConfig = {
       label: 'debug',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/debug',
+        id: 'reference/api/debug',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/transform-the-search-into-the-raw-database-search',
+          id: 'reference/api/transform-the-search-into-the-raw-database-search',
           label: 'Transform the search into the raw database search',
           className: 'api-method post',
         },
@@ -571,12 +578,12 @@ const sidebar: SidebarsConfig = {
       label: 'timeseries',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/timeseries',
+        id: 'reference/api/timeseries',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/load-time-series-data',
+          id: 'reference/api/load-time-series-data',
           label: 'Load time series data.',
           className: 'api-method post',
         },
@@ -587,36 +594,36 @@ const sidebar: SidebarsConfig = {
       label: 'tsdb',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/tsdb',
+        id: 'reference/api/tsdb',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+          id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
           label: 'Proxy request to a configured tsdb server.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+          id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
           label: 'Proxy request to a configured tsdb server.',
           className: 'api-method put',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+          id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
           label: 'Proxy request to a configured tsdb server.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+          id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
           label: 'Proxy request to a configured tsdb server.',
           className: 'api-method delete',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+          id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
           label: 'Proxy request to a configured tsdb server.',
           className: 'api-method patch',
         },
@@ -627,42 +634,42 @@ const sidebar: SidebarsConfig = {
       label: 'authorization',
       link: {
         type: 'doc',
-        id: 'version-4.X/reference/api/authorization',
+        id: 'reference/api/authorization',
       },
       items: [
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/get-the-public-keys-of-the-configured-jwt-issuer',
+          id: 'reference/api/get-the-public-keys-of-the-configured-jwt-issuer',
           label: 'Get the public keys of the configured JWT issuer.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-is-used-to-login-the-user',
+          id: 'reference/api/this-endpoint-is-used-to-login-the-user',
           label: 'This endpoint is used to login the user.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-is-used-to-create-the-first-user',
+          id: 'reference/api/this-endpoint-is-used-to-create-the-first-user',
           label: 'This endpoint is used to create the first user.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-is-used-to-authenticate-the-user',
+          id: 'reference/api/this-endpoint-is-used-to-authenticate-the-user',
           label: 'This endpoint is used to authenticate the user.',
           className: 'api-method post',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-is-used-to-get-the-user-information',
+          id: 'reference/api/this-endpoint-is-used-to-get-the-user-information',
           label: 'This endpoint is used to get the user information.',
           className: 'api-method get',
         },
         {
           type: 'doc',
-          id: 'version-4.X/reference/api/this-endpoint-is-used-to-renew-a-jwt-that-is-about-to-expire',
+          id: 'reference/api/this-endpoint-is-used-to-renew-a-jwt-that-is-about-to-expire',
           label:
             'This endpoint is used to renew a JWT that is about to expire.',
           className: 'api-method get',

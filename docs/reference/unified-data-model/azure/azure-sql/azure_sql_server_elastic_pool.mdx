@@ -1,0 +1,184 @@
+---
+sidebar_label: SQL Server Elastic Pool
+---
+
+# `azure_sql_server_elastic_pool`
+
+- Categories: Compute
+- Service: azure-sql
+- Provider Link: [SQL Server Elastic Pool](https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview)
+
+## Description
+
+Azure SQL Server Elastic Pool is a resource management tool for multiple SQL databases. It allocates a shared set of compute and storage resources across databases, optimizing performance and costs. Administrators can set resource limits for the pool and individual databases, adjusting capacity as needed without affecting application availability or performance.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Server Elastic Pool"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server_elastic_pool {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_sql_server_elastic_pool
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Elastic Pool resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_sql_server {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_elastic_pool {
+
+}
+azure_sql_server -[#1A83AF]-> azure_sql_server_database
+azure_sql_server -[#1A83AF]-> azure_sql_server_elastic_pool
+azure_sql_server_elastic_pool -[#1A83AF]-> azure_sql_server_database
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Server Elastic Pool data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_elastic_pool_per_database_settings {
+**max_capacity**: double
+**min_capacity**: double
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_sql_server_elastic_pool {
+**creation_date**: datetime
+**elastic_pool_kind**: string
+**elastic_pool_sku**: azure_sku
+**high_availability_replica_count**: int64
+**license_type**: string
+**location**: string
+**maintenance_configuration_id**: string
+**max_size_bytes**: int64
+**min_capacity**: double
+**per_database_settings**: azure_elastic_pool_per_database_settings
+**state**: string
+**type**: string
+**zone_redundant**: boolean
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_sql_server_elastic_pool --> azure_elastic_pool_per_database_settings
+azure_sql_server_elastic_pool --> azure_sku
+microsoft_resource <|--- azure_sql_server_elastic_pool
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

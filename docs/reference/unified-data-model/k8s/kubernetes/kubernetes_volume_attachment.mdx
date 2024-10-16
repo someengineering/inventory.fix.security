@@ -1,0 +1,173 @@
+---
+sidebar_label: Volume Attachment
+---
+
+# `kubernetes_volume_attachment`
+
+- Categories: Other
+- Service: kubernetes
+
+## Description
+
+Kubernetes Volume Attachment is a resource that allows persistent volumes to be attached to a pod in a Kubernetes cluster.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Volume Attachment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource {
+
+}
+class kubernetes_volume_attachment {
+
+}
+class resource {
+
+}
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_volume_attachment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Volume Attachment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cluster {
+
+}
+class kubernetes_volume_attachment {
+
+}
+kubernetes_cluster -[#1A83AF]-> kubernetes_volume_attachment
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Volume Attachment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class kubernetes_volume_attachment {
+**volume_attachment_spec**: kubernetes_volume_attachment_spec
+**volume_attachment_status**: kubernetes_volume_attachment_status
+}
+class kubernetes_volume_attachment_spec {
+**attacher**: string
+**node_name**: string
+**source**: any
+}
+class kubernetes_volume_attachment_status {
+**attach_error**: kubernetes_volume_error
+**attached**: boolean
+**attachment_metadata**: any
+**detach_error**: kubernetes_volume_error
+}
+class kubernetes_volume_error {
+**message**: string
+**time**: datetime
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_volume_attachment
+kubernetes_volume_attachment --> kubernetes_volume_attachment_spec
+kubernetes_volume_attachment --> kubernetes_volume_attachment_status
+kubernetes_volume_attachment_status --> kubernetes_volume_error
+
+@enduml
+```
+
+</ZoomPanPinch>

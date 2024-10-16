@@ -1,0 +1,196 @@
+---
+sidebar_label: Network Express Route Cross Connection
+---
+
+# `azure_network_express_route_cross_connection`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Express Route Cross Connection](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-cross-connections-overview)
+
+## Description
+
+Azure Network Express Route Cross Connection is a service that links on-premises networks to Microsoft Azure through a dedicated private connection. It bypasses the public internet, providing direct access to Azure services with increased reliability, lower latency, and higher security. This connection supports various network protocols and can be used for data transfer, application hosting, and disaster recovery.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Express Route Cross Connection"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_cross_connection {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_express_route_cross_connection
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Cross Connection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_express_route_cross_connection {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Express Route Cross Connection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_express_route_circuit_peering_config {
+**advertised_communities**: string[]
+**advertised_public_prefixes**: string[]
+**advertised_public_prefixes_state**: string
+**customer_asn**: int64
+**legacy_mode**: int64
+**routing_registry_name**: string
+}
+class azure_express_route_cross_connection_peering {
+**azure_asn**: int64
+**etag**: string
+**gateway_manager_etag**: string
+**ipv6_peering_config**: azure_ipv6_express_route_circuit_peering_config
+**last_modified_by**: string
+**microsoft_peering_config**: azure_express_route_circuit_peering_config
+**name**: string
+**peer_asn**: int64
+**peering_type**: string
+**primary_azure_port**: string
+**primary_peer_address_prefix**: string
+**provisioning_state**: string
+**secondary_azure_port**: string
+**secondary_peer_address_prefix**: string
+**shared_key**: string
+**state**: string
+**vlan_id**: int64
+}
+class azure_ipv6_express_route_circuit_peering_config {
+**microsoft_peering_config**: azure_express_route_circuit_peering_config
+**primary_peer_address_prefix**: string
+**route_filter**: string
+**secondary_peer_address_prefix**: string
+**state**: string
+}
+class azure_network_express_route_cross_connection {
+**bandwidth_in_mbps**: int64
+**cross_connection_peerings**: azure_express_route_cross_connection_peering[]
+**express_route_circuit**: string
+**peering_location**: string
+**primary_azure_port**: string
+**s_tag**: int64
+**secondary_azure_port**: string
+**service_provider_notes**: string
+**service_provider_provisioning_state**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_express_route_cross_connection_peering --> azure_express_route_circuit_peering_config
+azure_express_route_cross_connection_peering --> azure_ipv6_express_route_circuit_peering_config
+azure_ipv6_express_route_circuit_peering_config --> azure_express_route_circuit_peering_config
+azure_network_express_route_cross_connection --> azure_express_route_cross_connection_peering
+microsoft_resource <|--- azure_network_express_route_cross_connection
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

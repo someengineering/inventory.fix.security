@@ -1,0 +1,100 @@
+---
+sidebar_label: Instance
+---
+
+# `instance`
+
+- Categories: Compute
+
+## Description
+
+An instance.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance {
+
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class digitalocean_droplet {
+
+}
+class gcp_instance {
+
+}
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class kubernetes_node {
+
+}
+class onprem_instance {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class vsphere_instance {
+
+}
+instance <|--- aws_ec2_instance
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine
+instance <|--- azure_compute_virtual_machine_base
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine_scale_set_instance
+instance <|--- digitalocean_droplet
+instance <|--- gcp_instance
+resource <|--- instance
+instance <|--- kubernetes_node
+instance <|--- onprem_instance
+instance <|--- vsphere_instance
+
+@enduml
+```
+
+</ZoomPanPinch>

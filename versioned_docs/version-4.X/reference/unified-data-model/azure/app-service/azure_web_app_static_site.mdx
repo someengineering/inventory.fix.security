@@ -1,0 +1,264 @@
+---
+sidebar_label: Web App Static Site
+---
+
+# `azure_web_app_static_site`
+
+- Categories: Compute
+- Service: app-service
+- Provider Link: [Web App Static Site](https://learn.microsoft.com/en-us/azure/static-web-apps/)
+
+## Description
+
+Azure Web App Static Site is a service for hosting static web content. It offers global content distribution, automated builds and deployments from code repositories, and integration with Azure services. Users can deploy HTML, CSS, JavaScript, and image files directly from their repositories, with support for custom domains and free SSL certificates.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web App Static Site"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_app_static_site {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_app_static_site
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App Static Site resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_app_static_site {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web App Static Site data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_database_connection_overview {
+**configuration_files**: azure_static_site_database_connection_configuration_file_overview[]
+**connection_identity**: string
+**name**: string
+**region**: string
+**resource_id**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_static_site_build_properties {
+**api_build_command**: string
+**api_location**: string
+**app_artifact_location**: string
+**app_build_command**: string
+**app_location**: string
+**github_action_secret_name_override**: string
+**output_location**: string
+**skip_github_action_workflow_generation**: boolean
+}
+class azure_static_site_database_connection_configuration_file_overview {
+**contents**: string
+**file_name**: string
+**type**: string
+}
+class azure_static_site_linked_backend {
+**backend_resource_id**: string
+**created_on**: datetime
+**provisioning_state**: string
+**region**: string
+}
+class azure_static_site_template_options {
+**description**: string
+**is_private**: boolean
+**owner**: string
+**repository_name**: string
+**template_repository_url**: string
+}
+class azure_static_site_user_provided_function_app {
+**created_on**: datetime
+**function_app_region**: string
+**function_app_resource_id**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_web_app_static_site {
+**allow_config_file_updates**: boolean
+**azure_kind**: string
+**azure_sku**: azure_sku
+**branch**: string
+**build_properties**: azure_static_site_build_properties
+**content_distribution_endpoint**: string
+**custom_domains**: string[]
+**database_connections**: azure_database_connection_overview[]
+**default_hostname**: string
+**enterprise_grade_cdn_status**: string
+**identity**: azure_identity
+**key_vault_reference_identity**: string
+**linked_backends**: azure_static_site_linked_backend[]
+**private_endpoint_connections**: azure_private_endpoint_connection[]
+**provider**: string
+**public_network_access**: string
+**repository_token**: string
+**repository_url**: string
+**site_template_properties**: azure_static_site_template_options
+**staging_environment_policy**: string
+**user_provided_function_apps**: azure_static_site_user_provided_function_app[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_database_connection_overview --> azure_static_site_database_connection_configuration_file_overview
+azure_identity --> azure_user_assigned_identity
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+azure_web_app_static_site --> azure_database_connection_overview
+azure_web_app_static_site --> azure_identity
+azure_web_app_static_site --> azure_private_endpoint_connection
+azure_web_app_static_site --> azure_sku
+azure_web_app_static_site --> azure_static_site_build_properties
+azure_web_app_static_site --> azure_static_site_linked_backend
+azure_web_app_static_site --> azure_static_site_template_options
+azure_web_app_static_site --> azure_static_site_user_provided_function_app
+microsoft_resource <|--- azure_web_app_static_site
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

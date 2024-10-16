@@ -1,0 +1,326 @@
+---
+sidebar_label: SageMaker Endpoint
+---
+
+# `aws_sagemaker_endpoint`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Endpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+
+## Description
+
+AWS SageMaker Endpoint is a fully managed service for deploying machine learning models. It provides an HTTPS endpoint for real-time predictions, handles scaling and load balancing, and supports multiple instance types. Users can deploy models trained in SageMaker or other platforms, monitor performance, and update models without downtime. It integrates with other AWS services for logging and security.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Endpoint"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Endpoint resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloudwatch_alarm {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sns_topic {
+
+}
+aws_sagemaker_endpoint -[#1A83AF]-> aws_cloudwatch_alarm
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Endpoint data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_async_inference_config {
+**client_config**: int64
+**output_config**: aws_sagemaker_async_inference_output_config
+}
+class aws_sagemaker_async_inference_notification_config {
+**error_topic**: string
+**success_topic**: string
+}
+class aws_sagemaker_async_inference_output_config {
+**kms_key_id**: string
+**notification_config**: aws_sagemaker_async_inference_notification_config
+**s3_output_path**: string
+}
+class aws_sagemaker_auto_rollback_config {
+**alarms**: string[]
+}
+class aws_sagemaker_blue_green_update_policy {
+**maximum_execution_timeout_in_seconds**: int64
+**termination_wait_in_seconds**: int64
+**traffic_routing_configuration**: aws_sagemaker_traffic_routing_config
+}
+class aws_sagemaker_capacity_size {
+**type**: string
+**value**: int64
+}
+class aws_sagemaker_clarify_explainer_config {
+**enable_explanations**: string
+**inference_config**: aws_sagemaker_clarify_inference_config
+**shap_config**: aws_sagemaker_clarify_shap_config
+}
+class aws_sagemaker_clarify_inference_config {
+**content_template**: string
+**feature_headers**: string[]
+**feature_types**: string[]
+**features_attribute**: string
+**label_attribute**: string
+**label_headers**: string[]
+**label_index**: int64
+**max_payload_in_mb**: int64
+**max_record_count**: int64
+**probability_attribute**: string
+**probability_index**: int64
+}
+class aws_sagemaker_clarify_shap_baseline_config {
+**mime_type**: string
+**shap_baseline**: string
+**shap_baseline_uri**: string
+}
+class aws_sagemaker_clarify_shap_config {
+**number_of_samples**: int64
+**seed**: int64
+**shap_baseline_config**: aws_sagemaker_clarify_shap_baseline_config
+**text_config**: aws_sagemaker_clarify_text_config
+**use_logit**: boolean
+}
+class aws_sagemaker_clarify_text_config {
+**granularity**: string
+**language**: string
+}
+class aws_sagemaker_data_capture_config_summary {
+**capture_status**: string
+**current_sampling_percentage**: int64
+**destination_s3_uri**: string
+**enable_capture**: boolean
+**kms_key_id**: string
+}
+class aws_sagemaker_deployed_image {
+**resolution_time**: datetime
+**resolved_image**: string
+**specified_image**: string
+}
+class aws_sagemaker_deployment_config {
+**auto_rollback_configuration**: aws_sagemaker_auto_rollback_config
+**blue_green_update_policy**: aws_sagemaker_blue_green_update_policy
+}
+class aws_sagemaker_endpoint {
+**endpoint_async_inference_config**: aws_sagemaker_async_inference_config
+**endpoint_config_name**: string
+**endpoint_data_capture_config**: aws_sagemaker_data_capture_config_summary
+**endpoint_explainer_config**: aws_sagemaker_explainer_config
+**endpoint_failure_reason**: string
+**endpoint_last_deployment_config**: aws_sagemaker_deployment_config
+**endpoint_pending_deployment_summary**: aws_sagemaker_pending_deployment_summary
+**endpoint_production_variants**: aws_sagemaker_production_variant_summary[]
+**endpoint_status**: string
+}
+class aws_sagemaker_explainer_config {
+**clarify_explainer_config**: aws_sagemaker_clarify_explainer_config
+}
+class aws_sagemaker_pending_deployment_summary {
+**endpoint_config_name**: string
+**production_variants**: aws_sagemaker_pending_production_variant_summary[]
+**start_time**: datetime
+}
+class aws_sagemaker_pending_production_variant_summary {
+**accelerator_type**: string
+**current_instance_count**: int64
+**current_serverless_config**: aws_sagemaker_production_variant_serverless_config
+**current_weight**: double
+**deployed_images**: aws_sagemaker_deployed_image[]
+**desired_instance_count**: int64
+**desired_serverless_config**: aws_sagemaker_production_variant_serverless_config
+**desired_weight**: double
+**instance_type**: string
+**variant_name**: string
+**variant_status**: aws_sagemaker_production_variant_status[]
+}
+class aws_sagemaker_production_variant_serverless_config {
+**max_concurrency**: int64
+**memory_size_in_mb**: int64
+}
+class aws_sagemaker_production_variant_status {
+**start_time**: datetime
+**status**: string
+**status_message**: string
+}
+class aws_sagemaker_production_variant_summary {
+**current_instance_count**: int64
+**current_serverless_config**: aws_sagemaker_production_variant_serverless_config
+**current_weight**: double
+**deployed_images**: aws_sagemaker_deployed_image[]
+**desired_instance_count**: int64
+**desired_serverless_config**: aws_sagemaker_production_variant_serverless_config
+**desired_weight**: double
+**variant_name**: string
+**variant_status**: aws_sagemaker_production_variant_status[]
+}
+class aws_sagemaker_traffic_routing_config {
+**canary_size**: aws_sagemaker_capacity_size
+**linear_step_size**: aws_sagemaker_capacity_size
+**type**: string
+**wait_interval_in_seconds**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_async_inference_config --> aws_sagemaker_async_inference_output_config
+aws_sagemaker_async_inference_output_config --> aws_sagemaker_async_inference_notification_config
+aws_sagemaker_blue_green_update_policy --> aws_sagemaker_traffic_routing_config
+aws_sagemaker_clarify_explainer_config --> aws_sagemaker_clarify_inference_config
+aws_sagemaker_clarify_explainer_config --> aws_sagemaker_clarify_shap_config
+aws_sagemaker_clarify_shap_config --> aws_sagemaker_clarify_shap_baseline_config
+aws_sagemaker_clarify_shap_config --> aws_sagemaker_clarify_text_config
+aws_sagemaker_deployment_config --> aws_sagemaker_auto_rollback_config
+aws_sagemaker_deployment_config --> aws_sagemaker_blue_green_update_policy
+aws_resource <|--- aws_sagemaker_endpoint
+aws_sagemaker_endpoint --> aws_sagemaker_async_inference_config
+aws_sagemaker_endpoint --> aws_sagemaker_data_capture_config_summary
+aws_sagemaker_endpoint --> aws_sagemaker_deployment_config
+aws_sagemaker_endpoint --> aws_sagemaker_explainer_config
+aws_sagemaker_endpoint --> aws_sagemaker_pending_deployment_summary
+aws_sagemaker_endpoint --> aws_sagemaker_production_variant_summary
+aws_sagemaker_explainer_config --> aws_sagemaker_clarify_explainer_config
+aws_sagemaker_pending_deployment_summary --> aws_sagemaker_pending_production_variant_summary
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_deployed_image
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_status
+aws_sagemaker_production_variant_summary --> aws_sagemaker_deployed_image
+aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
+aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_status
+aws_sagemaker_traffic_routing_config --> aws_sagemaker_capacity_size
+
+@enduml
+```
+
+</ZoomPanPinch>

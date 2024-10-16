@@ -1,0 +1,280 @@
+---
+sidebar_label: Network Firewall
+---
+
+# `azure_network_firewall`
+
+- Categories: Networking, Security
+- Service: networking
+- Provider Link: [Network Firewall](https://docs.microsoft.com/en-us/azure/firewall/)
+
+## Description
+
+Azure Network Firewall is a cloud-based security service that protects Azure Virtual Network resources. It filters incoming and outgoing traffic using stateful inspection, application-level filtering, and threat intelligence. The firewall supports both IPv4 and IPv6 protocols, implements network address translation, and provides logging and analytics capabilities for monitoring network activity.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Firewall"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_firewall {
+
+}
+class firewall {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+firewall <|--- azure_network_firewall
+microsoft_resource <|--- azure_network_firewall
+resource <|--- firewall
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Firewall resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_firewall {
+
+}
+class azure_network_firewall_policy {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_hub {
+
+}
+azure_network_firewall -[#1A83AF]-> azure_network_firewall_policy
+azure_network_firewall -[#1A83AF]-> azure_network_virtual_hub
+azure_network_subnet -[#1A83AF]-> azure_network_firewall
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Firewall data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_firewall_application_rule {
+**description**: string
+**fqdn_tags**: string[]
+**name**: string
+**protocols**: azure_firewall_application_rule_protocol[]
+**source_addresses**: string[]
+**source_ip_groups**: string[]
+**target_fqdns**: string[]
+}
+class azure_firewall_application_rule_collection {
+**action**: string
+**etag**: string
+**name**: string
+**priority**: int64
+**provisioning_state**: string
+**rules**: azure_firewall_application_rule[]
+}
+class azure_firewall_application_rule_protocol {
+**port**: int64
+**protocol_type**: string
+}
+class azure_firewall_ip_configuration {
+**etag**: string
+**name**: string
+**private_ip_address**: string
+**provisioning_state**: string
+**public_ip_address**: string
+**subnet**: string
+**type**: string
+}
+class azure_firewall_ip_groups {
+**change_number**: string
+**id**: string
+}
+class azure_firewall_nat_rule {
+**description**: string
+**destination_addresses**: string[]
+**destination_ports**: string[]
+**name**: string
+**protocols**: string[]
+**source_addresses**: string[]
+**source_ip_groups**: string[]
+**translated_address**: string
+**translated_fqdn**: string
+**translated_port**: string
+}
+class azure_firewall_nat_rule_collection {
+**action**: string
+**etag**: string
+**name**: string
+**priority**: int64
+**provisioning_state**: string
+**rules**: azure_firewall_nat_rule[]
+}
+class azure_firewall_network_rule {
+**description**: string
+**destination_addresses**: string[]
+**destination_fqdns**: string[]
+**destination_ip_groups**: string[]
+**destination_ports**: string[]
+**name**: string
+**protocols**: string[]
+**source_addresses**: string[]
+**source_ip_groups**: string[]
+}
+class azure_firewall_network_rule_collection {
+**action**: string
+**etag**: string
+**name**: string
+**priority**: int64
+**provisioning_state**: string
+**rules**: azure_firewall_network_rule[]
+}
+class azure_firewall_sku {
+**name**: string
+**tier**: string
+}
+class azure_hub_ip_addresses {
+**private_ip_address**: string
+**public_i_ps**: azure_hub_public_ip_addresses
+}
+class azure_hub_public_ip_addresses {
+**addresses**: string[]
+**count**: int64
+}
+class azure_network_firewall {
+**additional_properties**: dictionary[string, string]
+**application_rule_collections**: azure_firewall_application_rule_collection[]
+**firewall_ip_configurations**: azure_firewall_ip_configuration[]
+**firewall_policy**: string
+**firewall_sku**: azure_firewall_sku
+**hub_ip_addresses**: azure_hub_ip_addresses
+**ip_groups**: azure_firewall_ip_groups[]
+**management_ip_configuration**: azure_firewall_ip_configuration
+**nat_rule_collections**: azure_firewall_nat_rule_collection[]
+**network_rule_collections**: azure_firewall_network_rule_collection[]
+**threat_intel_mode**: string
+**virtual_hub**: string
+}
+class firewall {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_firewall_application_rule --> azure_firewall_application_rule_protocol
+azure_firewall_application_rule_collection --> azure_firewall_application_rule
+azure_firewall_nat_rule_collection --> azure_firewall_nat_rule
+azure_firewall_network_rule_collection --> azure_firewall_network_rule
+azure_hub_ip_addresses --> azure_hub_public_ip_addresses
+azure_network_firewall --> azure_firewall_application_rule_collection
+azure_network_firewall --> azure_firewall_ip_configuration
+azure_network_firewall --> azure_firewall_ip_groups
+azure_network_firewall --> azure_firewall_nat_rule_collection
+azure_network_firewall --> azure_firewall_network_rule_collection
+azure_network_firewall --> azure_firewall_sku
+azure_network_firewall --> azure_hub_ip_addresses
+firewall <|--- azure_network_firewall
+microsoft_resource <|--- azure_network_firewall
+resource <|--- firewall
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

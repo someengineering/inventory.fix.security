@@ -1,0 +1,386 @@
+---
+sidebar_label: KMS Key
+---
+
+# `aws_kms_key`
+
+- Categories: Access Control, Management, Security
+- Service: kms
+- Provider Link: [KMS Key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#kms_keys)
+
+## Description
+
+AWS KMS Key is a managed service that creates and controls cryptographic keys used to protect data in AWS services and applications. It generates, stores, and manages keys for encryption and decryption operations. KMS Keys integrate with other AWS services, providing a centralized system for key management and helping users meet compliance requirements for data security and access control.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of KMS Key"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class access_key {
+
+}
+class aws_kms_key {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+resource <|--- access_key
+access_key <|--- aws_kms_key
+aws_resource <|--- aws_kms_key
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of KMS Key resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_work_group {
+
+}
+class aws_bedrock_agent {
+
+}
+class aws_bedrock_agent_flow {
+
+}
+class aws_bedrock_agent_flow_version {
+
+}
+class aws_bedrock_agent_prompt {
+
+}
+class aws_bedrock_agent_version {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_bedrock_evaluation_job {
+
+}
+class aws_bedrock_guardrail {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_cloud_trail {
+
+}
+class aws_cloudwatch_log_group {
+
+}
+class aws_cognito_user_pool {
+
+}
+class aws_dynamodb_global_table {
+
+}
+class aws_dynamodb_table {
+
+}
+class aws_ec2_snapshot {
+
+}
+class aws_ec2_volume {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_efs_file_system {
+
+}
+class aws_elasticache_replication_group {
+
+}
+class aws_glacier_job {
+
+}
+class aws_kinesis_stream {
+
+}
+class aws_kms_key {
+
+}
+class aws_lambda_function {
+
+}
+class aws_rds_cluster {
+
+}
+class aws_rds_cluster_snapshot {
+
+}
+class aws_rds_instance {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class aws_secretsmanager_secret {
+
+}
+class aws_sns_topic {
+
+}
+class aws_sqs_queue {
+
+}
+aws_athena_work_group -[#1A83AF]-> aws_kms_key
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_flow -[#1A83AF]-> aws_bedrock_agent_flow_version
+aws_bedrock_agent_flow -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_flow -[#1A83AF]-> aws_lambda_function
+aws_bedrock_agent_flow_version -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_bedrock_custom_model
+aws_bedrock_agent_prompt -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
+aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_bedrock_custom_model -[#1A83AF]-> aws_kms_key
+aws_bedrock_evaluation_job -[#1A83AF]-> aws_kms_key
+aws_bedrock_guardrail -[#1A83AF]-> aws_kms_key
+aws_bedrock_model_customization_job -[#1A83AF]-> aws_kms_key
+aws_cloud_trail -[#1A83AF]-> aws_kms_key
+aws_cloud_trail -[#1A83AF]-> aws_sns_topic
+aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
+aws_dynamodb_global_table -[#1A83AF]-> aws_kms_key
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_ecs_cluster -[#1A83AF]-> aws_kms_key
+aws_efs_file_system -[#1A83AF]-> aws_kms_key
+aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
+aws_glacier_job -[#1A83AF]-> aws_kms_key
+aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_lambda_function -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
+aws_rds_cluster -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_rds_cluster_snapshot
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_cluster_snapshot -[#1A83AF]-> aws_kms_key
+aws_rds_instance -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_compilation_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_notebook -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
+aws_secretsmanager_secret -[#1A83AF]-> aws_kms_key
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+aws_sqs_queue -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of KMS Key data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class access_key {
+**access_key_status**: string
+}
+class aws_kms_key {
+**kms_aws_account_id**: string
+**kms_cloud_hsm_cluster_id**: string
+**kms_custom_key_store_id**: string
+**kms_customer_master_key_spec**: string
+**kms_deletion_date**: string
+**kms_description**: string
+**kms_enabled**: boolean
+**kms_encryption_algorithms**: string[]
+**kms_expiration_model**: string
+**kms_key_manager**: string
+**kms_key_policy**: dictionary[string, any]
+**kms_key_rotation_enabled**: boolean
+**kms_key_spec**: string
+**kms_key_usage**: string
+**kms_mac_algorithms**: string[]
+**kms_multi_region**: boolean
+**kms_multiregion_configuration**: aws_kms_multiregion_config
+**kms_origin**: string
+**kms_pending_deletion_window_in_days**: int64
+**kms_signing_algorithms**: string[]
+**kms_valid_to**: string
+}
+class aws_kms_multiregion_config {
+**multi_region_key_type**: string
+**primary_key**: aws_kms_multiregion_primary_key
+**replica_keys**: aws_kms_multiregion_replica_key[]
+}
+class aws_kms_multiregion_primary_key {
+**arn**: string
+**region**: string
+}
+class aws_kms_multiregion_replica_key {
+**arn**: string
+**region**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- access_key
+access_key <|--- aws_kms_key
+aws_kms_key --> aws_kms_multiregion_config
+aws_resource <|--- aws_kms_key
+aws_kms_multiregion_config --> aws_kms_multiregion_primary_key
+aws_kms_multiregion_config --> aws_kms_multiregion_replica_key
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

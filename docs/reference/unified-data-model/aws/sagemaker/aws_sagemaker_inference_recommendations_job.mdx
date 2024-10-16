@@ -1,0 +1,299 @@
+---
+sidebar_label: SageMaker Inference Recommendations Job
+---
+
+# `aws_sagemaker_inference_recommendations_job`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Inference Recommendations Job](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+
+## Description
+
+AWS SageMaker Inference Recommendations Job is a feature that analyzes machine learning models and suggests optimal configurations for deployment. It evaluates model performance across different instance types and sizes, considering factors like latency and throughput. The job provides recommendations for instance selection and endpoint configuration to optimize cost and performance for inference workloads.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Inference Recommendations Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_job {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_sagemaker_job <|--- aws_sagemaker_inference_recommendations_job
+aws_resource <|--- aws_sagemaker_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Inference Recommendations Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Inference Recommendations Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_endpoint_input_configuration {
+**environment_parameter_ranges**: aws_sagemaker_environment_parameter_ranges
+**inference_specification_name**: string
+**instance_type**: string
+}
+class aws_sagemaker_endpoint_output_configuration {
+**endpoint_name**: string
+**initial_instance_count**: int64
+**instance_type**: string
+**variant_name**: string
+}
+class aws_sagemaker_endpoint_performance {
+**endpoint_info**: string
+**metrics**: aws_sagemaker_inference_metrics
+}
+class aws_sagemaker_environment_parameter {
+**key**: string
+**value**: string
+**value_type**: string
+}
+class aws_sagemaker_environment_parameter_ranges {
+**categorical_parameter_ranges**: string[]
+}
+class aws_sagemaker_inference_metrics {
+**max_invocations**: int64
+**model_latency**: int64
+}
+class aws_sagemaker_inference_recommendation {
+**endpoint_configuration**: aws_sagemaker_endpoint_output_configuration
+**metrics**: aws_sagemaker_recommendation_metrics
+**model_configuration**: aws_sagemaker_model_configuration
+}
+class aws_sagemaker_inference_recommendations_job {
+**inference_recommendations_job_completion_time**: datetime
+**inference_recommendations_job_description**: string
+**inference_recommendations_job_endpoint_performances**: aws_sagemaker_endpoint_performance[]
+**inference_recommendations_job_failure_reason**: string
+**inference_recommendations_job_inference_recommendations**: aws_sagemaker_inference_recommendation[]
+**inference_recommendations_job_input_config**: aws_sagemaker_recommendation_job_input_config
+**inference_recommendations_job_status**: string
+**inference_recommendations_job_stopping_conditions**: aws_sagemaker_recommendation_job_stopping_conditions
+**inference_recommendations_job_type**: string
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_model_configuration {
+**environment_parameters**: aws_sagemaker_environment_parameter[]
+**inference_specification_name**: string
+}
+class aws_sagemaker_model_latency_threshold {
+**percentile**: string
+**value_in_milliseconds**: int64
+}
+class aws_sagemaker_phase {
+**duration_in_seconds**: int64
+**initial_number_of_users**: int64
+**spawn_rate**: int64
+}
+class aws_sagemaker_recommendation_job_container_config {
+**domain**: string
+**framework**: string
+**framework_version**: string
+**nearest_model_name**: string
+**payload_config**: aws_sagemaker_recommendation_job_payload_config
+**supported_instance_types**: string[]
+**task**: string
+}
+class aws_sagemaker_recommendation_job_input_config {
+**container_config**: aws_sagemaker_recommendation_job_container_config
+**endpoint_configurations**: aws_sagemaker_endpoint_input_configuration[]
+**endpoints**: string[]
+**job_duration_in_seconds**: int64
+**model_package_version_arn**: string
+**resource_limit**: aws_sagemaker_recommendation_job_resource_limit
+**traffic_pattern**: aws_sagemaker_traffic_pattern
+**vpc_config**: aws_sagemaker_vpc_config
+}
+class aws_sagemaker_recommendation_job_payload_config {
+**sample_payload_url**: string
+**supported_content_types**: string[]
+}
+class aws_sagemaker_recommendation_job_resource_limit {
+**max_number_of_tests**: int64
+**max_parallel_of_tests**: int64
+}
+class aws_sagemaker_recommendation_job_stopping_conditions {
+**max_invocations**: int64
+**model_latency_thresholds**: aws_sagemaker_model_latency_threshold[]
+}
+class aws_sagemaker_recommendation_metrics {
+**cost_per_hour**: double
+**cost_per_inference**: double
+**max_invocations**: int64
+**model_latency**: int64
+}
+class aws_sagemaker_traffic_pattern {
+**phases**: aws_sagemaker_phase[]
+**traffic_type**: string
+}
+class aws_sagemaker_vpc_config {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_endpoint_input_configuration --> aws_sagemaker_environment_parameter_ranges
+aws_sagemaker_endpoint_performance --> aws_sagemaker_inference_metrics
+aws_sagemaker_inference_recommendation --> aws_sagemaker_endpoint_output_configuration
+aws_sagemaker_inference_recommendation --> aws_sagemaker_model_configuration
+aws_sagemaker_inference_recommendation --> aws_sagemaker_recommendation_metrics
+aws_sagemaker_inference_recommendations_job --> aws_sagemaker_endpoint_performance
+aws_sagemaker_inference_recommendations_job --> aws_sagemaker_inference_recommendation
+aws_sagemaker_job <|--- aws_sagemaker_inference_recommendations_job
+aws_sagemaker_inference_recommendations_job --> aws_sagemaker_recommendation_job_input_config
+aws_sagemaker_inference_recommendations_job --> aws_sagemaker_recommendation_job_stopping_conditions
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_model_configuration --> aws_sagemaker_environment_parameter
+aws_sagemaker_recommendation_job_container_config --> aws_sagemaker_recommendation_job_payload_config
+aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_endpoint_input_configuration
+aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_job_container_config
+aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_job_resource_limit
+aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_traffic_pattern
+aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_vpc_config
+aws_sagemaker_recommendation_job_stopping_conditions --> aws_sagemaker_model_latency_threshold
+aws_sagemaker_traffic_pattern --> aws_sagemaker_phase
+
+@enduml
+```
+
+</ZoomPanPinch>

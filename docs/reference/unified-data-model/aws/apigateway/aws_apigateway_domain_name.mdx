@@ -1,0 +1,182 @@
+---
+sidebar_label: API Gateway Domain Name
+---
+
+# `aws_apigateway_domain_name`
+
+- Categories: Networking
+- Service: apigateway
+- Provider Link: [API Gateway Domain Name](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html)
+
+## Description
+
+AWS API Gateway Domain Name is a feature that associates a custom domain name with an API Gateway API. It provides a personalized URL for API access, replacing the default API Gateway-generated endpoint. This service handles SSL/TLS certificates and integrates with Amazon Route 53 for DNS management, offering a professional and branded API interface for users.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of API Gateway Domain Name"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_domain_name {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_apigateway_domain_name
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Domain Name resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_domain_name {
+
+}
+class aws_route53_zone {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_apigateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_apigateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of API Gateway Domain Name data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_apigateway_domain_name {
+**domain_certificate_arn**: string
+**domain_certificate_name**: string
+**domain_certificate_upload_date**: datetime
+**domain_distribution_domain_name**: string
+**domain_distribution_hosted_zone_id**: string
+**domain_domain_name_status**: string
+**domain_domain_name_status_message**: string
+**domain_endpoint_configuration**: aws_apigateway_endpoint_configuration
+**domain_mutual_tls_authentication**: aws_apigateway_mutual_tls_authentication
+**domain_ownership_verification_certificate_arn**: string
+**domain_regional_certificate_arn**: string
+**domain_regional_certificate_name**: string
+**domain_regional_domain_name**: string
+**domain_regional_hosted_zone_id**: string
+**domain_security_policy**: string
+}
+class aws_apigateway_endpoint_configuration {
+**types**: string[]
+**vpc_endpoint_ids**: string[]
+}
+class aws_apigateway_mutual_tls_authentication {
+**truststore_uri**: string
+**truststore_version**: string
+**truststore_warnings**: string[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_apigateway_domain_name --> aws_apigateway_endpoint_configuration
+aws_apigateway_domain_name --> aws_apigateway_mutual_tls_authentication
+aws_resource <|--- aws_apigateway_domain_name
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

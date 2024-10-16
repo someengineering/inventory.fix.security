@@ -1,0 +1,181 @@
+---
+sidebar_label: DynamoDB Global Table
+---
+
+# `aws_dynamodb_global_table`
+
+- Categories: Database
+- Service: dynamodb
+- Provider Link: [DynamoDB Global Table](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+
+## Description
+
+AWS DynamoDB Global Table is a feature that replicates DynamoDB tables across multiple AWS regions. It provides multi-region read and write access to data, ensuring low-latency access for globally distributed applications. Global Table maintains consistency across regions, handles conflict resolution, and offers automatic failover, improving availability and disaster recovery capabilities for applications with global user bases.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of DynamoDB Global Table"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamodb_global_table {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_dynamodb_global_table
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of DynamoDB Global Table resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_dynamodb_global_table {
+
+}
+class aws_kms_key {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_global_table
+aws_dynamodb_global_table -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of DynamoDB Global Table data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_dynamodb_global_table {
+**dynamodb_global_table_status**: string
+**dynamodb_policy**: dictionary[string, any]
+**dynamodb_replication_group**: aws_dynamodb_replica_description[]
+}
+class aws_dynamodb_replica_description {
+**global_secondary_indexes**: aws_dynamodb_replica_global_secondary_index_description[]
+**kms_master_key_id**: string
+**provisioned_throughput_override**: int64
+**region_name**: string
+**replica_inaccessible_date_time**: datetime
+**replica_status**: string
+**replica_status_description**: string
+**replica_status_percent_progress**: string
+**replica_table_class_summary**: aws_dynamodb_table_class_summary
+}
+class aws_dynamodb_replica_global_secondary_index_description {
+**index_name**: string
+**provisioned_throughput_override**: int64
+}
+class aws_dynamodb_table_class_summary {
+**last_update_date_time**: datetime
+**table_class**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_dynamodb_global_table --> aws_dynamodb_replica_description
+aws_resource <|--- aws_dynamodb_global_table
+aws_dynamodb_replica_description --> aws_dynamodb_replica_global_secondary_index_description
+aws_dynamodb_replica_description --> aws_dynamodb_table_class_summary
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,194 @@
+---
+sidebar_label: SNS Topic
+---
+
+# `aws_sns_topic`
+
+- Categories: Networking
+- Service: sns
+- Provider Link: [SNS Topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
+
+## Description
+
+AWS SNS Topic is a messaging service that facilitates communication between distributed systems, applications, and microservices. It implements a publish-subscribe model, where publishers send messages to topics and subscribers receive those messages. SNS supports multiple protocols for message delivery, including HTTP, email, SMS, and mobile push notifications, making it useful for various notification scenarios.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SNS Topic"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sns_topic {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sns_topic
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SNS Topic resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_cloud_trail {
+
+}
+class aws_elasticache_cache_cluster {
+
+}
+class aws_kms_key {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_workteam {
+
+}
+class aws_sns_platform_application {
+
+}
+class aws_sns_subscription {
+
+}
+class aws_sns_topic {
+
+}
+aws_cloud_trail -[#1A83AF]-> aws_kms_key
+aws_cloud_trail -[#1A83AF]-> aws_sns_topic
+aws_elasticache_cache_cluster -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
+aws_sns_platform_application -[#1A83AF]-> aws_sns_topic
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+aws_sns_topic -[#1A83AF]-> aws_sns_subscription
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SNS Topic data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sns_topic {
+**topic_content_based_deduplication**: boolean
+**topic_delivery_policy**: string
+**topic_effective_delivery_policy**: string
+**topic_fifo_topic**: boolean
+**topic_kms_master_key_id**: string
+**topic_owner**: string
+**topic_policy**: dictionary[string, any]
+**topic_subscriptions_confirmed**: int64
+**topic_subscriptions_deleted**: int64
+**topic_subscriptions_pending**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sns_topic
+
+@enduml
+```
+
+</ZoomPanPinch>

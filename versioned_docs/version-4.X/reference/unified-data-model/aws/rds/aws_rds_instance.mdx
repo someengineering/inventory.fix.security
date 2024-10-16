@@ -1,0 +1,368 @@
+---
+sidebar_label: RDS Instance
+---
+
+# `aws_rds_instance`
+
+- Categories: Compute, Database
+- Service: rds
+- Provider Link: [RDS Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.html)
+
+## Description
+
+AWS RDS Instance is a managed relational database service in Amazon Web Services. It provides a database instance with automated backups, software patching, and monitoring. Users can choose from various database engines, including MySQL, PostgreSQL, and Oracle. RDS handles routine database tasks, freeing developers to focus on application development and optimization.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of RDS Instance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_rds_instance {
+
+}
+class aws_resource {
+
+}
+class database {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_rds_instance
+database <|--- aws_rds_instance
+resource <|--- aws_resource
+resource <|--- database
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of RDS Instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_protected_resource {
+
+}
+class aws_bedrock_agent_knowledge_base {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_kms_key {
+
+}
+class aws_rds_cluster {
+
+}
+class aws_rds_instance {
+
+}
+class aws_rds_snapshot {
+
+}
+class aws_region {
+
+}
+class aws_vpc {
+
+}
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_cluster
+aws_backup_protected_resource -[#1A83AF]-> aws_rds_instance
+aws_bedrock_agent_knowledge_base -[#1A83AF]-> aws_rds_cluster
+aws_bedrock_agent_knowledge_base -[#1A83AF]-> aws_rds_instance
+aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_rds_cluster -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_instance -[#1A83AF]-> aws_kms_key
+aws_rds_instance -[#1A83AF]-> aws_rds_snapshot
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_rds_snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of RDS Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_rds_db_instance_status_info {
+**message**: string
+**normal**: boolean
+**status**: string
+**status_type**: string
+}
+class aws_rds_db_parameter_group_status {
+**db_parameter_group_name**: string
+**parameter_apply_status**: string
+}
+class aws_rds_db_role {
+**feature_name**: string
+**role_arn**: string
+**status**: string
+}
+class aws_rds_db_security_group_membership {
+**db_security_group_name**: string
+**status**: string
+}
+class aws_rds_db_subnet_group {
+**db_subnet_group_arn**: string
+**db_subnet_group_description**: string
+**db_subnet_group_name**: string
+**subnet_group_status**: string
+**subnets**: aws_rds_subnet[]
+**supported_network_types**: string[]
+**vpc_id**: string
+}
+class aws_rds_domain_membership {
+**domain**: string
+**fqdn**: string
+**iam_role_name**: string
+**status**: string
+}
+class aws_rds_endpoint {
+**address**: string
+**hosted_zone_id**: string
+**port**: int64
+}
+class aws_rds_instance {
+**rds_activity_stream_engine_native_audit_fields_included**: boolean
+**rds_activity_stream_kinesis_stream_name**: string
+**rds_activity_stream_kms_key_id**: string
+**rds_activity_stream_mode**: string
+**rds_activity_stream_status**: string
+**rds_associated_roles**: aws_rds_db_role[]
+**rds_auto_minor_version_upgrade**: boolean
+**rds_automatic_restart_time**: datetime
+**rds_automation_mode**: string
+**rds_availability_zone**: string
+**rds_aws_backup_recovery_point_arn**: string
+**rds_backup_retention_period**: int64
+**rds_backup_target**: string
+**rds_ca_certificate_identifier**: string
+**rds_character_set_name**: string
+**rds_copy_tags_to_snapshot**: boolean
+**rds_custom_iam_instance_profile**: string
+**rds_customer_owned_ip_enabled**: boolean
+**rds_db_cluster_identifier**: string
+**rds_db_instance_automated_backups_replications**: string[]
+**rds_db_instance_port**: int64
+**rds_db_parameter_groups**: aws_rds_db_parameter_group_status[]
+**rds_db_security_groups**: aws_rds_db_security_group_membership[]
+**rds_db_subnet_group**: aws_rds_db_subnet_group
+**rds_dbi_resource_id**: string
+**rds_deletion_protection**: boolean
+**rds_domain_memberships**: aws_rds_domain_membership[]
+**rds_enabled_cloudwatch_logs_exports**: string[]
+**rds_enhanced_monitoring_resource_arn**: string
+**rds_iam_database_authentication_enabled**: boolean
+**rds_kms_key_id**: string
+**rds_latest_restorable_time**: datetime
+**rds_license_model**: string
+**rds_listener_endpoint**: aws_rds_endpoint
+**rds_master_username**: string
+**rds_max_allocated_storage**: int64
+**rds_monitoring_interval**: int64
+**rds_monitoring_role_arn**: string
+**rds_multi_az**: boolean
+**rds_nchar_character_set_name**: string
+**rds_network_type**: string
+**rds_option_group_memberships**: aws_rds_option_group_membership[]
+**rds_pending_modified_values**: aws_rds_pending_modified_values
+**rds_performance_insights_enabled**: boolean
+**rds_performance_insights_kms_key_id**: string
+**rds_performance_insights_retention_period**: int64
+**rds_preferred_backup_window**: string
+**rds_preferred_maintenance_window**: string
+**rds_processor_features**: aws_rds_processor_feature[]
+**rds_promotion_tier**: int64
+**rds_read_replica_db_cluster_identifiers**: string[]
+**rds_read_replica_db_instance_identifiers**: string[]
+**rds_read_replica_source_db_instance_identifier**: string
+**rds_replica_mode**: string
+**rds_resume_full_automation_mode_time**: datetime
+**rds_secondary_availability_zone**: string
+**rds_status_infos**: aws_rds_db_instance_status_info[]
+**rds_storage_type**: string
+**rds_tde_credential_arn**: string
+**rds_timezone**: string
+**rds_vpc_security_groups**: aws_rds_vpc_security_group_membership[]
+}
+class aws_rds_option_group_membership {
+**option_group_name**: string
+**status**: string
+}
+class aws_rds_pending_cloudwatch_logs_exports {
+**log_types_to_disable**: string[]
+**log_types_to_enable**: string[]
+}
+class aws_rds_pending_modified_values {
+**allocated_storage**: int64
+**automation_mode**: string
+**backup_retention_period**: int64
+**ca_certificate_identifier**: string
+**db_instance_class**: string
+**db_instance_identifier**: string
+**db_subnet_group_name**: string
+**engine_version**: string
+**iam_database_authentication_enabled**: boolean
+**iops**: int64
+**license_model**: string
+**master_user_password**: string
+**multi_az**: boolean
+**pending_cloudwatch_logs_exports**: aws_rds_pending_cloudwatch_logs_exports
+**port**: int64
+**processor_features**: aws_rds_processor_feature[]
+**resume_full_automation_mode_time**: datetime
+**storage_type**: string
+}
+class aws_rds_processor_feature {
+**name**: string
+**value**: string
+}
+class aws_rds_subnet {
+**subnet_availability_zone**: string
+**subnet_identifier**: string
+**subnet_outpost**: string
+**subnet_status**: string
+}
+class aws_rds_vpc_security_group_membership {
+**status**: string
+**vpc_security_group_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_rds_db_subnet_group --> aws_rds_subnet
+aws_rds_instance --> aws_rds_db_instance_status_info
+aws_rds_instance --> aws_rds_db_parameter_group_status
+aws_rds_instance --> aws_rds_db_role
+aws_rds_instance --> aws_rds_db_security_group_membership
+aws_rds_instance --> aws_rds_db_subnet_group
+aws_rds_instance --> aws_rds_domain_membership
+aws_rds_instance --> aws_rds_endpoint
+aws_rds_instance --> aws_rds_option_group_membership
+aws_rds_instance --> aws_rds_pending_modified_values
+aws_rds_instance --> aws_rds_processor_feature
+aws_rds_instance --> aws_rds_vpc_security_group_membership
+aws_resource <|--- aws_rds_instance
+database <|--- aws_rds_instance
+aws_rds_pending_modified_values --> aws_rds_pending_cloudwatch_logs_exports
+aws_rds_pending_modified_values --> aws_rds_processor_feature
+resource <|--- aws_resource
+resource <|--- database
+
+@enduml
+```
+
+</ZoomPanPinch>

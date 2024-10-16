@@ -1,0 +1,271 @@
+---
+sidebar_label: Network Firewall Policy
+---
+
+# `azure_network_firewall_policy`
+
+- Categories: Access Control, Networking
+- Service: networking
+- Provider Link: [Network Firewall Policy](https://learn.microsoft.com/en-us/azure/firewall-manager/policy-overview)
+
+## Description
+
+Azure Network Firewall Policy is a cloud-based security service that manages network traffic rules for Azure Firewall instances. It enforces security controls across multiple virtual networks and subscriptions, providing centralized configuration and management of firewall rules. The policy defines network and application rules, threat intelligence settings, and DNS configurations for connected firewalls.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Firewall Policy"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_firewall_policy {
+
+}
+class microsoft_resource {
+
+}
+class policy {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_firewall_policy
+policy <|--- azure_network_firewall_policy
+resource <|--- microsoft_resource
+resource <|--- policy
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Firewall Policy resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_firewall {
+
+}
+class azure_network_firewall_policy {
+
+}
+azure_network_firewall -[#1A83AF]-> azure_network_firewall_policy
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Firewall Policy data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_dns_settings {
+**enable_proxy**: boolean
+**require_proxy_for_network_rules**: boolean
+**servers**: string[]
+}
+class azure_explicit_proxy {
+**enable_explicit_proxy**: boolean
+**enable_pac_file**: boolean
+**http_port**: int64
+**https_port**: int64
+**pac_file**: string
+**pac_file_port**: int64
+}
+class azure_firewall_policy_certificate_authority {
+**key_vault_secret_id**: string
+**name**: string
+}
+class azure_firewall_policy_insights {
+**is_enabled**: boolean
+**log_analytics_resources**: azure_firewall_policy_log_analytics_resources
+**retention_days**: int64
+}
+class azure_firewall_policy_intrusion_detection {
+**configuration**: azure_firewall_policy_intrusion_detection_configuration
+**mode**: string
+}
+class azure_firewall_policy_intrusion_detection_bypass_traffic_specifications {
+**description**: string
+**destination_addresses**: string[]
+**destination_ip_groups**: string[]
+**destination_ports**: string[]
+**name**: string
+**protocol**: string
+**source_addresses**: string[]
+**source_ip_groups**: string[]
+}
+class azure_firewall_policy_intrusion_detection_configuration {
+**bypass_traffic_settings**: azure_firewall_policy_intrusion_detection_bypass_traffic_specifications[]
+**private_ranges**: string[]
+**signature_overrides**: azure_firewall_policy_intrusion_detection_signature_specification[]
+}
+class azure_firewall_policy_intrusion_detection_signature_specification {
+**id**: string
+**mode**: string
+}
+class azure_firewall_policy_log_analytics_resources {
+**default_workspace_id**: string
+**workspaces**: azure_firewall_policy_log_analytics_workspace[]
+}
+class azure_firewall_policy_log_analytics_workspace {
+**region**: string
+**workspace_id**: string
+}
+class azure_firewall_policy_snat {
+**auto_learn_private_ranges**: string
+**private_ranges**: string[]
+}
+class azure_firewall_policy_threat_intel_whitelist {
+**fqdns**: string[]
+**ip_addresses**: string[]
+}
+class azure_firewall_policy_transport_security {
+**certificate_authority**: azure_firewall_policy_certificate_authority
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_network_firewall_policy {
+**base_policy**: string
+**child_policies**: string[]
+**explicit_proxy**: azure_explicit_proxy
+**firewall_policy_dns_settings_settings**: azure_dns_settings
+**firewalls**: string[]
+**identity**: azure_identity
+**insights**: azure_firewall_policy_insights
+**intrusion_detection**: azure_firewall_policy_intrusion_detection
+**rule_collection_groups**: string[]
+**size**: int64
+**sku**: string
+**snat**: azure_firewall_policy_snat
+**sql**: boolean
+**threat_intel_mode**: string
+**threat_intel_whitelist**: azure_firewall_policy_threat_intel_whitelist
+**transport_security**: azure_firewall_policy_transport_security
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class policy {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_firewall_policy_insights --> azure_firewall_policy_log_analytics_resources
+azure_firewall_policy_intrusion_detection --> azure_firewall_policy_intrusion_detection_configuration
+azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_policy_intrusion_detection_bypass_traffic_specifications
+azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_policy_intrusion_detection_signature_specification
+azure_firewall_policy_log_analytics_resources --> azure_firewall_policy_log_analytics_workspace
+azure_firewall_policy_transport_security --> azure_firewall_policy_certificate_authority
+azure_identity --> azure_user_assigned_identity
+azure_network_firewall_policy --> azure_dns_settings
+azure_network_firewall_policy --> azure_explicit_proxy
+azure_network_firewall_policy --> azure_firewall_policy_insights
+azure_network_firewall_policy --> azure_firewall_policy_intrusion_detection
+azure_network_firewall_policy --> azure_firewall_policy_snat
+azure_network_firewall_policy --> azure_firewall_policy_threat_intel_whitelist
+azure_network_firewall_policy --> azure_firewall_policy_transport_security
+azure_network_firewall_policy --> azure_identity
+microsoft_resource <|--- azure_network_firewall_policy
+policy <|--- azure_network_firewall_policy
+resource <|--- microsoft_resource
+resource <|--- policy
+
+@enduml
+```
+
+</ZoomPanPinch>

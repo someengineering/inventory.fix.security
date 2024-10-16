@@ -1,0 +1,216 @@
+---
+sidebar_label: Machine Learning Virtual Machine Size
+---
+
+# `azure_machine_learning_virtual_machine_size`
+
+- Categories: Management
+- Service: machine-learning
+- Provider Link: [Machine Learning Virtual Machine Size](https://learn.microsoft.com/en-us/azure/machine-learning/concept-compute-target#supported-vm-series-and-sizes)
+
+## Description
+
+Azure Machine Learning Virtual Machine Size refers to the computational resources allocated to a virtual machine used for machine learning tasks in Azure. It determines the processing power, memory, and storage capacity available for training models, running experiments, and deploying solutions. Users can select from various sizes to match their specific machine learning workload requirements and budget constraints.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Virtual Machine Size"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_virtual_machine_size {
+
+}
+class instance_type {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+class type {
+
+}
+instance_type <|--- azure_machine_learning_virtual_machine_size
+microsoft_resource <|--- azure_machine_learning_virtual_machine_size
+type <|--- instance_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Virtual Machine Size resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_virtual_machine_size {
+
+}
+azure_machine_learning_compute -[#1A83AF]-> azure_machine_learning_virtual_machine_size
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Virtual Machine Size data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_estimated_vm_price {
+**os_type**: string
+**retail_price**: double
+**vm_tier**: string
+}
+class azure_estimated_vm_prices {
+**billing_currency**: string
+**unit_of_measure**: string
+**values**: azure_estimated_vm_price[]
+}
+class azure_machine_learning_virtual_machine_size {
+**estimated_vm_prices**: azure_estimated_vm_prices
+**family**: string
+**gpus**: int64
+**location**: string
+**low_priority_capable**: boolean
+**max_resource_volume_mb**: int64
+**memory_gb**: double
+**os_vhd_size_mb**: int64
+**premium_io**: boolean
+**supported_compute_types**: string[]
+**v_cp_us**: int64
+}
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+
+}
+azure_estimated_vm_prices --> azure_estimated_vm_price
+azure_machine_learning_virtual_machine_size --> azure_estimated_vm_prices
+instance_type <|--- azure_machine_learning_virtual_machine_size
+microsoft_resource <|--- azure_machine_learning_virtual_machine_size
+type <|--- instance_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,256 @@
+---
+sidebar_label: Network
+---
+
+# `gcp_network`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [Network](https://cloud.google.com/vpc/docs)
+
+## Description
+
+GCP Network is Google Cloud Platform's networking infrastructure. It provides connectivity between resources within GCP and to external networks. The service includes virtual private clouds, load balancing, DNS, VPN, and CDN capabilities. It manages traffic routing, security, and performance optimization for applications and services running on Google Cloud.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_network {
+
+}
+class gcp_resource {
+
+}
+class network {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_network
+network <|--- gcp_network
+resource <|--- gcp_resource
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_backend_service {
+
+}
+class gcp_firewall {
+
+}
+class gcp_firewall_policy {
+
+}
+class gcp_forwarding_rule {
+
+}
+class gcp_instance {
+
+}
+class gcp_instance_group {
+
+}
+class gcp_network {
+
+}
+class gcp_network_endpoint_group {
+
+}
+class gcp_route {
+
+}
+class gcp_router {
+
+}
+class gcp_subnetwork {
+
+}
+class gcp_target_instance {
+
+}
+class gcp_target_vpn_gateway {
+
+}
+class gcp_vpn_gateway {
+
+}
+gcp_backend_service -[#1A83AF]-> gcp_instance_group
+gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
+gcp_firewall -[#1A83AF]-> gcp_network
+gcp_firewall_policy -[#1A83AF]-> gcp_network
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_backend_service
+gcp_network -[#1A83AF]-> gcp_forwarding_rule
+gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance_group
+gcp_network -[#1A83AF]-> gcp_network_endpoint_group
+gcp_network -[#1A83AF]-> gcp_route
+gcp_network -[#1A83AF]-> gcp_router
+gcp_network -[#1A83AF]-> gcp_subnetwork
+gcp_network -[#1A83AF]-> gcp_target_instance
+gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_vpn_gateway
+gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance_group
+gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
+gcp_target_instance -[#1A83AF]-> gcp_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_network {
+**auto_create_subnetworks**: boolean
+**enable_ula_internal_ipv6**: boolean
+**firewall_policy**: string
+**gateway_ipv4**: string
+**internal_ipv6_range**: string
+**ipv4_range**: string
+**mtu**: int64
+**network_firewall_policy_enforcement_order**: string
+**network_peerings**: gcp_network_peering[]
+**routing_config**: string
+**self_link_with_id**: string
+**subnetworks**: string[]
+}
+class gcp_network_peering {
+**auto_create_routes**: boolean
+**exchange_subnet_routes**: boolean
+**export_custom_routes**: boolean
+**export_subnet_routes_with_public_ip**: boolean
+**import_custom_routes**: boolean
+**import_subnet_routes_with_public_ip**: boolean
+**name**: string
+**network**: string
+**network_peering_state**: string
+**peer_mtu**: int64
+**stack_type**: string
+**state_details**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class network {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_network --> gcp_deprecation_status
+gcp_network --> gcp_network_peering
+gcp_resource <|--- gcp_network
+network <|--- gcp_network
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- network
+
+@enduml
+```
+
+</ZoomPanPinch>

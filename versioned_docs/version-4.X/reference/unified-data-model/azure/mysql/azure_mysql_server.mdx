@@ -1,0 +1,323 @@
+---
+sidebar_label: MySQL Server
+---
+
+# `azure_mysql_server`
+
+- Categories: Compute, Database
+- Service: mysql
+- Provider Link: [MySQL Server](https://learn.microsoft.com/en-us/azure/mysql/)
+
+## Description
+
+Azure MySQL Server is a managed database service offered by Microsoft Azure. It provides a MySQL-compatible relational database in the cloud. Users can create, operate, and scale MySQL databases without managing infrastructure. The service offers automated backups, security features, and performance optimization tools. It supports various application types and integrates with other Azure services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of MySQL Server"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_mysql_server {
+
+}
+class database {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+database <|--- azure_mysql_server
+microsoft_resource <|--- azure_mysql_server
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of MySQL Server resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_mysql_server {
+
+}
+class azure_mysql_server_ad_administrator {
+
+}
+class azure_mysql_server_backup {
+
+}
+class azure_mysql_server_configuration {
+
+}
+class azure_mysql_server_database {
+
+}
+class azure_mysql_server_firewall_rule {
+
+}
+class azure_mysql_server_log_file {
+
+}
+class azure_mysql_server_maintenance {
+
+}
+class azure_mysql_server_type {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_ad_administrator
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_backup
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_configuration
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_database
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_firewall_rule
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_log_file
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_maintenance
+azure_mysql_server -[#1A83AF]-> azure_mysql_server_type
+azure_mysql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_mysql_server -[#1A83AF]-> microsoft_graph_user
+azure_mysql_server_ad_administrator -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of MySQL Server data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_import_source_properties {
+**data_dir_path**: string
+**sas_token**: string
+**storage_type**: string
+**storage_url**: string
+}
+class azure_my_sql_server_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, any]
+}
+class azure_mysql_server {
+**administrator_login**: string
+**administrator_login_password**: string
+**availability_zone**: string
+**backup**: azure_server_backup
+**create_mode**: string
+**data_encryption**: azure_server_data_encryption
+**fully_qualified_domain_name**: string
+**high_availability**: azure_server_high_availability
+**import_source_properties**: azure_import_source_properties
+**location**: string
+**mysql_server_identity**: azure_my_sql_server_identity
+**mysql_server_private_endpoint_connections**: azure_private_endpoint_connection[]
+**replica_capacity**: int64
+**replication_role**: string
+**restore_point_in_time**: datetime
+**server_maintenance_window**: azure_server_maintenance_window
+**server_network**: azure_server_network
+**server_sku**: azure_sku
+**source_server_resource_id**: string
+**state**: string
+**storage**: azure_storage
+**system_data**: azure_system_data
+**type**: string
+**version**: string
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_server_backup {
+**backup_interval_hours**: int64
+**backup_retention_days**: int64
+**earliest_restore_date**: datetime
+**geo_redundant_backup**: string
+}
+class azure_server_data_encryption {
+**geo_backup_key_uri**: string
+**geo_backup_user_assigned_identity_id**: string
+**primary_key_uri**: string
+**primary_user_assigned_identity_id**: string
+**type**: string
+}
+class azure_server_high_availability {
+**mode**: string
+**standby_availability_zone**: string
+**state**: string
+}
+class azure_server_maintenance_window {
+**custom_window**: string
+**day_of_week**: int64
+**start_hour**: int64
+**start_minute**: int64
+}
+class azure_server_network {
+**delegated_subnet_resource_id**: string
+**private_dns_zone_resource_id**: string
+**public_network_access**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_storage {
+**auto_grow**: string
+**auto_io_scaling**: string
+**iops**: int64
+**log_on_disk**: string
+**storage_size_gb**: int64
+**storage_sku**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_mysql_server --> azure_import_source_properties
+azure_mysql_server --> azure_my_sql_server_identity
+azure_mysql_server --> azure_private_endpoint_connection
+azure_mysql_server --> azure_server_backup
+azure_mysql_server --> azure_server_data_encryption
+azure_mysql_server --> azure_server_high_availability
+azure_mysql_server --> azure_server_maintenance_window
+azure_mysql_server --> azure_server_network
+azure_mysql_server --> azure_sku
+azure_mysql_server --> azure_storage
+azure_mysql_server --> azure_system_data
+database <|--- azure_mysql_server
+microsoft_resource <|--- azure_mysql_server
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

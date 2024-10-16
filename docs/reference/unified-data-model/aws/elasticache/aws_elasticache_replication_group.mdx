@@ -1,0 +1,250 @@
+---
+sidebar_label: ElastiCache Replication Group
+---
+
+# `aws_elasticache_replication_group`
+
+- Categories: Database
+- Service: elasticache
+- Provider Link: [ElastiCache Replication Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html)
+
+## Description
+
+AWS ElastiCache Replication Group is a feature that creates multiple interconnected cache nodes. It provides redundancy and improves read performance by distributing data across nodes. The group consists of a primary node for write operations and one or more read replicas. It supports automatic failover and data synchronization between nodes, enhancing reliability and availability of cached data.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ElastiCache Replication Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elasticache_replication_group {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_elasticache_replication_group
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ElastiCache Replication Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elasticache_cache_cluster {
+
+}
+class aws_elasticache_replication_group {
+
+}
+class aws_kms_key {
+
+}
+aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
+aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ElastiCache Replication Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_elasticache_destination_details {
+**cloud_watch_logs_details**: string
+**kinesis_firehose_details**: string
+}
+class aws_elasticache_endpoint {
+**address**: string
+**port**: int64
+}
+class aws_elasticache_global_replication_group_info {
+**global_replication_group_id**: string
+**global_replication_group_member_role**: string
+}
+class aws_elasticache_log_delivery_configuration {
+**destination_details**: aws_elasticache_destination_details
+**destination_type**: string
+**log_format**: string
+**log_type**: string
+**message**: string
+**status**: string
+}
+class aws_elasticache_node_group {
+**node_group_id**: string
+**node_group_members**: aws_elasticache_node_group_member[]
+**primary_endpoint**: aws_elasticache_endpoint
+**reader_endpoint**: aws_elasticache_endpoint
+**slots**: string
+**status**: string
+}
+class aws_elasticache_node_group_member {
+**cache_cluster_id**: string
+**cache_node_id**: string
+**current_role**: string
+**preferred_availability_zone**: string
+**preferred_outpost_arn**: string
+**read_endpoint**: aws_elasticache_endpoint
+}
+class aws_elasticache_pending_log_delivery_configuration {
+**destination_details**: aws_elasticache_destination_details
+**destination_type**: string
+**log_format**: string
+**log_type**: string
+}
+class aws_elasticache_replication_group {
+**replication_group_arn**: string
+**replication_group_at_rest_encryption_enabled**: boolean
+**replication_group_auth_token_enabled**: boolean
+**replication_group_auth_token_last_modified_date**: datetime
+**replication_group_automatic_failover**: string
+**replication_group_cache_node_type**: string
+**replication_group_cluster_enabled**: boolean
+**replication_group_configuration_endpoint**: aws_elasticache_endpoint
+**replication_group_data_tiering**: string
+**replication_group_description**: string
+**replication_group_global_replication_group_info**: aws_elasticache_global_replication_group_info
+**replication_group_kms_key_id**: string
+**replication_group_log_delivery_configurations**: aws_elasticache_log_delivery_configuration[]
+**replication_group_member_clusters**: string[]
+**replication_group_member_clusters_outpost_arns**: string[]
+**replication_group_multi_az**: string
+**replication_group_node_groups**: aws_elasticache_node_group[]
+**replication_group_pending_modified_values**: aws_elasticache_replication_group_pending_modified_values
+**replication_group_snapshot_retention_limit**: int64
+**replication_group_snapshot_window**: string
+**replication_group_snapshotting_cluster_id**: string
+**replication_group_status**: string
+**replication_group_transit_encryption_enabled**: boolean
+**replication_group_user_group_ids**: string[]
+}
+class aws_elasticache_replication_group_pending_modified_values {
+**auth_token_status**: string
+**automatic_failover_status**: string
+**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
+**primary_cluster_id**: string
+**resharding**: aws_elasticache_resharding_status
+**user_groups**: aws_elasticache_user_groups_update_status
+}
+class aws_elasticache_resharding_status {
+**slot_migration**: double
+}
+class aws_elasticache_user_groups_update_status {
+**user_group_ids_to_add**: string[]
+**user_group_ids_to_remove**: string[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_elasticache_log_delivery_configuration --> aws_elasticache_destination_details
+aws_elasticache_node_group --> aws_elasticache_endpoint
+aws_elasticache_node_group --> aws_elasticache_node_group_member
+aws_elasticache_node_group_member --> aws_elasticache_endpoint
+aws_elasticache_pending_log_delivery_configuration --> aws_elasticache_destination_details
+aws_elasticache_replication_group --> aws_elasticache_endpoint
+aws_elasticache_replication_group --> aws_elasticache_global_replication_group_info
+aws_elasticache_replication_group --> aws_elasticache_log_delivery_configuration
+aws_elasticache_replication_group --> aws_elasticache_node_group
+aws_elasticache_replication_group --> aws_elasticache_replication_group_pending_modified_values
+aws_resource <|--- aws_elasticache_replication_group
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_resharding_status
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_user_groups_update_status
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

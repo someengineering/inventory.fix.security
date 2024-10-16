@@ -1,0 +1,209 @@
+---
+sidebar_label: Account
+---
+
+# `aws_account`
+
+- Categories: Access Control, Management
+
+- Provider Link: [Account](https://docs.aws.amazon.com/accounts/latest/reference/welcome.html)
+
+## Description
+
+An AWS Account is a container for Amazon Web Services resources and services. It provides access to the AWS Management Console, APIs, and command-line tools. Users can create, manage, and monitor AWS resources, set security permissions, and track usage and billing. Each account has a unique identifier and can be linked to other accounts for consolidated billing.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Account"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class aws_account {
+
+}
+class aws_resource {
+
+}
+class iam_principal {
+
+}
+class resource {
+
+}
+resource <|--- account
+account <|--- aws_account
+aws_resource <|--- aws_account
+iam_principal <|--- aws_account
+resource <|--- aws_resource
+resource <|--- iam_principal
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Account resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_account {
+
+}
+class aws_region {
+
+}
+class aws_root_user {
+
+}
+class aws_s3_account_settings {
+
+}
+aws_account -[#1A83AF]-> aws_region
+aws_account -[#1A83AF]-> aws_root_user
+aws_account -[#1A83AF]-> aws_s3_account_settings
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class aws_account {
+**account_access_keys_present**: int64
+**account_alias**: string
+**account_mfa_enabled**: int64
+**account_signing_certificates_present**: int64
+**allow_users_to_change_password**: boolean
+**expire_passwords**: boolean
+**global_endpoint_token_version**: int64
+**groups**: int64
+**hard_expiry**: boolean
+**is_organization_master**: boolean
+**is_organization_member**: boolean
+**max_password_age**: int64
+**mfa_devices**: int64
+**mfa_devices_in_use**: int64
+**minimum_password_length**: int64
+**organization_arn**: string
+**organization_id**: string
+**partition**: string
+**password_reuse_prevention**: int64
+**policies**: int64
+**policy_versions_in_use**: int64
+**profile**: string
+**require_lowercase_characters**: boolean
+**require_numbers**: boolean
+**require_symbols**: boolean
+**require_uppercase_characters**: boolean
+**role**: string
+**server_certificates**: int64
+**users**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class iam_principal {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- account
+account <|--- aws_account
+aws_resource <|--- aws_account
+iam_principal <|--- aws_account
+resource <|--- aws_resource
+resource <|--- iam_principal
+
+@enduml
+```
+
+</ZoomPanPinch>

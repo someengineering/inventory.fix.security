@@ -1,0 +1,355 @@
+---
+sidebar_label: Job
+---
+
+# `kubernetes_job`
+
+- Categories: Other
+- Service: kubernetes
+
+## Description
+
+A Kubernetes Job is a resource that creates one or more pods and ensures that a specified number of them successfully terminate.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_job {
+
+}
+class kubernetes_resource {
+
+}
+class resource {
+
+}
+kubernetes_resource <|--- kubernetes_job
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cron_job {
+
+}
+class kubernetes_job {
+
+}
+class kubernetes_namespace {
+
+}
+class kubernetes_pod {
+
+}
+kubernetes_cron_job -[#1A83AF]-> kubernetes_job
+kubernetes_job -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_container {
+**args**: string[]
+**command**: string[]
+**image**: string
+**image_pull_policy**: string
+**name**: string
+**ports**: kubernetes_container_port[]
+**resources**: kubernetes_resource_requirements
+**security_context**: kubernetes_security_context
+**stdin**: boolean
+**stdin_once**: boolean
+**termination_message_path**: string
+**termination_message_policy**: string
+**tty**: boolean
+**volume_devices**: kubernetes_volume_device[]
+**volume_mounts**: kubernetes_volume_mount[]
+**working_dir**: string
+}
+class kubernetes_container_port {
+**container_port**: int64
+**host_ip**: string
+**host_port**: int64
+**name**: string
+**protocol**: string
+}
+class kubernetes_job {
+**job_spec**: kubernetes_job_spec
+**job_status**: kubernetes_job_status
+}
+class kubernetes_job_spec {
+**active_deadline_seconds**: int64
+**backoff_limit**: int64
+**completion_mode**: string
+**completions**: int64
+**manual_selector**: boolean
+**parallelism**: int64
+**selector**: kubernetes_label_selector
+**suspend**: boolean
+**template**: kubernetes_pod_template_spec
+**ttl_seconds_after_finished**: int64
+}
+class kubernetes_job_status {
+**active**: int64
+**completed_indexes**: string
+**completion_time**: datetime
+**conditions**: kubernetes_job_status_conditions[]
+**failed**: int64
+**ready**: int64
+**start_time**: datetime
+**succeeded**: int64
+}
+class kubernetes_job_status_conditions {
+**last_probe_time**: datetime
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
+class kubernetes_label_selector {
+**match_expressions**: kubernetes_label_selector_requirement[]
+**match_labels**: dictionary[string, string]
+}
+class kubernetes_label_selector_requirement {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class kubernetes_pod_security_context {
+**fs_group**: int64
+**fs_group_change_policy**: string
+**run_as_group**: int64
+**run_as_non_root**: boolean
+**run_as_user**: int64
+**se_linux_options**: any
+**seccomp_profile**: any
+**supplemental_groups**: int64[]
+**windows_options**: any
+}
+class kubernetes_pod_spec {
+**active_deadline_seconds**: int64
+**automount_service_account_token**: boolean
+**containers**: kubernetes_container[]
+**dns_policy**: string
+**enable_service_links**: boolean
+**ephemeral_containers**: kubernetes_container[]
+**host_ipc**: boolean
+**host_network**: boolean
+**host_pid**: boolean
+**hostname**: string
+**init_containers**: kubernetes_container[]
+**node_name**: string
+**preemption_policy**: string
+**priority**: int64
+**priority_class_name**: string
+**restart_policy**: string
+**runtime_class_name**: string
+**scheduler_name**: string
+**security_context**: kubernetes_pod_security_context
+**service_account**: string
+**service_account_name**: string
+**set_hostname_as_fqdn**: boolean
+**share_process_namespace**: boolean
+**subdomain**: string
+**termination_grace_period_seconds**: int64
+**tolerations**: kubernetes_toleration[]
+**volumes**: kubernetes_volume[]
+}
+class kubernetes_pod_template_spec {
+**spec**: kubernetes_pod_spec
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class kubernetes_resource_requirements {
+**limits**: any
+**requests**: any
+}
+class kubernetes_security_context {
+**allow_privilege_escalation**: boolean
+**privileged**: boolean
+**proc_mount**: string
+**read_only_root_filesystem**: boolean
+**run_as_group**: int64
+**run_as_non_root**: boolean
+**run_as_user**: int64
+**se_linux_options**: any
+**seccomp_profile**: any
+**windows_options**: any
+}
+class kubernetes_toleration {
+**effect**: string
+**key**: string
+**operator**: string
+**toleration_seconds**: int64
+**value**: string
+}
+class kubernetes_volume {
+**aws_elastic_block_store**: any
+**azure_disk**: any
+**azure_file**: any
+**cephfs**: any
+**cinder**: any
+**config_map**: any
+**csi**: any
+**downward_api**: any
+**empty_dir**: any
+**ephemeral**: any
+**fc**: any
+**flex_volume**: any
+**flocker**: any
+**gce_persistent_disk**: any
+**git_repo**: any
+**glusterfs**: any
+**host_path**: any
+**iscsi**: any
+**name**: string
+**nfs**: any
+**persistent_volume_claim**: any
+**photon_persistent_disk**: any
+**portworx_volume**: any
+**projected**: any
+**quobyte**: any
+**rbd**: any
+**scale_io**: any
+**secret**: any
+**storageos**: any
+**vsphere_volume**: any
+}
+class kubernetes_volume_device {
+**device_path**: string
+**name**: string
+}
+class kubernetes_volume_mount {
+**mount_path**: string
+**mount_propagation**: string
+**name**: string
+**read_only**: boolean
+**sub_path**: string
+**sub_path_expr**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+kubernetes_container --> kubernetes_container_port
+kubernetes_container --> kubernetes_resource_requirements
+kubernetes_container --> kubernetes_security_context
+kubernetes_container --> kubernetes_volume_device
+kubernetes_container --> kubernetes_volume_mount
+kubernetes_job --> kubernetes_job_spec
+kubernetes_job --> kubernetes_job_status
+kubernetes_resource <|--- kubernetes_job
+kubernetes_job_spec --> kubernetes_label_selector
+kubernetes_job_spec --> kubernetes_pod_template_spec
+kubernetes_job_status --> kubernetes_job_status_conditions
+kubernetes_label_selector --> kubernetes_label_selector_requirement
+kubernetes_pod_spec --> kubernetes_container
+kubernetes_pod_spec --> kubernetes_pod_security_context
+kubernetes_pod_spec --> kubernetes_toleration
+kubernetes_pod_spec --> kubernetes_volume
+kubernetes_pod_template_spec --> kubernetes_pod_spec
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

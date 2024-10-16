@@ -1,0 +1,405 @@
+---
+sidebar_label: Vertex AI Hyperparameter Tuning Job
+---
+
+# `gcp_vertex_ai_hyperparameter_tuning_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: aiplatform
+- Provider Link: [Vertex AI Hyperparameter Tuning Job](https://cloud.google.com/docs)
+
+## Description
+
+A Hyperparameter Tuning Job optimizes the hyperparameters of a machine learning model in Vertex AI, improving the model's performance through efficient search over configurations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Hyperparameter Tuning Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_resource {
+
+}
+class gcp_vertex_ai_hyperparameter_tuning_job {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+resource <|--- gcp_resource
+ai_job <|--- gcp_vertex_ai_hyperparameter_tuning_job
+gcp_resource <|--- gcp_vertex_ai_hyperparameter_tuning_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Hyperparameter Tuning Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_hyperparameter_tuning_job {
+
+}
+class gcp_vertex_ai_model {
+
+}
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_hyperparameter_tuning_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Hyperparameter Tuning Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_details {
+
+}
+class gcp_google_rpc_status {
+**code**: int64
+**details**: gcp_details[]
+**message**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_container_spec {
+**args**: string[]
+**command**: string[]
+**env**: gcp_vertex_ai_env_var[]
+**image_uri**: string
+}
+class gcp_vertex_ai_custom_job_spec {
+**base_output_directory**: string
+**enable_dashboard_access**: boolean
+**enable_web_access**: boolean
+**experiment**: string
+**experiment_run**: string
+**models**: string[]
+**network**: string
+**persistent_resource_id**: string
+**protected_artifact_location_id**: string
+**reserved_ip_ranges**: string[]
+**scheduling**: gcp_vertex_ai_scheduling
+**service_account**: string
+**tensorboard**: string
+**worker_pool_specs**: gcp_vertex_ai_worker_pool_spec[]
+}
+class gcp_vertex_ai_disk_spec {
+**boot_disk_size_gb**: int64
+**boot_disk_type**: string
+}
+class gcp_vertex_ai_env_var {
+**name**: string
+**value**: string
+}
+class gcp_vertex_ai_hyperparameter_tuning_job {
+**create_time**: datetime
+**display_name**: string
+**encryption_spec**: string
+**end_time**: datetime
+**max_failed_trial_count**: int64
+**max_trial_count**: int64
+**parallel_trial_count**: int64
+**rpc_error**: gcp_google_rpc_status
+**start_time**: datetime
+**state**: string
+**study_spec**: gcp_vertex_ai_study_spec
+**trial_job_spec**: gcp_vertex_ai_custom_job_spec
+**trials**: gcp_vertex_ai_trial[]
+**update_time**: datetime
+}
+class gcp_vertex_ai_machine_spec {
+**accelerator_count**: int64
+**accelerator_type**: string
+**machine_type**: string
+**tpu_topology**: string
+}
+class gcp_vertex_ai_measurement {
+**elapsed_duration**: string
+**metrics**: gcp_vertex_ai_measurement_metric[]
+**step_count**: string
+}
+class gcp_vertex_ai_measurement_metric {
+**metric_id**: string
+**value**: double
+}
+class gcp_vertex_ai_nfs_mount {
+**mount_point**: string
+**path**: string
+**server**: string
+}
+class gcp_vertex_ai_python_package_spec {
+**args**: string[]
+**env**: gcp_vertex_ai_env_var[]
+**executor_image_uri**: string
+**package_uris**: string[]
+**python_module**: string
+}
+class gcp_vertex_ai_scheduling {
+**disable_retries**: boolean
+**restart_job_on_worker_restart**: boolean
+**timeout**: string
+}
+class gcp_vertex_ai_study_spec {
+**algorithm**: string
+**convex_automated_stopping_spec**: gcp_vertex_ai_study_spec_convex_automated_stopping_spec
+**decay_curve_stopping_spec**: boolean
+**measurement_selection_type**: string
+**median_automated_stopping_spec**: boolean
+**metrics**: gcp_vertex_ai_study_spec_metric_spec[]
+**observation_noise**: string
+**parameters**: gcp_vertex_ai_study_spec_parameter_spec[]
+**study_stopping_config**: gcp_vertex_ai_study_spec_study_stopping_config
+}
+class gcp_vertex_ai_study_spec_convex_automated_stopping_spec {
+**learning_rate_parameter_name**: string
+**max_step_count**: string
+**min_measurement_count**: string
+**min_step_count**: string
+**update_all_stopped_trials**: boolean
+**use_elapsed_duration**: boolean
+}
+class gcp_vertex_ai_study_spec_metric_spec {
+**goal**: string
+**metric_id**: string
+**safety_config**: gcp_vertex_ai_study_spec_metric_spec_safety_metric_config
+}
+class gcp_vertex_ai_study_spec_metric_spec_safety_metric_config {
+**desired_min_safe_trials_fraction**: double
+**safety_threshold**: double
+}
+class gcp_vertex_ai_study_spec_parameter_spec {
+**categorical_value_spec**: gcp_vertex_ai_study_spec_parameter_spec_categorical_value_spec
+**conditional_parameter_specs**: gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec[]
+**discrete_value_spec**: gcp_vertex_ai_study_spec_parameter_spec_discrete_value_spec
+**double_value_spec**: gcp_vertex_ai_study_spec_parameter_spec_double_value_spec
+**integer_value_spec**: gcp_vertex_ai_study_spec_parameter_spec_integer_value_spec
+**parameter_id**: string
+**scale_type**: string
+}
+class gcp_vertex_ai_study_spec_parameter_spec_categorical_value_spec {
+**default_value**: string
+**values**: string[]
+}
+class gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec {
+**parent_categorical_values**: gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_categorical_value_condition
+**parent_discrete_values**: gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_discrete_value_condition
+**parent_int_values**: gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_int_value_condition
+}
+class gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_categorical_value_condition {
+**values**: string[]
+}
+class gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_discrete_value_condition {
+**values**: double[]
+}
+class gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_int_value_condition {
+**values**: string[]
+}
+class gcp_vertex_ai_study_spec_parameter_spec_discrete_value_spec {
+**default_value**: double
+**values**: double[]
+}
+class gcp_vertex_ai_study_spec_parameter_spec_double_value_spec {
+**default_value**: double
+**max_value**: double
+**min_value**: double
+}
+class gcp_vertex_ai_study_spec_parameter_spec_integer_value_spec {
+**default_value**: string
+**max_value**: string
+**min_value**: string
+}
+class gcp_vertex_ai_study_spec_study_stopping_config {
+**max_duration_no_progress**: string
+**max_num_trials**: int64
+**max_num_trials_no_progress**: int64
+**maximum_runtime_constraint**: gcp_vertex_ai_study_time_constraint
+**min_num_trials**: int64
+**minimum_runtime_constraint**: gcp_vertex_ai_study_time_constraint
+**should_stop_asap**: boolean
+}
+class gcp_vertex_ai_study_time_constraint {
+**end_time**: datetime
+**max_duration**: string
+}
+class gcp_vertex_ai_trial {
+**client_id**: string
+**custom_job**: string
+**end_time**: datetime
+**final_measurement**: gcp_vertex_ai_measurement
+**id**: string
+**infeasible_reason**: string
+**measurements**: gcp_vertex_ai_measurement[]
+**name**: string
+**parameters**: gcp_vertex_ai_trial_parameter[]
+**start_time**: datetime
+**state**: string
+**web_access_uris**: dictionary[string, string]
+}
+class gcp_vertex_ai_trial_parameter {
+**parameter_id**: string
+**value**: any
+}
+class gcp_vertex_ai_worker_pool_spec {
+**container_spec**: gcp_vertex_ai_container_spec
+**disk_spec**: gcp_vertex_ai_disk_spec
+**machine_spec**: gcp_vertex_ai_machine_spec
+**nfs_mounts**: gcp_vertex_ai_nfs_mount[]
+**python_package_spec**: gcp_vertex_ai_python_package_spec
+**replica_count**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+gcp_google_rpc_status --> gcp_details
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_container_spec --> gcp_vertex_ai_env_var
+gcp_vertex_ai_custom_job_spec --> gcp_vertex_ai_scheduling
+gcp_vertex_ai_custom_job_spec --> gcp_vertex_ai_worker_pool_spec
+ai_job <|--- gcp_vertex_ai_hyperparameter_tuning_job
+gcp_vertex_ai_hyperparameter_tuning_job --> gcp_deprecation_status
+gcp_vertex_ai_hyperparameter_tuning_job --> gcp_google_rpc_status
+gcp_resource <|--- gcp_vertex_ai_hyperparameter_tuning_job
+gcp_vertex_ai_hyperparameter_tuning_job --> gcp_vertex_ai_custom_job_spec
+gcp_vertex_ai_hyperparameter_tuning_job --> gcp_vertex_ai_study_spec
+gcp_vertex_ai_hyperparameter_tuning_job --> gcp_vertex_ai_trial
+gcp_vertex_ai_measurement --> gcp_vertex_ai_measurement_metric
+gcp_vertex_ai_python_package_spec --> gcp_vertex_ai_env_var
+gcp_vertex_ai_study_spec --> gcp_vertex_ai_study_spec_convex_automated_stopping_spec
+gcp_vertex_ai_study_spec --> gcp_vertex_ai_study_spec_metric_spec
+gcp_vertex_ai_study_spec --> gcp_vertex_ai_study_spec_parameter_spec
+gcp_vertex_ai_study_spec --> gcp_vertex_ai_study_spec_study_stopping_config
+gcp_vertex_ai_study_spec_metric_spec --> gcp_vertex_ai_study_spec_metric_spec_safety_metric_config
+gcp_vertex_ai_study_spec_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_categorical_value_spec
+gcp_vertex_ai_study_spec_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec
+gcp_vertex_ai_study_spec_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_discrete_value_spec
+gcp_vertex_ai_study_spec_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_double_value_spec
+gcp_vertex_ai_study_spec_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_integer_value_spec
+gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_categorical_value_condition
+gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_discrete_value_condition
+gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec --> gcp_vertex_ai_study_spec_parameter_spec_conditional_parameter_spec_int_value_condition
+gcp_vertex_ai_study_spec_study_stopping_config --> gcp_vertex_ai_study_time_constraint
+gcp_vertex_ai_trial --> gcp_vertex_ai_measurement
+gcp_vertex_ai_trial --> gcp_vertex_ai_trial_parameter
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_container_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_disk_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_machine_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_nfs_mount
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_python_package_spec
+
+@enduml
+```
+
+</ZoomPanPinch>

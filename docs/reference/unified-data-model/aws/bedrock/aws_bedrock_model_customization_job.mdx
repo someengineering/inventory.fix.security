@@ -1,0 +1,226 @@
+---
+sidebar_label: Bedrock Model Customization Job
+---
+
+# `aws_bedrock_model_customization_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: bedrock
+- Provider Link: [Bedrock Model Customization Job](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
+
+## Description
+
+AWS Bedrock Model Customization Job is a service for fine-tuning foundation models on custom datasets. Users can train models to perform specific tasks or adapt to domain-specific language. The service handles the infrastructure setup, model training, and optimization processes. It provides options for data preprocessing, hyperparameter tuning, and model evaluation to improve performance on target tasks.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Model Customization Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- aws_bedrock_model_customization_job
+aws_resource <|--- aws_bedrock_model_customization_job
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Model Customization Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_custom_model {
+
+}
+class aws_bedrock_foundation_model {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_bedrock_custom_model -[#1A83AF]-> aws_kms_key
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_custom_model
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_bedrock_model_customization_job -[#1A83AF]-> aws_kms_key
+aws_bedrock_model_customization_job -[#1A83AF]-> aws_s3_bucket
+aws_ec2_security_group -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_ec2_subnet -[#1A83AF]-> aws_bedrock_model_customization_job
+aws_iam_role -[#1A83AF]-> aws_bedrock_model_customization_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Model Customization Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class aws_bedrock_model_customization_job {
+**base_model_arn**: string
+**client_request_token**: string
+**creation_time**: datetime
+**customization_type**: string
+**end_time**: datetime
+**failure_message**: string
+**hyper_parameters**: dictionary[string, string]
+**job_arn**: string
+**job_name**: string
+**last_modified_time**: datetime
+**output_data_config**: string
+**output_model_arn**: string
+**output_model_kms_key_arn**: string
+**output_model_name**: string
+**role_arn**: string
+**status**: string
+**training_data_config**: string
+**training_metrics**: double
+**validation_data_config**: aws_bedrock_validation_data_config
+**validation_metrics**: double[]
+**vpc_config**: aws_bedrock_vpc_config
+}
+class aws_bedrock_validation_data_config {
+**validators**: string[]
+}
+class aws_bedrock_vpc_config {
+**security_group_ids**: string[]
+**subnet_ids**: string[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+ai_job <|--- aws_bedrock_model_customization_job
+aws_bedrock_model_customization_job --> aws_bedrock_validation_data_config
+aws_bedrock_model_customization_job --> aws_bedrock_vpc_config
+aws_resource <|--- aws_bedrock_model_customization_job
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,318 @@
+---
+sidebar_label: S3 Bucket
+---
+
+# `aws_s3_bucket`
+
+- Categories: Storage
+- Service: s3
+- Provider Link: [S3 Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
+
+## Description
+
+AWS S3 Bucket is a cloud storage service provided by Amazon Web Services. It stores and retrieves data objects, such as files, documents, and images. S3 Buckets organize data into containers, offering features like access control, versioning, and lifecycle management. Users can interact with S3 Buckets through APIs, SDKs, or the AWS Management Console.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of S3 Bucket"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_s3_bucket {
+
+}
+class bucket {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_s3_bucket
+bucket <|--- aws_s3_bucket
+resource <|--- bucket
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of S3 Bucket resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_work_group {
+
+}
+class aws_backup_protected_resource {
+
+}
+class aws_bedrock_agent_flow {
+
+}
+class aws_bedrock_evaluation_job {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_cloud_trail {
+
+}
+class aws_cloudfront_distribution {
+
+}
+class aws_ec2_flow_log {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_region {
+
+}
+class aws_s3_account_settings {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_model {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_backup_protected_resource -[#1A83AF]-> aws_s3_bucket
+aws_bedrock_agent_flow -[#1A83AF]-> aws_s3_bucket
+aws_bedrock_evaluation_job -[#1A83AF]-> aws_s3_bucket
+aws_bedrock_model_customization_job -[#1A83AF]-> aws_s3_bucket
+aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
+aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
+aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
+aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
+aws_region -[#1A83AF]-> aws_s3_bucket
+aws_s3_account_settings -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_ssm_resource_compliance -[#1A83AF]-> aws_s3_bucket
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of S3 Bucket data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_s3_bucket {
+**bucket_acl**: aws_s3_bucket_acl
+**bucket_encryption_rules**: aws_s3_server_side_encryption_rule[]
+**bucket_lifecycle_policy**: dictionary[string, any]
+**bucket_location**: string
+**bucket_logging**: aws_s3_logging
+**bucket_mfa_delete**: boolean
+**bucket_policy**: dictionary[string, any]
+**bucket_public_access_block_configuration**: aws_s3_public_access_block_configuration
+**bucket_versioning**: boolean
+}
+class aws_s3_bucket_acl {
+**grants**: aws_s3_grant[]
+**owner**: aws_s3_owner
+}
+class aws_s3_grant {
+**grantee**: aws_s3_grantee
+**permission**: string
+}
+class aws_s3_grantee {
+**display_name**: string
+**email_address**: string
+**id**: string
+**type**: string
+**uri**: string
+}
+class aws_s3_logging {
+**target_bucket**: string
+**target_grants**: aws_s3_target_grant[]
+**target_prefix**: string
+}
+class aws_s3_owner {
+**display_name**: string
+**id**: string
+}
+class aws_s3_public_access_block_configuration {
+**block_public_acls**: boolean
+**block_public_policy**: boolean
+**ignore_public_acls**: boolean
+**restrict_public_buckets**: boolean
+}
+class aws_s3_server_side_encryption_rule {
+**bucket_key_enabled**: boolean
+**kms_master_key_id**: string
+**sse_algorithm**: string
+}
+class aws_s3_target_grant {
+**grantee**: aws_s3_grantee
+**permission**: string
+}
+class bucket {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_s3_bucket
+aws_s3_bucket --> aws_s3_bucket_acl
+aws_s3_bucket --> aws_s3_logging
+aws_s3_bucket --> aws_s3_public_access_block_configuration
+aws_s3_bucket --> aws_s3_server_side_encryption_rule
+bucket <|--- aws_s3_bucket
+aws_s3_bucket_acl --> aws_s3_grant
+aws_s3_bucket_acl --> aws_s3_owner
+aws_s3_grant --> aws_s3_grantee
+aws_s3_logging --> aws_s3_target_grant
+aws_s3_target_grant --> aws_s3_grantee
+resource <|--- bucket
+
+@enduml
+```
+
+</ZoomPanPinch>

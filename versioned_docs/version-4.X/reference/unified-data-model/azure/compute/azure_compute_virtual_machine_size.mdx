@@ -1,0 +1,207 @@
+---
+sidebar_label: Compute Virtual Machine Size
+---
+
+# `azure_compute_virtual_machine_size`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Virtual Machine Size](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes)
+
+## Description
+
+Azure Compute Virtual Machine Size refers to the configuration options for virtual machines in Microsoft Azure. It defines the CPU, memory, storage, and networking capacity allocated to a VM. Users can select from various predefined sizes or customize specifications to match their workload requirements, balancing performance and cost considerations for their cloud computing needs.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Virtual Machine Size"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_size {
+
+}
+class instance_type {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+class type {
+
+}
+instance_type <|--- azure_compute_virtual_machine_size
+microsoft_resource <|--- azure_compute_virtual_machine_size
+type <|--- instance_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine Size resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_compute_virtual_machine_size {
+
+}
+azure_compute_virtual_machine -[#1A83AF]-> azure_compute_virtual_machine_size
+azure_compute_virtual_machine_base -[#1A83AF]-> azure_compute_virtual_machine_size
+azure_compute_virtual_machine_scale_set_instance -[#1A83AF]-> azure_compute_virtual_machine_size
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine Size data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_size {
+**location**: string
+**max_data_disk_count**: int64
+**memory_in_mb**: int64
+**number_of_cores**: int64
+**os_disk_size_in_mb**: int64
+**resource_disk_size_in_mb**: int64
+}
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+
+}
+instance_type <|--- azure_compute_virtual_machine_size
+microsoft_resource <|--- azure_compute_virtual_machine_size
+type <|--- instance_type
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,230 @@
+---
+sidebar_label: Network Security Group
+---
+
+# `azure_network_security_group`
+
+- Categories: Networking, Security
+- Service: networking
+- Provider Link: [Network Security Group](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
+
+## Description
+
+Azure Network Security Group is a virtual firewall that controls inbound and outbound network traffic for Azure resources. It filters traffic based on rules that specify allowed or denied communication between resources. These rules can be applied to subnets, virtual machines, or network interfaces, providing a layer of protection for Azure-hosted applications and services.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Security Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_security_group {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class security_group {
+
+}
+microsoft_resource <|--- azure_network_security_group
+security_group <|--- azure_network_security_group
+resource <|--- microsoft_resource
+resource <|--- security_group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Security Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_network_flow_log {
+
+}
+class azure_network_interface {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_subnet {
+
+}
+azure_compute_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_compute_virtual_machine_base -[#1A83AF]-> azure_network_interface
+azure_compute_virtual_machine_scale_set_instance -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_security_group -[#1A83AF]-> azure_network_flow_log
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_subnet -[#1A83AF]-> azure_network_security_group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Security Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_application_security_group {
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**provisioning_state**: string
+**resource_guid**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_network_security_group {
+**default_security_rules**: azure_security_rule[]
+**flow_log_ids**: string[]
+**flush_connection**: boolean
+**resource_guid**: string
+**security_rules**: azure_security_rule[]
+}
+class azure_port_range {
+**end**: int64
+**start**: int64
+}
+class azure_security_rule {
+**access**: string
+**description**: string
+**destination_address_prefix**: string
+**destination_address_prefixes**: string[]
+**destination_application_security_groups**: azure_application_security_group[]
+**destination_port_ranges**: azure_port_range[]
+**direction**: string
+**etag**: string
+**name**: string
+**priority**: int64
+**protocol**: string
+**provisioning_state**: string
+**source_address_prefix**: string
+**source_address_prefixes**: string[]
+**source_application_security_groups**: azure_application_security_group[]
+**source_port_ranges**: azure_port_range[]
+**type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class security_group {
+
+}
+azure_network_security_group --> azure_security_rule
+microsoft_resource <|--- azure_network_security_group
+security_group <|--- azure_network_security_group
+azure_security_rule --> azure_application_security_group
+azure_security_rule --> azure_port_range
+resource <|--- microsoft_resource
+resource <|--- security_group
+
+@enduml
+```
+
+</ZoomPanPinch>

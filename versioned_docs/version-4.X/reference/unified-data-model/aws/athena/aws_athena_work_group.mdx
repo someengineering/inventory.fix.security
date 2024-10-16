@@ -1,0 +1,190 @@
+---
+sidebar_label: Athena Work Group
+---
+
+# `aws_athena_work_group`
+
+- Categories: Database
+- Service: athena
+- Provider Link: [Athena Work Group](https://docs.aws.amazon.com/athena/latest/ug/workgroups.html)
+
+## Description
+
+AWS Athena Work Group is a feature that organizes users, teams, or applications within Athena. It helps manage query execution, control costs, and track usage across different projects or departments. Work Groups let administrators set query limits, enforce security policies, and monitor resource consumption, providing a structured approach to Athena resource management and access control.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Athena Work Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_work_group {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_athena_work_group
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Athena Work Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_work_group {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+aws_athena_work_group -[#1A83AF]-> aws_kms_key
+aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Athena Work Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_athena_encryption_configuration {
+**encryption_option**: string
+**kms_key**: string
+}
+class aws_athena_engine_version {
+**effective_engine_version**: string
+**selected_engine_version**: string
+}
+class aws_athena_result_configuration {
+**encryption_configuration**: aws_athena_encryption_configuration
+**expected_bucket_owner**: string
+**output_location**: string
+}
+class aws_athena_work_group {
+**description**: string
+**workgroup_configuration**: aws_athena_work_group_configuration
+**workgroup_state**: string
+}
+class aws_athena_work_group_configuration {
+**bytes_scanned_cutoff_per_query**: int64
+**enforce_work_group_configuration**: boolean
+**engine_version**: aws_athena_engine_version
+**publish_cloud_watch_metrics_enabled**: boolean
+**requester_pays_enabled**: boolean
+**result_configuration**: aws_athena_result_configuration
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_athena_result_configuration --> aws_athena_encryption_configuration
+aws_athena_work_group --> aws_athena_work_group_configuration
+aws_resource <|--- aws_athena_work_group
+aws_athena_work_group_configuration --> aws_athena_engine_version
+aws_athena_work_group_configuration --> aws_athena_result_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

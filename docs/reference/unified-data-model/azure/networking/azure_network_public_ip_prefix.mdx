@@ -1,0 +1,181 @@
+---
+sidebar_label: Network Public IP Prefix
+---
+
+# `azure_network_public_ip_prefix`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Public IP Prefix](https://learn.microsoft.com/en-us/azure/virtual-network/public-ip-address-prefix)
+
+## Description
+
+Azure Network Public IP Prefix is a feature that reserves a contiguous range of public IP addresses in Azure. It provides a fixed set of public IPs for network resources, simplifying IP management and reducing the need for frequent updates to firewall rules. Users can assign addresses from this prefix to multiple resources within their Azure environment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Public IP Prefix"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_public_ip_prefix {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_public_ip_prefix
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Public IP Prefix resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_public_ip_address {
+
+}
+class azure_network_public_ip_prefix {
+
+}
+azure_network_public_ip_prefix -[#1A83AF]-> azure_network_public_ip_address
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Public IP Prefix data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_network_public_ip_prefix {
+**azure_sku**: azure_sku
+**custom_ip_prefix**: string
+**extended_location**: azure_extended_location
+**ip_prefix**: string
+**ip_tags**: azure_ip_tag[]
+**load_balancer_frontend_ip_configuration**: string
+**prefix_length**: int64
+**public_ip_address_version**: string
+**public_ip_addresses**: string[]
+**resource_guid**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_public_ip_prefix --> azure_extended_location
+azure_network_public_ip_prefix --> azure_ip_tag
+azure_network_public_ip_prefix --> azure_sku
+microsoft_resource <|--- azure_network_public_ip_prefix
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,203 @@
+---
+sidebar_label: EC2 Network ACL
+---
+
+# `aws_ec2_network_acl`
+
+- Categories: Networking, Security
+- Service: ec2
+- Provider Link: [EC2 Network ACL](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
+
+## Description
+
+AWS EC2 Network ACL is a security layer for Amazon Virtual Private Clouds (VPCs) that controls inbound and outbound traffic at the subnet level. It acts as a firewall, evaluating network traffic against user-defined rules. Network ACLs filter packets based on protocol, port, and source/destination IP addresses, providing an additional line of defense for EC2 instances within VPCs.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Network ACL"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_network_acl {
+
+}
+class aws_resource {
+
+}
+class network_acl {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_network_acl
+network_acl <|--- aws_ec2_network_acl
+resource <|--- aws_resource
+resource <|--- network_acl
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Network ACL resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_network_acl {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_region {
+
+}
+class aws_vpc {
+
+}
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Network ACL data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_icmp_type_code {
+**code**: int64
+**type**: int64
+}
+class aws_ec2_network_acl {
+**acl_associations**: aws_ec2_network_acl_association[]
+**acl_entries**: aws_ec2_network_acl_entry[]
+**is_default**: boolean
+}
+class aws_ec2_network_acl_association {
+**network_acl_association_id**: string
+**network_acl_id**: string
+**subnet_id**: string
+}
+class aws_ec2_network_acl_entry {
+**cidr_block**: string
+**egress**: boolean
+**icmp_type_code**: aws_ec2_icmp_type_code
+**ipv6_cidr_block**: string
+**port_range**: aws_ec2_port_range
+**protocol**: string
+**rule_action**: string
+**rule_number**: int64
+}
+class aws_ec2_port_range {
+**from_range**: int64
+**to_range**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class network_acl {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_network_acl --> aws_ec2_network_acl_association
+aws_ec2_network_acl --> aws_ec2_network_acl_entry
+aws_resource <|--- aws_ec2_network_acl
+network_acl <|--- aws_ec2_network_acl
+aws_ec2_network_acl_entry --> aws_ec2_icmp_type_code
+aws_ec2_network_acl_entry --> aws_ec2_port_range
+resource <|--- aws_resource
+resource <|--- network_acl
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,244 @@
+---
+sidebar_label: Cosmos DB PostgreSQL Cluster
+---
+
+# `azure_cosmos_db_postgresql_cluster`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB PostgreSQL Cluster](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/)
+
+## Description
+
+Azure Cosmos DB PostgreSQL Cluster is a managed database service that provides PostgreSQL compatibility within the Azure cloud environment. It offers distributed data storage and processing capabilities, supporting multi-region deployments and automatic scaling. The service handles database administration tasks, including backups, updates, and security, while maintaining PostgreSQL compatibility for existing applications and tools.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB PostgreSQL Cluster"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB PostgreSQL Cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster {
+
+}
+class azure_cosmos_db_postgresql_cluster_configuration {
+
+}
+class azure_cosmos_db_postgresql_cluster_private_endpoint_connection {
+
+}
+class azure_cosmos_db_postgresql_cluster_private_link {
+
+}
+class azure_cosmos_db_postgresql_cluster_role {
+
+}
+class azure_cosmos_db_postgresql_cluster_server {
+
+}
+azure_cosmos_db_postgresql_cluster -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_configuration
+azure_cosmos_db_postgresql_cluster -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_private_endpoint_connection
+azure_cosmos_db_postgresql_cluster -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_private_link
+azure_cosmos_db_postgresql_cluster -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_role
+azure_cosmos_db_postgresql_cluster -[#1A83AF]-> azure_cosmos_db_postgresql_cluster_server
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB PostgreSQL Cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_postgresql_cluster {
+**administrator_login**: string
+**administrator_login_password**: string
+**citus_version**: string
+**cluster_maintenance_window**: azure_maintenance_window
+**coordinator_enable_public_ip_access**: boolean
+**coordinator_server_edition**: string
+**coordinator_storage_quota_in_mb**: int64
+**coordinator_v_cores**: int64
+**data_encryption**: azure_server_data_encryption
+**earliest_restore_time**: datetime
+**enable_ha**: boolean
+**enable_shards_on_coordinator**: boolean
+**location**: string
+**node_count**: int64
+**node_enable_public_ip_access**: boolean
+**node_server_edition**: string
+**node_storage_quota_in_mb**: int64
+**node_v_cores**: int64
+**point_in_time_utc**: datetime
+**postgresql_version**: string
+**preferred_primary_zone**: string
+**private_endpoint_connections**: azure_private_endpoint_connection[]
+**read_replicas**: string[]
+**server_names**: azure_server_name_item[]
+**source_location**: string
+**source_resource_id**: string
+**state**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_maintenance_window {
+**custom_window**: string
+**day_of_week**: int64
+**start_hour**: int64
+**start_minute**: int64
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_server_data_encryption {
+**geo_backup_key_uri**: string
+**geo_backup_user_assigned_identity_id**: string
+**primary_key_uri**: string
+**primary_user_assigned_identity_id**: string
+**type**: string
+}
+class azure_server_name_item {
+**fully_qualified_domain_name**: string
+**name**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cosmos_db_postgresql_cluster --> azure_maintenance_window
+azure_cosmos_db_postgresql_cluster --> azure_private_endpoint_connection
+azure_cosmos_db_postgresql_cluster --> azure_server_data_encryption
+azure_cosmos_db_postgresql_cluster --> azure_server_name_item
+azure_cosmos_db_postgresql_cluster --> azure_system_data
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

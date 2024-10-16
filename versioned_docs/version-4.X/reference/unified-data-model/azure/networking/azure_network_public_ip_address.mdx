@@ -1,0 +1,225 @@
+---
+sidebar_label: Network Public IP Address
+---
+
+# `azure_network_public_ip_address`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Public IP Address](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses)
+
+## Description
+
+Azure Network Public IP Address is a resource that provides a static or dynamic public IP address for Azure resources. It assigns an internet-facing IP to virtual machines, load balancers, and other services, enabling inbound and outbound communication with the internet. This address can be associated with network interfaces or used as a frontend IP for load balancers.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Public IP Address"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_public_ip_address {
+
+}
+class ip_address {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+ip_address <|--- azure_network_public_ip_address
+microsoft_resource <|--- azure_network_public_ip_address
+resource <|--- ip_address
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Public IP Address resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_bastion_host {
+
+}
+class azure_network_ddos_protection_plan {
+
+}
+class azure_network_nat_gateway {
+
+}
+class azure_network_public_ip_address {
+
+}
+class azure_network_public_ip_prefix {
+
+}
+class azure_network_virtual_hub {
+
+}
+azure_network_bastion_host -[#1A83AF]-> azure_network_public_ip_address
+azure_network_ddos_protection_plan -[#1A83AF]-> azure_network_public_ip_address
+azure_network_nat_gateway -[#1A83AF]-> azure_network_public_ip_address
+azure_network_public_ip_prefix -[#1A83AF]-> azure_network_public_ip_address
+azure_network_virtual_hub -[#1A83AF]-> azure_network_public_ip_address
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Public IP Address data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_ddos_settings {
+**ddos_protection_plan**: string
+**protection_mode**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_network_public_ip_address {
+**azure_sku**: azure_sku
+**ddos_settings**: azure_ddos_settings
+**delete_option**: string
+**extended_location**: azure_extended_location
+**idle_timeout_in_minutes**: int64
+**ip_dns_settings**: azure_public_ip_address_dns_settings
+**ip_tags**: azure_ip_tag[]
+**location**: string
+**migration_phase**: string
+**public_ip_address_version**: string
+**public_ip_allocation_method**: string
+**public_ip_prefix**: string
+**resource_guid**: string
+**type**: string
+**zones**: string[]
+}
+class azure_public_ip_address_dns_settings {
+**domain_name_label**: string
+**domain_name_label_scope**: string
+**fqdn**: string
+**reverse_fqdn**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class ip_address {
+**ip_address**: string
+**ip_address_family**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_public_ip_address --> azure_ddos_settings
+azure_network_public_ip_address --> azure_extended_location
+azure_network_public_ip_address --> azure_ip_tag
+azure_network_public_ip_address --> azure_public_ip_address_dns_settings
+azure_network_public_ip_address --> azure_sku
+ip_address <|--- azure_network_public_ip_address
+microsoft_resource <|--- azure_network_public_ip_address
+resource <|--- ip_address
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

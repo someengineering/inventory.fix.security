@@ -1,0 +1,223 @@
+---
+sidebar_label: Bedrock Agent Version
+---
+
+# `aws_bedrock_agent_version`
+
+- Categories: Machine Learning & AI
+- Service: bedrock-agent
+- Provider Link: [Bedrock Agent Version](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-version.html)
+
+## Description
+
+AWS Bedrock Agent Version is a feature that tracks changes in Bedrock agents over time. It maintains a record of agent configurations, including knowledge bases, prompts, and action groups. Users can view, compare, and revert to previous versions, ensuring version control and facilitating collaboration across teams working on AI agent development.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Bedrock Agent Version"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_version {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_bedrock_agent_version
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Version resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent {
+
+}
+class aws_bedrock_agent_version {
+
+}
+class aws_bedrock_foundation_model {
+
+}
+class aws_bedrock_guardrail {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
+aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent -[#1A83AF]-> aws_kms_key
+aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
+aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent
+aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent_version
+aws_bedrock_guardrail -[#1A83AF]-> aws_kms_key
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent
+aws_iam_role -[#1A83AF]-> aws_bedrock_agent_version
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Bedrock Agent Version data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_bedrock_agent_version {
+**agent_arn**: string
+**agent_id**: string
+**agent_name**: string
+**agent_recommended_actions**: string[]
+**agent_resource_role_arn**: string
+**agent_status**: string
+**created_at**: datetime
+**customer_encryption_key_arn**: string
+**description**: string
+**failure_reasons**: string[]
+**foundation_model**: string
+**guardrail_configuration**: aws_bedrock_guardrail_configuration
+**idle_session_ttl_in_seconds**: int64
+**instruction**: string
+**memory_configuration**: aws_bedrock_memory_configuration
+**prompt_override_configuration**: aws_bedrock_prompt_override_configuration
+**updated_at**: datetime
+**version**: string
+}
+class aws_bedrock_guardrail_configuration {
+**guardrail_identifier**: string
+**guardrail_version**: string
+}
+class aws_bedrock_inference_configuration {
+**maximum_length**: int64
+**stop_sequences**: string[]
+**temperature**: double
+**top_k**: int64
+**top_p**: double
+}
+class aws_bedrock_memory_configuration {
+**enabled_memory_types**: string[]
+**storage_days**: int64
+}
+class aws_bedrock_prompt_configuration {
+**base_prompt_template**: string
+**inference_configuration**: aws_bedrock_inference_configuration
+**parser_mode**: string
+**prompt_creation_mode**: string
+**prompt_state**: string
+**prompt_type**: string
+}
+class aws_bedrock_prompt_override_configuration {
+**override_lambda**: string
+**prompt_configurations**: aws_bedrock_prompt_configuration[]
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_bedrock_agent_version --> aws_bedrock_guardrail_configuration
+aws_bedrock_agent_version --> aws_bedrock_memory_configuration
+aws_bedrock_agent_version --> aws_bedrock_prompt_override_configuration
+aws_resource <|--- aws_bedrock_agent_version
+aws_bedrock_prompt_configuration --> aws_bedrock_inference_configuration
+aws_bedrock_prompt_override_configuration --> aws_bedrock_prompt_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

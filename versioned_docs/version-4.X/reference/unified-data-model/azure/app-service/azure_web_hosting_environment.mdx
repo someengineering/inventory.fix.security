@@ -1,0 +1,236 @@
+---
+sidebar_label: Web Hosting Environment
+---
+
+# `azure_web_hosting_environment`
+
+- Categories: Compute
+- Service: app-service
+- Provider Link: [Web Hosting Environment](https://learn.microsoft.com/en-us/azure/app-service/environment/intro)
+
+## Description
+
+Azure Web Hosting Environment is a cloud-based service for deploying and running web applications. It provides infrastructure, tools, and resources for hosting websites and web apps on Microsoft's Azure platform. Users can deploy applications, manage domains, configure security settings, and scale resources as needed. The service supports multiple programming languages and frameworks.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Web Hosting Environment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_hosting_environment {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_web_hosting_environment
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Hosting Environment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_web_hosting_environment {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Web Hosting Environment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_access_control_entry {
+**action**: string
+**description**: string
+**order**: int64
+**remote_subnet**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_stamp_capacity {
+**available_capacity**: int64
+**compute_mode**: string
+**exclude_from_capacity_allocation**: boolean
+**is_applicable_for_all_compute_modes**: boolean
+**name**: string
+**site_mode**: string
+**total_capacity**: int64
+**unit**: string
+**worker_size**: string
+**worker_size_id**: int64
+}
+class azure_virtual_ip_mapping {
+**in_use**: boolean
+**internal_http_port**: int64
+**internal_https_port**: int64
+**virtual_ip**: string
+}
+class azure_virtual_network_profile {
+**id**: string
+**name**: string
+**subnet**: string
+**type**: string
+}
+class azure_web_hosting_environment {
+**allowed_multi_sizes**: string
+**allowed_worker_sizes**: string
+**api_management_account_id**: string
+**azure_kind**: string
+**database_edition**: string
+**database_service_objective**: string
+**dns_suffix**: string
+**environment_capacities**: azure_stamp_capacity[]
+**environment_is_healthy**: boolean
+**environment_status**: string
+**hosting_environment_cluster_settings**: dictionary[string, any]
+**hosting_environment_virtual_network**: azure_virtual_network_profile
+**internal_load_balancing_mode**: string
+**ipssl_address_count**: int64
+**last_action**: string
+**last_action_result**: string
+**maximum_number_of_machines**: int64
+**multi_role_count**: int64
+**multi_size**: string
+**network_access_control_list**: azure_network_access_control_entry[]
+**resource_group**: string
+**status**: string
+**subscription_id**: string
+**suspended**: boolean
+**upgrade_domains**: int64
+**vip_mappings**: azure_virtual_ip_mapping[]
+**vnet_name**: string
+**vnet_resource_group_name**: string
+**vnet_subnet_name**: string
+**worker_pools**: azure_worker_pool[]
+}
+class azure_worker_pool {
+**azure_kind**: string
+**azure_sku**: azure_sku
+**compute_mode**: string
+**id**: string
+**instance_names**: string[]
+**location**: string
+**name**: string
+**tags**: dictionary[string, string]
+**type**: string
+**worker_count**: int64
+**worker_size**: string
+**worker_size_id**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_web_hosting_environment --> azure_network_access_control_entry
+azure_web_hosting_environment --> azure_stamp_capacity
+azure_web_hosting_environment --> azure_virtual_ip_mapping
+azure_web_hosting_environment --> azure_virtual_network_profile
+azure_web_hosting_environment --> azure_worker_pool
+microsoft_resource <|--- azure_web_hosting_environment
+azure_worker_pool --> azure_sku
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

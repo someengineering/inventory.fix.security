@@ -1,0 +1,351 @@
+---
+sidebar_label: Network Interface
+---
+
+# `azure_network_interface`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Interface](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface)
+
+## Description
+
+An Azure Network Interface is a virtual network adapter that connects Azure virtual machines to the internet, Azure virtual networks, and on-premises networks. It assigns IP addresses, network security group rules, and load balancing settings to VMs. Network Interfaces can be attached to or detached from VMs and configured with multiple IP configurations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Interface"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_interface {
+
+}
+class microsoft_resource {
+
+}
+class network_interface {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_interface
+network_interface <|--- azure_network_interface
+resource <|--- microsoft_resource
+resource <|--- network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Interface resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_network_dscp_configuration {
+
+}
+class azure_network_interface {
+
+}
+class azure_network_private_link_service {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_virtual_network_tap {
+
+}
+azure_compute_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_compute_virtual_machine_base -[#1A83AF]-> azure_network_interface
+azure_compute_virtual_machine_scale_set_instance -[#1A83AF]-> azure_network_interface
+azure_network_interface -[#1A83AF]-> azure_network_dscp_configuration
+azure_network_private_link_service -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_virtual_network_tap -[#1A83AF]-> azure_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Interface data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_application_gateway_backend_address {
+**fqdn**: string
+**ip_address**: string
+}
+class azure_application_gateway_backend_address_pool {
+**backend_addresses**: azure_application_gateway_backend_address[]
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_application_security_group {
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**provisioning_state**: string
+**resource_guid**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_custom_dns_config_properties_format {
+**fqdn**: string
+**ip_addresses**: string[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_inbound_nat_rule {
+**backend_address_pool**: string
+**backend_port**: int64
+**enable_floating_ip**: boolean
+**enable_tcp_reset**: boolean
+**etag**: string
+**frontend_ip_configuration**: string
+**frontend_port**: int64
+**frontend_port_range_end**: int64
+**frontend_port_range_start**: int64
+**idle_timeout_in_minutes**: int64
+**name**: string
+**protocol**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_network_interface {
+**auxiliary_mode**: string
+**auxiliary_sku**: string
+**disable_tcp_state_tracking**: boolean
+**dscp_configuration**: string
+**enable_accelerated_networking**: boolean
+**enable_ip_forwarding**: boolean
+**extended_location**: azure_extended_location
+**hosted_workloads**: string[]
+**interface_dns_settings_settings**: azure_network_interface_dns_settings
+**interface_ip_configurations**: azure_network_interface_ip_configuration[]
+**location**: string
+**mac_address**: string
+**migration_phase**: string
+**nic_type**: string
+**primary**: boolean
+**private_endpoint**: azure_private_endpoint
+**resource_guid**: string
+**tap_configurations**: azure_network_interface_tap_configuration[]
+**type**: string
+**virtual_machine**: string
+**vnet_encryption_supported**: boolean
+**workload_type**: string
+}
+class azure_network_interface_dns_settings {
+**applied_dns_servers**: string[]
+**dns_servers**: string[]
+**internal_dns_name_label**: string
+**internal_domain_name_suffix**: string
+**internal_fqdn**: string
+}
+class azure_network_interface_ip_configuration {
+**application_gateway_backend_address_pools**: azure_application_gateway_backend_address_pool[]
+**application_security_groups**: azure_application_security_group[]
+**etag**: string
+**gateway_load_balancer**: string
+**load_balancer_inbound_nat_rules**: azure_inbound_nat_rule[]
+**name**: string
+**primary**: boolean
+**private_ip_address**: string
+**private_ip_address_version**: string
+**private_ip_allocation_method**: string
+**private_link_connection_properties**: azure_network_interface_ip_configuration_private_link_connection_properties
+**provisioning_state**: string
+**type**: string
+}
+class azure_network_interface_ip_configuration_private_link_connection_properties {
+**fqdns**: string[]
+**group_id**: string
+**required_member_name**: string
+}
+class azure_network_interface_tap_configuration {
+**etag**: string
+**name**: string
+**properties**: string
+**type**: string
+}
+class azure_private_endpoint {
+**application_security_groups**: azure_application_security_group[]
+**custom_dns_configs**: azure_custom_dns_config_properties_format[]
+**custom_network_interface_name**: string
+**etag**: string
+**extended_location**: azure_extended_location
+**id**: string
+**ip_configurations**: azure_private_endpoint_ip_configuration[]
+**location**: string
+**manual_private_link_service_connections**: azure_private_link_service_connection[]
+**name**: string
+**private_link_service_connections**: azure_private_link_service_connection[]
+**provisioning_state**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_private_endpoint_ip_configuration {
+**etag**: string
+**group_id**: string
+**member_name**: string
+**name**: string
+**private_ip_address**: string
+**type**: string
+}
+class azure_private_link_service_connection {
+**etag**: string
+**group_ids**: string[]
+**name**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**private_link_service_id**: string
+**provisioning_state**: string
+**request_message**: string
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class network_interface {
+**description**: string
+**mac**: string
+**network_interface_status**: string
+**network_interface_type**: string
+**private_ips**: string[]
+**public_ips**: string[]
+**v6_ips**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
+azure_network_interface --> azure_extended_location
+azure_network_interface --> azure_network_interface_dns_settings
+azure_network_interface --> azure_network_interface_ip_configuration
+azure_network_interface --> azure_network_interface_tap_configuration
+azure_network_interface --> azure_private_endpoint
+microsoft_resource <|--- azure_network_interface
+network_interface <|--- azure_network_interface
+azure_network_interface_ip_configuration --> azure_application_gateway_backend_address_pool
+azure_network_interface_ip_configuration --> azure_application_security_group
+azure_network_interface_ip_configuration --> azure_inbound_nat_rule
+azure_network_interface_ip_configuration --> azure_network_interface_ip_configuration_private_link_connection_properties
+azure_private_endpoint --> azure_application_security_group
+azure_private_endpoint --> azure_custom_dns_config_properties_format
+azure_private_endpoint --> azure_extended_location
+azure_private_endpoint --> azure_private_endpoint_ip_configuration
+azure_private_endpoint --> azure_private_link_service_connection
+azure_private_link_service_connection --> azure_private_link_service_connection_state
+resource <|--- microsoft_resource
+resource <|--- network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>

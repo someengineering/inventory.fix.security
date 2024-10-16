@@ -1,0 +1,354 @@
+---
+sidebar_label: Instance Template
+---
+
+# `gcp_instance_template`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Instance Template](https://cloud.google.com/compute/docs/instance-templates)
+
+## Description
+
+A GCP Instance Template is a resource that defines the configuration for virtual machine instances in Google Cloud Platform. It specifies the machine type, boot disk image, network interfaces, and other settings. Instance Templates serve as blueprints for creating multiple identical instances or instance groups, facilitating consistent and repeatable VM deployments across projects.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Instance Template"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_instance_template {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_instance_template
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Instance Template resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_instance_template {
+
+}
+class gcp_machine_type {
+
+}
+gcp_machine_type -[#1A83AF]-> gcp_instance_template
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Instance Template data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
+}
+class gcp_access_config {
+**external_ipv6**: string
+**external_ipv6_prefix_length**: int64
+**name**: string
+**nat_ip**: string
+**network_tier**: string
+**public_ptr_domain_name**: string
+**set_public_ptr**: boolean
+**type**: string
+}
+class gcp_advanced_machine_features {
+**enable_nested_virtualization**: boolean
+**enable_uefi_networking**: boolean
+**threads_per_core**: int64
+**visible_core_count**: int64
+}
+class gcp_alias_ip_range {
+**ip_cidr_range**: string
+**subnetwork_range_name**: string
+}
+class gcp_attached_disk {
+**architecture**: string
+**auto_delete**: boolean
+**boot**: boolean
+**device_name**: string
+**disk_encryption_key**: gcp_customer_encryption_key
+**disk_size_gb**: int64
+**force_attach**: boolean
+**guest_os_features**: string[]
+**index**: int64
+**initialize_params**: gcp_attached_disk_initialize_params
+**interface**: string
+**licenses**: string[]
+**mode**: string
+**shielded_instance_initial_state**: gcp_initial_state_config
+**source**: string
+**type**: string
+}
+class gcp_attached_disk_initialize_params {
+**architecture**: string
+**description**: string
+**disk_name**: string
+**disk_size_gb**: int64
+**disk_type**: string
+**labels**: dictionary[string, string]
+**licenses**: string[]
+**on_update_action**: string
+**provisioned_iops**: int64
+**resource_manager_tags**: dictionary[string, string]
+**resource_policies**: string[]
+**source_image**: string
+**source_image_encryption_key**: gcp_customer_encryption_key
+**source_snapshot**: string
+**source_snapshot_encryption_key**: gcp_customer_encryption_key
+}
+class gcp_customer_encryption_key {
+**kms_key_name**: string
+**kms_key_service_account**: string
+**raw_key**: string
+**rsa_encrypted_key**: string
+**sha256**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_disk_instantiation_config {
+**auto_delete**: boolean
+**custom_image**: string
+**device_name**: string
+**instantiate_from**: string
+}
+class gcp_file_content_buffer {
+**content**: string
+**file_type**: string
+}
+class gcp_initial_state_config {
+**dbs**: gcp_file_content_buffer[]
+**dbxs**: gcp_file_content_buffer[]
+**keks**: gcp_file_content_buffer[]
+**pk**: gcp_file_content_buffer
+}
+class gcp_instance_properties {
+**advanced_machine_features**: gcp_advanced_machine_features
+**can_ip_forward**: boolean
+**confidential_instance_config**: boolean
+**description**: string
+**disks**: gcp_attached_disk[]
+**guest_accelerators**: gcp_accelerator_config[]
+**key_revocation_action_type**: string
+**labels**: dictionary[string, string]
+**machine_type**: string
+**metadata**: gcp_metadata
+**min_cpu_platform**: string
+**network_interfaces**: gcp_network_interface[]
+**network_performance_config**: string
+**private_ipv6_google_access**: string
+**reservation_affinity**: gcp_reservation_affinity
+**resource_manager_tags**: dictionary[string, string]
+**resource_policies**: string[]
+**scheduling**: gcp_scheduling
+**service_accounts**: gcp_service_account[]
+**shielded_instance_config**: gcp_shielded_instance_config
+**tags**: gcp_tags
+}
+class gcp_instance_template {
+**source_instance**: string
+**source_instance_params**: gcp_source_instance_params
+**template_properties**: gcp_instance_properties
+}
+class gcp_items {
+**key**: string
+**value**: string
+}
+class gcp_metadata {
+**fingerprint**: string
+**items**: gcp_items[]
+}
+class gcp_network_interface {
+**access_configs**: gcp_access_config[]
+**alias_ip_ranges**: gcp_alias_ip_range[]
+**fingerprint**: string
+**internal_ipv6_prefix_length**: int64
+**ipv6_access_configs**: gcp_access_config[]
+**ipv6_access_type**: string
+**ipv6_address**: string
+**name**: string
+**network**: string
+**network_ip**: string
+**nic_type**: string
+**queue_count**: int64
+**stack_type**: string
+**subnetwork**: string
+}
+class gcp_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_scheduling {
+**automatic_restart**: boolean
+**instance_termination_action**: string
+**location_hint**: string
+**min_node_cpus**: int64
+**node_affinities**: gcp_scheduling_node_affinity[]
+**on_host_maintenance**: string
+**preemptible**: boolean
+**provisioning_model**: string
+}
+class gcp_scheduling_node_affinity {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class gcp_service_account {
+**email**: string
+**scopes**: string[]
+}
+class gcp_shielded_instance_config {
+**enable_integrity_monitoring**: boolean
+**enable_secure_boot**: boolean
+**enable_vtpm**: boolean
+}
+class gcp_source_instance_params {
+**disk_configs**: gcp_disk_instantiation_config[]
+}
+class gcp_tags {
+**fingerprint**: string
+**items**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_attached_disk --> gcp_attached_disk_initialize_params
+gcp_attached_disk --> gcp_customer_encryption_key
+gcp_attached_disk --> gcp_initial_state_config
+gcp_attached_disk_initialize_params --> gcp_customer_encryption_key
+gcp_initial_state_config --> gcp_file_content_buffer
+gcp_instance_properties --> gcp_accelerator_config
+gcp_instance_properties --> gcp_advanced_machine_features
+gcp_instance_properties --> gcp_attached_disk
+gcp_instance_properties --> gcp_metadata
+gcp_instance_properties --> gcp_network_interface
+gcp_instance_properties --> gcp_reservation_affinity
+gcp_instance_properties --> gcp_scheduling
+gcp_instance_properties --> gcp_service_account
+gcp_instance_properties --> gcp_shielded_instance_config
+gcp_instance_properties --> gcp_tags
+gcp_instance_template --> gcp_deprecation_status
+gcp_instance_template --> gcp_instance_properties
+gcp_resource <|--- gcp_instance_template
+gcp_instance_template --> gcp_source_instance_params
+gcp_metadata --> gcp_items
+gcp_network_interface --> gcp_access_config
+gcp_network_interface --> gcp_alias_ip_range
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_scheduling --> gcp_scheduling_node_affinity
+gcp_source_instance_params --> gcp_disk_instantiation_config
+
+@enduml
+```
+
+</ZoomPanPinch>

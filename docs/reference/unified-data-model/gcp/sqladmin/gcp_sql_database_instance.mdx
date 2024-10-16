@@ -1,0 +1,401 @@
+---
+sidebar_label: SQL Database Instance
+---
+
+# `gcp_sql_database_instance`
+
+- Categories: Compute, Database
+- Service: sqladmin
+- Provider Link: [SQL Database Instance](https://cloud.google.com/sql/docs/mysql/instance-settings)
+
+## Description
+
+GCP SQL Database Instance is a managed relational database service on Google Cloud Platform. It provides MySQL, PostgreSQL, and SQL Server databases with automated backups, replication, and patching. Users can create, configure, and operate database instances without managing the underlying infrastructure, focusing on application development and data management tasks.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SQL Database Instance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class database {
+
+}
+class gcp_resource {
+
+}
+class gcp_sql_database_instance {
+
+}
+class resource {
+
+}
+resource <|--- database
+resource <|--- gcp_resource
+database <|--- gcp_sql_database_instance
+gcp_resource <|--- gcp_sql_database_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Database Instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_sql_database {
+
+}
+class gcp_sql_database_instance {
+
+}
+class gcp_sql_operation {
+
+}
+class gcp_sql_user {
+
+}
+class gcp_ssl_certificate {
+
+}
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_database
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_user
+gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SQL Database Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_sql_acl_entry {
+**expiration_time**: datetime
+**name**: string
+**value**: string
+}
+class gcp_sql_backup_configuration {
+**backup_retention_settings**: gcp_sql_backup_retention_settings
+**binary_log_enabled**: boolean
+**enabled**: boolean
+**location**: string
+**point_in_time_recovery_enabled**: boolean
+**replication_log_archiving_enabled**: boolean
+**start_time**: string
+**transaction_log_retention_days**: int64
+}
+class gcp_sql_backup_retention_settings {
+**retained_backups**: int64
+**retention_unit**: string
+}
+class gcp_sql_database_flags {
+**name**: string
+**value**: string
+}
+class gcp_sql_database_instance {
+**available_maintenance_versions**: string[]
+**backend_type**: string
+**connection_name**: string
+**create_time**: datetime
+**current_disk_size**: int64
+**database_installed_version**: string
+**database_version**: string
+**disk_encryption_configuration**: string
+**disk_encryption_status**: string
+**etag**: string
+**failover_replica**: gcp_sql_failoverreplica
+**gce_zone**: string
+**instance_ip_addresses**: gcp_sql_ip_mapping[]
+**ipv6_address**: string
+**maintenance_version**: string
+**master_instance_name**: string
+**max_disk_size**: int64
+**on_premises_configuration**: gcp_sql_on_premises_configuration
+**out_of_disk_report**: gcp_sql_sql_out_of_disk_report
+**project**: string
+**replica_configuration**: gcp_sql_replica_configuration
+**replica_names**: string[]
+**root_password**: string
+**satisfies_pzs**: boolean
+**scheduled_maintenance**: gcp_sql_scheduled_maintenance
+**secondary_gce_zone**: string
+**server_ca_cert**: gcp_sql_ssl_cert
+**service_account_email_address**: string
+**settings**: gcp_sql_settings
+**sql_database_instance_state**: string
+**suspension_reason**: string[]
+}
+class gcp_sql_deny_maintenance_period {
+**end_date**: string
+**start_date**: string
+**time**: string
+}
+class gcp_sql_failoverreplica {
+**available**: boolean
+**name**: string
+}
+class gcp_sql_insights_config {
+**query_insights_enabled**: boolean
+**query_plans_per_minute**: int64
+**query_string_length**: int64
+**record_application_tags**: boolean
+**record_client_address**: boolean
+}
+class gcp_sql_instance_reference {
+**name**: string
+**project**: string
+**region**: string
+}
+class gcp_sql_ip_configuration {
+**allocated_ip_range**: string
+**authorized_networks**: gcp_sql_acl_entry[]
+**ipv4_enabled**: boolean
+**private_network**: string
+**require_ssl**: boolean
+}
+class gcp_sql_ip_mapping {
+**ip_address**: string
+**time_to_retire**: string
+**type**: string
+}
+class gcp_sql_location_preference {
+**follow_gae_application**: string
+**secondary_zone**: string
+**zone**: string
+}
+class gcp_sql_maintenance_window {
+**day**: int64
+**hour**: int64
+**update_track**: string
+}
+class gcp_sql_my_sql_replica_configuration {
+**ca_certificate**: string
+**client_certificate**: string
+**client_key**: string
+**connect_retry_interval**: int64
+**dump_file_path**: string
+**master_heartbeat_period**: string
+**password**: string
+**ssl_cipher**: string
+**username**: string
+**verify_server_certificate**: boolean
+}
+class gcp_sql_on_premises_configuration {
+**ca_certificate**: string
+**client_certificate**: string
+**client_key**: string
+**dump_file_path**: string
+**host_port**: string
+**password**: string
+**source_instance**: gcp_sql_instance_reference
+**username**: string
+}
+class gcp_sql_password_validation_policy {
+**complexity**: string
+**disallow_username_substring**: boolean
+**enable_password_policy**: boolean
+**min_length**: int64
+**password_change_interval**: string
+**reuse_interval**: int64
+}
+class gcp_sql_replica_configuration {
+**failover_target**: boolean
+**mysql_replica_configuration**: gcp_sql_my_sql_replica_configuration
+}
+class gcp_sql_scheduled_maintenance {
+**can_defer**: boolean
+**can_reschedule**: boolean
+**schedule_deadline_time**: datetime
+**start_time**: datetime
+}
+class gcp_sql_settings {
+**activation_policy**: string
+**active_directory_config**: string
+**authorized_gae_applications**: string[]
+**availability_type**: string
+**backup_configuration**: gcp_sql_backup_configuration
+**collation**: string
+**connector_enforcement**: string
+**crash_safe_replication_enabled**: boolean
+**data_disk_size_gb**: string
+**data_disk_type**: string
+**database_flags**: gcp_sql_database_flags[]
+**database_replication_enabled**: boolean
+**deletion_protection_enabled**: boolean
+**deny_maintenance_periods**: gcp_sql_deny_maintenance_period[]
+**insights_config**: gcp_sql_insights_config
+**ip_configuration**: gcp_sql_ip_configuration
+**location_preference**: gcp_sql_location_preference
+**maintenance_window**: gcp_sql_maintenance_window
+**password_validation_policy**: gcp_sql_password_validation_policy
+**pricing_plan**: string
+**replication_type**: string
+**settings_version**: string
+**sql_server_audit_config**: gcp_sql_sql_server_audit_config
+**storage_auto_resize**: boolean
+**storage_auto_resize_limit**: string
+**tier**: string
+**time_zone**: string
+**user_labels**: dictionary[string, string]
+}
+class gcp_sql_sql_out_of_disk_report {
+**sql_min_recommended_increase_size_gb**: int64
+**sql_out_of_disk_state**: string
+}
+class gcp_sql_sql_server_audit_config {
+**bucket**: string
+**retention_interval**: string
+**upload_interval**: string
+}
+class gcp_sql_ssl_cert {
+**cert**: string
+**cert_serial_number**: string
+**common_name**: string
+**create_time**: datetime
+**expiration_time**: datetime
+**instance**: string
+**self_link**: string
+**sha1_fingerprint**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- database
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sql_backup_configuration --> gcp_sql_backup_retention_settings
+database <|--- gcp_sql_database_instance
+gcp_sql_database_instance --> gcp_deprecation_status
+gcp_resource <|--- gcp_sql_database_instance
+gcp_sql_database_instance --> gcp_sql_failoverreplica
+gcp_sql_database_instance --> gcp_sql_ip_mapping
+gcp_sql_database_instance --> gcp_sql_on_premises_configuration
+gcp_sql_database_instance --> gcp_sql_replica_configuration
+gcp_sql_database_instance --> gcp_sql_scheduled_maintenance
+gcp_sql_database_instance --> gcp_sql_settings
+gcp_sql_database_instance --> gcp_sql_sql_out_of_disk_report
+gcp_sql_database_instance --> gcp_sql_ssl_cert
+gcp_sql_ip_configuration --> gcp_sql_acl_entry
+gcp_sql_on_premises_configuration --> gcp_sql_instance_reference
+gcp_sql_replica_configuration --> gcp_sql_my_sql_replica_configuration
+gcp_sql_settings --> gcp_sql_backup_configuration
+gcp_sql_settings --> gcp_sql_database_flags
+gcp_sql_settings --> gcp_sql_deny_maintenance_period
+gcp_sql_settings --> gcp_sql_insights_config
+gcp_sql_settings --> gcp_sql_ip_configuration
+gcp_sql_settings --> gcp_sql_location_preference
+gcp_sql_settings --> gcp_sql_maintenance_window
+gcp_sql_settings --> gcp_sql_password_validation_policy
+gcp_sql_settings --> gcp_sql_sql_server_audit_config
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,194 @@
+---
+sidebar_label: Compute Proximity Placement Group
+---
+
+# `azure_compute_proximity_placement_group`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Proximity Placement Group](https://learn.microsoft.com/en-us/azure/virtual-machines/co-location)
+
+## Description
+
+Azure Compute Proximity Placement Group is a feature that groups virtual machines within a single Azure datacenter. It minimizes network latency between VMs by placing them physically close to each other. This configuration improves performance for applications that require low-latency communication between components, such as high-performance computing or tightly coupled distributed systems.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Proximity Placement Group"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_proximity_placement_group {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_proximity_placement_group
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Proximity Placement Group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_availability_set {
+
+}
+class azure_compute_proximity_placement_group {
+
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+azure_compute_availability_set -[#1A83AF]-> azure_compute_proximity_placement_group
+azure_compute_availability_set -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine_base
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine_scale_set
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+azure_compute_virtual_machine_scale_set -[#1A83AF]-> azure_compute_virtual_machine_scale_set_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Proximity Placement Group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_proximity_placement_group {
+**availability_sets**: azure_sub_resource_with_colocation_status[]
+**colocation_status**: azure_instance_view_status
+**intent**: azure_vm_sizes
+**proximity_placement_group_type**: string
+**virtual_machine_scale_sets**: azure_sub_resource_with_colocation_status[]
+**virtual_machines_status**: azure_sub_resource_with_colocation_status[]
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_sub_resource_with_colocation_status {
+**colocation_status**: azure_instance_view_status
+}
+class azure_vm_sizes {
+**vm_sizes**: string[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_compute_proximity_placement_group --> azure_instance_view_status
+azure_compute_proximity_placement_group --> azure_sub_resource_with_colocation_status
+azure_compute_proximity_placement_group --> azure_vm_sizes
+microsoft_resource <|--- azure_compute_proximity_placement_group
+azure_sub_resource_with_colocation_status --> azure_instance_view_status
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

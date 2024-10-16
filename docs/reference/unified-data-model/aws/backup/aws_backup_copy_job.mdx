@@ -1,0 +1,191 @@
+---
+sidebar_label: Backup Copy Job
+---
+
+# `aws_backup_copy_job`
+
+- Categories: Storage
+- Service: backup
+- Provider Link: [Backup Copy Job](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-copy-job.html)
+
+## Description
+
+AWS Backup Copy Job is a feature that creates and transfers copies of backup data between AWS Regions or AWS accounts. It automates the process of replicating backups, enhancing disaster recovery capabilities and data protection. Users can specify source and destination locations, schedule copy jobs, and manage retention policies for the copied backups.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Backup Copy Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_copy_job {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_backup_copy_job
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Copy Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_copy_job {
+
+}
+class aws_backup_plan {
+
+}
+class aws_backup_recovery_point {
+
+}
+class aws_backup_vault {
+
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_plan -[#1A83AF]-> aws_backup_copy_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Copy Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_copy_job {
+**account_id**: string
+**backup_size_in_bytes**: int64
+**child_jobs_in_state**: dictionary[string, int64]
+**completion_date**: datetime
+**composite_member_identifier**: string
+**copy_job_created_by**: aws_backup_recovery_point_creator
+**copy_job_id**: string
+**creation_date**: datetime
+**destination_backup_vault_arn**: string
+**destination_recovery_point_arn**: string
+**iam_role_arn**: string
+**is_parent**: boolean
+**message_category**: string
+**number_of_child_jobs**: int64
+**parent_job_id**: string
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+**source_backup_vault_arn**: string
+**source_recovery_point_arn**: string
+**state**: string
+**status_message**: string
+}
+class aws_backup_recovery_point_creator {
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_version**: string
+**backup_rule_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_copy_job --> aws_backup_recovery_point_creator
+aws_resource <|--- aws_backup_copy_job
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,175 @@
+---
+sidebar_label: SageMaker Pipeline
+---
+
+# `aws_sagemaker_pipeline`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Pipeline](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html)
+
+## Description
+
+AWS SageMaker Pipeline is a feature of Amazon SageMaker that automates and manages machine learning workflows. It defines a series of interconnected steps for data processing, model training, and deployment. Users can create reusable templates, track lineage, and version their ML pipelines. It integrates with other AWS services and supports both code-based and visual interfaces.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Pipeline"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_pipeline {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_pipeline
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Pipeline resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_role {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_pipeline {
+
+}
+class aws_sagemaker_user_profile {
+
+}
+aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
+aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Pipeline data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_pipeline {
+**pipeline_created_by**: aws_sagemaker_user_context
+**pipeline_definition**: string
+**pipeline_description**: string
+**pipeline_display_name**: string
+**pipeline_last_modified_by**: aws_sagemaker_user_context
+**pipeline_parallelism_configuration**: int64
+**pipeline_status**: string
+}
+class aws_sagemaker_user_context {
+**domain_id**: string
+**user_profile_arn**: string
+**user_profile_name**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_pipeline
+aws_sagemaker_pipeline --> aws_sagemaker_user_context
+
+@enduml
+```
+
+</ZoomPanPinch>

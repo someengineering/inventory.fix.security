@@ -1,0 +1,237 @@
+---
+sidebar_label: Service
+---
+
+# `kubernetes_service`
+
+- Categories: Networking
+- Service: kubernetes
+
+## Description
+
+A Kubernetes Service is an abstraction layer that defines a logical set of Pods and a policy by which to access them, providing a stable endpoint for accessing applications deployed on a Kubernetes cluster.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Service"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_resource {
+
+}
+class kubernetes_service {
+
+}
+class load_balancer {
+
+}
+class resource {
+
+}
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_service
+load_balancer <|--- kubernetes_service
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Service resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_endpoint_slice {
+
+}
+class kubernetes_namespace {
+
+}
+class kubernetes_pod {
+
+}
+class kubernetes_service {
+
+}
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_service
+kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_service -[#1A83AF]-> kubernetes_pod
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Service data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_loadbalancer_ingress {
+**hostname**: string
+**ip**: string
+**ports**: kubernetes_loadbalancer_ingress_ports[]
+}
+class kubernetes_loadbalancer_ingress_ports {
+**error**: string
+**port**: int64
+**protocol**: string
+}
+class kubernetes_loadbalancer_status {
+**ingress**: kubernetes_loadbalancer_ingress[]
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class kubernetes_service {
+**service_spec**: kubernetes_service_spec
+**service_status**: kubernetes_service_status
+}
+class kubernetes_service_port {
+**app_protocol**: string
+**name**: string
+**node_port**: int64
+**port**: int64
+**protocol**: string
+**target_port**: any
+}
+class kubernetes_service_spec {
+**allocate_load_balancer_node_ports**: boolean
+**cluster_ip**: string
+**cluster_ips**: string[]
+**external_ips**: string[]
+**external_name**: string
+**external_traffic_policy**: string
+**health_check_node_port**: int64
+**internal_traffic_policy**: string
+**ip_families**: string[]
+**ip_family_policy**: string
+**load_balancer_class**: string
+**load_balancer_ip**: string
+**load_balancer_source_ranges**: string[]
+**ports**: kubernetes_service_port[]
+**publish_not_ready_addresses**: boolean
+**selector**: dictionary[string, string]
+**session_affinity**: string
+**type**: string
+}
+class kubernetes_service_status {
+**conditions**: kubernetes_service_status_conditions[]
+**load_balancer**: kubernetes_loadbalancer_status
+}
+class kubernetes_service_status_conditions {
+**last_transition_time**: datetime
+**message**: string
+**observed_generation**: int64
+**reason**: string
+**status**: string
+**type**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+kubernetes_loadbalancer_ingress --> kubernetes_loadbalancer_ingress_ports
+kubernetes_loadbalancer_status --> kubernetes_loadbalancer_ingress
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_service
+kubernetes_service --> kubernetes_service_spec
+kubernetes_service --> kubernetes_service_status
+load_balancer <|--- kubernetes_service
+kubernetes_service_spec --> kubernetes_service_port
+kubernetes_service_status --> kubernetes_loadbalancer_status
+kubernetes_service_status --> kubernetes_service_status_conditions
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>

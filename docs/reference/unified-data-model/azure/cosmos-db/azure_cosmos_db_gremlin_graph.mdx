@@ -1,0 +1,242 @@
+---
+sidebar_label: Cosmos DB Gremlin Graph
+---
+
+# `azure_cosmos_db_gremlin_graph`
+
+- Categories: Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Gremlin Graph](https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/)
+
+## Description
+
+Azure Cosmos DB Gremlin Graph is a graph database service within Microsoft's Azure cloud platform. It supports the Apache TinkerPop graph traversal language and Gremlin API for storing and querying graph data. Users can model complex relationships between entities, perform graph queries, and manage data with global distribution and automatic scaling capabilities.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Gremlin Graph"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_gremlin_graph {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_cosmos_db_gremlin_graph
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Gremlin Graph resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_gremlin_database {
+
+}
+class azure_cosmos_db_gremlin_graph {
+
+}
+azure_cosmos_db_gremlin_database -[#1A83AF]-> azure_cosmos_db_gremlin_graph
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Gremlin Graph data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_auto_upgrade_policy_resource {
+**throughput_policy**: azure_throughput_policy_resource
+}
+class azure_autoscale_settings_resource {
+**auto_upgrade_policy**: azure_auto_upgrade_policy_resource
+**max_throughput**: int64
+**target_max_throughput**: int64
+}
+class azure_composite_path {
+**order**: string
+**path**: string
+}
+class azure_conflict_resolution_policy {
+**conflict_resolution_path**: string
+**conflict_resolution_procedure**: string
+**mode**: string
+}
+class azure_container_partition_key {
+**paths**: string[]
+**resource_kind**: string
+**system_key**: boolean
+**version**: int64
+}
+class azure_cosmos_db_gremlin_graph {
+**gremlin_graph_options**: azure_options_resource
+**gremlin_graph_resource**: azure_gremlin_graph
+}
+class azure_gremlin_graph {
+**analytical_storage_ttl**: int64
+**conflict_resolution_policy**: azure_conflict_resolution_policy
+**create_mode**: string
+**default_ttl**: int64
+**id**: string
+**indexing_policy**: azure_indexing_policy
+**partition_key**: azure_container_partition_key
+**restore_parameters**: azure_resource_restore_parameters
+**unique_key_policy**: azure_unique_key_policy
+}
+class azure_included_path {
+**indexes**: azure_indexes[]
+**path**: string
+}
+class azure_indexes {
+**data_type**: string
+**precision**: int64
+**resource_kind**: string
+}
+class azure_indexing_policy {
+**automatic**: boolean
+**composite_indexes**: azure_composite_path[]
+**excluded_paths**: string[]
+**included_paths**: azure_included_path[]
+**indexing_mode**: string
+**spatial_indexes**: azure_spatial_spec[]
+}
+class azure_options_resource {
+**autoscale_settings**: int64
+**throughput**: int64
+}
+class azure_resource_restore_parameters {
+
+}
+class azure_spatial_spec {
+**path**: string
+**types**: string[]
+}
+class azure_throughput_policy_resource {
+**increment_percent**: int64
+**is_enabled**: boolean
+}
+class azure_unique_key {
+**paths**: string[]
+}
+class azure_unique_key_policy {
+**unique_keys**: azure_unique_key[]
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_auto_upgrade_policy_resource --> azure_throughput_policy_resource
+azure_autoscale_settings_resource --> azure_auto_upgrade_policy_resource
+azure_cosmos_db_gremlin_graph --> azure_gremlin_graph
+azure_cosmos_db_gremlin_graph --> azure_options_resource
+microsoft_resource <|--- azure_cosmos_db_gremlin_graph
+azure_gremlin_graph --> azure_autoscale_settings_resource
+azure_gremlin_graph --> azure_conflict_resolution_policy
+azure_gremlin_graph --> azure_container_partition_key
+azure_gremlin_graph --> azure_indexing_policy
+azure_gremlin_graph --> azure_resource_restore_parameters
+azure_gremlin_graph --> azure_unique_key_policy
+azure_included_path --> azure_indexes
+azure_indexing_policy --> azure_composite_path
+azure_indexing_policy --> azure_included_path
+azure_indexing_policy --> azure_spatial_spec
+azure_unique_key_policy --> azure_unique_key
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

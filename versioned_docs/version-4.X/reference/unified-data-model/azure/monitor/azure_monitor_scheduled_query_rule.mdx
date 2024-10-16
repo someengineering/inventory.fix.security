@@ -1,0 +1,233 @@
+---
+sidebar_label: Monitor Scheduled Query Rule
+---
+
+# `azure_monitor_scheduled_query_rule`
+
+- Categories: Management
+- Service: monitor
+- Provider Link: [Monitor Scheduled Query Rule](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-scheduled-query)
+
+## Description
+
+Azure Monitor Scheduled Query Rule is a feature that executes predefined queries on log data at specified intervals. It evaluates the query results against set thresholds and triggers alerts when conditions are met. This tool helps users monitor their Azure resources and applications, detect issues, and respond to potential problems based on collected telemetry data.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Scheduled Query Rule"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_scheduled_query_rule {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_monitor_scheduled_query_rule
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Scheduled Query Rule resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_scheduled_query_rule {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Scheduled Query Rule data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_monitor_actions {
+**action_groups**: string[]
+**action_properties**: dictionary[string, string]
+**custom_properties**: dictionary[string, string]
+}
+class azure_monitor_condition {
+**dimensions**: azure_monitor_dimension[]
+**failing_periods**: azure_monitor_evaluations_to_alert
+**metric_measure_column**: string
+**metric_name**: string
+**operator**: string
+**query**: string
+**resource_id_column**: string
+**threshold**: double
+**time_aggregation**: string
+}
+class azure_monitor_dimension {
+**name**: string
+**operator**: string
+**values**: string[]
+}
+class azure_monitor_evaluations_to_alert {
+**min_failing_periods_to_alert**: int64
+**number_of_evaluation_periods**: int64
+}
+class azure_monitor_rule_resolve_configuration {
+**auto_resolved**: boolean
+**time_to_resolve**: string
+}
+class azure_monitor_scheduled_query_rule {
+**actions**: azure_monitor_actions
+**auto_mitigate**: boolean
+**check_workspace_alerts_storage_configured**: boolean
+**created_with_api_version**: string
+**criteria**: azure_monitor_scheduled_query_rule_criteria
+**description**: string
+**display_name**: string
+**enabled**: boolean
+**evaluation_frequency**: string
+**identity**: azure_identity
+**is_legacy_log_analytics_rule**: boolean
+**is_workspace_alerts_storage_configured**: boolean
+**mute_actions_duration**: string
+**override_query_time_range**: string
+**rule_kind**: string
+**rule_resolve_configuration**: azure_monitor_rule_resolve_configuration
+**scopes**: string[]
+**severity**: int64
+**skip_query_validation**: boolean
+**system_data**: azure_system_data
+**target_resource_types**: string[]
+**window_size**: string
+}
+class azure_monitor_scheduled_query_rule_criteria {
+**all_of**: azure_monitor_condition[]
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_monitor_condition --> azure_monitor_dimension
+azure_monitor_condition --> azure_monitor_evaluations_to_alert
+azure_monitor_scheduled_query_rule --> azure_identity
+azure_monitor_scheduled_query_rule --> azure_monitor_actions
+azure_monitor_scheduled_query_rule --> azure_monitor_rule_resolve_configuration
+azure_monitor_scheduled_query_rule --> azure_monitor_scheduled_query_rule_criteria
+azure_monitor_scheduled_query_rule --> azure_system_data
+microsoft_resource <|--- azure_monitor_scheduled_query_rule
+azure_monitor_scheduled_query_rule_criteria --> azure_monitor_condition
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

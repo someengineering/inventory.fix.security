@@ -1,0 +1,191 @@
+---
+sidebar_label: Pod Disruption Budget
+---
+
+# `kubernetes_pod_disruption_budget`
+
+- Categories: Other
+- Service: kubernetes
+
+## Description
+
+A Kubernetes Pod Disruption Budget (PDB) is used to ensure that a specified number or percentage of pods within a replicated application remain available during voluntary disruptions.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Pod Disruption Budget"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_pod_disruption_budget {
+
+}
+class kubernetes_resource {
+
+}
+class resource {
+
+}
+kubernetes_resource <|--- kubernetes_pod_disruption_budget
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pod Disruption Budget resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_namespace {
+
+}
+class kubernetes_pod_disruption_budget {
+
+}
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod_disruption_budget
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pod Disruption Budget data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_label_selector {
+**match_expressions**: kubernetes_label_selector_requirement[]
+**match_labels**: dictionary[string, string]
+}
+class kubernetes_label_selector_requirement {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class kubernetes_pod_disruption_budget {
+**pod_disruption_budget_spec**: kubernetes_pod_disruption_budget_spec
+**pod_disruption_budget_status**: kubernetes_pod_disruption_budget_status
+}
+class kubernetes_pod_disruption_budget_spec {
+**max_unavailable**: any
+**min_available**: any
+**selector**: kubernetes_label_selector
+}
+class kubernetes_pod_disruption_budget_status {
+**conditions**: kubernetes_pod_disruption_budget_status_conditions[]
+**current_healthy**: int64
+**desired_healthy**: int64
+**disrupted_pods**: any
+**disruptions_allowed**: int64
+**expected_pods**: int64
+**observed_generation**: int64
+}
+class kubernetes_pod_disruption_budget_status_conditions {
+**last_transition_time**: datetime
+**message**: string
+**observed_generation**: int64
+**reason**: string
+**status**: string
+**type**: string
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+kubernetes_label_selector --> kubernetes_label_selector_requirement
+kubernetes_pod_disruption_budget --> kubernetes_pod_disruption_budget_spec
+kubernetes_pod_disruption_budget --> kubernetes_pod_disruption_budget_status
+kubernetes_resource <|--- kubernetes_pod_disruption_budget
+kubernetes_pod_disruption_budget_spec --> kubernetes_label_selector
+kubernetes_pod_disruption_budget_status --> kubernetes_pod_disruption_budget_status_conditions
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

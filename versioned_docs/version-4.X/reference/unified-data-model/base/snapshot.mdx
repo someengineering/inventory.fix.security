@@ -1,0 +1,91 @@
+---
+sidebar_label: Snapshot
+---
+
+# `snapshot`
+
+- Categories: Storage
+
+## Description
+
+A snapshot.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_snapshot {
+
+}
+class aws_rds_snapshot {
+
+}
+class azure_compute_virtual_machine_snapshot {
+
+}
+class azure_container_service_managed_cluster_snapshot {
+
+}
+class digitalocean_snapshot {
+
+}
+class gcp_snapshot {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
+snapshot <|--- aws_ec2_snapshot
+snapshot <|--- aws_rds_snapshot
+snapshot <|--- azure_compute_virtual_machine_snapshot
+snapshot <|--- azure_container_service_managed_cluster_snapshot
+snapshot <|--- digitalocean_snapshot
+snapshot <|--- gcp_snapshot
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>

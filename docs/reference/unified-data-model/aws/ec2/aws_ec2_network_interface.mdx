@@ -1,0 +1,277 @@
+---
+sidebar_label: EC2 Network Interface
+---
+
+# `aws_ec2_network_interface`
+
+- Categories: Networking
+- Service: ec2
+- Provider Link: [EC2 Network Interface](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)
+
+## Description
+
+An AWS EC2 Network Interface is a virtual network card that can be attached to EC2 instances. It provides network connectivity for instances within a VPC, allowing them to communicate with other resources and the internet. Network Interfaces can have multiple IP addresses, security groups, and can be moved between instances to maintain network configurations.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Network Interface"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_network_interface {
+
+}
+class aws_resource {
+
+}
+class network_interface {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_network_interface
+network_interface <|--- aws_ec2_network_interface
+resource <|--- aws_resource
+resource <|--- network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Network Interface resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_elastic_ip {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_efs_mount_target {
+
+}
+class aws_region {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_network_interface -[#1A83AF]-> aws_efs_mount_target
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_ec2_elastic_ip
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Network Interface data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_group_identifier {
+**group_id**: string
+**group_name**: string
+}
+class aws_ec2_network_interface {
+**nic_association**: aws_ec2_network_interface_association
+**nic_attachment**: aws_ec2_network_interface_attachment
+**nic_availability_zone**: string
+**nic_deny_all_igw_traffic**: boolean
+**nic_groups**: aws_ec2_group_identifier[]
+**nic_ipv4_prefixes**: string[]
+**nic_ipv6_address**: string
+**nic_ipv6_native**: boolean
+**nic_ipv6_prefixes**: string[]
+**nic_outpost_arn**: string
+**nic_private_dns_name**: string
+**nic_private_ip_address**: string
+**nic_private_ip_addresses**: aws_ec2_network_interface_private_ip_address[]
+**nic_requester_id**: string
+**nic_requester_managed**: boolean
+**nic_source_dest_check**: boolean
+**nic_subnet_id**: string
+**nic_tag_set**: aws_ec2_tag[]
+}
+class aws_ec2_network_interface_association {
+**allocation_id**: string
+**association_id**: string
+**carrier_ip**: string
+**customer_owned_ip**: string
+**public_dns_name**: string
+**public_ip**: string
+}
+class aws_ec2_network_interface_attachment {
+**attach_time**: datetime
+**attachment_id**: string
+**delete_on_termination**: boolean
+**device_index**: int64
+**instance_id**: string
+**network_card_index**: int64
+**status**: string
+}
+class aws_ec2_network_interface_private_ip_address {
+**association**: aws_ec2_network_interface_association
+**primary**: boolean
+**private_dns_name**: string
+**private_ip_address**: string
+}
+class aws_ec2_tag {
+**key**: string
+**value**: string
+}
+class aws_resource {
+**arn**: string
+}
+class network_interface {
+**description**: string
+**mac**: string
+**network_interface_status**: string
+**network_interface_type**: string
+**private_ips**: string[]
+**public_ips**: string[]
+**v6_ips**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_network_interface --> aws_ec2_group_identifier
+aws_ec2_network_interface --> aws_ec2_network_interface_association
+aws_ec2_network_interface --> aws_ec2_network_interface_attachment
+aws_ec2_network_interface --> aws_ec2_network_interface_private_ip_address
+aws_ec2_network_interface --> aws_ec2_tag
+aws_resource <|--- aws_ec2_network_interface
+network_interface <|--- aws_ec2_network_interface
+aws_ec2_network_interface_private_ip_address --> aws_ec2_network_interface_association
+resource <|--- aws_resource
+resource <|--- network_interface
+
+@enduml
+```
+
+</ZoomPanPinch>

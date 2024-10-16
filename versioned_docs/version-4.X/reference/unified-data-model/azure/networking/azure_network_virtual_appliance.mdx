@@ -1,0 +1,218 @@
+---
+sidebar_label: Network Virtual Appliance
+---
+
+# `azure_network_virtual_appliance`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual Appliance](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm#network-virtual-appliances)
+
+## Description
+
+Azure Network Virtual Appliance is a network security service in Microsoft Azure. It functions as a virtual firewall, routing traffic between subnets and enforcing security policies. The appliance inspects network packets, filters traffic, and protects against threats. It can be deployed in virtual networks to control data flow and implement network security rules.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual Appliance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_appliance {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_virtual_appliance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Appliance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_subnet {
+
+}
+class azure_network_virtual_appliance {
+
+}
+class azure_network_virtual_appliance_sku {
+
+}
+azure_network_subnet -[#1A83AF]-> azure_network_virtual_appliance
+azure_network_virtual_appliance -[#1A83AF]-> azure_network_virtual_appliance_sku
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Appliance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_delegation_properties {
+**provisioning_state**: string
+**service_name**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_network_virtual_appliance {
+**additional_nics**: azure_virtual_appliance_additional_nic_properties[]
+**address_prefix**: string
+**boot_strap_configuration_blobs**: string[]
+**cloud_init_configuration**: string
+**cloud_init_configuration_blobs**: string[]
+**delegation**: azure_delegation_properties
+**deployment_type**: string
+**identity**: azure_identity
+**inbound_security_rules**: string[]
+**nva_sku**: azure_virtual_appliance_sku_properties
+**partner_managed_resource**: azure_partner_managed_resource_properties
+**ssh_public_key**: string
+**virtual_appliance_asn**: int64
+**virtual_appliance_connections**: string[]
+**virtual_appliance_nics**: azure_virtual_appliance_nic_properties[]
+**virtual_appliance_sites**: string[]
+**virtual_hub**: string
+}
+class azure_partner_managed_resource_properties {
+**id**: string
+**internal_load_balancer_id**: string
+**standard_load_balancer_id**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_virtual_appliance_additional_nic_properties {
+**has_public_ip**: boolean
+**name**: string
+}
+class azure_virtual_appliance_nic_properties {
+**instance_name**: string
+**name**: string
+**private_ip_address**: string
+**public_ip_address**: string
+}
+class azure_virtual_appliance_sku_properties {
+**bundled_scale_unit**: string
+**market_place_version**: string
+**vendor**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_network_virtual_appliance --> azure_delegation_properties
+azure_network_virtual_appliance --> azure_identity
+azure_network_virtual_appliance --> azure_partner_managed_resource_properties
+azure_network_virtual_appliance --> azure_virtual_appliance_additional_nic_properties
+azure_network_virtual_appliance --> azure_virtual_appliance_nic_properties
+azure_network_virtual_appliance --> azure_virtual_appliance_sku_properties
+microsoft_resource <|--- azure_network_virtual_appliance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,192 @@
+---
+sidebar_label: EC2 Host
+---
+
+# `aws_ec2_host`
+
+- Categories: Compute
+- Service: ec2
+- Provider Link: [EC2 Host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
+
+## Description
+
+AWS EC2 Host is a virtual server in Amazon's Elastic Compute Cloud (EC2) service. It provides computing capacity in the cloud, letting users run applications on Amazon's infrastructure. EC2 Hosts offer various instance types with different CPU, memory, storage, and networking capabilities. Users can start, stop, and terminate instances as needed, paying only for the resources they use.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Host"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_host {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ec2_host
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Host resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_host {
+
+}
+class aws_ec2_instance {
+
+}
+aws_ec2_host -[#1A83AF]-> aws_ec2_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Host data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_available_capacity {
+**available_instance_capacity**: aws_ec2_instance_capacity[]
+**available_v_cpus**: int64
+}
+class aws_ec2_host {
+**host_allows_multiple_instance_types**: string
+**host_auto_placement**: string
+**host_availability_zone**: string
+**host_availability_zone_id**: string
+**host_available_capacity**: aws_ec2_available_capacity
+**host_client_token**: string
+**host_instances**: aws_ec2_host_instance[]
+**host_member_of_service_linked_resource_group**: boolean
+**host_outpost_arn**: string
+**host_owner_id**: string
+**host_properties**: aws_ec2_host_properties
+**host_recovery**: string
+**host_release_time**: datetime
+**host_reservation_id**: string
+**host_state**: string
+}
+class aws_ec2_host_instance {
+**instance_id**: string
+**instance_type**: string
+**owner_id**: string
+}
+class aws_ec2_host_properties {
+**cores**: int64
+**instance_family**: string
+**instance_type**: string
+**sockets**: int64
+**total_v_cpus**: int64
+}
+class aws_ec2_instance_capacity {
+**available_capacity**: int64
+**instance_type**: string
+**total_capacity**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_available_capacity --> aws_ec2_instance_capacity
+aws_ec2_host --> aws_ec2_available_capacity
+aws_ec2_host --> aws_ec2_host_instance
+aws_ec2_host --> aws_ec2_host_properties
+aws_resource <|--- aws_ec2_host
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

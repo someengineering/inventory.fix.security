@@ -1,0 +1,288 @@
+---
+sidebar_label: Team
+---
+
+# `digitalocean_team`
+
+- Categories: Management
+
+## Description
+
+A team is a group of users within DigitalOcean that can collaborate on projects and share resources.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Team"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class digitalocean_resource {
+
+}
+class digitalocean_team {
+
+}
+class resource {
+
+}
+resource <|--- account
+resource <|--- digitalocean_resource
+account <|--- digitalocean_team
+digitalocean_resource <|--- digitalocean_team
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Team resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_alert_policy {
+
+}
+class digitalocean_app {
+
+}
+class digitalocean_cdn_endpoint {
+
+}
+class digitalocean_certificate {
+
+}
+class digitalocean_container_registry {
+
+}
+class digitalocean_container_registry_repository {
+
+}
+class digitalocean_container_registry_repository_tag {
+
+}
+class digitalocean_database {
+
+}
+class digitalocean_domain {
+
+}
+class digitalocean_domain_record {
+
+}
+class digitalocean_droplet {
+
+}
+class digitalocean_firewall {
+
+}
+class digitalocean_floating_ip {
+
+}
+class digitalocean_image {
+
+}
+class digitalocean_kubernetes_cluster {
+
+}
+class digitalocean_load_balancer {
+
+}
+class digitalocean_project {
+
+}
+class digitalocean_region {
+
+}
+class digitalocean_resource {
+
+}
+class digitalocean_snapshot {
+
+}
+class digitalocean_space {
+
+}
+class digitalocean_ssh_key {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_volume {
+
+}
+class digitalocean_vpc {
+
+}
+digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_database -[#1A83AF]-> digitalocean_app
+digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_database
+digitalocean_project -[#1A83AF]-> digitalocean_domain
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_project -[#1A83AF]-> digitalocean_space
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
+digitalocean_region -[#1A83AF]-> digitalocean_database
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
+digitalocean_team -[#1A83AF]-> digitalocean_certificate
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_resource
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Team data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account {
+
+}
+class digitalocean_resource {
+**urn**: string
+}
+class digitalocean_team {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- account
+resource <|--- digitalocean_resource
+account <|--- digitalocean_team
+digitalocean_resource <|--- digitalocean_team
+
+@enduml
+```
+
+</ZoomPanPinch>

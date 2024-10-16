@@ -1,0 +1,608 @@
+---
+sidebar_label: Container Cluster
+---
+
+# `gcp_container_cluster`
+
+- Categories: Compute, Managed Kubernetes, Management
+- Service: container
+- Provider Link: [Container Cluster](https://cloud.google.com/kubernetes-engine/docs)
+
+## Description
+
+GCP Container Cluster is a managed Kubernetes service on Google Cloud Platform. It provides a platform for deploying, managing, and scaling containerized applications. Users can create and operate clusters of virtual machines running Kubernetes, with automatic upgrades and maintenance. The service integrates with other GCP products for networking, storage, and monitoring of containerized workloads.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Container Cluster"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_container_cluster {
+
+}
+class gcp_resource {
+
+}
+class managed_kubernetes_cluster_provider {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_container_cluster
+managed_kubernetes_cluster_provider <|--- gcp_container_cluster
+resource <|--- gcp_resource
+resource <|--- managed_kubernetes_cluster_provider
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_container_cluster {
+
+}
+class gcp_container_operation {
+
+}
+gcp_container_cluster -[#1A83AF]-> gcp_container_operation
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_container_accelerator_config {
+**accelerator_count**: string
+**accelerator_type**: string
+**gpu_partition_size**: string
+**gpu_sharing_config**: gcp_container_gpu_sharing_config
+}
+class gcp_container_addons_config {
+**cloud_run_config**: gcp_container_cloud_run_config
+**config_connector_config**: boolean
+**dns_cache_config**: boolean
+**gce_persistent_disk_csi_driver_config**: boolean
+**gcp_filestore_csi_driver_config**: boolean
+**gke_backup_agent_config**: boolean
+**horizontal_pod_autoscaling**: boolean
+**http_load_balancing**: boolean
+**kubernetes_dashboard**: boolean
+**network_policy_config**: boolean
+}
+class gcp_container_authenticator_groups_config {
+**enabled**: boolean
+**security_group**: string
+}
+class gcp_container_auto_upgrade_options {
+**auto_upgrade_start_time**: datetime
+**description**: string
+}
+class gcp_container_autoprovisioning_node_pool_defaults {
+**boot_disk_kms_key**: string
+**disk_size_gb**: int64
+**disk_type**: string
+**image_type**: string
+**management**: gcp_container_node_management
+**min_cpu_platform**: string
+**oauth_scopes**: string[]
+**service_account**: string
+**shielded_instance_config**: gcp_container_shielded_instance_config
+**upgrade_settings**: gcp_container_upgrade_settings
+}
+class gcp_container_binary_authorization {
+**enabled**: boolean
+**evaluation_mode**: string
+}
+class gcp_container_blue_green_info {
+**blue_instance_group_urls**: string[]
+**blue_pool_deletion_start_time**: datetime
+**green_instance_group_urls**: string[]
+**green_pool_version**: string
+**phase**: string
+}
+class gcp_container_blue_green_settings {
+**node_pool_soak_duration**: string
+**standard_rollout_policy**: gcp_container_standard_rollout_policy
+}
+class gcp_container_cidr_block {
+**cidr_block**: string
+**display_name**: string
+}
+class gcp_container_cloud_run_config {
+**disabled**: boolean
+**load_balancer_type**: string
+}
+class gcp_container_cluster {
+**addons_config**: gcp_container_addons_config
+**authenticator_groups_config**: gcp_container_authenticator_groups_config
+**autopilot**: boolean
+**autoscaling**: gcp_container_cluster_autoscaling
+**binary_authorization**: gcp_container_binary_authorization
+**cluster_ipv4_cidr**: string
+**conditions**: gcp_container_status_condition[]
+**confidential_nodes**: boolean
+**container_cluster_maintenance_policy**: gcp_container_maintenance_policy
+**cost_management_config**: boolean
+**create_time**: datetime
+**current_master_version**: string
+**current_node_count**: int64
+**current_node_version**: string
+**database_encryption**: gcp_container_database_encryption
+**default_max_pods_constraint**: string
+**enable_kubernetes_alpha**: boolean
+**enable_tpu**: boolean
+**etag**: string
+**expire_time**: datetime
+**identity_service_config**: boolean
+**initial_cluster_version**: string
+**initial_node_count**: int64
+**instance_group_urls**: string[]
+**ip_allocation_policy**: gcp_container_ip_allocation_policy
+**legacy_abac**: boolean
+**location**: string
+**locations**: string[]
+**logging_config**: gcp_container_logging_config
+**logging_service**: string
+**master_auth**: gcp_container_master_auth
+**master_authorized_networks_config**: gcp_container_master_authorized_networks_config
+**mesh_certificates**: boolean
+**monitoring_config**: gcp_container_monitoring_config
+**monitoring_service**: string
+**network**: string
+**network_config**: gcp_container_network_config
+**network_policy**: gcp_container_network_policy
+**node_config**: gcp_container_node_config
+**node_ipv4_cidr_size**: int64
+**node_pool_auto_config**: gcp_container_node_pool_auto_config
+**node_pool_defaults**: gcp_container_node_pool_defaults
+**node_pools**: gcp_container_node_pool[]
+**notification_config**: gcp_container_notification_config
+**private_cluster_config**: gcp_container_private_cluster_config
+**release_channel**: string
+**resource_labels**: dictionary[string, string]
+**resource_usage_export_config**: gcp_container_resource_usage_export_config
+**services_ipv4_cidr**: string
+**shielded_nodes**: boolean
+**status**: string
+**status_message**: string
+**subnetwork**: string
+**tpu_ipv4_cidr_block**: string
+**vertical_pod_autoscaling**: boolean
+**workload_identity_config**: string
+}
+class gcp_container_cluster_autoscaling {
+**autoprovisioning_locations**: string[]
+**autoprovisioning_node_pool_defaults**: gcp_container_autoprovisioning_node_pool_defaults
+**autoscaling_profile**: string
+**enable_node_autoprovisioning**: boolean
+**resource_limits**: gcp_container_resource_limit[]
+}
+class gcp_container_daily_maintenance_window {
+**duration**: string
+**start_time**: datetime
+}
+class gcp_container_database_encryption {
+**key_name**: string
+**state**: string
+}
+class gcp_container_dns_config {
+**cluster_dns**: string
+**cluster_dns_domain**: string
+**cluster_dns_scope**: string
+}
+class gcp_container_filter {
+**event_type**: string[]
+}
+class gcp_container_gpu_sharing_config {
+**gpu_sharing_strategy**: string
+**max_shared_clients_per_gpu**: string
+}
+class gcp_container_ip_allocation_policy {
+**cluster_ipv4_cidr**: string
+**cluster_ipv4_cidr_block**: string
+**cluster_secondary_range_name**: string
+**create_subnetwork**: boolean
+**ipv6_access_type**: string
+**node_ipv4_cidr**: string
+**node_ipv4_cidr_block**: string
+**services_ipv4_cidr**: string
+**services_ipv4_cidr_block**: string
+**services_secondary_range_name**: string
+**stack_type**: string
+**subnetwork_name**: string
+**tpu_ipv4_cidr_block**: string
+**use_ip_aliases**: boolean
+**use_routes**: boolean
+}
+class gcp_container_linux_node_config {
+**sysctls**: dictionary[string, string]
+}
+class gcp_container_logging_component_config {
+**enable_components**: string[]
+}
+class gcp_container_logging_config {
+**component_config**: gcp_container_logging_component_config
+}
+class gcp_container_maintenance_policy {
+**resource_version**: string
+**window**: gcp_container_maintenance_window
+}
+class gcp_container_maintenance_window {
+**daily_maintenance_window**: gcp_container_daily_maintenance_window
+**maintenance_exclusions**: dictionary[string, gcp_container_time_window]
+**recurring_window**: gcp_container_recurring_time_window
+}
+class gcp_container_master_auth {
+**client_certificate**: string
+**client_certificate_config**: boolean
+**client_key**: string
+**cluster_ca_certificate**: string
+**password**: string
+**username**: string
+}
+class gcp_container_master_authorized_networks_config {
+**cidr_blocks**: gcp_container_cidr_block[]
+**enabled**: boolean
+}
+class gcp_container_monitoring_component_config {
+**enable_components**: string[]
+}
+class gcp_container_monitoring_config {
+**component_config**: gcp_container_monitoring_component_config
+**managed_prometheus_config**: boolean
+}
+class gcp_container_network_config {
+**datapath_provider**: string
+**default_snat_status**: boolean
+**dns_config**: gcp_container_dns_config
+**enable_intra_node_visibility**: boolean
+**enable_l4ilb_subsetting**: boolean
+**network**: string
+**private_ipv6_google_access**: string
+**service_external_ips_config**: boolean
+**subnetwork**: string
+}
+class gcp_container_network_policy {
+**enabled**: boolean
+**provider**: string
+}
+class gcp_container_network_tags {
+**tags**: string[]
+}
+class gcp_container_node_config {
+**accelerators**: gcp_container_accelerator_config[]
+**advanced_machine_features**: string
+**boot_disk_kms_key**: string
+**confidential_nodes**: boolean
+**disk_size_gb**: int64
+**disk_type**: string
+**gcfs_config**: boolean
+**gvnic**: boolean
+**image_type**: string
+**kubelet_config**: gcp_container_node_kubelet_config
+**labels**: dictionary[string, string]
+**linux_node_config**: gcp_container_linux_node_config
+**local_ssd_count**: int64
+**logging_config**: gcp_container_node_pool_logging_config
+**machine_type**: string
+**metadata**: dictionary[string, string]
+**min_cpu_platform**: string
+**node_group**: string
+**oauth_scopes**: string[]
+**preemptible**: boolean
+**reservation_affinity**: gcp_container_reservation_affinity
+**sandbox_config**: string
+**service_account**: string
+**shielded_instance_config**: gcp_container_shielded_instance_config
+**spot**: boolean
+**tags**: string[]
+**taints**: gcp_container_node_taint[]
+**workload_metadata_config**: string
+}
+class gcp_container_node_config_defaults {
+**gcfs_config**: boolean
+**logging_config**: gcp_container_node_pool_logging_config
+}
+class gcp_container_node_kubelet_config {
+**cpu_cfs_quota**: boolean
+**cpu_cfs_quota_period**: string
+**cpu_manager_policy**: string
+**pod_pids_limit**: string
+}
+class gcp_container_node_management {
+**auto_repair**: boolean
+**auto_upgrade**: boolean
+**upgrade_options**: gcp_container_auto_upgrade_options
+}
+class gcp_container_node_network_config {
+**create_pod_range**: boolean
+**network_performance_config**: string
+**pod_ipv4_cidr_block**: string
+**pod_range**: string
+}
+class gcp_container_node_pool {
+**autoscaling**: gcp_container_node_pool_autoscaling
+**conditions**: gcp_container_status_condition[]
+**config**: gcp_container_node_config
+**initial_node_count**: int64
+**instance_group_urls**: string[]
+**locations**: string[]
+**management**: gcp_container_node_management
+**max_pods_constraint**: string
+**name**: string
+**network_config**: gcp_container_node_network_config
+**pod_ipv4_cidr_size**: int64
+**self_link**: string
+**status**: string
+**status_message**: string
+**update_info**: gcp_container_update_info
+**upgrade_settings**: gcp_container_upgrade_settings
+**version**: string
+}
+class gcp_container_node_pool_auto_config {
+**network_tags**: gcp_container_network_tags
+}
+class gcp_container_node_pool_autoscaling {
+**autoprovisioned**: boolean
+**enabled**: boolean
+**location_policy**: string
+**max_node_count**: int64
+**min_node_count**: int64
+**total_max_node_count**: int64
+**total_min_node_count**: int64
+}
+class gcp_container_node_pool_defaults {
+**node_config_defaults**: gcp_container_node_config_defaults
+}
+class gcp_container_node_pool_logging_config {
+**variant_config**: string
+}
+class gcp_container_node_taint {
+**effect**: string
+**key**: string
+**value**: string
+}
+class gcp_container_notification_config {
+**pubsub**: gcp_container_pub_sub
+}
+class gcp_container_private_cluster_config {
+**enable_private_endpoint**: boolean
+**enable_private_nodes**: boolean
+**master_global_access_config**: boolean
+**master_ipv4_cidr_block**: string
+**peering_name**: string
+**private_endpoint**: string
+**public_endpoint**: string
+}
+class gcp_container_pub_sub {
+**enabled**: boolean
+**filter**: gcp_container_filter
+**topic**: string
+}
+class gcp_container_recurring_time_window {
+**recurrence**: string
+**window**: gcp_container_time_window
+}
+class gcp_container_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
+}
+class gcp_container_resource_limit {
+**maximum**: string
+**minimum**: string
+**resource_type**: string
+}
+class gcp_container_resource_usage_export_config {
+**bigquery_destination**: string
+**consumption_metering_config**: boolean
+**enable_network_egress_metering**: boolean
+}
+class gcp_container_shielded_instance_config {
+**enable_integrity_monitoring**: boolean
+**enable_secure_boot**: boolean
+}
+class gcp_container_standard_rollout_policy {
+**batch_node_count**: int64
+**batch_percentage**: double
+**batch_soak_duration**: string
+}
+class gcp_container_status_condition {
+**canonical_code**: string
+**code**: string
+**message**: string
+}
+class gcp_container_time_window {
+**end_time**: datetime
+**maintenance_exclusion_options**: string
+**start_time**: datetime
+}
+class gcp_container_update_info {
+**blue_green_info**: gcp_container_blue_green_info
+}
+class gcp_container_upgrade_settings {
+**blue_green_settings**: gcp_container_blue_green_settings
+**max_surge**: int64
+**max_unavailable**: int64
+**strategy**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class managed_kubernetes_cluster_provider {
+**endpoint**: string
+**version**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_container_accelerator_config --> gcp_container_gpu_sharing_config
+gcp_container_addons_config --> gcp_container_cloud_run_config
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_node_management
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_shielded_instance_config
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_upgrade_settings
+gcp_container_blue_green_settings --> gcp_container_standard_rollout_policy
+gcp_container_cluster --> gcp_container_addons_config
+gcp_container_cluster --> gcp_container_authenticator_groups_config
+gcp_container_cluster --> gcp_container_binary_authorization
+gcp_container_cluster --> gcp_container_cluster_autoscaling
+gcp_container_cluster --> gcp_container_database_encryption
+gcp_container_cluster --> gcp_container_ip_allocation_policy
+gcp_container_cluster --> gcp_container_logging_config
+gcp_container_cluster --> gcp_container_maintenance_policy
+gcp_container_cluster --> gcp_container_master_auth
+gcp_container_cluster --> gcp_container_master_authorized_networks_config
+gcp_container_cluster --> gcp_container_monitoring_config
+gcp_container_cluster --> gcp_container_network_config
+gcp_container_cluster --> gcp_container_network_policy
+gcp_container_cluster --> gcp_container_node_config
+gcp_container_cluster --> gcp_container_node_pool
+gcp_container_cluster --> gcp_container_node_pool_auto_config
+gcp_container_cluster --> gcp_container_node_pool_defaults
+gcp_container_cluster --> gcp_container_notification_config
+gcp_container_cluster --> gcp_container_private_cluster_config
+gcp_container_cluster --> gcp_container_resource_usage_export_config
+gcp_container_cluster --> gcp_container_status_condition
+gcp_container_cluster --> gcp_deprecation_status
+gcp_resource <|--- gcp_container_cluster
+managed_kubernetes_cluster_provider <|--- gcp_container_cluster
+gcp_container_cluster_autoscaling --> gcp_container_autoprovisioning_node_pool_defaults
+gcp_container_cluster_autoscaling --> gcp_container_resource_limit
+gcp_container_logging_config --> gcp_container_logging_component_config
+gcp_container_maintenance_policy --> gcp_container_maintenance_window
+gcp_container_maintenance_window --> gcp_container_daily_maintenance_window
+gcp_container_maintenance_window --> gcp_container_recurring_time_window
+gcp_container_maintenance_window --> gcp_container_time_window
+gcp_container_master_authorized_networks_config --> gcp_container_cidr_block
+gcp_container_monitoring_config --> gcp_container_monitoring_component_config
+gcp_container_network_config --> gcp_container_dns_config
+gcp_container_node_config --> gcp_container_accelerator_config
+gcp_container_node_config --> gcp_container_linux_node_config
+gcp_container_node_config --> gcp_container_node_kubelet_config
+gcp_container_node_config --> gcp_container_node_pool_logging_config
+gcp_container_node_config --> gcp_container_node_taint
+gcp_container_node_config --> gcp_container_reservation_affinity
+gcp_container_node_config --> gcp_container_shielded_instance_config
+gcp_container_node_config_defaults --> gcp_container_node_pool_logging_config
+gcp_container_node_management --> gcp_container_auto_upgrade_options
+gcp_container_node_pool --> gcp_container_node_config
+gcp_container_node_pool --> gcp_container_node_management
+gcp_container_node_pool --> gcp_container_node_network_config
+gcp_container_node_pool --> gcp_container_node_pool_autoscaling
+gcp_container_node_pool --> gcp_container_status_condition
+gcp_container_node_pool --> gcp_container_update_info
+gcp_container_node_pool --> gcp_container_upgrade_settings
+gcp_container_node_pool_auto_config --> gcp_container_network_tags
+gcp_container_node_pool_defaults --> gcp_container_node_config_defaults
+gcp_container_notification_config --> gcp_container_pub_sub
+gcp_container_pub_sub --> gcp_container_filter
+gcp_container_recurring_time_window --> gcp_container_time_window
+gcp_container_update_info --> gcp_container_blue_green_info
+gcp_container_upgrade_settings --> gcp_container_blue_green_settings
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- managed_kubernetes_cluster_provider
+
+@enduml
+```
+
+</ZoomPanPinch>

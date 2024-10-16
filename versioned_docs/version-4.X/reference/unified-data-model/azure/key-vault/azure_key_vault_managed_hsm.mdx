@@ -1,0 +1,244 @@
+---
+sidebar_label: Key Vault Managed Hsm
+---
+
+# `azure_key_vault_managed_hsm`
+
+- Categories: Management
+- Service: key-vault
+- Provider Link: [Key Vault Managed Hsm](https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/)
+
+## Description
+
+Azure Key Vault Managed HSM is a cloud service that provides secure storage and management of cryptographic keys and secrets. It uses FIPS 140-2 Level 3 validated hardware security modules (HSMs) to protect sensitive data. Users can create, store, and control access to encryption keys, passwords, and certificates within the Azure cloud environment.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Key Vault Managed Hsm"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_vault_managed_hsm {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_key_vault_managed_hsm
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Key Vault Managed Hsm resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_key_vault {
+
+}
+class azure_key_vault_managed_hsm {
+
+}
+azure_key_vault -[#1A83AF]-> azure_key_vault_managed_hsm
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Key Vault Managed Hsm data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_key_vault_managed_hsm {
+**create_mode**: string
+**enable_purge_protection**: boolean
+**enable_soft_delete**: boolean
+**hsm_private_endpoint_connections**: azure_private_endpoint_connection[]
+**hsm_sku**: azure_sku
+**hsm_uri**: string
+**identity**: azure_identity
+**initial_admin_object_ids**: string[]
+**location**: string
+**network_acl_rules**: azure_key_vault_network_rule_set
+**public_network_access**: string
+**regions**: azure_mhsm_geo_replicated_region[]
+**scheduled_purge_date**: datetime
+**security_domain_properties**: azure_managed_hsm_security_domain_properties
+**soft_delete_retention_in_days**: int64
+**status_message**: string
+**system_data**: azure_system_data
+**tenant_id**: string
+**type**: string
+}
+class azure_key_vault_network_rule_set {
+**bypass**: string
+**default_action**: string
+**ip_rules**: string[]
+**virtual_network_rules**: azure_key_vault_virtual_network_rule[]
+}
+class azure_key_vault_virtual_network_rule {
+**id**: string
+**ignore_missing_vnet_service_endpoint**: boolean
+}
+class azure_managed_hsm_security_domain_properties {
+**activation_status**: string
+**activation_status_message**: string
+}
+class azure_mhsm_geo_replicated_region {
+**is_primary**: boolean
+**name**: string
+**provisioning_state**: string
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_identity --> azure_user_assigned_identity
+azure_key_vault_managed_hsm --> azure_identity
+azure_key_vault_managed_hsm --> azure_key_vault_network_rule_set
+azure_key_vault_managed_hsm --> azure_managed_hsm_security_domain_properties
+azure_key_vault_managed_hsm --> azure_mhsm_geo_replicated_region
+azure_key_vault_managed_hsm --> azure_private_endpoint_connection
+azure_key_vault_managed_hsm --> azure_sku
+azure_key_vault_managed_hsm --> azure_system_data
+microsoft_resource <|--- azure_key_vault_managed_hsm
+azure_key_vault_network_rule_set --> azure_key_vault_virtual_network_rule
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

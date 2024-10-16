@@ -1,0 +1,74 @@
+---
+sidebar_label: Network Share
+---
+
+# `network_share`
+
+- Categories: Storage
+
+## Description
+
+A network share.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Share data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_efs_file_system {
+
+}
+class azure_storage_file_share {
+
+}
+class network_share {
+**share_encrypted**: boolean
+**share_iops**: int64
+**share_size**: int64
+**share_status**: string
+**share_throughput**: double
+**share_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+network_share <|--- aws_efs_file_system
+network_share <|--- azure_storage_file_share
+resource <|--- network_share
+
+@enduml
+```
+
+</ZoomPanPinch>

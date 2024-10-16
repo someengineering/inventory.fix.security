@@ -1,0 +1,313 @@
+---
+sidebar_label: SageMaker Domain
+---
+
+# `aws_sagemaker_domain`
+
+- Categories: Machine Learning & AI
+- Service: sagemaker
+- Provider Link: [SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/sm-domain.html)
+
+## Description
+
+AWS SageMaker Domain is a managed environment for machine learning workflows. It provides a unified interface for data scientists and developers to access SageMaker tools, including notebooks, data preparation, model training, and deployment. Users can collaborate on projects, share resources, and manage access controls within the domain, simplifying the end-to-end machine learning process on AWS.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SageMaker Domain"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_sagemaker_domain {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_domain
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Domain resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_security_group {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_iam_role {
+
+}
+class aws_kms_key {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_app {
+
+}
+class aws_sagemaker_artifact {
+
+}
+class aws_sagemaker_code_repository {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_image {
+
+}
+class aws_sagemaker_pipeline {
+
+}
+class aws_sagemaker_trial {
+
+}
+class aws_sagemaker_user_profile {
+
+}
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_domain
+aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
+aws_iam_role -[#1A83AF]-> aws_sagemaker_image
+aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
+aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SageMaker Domain data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_sagemaker_canvas_app_settings {
+**time_series_forecasting_settings**: aws_sagemaker_time_series_forecasting_settings
+}
+class aws_sagemaker_custom_image {
+**app_image_config_name**: string
+**image_name**: string
+**image_version_number**: int64
+}
+class aws_sagemaker_default_space_settings {
+**execution_role**: string
+**jupyter_server_app_settings**: aws_sagemaker_jupyter_server_app_settings
+**kernel_gateway_app_settings**: aws_sagemaker_kernel_gateway_app_settings
+**security_groups**: string[]
+}
+class aws_sagemaker_domain {
+**domain_app_network_access_type**: string
+**domain_app_security_group_management**: string
+**domain_auth_mode**: string
+**domain_default_space_settings**: aws_sagemaker_default_space_settings
+**domain_default_user_settings**: aws_sagemaker_user_settings
+**domain_failure_reason**: string
+**domain_home_efs_file_system_id**: string
+**domain_home_efs_file_system_kms_key_id**: string
+**domain_kms_key_id**: string
+**domain_security_group_id_for_domain_boundary**: string
+**domain_settings**: aws_sagemaker_domain_settings
+**domain_single_sign_on_managed_application_instance_id**: string
+**domain_status**: string
+**domain_subnet_ids**: string[]
+**domain_url**: string
+**domain_vpc_id**: string
+}
+class aws_sagemaker_domain_settings {
+**execution_role_identity_config**: string
+**r_studio_server_pro_domain_settings**: aws_sagemaker_r_studio_server_pro_domain_settings
+**security_group_ids**: string[]
+}
+class aws_sagemaker_jupyter_server_app_settings {
+**code_repositories**: dictionary[string, string][]
+**default_resource_spec**: aws_sagemaker_resource_spec
+**lifecycle_config_arns**: string[]
+}
+class aws_sagemaker_kernel_gateway_app_settings {
+**custom_images**: aws_sagemaker_custom_image[]
+**default_resource_spec**: aws_sagemaker_resource_spec
+**lifecycle_config_arns**: string[]
+}
+class aws_sagemaker_r_session_app_settings {
+**custom_images**: aws_sagemaker_custom_image[]
+**default_resource_spec**: aws_sagemaker_resource_spec
+}
+class aws_sagemaker_r_studio_server_pro_app_settings {
+**access_status**: string
+**user_group**: string
+}
+class aws_sagemaker_r_studio_server_pro_domain_settings {
+**default_resource_spec**: aws_sagemaker_resource_spec
+**domain_execution_role_arn**: string
+**r_studio_connect_url**: string
+**r_studio_package_manager_url**: string
+}
+class aws_sagemaker_resource_spec {
+**instance_type**: string
+**lifecycle_config_arn**: string
+**sage_maker_image_arn**: string
+**sage_maker_image_version_arn**: string
+}
+class aws_sagemaker_sharing_settings {
+**notebook_output_option**: string
+**s3_kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_tensor_board_app_settings {
+**default_resource_spec**: aws_sagemaker_resource_spec
+}
+class aws_sagemaker_time_series_forecasting_settings {
+**amazon_forecast_role_arn**: string
+**status**: string
+}
+class aws_sagemaker_user_settings {
+**canvas_app_settings**: aws_sagemaker_canvas_app_settings
+**execution_role**: string
+**jupyter_server_app_settings**: aws_sagemaker_jupyter_server_app_settings
+**kernel_gateway_app_settings**: aws_sagemaker_kernel_gateway_app_settings
+**r_session_app_settings**: aws_sagemaker_r_session_app_settings
+**r_studio_server_pro_app_settings**: aws_sagemaker_r_studio_server_pro_app_settings
+**sharing_settings**: aws_sagemaker_sharing_settings
+**tensor_board_app_settings**: aws_sagemaker_tensor_board_app_settings
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_sagemaker_canvas_app_settings --> aws_sagemaker_time_series_forecasting_settings
+aws_sagemaker_default_space_settings --> aws_sagemaker_jupyter_server_app_settings
+aws_sagemaker_default_space_settings --> aws_sagemaker_kernel_gateway_app_settings
+aws_resource <|--- aws_sagemaker_domain
+aws_sagemaker_domain --> aws_sagemaker_default_space_settings
+aws_sagemaker_domain --> aws_sagemaker_domain_settings
+aws_sagemaker_domain --> aws_sagemaker_user_settings
+aws_sagemaker_domain_settings --> aws_sagemaker_r_studio_server_pro_domain_settings
+aws_sagemaker_jupyter_server_app_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_kernel_gateway_app_settings --> aws_sagemaker_custom_image
+aws_sagemaker_kernel_gateway_app_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_r_session_app_settings --> aws_sagemaker_custom_image
+aws_sagemaker_r_session_app_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_r_studio_server_pro_domain_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_tensor_board_app_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_user_settings --> aws_sagemaker_canvas_app_settings
+aws_sagemaker_user_settings --> aws_sagemaker_jupyter_server_app_settings
+aws_sagemaker_user_settings --> aws_sagemaker_kernel_gateway_app_settings
+aws_sagemaker_user_settings --> aws_sagemaker_r_session_app_settings
+aws_sagemaker_user_settings --> aws_sagemaker_r_studio_server_pro_app_settings
+aws_sagemaker_user_settings --> aws_sagemaker_sharing_settings
+aws_sagemaker_user_settings --> aws_sagemaker_tensor_board_app_settings
+
+@enduml
+```
+
+</ZoomPanPinch>

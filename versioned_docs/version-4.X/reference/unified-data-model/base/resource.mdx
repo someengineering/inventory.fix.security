@@ -1,0 +1,2955 @@
+---
+sidebar_label: Resource
+---
+
+# `resource`
+
+- Categories: Other
+
+## Description
+
+A generic resource.
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Resource data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class access_key {
+
+}
+class account {
+
+}
+class ai_job {
+
+}
+class ai_model {
+
+}
+class ai_resource {
+
+}
+class autoscaling_group {
+
+}
+class aws_account {
+
+}
+class aws_acm_certificate {
+
+}
+class aws_alb {
+
+}
+class aws_alb_target_group {
+
+}
+class aws_apigateway_authorizer {
+
+}
+class aws_apigateway_deployment {
+
+}
+class aws_apigateway_domain_name {
+
+}
+class aws_apigateway_resource {
+
+}
+class aws_apigateway_rest_api {
+
+}
+class aws_apigateway_stage {
+
+}
+class aws_athena_data_catalog {
+
+}
+class aws_athena_work_group {
+
+}
+class aws_autoscaling_group {
+
+}
+class aws_backup_copy_job {
+
+}
+class aws_backup_framework {
+
+}
+class aws_backup_job {
+
+}
+class aws_backup_legal_hold {
+
+}
+class aws_backup_plan {
+
+}
+class aws_backup_protected_resource {
+
+}
+class aws_backup_recovery_point {
+
+}
+class aws_backup_report_plan {
+
+}
+class aws_backup_restore_job {
+
+}
+class aws_backup_restore_testing_plan {
+
+}
+class aws_backup_vault {
+
+}
+class aws_beanstalk_application {
+
+}
+class aws_beanstalk_environment {
+
+}
+class aws_bedrock_agent {
+
+}
+class aws_bedrock_agent_flow {
+
+}
+class aws_bedrock_agent_flow_version {
+
+}
+class aws_bedrock_agent_knowledge_base {
+
+}
+class aws_bedrock_agent_prompt {
+
+}
+class aws_bedrock_agent_version {
+
+}
+class aws_bedrock_custom_model {
+
+}
+class aws_bedrock_evaluation_job {
+
+}
+class aws_bedrock_foundation_model {
+
+}
+class aws_bedrock_guardrail {
+
+}
+class aws_bedrock_model_customization_job {
+
+}
+class aws_bedrock_provisioned_model_throughput {
+
+}
+class aws_cloud_formation_stack_instance_summary {
+
+}
+class aws_cloud_trail {
+
+}
+class aws_cloudformation_stack {
+
+}
+class aws_cloudformation_stack_set {
+
+}
+class aws_cloudfront_cache_policy {
+
+}
+class aws_cloudfront_distribution {
+
+}
+class aws_cloudfront_field_level_encryption_config {
+
+}
+class aws_cloudfront_field_level_encryption_profile {
+
+}
+class aws_cloudfront_function {
+
+}
+class aws_cloudfront_origin_access_control {
+
+}
+class aws_cloudfront_public_key {
+
+}
+class aws_cloudfront_realtime_log_config {
+
+}
+class aws_cloudfront_response_headers_policy {
+
+}
+class aws_cloudfront_streaming_distribution {
+
+}
+class aws_cloudwatch_alarm {
+
+}
+class aws_cloudwatch_log_group {
+
+}
+class aws_cloudwatch_metric_filter {
+
+}
+class aws_cognito_group {
+
+}
+class aws_cognito_user {
+
+}
+class aws_cognito_user_pool {
+
+}
+class aws_config_recorder {
+
+}
+class aws_dynamodb_global_table {
+
+}
+class aws_dynamodb_table {
+
+}
+class aws_ec2_elastic_ip {
+
+}
+class aws_ec2_flow_log {
+
+}
+class aws_ec2_host {
+
+}
+class aws_ec2_image {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_ec2_instance_type {
+
+}
+class aws_ec2_internet_gateway {
+
+}
+class aws_ec2_keypair {
+
+}
+class aws_ec2_launch_template {
+
+}
+class aws_ec2_nat_gateway {
+
+}
+class aws_ec2_network_acl {
+
+}
+class aws_ec2_network_interface {
+
+}
+class aws_ec2_reserved_instances {
+
+}
+class aws_ec2_route_table {
+
+}
+class aws_ec2_security_group {
+
+}
+class aws_ec2_snapshot {
+
+}
+class aws_ec2_subnet {
+
+}
+class aws_ec2_volume {
+
+}
+class aws_ec2_volume_type {
+
+}
+class aws_ecr_repository {
+
+}
+class aws_ecs_capacity_provider {
+
+}
+class aws_ecs_cluster {
+
+}
+class aws_ecs_container_instance {
+
+}
+class aws_ecs_service {
+
+}
+class aws_ecs_task {
+
+}
+class aws_ecs_task_definition {
+
+}
+class aws_efs_access_point {
+
+}
+class aws_efs_file_system {
+
+}
+class aws_efs_mount_target {
+
+}
+class aws_eks_cluster {
+
+}
+class aws_eks_nodegroup {
+
+}
+class aws_elasticache_cache_cluster {
+
+}
+class aws_elasticache_replication_group {
+
+}
+class aws_elb {
+
+}
+class aws_glacier_job {
+
+}
+class aws_glacier_vault {
+
+}
+class aws_iam_access_key {
+
+}
+class aws_iam_group {
+
+}
+class aws_iam_instance_profile {
+
+}
+class aws_iam_policy {
+
+}
+class aws_iam_role {
+
+}
+class aws_iam_server_certificate {
+
+}
+class aws_iam_user {
+
+}
+class aws_kinesis_stream {
+
+}
+class aws_kms_key {
+
+}
+class aws_lambda_function {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_organizational_root {
+
+}
+class aws_organizational_unit {
+
+}
+class aws_q_apps {
+
+}
+class aws_q_apps_library_item {
+
+}
+class aws_q_business_application {
+
+}
+class aws_q_business_conversation {
+
+}
+class aws_q_business_data_source {
+
+}
+class aws_q_business_data_source_sync_job {
+
+}
+class aws_q_business_document {
+
+}
+class aws_q_business_indice {
+
+}
+class aws_q_business_message {
+
+}
+class aws_q_business_plugin {
+
+}
+class aws_q_business_retriever {
+
+}
+class aws_q_business_web_experience {
+
+}
+class aws_rds_cluster {
+
+}
+class aws_rds_cluster_snapshot {
+
+}
+class aws_rds_instance {
+
+}
+class aws_rds_snapshot {
+
+}
+class aws_redshift_cluster {
+
+}
+class aws_region {
+
+}
+class aws_resource {
+
+}
+class aws_root_user {
+
+}
+class aws_route53_resource_record {
+
+}
+class aws_route53_resource_record_set {
+
+}
+class aws_route53_zone {
+
+}
+class aws_s3_account_settings {
+
+}
+class aws_s3_bucket {
+
+}
+class aws_sagemaker_algorithm {
+
+}
+class aws_sagemaker_app {
+
+}
+class aws_sagemaker_artifact {
+
+}
+class aws_sagemaker_auto_ml_job {
+
+}
+class aws_sagemaker_code_repository {
+
+}
+class aws_sagemaker_compilation_job {
+
+}
+class aws_sagemaker_domain {
+
+}
+class aws_sagemaker_endpoint {
+
+}
+class aws_sagemaker_experiment {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job {
+
+}
+class aws_sagemaker_image {
+
+}
+class aws_sagemaker_inference_recommendations_job {
+
+}
+class aws_sagemaker_job {
+
+}
+class aws_sagemaker_labeling_job {
+
+}
+class aws_sagemaker_model {
+
+}
+class aws_sagemaker_notebook {
+
+}
+class aws_sagemaker_pipeline {
+
+}
+class aws_sagemaker_processing_job {
+
+}
+class aws_sagemaker_project {
+
+}
+class aws_sagemaker_training_job {
+
+}
+class aws_sagemaker_transform_job {
+
+}
+class aws_sagemaker_trial {
+
+}
+class aws_sagemaker_user_profile {
+
+}
+class aws_sagemaker_workteam {
+
+}
+class aws_secretsmanager_secret {
+
+}
+class aws_service_quota {
+
+}
+class aws_sns_endpoint {
+
+}
+class aws_sns_platform_application {
+
+}
+class aws_sns_subscription {
+
+}
+class aws_sns_topic {
+
+}
+class aws_sqs_queue {
+
+}
+class aws_ssm_document {
+
+}
+class aws_ssm_instance {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+class aws_vpc {
+
+}
+class aws_vpc_endpoint {
+
+}
+class aws_vpc_peering_connection {
+
+}
+class aws_waf_web_acl {
+
+}
+class azure_authorization_deny_assignment {
+
+}
+class azure_authorization_management_lock {
+
+}
+class azure_authorization_role_assignment {
+
+}
+class azure_authorization_role_definition {
+
+}
+class azure_compute_availability_set {
+
+}
+class azure_compute_capacity_reservation_group {
+
+}
+class azure_compute_cloud_service {
+
+}
+class azure_compute_dedicated_host_group {
+
+}
+class azure_compute_disk {
+
+}
+class azure_compute_disk_access {
+
+}
+class azure_compute_disk_encryption_set {
+
+}
+class azure_compute_disk_type {
+
+}
+class azure_compute_disk_type_pricing {
+
+}
+class azure_compute_gallery {
+
+}
+class azure_compute_image {
+
+}
+class azure_compute_proximity_placement_group {
+
+}
+class azure_compute_restore_point_collection {
+
+}
+class azure_compute_ssh_public_key {
+
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class azure_compute_virtual_machine_scale_set {
+
+}
+class azure_compute_virtual_machine_scale_set_instance {
+
+}
+class azure_compute_virtual_machine_size {
+
+}
+class azure_compute_virtual_machine_snapshot {
+
+}
+class azure_container_service_fleet {
+
+}
+class azure_container_service_managed_cluster {
+
+}
+class azure_container_service_managed_cluster_snapshot {
+
+}
+class azure_cosmos_db_account {
+
+}
+class azure_cosmos_db_account_usage {
+
+}
+class azure_cosmos_db_cassandra_cluster {
+
+}
+class azure_cosmos_db_cassandra_cluster_data_center {
+
+}
+class azure_cosmos_db_cassandra_cluster_public_status {
+
+}
+class azure_cosmos_db_cassandra_keyspace {
+
+}
+class azure_cosmos_db_cassandra_table {
+
+}
+class azure_cosmos_db_gremlin_database {
+
+}
+class azure_cosmos_db_gremlin_graph {
+
+}
+class azure_cosmos_db_location {
+
+}
+class azure_cosmos_db_mongo_db_cluster {
+
+}
+class azure_cosmos_db_mongo_db_collection {
+
+}
+class azure_cosmos_db_mongo_db_database {
+
+}
+class azure_cosmos_db_mongo_db_role_definition {
+
+}
+class azure_cosmos_db_mongo_db_user_definition {
+
+}
+class azure_cosmos_db_notebook_workspace {
+
+}
+class azure_cosmos_db_postgresql_cluster {
+
+}
+class azure_cosmos_db_postgresql_cluster_configuration {
+
+}
+class azure_cosmos_db_postgresql_cluster_private_endpoint_connection {
+
+}
+class azure_cosmos_db_postgresql_cluster_private_link {
+
+}
+class azure_cosmos_db_postgresql_cluster_role {
+
+}
+class azure_cosmos_db_postgresql_cluster_server {
+
+}
+class azure_cosmos_db_postgresql_cluster_server_configuration {
+
+}
+class azure_cosmos_db_private_link {
+
+}
+class azure_cosmos_db_restorable_account {
+
+}
+class azure_cosmos_db_restorable_gremlin_database {
+
+}
+class azure_cosmos_db_restorable_gremlin_graph {
+
+}
+class azure_cosmos_db_restorable_mongo_db_collection {
+
+}
+class azure_cosmos_db_restorable_mongo_db_database {
+
+}
+class azure_cosmos_db_restorable_sql_container {
+
+}
+class azure_cosmos_db_restorable_sql_database {
+
+}
+class azure_cosmos_db_restorable_table {
+
+}
+class azure_cosmos_db_sql_database {
+
+}
+class azure_cosmos_db_sql_database_client_encryption_key {
+
+}
+class azure_cosmos_db_sql_database_container {
+
+}
+class azure_cosmos_db_sql_role_assignment {
+
+}
+class azure_cosmos_db_sql_role_definition {
+
+}
+class azure_cosmos_db_sql_throughput_setting {
+
+}
+class azure_cosmos_db_table {
+
+}
+class azure_key_vault {
+
+}
+class azure_key_vault_key {
+
+}
+class azure_key_vault_managed_hsm {
+
+}
+class azure_key_vault_secret {
+
+}
+class azure_location {
+
+}
+class azure_machine_learning_batch_endpoint {
+
+}
+class azure_machine_learning_compute {
+
+}
+class azure_machine_learning_compute_node {
+
+}
+class azure_machine_learning_datastore {
+
+}
+class azure_machine_learning_endpoint {
+
+}
+class azure_machine_learning_environment_version_base {
+
+}
+class azure_machine_learning_feature {
+
+}
+class azure_machine_learning_featureset_container {
+
+}
+class azure_machine_learning_featureset_version {
+
+}
+class azure_machine_learning_featurestore_entity_container {
+
+}
+class azure_machine_learning_featurestore_entity_version {
+
+}
+class azure_machine_learning_job {
+
+}
+class azure_machine_learning_labeling_job {
+
+}
+class azure_machine_learning_online_endpoint {
+
+}
+class azure_machine_learning_private_endpoint_connection {
+
+}
+class azure_machine_learning_private_link {
+
+}
+class azure_machine_learning_quota {
+
+}
+class azure_machine_learning_registry {
+
+}
+class azure_machine_learning_registry_code_container {
+
+}
+class azure_machine_learning_registry_code_version {
+
+}
+class azure_machine_learning_registry_component_container {
+
+}
+class azure_machine_learning_registry_component_version {
+
+}
+class azure_machine_learning_registry_data_container {
+
+}
+class azure_machine_learning_registry_data_version {
+
+}
+class azure_machine_learning_registry_environment_container {
+
+}
+class azure_machine_learning_registry_environment_version {
+
+}
+class azure_machine_learning_registry_model_container {
+
+}
+class azure_machine_learning_registry_model_version {
+
+}
+class azure_machine_learning_schedule {
+
+}
+class azure_machine_learning_serverless_endpoint {
+
+}
+class azure_machine_learning_usage {
+
+}
+class azure_machine_learning_virtual_machine_size {
+
+}
+class azure_machine_learning_workspace {
+
+}
+class azure_machine_learning_workspace_code_container {
+
+}
+class azure_machine_learning_workspace_code_version {
+
+}
+class azure_machine_learning_workspace_component_container {
+
+}
+class azure_machine_learning_workspace_component_version {
+
+}
+class azure_machine_learning_workspace_connection {
+
+}
+class azure_machine_learning_workspace_data_container {
+
+}
+class azure_machine_learning_workspace_data_version {
+
+}
+class azure_machine_learning_workspace_environment_container {
+
+}
+class azure_machine_learning_workspace_environment_version {
+
+}
+class azure_machine_learning_workspace_model_container {
+
+}
+class azure_machine_learning_workspace_model_version {
+
+}
+class azure_metric_alert {
+
+}
+class azure_monitor_action_group {
+
+}
+class azure_monitor_activity_log_alert {
+
+}
+class azure_monitor_alert_rule {
+
+}
+class azure_monitor_data_collection_rule {
+
+}
+class azure_monitor_diagnostic_settings {
+
+}
+class azure_monitor_log_profile {
+
+}
+class azure_monitor_pipeline_group {
+
+}
+class azure_monitor_private_link_scope {
+
+}
+class azure_monitor_scheduled_query_rule {
+
+}
+class azure_monitor_workspace {
+
+}
+class azure_mysql_server {
+
+}
+class azure_mysql_server_ad_administrator {
+
+}
+class azure_mysql_server_backup {
+
+}
+class azure_mysql_server_configuration {
+
+}
+class azure_mysql_server_database {
+
+}
+class azure_mysql_server_firewall_rule {
+
+}
+class azure_mysql_server_log_file {
+
+}
+class azure_mysql_server_maintenance {
+
+}
+class azure_mysql_server_type {
+
+}
+class azure_network_application_gateway {
+
+}
+class azure_network_application_gateway_firewall_rule_set {
+
+}
+class azure_network_bastion_host {
+
+}
+class azure_network_custom_ip_prefix {
+
+}
+class azure_network_ddos_protection_plan {
+
+}
+class azure_network_dns_record_set {
+
+}
+class azure_network_dns_zone {
+
+}
+class azure_network_dscp_configuration {
+
+}
+class azure_network_express_route_circuit {
+
+}
+class azure_network_express_route_cross_connection {
+
+}
+class azure_network_express_route_gateway {
+
+}
+class azure_network_express_route_port {
+
+}
+class azure_network_express_route_ports_location {
+
+}
+class azure_network_firewall {
+
+}
+class azure_network_firewall_policy {
+
+}
+class azure_network_flow_log {
+
+}
+class azure_network_interface {
+
+}
+class azure_network_ip_allocation {
+
+}
+class azure_network_ip_group {
+
+}
+class azure_network_load_balancer {
+
+}
+class azure_network_load_balancer_probe {
+
+}
+class azure_network_local_network_gateway {
+
+}
+class azure_network_nat_gateway {
+
+}
+class azure_network_p2_s_vpn_gateway {
+
+}
+class azure_network_private_link_service {
+
+}
+class azure_network_profile {
+
+}
+class azure_network_public_ip_address {
+
+}
+class azure_network_public_ip_prefix {
+
+}
+class azure_network_route_filter {
+
+}
+class azure_network_route_table {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_security_partner_provider {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_usage {
+
+}
+class azure_network_virtual_appliance {
+
+}
+class azure_network_virtual_appliance_sku {
+
+}
+class azure_network_virtual_hub {
+
+}
+class azure_network_virtual_network {
+
+}
+class azure_network_virtual_network_gateway {
+
+}
+class azure_network_virtual_network_gateway_connection {
+
+}
+class azure_network_virtual_network_tap {
+
+}
+class azure_network_virtual_router {
+
+}
+class azure_network_virtual_wan {
+
+}
+class azure_network_virtual_wan_vpn_connection {
+
+}
+class azure_network_virtual_wan_vpn_gateway {
+
+}
+class azure_network_vpn_server_configuration {
+
+}
+class azure_network_vpn_site {
+
+}
+class azure_network_watcher {
+
+}
+class azure_network_web_application_firewall_policy {
+
+}
+class azure_postgresql_ad_administrator {
+
+}
+class azure_postgresql_server {
+
+}
+class azure_postgresql_server_backup {
+
+}
+class azure_postgresql_server_configuration {
+
+}
+class azure_postgresql_server_database {
+
+}
+class azure_postgresql_server_firewall_rule {
+
+}
+class azure_postgresql_server_type {
+
+}
+class azure_resource_group {
+
+}
+class azure_security_assessment {
+
+}
+class azure_security_auto_provisioning_setting {
+
+}
+class azure_security_pricing {
+
+}
+class azure_security_server_vulnerability_assessments_setting {
+
+}
+class azure_security_setting {
+
+}
+class azure_sql_server {
+
+}
+class azure_sql_server_ad_administrator {
+
+}
+class azure_sql_server_advisor {
+
+}
+class azure_sql_server_database {
+
+}
+class azure_sql_server_database_geo_backup_policy {
+
+}
+class azure_sql_server_database_workload_group {
+
+}
+class azure_sql_server_elastic_pool {
+
+}
+class azure_sql_server_failover_group {
+
+}
+class azure_sql_server_firewall_rule {
+
+}
+class azure_sql_server_job_agent {
+
+}
+class azure_sql_server_managed_instance {
+
+}
+class azure_sql_server_managed_instance_ad_administrator {
+
+}
+class azure_sql_server_managed_instance_database {
+
+}
+class azure_sql_server_managed_instance_failover_group {
+
+}
+class azure_sql_server_managed_instance_pool {
+
+}
+class azure_sql_server_trust_group {
+
+}
+class azure_sql_server_virtual_cluster {
+
+}
+class azure_sql_server_virtual_network_rule {
+
+}
+class azure_storage_account {
+
+}
+class azure_storage_account_deleted {
+
+}
+class azure_storage_account_usage {
+
+}
+class azure_storage_blob_container {
+
+}
+class azure_storage_file_share {
+
+}
+class azure_storage_queue {
+
+}
+class azure_storage_sku {
+
+}
+class azure_storage_table {
+
+}
+class azure_subscription {
+
+}
+class azure_usage {
+
+}
+class azure_web_app {
+
+}
+class azure_web_app_service_plan {
+
+}
+class azure_web_app_static_site {
+
+}
+class azure_web_certificate {
+
+}
+class azure_web_container_app {
+
+}
+class azure_web_domain {
+
+}
+class azure_web_hosting_environment {
+
+}
+class azure_web_kube_environment {
+
+}
+class base_cloud {
+
+}
+class bucket {
+
+}
+class bucket_quota {
+
+}
+class certificate {
+
+}
+class certificate_quota {
+
+}
+class cloud {
+
+}
+class database {
+
+}
+class database_instance_type {
+
+}
+class digitalocean_alert_policy {
+
+}
+class digitalocean_app {
+
+}
+class digitalocean_cdn_endpoint {
+
+}
+class digitalocean_certificate {
+
+}
+class digitalocean_container_registry {
+
+}
+class digitalocean_container_registry_repository {
+
+}
+class digitalocean_container_registry_repository_tag {
+
+}
+class digitalocean_database {
+
+}
+class digitalocean_domain {
+
+}
+class digitalocean_domain_record {
+
+}
+class digitalocean_droplet {
+
+}
+class digitalocean_droplet_neighborhood {
+
+}
+class digitalocean_droplet_size {
+
+}
+class digitalocean_firewall {
+
+}
+class digitalocean_floating_ip {
+
+}
+class digitalocean_image {
+
+}
+class digitalocean_kubernetes_cluster {
+
+}
+class digitalocean_load_balancer {
+
+}
+class digitalocean_project {
+
+}
+class digitalocean_region {
+
+}
+class digitalocean_resource {
+
+}
+class digitalocean_snapshot {
+
+}
+class digitalocean_space {
+
+}
+class digitalocean_ssh_key {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_volume {
+
+}
+class digitalocean_vpc {
+
+}
+class dns_record {
+
+}
+class dns_record_set {
+
+}
+class dns_zone {
+
+}
+class dockerhub_namespace {
+
+}
+class dockerhub_repository {
+
+}
+class endpoint {
+
+}
+class firewall {
+
+}
+class gateway {
+
+}
+class gateway_quota {
+
+}
+class gcp_accelerator_type {
+
+}
+class gcp_address {
+
+}
+class gcp_autoscaler {
+
+}
+class gcp_backend_bucket {
+
+}
+class gcp_backend_service {
+
+}
+class gcp_billing_account {
+
+}
+class gcp_bucket {
+
+}
+class gcp_commitment {
+
+}
+class gcp_container_cluster {
+
+}
+class gcp_container_operation {
+
+}
+class gcp_disk {
+
+}
+class gcp_disk_type {
+
+}
+class gcp_external_vpn_gateway {
+
+}
+class gcp_firewall {
+
+}
+class gcp_firewall_policy {
+
+}
+class gcp_forwarding_rule {
+
+}
+class gcp_health_check {
+
+}
+class gcp_health_check_service {
+
+}
+class gcp_http_health_check {
+
+}
+class gcp_https_health_check {
+
+}
+class gcp_image {
+
+}
+class gcp_instance {
+
+}
+class gcp_instance_group {
+
+}
+class gcp_instance_group_manager {
+
+}
+class gcp_instance_template {
+
+}
+class gcp_interconnect {
+
+}
+class gcp_interconnect_attachment {
+
+}
+class gcp_interconnect_location {
+
+}
+class gcp_license {
+
+}
+class gcp_machine_image {
+
+}
+class gcp_machine_type {
+
+}
+class gcp_network {
+
+}
+class gcp_network_edge_security_service {
+
+}
+class gcp_network_endpoint_group {
+
+}
+class gcp_node_group {
+
+}
+class gcp_node_template {
+
+}
+class gcp_node_type {
+
+}
+class gcp_notification_endpoint {
+
+}
+class gcp_object {
+
+}
+class gcp_operation {
+
+}
+class gcp_packet_mirroring {
+
+}
+class gcp_project {
+
+}
+class gcp_project_billing_info {
+
+}
+class gcp_public_advertised_prefix {
+
+}
+class gcp_public_delegated_prefix {
+
+}
+class gcp_region {
+
+}
+class gcp_region_quota {
+
+}
+class gcp_resource {
+
+}
+class gcp_resource_policy {
+
+}
+class gcp_route {
+
+}
+class gcp_router {
+
+}
+class gcp_security_policy {
+
+}
+class gcp_service {
+
+}
+class gcp_service_attachment {
+
+}
+class gcp_sku {
+
+}
+class gcp_snapshot {
+
+}
+class gcp_sql_backup_run {
+
+}
+class gcp_sql_database {
+
+}
+class gcp_sql_database_instance {
+
+}
+class gcp_sql_operation {
+
+}
+class gcp_sql_user {
+
+}
+class gcp_ssl_certificate {
+
+}
+class gcp_ssl_policy {
+
+}
+class gcp_subnetwork {
+
+}
+class gcp_target_grpc_proxy {
+
+}
+class gcp_target_http_proxy {
+
+}
+class gcp_target_https_proxy {
+
+}
+class gcp_target_instance {
+
+}
+class gcp_target_pool {
+
+}
+class gcp_target_ssl_proxy {
+
+}
+class gcp_target_tcp_proxy {
+
+}
+class gcp_target_vpn_gateway {
+
+}
+class gcp_url_map {
+
+}
+class gcp_vertex_ai_batch_prediction_job {
+
+}
+class gcp_vertex_ai_custom_job {
+
+}
+class gcp_vertex_ai_dataset {
+
+}
+class gcp_vertex_ai_dataset_version {
+
+}
+class gcp_vertex_ai_endpoint {
+
+}
+class gcp_vertex_ai_feature {
+
+}
+class gcp_vertex_ai_feature_group {
+
+}
+class gcp_vertex_ai_featurestore {
+
+}
+class gcp_vertex_ai_hyperparameter_tuning_job {
+
+}
+class gcp_vertex_ai_index {
+
+}
+class gcp_vertex_ai_index_endpoint {
+
+}
+class gcp_vertex_ai_model {
+
+}
+class gcp_vertex_ai_model_deployment_monitoring_job {
+
+}
+class gcp_vertex_ai_model_evaluation {
+
+}
+class gcp_vertex_ai_pipeline_job {
+
+}
+class gcp_vertex_ai_schedule {
+
+}
+class gcp_vertex_ai_tensorboard {
+
+}
+class gcp_vertex_ai_training_pipeline {
+
+}
+class gcp_vertex_ai_tuning_job {
+
+}
+class gcp_vpn_gateway {
+
+}
+class gcp_vpn_tunnel {
+
+}
+class gcp_zone {
+
+}
+class github_account {
+
+}
+class github_org {
+
+}
+class github_pull_request {
+
+}
+class github_region {
+
+}
+class github_repo {
+
+}
+class github_user {
+
+}
+class group {
+
+}
+class health_check {
+
+}
+class iam_principal {
+
+}
+class instance {
+
+}
+class instance_profile {
+
+}
+class instance_quota {
+
+}
+class instance_type {
+
+}
+class ip_address {
+
+}
+class keypair {
+
+}
+class kubernetes_cluster {
+
+}
+class kubernetes_cluster_role {
+
+}
+class kubernetes_cluster_role_binding {
+
+}
+class kubernetes_config_map {
+
+}
+class kubernetes_controller_revision {
+
+}
+class kubernetes_cron_job {
+
+}
+class kubernetes_csi_driver {
+
+}
+class kubernetes_csi_node {
+
+}
+class kubernetes_csi_storage_capacity {
+
+}
+class kubernetes_daemon_set {
+
+}
+class kubernetes_deployment {
+
+}
+class kubernetes_endpoint {
+
+}
+class kubernetes_endpoint_slice {
+
+}
+class kubernetes_flow_schema {
+
+}
+class kubernetes_horizontal_pod_autoscaler {
+
+}
+class kubernetes_ingress {
+
+}
+class kubernetes_ingress_class {
+
+}
+class kubernetes_job {
+
+}
+class kubernetes_limit_range {
+
+}
+class kubernetes_mutating_webhook_configuration {
+
+}
+class kubernetes_namespace {
+
+}
+class kubernetes_network_policy {
+
+}
+class kubernetes_node {
+
+}
+class kubernetes_persistent_volume {
+
+}
+class kubernetes_persistent_volume_claim {
+
+}
+class kubernetes_pod {
+
+}
+class kubernetes_pod_disruption_budget {
+
+}
+class kubernetes_pod_template {
+
+}
+class kubernetes_priority_class {
+
+}
+class kubernetes_priority_level_configuration {
+
+}
+class kubernetes_replica_set {
+
+}
+class kubernetes_replication_controller {
+
+}
+class kubernetes_resource {
+
+}
+class kubernetes_resource_quota {
+
+}
+class kubernetes_role {
+
+}
+class kubernetes_role_binding {
+
+}
+class kubernetes_runtime_class {
+
+}
+class kubernetes_secret {
+
+}
+class kubernetes_service {
+
+}
+class kubernetes_service_account {
+
+}
+class kubernetes_stateful_set {
+
+}
+class kubernetes_storage_class {
+
+}
+class kubernetes_validating_webhook_configuration {
+
+}
+class kubernetes_volume_attachment {
+
+}
+class load_balancer {
+
+}
+class load_balancer_quota {
+
+}
+class managed_kubernetes_cluster_provider {
+
+}
+class microsoft_graph_device {
+
+}
+class microsoft_graph_entity {
+
+}
+class microsoft_graph_group {
+
+}
+class microsoft_graph_organization {
+
+}
+class microsoft_graph_organization_root {
+
+}
+class microsoft_graph_policy {
+
+}
+class microsoft_graph_role {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+class microsoft_resource {
+
+}
+class network {
+
+}
+class network_acl {
+
+}
+class network_interface {
+
+}
+class network_quota {
+
+}
+class network_share {
+
+}
+class onelogin_account {
+
+}
+class onelogin_region {
+
+}
+class onelogin_user {
+
+}
+class onprem_instance {
+
+}
+class onprem_location {
+
+}
+class onprem_network {
+
+}
+class onprem_region {
+
+}
+class organizational_root {
+
+}
+class organizational_unit {
+
+}
+class peering_connection {
+
+}
+class phantom_resource {
+
+}
+class policy {
+
+}
+class posthog_event {
+
+}
+class posthog_project {
+
+}
+class queue {
+
+}
+class quota {
+
+}
+class region {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class role {
+
+}
+class route {
+
+}
+class routing_table {
+
+}
+class scarf_organization {
+
+}
+class scarf_package {
+
+}
+class security_group {
+
+}
+class serverless_function {
+
+}
+class slack_conversation {
+
+}
+class slack_region {
+
+}
+class slack_team {
+
+}
+class slack_user {
+
+}
+class slack_usergroup {
+
+}
+class snapshot {
+
+}
+class stack {
+
+}
+class subnet {
+
+}
+class tunnel {
+
+}
+class type {
+
+}
+class user {
+
+}
+class volume {
+
+}
+class volume_type {
+
+}
+class vsphere_cluster {
+
+}
+class vsphere_data_center {
+
+}
+class vsphere_datastore {
+
+}
+class vsphere_datastore_cluster {
+
+}
+class vsphere_esxi_host {
+
+}
+class vsphere_host {
+
+}
+class vsphere_instance {
+
+}
+class vsphere_resource_pool {
+
+}
+class vsphere_template {
+
+}
+class zone {
+
+}
+resource <|--- access_key
+resource <|--- account
+ai_resource <|--- ai_job
+ai_resource <|--- ai_model
+resource <|--- ai_resource
+resource <|--- autoscaling_group
+account <|--- aws_account
+aws_resource <|--- aws_account
+iam_principal <|--- aws_account
+aws_resource <|--- aws_acm_certificate
+certificate <|--- aws_acm_certificate
+aws_resource <|--- aws_alb
+load_balancer <|--- aws_alb
+aws_resource <|--- aws_alb_target_group
+aws_resource <|--- aws_apigateway_authorizer
+aws_resource <|--- aws_apigateway_deployment
+aws_resource <|--- aws_apigateway_domain_name
+aws_resource <|--- aws_apigateway_resource
+aws_resource <|--- aws_apigateway_rest_api
+aws_resource <|--- aws_apigateway_stage
+aws_resource <|--- aws_athena_data_catalog
+aws_resource <|--- aws_athena_work_group
+autoscaling_group <|--- aws_autoscaling_group
+aws_resource <|--- aws_autoscaling_group
+aws_resource <|--- aws_backup_copy_job
+aws_resource <|--- aws_backup_framework
+aws_resource <|--- aws_backup_job
+aws_resource <|--- aws_backup_legal_hold
+aws_resource <|--- aws_backup_plan
+aws_resource <|--- aws_backup_protected_resource
+aws_resource <|--- aws_backup_recovery_point
+aws_resource <|--- aws_backup_report_plan
+aws_resource <|--- aws_backup_restore_job
+aws_resource <|--- aws_backup_restore_testing_plan
+aws_resource <|--- aws_backup_vault
+aws_resource <|--- aws_beanstalk_application
+aws_resource <|--- aws_beanstalk_environment
+aws_resource <|--- aws_bedrock_agent
+aws_resource <|--- aws_bedrock_agent_flow
+aws_resource <|--- aws_bedrock_agent_flow_version
+aws_resource <|--- aws_bedrock_agent_knowledge_base
+aws_resource <|--- aws_bedrock_agent_prompt
+aws_resource <|--- aws_bedrock_agent_version
+ai_model <|--- aws_bedrock_custom_model
+aws_resource <|--- aws_bedrock_custom_model
+ai_job <|--- aws_bedrock_evaluation_job
+aws_resource <|--- aws_bedrock_evaluation_job
+ai_model <|--- aws_bedrock_foundation_model
+aws_resource <|--- aws_bedrock_foundation_model
+aws_resource <|--- aws_bedrock_guardrail
+ai_job <|--- aws_bedrock_model_customization_job
+aws_resource <|--- aws_bedrock_model_customization_job
+aws_resource <|--- aws_bedrock_provisioned_model_throughput
+aws_resource <|--- aws_cloud_formation_stack_instance_summary
+aws_resource <|--- aws_cloud_trail
+aws_resource <|--- aws_cloudformation_stack
+stack <|--- aws_cloudformation_stack
+aws_resource <|--- aws_cloudformation_stack_set
+aws_resource <|--- aws_cloudfront_cache_policy
+aws_resource <|--- aws_cloudfront_distribution
+aws_resource <|--- aws_cloudfront_field_level_encryption_config
+aws_resource <|--- aws_cloudfront_field_level_encryption_profile
+aws_resource <|--- aws_cloudfront_function
+serverless_function <|--- aws_cloudfront_function
+aws_resource <|--- aws_cloudfront_origin_access_control
+aws_resource <|--- aws_cloudfront_public_key
+aws_resource <|--- aws_cloudfront_realtime_log_config
+aws_resource <|--- aws_cloudfront_response_headers_policy
+aws_resource <|--- aws_cloudfront_streaming_distribution
+aws_resource <|--- aws_cloudwatch_alarm
+aws_resource <|--- aws_cloudwatch_log_group
+aws_resource <|--- aws_cloudwatch_metric_filter
+aws_resource <|--- aws_cognito_group
+aws_resource <|--- aws_cognito_user
+user <|--- aws_cognito_user
+aws_resource <|--- aws_cognito_user_pool
+aws_resource <|--- aws_config_recorder
+aws_resource <|--- aws_dynamodb_global_table
+aws_resource <|--- aws_dynamodb_table
+aws_resource <|--- aws_ec2_elastic_ip
+ip_address <|--- aws_ec2_elastic_ip
+aws_resource <|--- aws_ec2_flow_log
+aws_resource <|--- aws_ec2_host
+aws_resource <|--- aws_ec2_image
+aws_resource <|--- aws_ec2_instance
+instance <|--- aws_ec2_instance
+aws_resource <|--- aws_ec2_instance_type
+instance_type <|--- aws_ec2_instance_type
+aws_resource <|--- aws_ec2_internet_gateway
+gateway <|--- aws_ec2_internet_gateway
+aws_resource <|--- aws_ec2_keypair
+keypair <|--- aws_ec2_keypair
+aws_resource <|--- aws_ec2_launch_template
+aws_resource <|--- aws_ec2_nat_gateway
+gateway <|--- aws_ec2_nat_gateway
+aws_resource <|--- aws_ec2_network_acl
+network_acl <|--- aws_ec2_network_acl
+aws_resource <|--- aws_ec2_network_interface
+network_interface <|--- aws_ec2_network_interface
+aws_resource <|--- aws_ec2_reserved_instances
+aws_resource <|--- aws_ec2_route_table
+routing_table <|--- aws_ec2_route_table
+aws_resource <|--- aws_ec2_security_group
+security_group <|--- aws_ec2_security_group
+aws_resource <|--- aws_ec2_snapshot
+snapshot <|--- aws_ec2_snapshot
+aws_resource <|--- aws_ec2_subnet
+subnet <|--- aws_ec2_subnet
+aws_resource <|--- aws_ec2_volume
+volume <|--- aws_ec2_volume
+aws_resource <|--- aws_ec2_volume_type
+volume_type <|--- aws_ec2_volume_type
+aws_resource <|--- aws_ecr_repository
+aws_resource <|--- aws_ecs_capacity_provider
+aws_resource <|--- aws_ecs_cluster
+aws_resource <|--- aws_ecs_container_instance
+aws_resource <|--- aws_ecs_service
+aws_resource <|--- aws_ecs_task
+aws_resource <|--- aws_ecs_task_definition
+aws_resource <|--- aws_efs_access_point
+aws_resource <|--- aws_efs_file_system
+network_share <|--- aws_efs_file_system
+aws_resource <|--- aws_efs_mount_target
+aws_resource <|--- aws_eks_cluster
+managed_kubernetes_cluster_provider <|--- aws_eks_cluster
+aws_resource <|--- aws_eks_nodegroup
+aws_resource <|--- aws_elasticache_cache_cluster
+aws_resource <|--- aws_elasticache_replication_group
+aws_resource <|--- aws_elb
+load_balancer <|--- aws_elb
+aws_resource <|--- aws_glacier_job
+aws_resource <|--- aws_glacier_vault
+access_key <|--- aws_iam_access_key
+aws_resource <|--- aws_iam_access_key
+aws_resource <|--- aws_iam_group
+group <|--- aws_iam_group
+aws_resource <|--- aws_iam_instance_profile
+instance_profile <|--- aws_iam_instance_profile
+aws_resource <|--- aws_iam_policy
+policy <|--- aws_iam_policy
+aws_resource <|--- aws_iam_role
+iam_principal <|--- aws_iam_role
+role <|--- aws_iam_role
+aws_resource <|--- aws_iam_server_certificate
+certificate <|--- aws_iam_server_certificate
+aws_resource <|--- aws_iam_user
+iam_principal <|--- aws_iam_user
+user <|--- aws_iam_user
+aws_resource <|--- aws_kinesis_stream
+access_key <|--- aws_kms_key
+aws_resource <|--- aws_kms_key
+aws_resource <|--- aws_lambda_function
+serverless_function <|--- aws_lambda_function
+aws_resource <|--- aws_opensearch_domain
+aws_resource <|--- aws_organizational_root
+organizational_root <|--- aws_organizational_root
+aws_resource <|--- aws_organizational_unit
+organizational_unit <|--- aws_organizational_unit
+aws_resource <|--- aws_q_apps
+aws_resource <|--- aws_q_apps_library_item
+aws_resource <|--- aws_q_business_application
+aws_resource <|--- aws_q_business_conversation
+aws_resource <|--- aws_q_business_data_source
+aws_resource <|--- aws_q_business_data_source_sync_job
+aws_resource <|--- aws_q_business_document
+aws_resource <|--- aws_q_business_indice
+aws_resource <|--- aws_q_business_message
+aws_resource <|--- aws_q_business_plugin
+aws_resource <|--- aws_q_business_retriever
+aws_resource <|--- aws_q_business_web_experience
+aws_resource <|--- aws_rds_cluster
+database <|--- aws_rds_cluster
+aws_resource <|--- aws_rds_cluster_snapshot
+aws_resource <|--- aws_rds_instance
+database <|--- aws_rds_instance
+aws_resource <|--- aws_rds_snapshot
+snapshot <|--- aws_rds_snapshot
+aws_resource <|--- aws_redshift_cluster
+aws_resource <|--- aws_region
+region <|--- aws_region
+resource <|--- aws_resource
+aws_resource <|--- aws_root_user
+iam_principal <|--- aws_root_user
+user <|--- aws_root_user
+aws_resource <|--- aws_route53_resource_record
+dns_record <|--- aws_route53_resource_record
+aws_resource <|--- aws_route53_resource_record_set
+dns_record_set <|--- aws_route53_resource_record_set
+aws_resource <|--- aws_route53_zone
+dns_zone <|--- aws_route53_zone
+aws_resource <|--- aws_s3_account_settings
+phantom_resource <|--- aws_s3_account_settings
+aws_resource <|--- aws_s3_bucket
+bucket <|--- aws_s3_bucket
+aws_resource <|--- aws_sagemaker_algorithm
+aws_resource <|--- aws_sagemaker_app
+aws_resource <|--- aws_sagemaker_artifact
+aws_sagemaker_job <|--- aws_sagemaker_auto_ml_job
+aws_resource <|--- aws_sagemaker_code_repository
+aws_sagemaker_job <|--- aws_sagemaker_compilation_job
+aws_resource <|--- aws_sagemaker_domain
+aws_resource <|--- aws_sagemaker_endpoint
+aws_resource <|--- aws_sagemaker_experiment
+aws_sagemaker_job <|--- aws_sagemaker_hyper_parameter_tuning_job
+aws_resource <|--- aws_sagemaker_image
+aws_sagemaker_job <|--- aws_sagemaker_inference_recommendations_job
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_job <|--- aws_sagemaker_labeling_job
+aws_resource <|--- aws_sagemaker_model
+aws_resource <|--- aws_sagemaker_notebook
+aws_resource <|--- aws_sagemaker_pipeline
+aws_sagemaker_job <|--- aws_sagemaker_processing_job
+aws_resource <|--- aws_sagemaker_project
+aws_sagemaker_job <|--- aws_sagemaker_training_job
+aws_sagemaker_job <|--- aws_sagemaker_transform_job
+aws_resource <|--- aws_sagemaker_trial
+aws_resource <|--- aws_sagemaker_user_profile
+aws_resource <|--- aws_sagemaker_workteam
+aws_resource <|--- aws_secretsmanager_secret
+aws_resource <|--- aws_service_quota
+quota <|--- aws_service_quota
+aws_resource <|--- aws_sns_endpoint
+aws_resource <|--- aws_sns_platform_application
+aws_resource <|--- aws_sns_subscription
+aws_resource <|--- aws_sns_topic
+aws_resource <|--- aws_sqs_queue
+queue <|--- aws_sqs_queue
+aws_resource <|--- aws_ssm_document
+aws_resource <|--- aws_ssm_instance
+aws_resource <|--- aws_ssm_resource_compliance
+aws_resource <|--- aws_vpc
+network <|--- aws_vpc
+aws_resource <|--- aws_vpc_endpoint
+endpoint <|--- aws_vpc_endpoint
+aws_resource <|--- aws_vpc_peering_connection
+peering_connection <|--- aws_vpc_peering_connection
+aws_resource <|--- aws_waf_web_acl
+firewall <|--- aws_waf_web_acl
+microsoft_resource <|--- azure_authorization_deny_assignment
+microsoft_resource <|--- azure_authorization_management_lock
+microsoft_resource <|--- azure_authorization_role_assignment
+microsoft_resource <|--- azure_authorization_role_definition
+phantom_resource <|--- azure_authorization_role_definition
+role <|--- azure_authorization_role_definition
+microsoft_resource <|--- azure_compute_availability_set
+microsoft_resource <|--- azure_compute_capacity_reservation_group
+microsoft_resource <|--- azure_compute_cloud_service
+microsoft_resource <|--- azure_compute_dedicated_host_group
+microsoft_resource <|--- azure_compute_disk
+volume <|--- azure_compute_disk
+microsoft_resource <|--- azure_compute_disk_access
+microsoft_resource <|--- azure_compute_disk_encryption_set
+microsoft_resource <|--- azure_compute_disk_type
+volume_type <|--- azure_compute_disk_type
+microsoft_resource <|--- azure_compute_disk_type_pricing
+microsoft_resource <|--- azure_compute_gallery
+microsoft_resource <|--- azure_compute_image
+microsoft_resource <|--- azure_compute_proximity_placement_group
+microsoft_resource <|--- azure_compute_restore_point_collection
+keypair <|--- azure_compute_ssh_public_key
+microsoft_resource <|--- azure_compute_ssh_public_key
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine
+instance <|--- azure_compute_virtual_machine_base
+microsoft_resource <|--- azure_compute_virtual_machine_base
+autoscaling_group <|--- azure_compute_virtual_machine_scale_set
+microsoft_resource <|--- azure_compute_virtual_machine_scale_set
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine_scale_set_instance
+instance_type <|--- azure_compute_virtual_machine_size
+microsoft_resource <|--- azure_compute_virtual_machine_size
+microsoft_resource <|--- azure_compute_virtual_machine_snapshot
+snapshot <|--- azure_compute_virtual_machine_snapshot
+microsoft_resource <|--- azure_container_service_fleet
+managed_kubernetes_cluster_provider <|--- azure_container_service_managed_cluster
+microsoft_resource <|--- azure_container_service_managed_cluster
+microsoft_resource <|--- azure_container_service_managed_cluster_snapshot
+snapshot <|--- azure_container_service_managed_cluster_snapshot
+database <|--- azure_cosmos_db_account
+microsoft_resource <|--- azure_cosmos_db_account
+azure_usage <|--- azure_cosmos_db_account_usage
+microsoft_resource <|--- azure_cosmos_db_account_usage
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_data_center
+microsoft_resource <|--- azure_cosmos_db_cassandra_cluster_public_status
+microsoft_resource <|--- azure_cosmos_db_cassandra_keyspace
+microsoft_resource <|--- azure_cosmos_db_cassandra_table
+microsoft_resource <|--- azure_cosmos_db_gremlin_database
+microsoft_resource <|--- azure_cosmos_db_gremlin_graph
+microsoft_resource <|--- azure_cosmos_db_location
+phantom_resource <|--- azure_cosmos_db_location
+microsoft_resource <|--- azure_cosmos_db_mongo_db_cluster
+microsoft_resource <|--- azure_cosmos_db_mongo_db_collection
+microsoft_resource <|--- azure_cosmos_db_mongo_db_database
+microsoft_resource <|--- azure_cosmos_db_mongo_db_role_definition
+microsoft_resource <|--- azure_cosmos_db_mongo_db_user_definition
+microsoft_resource <|--- azure_cosmos_db_notebook_workspace
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_configuration
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_private_endpoint_connection
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_private_link
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_role
+database <|--- azure_cosmos_db_postgresql_cluster_server
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_server
+microsoft_resource <|--- azure_cosmos_db_postgresql_cluster_server_configuration
+microsoft_resource <|--- azure_cosmos_db_private_link
+microsoft_resource <|--- azure_cosmos_db_restorable_account
+microsoft_resource <|--- azure_cosmos_db_restorable_gremlin_database
+microsoft_resource <|--- azure_cosmos_db_restorable_gremlin_graph
+microsoft_resource <|--- azure_cosmos_db_restorable_mongo_db_collection
+microsoft_resource <|--- azure_cosmos_db_restorable_mongo_db_database
+microsoft_resource <|--- azure_cosmos_db_restorable_sql_container
+microsoft_resource <|--- azure_cosmos_db_restorable_sql_database
+microsoft_resource <|--- azure_cosmos_db_restorable_table
+microsoft_resource <|--- azure_cosmos_db_sql_database
+microsoft_resource <|--- azure_cosmos_db_sql_database_client_encryption_key
+microsoft_resource <|--- azure_cosmos_db_sql_database_container
+microsoft_resource <|--- azure_cosmos_db_sql_role_assignment
+microsoft_resource <|--- azure_cosmos_db_sql_role_definition
+microsoft_resource <|--- azure_cosmos_db_sql_throughput_setting
+microsoft_resource <|--- azure_cosmos_db_table
+microsoft_resource <|--- azure_key_vault
+microsoft_resource <|--- azure_key_vault_key
+microsoft_resource <|--- azure_key_vault_managed_hsm
+microsoft_resource <|--- azure_key_vault_secret
+microsoft_resource <|--- azure_location
+region <|--- azure_location
+microsoft_resource <|--- azure_machine_learning_batch_endpoint
+microsoft_resource <|--- azure_machine_learning_compute
+microsoft_resource <|--- azure_machine_learning_compute_node
+microsoft_resource <|--- azure_machine_learning_datastore
+microsoft_resource <|--- azure_machine_learning_endpoint
+phantom_resource <|--- azure_machine_learning_environment_version_base
+microsoft_resource <|--- azure_machine_learning_feature
+microsoft_resource <|--- azure_machine_learning_featureset_container
+microsoft_resource <|--- azure_machine_learning_featureset_version
+microsoft_resource <|--- azure_machine_learning_featurestore_entity_container
+microsoft_resource <|--- azure_machine_learning_featurestore_entity_version
+ai_job <|--- azure_machine_learning_job
+microsoft_resource <|--- azure_machine_learning_job
+ai_job <|--- azure_machine_learning_labeling_job
+microsoft_resource <|--- azure_machine_learning_labeling_job
+microsoft_resource <|--- azure_machine_learning_online_endpoint
+microsoft_resource <|--- azure_machine_learning_private_endpoint_connection
+microsoft_resource <|--- azure_machine_learning_private_link
+microsoft_resource <|--- azure_machine_learning_quota
+phantom_resource <|--- azure_machine_learning_quota
+microsoft_resource <|--- azure_machine_learning_registry
+microsoft_resource <|--- azure_machine_learning_registry_code_container
+microsoft_resource <|--- azure_machine_learning_registry_code_version
+microsoft_resource <|--- azure_machine_learning_registry_component_container
+microsoft_resource <|--- azure_machine_learning_registry_component_version
+microsoft_resource <|--- azure_machine_learning_registry_data_container
+microsoft_resource <|--- azure_machine_learning_registry_data_version
+microsoft_resource <|--- azure_machine_learning_registry_environment_container
+azure_machine_learning_environment_version_base <|--- azure_machine_learning_registry_environment_version
+microsoft_resource <|--- azure_machine_learning_registry_environment_version
+ai_model <|--- azure_machine_learning_registry_model_container
+microsoft_resource <|--- azure_machine_learning_registry_model_container
+microsoft_resource <|--- azure_machine_learning_registry_model_version
+microsoft_resource <|--- azure_machine_learning_schedule
+microsoft_resource <|--- azure_machine_learning_serverless_endpoint
+azure_usage <|--- azure_machine_learning_usage
+microsoft_resource <|--- azure_machine_learning_usage
+instance_type <|--- azure_machine_learning_virtual_machine_size
+microsoft_resource <|--- azure_machine_learning_virtual_machine_size
+microsoft_resource <|--- azure_machine_learning_workspace
+microsoft_resource <|--- azure_machine_learning_workspace_code_container
+microsoft_resource <|--- azure_machine_learning_workspace_code_version
+microsoft_resource <|--- azure_machine_learning_workspace_component_container
+microsoft_resource <|--- azure_machine_learning_workspace_component_version
+microsoft_resource <|--- azure_machine_learning_workspace_connection
+microsoft_resource <|--- azure_machine_learning_workspace_data_container
+microsoft_resource <|--- azure_machine_learning_workspace_data_version
+microsoft_resource <|--- azure_machine_learning_workspace_environment_container
+azure_machine_learning_environment_version_base <|--- azure_machine_learning_workspace_environment_version
+microsoft_resource <|--- azure_machine_learning_workspace_environment_version
+ai_model <|--- azure_machine_learning_workspace_model_container
+microsoft_resource <|--- azure_machine_learning_workspace_model_container
+microsoft_resource <|--- azure_machine_learning_workspace_model_version
+microsoft_resource <|--- azure_metric_alert
+microsoft_resource <|--- azure_monitor_action_group
+microsoft_resource <|--- azure_monitor_activity_log_alert
+microsoft_resource <|--- azure_monitor_alert_rule
+microsoft_resource <|--- azure_monitor_data_collection_rule
+microsoft_resource <|--- azure_monitor_diagnostic_settings
+microsoft_resource <|--- azure_monitor_log_profile
+microsoft_resource <|--- azure_monitor_pipeline_group
+microsoft_resource <|--- azure_monitor_private_link_scope
+microsoft_resource <|--- azure_monitor_scheduled_query_rule
+microsoft_resource <|--- azure_monitor_workspace
+database <|--- azure_mysql_server
+microsoft_resource <|--- azure_mysql_server
+microsoft_resource <|--- azure_mysql_server_ad_administrator
+microsoft_resource <|--- azure_mysql_server_backup
+microsoft_resource <|--- azure_mysql_server_configuration
+microsoft_resource <|--- azure_mysql_server_database
+microsoft_resource <|--- azure_mysql_server_firewall_rule
+microsoft_resource <|--- azure_mysql_server_log_file
+microsoft_resource <|--- azure_mysql_server_maintenance
+database_instance_type <|--- azure_mysql_server_type
+microsoft_resource <|--- azure_mysql_server_type
+gateway <|--- azure_network_application_gateway
+microsoft_resource <|--- azure_network_application_gateway
+microsoft_resource <|--- azure_network_application_gateway_firewall_rule_set
+phantom_resource <|--- azure_network_application_gateway_firewall_rule_set
+microsoft_resource <|--- azure_network_bastion_host
+microsoft_resource <|--- azure_network_custom_ip_prefix
+microsoft_resource <|--- azure_network_ddos_protection_plan
+dns_record_set <|--- azure_network_dns_record_set
+microsoft_resource <|--- azure_network_dns_record_set
+dns_zone <|--- azure_network_dns_zone
+microsoft_resource <|--- azure_network_dns_zone
+microsoft_resource <|--- azure_network_dscp_configuration
+microsoft_resource <|--- azure_network_express_route_circuit
+microsoft_resource <|--- azure_network_express_route_cross_connection
+gateway <|--- azure_network_express_route_gateway
+microsoft_resource <|--- azure_network_express_route_gateway
+microsoft_resource <|--- azure_network_express_route_port
+microsoft_resource <|--- azure_network_express_route_ports_location
+phantom_resource <|--- azure_network_express_route_ports_location
+firewall <|--- azure_network_firewall
+microsoft_resource <|--- azure_network_firewall
+microsoft_resource <|--- azure_network_firewall_policy
+policy <|--- azure_network_firewall_policy
+microsoft_resource <|--- azure_network_flow_log
+microsoft_resource <|--- azure_network_interface
+network_interface <|--- azure_network_interface
+microsoft_resource <|--- azure_network_ip_allocation
+microsoft_resource <|--- azure_network_ip_group
+load_balancer <|--- azure_network_load_balancer
+microsoft_resource <|--- azure_network_load_balancer
+health_check <|--- azure_network_load_balancer_probe
+microsoft_resource <|--- azure_network_load_balancer_probe
+gateway <|--- azure_network_local_network_gateway
+microsoft_resource <|--- azure_network_local_network_gateway
+microsoft_resource <|--- azure_network_nat_gateway
+gateway <|--- azure_network_p2_s_vpn_gateway
+microsoft_resource <|--- azure_network_p2_s_vpn_gateway
+microsoft_resource <|--- azure_network_private_link_service
+microsoft_resource <|--- azure_network_profile
+ip_address <|--- azure_network_public_ip_address
+microsoft_resource <|--- azure_network_public_ip_address
+microsoft_resource <|--- azure_network_public_ip_prefix
+microsoft_resource <|--- azure_network_route_filter
+microsoft_resource <|--- azure_network_route_table
+routing_table <|--- azure_network_route_table
+microsoft_resource <|--- azure_network_security_group
+security_group <|--- azure_network_security_group
+microsoft_resource <|--- azure_network_security_partner_provider
+phantom_resource <|--- azure_network_security_partner_provider
+microsoft_resource <|--- azure_network_subnet
+subnet <|--- azure_network_subnet
+azure_usage <|--- azure_network_usage
+microsoft_resource <|--- azure_network_usage
+network_quota <|--- azure_network_usage
+microsoft_resource <|--- azure_network_virtual_appliance
+microsoft_resource <|--- azure_network_virtual_appliance_sku
+phantom_resource <|--- azure_network_virtual_appliance_sku
+microsoft_resource <|--- azure_network_virtual_hub
+microsoft_resource <|--- azure_network_virtual_network
+network <|--- azure_network_virtual_network
+gateway <|--- azure_network_virtual_network_gateway
+microsoft_resource <|--- azure_network_virtual_network_gateway
+microsoft_resource <|--- azure_network_virtual_network_gateway_connection
+tunnel <|--- azure_network_virtual_network_gateway_connection
+microsoft_resource <|--- azure_network_virtual_network_tap
+microsoft_resource <|--- azure_network_virtual_router
+microsoft_resource <|--- azure_network_virtual_wan
+microsoft_resource <|--- azure_network_virtual_wan_vpn_connection
+tunnel <|--- azure_network_virtual_wan_vpn_connection
+gateway <|--- azure_network_virtual_wan_vpn_gateway
+microsoft_resource <|--- azure_network_virtual_wan_vpn_gateway
+microsoft_resource <|--- azure_network_vpn_server_configuration
+microsoft_resource <|--- azure_network_vpn_site
+peering_connection <|--- azure_network_vpn_site
+microsoft_resource <|--- azure_network_watcher
+microsoft_resource <|--- azure_network_web_application_firewall_policy
+microsoft_resource <|--- azure_postgresql_ad_administrator
+database <|--- azure_postgresql_server
+microsoft_resource <|--- azure_postgresql_server
+microsoft_resource <|--- azure_postgresql_server_backup
+microsoft_resource <|--- azure_postgresql_server_configuration
+microsoft_resource <|--- azure_postgresql_server_database
+microsoft_resource <|--- azure_postgresql_server_firewall_rule
+database_instance_type <|--- azure_postgresql_server_type
+microsoft_resource <|--- azure_postgresql_server_type
+group <|--- azure_resource_group
+microsoft_resource <|--- azure_resource_group
+microsoft_resource <|--- azure_security_assessment
+phantom_resource <|--- azure_security_assessment
+microsoft_resource <|--- azure_security_auto_provisioning_setting
+microsoft_resource <|--- azure_security_pricing
+phantom_resource <|--- azure_security_pricing
+microsoft_resource <|--- azure_security_server_vulnerability_assessments_setting
+microsoft_resource <|--- azure_security_setting
+microsoft_resource <|--- azure_sql_server
+microsoft_resource <|--- azure_sql_server_ad_administrator
+microsoft_resource <|--- azure_sql_server_advisor
+database <|--- azure_sql_server_database
+microsoft_resource <|--- azure_sql_server_database
+microsoft_resource <|--- azure_sql_server_database_geo_backup_policy
+microsoft_resource <|--- azure_sql_server_database_workload_group
+microsoft_resource <|--- azure_sql_server_elastic_pool
+microsoft_resource <|--- azure_sql_server_failover_group
+microsoft_resource <|--- azure_sql_server_firewall_rule
+microsoft_resource <|--- azure_sql_server_job_agent
+microsoft_resource <|--- azure_sql_server_managed_instance
+microsoft_resource <|--- azure_sql_server_managed_instance_ad_administrator
+database <|--- azure_sql_server_managed_instance_database
+microsoft_resource <|--- azure_sql_server_managed_instance_database
+microsoft_resource <|--- azure_sql_server_managed_instance_failover_group
+microsoft_resource <|--- azure_sql_server_managed_instance_pool
+microsoft_resource <|--- azure_sql_server_trust_group
+microsoft_resource <|--- azure_sql_server_virtual_cluster
+microsoft_resource <|--- azure_sql_server_virtual_network_rule
+microsoft_resource <|--- azure_storage_account
+microsoft_resource <|--- azure_storage_account_deleted
+phantom_resource <|--- azure_storage_account_deleted
+azure_usage <|--- azure_storage_account_usage
+microsoft_resource <|--- azure_storage_account_usage
+bucket <|--- azure_storage_blob_container
+microsoft_resource <|--- azure_storage_blob_container
+microsoft_resource <|--- azure_storage_file_share
+network_share <|--- azure_storage_file_share
+microsoft_resource <|--- azure_storage_queue
+queue <|--- azure_storage_queue
+microsoft_resource <|--- azure_storage_sku
+phantom_resource <|--- azure_storage_sku
+microsoft_resource <|--- azure_storage_table
+account <|--- azure_subscription
+microsoft_resource <|--- azure_subscription
+phantom_resource <|--- azure_usage
+microsoft_resource <|--- azure_web_app
+serverless_function <|--- azure_web_app
+microsoft_resource <|--- azure_web_app_service_plan
+microsoft_resource <|--- azure_web_app_static_site
+microsoft_resource <|--- azure_web_certificate
+microsoft_resource <|--- azure_web_container_app
+microsoft_resource <|--- azure_web_domain
+microsoft_resource <|--- azure_web_hosting_environment
+microsoft_resource <|--- azure_web_kube_environment
+phantom_resource <|--- base_cloud
+resource <|--- bucket
+quota <|--- bucket_quota
+resource <|--- certificate
+quota <|--- certificate_quota
+base_cloud <|--- cloud
+resource <|--- database
+instance_type <|--- database_instance_type
+digitalocean_resource <|--- digitalocean_alert_policy
+resource <|--- digitalocean_alert_policy
+digitalocean_resource <|--- digitalocean_app
+resource <|--- digitalocean_app
+digitalocean_resource <|--- digitalocean_cdn_endpoint
+endpoint <|--- digitalocean_cdn_endpoint
+certificate <|--- digitalocean_certificate
+digitalocean_resource <|--- digitalocean_certificate
+digitalocean_resource <|--- digitalocean_container_registry
+resource <|--- digitalocean_container_registry
+digitalocean_resource <|--- digitalocean_container_registry_repository
+resource <|--- digitalocean_container_registry_repository
+digitalocean_resource <|--- digitalocean_container_registry_repository_tag
+resource <|--- digitalocean_container_registry_repository_tag
+database <|--- digitalocean_database
+digitalocean_resource <|--- digitalocean_database
+digitalocean_resource <|--- digitalocean_domain
+dns_zone <|--- digitalocean_domain
+digitalocean_resource <|--- digitalocean_domain_record
+dns_record <|--- digitalocean_domain_record
+digitalocean_resource <|--- digitalocean_droplet
+instance <|--- digitalocean_droplet
+digitalocean_resource <|--- digitalocean_droplet_neighborhood
+phantom_resource <|--- digitalocean_droplet_neighborhood
+digitalocean_resource <|--- digitalocean_droplet_size
+instance_type <|--- digitalocean_droplet_size
+digitalocean_resource <|--- digitalocean_firewall
+resource <|--- digitalocean_firewall
+digitalocean_resource <|--- digitalocean_floating_ip
+ip_address <|--- digitalocean_floating_ip
+digitalocean_resource <|--- digitalocean_image
+resource <|--- digitalocean_image
+digitalocean_resource <|--- digitalocean_kubernetes_cluster
+managed_kubernetes_cluster_provider <|--- digitalocean_kubernetes_cluster
+digitalocean_resource <|--- digitalocean_load_balancer
+load_balancer <|--- digitalocean_load_balancer
+digitalocean_resource <|--- digitalocean_project
+resource <|--- digitalocean_project
+digitalocean_resource <|--- digitalocean_region
+region <|--- digitalocean_region
+resource <|--- digitalocean_resource
+digitalocean_resource <|--- digitalocean_snapshot
+snapshot <|--- digitalocean_snapshot
+bucket <|--- digitalocean_space
+digitalocean_resource <|--- digitalocean_space
+digitalocean_resource <|--- digitalocean_ssh_key
+keypair <|--- digitalocean_ssh_key
+account <|--- digitalocean_team
+digitalocean_resource <|--- digitalocean_team
+digitalocean_resource <|--- digitalocean_volume
+volume <|--- digitalocean_volume
+digitalocean_resource <|--- digitalocean_vpc
+network <|--- digitalocean_vpc
+resource <|--- dns_record
+resource <|--- dns_record_set
+resource <|--- dns_zone
+account <|--- dockerhub_namespace
+resource <|--- dockerhub_repository
+resource <|--- endpoint
+resource <|--- firewall
+resource <|--- gateway
+quota <|--- gateway_quota
+gcp_resource <|--- gcp_accelerator_type
+gcp_resource <|--- gcp_address
+ip_address <|--- gcp_address
+autoscaling_group <|--- gcp_autoscaler
+gcp_resource <|--- gcp_autoscaler
+bucket <|--- gcp_backend_bucket
+gcp_resource <|--- gcp_backend_bucket
+gcp_resource <|--- gcp_backend_service
+gcp_resource <|--- gcp_billing_account
+bucket <|--- gcp_bucket
+gcp_resource <|--- gcp_bucket
+gcp_resource <|--- gcp_commitment
+gcp_resource <|--- gcp_container_cluster
+managed_kubernetes_cluster_provider <|--- gcp_container_cluster
+gcp_resource <|--- gcp_container_operation
+gcp_resource <|--- gcp_disk
+volume <|--- gcp_disk
+gcp_resource <|--- gcp_disk_type
+volume_type <|--- gcp_disk_type
+gateway <|--- gcp_external_vpn_gateway
+gcp_resource <|--- gcp_external_vpn_gateway
+firewall <|--- gcp_firewall
+gcp_resource <|--- gcp_firewall
+gcp_resource <|--- gcp_firewall_policy
+gcp_resource <|--- gcp_forwarding_rule
+load_balancer <|--- gcp_forwarding_rule
+gcp_resource <|--- gcp_health_check
+health_check <|--- gcp_health_check
+gcp_resource <|--- gcp_health_check_service
+gcp_resource <|--- gcp_http_health_check
+gcp_resource <|--- gcp_https_health_check
+gcp_resource <|--- gcp_image
+gcp_resource <|--- gcp_instance
+instance <|--- gcp_instance
+gcp_resource <|--- gcp_instance_group
+gcp_resource <|--- gcp_instance_group_manager
+gcp_resource <|--- gcp_instance_template
+gcp_resource <|--- gcp_interconnect
+gcp_resource <|--- gcp_interconnect_attachment
+gcp_resource <|--- gcp_interconnect_location
+phantom_resource <|--- gcp_interconnect_location
+gcp_resource <|--- gcp_license
+gcp_resource <|--- gcp_machine_image
+gcp_resource <|--- gcp_machine_type
+instance_type <|--- gcp_machine_type
+gcp_resource <|--- gcp_network
+network <|--- gcp_network
+gcp_resource <|--- gcp_network_edge_security_service
+gcp_resource <|--- gcp_network_endpoint_group
+gcp_resource <|--- gcp_node_group
+gcp_resource <|--- gcp_node_template
+gcp_resource <|--- gcp_node_type
+gcp_resource <|--- gcp_notification_endpoint
+gcp_resource <|--- gcp_object
+gcp_resource <|--- gcp_operation
+gcp_resource <|--- gcp_packet_mirroring
+account <|--- gcp_project
+gcp_resource <|--- gcp_project
+gcp_resource <|--- gcp_project_billing_info
+gcp_resource <|--- gcp_public_advertised_prefix
+gcp_resource <|--- gcp_public_delegated_prefix
+gcp_resource <|--- gcp_region
+region <|--- gcp_region
+gcp_resource <|--- gcp_region_quota
+phantom_resource <|--- gcp_region_quota
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_resource_policy
+gcp_resource <|--- gcp_route
+gcp_resource <|--- gcp_router
+gcp_resource <|--- gcp_security_policy
+gcp_resource <|--- gcp_service
+gcp_resource <|--- gcp_service_attachment
+gcp_resource <|--- gcp_sku
+gcp_resource <|--- gcp_snapshot
+snapshot <|--- gcp_snapshot
+gcp_resource <|--- gcp_sql_backup_run
+gcp_resource <|--- gcp_sql_database
+database <|--- gcp_sql_database_instance
+gcp_resource <|--- gcp_sql_database_instance
+gcp_resource <|--- gcp_sql_operation
+gcp_resource <|--- gcp_sql_user
+certificate <|--- gcp_ssl_certificate
+gcp_resource <|--- gcp_ssl_certificate
+gcp_resource <|--- gcp_ssl_policy
+gcp_resource <|--- gcp_subnetwork
+subnet <|--- gcp_subnetwork
+gcp_resource <|--- gcp_target_grpc_proxy
+gcp_resource <|--- gcp_target_http_proxy
+gcp_resource <|--- gcp_target_https_proxy
+gcp_resource <|--- gcp_target_instance
+gcp_resource <|--- gcp_target_pool
+gcp_resource <|--- gcp_target_ssl_proxy
+gcp_resource <|--- gcp_target_tcp_proxy
+gcp_resource <|--- gcp_target_vpn_gateway
+gcp_resource <|--- gcp_url_map
+ai_job <|--- gcp_vertex_ai_batch_prediction_job
+gcp_resource <|--- gcp_vertex_ai_batch_prediction_job
+ai_job <|--- gcp_vertex_ai_custom_job
+gcp_resource <|--- gcp_vertex_ai_custom_job
+gcp_resource <|--- gcp_vertex_ai_dataset
+gcp_resource <|--- gcp_vertex_ai_dataset_version
+gcp_resource <|--- gcp_vertex_ai_endpoint
+gcp_resource <|--- gcp_vertex_ai_feature
+gcp_resource <|--- gcp_vertex_ai_feature_group
+gcp_resource <|--- gcp_vertex_ai_featurestore
+ai_job <|--- gcp_vertex_ai_hyperparameter_tuning_job
+gcp_resource <|--- gcp_vertex_ai_hyperparameter_tuning_job
+gcp_resource <|--- gcp_vertex_ai_index
+gcp_resource <|--- gcp_vertex_ai_index_endpoint
+ai_model <|--- gcp_vertex_ai_model
+gcp_resource <|--- gcp_vertex_ai_model
+ai_job <|--- gcp_vertex_ai_model_deployment_monitoring_job
+gcp_resource <|--- gcp_vertex_ai_model_deployment_monitoring_job
+gcp_resource <|--- gcp_vertex_ai_model_evaluation
+ai_job <|--- gcp_vertex_ai_pipeline_job
+gcp_resource <|--- gcp_vertex_ai_pipeline_job
+gcp_resource <|--- gcp_vertex_ai_schedule
+gcp_resource <|--- gcp_vertex_ai_tensorboard
+gcp_resource <|--- gcp_vertex_ai_training_pipeline
+ai_job <|--- gcp_vertex_ai_tuning_job
+gcp_resource <|--- gcp_vertex_ai_tuning_job
+gateway <|--- gcp_vpn_gateway
+gcp_resource <|--- gcp_vpn_gateway
+gcp_resource <|--- gcp_vpn_tunnel
+tunnel <|--- gcp_vpn_tunnel
+gcp_resource <|--- gcp_zone
+zone <|--- gcp_zone
+account <|--- github_account
+resource <|--- github_org
+resource <|--- github_pull_request
+region <|--- github_region
+resource <|--- github_repo
+user <|--- github_user
+resource <|--- group
+resource <|--- health_check
+resource <|--- iam_principal
+resource <|--- instance
+resource <|--- instance_profile
+quota <|--- instance_quota
+type <|--- instance_type
+resource <|--- ip_address
+resource <|--- keypair
+account <|--- kubernetes_cluster
+kubernetes_resource <|--- kubernetes_cluster
+kubernetes_resource <|--- kubernetes_cluster_role
+kubernetes_resource <|--- kubernetes_cluster_role_binding
+kubernetes_resource <|--- kubernetes_config_map
+kubernetes_resource <|--- kubernetes_controller_revision
+kubernetes_resource <|--- kubernetes_cron_job
+kubernetes_resource <|--- kubernetes_csi_driver
+kubernetes_resource <|--- kubernetes_csi_node
+kubernetes_resource <|--- kubernetes_csi_storage_capacity
+kubernetes_resource <|--- kubernetes_daemon_set
+kubernetes_resource <|--- kubernetes_deployment
+kubernetes_resource <|--- kubernetes_endpoint
+kubernetes_resource <|--- kubernetes_endpoint_slice
+kubernetes_resource <|--- kubernetes_flow_schema
+kubernetes_resource <|--- kubernetes_horizontal_pod_autoscaler
+kubernetes_resource <|--- kubernetes_ingress
+load_balancer <|--- kubernetes_ingress
+kubernetes_resource <|--- kubernetes_ingress_class
+kubernetes_resource <|--- kubernetes_job
+kubernetes_resource <|--- kubernetes_limit_range
+kubernetes_resource <|--- kubernetes_mutating_webhook_configuration
+kubernetes_resource <|--- kubernetes_namespace
+region <|--- kubernetes_namespace
+kubernetes_resource <|--- kubernetes_network_policy
+instance <|--- kubernetes_node
+kubernetes_resource <|--- kubernetes_node
+kubernetes_resource <|--- kubernetes_persistent_volume
+volume <|--- kubernetes_persistent_volume
+kubernetes_resource <|--- kubernetes_persistent_volume_claim
+kubernetes_resource <|--- kubernetes_pod
+kubernetes_resource <|--- kubernetes_pod_disruption_budget
+kubernetes_resource <|--- kubernetes_pod_template
+kubernetes_resource <|--- kubernetes_priority_class
+kubernetes_resource <|--- kubernetes_priority_level_configuration
+kubernetes_resource <|--- kubernetes_replica_set
+kubernetes_resource <|--- kubernetes_replication_controller
+resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_resource_quota
+quota <|--- kubernetes_resource_quota
+kubernetes_resource <|--- kubernetes_role
+kubernetes_resource <|--- kubernetes_role_binding
+kubernetes_resource <|--- kubernetes_runtime_class
+kubernetes_resource <|--- kubernetes_secret
+kubernetes_resource <|--- kubernetes_service
+load_balancer <|--- kubernetes_service
+kubernetes_resource <|--- kubernetes_service_account
+kubernetes_resource <|--- kubernetes_stateful_set
+kubernetes_resource <|--- kubernetes_storage_class
+kubernetes_resource <|--- kubernetes_validating_webhook_configuration
+kubernetes_resource <|--- kubernetes_volume_attachment
+resource <|--- load_balancer
+quota <|--- load_balancer_quota
+resource <|--- managed_kubernetes_cluster_provider
+microsoft_graph_entity <|--- microsoft_graph_device
+microsoft_resource <|--- microsoft_graph_entity
+group <|--- microsoft_graph_group
+microsoft_graph_entity <|--- microsoft_graph_group
+account <|--- microsoft_graph_organization
+microsoft_graph_entity <|--- microsoft_graph_organization
+microsoft_graph_entity <|--- microsoft_graph_organization_root
+region <|--- microsoft_graph_organization_root
+microsoft_graph_entity <|--- microsoft_graph_policy
+microsoft_graph_entity <|--- microsoft_graph_role
+role <|--- microsoft_graph_role
+microsoft_graph_entity <|--- microsoft_graph_service_principal
+microsoft_graph_entity <|--- microsoft_graph_user
+user <|--- microsoft_graph_user
+resource <|--- microsoft_resource
+resource <|--- network
+resource <|--- network_acl
+resource <|--- network_interface
+quota <|--- network_quota
+resource <|--- network_share
+account <|--- onelogin_account
+region <|--- onelogin_region
+user <|--- onelogin_user
+instance <|--- onprem_instance
+account <|--- onprem_location
+network <|--- onprem_network
+region <|--- onprem_region
+resource <|--- organizational_root
+resource <|--- organizational_unit
+resource <|--- peering_connection
+resource <|--- phantom_resource
+resource <|--- policy
+resource <|--- posthog_event
+account <|--- posthog_project
+resource <|--- queue
+phantom_resource <|--- quota
+phantom_resource <|--- region
+resource <|--- role
+resource <|--- route
+resource <|--- routing_table
+account <|--- scarf_organization
+resource <|--- scarf_package
+resource <|--- security_group
+resource <|--- serverless_function
+resource <|--- slack_conversation
+region <|--- slack_region
+account <|--- slack_team
+user <|--- slack_user
+group <|--- slack_usergroup
+resource <|--- snapshot
+resource <|--- stack
+resource <|--- subnet
+resource <|--- tunnel
+quota <|--- type
+resource <|--- user
+resource <|--- volume
+type <|--- volume_type
+zone <|--- vsphere_cluster
+region <|--- vsphere_data_center
+resource <|--- vsphere_datastore
+resource <|--- vsphere_datastore_cluster
+resource <|--- vsphere_esxi_host
+account <|--- vsphere_host
+instance <|--- vsphere_instance
+resource <|--- vsphere_resource_pool
+resource <|--- vsphere_template
+phantom_resource <|--- zone
+
+@enduml
+```
+
+</ZoomPanPinch>

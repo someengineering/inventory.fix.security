@@ -1,0 +1,179 @@
+---
+sidebar_label: Authorization Deny Assignment
+---
+
+# `azure_authorization_deny_assignment`
+
+- Categories: Access Control
+- Service: authorization
+- Provider Link: [Authorization Deny Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments)
+
+## Description
+
+Azure Authorization Deny Assignment is a feature in Azure's Role-Based Access Control (RBAC) system. It creates explicit restrictions on resource access, overriding existing permissions. Deny Assignments prevent specified users, groups, or service principals from performing certain actions on resources, even if a role assignment grants them access. This helps enforce stricter access control policies in Azure environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Authorization Deny Assignment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_deny_assignment {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_authorization_deny_assignment
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Authorization Deny Assignment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_deny_assignment {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Authorization Deny Assignment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_authorization_deny_assignment {
+**condition**: string
+**condition_version**: string
+**created_by**: string
+**created_on**: datetime
+**deny_assignment_name**: string
+**description**: string
+**do_not_apply_to_child_scopes**: boolean
+**exclude_principals**: azure_principal[]
+**is_system_protected**: boolean
+**permissions**: azure_deny_assignment_permission[]
+**principals**: azure_principal[]
+**scope**: string
+**updated_by**: string
+**updated_on**: datetime
+}
+class azure_deny_assignment_permission {
+**actions**: string[]
+**condition**: string
+**condition_version**: string
+**data_actions**: string[]
+**not_actions**: string[]
+**not_data_actions**: string[]
+}
+class azure_principal {
+**display_name**: string
+**email**: string
+**id**: string
+**type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_authorization_deny_assignment --> azure_deny_assignment_permission
+azure_authorization_deny_assignment --> azure_principal
+microsoft_resource <|--- azure_authorization_deny_assignment
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

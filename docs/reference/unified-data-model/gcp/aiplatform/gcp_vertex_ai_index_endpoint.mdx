@@ -1,0 +1,240 @@
+---
+sidebar_label: Vertex AI Index Endpoint
+---
+
+# `gcp_vertex_ai_index_endpoint`
+
+- Categories: Machine Learning & AI
+- Service: aiplatform
+- Provider Link: [Vertex AI Index Endpoint](https://cloud.google.com/docs)
+
+## Description
+
+An Index Endpoint is a deployment resource in Vertex AI that serves indexes, allowing real-time similarity search queries.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Index Endpoint"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_resource {
+
+}
+class gcp_vertex_ai_index_endpoint {
+
+}
+class resource {
+
+}
+resource <|--- gcp_resource
+gcp_resource <|--- gcp_vertex_ai_index_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Index Endpoint resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_index {
+
+}
+class gcp_vertex_ai_index_endpoint {
+
+}
+gcp_vertex_ai_index -[#1A83AF]-> gcp_vertex_ai_index_endpoint
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Index Endpoint data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_automatic_resources {
+**max_replica_count**: int64
+**min_replica_count**: int64
+}
+class gcp_vertex_ai_autoscaling_metric_spec {
+**metric_name**: string
+**target**: int64
+}
+class gcp_vertex_ai_dedicated_resources {
+**autoscaling_metric_specs**: gcp_vertex_ai_autoscaling_metric_spec[]
+**machine_spec**: gcp_vertex_ai_machine_spec
+**max_replica_count**: int64
+**min_replica_count**: int64
+}
+class gcp_vertex_ai_deployed_index {
+**automatic_resources**: gcp_vertex_ai_automatic_resources
+**create_time**: datetime
+**dedicated_resources**: gcp_vertex_ai_dedicated_resources
+**deployed_index_auth_config**: gcp_vertex_ai_deployed_index_auth_config
+**deployment_group**: string
+**display_name**: string
+**enable_access_logging**: boolean
+**id**: string
+**index**: string
+**index_sync_time**: datetime
+**private_endpoints**: gcp_vertex_ai_index_private_endpoints
+**reserved_ip_ranges**: string[]
+}
+class gcp_vertex_ai_deployed_index_auth_config {
+**auth_provider**: gcp_vertex_ai_deployed_index_auth_config_auth_provider
+}
+class gcp_vertex_ai_deployed_index_auth_config_auth_provider {
+**allowed_issuers**: string[]
+**audiences**: string[]
+}
+class gcp_vertex_ai_index_endpoint {
+**create_time**: datetime
+**display_name**: string
+**enable_private_service_connect**: boolean
+**encryption_spec**: string
+**endpoint_deployed_indexes**: gcp_vertex_ai_deployed_index[]
+**etag**: string
+**network**: string
+**private_service_connect_config**: gcp_vertex_ai_private_service_connect_config
+**public_endpoint_domain_name**: string
+**public_endpoint_enabled**: boolean
+**update_time**: datetime
+}
+class gcp_vertex_ai_index_private_endpoints {
+**match_grpc_address**: string
+**psc_automated_endpoints**: gcp_vertex_ai_psc_automated_endpoints[]
+**service_attachment**: string
+}
+class gcp_vertex_ai_machine_spec {
+**accelerator_count**: int64
+**accelerator_type**: string
+**machine_type**: string
+**tpu_topology**: string
+}
+class gcp_vertex_ai_private_service_connect_config {
+**enable_private_service_connect**: boolean
+**project_allowlist**: string[]
+}
+class gcp_vertex_ai_psc_automated_endpoints {
+**match_address**: string
+**network**: string
+**project_id**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_dedicated_resources --> gcp_vertex_ai_autoscaling_metric_spec
+gcp_vertex_ai_dedicated_resources --> gcp_vertex_ai_machine_spec
+gcp_vertex_ai_deployed_index --> gcp_vertex_ai_automatic_resources
+gcp_vertex_ai_deployed_index --> gcp_vertex_ai_dedicated_resources
+gcp_vertex_ai_deployed_index --> gcp_vertex_ai_deployed_index_auth_config
+gcp_vertex_ai_deployed_index --> gcp_vertex_ai_index_private_endpoints
+gcp_vertex_ai_deployed_index_auth_config --> gcp_vertex_ai_deployed_index_auth_config_auth_provider
+gcp_vertex_ai_index_endpoint --> gcp_deprecation_status
+gcp_resource <|--- gcp_vertex_ai_index_endpoint
+gcp_vertex_ai_index_endpoint --> gcp_vertex_ai_deployed_index
+gcp_vertex_ai_index_endpoint --> gcp_vertex_ai_private_service_connect_config
+gcp_vertex_ai_index_private_endpoints --> gcp_vertex_ai_psc_automated_endpoints
+
+@enduml
+```
+
+</ZoomPanPinch>

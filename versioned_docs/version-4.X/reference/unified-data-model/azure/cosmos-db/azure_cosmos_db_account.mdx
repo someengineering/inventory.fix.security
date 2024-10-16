@@ -1,0 +1,386 @@
+---
+sidebar_label: Cosmos DB Account
+---
+
+# `azure_cosmos_db_account`
+
+- Categories: Compute, Database
+- Service: cosmos-db
+- Provider Link: [Cosmos DB Account](https://learn.microsoft.com/en-us/azure/cosmos-db/)
+
+## Description
+
+Azure Cosmos DB Account is a cloud-based database service offered by Microsoft Azure. It provides a globally distributed, multi-model database platform for storing and managing data. Users can create and manage databases, containers, and items within the account. It supports multiple APIs, including SQL, MongoDB, Cassandra, Gremlin, and Table, offering flexibility for various application needs.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cosmos DB Account"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_account {
+
+}
+class database {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+database <|--- azure_cosmos_db_account
+microsoft_resource <|--- azure_cosmos_db_account
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Account resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_cosmos_db_account {
+
+}
+class azure_cosmos_db_account_usage {
+
+}
+class azure_cosmos_db_cassandra_keyspace {
+
+}
+class azure_cosmos_db_gremlin_database {
+
+}
+class azure_cosmos_db_location {
+
+}
+class azure_cosmos_db_mongo_db_database {
+
+}
+class azure_cosmos_db_mongo_db_role_definition {
+
+}
+class azure_cosmos_db_mongo_db_user_definition {
+
+}
+class azure_cosmos_db_notebook_workspace {
+
+}
+class azure_cosmos_db_private_link {
+
+}
+class azure_cosmos_db_sql_database {
+
+}
+class azure_cosmos_db_sql_role_assignment {
+
+}
+class azure_cosmos_db_sql_role_definition {
+
+}
+class azure_cosmos_db_table {
+
+}
+class azure_key_vault_key {
+
+}
+class azure_network_subnet {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_account_usage
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_cassandra_keyspace
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_gremlin_database
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_mongo_db_database
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_mongo_db_role_definition
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_mongo_db_user_definition
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_notebook_workspace
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_private_link
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_sql_database
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_sql_role_assignment
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_sql_role_definition
+azure_cosmos_db_account -[#1A83AF]-> azure_cosmos_db_table
+azure_cosmos_db_account -[#1A83AF]-> microsoft_graph_service_principal
+azure_cosmos_db_account -[#1A83AF]-> microsoft_graph_user
+azure_cosmos_db_location -[#1A83AF]-> azure_cosmos_db_account
+azure_cosmos_db_sql_role_assignment -[#1A83AF]-> microsoft_graph_service_principal
+azure_cosmos_db_sql_role_definition -[#1A83AF]-> azure_cosmos_db_sql_role_assignment
+azure_key_vault_key -[#1A83AF]-> azure_cosmos_db_account
+azure_network_subnet -[#1A83AF]-> azure_cosmos_db_account
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cosmos DB Account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_account_location {
+**document_endpoint**: string
+**failover_priority**: int64
+**id**: string
+**is_zone_redundant**: boolean
+**location_name**: string
+**provisioning_state**: string
+}
+class azure_account_virtual_network_rule {
+**id**: string
+**ignore_missing_v_net_service_endpoint**: boolean
+}
+class azure_backup_policy {
+**migration_state**: azure_backup_policy_migration_state
+**type**: string
+}
+class azure_backup_policy_migration_state {
+**start_time**: datetime
+**status**: string
+**target_type**: string
+}
+class azure_consistency_policy {
+**default_consistency_level**: string
+**max_interval_in_seconds**: int64
+**max_staleness_prefix**: int64
+}
+class azure_cors_policy {
+**allowed_headers**: string
+**allowed_methods**: string
+**allowed_origins**: string
+**exposed_headers**: string
+**max_age_in_seconds**: int64
+}
+class azure_cosmos_db_account {
+**account_cors**: azure_cors_policy[]
+**account_identity**: azure_resource_identity
+**account_locations**: azure_account_location[]
+**account_private_endpoint_connections**: azure_private_endpoint_connection[]
+**account_restore_parameters**: azure_restore_parameters
+**analytical_storage_configuration**: string
+**api_properties**: string
+**backup_policy**: azure_backup_policy
+**capabilities**: string[]
+**capacity**: int64
+**connector_offer**: string
+**consistency_policy**: azure_consistency_policy
+**create_mode**: string
+**customer_managed_key_status**: string
+**database_account_offer_type**: string
+**database_api_type**: string
+**default_identity**: string
+**disable_key_based_metadata_write_access**: boolean
+**disable_local_auth**: boolean
+**document_endpoint**: string
+**enable_analytical_storage**: boolean
+**enable_automatic_failover**: boolean
+**enable_burst_capacity**: boolean
+**enable_cassandra_connector**: boolean
+**enable_free_tier**: boolean
+**enable_multiple_write_locations**: boolean
+**enable_partition_merge**: boolean
+**failover_policies**: azure_failover_policy[]
+**instance_id**: string
+**ip_rules**: string[]
+**is_virtual_network_filter_enabled**: boolean
+**key_vault_key_uri**: string
+**keys_metadata**: azure_database_account_keys_metadata
+**minimal_tls_version**: string
+**network_acl_bypass**: string
+**network_acl_bypass_resource_ids**: string[]
+**public_network_access**: string
+**read_locations**: azure_account_location[]
+**resource_kind**: string
+**system_data**: azure_system_data
+**virtual_network_rules**: azure_account_virtual_network_rule[]
+**write_locations**: azure_account_location[]
+}
+class azure_database_account_keys_metadata {
+**primary_master_key**: datetime
+**primary_readonly_master_key**: datetime
+**secondary_master_key**: datetime
+**secondary_readonly_master_key**: datetime
+}
+class azure_database_restore_resource {
+**collection_names**: string[]
+**database_name**: string
+}
+class azure_failover_policy {
+**failover_priority**: int64
+**id**: string
+**location_name**: string
+}
+class azure_gremlin_database_restore_resource {
+**database_name**: string
+**graph_names**: string[]
+}
+class azure_private_endpoint_connection {
+**group_ids**: string[]
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_identity]
+}
+class azure_restore_parameters {
+**databases_to_restore**: azure_database_restore_resource[]
+**gremlin_databases_to_restore**: azure_gremlin_database_restore_resource[]
+**restore_mode**: string
+**tables_to_restore**: string[]
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_backup_policy --> azure_backup_policy_migration_state
+azure_cosmos_db_account --> azure_account_location
+azure_cosmos_db_account --> azure_account_virtual_network_rule
+azure_cosmos_db_account --> azure_backup_policy
+azure_cosmos_db_account --> azure_consistency_policy
+azure_cosmos_db_account --> azure_cors_policy
+azure_cosmos_db_account --> azure_database_account_keys_metadata
+azure_cosmos_db_account --> azure_failover_policy
+azure_cosmos_db_account --> azure_private_endpoint_connection
+azure_cosmos_db_account --> azure_resource_identity
+azure_cosmos_db_account --> azure_restore_parameters
+azure_cosmos_db_account --> azure_system_data
+database <|--- azure_cosmos_db_account
+microsoft_resource <|--- azure_cosmos_db_account
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+azure_private_endpoint_connection --> azure_system_data
+azure_resource_identity --> azure_user_identity
+azure_restore_parameters --> azure_database_restore_resource
+azure_restore_parameters --> azure_gremlin_database_restore_resource
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,278 @@
+---
+sidebar_label: Compute Virtual Machine Snapshot
+---
+
+# `azure_compute_virtual_machine_snapshot`
+
+- Categories: Storage
+- Service: compute
+- Provider Link: [Compute Virtual Machine Snapshot](https://learn.microsoft.com/en-us/azure/virtual-machines/snapshot-copy-managed-disk)
+
+## Description
+
+Azure Compute Virtual Machine Snapshot is a feature that creates point-in-time copies of virtual machine disks. It captures the disk's data state at a specific moment, including all files and system settings. These snapshots can be used for backup, disaster recovery, or to create new virtual machines with the same configuration and data as the original.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Virtual Machine Snapshot"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_snapshot {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+class snapshot {
+
+}
+microsoft_resource <|--- azure_compute_virtual_machine_snapshot
+snapshot <|--- azure_compute_virtual_machine_snapshot
+resource <|--- microsoft_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine Snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class azure_compute_disk_access {
+
+}
+class azure_compute_virtual_machine_snapshot {
+
+}
+azure_compute_disk -[#1A83AF]-> azure_compute_virtual_machine_snapshot
+azure_compute_disk_access -[#1A83AF]-> azure_compute_virtual_machine_snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine Snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine_snapshot {
+**completion_percent**: double
+**copy_completion_error**: azure_copy_completion_error
+**creation_data**: azure_creation_data
+**data_access_auth_mode**: string
+**disk_access_id**: string
+**disk_size_bytes**: int64
+**disk_size_gb**: int64
+**disk_state**: string
+**encryption_settings_collection**: azure_encryption_settings_collection
+**extended_location**: azure_extended_location
+**hyper_v_generation**: string
+**incremental**: boolean
+**incremental_snapshot_family_id**: string
+**managed_by**: string
+**network_access_policy**: string
+**os_type**: string
+**public_network_access**: string
+**purchase_plan**: azure_purchase_plan
+**snapshot_encryption**: azure_encryption
+**snapshot_security_profile**: azure_disk_security_profile
+**snapshot_sku**: azure_snapshot_sku
+**supported_capabilities**: azure_supported_capabilities
+**supports_hibernation**: boolean
+**time_created**: datetime
+**unique_id**: string
+}
+class azure_copy_completion_error {
+**error_code**: string
+**error_message**: string
+}
+class azure_creation_data {
+**create_option**: string
+**gallery_image_reference**: azure_image_disk_reference
+**image_reference**: azure_image_disk_reference
+**logical_sector_size**: int64
+**performance_plus**: boolean
+**security_data_uri**: string
+**source_resource_id**: string
+**source_unique_id**: string
+**source_uri**: string
+**storage_account_id**: string
+**upload_size_bytes**: int64
+}
+class azure_disk_security_profile {
+**secure_vm_disk_encryption_set_id**: string
+**security_type**: string
+}
+class azure_encryption {
+**disk_encryption_set_id**: string
+**type**: string
+}
+class azure_encryption_settings_collection {
+**enabled**: boolean
+**encryption_settings**: azure_encryption_settings_element[]
+**encryption_settings_version**: string
+}
+class azure_encryption_settings_element {
+**disk_encryption_key**: azure_key_vault_and_secret_reference
+**key_encryption_key**: azure_key_vault_and_key_reference
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image_disk_reference {
+**community_gallery_image_id**: string
+**id**: string
+**lun**: int64
+**shared_gallery_image_id**: string
+}
+class azure_key_vault_and_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_purchase_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_snapshot_sku {
+**name**: string
+**tier**: string
+}
+class azure_supported_capabilities {
+**accelerated_network**: boolean
+**architecture**: string
+**disk_controller_types**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
+azure_compute_virtual_machine_snapshot --> azure_copy_completion_error
+azure_compute_virtual_machine_snapshot --> azure_creation_data
+azure_compute_virtual_machine_snapshot --> azure_disk_security_profile
+azure_compute_virtual_machine_snapshot --> azure_encryption
+azure_compute_virtual_machine_snapshot --> azure_encryption_settings_collection
+azure_compute_virtual_machine_snapshot --> azure_extended_location
+azure_compute_virtual_machine_snapshot --> azure_purchase_plan
+azure_compute_virtual_machine_snapshot --> azure_snapshot_sku
+azure_compute_virtual_machine_snapshot --> azure_supported_capabilities
+microsoft_resource <|--- azure_compute_virtual_machine_snapshot
+snapshot <|--- azure_compute_virtual_machine_snapshot
+azure_creation_data --> azure_image_disk_reference
+azure_encryption_settings_collection --> azure_encryption_settings_element
+azure_encryption_settings_element --> azure_key_vault_and_key_reference
+azure_encryption_settings_element --> azure_key_vault_and_secret_reference
+resource <|--- microsoft_resource
+resource <|--- snapshot
+
+@enduml
+```
+
+</ZoomPanPinch>

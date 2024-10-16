@@ -1,0 +1,177 @@
+---
+sidebar_label: SSM Instance
+---
+
+# `aws_ssm_instance`
+
+- Categories: Management
+- Service: ssm
+- Provider Link: [SSM Instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html)
+
+## Description
+
+AWS Systems Manager (SSM) Instance is a managed service that provides visibility and control over AWS infrastructure. It automates operational tasks, manages configuration, and maintains security compliance across EC2 instances and on-premises servers. SSM Instance collects system data, applies patches, executes commands, and configures instances according to defined policies, simplifying IT operations and enhancing system management capabilities.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SSM Instance"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_ssm_instance {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance {
+
+}
+class aws_ssm_instance {
+
+}
+aws_ssm_instance -[#1A83AF]-> aws_ec2_instance
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_instance {
+**activation_id**: string
+**agent_version**: string
+**association_overview**: aws_ssm_instance_aggregated_association_overview
+**association_status**: string
+**computer_name**: string
+**iam_role**: string
+**instance_id**: string
+**ip_address**: string
+**is_latest_version**: boolean
+**last_association_execution_date**: datetime
+**last_ping**: datetime
+**last_successful_association_execution_date**: datetime
+**ping_status**: string
+**platform_name**: string
+**platform_type**: string
+**platform_version**: string
+**registration_date**: datetime
+**resource_type**: string
+**source_id**: string
+**source_type**: string
+}
+class aws_ssm_instance_aggregated_association_overview {
+**detailed_status**: string
+**instance_association_status_aggregated_count**: dictionary[string, int64]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_instance
+aws_ssm_instance --> aws_ssm_instance_aggregated_association_overview
+
+@enduml
+```
+
+</ZoomPanPinch>

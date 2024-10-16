@@ -1,0 +1,243 @@
+---
+sidebar_label: Forwarding Rule
+---
+
+# `gcp_forwarding_rule`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [Forwarding Rule](https://cloud.google.com/load-balancing/docs/forwarding-rules)
+
+## Description
+
+A GCP Forwarding Rule is a network configuration component in Google Cloud Platform that directs incoming traffic to specific destinations. It maps an IP address and port to one or more backend services or target instances, distributing network load across multiple resources. Forwarding rules can be used for load balancing, traffic routing, and network address translation.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Forwarding Rule"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_forwarding_rule {
+
+}
+class gcp_resource {
+
+}
+class load_balancer {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_forwarding_rule
+load_balancer <|--- gcp_forwarding_rule
+resource <|--- gcp_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Forwarding Rule resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_forwarding_rule {
+
+}
+class gcp_network {
+
+}
+class gcp_target_grpc_proxy {
+
+}
+class gcp_target_http_proxy {
+
+}
+class gcp_target_https_proxy {
+
+}
+class gcp_target_pool {
+
+}
+class gcp_target_ssl_proxy {
+
+}
+class gcp_target_tcp_proxy {
+
+}
+class gcp_target_vpn_gateway {
+
+}
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_forwarding_rule
+gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Forwarding Rule data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_forwarding_rule {
+**all_ports**: boolean
+**allow_global_access**: boolean
+**backend_service**: string
+**fingerprint**: string
+**ip_address**: string
+**ip_protocol**: string
+**ip_version**: string
+**is_mirroring_collector**: boolean
+**load_balancing_scheme**: string
+**metadata_filters**: gcp_metadata_filter[]
+**network**: string
+**network_tier**: string
+**no_automate_dns_zone**: boolean
+**port_range**: string
+**ports**: string[]
+**psc_connection_id**: string
+**psc_connection_status**: string
+**service_directory_registrations**: gcp_forwarding_rule_service_directory_registration[]
+**service_label**: string
+**service_name**: string
+**subnetwork**: string
+**target**: string
+}
+class gcp_forwarding_rule_service_directory_registration {
+**namespace**: string
+**service**: string
+**service_directory_region**: string
+}
+class gcp_metadata_filter {
+**filter_labels**: gcp_metadata_filter_label_match[]
+**filter_match_criteria**: string
+}
+class gcp_metadata_filter_label_match {
+**name**: string
+**value**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_forwarding_rule --> gcp_deprecation_status
+gcp_forwarding_rule --> gcp_forwarding_rule_service_directory_registration
+gcp_forwarding_rule --> gcp_metadata_filter
+gcp_resource <|--- gcp_forwarding_rule
+load_balancer <|--- gcp_forwarding_rule
+gcp_metadata_filter --> gcp_metadata_filter_label_match
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- load_balancer
+
+@enduml
+```
+
+</ZoomPanPinch>

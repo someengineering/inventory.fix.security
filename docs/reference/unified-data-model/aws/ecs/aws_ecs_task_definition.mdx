@@ -1,0 +1,394 @@
+---
+sidebar_label: ECS Task Definition
+---
+
+# `aws_ecs_task_definition`
+
+- Categories: Compute
+- Service: ecs
+- Provider Link: [ECS Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+
+## Description
+
+An AWS ECS Task Definition is a configuration file that specifies how containers should run within an Amazon ECS cluster. It defines container images, resource requirements, environment variables, networking settings, and storage options for tasks. Task Definitions serve as blueprints for deploying and managing containerized applications in Amazon ECS environments.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of ECS Task Definition"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_task_definition {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_ecs_task_definition
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Task Definition resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_task {
+
+}
+class aws_ecs_task_definition {
+
+}
+class aws_iam_role {
+
+}
+aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
+aws_iam_role -[#1A83AF]-> aws_ecs_task
+aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of ECS Task Definition data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_attribute {
+**name**: string
+**target_id**: string
+**target_type**: string
+**value**: string
+}
+class aws_ecs_container_definition {
+**command**: string[]
+**cpu**: int64
+**depends_on**: aws_ecs_container_dependency[]
+**disable_networking**: boolean
+**dns_search_domains**: string[]
+**dns_servers**: string[]
+**docker_labels**: dictionary[string, string]
+**docker_security_options**: string[]
+**entry_point**: string[]
+**environment**: aws_ecs_key_value_pair[]
+**environment_files**: aws_ecs_environment_file[]
+**essential**: boolean
+**extra_hosts**: aws_ecs_host_entry[]
+**firelens_configuration**: aws_ecs_firelens_configuration
+**health_check**: aws_ecs_health_check
+**hostname**: string
+**image**: string
+**interactive**: boolean
+**links**: string[]
+**linux_parameters**: aws_ecs_linux_parameters
+**log_configuration**: aws_ecs_log_configuration
+**memory**: int64
+**memory_reservation**: int64
+**mount_points**: aws_ecs_mount_point[]
+**name**: string
+**port_mappings**: aws_ecs_port_mapping[]
+**privileged**: boolean
+**pseudo_terminal**: boolean
+**readonly_root_filesystem**: boolean
+**repository_credentials**: string
+**resource_requirements**: aws_ecs_resource_requirement[]
+**secrets**: aws_ecs_secret[]
+**start_timeout**: int64
+**stop_timeout**: int64
+**system_controls**: aws_ecs_system_control[]
+**ulimits**: aws_ecs_ulimit[]
+**user**: string
+**volumes_from**: aws_ecs_volume_from[]
+**working_directory**: string
+}
+class aws_ecs_container_dependency {
+**condition**: string
+**container_name**: string
+}
+class aws_ecs_device {
+**container_path**: string
+**host_path**: string
+**permissions**: string[]
+}
+class aws_ecs_docker_volume_configuration {
+**autoprovision**: boolean
+**driver**: string
+**driver_opts**: dictionary[string, string]
+**labels**: dictionary[string, string]
+**scope**: string
+}
+class aws_ecs_efs_authorization_config {
+**access_point_id**: string
+**iam**: string
+}
+class aws_ecs_efs_volume_configuration {
+**authorization_config**: aws_ecs_efs_authorization_config
+**file_system_id**: string
+**root_directory**: string
+**transit_encryption**: string
+**transit_encryption_port**: int64
+}
+class aws_ecs_environment_file {
+**type**: string
+**value**: string
+}
+class aws_ecs_f_sx_windows_file_server_authorization_config {
+**credentials_parameter**: string
+**domain**: string
+}
+class aws_ecs_f_sx_windows_file_server_volume_configuration {
+**authorization_config**: aws_ecs_f_sx_windows_file_server_authorization_config
+**file_system_id**: string
+**root_directory**: string
+}
+class aws_ecs_firelens_configuration {
+**options**: dictionary[string, string]
+**type**: string
+}
+class aws_ecs_health_check {
+**command**: string[]
+**interval**: int64
+**retries**: int64
+**start_period**: int64
+**timeout**: int64
+}
+class aws_ecs_host_entry {
+**hostname**: string
+**ip_address**: string
+}
+class aws_ecs_inference_accelerator {
+**device_name**: string
+**device_type**: string
+}
+class aws_ecs_kernel_capabilities {
+**add**: string[]
+**drop**: string[]
+}
+class aws_ecs_key_value_pair {
+**name**: string
+**value**: string
+}
+class aws_ecs_linux_parameters {
+**capabilities**: aws_ecs_kernel_capabilities
+**devices**: aws_ecs_device[]
+**init_process_enabled**: boolean
+**max_swap**: int64
+**shared_memory_size**: int64
+**swappiness**: int64
+**tmpfs**: aws_ecs_tmpfs[]
+}
+class aws_ecs_log_configuration {
+**log_driver**: string
+**options**: dictionary[string, string]
+**secret_options**: aws_ecs_secret[]
+}
+class aws_ecs_mount_point {
+**container_path**: string
+**read_only**: boolean
+**source_volume**: string
+}
+class aws_ecs_port_mapping {
+**container_port**: int64
+**host_port**: int64
+**protocol**: string
+}
+class aws_ecs_proxy_configuration {
+**container_name**: string
+**properties**: aws_ecs_key_value_pair[]
+**type**: string
+}
+class aws_ecs_resource_requirement {
+**type**: string
+**value**: string
+}
+class aws_ecs_runtime_platform {
+**cpu_architecture**: string
+**operating_system_family**: string
+}
+class aws_ecs_secret {
+**name**: string
+**value_from**: string
+}
+class aws_ecs_system_control {
+**namespace**: string
+**value**: string
+}
+class aws_ecs_task_definition {
+**compatibilities**: string[]
+**container_definitions**: aws_ecs_container_definition[]
+**cpu**: string
+**ephemeral_storage**: int64
+**execution_role_arn**: string
+**family**: string
+**inference_accelerators**: aws_ecs_inference_accelerator[]
+**ipc_mode**: string
+**memory**: string
+**network_mode**: string
+**pid_mode**: string
+**placement_constraints**: aws_ecs_task_definition_placement_constraint[]
+**proxy_configuration**: aws_ecs_proxy_configuration
+**registered_by**: string
+**requires_attributes**: aws_ecs_attribute[]
+**requires_compatibilities**: string[]
+**revision**: int64
+**runtime_platform**: aws_ecs_runtime_platform
+**status**: string
+**task_role_arn**: string
+**volumes**: aws_ecs_volume[]
+}
+class aws_ecs_task_definition_placement_constraint {
+**expression**: string
+**type**: string
+}
+class aws_ecs_tmpfs {
+**container_path**: string
+**mount_options**: string[]
+**size**: int64
+}
+class aws_ecs_ulimit {
+**hard_limit**: int64
+**name**: string
+**soft_limit**: int64
+}
+class aws_ecs_volume {
+**docker_volume_configuration**: aws_ecs_docker_volume_configuration
+**efs_volume_configuration**: aws_ecs_efs_volume_configuration
+**fsx_windows_file_server_volume_configuration**: aws_ecs_f_sx_windows_file_server_volume_configuration
+**host**: string
+**name**: string
+}
+class aws_ecs_volume_from {
+**read_only**: boolean
+**source_container**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecs_container_definition --> aws_ecs_container_dependency
+aws_ecs_container_definition --> aws_ecs_environment_file
+aws_ecs_container_definition --> aws_ecs_firelens_configuration
+aws_ecs_container_definition --> aws_ecs_health_check
+aws_ecs_container_definition --> aws_ecs_host_entry
+aws_ecs_container_definition --> aws_ecs_key_value_pair
+aws_ecs_container_definition --> aws_ecs_linux_parameters
+aws_ecs_container_definition --> aws_ecs_log_configuration
+aws_ecs_container_definition --> aws_ecs_mount_point
+aws_ecs_container_definition --> aws_ecs_port_mapping
+aws_ecs_container_definition --> aws_ecs_resource_requirement
+aws_ecs_container_definition --> aws_ecs_secret
+aws_ecs_container_definition --> aws_ecs_system_control
+aws_ecs_container_definition --> aws_ecs_ulimit
+aws_ecs_container_definition --> aws_ecs_volume_from
+aws_ecs_efs_volume_configuration --> aws_ecs_efs_authorization_config
+aws_ecs_f_sx_windows_file_server_volume_configuration --> aws_ecs_f_sx_windows_file_server_authorization_config
+aws_ecs_linux_parameters --> aws_ecs_device
+aws_ecs_linux_parameters --> aws_ecs_kernel_capabilities
+aws_ecs_linux_parameters --> aws_ecs_tmpfs
+aws_ecs_log_configuration --> aws_ecs_secret
+aws_ecs_proxy_configuration --> aws_ecs_key_value_pair
+aws_ecs_task_definition --> aws_ecs_attribute
+aws_ecs_task_definition --> aws_ecs_container_definition
+aws_ecs_task_definition --> aws_ecs_inference_accelerator
+aws_ecs_task_definition --> aws_ecs_proxy_configuration
+aws_ecs_task_definition --> aws_ecs_runtime_platform
+aws_ecs_task_definition --> aws_ecs_task_definition_placement_constraint
+aws_ecs_task_definition --> aws_ecs_volume
+aws_resource <|--- aws_ecs_task_definition
+aws_ecs_volume --> aws_ecs_docker_volume_configuration
+aws_ecs_volume --> aws_ecs_efs_volume_configuration
+aws_ecs_volume --> aws_ecs_f_sx_windows_file_server_volume_configuration
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

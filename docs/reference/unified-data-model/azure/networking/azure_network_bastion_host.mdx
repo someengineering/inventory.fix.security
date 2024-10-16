@@ -1,0 +1,188 @@
+---
+sidebar_label: Network Bastion Host
+---
+
+# `azure_network_bastion_host`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Bastion Host](https://learn.microsoft.com/en-us/azure/bastion/bastion-overview)
+
+## Description
+
+Azure Network Bastion Host is a managed service that provides secure remote access to virtual machines in Azure virtual networks. It acts as a jump server, eliminating the need for public IP addresses on VMs. Users connect through the Azure portal or via SSH/RDP protocols, with Bastion handling authentication and network traversal.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Bastion Host"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_bastion_host {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_network_bastion_host
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Bastion Host resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_bastion_host {
+
+}
+class azure_network_public_ip_address {
+
+}
+class azure_network_subnet {
+
+}
+class azure_network_virtual_network {
+
+}
+azure_network_bastion_host -[#1A83AF]-> azure_network_public_ip_address
+azure_network_subnet -[#1A83AF]-> azure_network_bastion_host
+azure_network_virtual_network -[#1A83AF]-> azure_network_bastion_host
+azure_network_virtual_network -[#1A83AF]-> azure_network_subnet
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Bastion Host data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_bastion_host_ip_configuration {
+**etag**: string
+**name**: string
+**private_ip_allocation_method**: string
+**provisioning_state**: string
+**public_ip_address**: string
+**subnet**: string
+**type**: string
+}
+class azure_ip_rules {
+**ip_rules**: string[]
+}
+class azure_network_bastion_host {
+**bastion_host_ip_configurations**: azure_bastion_host_ip_configuration[]
+**disable_copy_paste**: boolean
+**dns_name**: string
+**enable_file_copy**: boolean
+**enable_ip_connect**: boolean
+**enable_kerberos**: boolean
+**enable_shareable_link**: boolean
+**enable_tunneling**: boolean
+**network_acls**: azure_ip_rules
+**scale_units**: int64
+**sku**: string
+**virtual_network**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_network_bastion_host --> azure_bastion_host_ip_configuration
+azure_network_bastion_host --> azure_ip_rules
+microsoft_resource <|--- azure_network_bastion_host
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

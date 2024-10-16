@@ -1,0 +1,219 @@
+---
+sidebar_label: Backup Recovery Point
+---
+
+# `aws_backup_recovery_point`
+
+- Categories: Storage
+- Service: backup
+- Provider Link: [Backup Recovery Point](https://docs.aws.amazon.com/aws-backup/latest/devguide/recovery-points.html)
+
+## Description
+
+AWS Backup Recovery Point is a snapshot of data created by AWS Backup. It represents a point-in-time copy of resources, such as EBS volumes, RDS databases, or EFS file systems. Recovery Points can be used to restore data to a specific state, helping organizations recover from data loss or system failures.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Backup Recovery Point"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_recovery_point {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_backup_recovery_point
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Recovery Point resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_copy_job {
+
+}
+class aws_backup_job {
+
+}
+class aws_backup_plan {
+
+}
+class aws_backup_protected_resource {
+
+}
+class aws_backup_recovery_point {
+
+}
+class aws_backup_restore_job {
+
+}
+class aws_backup_vault {
+
+}
+aws_backup_copy_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_copy_job -[#1A83AF]-> aws_backup_vault
+aws_backup_job -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_job -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_plan -[#1A83AF]-> aws_backup_copy_job
+aws_backup_plan -[#1A83AF]-> aws_backup_job
+aws_backup_plan -[#1A83AF]-> aws_backup_recovery_point
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_recovery_point -[#1A83AF]-> aws_backup_restore_job
+aws_backup_vault -[#1A83AF]-> aws_backup_job
+aws_backup_vault -[#1A83AF]-> aws_backup_protected_resource
+aws_backup_vault -[#1A83AF]-> aws_backup_recovery_point
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Backup Recovery Point data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_backup_calculated_lifecycle {
+**delete_at**: datetime
+**move_to_cold_storage_at**: datetime
+}
+class aws_backup_lifecycle {
+**delete_after_days**: int64
+**move_to_cold_storage_after_days**: int64
+**opt_in_to_archive_for_supported_resources**: boolean
+}
+class aws_backup_recovery_point {
+**backup_size_in_bytes**: int64
+**backup_vault_arn**: string
+**backup_vault_name**: string
+**calculated_lifecycle**: aws_backup_calculated_lifecycle
+**completion_date**: datetime
+**composite_member_identifier**: string
+**creation_date**: datetime
+**encryption_key_arn**: string
+**iam_role_arn**: string
+**is_encrypted**: boolean
+**is_parent**: boolean
+**last_restore_time**: datetime
+**lifecycle**: aws_backup_lifecycle
+**parent_recovery_point_arn**: string
+**recovery_point_arn**: string
+**recovery_point_created_by**: aws_backup_recovery_point_creator
+**resource_arn**: string
+**resource_name**: string
+**resource_type**: string
+**source_backup_vault_arn**: string
+**status**: string
+**status_message**: string
+**vault_type**: string
+}
+class aws_backup_recovery_point_creator {
+**backup_plan_arn**: string
+**backup_plan_id**: string
+**backup_plan_version**: string
+**backup_rule_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_backup_recovery_point --> aws_backup_calculated_lifecycle
+aws_backup_recovery_point --> aws_backup_lifecycle
+aws_backup_recovery_point --> aws_backup_recovery_point_creator
+aws_resource <|--- aws_backup_recovery_point
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

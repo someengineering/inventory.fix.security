@@ -1,0 +1,275 @@
+---
+sidebar_label: Node
+---
+
+# `kubernetes_node`
+
+- Categories: Compute
+- Service: kubernetes
+
+## Description
+
+A Kubernetes Node is a worker machine in a Kubernetes cluster that runs containers. It is responsible for running and managing the containers that make up the applications within the cluster.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Node"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class instance {
+
+}
+class kubernetes_node {
+
+}
+class kubernetes_resource {
+
+}
+class resource {
+
+}
+resource <|--- instance
+instance <|--- kubernetes_node
+kubernetes_resource <|--- kubernetes_node
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Node resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cluster {
+
+}
+class kubernetes_csi_node {
+
+}
+class kubernetes_endpoint {
+
+}
+class kubernetes_node {
+
+}
+class kubernetes_pod {
+
+}
+kubernetes_cluster -[#1A83AF]-> kubernetes_csi_node
+kubernetes_cluster -[#1A83AF]-> kubernetes_node
+kubernetes_endpoint -[#1A83AF]-> kubernetes_node
+kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
+kubernetes_node -[#1A83AF]-> kubernetes_csi_node
+kubernetes_node -[#1A83AF]-> kubernetes_pod
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Node data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class kubernetes_attached_volume {
+**device_path**: string
+**name**: string
+}
+class kubernetes_daemon_endpoint {
+**port**: int64
+}
+class kubernetes_node {
+**node_spec**: kubernetes_node_spec
+**node_status**: kubernetes_node_status
+**provider_id**: string
+}
+class kubernetes_node_daemon_endpoint {
+**kubelet_endpoint**: kubernetes_daemon_endpoint
+}
+class kubernetes_node_spec {
+**external_id**: string
+**pod_cidr**: string
+**pod_cidrs**: string[]
+**provider_id**: string
+**taints**: kubernetes_taint[]
+**unschedulable**: boolean
+}
+class kubernetes_node_status {
+**addresses**: kubernetes_node_status_addresses[]
+**capacity**: any
+**conditions**: kubernetes_node_status_conditions[]
+**config**: kubernetes_node_status_config
+**daemon_endpoints**: kubernetes_node_daemon_endpoint
+**images**: kubernetes_node_status_images[]
+**node_info**: kubernetes_node_system_info
+**phase**: string
+**volumes_attached**: kubernetes_attached_volume[]
+**volumes_in_use**: string[]
+}
+class kubernetes_node_status_addresses {
+**address**: string
+**type**: string
+}
+class kubernetes_node_status_conditions {
+**last_heartbeat_time**: datetime
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
+class kubernetes_node_status_config {
+**active**: kubernetes_node_status_config_active
+**assigned**: kubernetes_node_status_config_active
+**error**: string
+}
+class kubernetes_node_status_config_active {
+**config_map**: kubernetes_node_status_config_active_configmap
+}
+class kubernetes_node_status_config_active_configmap {
+**kubelet_config_key**: string
+**name**: string
+**namespace**: string
+**resource_version**: string
+**uid**: string
+}
+class kubernetes_node_status_images {
+**names**: string[]
+**size_bytes**: int64
+}
+class kubernetes_node_system_info {
+**architecture**: string
+**boot_id**: string
+**container_runtime_version**: string
+**kernel_version**: string
+**kube_proxy_version**: string
+**kubelet_version**: string
+**machine_id**: string
+**operating_system**: string
+**os_image**: string
+**system_uuid**: string
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class kubernetes_taint {
+**effect**: string
+**key**: string
+**time_added**: datetime
+**value**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- instance
+instance <|--- kubernetes_node
+kubernetes_node --> kubernetes_node_spec
+kubernetes_node --> kubernetes_node_status
+kubernetes_resource <|--- kubernetes_node
+kubernetes_node_daemon_endpoint --> kubernetes_daemon_endpoint
+kubernetes_node_spec --> kubernetes_taint
+kubernetes_node_status --> kubernetes_attached_volume
+kubernetes_node_status --> kubernetes_node_daemon_endpoint
+kubernetes_node_status --> kubernetes_node_status_addresses
+kubernetes_node_status --> kubernetes_node_status_conditions
+kubernetes_node_status --> kubernetes_node_status_config
+kubernetes_node_status --> kubernetes_node_status_images
+kubernetes_node_status --> kubernetes_node_system_info
+kubernetes_node_status_config --> kubernetes_node_status_config_active
+kubernetes_node_status_config_active --> kubernetes_node_status_config_active_configmap
+resource <|--- kubernetes_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,202 @@
+---
+sidebar_label: Project
+---
+
+# `digitalocean_project`
+
+- Categories: Other
+
+## Description
+
+A DigitalOcean Project is a flexible way to organize and manage resources in the DigitalOcean cloud platform.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Project"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_project {
+
+}
+class digitalocean_resource {
+
+}
+class resource {
+
+}
+digitalocean_resource <|--- digitalocean_project
+resource <|--- digitalocean_project
+resource <|--- digitalocean_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Project resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_database {
+
+}
+class digitalocean_domain {
+
+}
+class digitalocean_droplet {
+
+}
+class digitalocean_floating_ip {
+
+}
+class digitalocean_kubernetes_cluster {
+
+}
+class digitalocean_load_balancer {
+
+}
+class digitalocean_project {
+
+}
+class digitalocean_space {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_volume {
+
+}
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_database
+digitalocean_project -[#1A83AF]-> digitalocean_domain
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_project -[#1A83AF]-> digitalocean_space
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Project data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_project {
+**description**: string
+**environment**: string
+**is_default**: boolean
+**owner_id**: string
+**owner_uuid**: string
+**purpose**: string
+}
+class digitalocean_resource {
+**urn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+digitalocean_resource <|--- digitalocean_project
+resource <|--- digitalocean_project
+resource <|--- digitalocean_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

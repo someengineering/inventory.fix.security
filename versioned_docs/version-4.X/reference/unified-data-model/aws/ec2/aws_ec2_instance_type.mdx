@@ -1,0 +1,338 @@
+---
+sidebar_label: EC2 Instance Type
+---
+
+# `aws_ec2_instance_type`
+
+- Categories: Compute
+- Service: ec2
+- Provider Link: [EC2 Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+
+## Description
+
+AWS EC2 Instance Types are predefined virtual server configurations offered by Amazon Web Services. Each type specifies the compute, memory, storage, and networking capacity of the virtual machine. Users select an instance type based on their application's requirements, balancing performance and cost. EC2 instances can be launched, stopped, and terminated as needed for various computing workloads.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of EC2 Instance Type"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance_type {
+
+}
+class aws_resource {
+
+}
+class instance_type {
+
+}
+class phantom_resource {
+
+}
+class quota {
+
+}
+class resource {
+
+}
+class type {
+
+}
+aws_resource <|--- aws_ec2_instance_type
+instance_type <|--- aws_ec2_instance_type
+resource <|--- aws_resource
+type <|--- instance_type
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Instance Type resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_instance {
+
+}
+class aws_ec2_instance_type {
+
+}
+class aws_ec2_reserved_instances {
+
+}
+class aws_opensearch_domain {
+
+}
+class aws_region {
+
+}
+class aws_service_quota {
+
+}
+aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
+aws_ec2_instance_type -[#1A83AF]-> aws_ec2_reserved_instances
+aws_ec2_instance_type -[#1A83AF]-> aws_opensearch_domain
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_instance_type
+aws_region -[#1A83AF]-> aws_service_quota
+aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of EC2 Instance Type data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_disk_info {
+**count**: int64
+**size_in_gb**: int64
+**type**: string
+}
+class aws_ec2_ebs_info {
+**ebs_optimized_info**: aws_ec2_ebs_optimized_info
+**ebs_optimized_support**: string
+**encryption_support**: string
+**nvme_support**: string
+}
+class aws_ec2_ebs_optimized_info {
+**baseline_bandwidth_in_mbps**: int64
+**baseline_iops**: int64
+**baseline_throughput_in_mbps**: double
+**maximum_bandwidth_in_mbps**: int64
+**maximum_iops**: int64
+**maximum_throughput_in_mbps**: double
+}
+class aws_ec2_fpga_device_info {
+**count**: int64
+**manufacturer**: string
+**memory_info**: int64
+**name**: string
+}
+class aws_ec2_fpga_info {
+**fpgas**: aws_ec2_fpga_device_info[]
+**total_fpga_memory_in_mi_b**: int64
+}
+class aws_ec2_gpu_device_info {
+**count**: int64
+**manufacturer**: string
+**memory_info**: int64
+**name**: string
+}
+class aws_ec2_gpu_info {
+**gpu_model**: string
+**gpus**: aws_ec2_gpu_device_info[]
+**total_gpu_memory_in_mi_b**: int64
+}
+class aws_ec2_inference_accelerator_info {
+**accelerators**: aws_ec2_inference_device_info[]
+}
+class aws_ec2_inference_device_info {
+**count**: int64
+**manufacturer**: string
+**name**: string
+}
+class aws_ec2_instance_storage_info {
+**disks**: aws_ec2_disk_info[]
+**encryption_support**: string
+**nvme_support**: string
+**total_size_in_gb**: int64
+}
+class aws_ec2_instance_type {
+**auto_recovery_supported**: boolean
+**bare_metal**: boolean
+**burstable_performance_supported**: boolean
+**current_generation**: boolean
+**dedicated_hosts_supported**: boolean
+**ecu**: double
+**free_tier_eligible**: boolean
+**hibernation_supported**: boolean
+**hypervisor**: string
+**instance_storage_supported**: boolean
+**instance_type_ebs_info**: aws_ec2_ebs_info
+**instance_type_fpga_info**: aws_ec2_fpga_info
+**instance_type_gpu_info**: aws_ec2_gpu_info
+**instance_type_inference_accelerator_info**: aws_ec2_inference_accelerator_info
+**instance_type_instance_storage_info**: aws_ec2_instance_storage_info
+**instance_type_network_info**: aws_ec2_network_info
+**instance_type_placement_group_info**: aws_ec2_placement_group_info
+**instance_type_processor_info**: aws_ec2_processor_info
+**instance_type_v_cpu_info**: aws_ec2_v_cpu_info
+**memory_info**: int64
+**pretty_name**: string
+**supported_boot_modes**: string[]
+**supported_root_device_types**: string[]
+**supported_usage_classes**: string[]
+**supported_virtualization_types**: string[]
+}
+class aws_ec2_network_card_info {
+**maximum_network_interfaces**: int64
+**network_card_index**: int64
+**network_performance**: string
+}
+class aws_ec2_network_info {
+**default_network_card_index**: int64
+**efa_info**: int64
+**efa_supported**: boolean
+**ena_support**: string
+**encryption_in_transit_supported**: boolean
+**ipv4_addresses_per_interface**: int64
+**ipv6_addresses_per_interface**: int64
+**ipv6_supported**: boolean
+**maximum_network_cards**: int64
+**maximum_network_interfaces**: int64
+**network_cards**: aws_ec2_network_card_info[]
+**network_performance**: string
+}
+class aws_ec2_placement_group_info {
+**supported_strategies**: string[]
+}
+class aws_ec2_processor_info {
+**physical_processor**: string
+**supported_architectures**: string[]
+**sustained_clock_speed_in_ghz**: double
+}
+class aws_ec2_v_cpu_info {
+**default_cores**: int64
+**default_threads_per_core**: int64
+**default_v_cpus**: int64
+**valid_cores**: int64[]
+**valid_threads_per_core**: int64[]
+}
+class aws_resource {
+**arn**: string
+}
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class phantom_resource {
+
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+
+}
+aws_ec2_ebs_info --> aws_ec2_ebs_optimized_info
+aws_ec2_fpga_info --> aws_ec2_fpga_device_info
+aws_ec2_gpu_info --> aws_ec2_gpu_device_info
+aws_ec2_inference_accelerator_info --> aws_ec2_inference_device_info
+aws_ec2_instance_storage_info --> aws_ec2_disk_info
+aws_ec2_instance_type --> aws_ec2_ebs_info
+aws_ec2_instance_type --> aws_ec2_fpga_info
+aws_ec2_instance_type --> aws_ec2_gpu_info
+aws_ec2_instance_type --> aws_ec2_inference_accelerator_info
+aws_ec2_instance_type --> aws_ec2_instance_storage_info
+aws_ec2_instance_type --> aws_ec2_network_info
+aws_ec2_instance_type --> aws_ec2_placement_group_info
+aws_ec2_instance_type --> aws_ec2_processor_info
+aws_ec2_instance_type --> aws_ec2_v_cpu_info
+aws_resource <|--- aws_ec2_instance_type
+instance_type <|--- aws_ec2_instance_type
+aws_ec2_network_info --> aws_ec2_network_card_info
+resource <|--- aws_resource
+type <|--- instance_type
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
+
+@enduml
+```
+
+</ZoomPanPinch>

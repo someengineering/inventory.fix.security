@@ -1,0 +1,334 @@
+---
+sidebar_label: Network Virtual Network Gateway
+---
+
+# `azure_network_virtual_network_gateway`
+
+- Categories: Networking
+- Service: networking
+- Provider Link: [Network Virtual Network Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)
+
+## Description
+
+Azure Network Virtual Network Gateway is a managed service that connects on-premises networks to Azure virtual networks through site-to-site VPNs or ExpressRoute circuits. It establishes secure connections, handles traffic routing, and provides encryption for data transfer between on-premises and cloud environments. The gateway supports various VPN types and can be configured for high availability.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Virtual Network Gateway"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_network_gateway {
+
+}
+class gateway {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+gateway <|--- azure_network_virtual_network_gateway
+microsoft_resource <|--- azure_network_virtual_network_gateway
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network Gateway resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_network_virtual_network_gateway {
+
+}
+class azure_network_virtual_network_gateway_connection {
+
+}
+azure_network_virtual_network_gateway -[#1A83AF]-> azure_network_virtual_network_gateway_connection
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Network Virtual Network Gateway data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_address_space {
+**address_prefixes**: string[]
+}
+class azure_bgp_settings {
+**asn**: int64
+**bgp_peering_address**: string
+**bgp_peering_addresses**: azure_ip_configuration_bgp_peering_address[]
+**peer_weight**: int64
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_ip_configuration_bgp_peering_address {
+**custom_bgp_ip_addresses**: string[]
+**default_bgp_ip_addresses**: string[]
+**ipconfiguration_id**: string
+**tunnel_ip_addresses**: string[]
+}
+class azure_ipsec_policy {
+**dh_group**: string
+**ike_encryption**: string
+**ike_integrity**: string
+**ipsec_encryption**: string
+**ipsec_integrity**: string
+**pfs_group**: string
+**sa_data_size_kilobytes**: int64
+**sa_life_time_seconds**: int64
+}
+class azure_network_virtual_network_gateway {
+**active_active**: boolean
+**admin_state**: string
+**allow_remote_vnet_traffic**: boolean
+**allow_virtual_wan_traffic**: boolean
+**bgp_settings**: azure_bgp_settings
+**custom_routes**: azure_address_space
+**disable_ip_sec_replay_protection**: boolean
+**enable_bgp**: boolean
+**enable_bgp_route_translation_for_nat**: boolean
+**enable_dns_forwarding**: boolean
+**enable_private_ip_address**: boolean
+**extended_location**: azure_extended_location
+**gateway_auto_scale_configuration**: azure_virtual_network_gateway_auto_scale_configuration
+**gateway_default_site**: string
+**gateway_nat_rules**: azure_virtual_network_gateway_nat_rule[]
+**gateway_type**: string
+**identity**: azure_identity
+**inbound_dns_forwarding_endpoint**: string
+**ip_configurations**: azure_virtual_network_gateway_ip_configuration[]
+**location**: string
+**network_gateway_sku**: azure_virtual_network_gateway_sku
+**resource_guid**: string
+**type**: string
+**v_net_extended_location_resource_id**: string
+**virtual_network_gateway_policy_groups**: azure_virtual_network_gateway_policy_group[]
+**vpn_client_configuration**: azure_vpn_client_configuration
+**vpn_gateway_generation**: string
+**vpn_type**: string
+}
+class azure_radius_server {
+**radius_server_address**: string
+**radius_server_score**: int64
+**radius_server_secret**: string
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class azure_virtual_network_gateway_auto_scale_bounds {
+**max**: int64
+**min**: int64
+}
+class azure_virtual_network_gateway_auto_scale_configuration {
+**bounds**: azure_virtual_network_gateway_auto_scale_bounds
+}
+class azure_virtual_network_gateway_ip_configuration {
+**etag**: string
+**name**: string
+**private_ip_address**: string
+**private_ip_allocation_method**: string
+**provisioning_state**: string
+**public_ip_address**: string
+**subnet**: string
+}
+class azure_virtual_network_gateway_nat_rule {
+**external_mappings**: azure_vpn_nat_rule_mapping[]
+**internal_mappings**: azure_vpn_nat_rule_mapping[]
+**ip_configuration_id**: string
+**mode**: string
+}
+class azure_virtual_network_gateway_policy_group {
+**etag**: string
+**is_default**: boolean
+**name**: string
+**policy_members**: azure_virtual_network_gateway_policy_group_member[]
+**priority**: int64
+**provisioning_state**: string
+**vng_client_connection_configurations**: string[]
+}
+class azure_virtual_network_gateway_policy_group_member {
+**attribute_type**: string
+**attribute_value**: string
+**name**: string
+}
+class azure_virtual_network_gateway_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class azure_vng_client_connection_configuration {
+
+}
+class azure_vpn_client_configuration {
+**aad_audience**: string
+**aad_issuer**: string
+**aad_tenant**: string
+**radius_server_address**: string
+**radius_server_secret**: string
+**radius_servers**: azure_radius_server[]
+**vng_client_connection_configurations**: azure_vng_client_connection_configuration[]
+**vpn_authentication_types**: string[]
+**vpn_client_address_pool**: azure_address_space
+**vpn_client_ipsec_policies**: azure_ipsec_policy[]
+**vpn_client_protocols**: string[]
+**vpn_client_revoked_certificates**: azure_vpn_client_revoked_certificate[]
+**vpn_client_root_certificates**: azure_vpn_client_root_certificate[]
+}
+class azure_vpn_client_revoked_certificate {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**thumbprint**: string
+}
+class azure_vpn_client_root_certificate {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**public_cert_data**: string
+}
+class azure_vpn_nat_rule_mapping {
+**address_space**: string
+**port_range**: string
+}
+class gateway {
+
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_bgp_settings --> azure_ip_configuration_bgp_peering_address
+azure_identity --> azure_user_assigned_identity
+azure_network_virtual_network_gateway --> azure_address_space
+azure_network_virtual_network_gateway --> azure_bgp_settings
+azure_network_virtual_network_gateway --> azure_extended_location
+azure_network_virtual_network_gateway --> azure_identity
+azure_network_virtual_network_gateway --> azure_virtual_network_gateway_auto_scale_configuration
+azure_network_virtual_network_gateway --> azure_virtual_network_gateway_ip_configuration
+azure_network_virtual_network_gateway --> azure_virtual_network_gateway_nat_rule
+azure_network_virtual_network_gateway --> azure_virtual_network_gateway_policy_group
+azure_network_virtual_network_gateway --> azure_virtual_network_gateway_sku
+azure_network_virtual_network_gateway --> azure_vpn_client_configuration
+gateway <|--- azure_network_virtual_network_gateway
+microsoft_resource <|--- azure_network_virtual_network_gateway
+azure_virtual_network_gateway_auto_scale_configuration --> azure_virtual_network_gateway_auto_scale_bounds
+azure_virtual_network_gateway_nat_rule --> azure_vpn_nat_rule_mapping
+azure_virtual_network_gateway_policy_group --> azure_virtual_network_gateway_policy_group_member
+azure_vpn_client_configuration --> azure_address_space
+azure_vpn_client_configuration --> azure_ipsec_policy
+azure_vpn_client_configuration --> azure_radius_server
+azure_vpn_client_configuration --> azure_vng_client_connection_configuration
+azure_vpn_client_configuration --> azure_vpn_client_revoked_certificate
+azure_vpn_client_configuration --> azure_vpn_client_root_certificate
+resource <|--- gateway
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

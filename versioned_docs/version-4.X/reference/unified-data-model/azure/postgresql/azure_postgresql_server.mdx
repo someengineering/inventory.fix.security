@@ -1,0 +1,301 @@
+---
+sidebar_label: PostgreSQL Server
+---
+
+# `azure_postgresql_server`
+
+- Categories: Compute, Database
+- Service: postgresql
+- Provider Link: [PostgreSQL Server](https://docs.microsoft.com/en-us/azure/postgresql/)
+
+## Description
+
+Azure PostgreSQL Server is a managed database service offering PostgreSQL on Microsoft's cloud platform. It provides automated backups, patching, and security updates. Users can deploy, manage, and scale PostgreSQL databases without infrastructure management responsibilities. The service supports various PostgreSQL versions and offers features like high availability, monitoring, and performance optimization tools.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of PostgreSQL Server"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_postgresql_server {
+
+}
+class azure_tracked_resource {
+
+}
+class database {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_tracked_resource <|--- azure_postgresql_server
+database <|--- azure_postgresql_server
+microsoft_resource <|--- azure_postgresql_server
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of PostgreSQL Server resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_postgresql_ad_administrator {
+
+}
+class azure_postgresql_server {
+
+}
+class azure_postgresql_server_backup {
+
+}
+class azure_postgresql_server_configuration {
+
+}
+class azure_postgresql_server_database {
+
+}
+class azure_postgresql_server_firewall_rule {
+
+}
+class azure_postgresql_server_type {
+
+}
+class microsoft_graph_service_principal {
+
+}
+class microsoft_graph_user {
+
+}
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_ad_administrator
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_backup
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_configuration
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_database
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_firewall_rule
+azure_postgresql_server -[#1A83AF]-> azure_postgresql_server_type
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_service_principal
+azure_postgresql_server -[#1A83AF]-> microsoft_graph_user
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of PostgreSQL Server data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_auth_config {
+**active_directory_auth**: string
+**password_auth**: string
+**tenant_id**: string
+}
+class azure_postgresql_server {
+**administrator_login**: string
+**administrator_login_password**: string
+**auth_config**: azure_auth_config
+**availability_zone**: string
+**create_mode**: string
+**data_encryption**: azure_server_data_encryption
+**fully_qualified_domain_name**: string
+**high_availability**: azure_server_high_availability
+**minor_version**: string
+**point_in_time_utc**: datetime
+**replica_capacity**: int64
+**replication_role**: string
+**server_backup**: azure_server_backup
+**server_maintenance_window**: azure_server_maintenance_window
+**server_network**: azure_server_network
+**server_sku**: azure_sku
+**source_server_resource_id**: string
+**state**: string
+**storage_size_gb**: int64
+**storage_tier**: string
+**user_identity**: azure_resource_identity
+**version**: string
+}
+class azure_resource_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_identity]
+}
+class azure_server_backup {
+**backup_interval_hours**: int64
+**backup_retention_days**: int64
+**earliest_restore_date**: datetime
+**geo_redundant_backup**: string
+}
+class azure_server_data_encryption {
+**geo_backup_key_uri**: string
+**geo_backup_user_assigned_identity_id**: string
+**primary_key_uri**: string
+**primary_user_assigned_identity_id**: string
+**type**: string
+}
+class azure_server_high_availability {
+**mode**: string
+**standby_availability_zone**: string
+**state**: string
+}
+class azure_server_maintenance_window {
+**custom_window**: string
+**day_of_week**: int64
+**start_hour**: int64
+**start_minute**: int64
+}
+class azure_server_network {
+**delegated_subnet_resource_id**: string
+**private_dns_zone_resource_id**: string
+**public_network_access**: string
+}
+class azure_sku {
+**capacity**: int64
+**family**: string
+**name**: string
+**size**: string
+**tier**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class azure_tracked_resource {
+**location**: string
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_user_identity {
+**client_id**: string
+**principal_id**: string
+}
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_postgresql_server --> azure_auth_config
+azure_postgresql_server --> azure_resource_identity
+azure_postgresql_server --> azure_server_backup
+azure_postgresql_server --> azure_server_data_encryption
+azure_postgresql_server --> azure_server_high_availability
+azure_postgresql_server --> azure_server_maintenance_window
+azure_postgresql_server --> azure_server_network
+azure_postgresql_server --> azure_sku
+azure_postgresql_server --> azure_system_data
+azure_tracked_resource <|--- azure_postgresql_server
+database <|--- azure_postgresql_server
+microsoft_resource <|--- azure_postgresql_server
+azure_resource_identity --> azure_user_identity
+azure_tracked_resource --> azure_system_data
+resource <|--- database
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

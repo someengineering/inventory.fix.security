@@ -1,0 +1,207 @@
+---
+sidebar_label: SSM Document
+---
+
+# `aws_ssm_document`
+
+- Categories: Management
+- Service: ssm
+- Provider Link: [SSM Document](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html)
+
+## Description
+
+An AWS SSM Document is a configuration file that defines a set of actions to be performed on managed instances. It specifies tasks like installing software, configuring settings, or running scripts. SSM Documents can be created in JSON or YAML format and are used by AWS Systems Manager to automate system management and maintenance tasks across multiple instances.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of SSM Document"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+
+}
+class aws_ssm_document {
+
+}
+class resource {
+
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_document
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Document resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ssm_document {
+
+}
+class aws_ssm_resource_compliance {
+
+}
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ssm_document
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of SSM Document data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_account_sharing_info {
+**account_id**: string
+**shared_document_version**: string
+}
+class aws_ssm_document {
+**approved_version**: string
+**attachments_information**: string[]
+**author**: string
+**category**: string[]
+**category_enum**: string[]
+**content**: dictionary[string, any]
+**default_version**: string
+**description**: string
+**display_name**: string
+**document_format**: string
+**document_shared_with_accounts**: string[]
+**document_sharing_info**: aws_ssm_account_sharing_info[]
+**document_type**: string
+**document_version**: string
+**hash**: string
+**hash_type**: string
+**latest_version**: string
+**owner**: string
+**parameters**: aws_ssm_document_parameter[]
+**pending_review_version**: string
+**platform_types**: string[]
+**requires**: aws_ssm_document_requires[]
+**review_information**: aws_ssm_review_information[]
+**review_status**: string
+**schema_version**: string
+**sha1**: string
+**status**: string
+**status_information**: string
+**target_type**: string
+**version_name**: string
+}
+class aws_ssm_document_parameter {
+**default_value**: string
+**description**: string
+**name**: string
+**type**: string
+}
+class aws_ssm_document_requires {
+**name**: string
+**require_type**: string
+**version**: string
+**version_name**: string
+}
+class aws_ssm_review_information {
+**reviewed_time**: datetime
+**reviewer**: string
+**status**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_document
+aws_ssm_document --> aws_ssm_account_sharing_info
+aws_ssm_document --> aws_ssm_document_parameter
+aws_ssm_document --> aws_ssm_document_requires
+aws_ssm_document --> aws_ssm_review_information
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,213 @@
+---
+sidebar_label: Firewall Policy
+---
+
+# `gcp_firewall_policy`
+
+- Categories: Networking
+- Service: compute
+- Provider Link: [Firewall Policy](https://cloud.google.com/vpc/docs/firewall-policies)
+
+## Description
+
+GCP Firewall Policy is a network security feature in Google Cloud Platform. It defines rules to control incoming and outgoing traffic for virtual machine instances. The policy specifies which network connections are permitted or blocked based on criteria like IP addresses, ports, and protocols. It helps protect cloud resources from unauthorized access and potential security threats.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Firewall Policy"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_firewall_policy {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_firewall_policy
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Firewall Policy resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_firewall_policy {
+
+}
+class gcp_network {
+
+}
+gcp_firewall_policy -[#1A83AF]-> gcp_network
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Firewall Policy data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_firewall_policy {
+**associations**: gcp_firewall_policy_association[]
+**display_name**: string
+**fingerprint**: string
+**firewall_policy_rules**: gcp_firewall_policy_rule[]
+**parent**: string
+**rule_tuple_count**: int64
+**self_link_with_id**: string
+**short_name**: string
+}
+class gcp_firewall_policy_association {
+**attachment_target**: string
+**display_name**: string
+**firewall_policy_id**: string
+**name**: string
+**short_name**: string
+}
+class gcp_firewall_policy_rule {
+**action**: string
+**description**: string
+**direction**: string
+**disabled**: boolean
+**enable_logging**: boolean
+**match**: gcp_firewall_policy_rule_matcher
+**priority**: int64
+**rule_name**: string
+**rule_tuple_count**: int64
+**target_resources**: string[]
+**target_secure_tags**: gcp_firewall_policy_rule_secure_tag[]
+**target_service_accounts**: string[]
+}
+class gcp_firewall_policy_rule_matcher {
+**dest_ip_ranges**: string[]
+**layer4_configs**: gcp_firewall_policy_rule_matcher_layer4_config[]
+**src_ip_ranges**: string[]
+**src_secure_tags**: gcp_firewall_policy_rule_secure_tag[]
+}
+class gcp_firewall_policy_rule_matcher_layer4_config {
+**ip_protocol**: string
+**ports**: string[]
+}
+class gcp_firewall_policy_rule_secure_tag {
+**firewall_policy_rule_secure_tag_state**: string
+**name**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_firewall_policy --> gcp_deprecation_status
+gcp_firewall_policy --> gcp_firewall_policy_association
+gcp_firewall_policy --> gcp_firewall_policy_rule
+gcp_resource <|--- gcp_firewall_policy
+gcp_firewall_policy_rule --> gcp_firewall_policy_rule_matcher
+gcp_firewall_policy_rule --> gcp_firewall_policy_rule_secure_tag
+gcp_firewall_policy_rule_matcher --> gcp_firewall_policy_rule_matcher_layer4_config
+gcp_firewall_policy_rule_matcher --> gcp_firewall_policy_rule_secure_tag
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

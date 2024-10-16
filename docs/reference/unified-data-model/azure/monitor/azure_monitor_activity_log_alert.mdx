@@ -1,0 +1,178 @@
+---
+sidebar_label: Monitor Activity Log Alert
+---
+
+# `azure_monitor_activity_log_alert`
+
+- Categories: Management
+- Service: monitor
+- Provider Link: [Monitor Activity Log Alert](https://docs.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-activity-log)
+
+## Description
+
+Azure Monitor Activity Log Alert is a service that monitors and notifies users about specific events or changes in Azure resources. It tracks operations performed on Azure services, including resource creation, modification, or deletion. Users can set up custom alerts based on defined criteria and receive notifications through various channels when those conditions are met.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Activity Log Alert"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_activity_log_alert {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_monitor_activity_log_alert
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Activity Log Alert resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_action_group {
+
+}
+class azure_monitor_activity_log_alert {
+
+}
+azure_monitor_action_group -[#1A83AF]-> azure_monitor_activity_log_alert
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Monitor Activity Log Alert data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_monitor_action_group_ref {
+**action_group_id**: string
+**webhook_properties**: dictionary[string, string]
+}
+class azure_monitor_activity_log_alert {
+**action_groups**: azure_monitor_action_group_ref[]
+**description**: string
+**enabled**: boolean
+**log_alert_condition**: azure_monitor_alert_rule_all_of_condition
+**scopes**: string[]
+}
+class azure_monitor_alert_rule_all_of_condition {
+**all_of**: azure_monitor_alert_rule_any_of_or_leaf_condition[]
+}
+class azure_monitor_alert_rule_any_of_or_leaf_condition {
+**any_of**: azure_monitor_alert_rule_leaf_condition[]
+}
+class azure_monitor_alert_rule_leaf_condition {
+**contains_any**: string[]
+**equals**: string
+**field**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_monitor_activity_log_alert --> azure_monitor_action_group_ref
+azure_monitor_activity_log_alert --> azure_monitor_alert_rule_all_of_condition
+microsoft_resource <|--- azure_monitor_activity_log_alert
+azure_monitor_alert_rule_all_of_condition --> azure_monitor_alert_rule_any_of_or_leaf_condition
+azure_monitor_alert_rule_leaf_condition <|--- azure_monitor_alert_rule_any_of_or_leaf_condition
+azure_monitor_alert_rule_any_of_or_leaf_condition --> azure_monitor_alert_rule_leaf_condition
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

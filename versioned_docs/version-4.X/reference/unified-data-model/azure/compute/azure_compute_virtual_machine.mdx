@@ -1,0 +1,730 @@
+---
+sidebar_label: Compute Virtual Machine
+---
+
+# `azure_compute_virtual_machine`
+
+- Categories: Compute
+- Service: compute
+- Provider Link: [Compute Virtual Machine](https://learn.microsoft.com/en-us/azure/virtual-machines/)
+
+## Description
+
+Azure Compute Virtual Machine is a cloud service that provides on-demand, configurable computing resources. It offers Windows or Linux-based virtual machines that run on Microsoft's infrastructure. Users can select from various machine sizes and types, install custom software, and manage their VMs remotely. These VMs support diverse workloads, from development and testing to running applications.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Virtual Machine"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+
+}
+class instance {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine
+instance <|--- azure_compute_virtual_machine_base
+microsoft_resource <|--- azure_compute_virtual_machine_base
+resource <|--- instance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class azure_compute_image {
+
+}
+class azure_compute_proximity_placement_group {
+
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_size {
+
+}
+class azure_network_interface {
+
+}
+class azure_network_load_balancer {
+
+}
+class azure_network_security_group {
+
+}
+class azure_network_subnet {
+
+}
+azure_compute_proximity_placement_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_compute_virtual_machine -[#1A83AF]-> azure_compute_disk
+azure_compute_virtual_machine -[#1A83AF]-> azure_compute_image
+azure_compute_virtual_machine -[#1A83AF]-> azure_compute_virtual_machine_size
+azure_compute_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_network_load_balancer -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_subnet -[#1A83AF]-> azure_compute_virtual_machine
+azure_network_subnet -[#1A83AF]-> azure_network_load_balancer
+azure_network_subnet -[#1A83AF]-> azure_network_security_group
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Virtual Machine data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_additional_capabilities {
+**hibernation_enabled**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_application_profile {
+**gallery_applications**: azure_vm_gallery_application[]
+}
+class azure_available_patch_summary {
+**assessment_activity_id**: string
+**critical_and_security_patch_count**: int64
+**error**: azure_api_error
+**last_modified_time**: datetime
+**other_patch_count**: int64
+**reboot_pending**: boolean
+**start_time**: datetime
+**status**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_boot_diagnostics_instance_view {
+**console_screenshot_blob_uri**: string
+**serial_console_log_blob_uri**: string
+**status**: azure_instance_view_status
+}
+class azure_capacity_reservation_profile {
+**capacity_reservation_group**: string
+}
+class azure_compute_virtual_machine {
+
+}
+class azure_compute_virtual_machine_base {
+**application_profile**: azure_application_profile
+**availability_set**: string
+**azure_plan**: azure_plan
+**billing_profile**: double
+**capacity_reservation**: azure_capacity_reservation_profile
+**eviction_policy**: string
+**extended_location**: azure_extended_location
+**extensions_time_budget**: string
+**hardware_profile**: azure_hardware_profile
+**host**: string
+**host_group**: string
+**license_type**: string
+**location**: string
+**platform_fault_domain**: int64
+**proximity_placement_group**: string
+**scheduled_events_profile**: azure_scheduled_events_profile
+**time_created**: datetime
+**user_data**: string
+**virtual_machine_capabilities**: azure_additional_capabilities
+**virtual_machine_diagnostics_profile**: azure_diagnostics_profile
+**virtual_machine_identity**: azure_virtual_machine_identity
+**virtual_machine_instance_view**: azure_virtual_machine_instance_view
+**virtual_machine_network_profile**: azure_virtual_machine_network_profile
+**virtual_machine_os_profile**: azure_os_profile
+**virtual_machine_priority**: string
+**virtual_machine_resources**: azure_virtual_machine_extension[]
+**virtual_machine_scale_set**: string
+**virtual_machine_security_profile**: azure_security_profile
+**virtual_machine_storage_profile**: azure_storage_profile
+**vm_id**: string
+}
+class azure_data_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**detach_option**: string
+**disk_iops_read_write**: int64
+**disk_m_bps_read_write**: int64
+**disk_size_gb**: int64
+**image**: string
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**to_be_detached**: boolean
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_diff_disk_settings {
+**option**: string
+**placement**: string
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_instance_view {
+**encryption_settings**: azure_disk_encryption_settings[]
+**name**: string
+**statuses**: azure_instance_view_status[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_image_reference {
+**community_gallery_image_id**: string
+**exact_version**: string
+**image_reference_sku**: string
+**offer**: string
+**publisher**: string
+**shared_gallery_image_id**: string
+**version**: string
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_last_patch_installation_summary {
+**error**: azure_api_error
+**excluded_patch_count**: int64
+**failed_patch_count**: int64
+**installation_activity_id**: string
+**installed_patch_count**: int64
+**last_modified_time**: datetime
+**maintenance_window_exceeded**: boolean
+**not_selected_patch_count**: int64
+**pending_patch_count**: int64
+**start_time**: datetime
+**status**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_maintenance_redeploy_status {
+**is_customer_initiated_maintenance_allowed**: boolean
+**last_operation_message**: string
+**last_operation_result_code**: string
+**maintenance_window_end_time**: datetime
+**maintenance_window_start_time**: datetime
+**pre_maintenance_window_end_time**: datetime
+**pre_maintenance_window_start_time**: datetime
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_sub_resource
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_network_interface_reference {
+**delete_option**: string
+**primary**: boolean
+}
+class azure_os_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**diff_disk_settings**: azure_diff_disk_settings
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**image**: string
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_os_image_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_principal_client {
+**client_id**: string
+**principal_id**: string
+}
+class azure_public_ip_address_sku {
+**name**: string
+**tier**: string
+}
+class azure_scheduled_events_profile {
+**os_image_notification_profile**: azure_os_image_notification_profile
+**terminate_notification_profile**: azure_terminate_notification_profile
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_storage_profile {
+**data_disks**: azure_data_disk[]
+**disk_controller_type**: string
+**image_reference**: azure_image_reference
+**os_disk**: azure_os_disk
+}
+class azure_sub_resource {
+**id**: string
+}
+class azure_terminate_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_virtual_machine_agent_instance_view {
+**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
+**statuses**: azure_instance_view_status[]
+**vm_agent_version**: string
+}
+class azure_virtual_machine_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**machine_extension_instance_view**: azure_virtual_machine_extension_instance_view
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_handler_instance_view {
+**status**: azure_instance_view_status
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_instance_view {
+**name**: string
+**statuses**: azure_instance_view_status[]
+**substatuses**: azure_instance_view_status[]
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_health_status {
+**status**: azure_instance_view_status
+}
+class azure_virtual_machine_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principal_client]
+}
+class azure_virtual_machine_instance_view {
+**assigned_host**: string
+**boot_diagnostics**: azure_boot_diagnostics_instance_view
+**computer_name**: string
+**disks**: azure_disk_instance_view[]
+**extensions**: azure_virtual_machine_extension_instance_view[]
+**hyper_v_generation**: string
+**maintenance_redeploy_status**: azure_maintenance_redeploy_status
+**os_name**: string
+**os_version**: string
+**patch_status**: azure_virtual_machine_patch_status
+**platform_fault_domain**: int64
+**platform_update_domain**: int64
+**rdp_thumb_print**: string
+**statuses**: azure_instance_view_status[]
+**vm_agent**: azure_virtual_machine_agent_instance_view
+**vm_health**: azure_virtual_machine_health_status
+}
+class azure_virtual_machine_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_virtual_machine_network_interface_configuration {
+**delete_option**: string
+**disable_tcp_state_tracking**: boolean
+**dns_settings**: azure_virtual_machine_network_interface_dns_settings_configuration
+**dscp_configuration**: string
+**enable_accelerated_networking**: boolean
+**enable_fpga**: boolean
+**enable_ip_forwarding**: boolean
+**ip_configurations**: azure_virtual_machine_network_interface_ip_configuration[]
+**name**: string
+**network_security_group**: string
+**primary**: boolean
+}
+class azure_virtual_machine_network_interface_dns_settings_configuration {
+**dns_servers**: string[]
+}
+class azure_virtual_machine_network_interface_ip_configuration {
+**application_gateway_backend_address_pools**: string[]
+**application_security_groups**: string[]
+**load_balancer_backend_address_pools**: string[]
+**name**: string
+**primary**: boolean
+**private_ip_address_version**: string
+**public_ip_address_configuration**: azure_virtual_machine_public_ip_address_configuration
+**subnet**: string
+}
+class azure_virtual_machine_network_profile {
+**network_api_version**: string
+**network_interface_configurations**: azure_virtual_machine_network_interface_configuration[]
+**network_interfaces**: azure_network_interface_reference[]
+}
+class azure_virtual_machine_patch_status {
+**available_patch_summary**: azure_available_patch_summary
+**configuration_statuses**: azure_instance_view_status[]
+**last_patch_installation_summary**: azure_last_patch_installation_summary
+}
+class azure_virtual_machine_public_ip_address_configuration {
+**delete_option**: string
+**dns_settings**: string
+**idle_timeout_in_minutes**: int64
+**ip_tags**: azure_virtual_machine_ip_tag[]
+**name**: string
+**public_ip_address_version**: string
+**public_ip_allocation_method**: string
+**public_ip_prefix**: string
+**sku**: azure_public_ip_address_sku
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_sub_resource
+**security_encryption_type**: string
+}
+class azure_vm_gallery_application {
+**configuration_reference**: string
+**enable_automatic_upgrade**: boolean
+**order**: int64
+**package_reference_id**: string
+**tags**: string
+**treat_failure_as_deployment_failure**: boolean
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_application_profile --> azure_vm_gallery_application
+azure_available_patch_summary --> azure_api_error
+azure_boot_diagnostics_instance_view --> azure_instance_view_status
+azure_compute_virtual_machine --> azure_additional_capabilities
+azure_compute_virtual_machine --> azure_application_profile
+azure_compute_virtual_machine --> azure_capacity_reservation_profile
+azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine
+azure_compute_virtual_machine --> azure_diagnostics_profile
+azure_compute_virtual_machine --> azure_extended_location
+azure_compute_virtual_machine --> azure_hardware_profile
+azure_compute_virtual_machine --> azure_os_profile
+azure_compute_virtual_machine --> azure_plan
+azure_compute_virtual_machine --> azure_scheduled_events_profile
+azure_compute_virtual_machine --> azure_security_profile
+azure_compute_virtual_machine --> azure_storage_profile
+azure_compute_virtual_machine --> azure_virtual_machine_extension
+azure_compute_virtual_machine --> azure_virtual_machine_identity
+azure_compute_virtual_machine --> azure_virtual_machine_instance_view
+azure_compute_virtual_machine --> azure_virtual_machine_network_profile
+azure_compute_virtual_machine_base --> azure_additional_capabilities
+azure_compute_virtual_machine_base --> azure_application_profile
+azure_compute_virtual_machine_base --> azure_capacity_reservation_profile
+azure_compute_virtual_machine_base --> azure_diagnostics_profile
+azure_compute_virtual_machine_base --> azure_extended_location
+azure_compute_virtual_machine_base --> azure_hardware_profile
+azure_compute_virtual_machine_base --> azure_os_profile
+azure_compute_virtual_machine_base --> azure_plan
+azure_compute_virtual_machine_base --> azure_scheduled_events_profile
+azure_compute_virtual_machine_base --> azure_security_profile
+azure_compute_virtual_machine_base --> azure_storage_profile
+azure_compute_virtual_machine_base --> azure_virtual_machine_extension
+azure_compute_virtual_machine_base --> azure_virtual_machine_identity
+azure_compute_virtual_machine_base --> azure_virtual_machine_instance_view
+azure_compute_virtual_machine_base --> azure_virtual_machine_network_profile
+instance <|--- azure_compute_virtual_machine_base
+microsoft_resource <|--- azure_compute_virtual_machine_base
+azure_data_disk --> azure_managed_disk_parameters
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_instance_view --> azure_disk_encryption_settings
+azure_disk_instance_view --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_sub_resource <|--- azure_image_reference
+azure_last_patch_installation_summary --> azure_api_error
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_sub_resource <|--- azure_network_interface_reference
+azure_os_disk --> azure_diff_disk_settings
+azure_os_disk --> azure_disk_encryption_settings
+azure_os_disk --> azure_managed_disk_parameters
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+azure_scheduled_events_profile --> azure_os_image_notification_profile
+azure_scheduled_events_profile --> azure_terminate_notification_profile
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_storage_profile --> azure_data_disk
+azure_storage_profile --> azure_image_reference
+azure_storage_profile --> azure_os_disk
+azure_vault_secret_group --> azure_vault_certificate
+azure_virtual_machine_agent_instance_view --> azure_instance_view_status
+azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
+azure_virtual_machine_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
+azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+azure_virtual_machine_health_status --> azure_instance_view_status
+azure_virtual_machine_identity --> azure_principal_client
+azure_virtual_machine_instance_view --> azure_boot_diagnostics_instance_view
+azure_virtual_machine_instance_view --> azure_disk_instance_view
+azure_virtual_machine_instance_view --> azure_instance_view_status
+azure_virtual_machine_instance_view --> azure_maintenance_redeploy_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_agent_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_health_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_patch_status
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_dns_settings_configuration
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_ip_configuration
+azure_virtual_machine_network_interface_ip_configuration --> azure_virtual_machine_public_ip_address_configuration
+azure_virtual_machine_network_profile --> azure_network_interface_reference
+azure_virtual_machine_network_profile --> azure_virtual_machine_network_interface_configuration
+azure_virtual_machine_patch_status --> azure_available_patch_summary
+azure_virtual_machine_patch_status --> azure_instance_view_status
+azure_virtual_machine_patch_status --> azure_last_patch_installation_summary
+azure_virtual_machine_public_ip_address_configuration --> azure_public_ip_address_sku
+azure_virtual_machine_public_ip_address_configuration --> azure_virtual_machine_ip_tag
+azure_vm_disk_security_profile --> azure_sub_resource
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- instance
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

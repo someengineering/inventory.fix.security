@@ -1,0 +1,219 @@
+---
+sidebar_label: Persistent Volume
+---
+
+# `kubernetes_persistent_volume`
+
+- Categories: Storage
+- Service: kubernetes
+
+## Description
+
+A Kubernetes Persistent Volume is a storage abstraction that provides access to persisted data for a Kubernetes cluster.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Persistent Volume"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_persistent_volume {
+
+}
+class kubernetes_resource {
+
+}
+class resource {
+
+}
+class volume {
+
+}
+kubernetes_resource <|--- kubernetes_persistent_volume
+volume <|--- kubernetes_persistent_volume
+resource <|--- kubernetes_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Persistent Volume resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cluster {
+
+}
+class kubernetes_persistent_volume {
+
+}
+class kubernetes_persistent_volume_claim {
+
+}
+kubernetes_cluster -[#1A83AF]-> kubernetes_persistent_volume
+kubernetes_persistent_volume_claim -[#1A83AF]-> kubernetes_persistent_volume
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Persistent Volume data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_persistent_volume {
+**persistent_volume_spec**: kubernetes_persistent_volume_spec
+**persistent_volume_status**: kubernetes_persistent_volume_status
+}
+class kubernetes_persistent_volume_spec {
+**access_modes**: string[]
+**aws_elastic_block_store**: kubernetes_persistent_volume_spec_aws_elastic_block_store
+**azure_disk**: string
+**azure_file**: string
+**capacity**: dictionary[string, any]
+**cephfs**: string
+**cinder**: string
+**claim_ref**: dictionary[string, any]
+**csi**: any
+**fc**: string
+**flex_volume**: string
+**flocker**: string
+**gce_persistent_disk**: string
+**glusterfs**: string
+**host_path**: string
+**iscsi**: string
+**local**: string
+**mount_options**: string[]
+**nfs**: string
+**node_affinity**: string
+**persistent_volume_reclaim_policy**: string
+**photon_persistent_disk**: string
+**portworx_volume**: string
+**quobyte**: string
+**rbd**: string
+**scale_io**: string
+**storage_class_name**: string
+**storageos**: string
+**volume_mode**: string
+**vsphere_volume**: string
+}
+class kubernetes_persistent_volume_spec_aws_elastic_block_store {
+**fs_type**: string
+**volume_id**: string
+}
+class kubernetes_persistent_volume_status {
+**message**: string
+**phase**: string
+**reason**: string
+}
+class kubernetes_resource {
+**labels**: dictionary[string, string]
+**namespace**: string
+**resource_version**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+kubernetes_persistent_volume --> kubernetes_persistent_volume_spec
+kubernetes_persistent_volume --> kubernetes_persistent_volume_status
+kubernetes_resource <|--- kubernetes_persistent_volume
+volume <|--- kubernetes_persistent_volume
+kubernetes_persistent_volume_spec --> kubernetes_persistent_volume_spec_aws_elastic_block_store
+resource <|--- kubernetes_resource
+resource <|--- volume
+
+@enduml
+```
+
+</ZoomPanPinch>

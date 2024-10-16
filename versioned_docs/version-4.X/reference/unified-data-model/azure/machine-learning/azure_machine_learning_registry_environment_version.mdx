@@ -1,0 +1,221 @@
+---
+sidebar_label: Machine Learning Registry Environment Version
+---
+
+# `azure_machine_learning_registry_environment_version`
+
+- Categories: Machine Learning & AI
+- Service: machine-learning
+- Provider Link: [Machine Learning Registry Environment Version](https://learn.microsoft.com/en-us/azure/machine-learning/concept-environments?view=azureml-api-2#environment-versions)
+
+## Description
+
+Azure Machine Learning Registry Environment Version represents a specific iteration of a containerized environment in Azure Machine Learning. It includes dependencies, libraries, and runtime configurations required for machine learning workflows. Users can create, manage, and deploy these versions to maintain consistency across different stages of model development and deployment within Azure Machine Learning projects.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Machine Learning Registry Environment Version"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_environment_version_base {
+
+}
+class azure_machine_learning_registry_environment_version {
+
+}
+class azure_proxy_resource {
+
+}
+class microsoft_resource {
+
+}
+class phantom_resource {
+
+}
+class resource {
+
+}
+azure_proxy_resource <|--- azure_machine_learning_environment_version_base
+phantom_resource <|--- azure_machine_learning_environment_version_base
+azure_machine_learning_environment_version_base <|--- azure_machine_learning_registry_environment_version
+microsoft_resource <|--- azure_machine_learning_registry_environment_version
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Registry Environment Version resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_machine_learning_registry_environment_container {
+
+}
+class azure_machine_learning_registry_environment_version {
+
+}
+azure_machine_learning_registry_environment_container -[#1A83AF]-> azure_machine_learning_registry_environment_version
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Machine Learning Registry Environment Version data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_build_context {
+**context_uri**: string
+**dockerfile_path**: string
+}
+class azure_inference_container_properties {
+**liveness_route**: azure_inference_container_route
+**readiness_route**: azure_inference_container_route
+**scoring_route**: azure_inference_container_route
+}
+class azure_inference_container_route {
+**path**: string
+**port**: int64
+}
+class azure_machine_learning_environment_version_base {
+**auto_rebuild**: string
+**build**: azure_build_context
+**conda_file**: string
+**description**: string
+**environment_type**: string
+**image**: string
+**inference_config**: azure_inference_container_properties
+**is_anonymous**: boolean
+**is_archived**: boolean
+**os_type**: string
+**properties**: dictionary[string, any]
+**stage**: string
+}
+class azure_machine_learning_registry_environment_version {
+
+}
+class azure_proxy_resource {
+**system_data**: azure_system_data
+**type**: string
+}
+class azure_system_data {
+**created_at**: datetime
+**created_by**: string
+**created_by_type**: string
+**last_modified_at**: datetime
+**last_modified_by**: string
+**last_modified_by_type**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class phantom_resource {
+
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_inference_container_properties --> azure_inference_container_route
+azure_machine_learning_environment_version_base --> azure_build_context
+azure_machine_learning_environment_version_base --> azure_inference_container_properties
+azure_proxy_resource <|--- azure_machine_learning_environment_version_base
+azure_machine_learning_environment_version_base --> azure_system_data
+phantom_resource <|--- azure_machine_learning_environment_version_base
+azure_machine_learning_registry_environment_version --> azure_build_context
+azure_machine_learning_registry_environment_version --> azure_inference_container_properties
+azure_machine_learning_environment_version_base <|--- azure_machine_learning_registry_environment_version
+azure_machine_learning_registry_environment_version --> azure_system_data
+microsoft_resource <|--- azure_machine_learning_registry_environment_version
+azure_proxy_resource --> azure_system_data
+resource <|--- microsoft_resource
+resource <|--- phantom_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

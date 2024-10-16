@@ -1,0 +1,273 @@
+---
+sidebar_label: Vertex AI Custom Job
+---
+
+# `gcp_vertex_ai_custom_job`
+
+- Categories: Machine Learning & AI, Compute
+- Service: aiplatform
+- Provider Link: [Vertex AI Custom Job](https://cloud.google.com/docs)
+
+## Description
+
+A Custom Job in Vertex AI allows users to run their own custom machine learning training or inference code on Google Cloud infrastructure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Vertex AI Custom Job"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_resource {
+
+}
+class gcp_vertex_ai_custom_job {
+
+}
+class resource {
+
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+resource <|--- gcp_resource
+ai_job <|--- gcp_vertex_ai_custom_job
+gcp_resource <|--- gcp_vertex_ai_custom_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Custom Job resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_vertex_ai_custom_job {
+
+}
+class gcp_vertex_ai_model {
+
+}
+gcp_vertex_ai_model -[#1A83AF]-> gcp_vertex_ai_custom_job
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Vertex AI Custom Job data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class ai_job {
+
+}
+class ai_resource {
+
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_details {
+
+}
+class gcp_google_rpc_status {
+**code**: int64
+**details**: gcp_details[]
+**message**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_vertex_ai_container_spec {
+**args**: string[]
+**command**: string[]
+**env**: gcp_vertex_ai_env_var[]
+**image_uri**: string
+}
+class gcp_vertex_ai_custom_job {
+**create_time**: datetime
+**custom_job_spec**: gcp_vertex_ai_custom_job_spec
+**display_name**: string
+**encryption_spec**: string
+**end_time**: datetime
+**rpc_error**: gcp_google_rpc_status
+**start_time**: datetime
+**state**: string
+**update_time**: datetime
+**web_access_uris**: dictionary[string, string]
+}
+class gcp_vertex_ai_custom_job_spec {
+**base_output_directory**: string
+**enable_dashboard_access**: boolean
+**enable_web_access**: boolean
+**experiment**: string
+**experiment_run**: string
+**models**: string[]
+**network**: string
+**persistent_resource_id**: string
+**protected_artifact_location_id**: string
+**reserved_ip_ranges**: string[]
+**scheduling**: gcp_vertex_ai_scheduling
+**service_account**: string
+**tensorboard**: string
+**worker_pool_specs**: gcp_vertex_ai_worker_pool_spec[]
+}
+class gcp_vertex_ai_disk_spec {
+**boot_disk_size_gb**: int64
+**boot_disk_type**: string
+}
+class gcp_vertex_ai_env_var {
+**name**: string
+**value**: string
+}
+class gcp_vertex_ai_machine_spec {
+**accelerator_count**: int64
+**accelerator_type**: string
+**machine_type**: string
+**tpu_topology**: string
+}
+class gcp_vertex_ai_nfs_mount {
+**mount_point**: string
+**path**: string
+**server**: string
+}
+class gcp_vertex_ai_python_package_spec {
+**args**: string[]
+**env**: gcp_vertex_ai_env_var[]
+**executor_image_uri**: string
+**package_uris**: string[]
+**python_module**: string
+}
+class gcp_vertex_ai_scheduling {
+**disable_retries**: boolean
+**restart_job_on_worker_restart**: boolean
+**timeout**: string
+}
+class gcp_vertex_ai_worker_pool_spec {
+**container_spec**: gcp_vertex_ai_container_spec
+**disk_spec**: gcp_vertex_ai_disk_spec
+**machine_spec**: gcp_vertex_ai_machine_spec
+**nfs_mounts**: gcp_vertex_ai_nfs_mount[]
+**python_package_spec**: gcp_vertex_ai_python_package_spec
+**replica_count**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+ai_resource <|--- ai_job
+resource <|--- ai_resource
+gcp_google_rpc_status --> gcp_details
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vertex_ai_container_spec --> gcp_vertex_ai_env_var
+ai_job <|--- gcp_vertex_ai_custom_job
+gcp_vertex_ai_custom_job --> gcp_deprecation_status
+gcp_vertex_ai_custom_job --> gcp_google_rpc_status
+gcp_resource <|--- gcp_vertex_ai_custom_job
+gcp_vertex_ai_custom_job --> gcp_vertex_ai_custom_job_spec
+gcp_vertex_ai_custom_job_spec --> gcp_vertex_ai_scheduling
+gcp_vertex_ai_custom_job_spec --> gcp_vertex_ai_worker_pool_spec
+gcp_vertex_ai_python_package_spec --> gcp_vertex_ai_env_var
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_container_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_disk_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_machine_spec
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_nfs_mount
+gcp_vertex_ai_worker_pool_spec --> gcp_vertex_ai_python_package_spec
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,201 @@
+---
+sidebar_label: Compute Disk Encryption Set
+---
+
+# `azure_compute_disk_encryption_set`
+
+- Categories: Management
+- Service: compute
+- Provider Link: [Compute Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-sets)
+
+## Description
+
+Azure Compute Disk Encryption Set is a resource that manages encryption keys for Azure virtual machine disks. It provides centralized control over key management and encryption settings for multiple disks. Users can apply consistent encryption policies across their VM infrastructure, enhancing data protection and compliance with security standards.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Compute Disk Encryption Set"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk_encryption_set {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_compute_disk_encryption_set
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk Encryption Set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_compute_disk {
+
+}
+class azure_compute_disk_encryption_set {
+
+}
+class azure_container_service_managed_cluster {
+
+}
+azure_compute_disk -[#1A83AF]-> azure_compute_disk_encryption_set
+azure_container_service_managed_cluster -[#1A83AF]-> azure_compute_disk_encryption_set
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Compute Disk Encryption Set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_compute_disk_encryption_set {
+**active_key**: azure_key_for_disk_encryption_set
+**auto_key_rotation_error**: azure_api_error
+**encryption_set_identity**: azure_encryption_set_identity
+**encryption_type**: string
+**federated_client_id**: string
+**last_key_rotation_timestamp**: datetime
+**previous_keys**: azure_key_for_disk_encryption_set[]
+**rotation_to_latest_key_version_enabled**: boolean
+}
+class azure_encryption_set_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principal_client]
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_key_for_disk_encryption_set {
+**key_url**: string
+**source_vault**: string
+}
+class azure_principal_client {
+**client_id**: string
+**principal_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_compute_disk_encryption_set --> azure_api_error
+azure_compute_disk_encryption_set --> azure_encryption_set_identity
+azure_compute_disk_encryption_set --> azure_key_for_disk_encryption_set
+microsoft_resource <|--- azure_compute_disk_encryption_set
+azure_encryption_set_identity --> azure_principal_client
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

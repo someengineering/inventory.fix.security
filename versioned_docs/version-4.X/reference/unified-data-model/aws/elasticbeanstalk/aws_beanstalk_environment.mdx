@@ -1,0 +1,220 @@
+---
+sidebar_label: Elastic Beanstalk Environment
+---
+
+# `aws_beanstalk_environment`
+
+- Categories: Compute
+- Service: elasticbeanstalk
+- Provider Link: [Elastic Beanstalk Environment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features-managing-env.html)
+
+## Description
+
+AWS Elastic Beanstalk Environment is a managed service that automates application deployment and infrastructure provisioning. It handles capacity provisioning, load balancing, auto-scaling, and application health monitoring. Users can deploy applications in multiple languages and frameworks while AWS manages the underlying infrastructure, reducing the complexity of server management and application maintenance.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Elastic Beanstalk Environment"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_environment {
+
+}
+class aws_resource {
+
+}
+class resource {
+
+}
+aws_resource <|--- aws_beanstalk_environment
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Elastic Beanstalk Environment resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+
+}
+class aws_autoscaling_group {
+
+}
+class aws_beanstalk_application {
+
+}
+class aws_beanstalk_environment {
+
+}
+class aws_ec2_instance {
+
+}
+class aws_sqs_queue {
+
+}
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
+aws_beanstalk_environment -[#1A83AF]-> aws_alb
+aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
+aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Elastic Beanstalk Environment data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_beanstalk_auto_scaling_group_description {
+**auto_scaling_group_name**: string
+}
+class aws_beanstalk_environment {
+**beanstalk_abortable_operation_in_progress**: boolean
+**beanstalk_application_name**: string
+**beanstalk_cname**: string
+**beanstalk_endpoint_url**: string
+**beanstalk_environment_links**: aws_beanstalk_environment_link[]
+**beanstalk_health**: string
+**beanstalk_health_status**: string
+**beanstalk_operations_role**: string
+**beanstalk_platform_arn**: string
+**beanstalk_resources**: aws_beanstalk_environment_resources
+**beanstalk_solution_stack_name**: string
+**beanstalk_status**: string
+**beanstalk_template_name**: string
+**beanstalk_tier**: aws_beanstalk_environment_tier
+**beanstalk_version_label**: string
+**description**: string
+}
+class aws_beanstalk_environment_link {
+**environment_name**: string
+**link_name**: string
+}
+class aws_beanstalk_environment_resources {
+**auto_scaling_groups**: aws_beanstalk_auto_scaling_group_description[]
+**instances**: aws_beanstalk_instances_description[]
+**load_balancers**: aws_beanstalk_load_balancer_description[]
+**queues**: aws_beanstalk_queue_description[]
+}
+class aws_beanstalk_environment_tier {
+**name**: string
+**type**: string
+**version**: string
+}
+class aws_beanstalk_instances_description {
+**instance_id**: string
+}
+class aws_beanstalk_load_balancer_description {
+**load_balancer_name**: string
+}
+class aws_beanstalk_queue_description {
+**queue_name**: string
+**queue_url**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_beanstalk_environment --> aws_beanstalk_environment_link
+aws_beanstalk_environment --> aws_beanstalk_environment_resources
+aws_beanstalk_environment --> aws_beanstalk_environment_tier
+aws_resource <|--- aws_beanstalk_environment
+aws_beanstalk_environment_resources --> aws_beanstalk_auto_scaling_group_description
+aws_beanstalk_environment_resources --> aws_beanstalk_instances_description
+aws_beanstalk_environment_resources --> aws_beanstalk_load_balancer_description
+aws_beanstalk_environment_resources --> aws_beanstalk_queue_description
+resource <|--- aws_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

@@ -1,0 +1,192 @@
+---
+sidebar_label: Container Service Fleet
+---
+
+# `azure_container_service_fleet`
+
+- Categories: Managed Kubernetes
+- Service: containers
+- Provider Link: [Container Service Fleet](https://learn.microsoft.com/en-us/azure/container-apps/fleet-overview)
+
+## Description
+
+Azure Container Service Fleet is a management tool for containerized applications across multiple Azure Kubernetes Service (AKS) clusters. It provides centralized control for deploying, updating, and monitoring applications in different environments or regions. The service offers consistent application management, resource optimization, and unified governance for large-scale Kubernetes deployments within Azure.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Container Service Fleet"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_service_fleet {
+
+}
+class microsoft_resource {
+
+}
+class resource {
+
+}
+microsoft_resource <|--- azure_container_service_fleet
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Service Fleet resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_container_service_fleet {
+
+}
+class azure_container_service_managed_cluster {
+
+}
+azure_container_service_fleet -[#1A83AF]-> azure_container_service_managed_cluster
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Container Service Fleet data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class azure_agent_profile {
+**subnet_id**: string
+**vm_size**: string
+}
+class azure_api_server_access_profile {
+**enable_private_cluster**: boolean
+**enable_vnet_integration**: boolean
+**subnet_id**: string
+}
+class azure_container_service_fleet {
+**azure_fleet_identity**: azure_identity
+**e_tag**: string
+**hub_profile**: azure_fleet_hub_profile
+**resource_group**: string
+}
+class azure_fleet_hub_profile {
+**agent_profile**: azure_agent_profile
+**api_server_access_profile**: azure_api_server_access_profile
+**dns_prefix**: string
+**fqdn**: string
+**kubernetes_version**: string
+**portal_fqdn**: string
+}
+class azure_identity {
+**client_id**: string
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_user_assigned_identity]
+}
+class azure_user_assigned_identity {
+**client_id**: string
+**object_id**: string
+**principal_id**: string
+**resource_id**: string
+}
+class microsoft_resource {
+**etag**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_container_service_fleet --> azure_fleet_hub_profile
+azure_container_service_fleet --> azure_identity
+microsoft_resource <|--- azure_container_service_fleet
+azure_fleet_hub_profile --> azure_agent_profile
+azure_fleet_hub_profile --> azure_api_server_access_profile
+azure_identity --> azure_user_assigned_identity
+resource <|--- microsoft_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

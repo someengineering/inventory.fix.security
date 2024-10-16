@@ -4,7 +4,7 @@ sidebar_label: Collect DigitalOcean Resource Data
 
 # How to Collect DigitalOcean Resource Data
 
-The [DigitalOcean](../../reference/unified-data-model/digitalocean.mdx) collector is configured within the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config/index.mdx) in [Fix Inventory Shell](../../reference/components/shell.mdx).
+The [DigitalOcean](../../reference/unified-data-model/digitalocean/index.mdx) collector is configured within the [Fix Inventory Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config/index.mdx) in [Fix Inventory Shell](../../reference/components/shell.mdx).
 
 ## Prerequisites
 
@@ -106,7 +106,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
     > workflow run collect
     ```
 
-2.  Once the collect run completes, you can view a summary of collected [DigitalOcean resources](../../reference/unified-data-model/digitalocean.mdx) using the following search:
+2.  Once the collect run completes, you can view a summary of collected [DigitalOcean resources](../../reference/unified-data-model/digitalocean/index.mdx) using the following search:
 
     ```bash
     > search is(digitalocean_resource) | count kind
