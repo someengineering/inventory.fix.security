@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: {"description":"Delete a check by its id.","tags":["report"],"parameters":[{"name":"check_id","in":"path","description":"The ID of the check to perform.","schema":{"type":"string"},"example":"aws_ec2_snapshot_encrypted","required":true}],"responses":{"204":{"description":"Empty."}},"method":"delete","path":"/report/check/{check_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Delete a check by its id.","description":{"content":"Delete a check by its id.","type":"text/plain"},"url":{"path":["report","check",":check_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The ID of the check to perform.","type":"text/plain"},"type":"any","value":"","key":"check_id"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
-info_path: reference/api/fix-inventory-core-rest-api
+info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
 hide_send_button: true
 ---
