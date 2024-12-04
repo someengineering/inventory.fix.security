@@ -25,7 +25,6 @@
         "backup:TagResource",
         "backup:UntagResource",
         "bedrock-agent:DeleteAgent",
-        "bedrock-agent:DeleteAgentVersion",
         "bedrock-agent:DeleteFlow",
         "bedrock-agent:DeleteFlowVersion",
         "bedrock-agent:DeleteKnowledgeBase",
