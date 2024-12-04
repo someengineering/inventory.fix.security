@@ -201,6 +201,7 @@ class azure_network_virtual_network {
 **ip_allocations**: string[]
 **location**: string
 **resource_guid**: string
+**type**: string
 **virtual_network_encryption**: azure_virtual_network_encryption
 **virtual_network_peerings**: azure_virtual_network_peering[]
 }
@@ -250,7 +251,7 @@ class microsoft_resource {
 **provisioning_state**: string
 }
 class network {
-
+**cidr_blocks**: string[]
 }
 class resource {
 **age**: duration

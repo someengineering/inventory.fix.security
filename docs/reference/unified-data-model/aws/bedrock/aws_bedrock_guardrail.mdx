@@ -88,20 +88,14 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_bedrock_agent {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_guardrail {
 
 }
 class aws_kms_key {
 
 }
-aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
 aws_bedrock_agent -[#1A83AF]-> aws_kms_key
-aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
-aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
 aws_bedrock_guardrail -[#1A83AF]-> aws_kms_key
 
 @enduml

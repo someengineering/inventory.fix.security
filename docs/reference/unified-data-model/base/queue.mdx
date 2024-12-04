@@ -44,8 +44,13 @@ class aws_sqs_queue {
 class azure_storage_queue {
 
 }
-class queue {
+class gcp_pubsub_subscription {
 
+}
+class queue {
+**approximate_message_count**: int64
+**message_retention_period_days**: int64
+**queue_type**: queue_type
 }
 class resource {
 **age**: duration
@@ -61,6 +66,7 @@ class resource {
 }
 queue <|--- aws_sqs_queue
 queue <|--- azure_storage_queue
+queue <|--- gcp_pubsub_subscription
 resource <|--- queue
 
 @enduml

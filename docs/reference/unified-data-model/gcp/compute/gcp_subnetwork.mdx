@@ -115,6 +115,7 @@ class gcp_subnetwork {
 
 }
 gcp_instance -[#1A83AF]-> gcp_packet_mirroring
+gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_network_endpoint_group
@@ -216,7 +217,7 @@ class resource {
 **tags**: dictionary[string, string]
 }
 class subnet {
-
+**cidr_block**: string
 }
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource

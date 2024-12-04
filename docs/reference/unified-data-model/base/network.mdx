@@ -51,10 +51,7 @@ class gcp_network {
 
 }
 class network {
-
-}
-class onprem_network {
-
+**cidr_blocks**: string[]
 }
 class resource {
 **age**: duration
@@ -73,7 +70,6 @@ network <|--- azure_network_virtual_network
 network <|--- digitalocean_vpc
 network <|--- gcp_network
 resource <|--- network
-network <|--- onprem_network
 
 @enduml
 ```

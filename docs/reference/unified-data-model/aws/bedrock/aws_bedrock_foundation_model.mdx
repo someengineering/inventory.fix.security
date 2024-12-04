@@ -97,9 +97,6 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_bedrock_agent {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_custom_model {
 
 }
@@ -112,11 +109,9 @@ class aws_bedrock_model_customization_job {
 class aws_bedrock_provisioned_model_throughput {
 
 }
-aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_model_customization_job
 aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_provisioned_model_throughput
 aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent
-aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_custom_model
 aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_model_customization_job
 aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_provisioned_model_throughput

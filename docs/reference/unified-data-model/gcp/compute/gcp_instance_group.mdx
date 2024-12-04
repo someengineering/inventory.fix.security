@@ -4,7 +4,7 @@ sidebar_label: Instance Group
 
 # `gcp_instance_group`
 
-- Categories: Compute
+- Categories: Compute, Management
 - Service: compute
 - Provider Link: [Instance Group](https://cloud.google.com/compute/docs/instance-groups)
 
@@ -40,6 +40,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class autoscaling_group {
+
+}
 class gcp_instance_group {
 
 }
@@ -49,6 +52,8 @@ class gcp_resource {
 class resource {
 
 }
+resource <|--- autoscaling_group
+autoscaling_group <|--- gcp_instance_group
 gcp_resource <|--- gcp_instance_group
 resource <|--- gcp_resource
 
@@ -88,6 +93,9 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_backend_service {
 
 }
+class gcp_instance {
+
+}
 class gcp_instance_group {
 
 }
@@ -101,10 +109,13 @@ class gcp_subnetwork {
 
 }
 gcp_backend_service -[#1A83AF]-> gcp_instance_group
+gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 gcp_network -[#1A83AF]-> gcp_backend_service
+gcp_network -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
+gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
 
 @enduml
@@ -140,6 +151,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class autoscaling_group {
+**max_size**: int64
+**min_size**: int64
+}
 class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
@@ -176,6 +191,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- autoscaling_group
+autoscaling_group <|--- gcp_instance_group
 gcp_instance_group --> gcp_deprecation_status
 gcp_instance_group --> gcp_named_port
 gcp_resource <|--- gcp_instance_group

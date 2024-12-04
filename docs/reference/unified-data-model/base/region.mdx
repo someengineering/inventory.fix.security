@@ -62,9 +62,6 @@ class microsoft_graph_organization_root {
 class onelogin_region {
 
 }
-class onprem_region {
-
-}
 class phantom_resource {
 
 }
@@ -89,9 +86,6 @@ class resource {
 class slack_region {
 
 }
-class vsphere_data_center {
-
-}
 region <|--- aws_region
 region <|--- azure_location
 region <|--- digitalocean_region
@@ -100,11 +94,9 @@ region <|--- github_region
 region <|--- kubernetes_namespace
 region <|--- microsoft_graph_organization_root
 region <|--- onelogin_region
-region <|--- onprem_region
 resource <|--- phantom_resource
 phantom_resource <|--- region
 region <|--- slack_region
-region <|--- vsphere_data_center
 
 @enduml
 ```

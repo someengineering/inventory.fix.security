@@ -144,9 +144,6 @@ class aws_region {
 class aws_ssm_instance {
 
 }
-class aws_ssm_resource_compliance {
-
-}
 class aws_vpc {
 
 }
@@ -181,7 +178,6 @@ aws_region -[#1A83AF]-> aws_elb
 aws_region -[#1A83AF]-> aws_iam_instance_profile
 aws_region -[#1A83AF]-> aws_vpc
 aws_ssm_instance -[#1A83AF]-> aws_ec2_instance
-aws_ssm_resource_compliance -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface

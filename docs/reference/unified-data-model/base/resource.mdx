@@ -149,9 +149,6 @@ class aws_bedrock_agent_knowledge_base {
 class aws_bedrock_agent_prompt {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_custom_model {
 
 }
@@ -560,9 +557,6 @@ class aws_ssm_document {
 class aws_ssm_instance {
 
 }
-class aws_ssm_resource_compliance {
-
-}
 class aws_vpc {
 
 }
@@ -920,16 +914,10 @@ class azure_machine_learning_workspace_model_container {
 class azure_machine_learning_workspace_model_version {
 
 }
-class azure_metric_alert {
-
-}
 class azure_monitor_action_group {
 
 }
 class azure_monitor_activity_log_alert {
-
-}
-class azure_monitor_alert_rule {
 
 }
 class azure_monitor_data_collection_rule {
@@ -939,6 +927,9 @@ class azure_monitor_diagnostic_settings {
 
 }
 class azure_monitor_log_profile {
+
+}
+class azure_monitor_metric_alert {
 
 }
 class azure_monitor_pipeline_group {
@@ -983,7 +974,19 @@ class azure_mysql_server_type {
 class azure_network_application_gateway {
 
 }
+class azure_network_application_gateway_authentication_certificate {
+
+}
 class azure_network_application_gateway_firewall_rule_set {
+
+}
+class azure_network_application_gateway_ssl_certificate {
+
+}
+class azure_network_application_gateway_trusted_client_certificate {
+
+}
+class azure_network_application_gateway_trusted_root_certificate {
 
 }
 class azure_network_bastion_host {
@@ -1115,6 +1118,12 @@ class azure_network_virtual_wan_vpn_connection {
 class azure_network_virtual_wan_vpn_gateway {
 
 }
+class azure_network_vpn_client_revoked_certificate {
+
+}
+class azure_network_vpn_client_root_certificate {
+
+}
 class azure_network_vpn_server_configuration {
 
 }
@@ -1149,9 +1158,6 @@ class azure_postgresql_server_type {
 
 }
 class azure_resource_group {
-
-}
-class azure_security_assessment {
 
 }
 class azure_security_auto_provisioning_setting {
@@ -1427,6 +1433,9 @@ class gcp_billing_account {
 class gcp_bucket {
 
 }
+class gcp_cloud_function {
+
+}
 class gcp_commitment {
 
 }
@@ -1443,6 +1452,24 @@ class gcp_disk_type {
 
 }
 class gcp_external_vpn_gateway {
+
+}
+class gcp_filestore_backup {
+
+}
+class gcp_filestore_instance {
+
+}
+class gcp_filestore_instance_snapshot {
+
+}
+class gcp_firestore_backup {
+
+}
+class gcp_firestore_database {
+
+}
+class gcp_firestore_document {
 
 }
 class gcp_firewall {
@@ -1539,6 +1566,15 @@ class gcp_public_advertised_prefix {
 
 }
 class gcp_public_delegated_prefix {
+
+}
+class gcp_pubsub_snapshot {
+
+}
+class gcp_pubsub_subscription {
+
+}
+class gcp_pubsub_topic {
 
 }
 class gcp_region {
@@ -1931,18 +1967,6 @@ class onelogin_region {
 class onelogin_user {
 
 }
-class onprem_instance {
-
-}
-class onprem_location {
-
-}
-class onprem_network {
-
-}
-class onprem_region {
-
-}
 class organizational_root {
 
 }
@@ -2045,33 +2069,6 @@ class volume {
 class volume_type {
 
 }
-class vsphere_cluster {
-
-}
-class vsphere_data_center {
-
-}
-class vsphere_datastore {
-
-}
-class vsphere_datastore_cluster {
-
-}
-class vsphere_esxi_host {
-
-}
-class vsphere_host {
-
-}
-class vsphere_instance {
-
-}
-class vsphere_resource_pool {
-
-}
-class vsphere_template {
-
-}
 class zone {
 
 }
@@ -2117,7 +2114,6 @@ aws_resource <|--- aws_bedrock_agent_flow
 aws_resource <|--- aws_bedrock_agent_flow_version
 aws_resource <|--- aws_bedrock_agent_knowledge_base
 aws_resource <|--- aws_bedrock_agent_prompt
-aws_resource <|--- aws_bedrock_agent_version
 ai_model <|--- aws_bedrock_custom_model
 aws_resource <|--- aws_bedrock_custom_model
 ai_job <|--- aws_bedrock_evaluation_job
@@ -2154,6 +2150,7 @@ aws_resource <|--- aws_cognito_user_pool
 aws_resource <|--- aws_config_recorder
 aws_resource <|--- aws_dynamodb_global_table
 aws_resource <|--- aws_dynamodb_table
+database <|--- aws_dynamodb_table
 aws_resource <|--- aws_ec2_elastic_ip
 ip_address <|--- aws_ec2_elastic_ip
 aws_resource <|--- aws_ec2_flow_log
@@ -2304,7 +2301,6 @@ aws_resource <|--- aws_sqs_queue
 queue <|--- aws_sqs_queue
 aws_resource <|--- aws_ssm_document
 aws_resource <|--- aws_ssm_instance
-aws_resource <|--- aws_ssm_resource_compliance
 aws_resource <|--- aws_vpc
 network <|--- aws_vpc
 aws_resource <|--- aws_vpc_endpoint
@@ -2453,13 +2449,12 @@ microsoft_resource <|--- azure_machine_learning_workspace_environment_version
 ai_model <|--- azure_machine_learning_workspace_model_container
 microsoft_resource <|--- azure_machine_learning_workspace_model_container
 microsoft_resource <|--- azure_machine_learning_workspace_model_version
-microsoft_resource <|--- azure_metric_alert
 microsoft_resource <|--- azure_monitor_action_group
 microsoft_resource <|--- azure_monitor_activity_log_alert
-microsoft_resource <|--- azure_monitor_alert_rule
 microsoft_resource <|--- azure_monitor_data_collection_rule
 microsoft_resource <|--- azure_monitor_diagnostic_settings
 microsoft_resource <|--- azure_monitor_log_profile
+microsoft_resource <|--- azure_monitor_metric_alert
 microsoft_resource <|--- azure_monitor_pipeline_group
 microsoft_resource <|--- azure_monitor_private_link_scope
 microsoft_resource <|--- azure_monitor_scheduled_query_rule
@@ -2477,8 +2472,16 @@ database_instance_type <|--- azure_mysql_server_type
 microsoft_resource <|--- azure_mysql_server_type
 gateway <|--- azure_network_application_gateway
 microsoft_resource <|--- azure_network_application_gateway
+certificate <|--- azure_network_application_gateway_authentication_certificate
+microsoft_resource <|--- azure_network_application_gateway_authentication_certificate
 microsoft_resource <|--- azure_network_application_gateway_firewall_rule_set
 phantom_resource <|--- azure_network_application_gateway_firewall_rule_set
+certificate <|--- azure_network_application_gateway_ssl_certificate
+microsoft_resource <|--- azure_network_application_gateway_ssl_certificate
+certificate <|--- azure_network_application_gateway_trusted_client_certificate
+microsoft_resource <|--- azure_network_application_gateway_trusted_client_certificate
+certificate <|--- azure_network_application_gateway_trusted_root_certificate
+microsoft_resource <|--- azure_network_application_gateway_trusted_root_certificate
 microsoft_resource <|--- azure_network_bastion_host
 microsoft_resource <|--- azure_network_custom_ip_prefix
 microsoft_resource <|--- azure_network_ddos_protection_plan
@@ -2546,6 +2549,10 @@ microsoft_resource <|--- azure_network_virtual_wan_vpn_connection
 tunnel <|--- azure_network_virtual_wan_vpn_connection
 gateway <|--- azure_network_virtual_wan_vpn_gateway
 microsoft_resource <|--- azure_network_virtual_wan_vpn_gateway
+certificate <|--- azure_network_vpn_client_revoked_certificate
+microsoft_resource <|--- azure_network_vpn_client_revoked_certificate
+certificate <|--- azure_network_vpn_client_root_certificate
+microsoft_resource <|--- azure_network_vpn_client_root_certificate
 microsoft_resource <|--- azure_network_vpn_server_configuration
 microsoft_resource <|--- azure_network_vpn_site
 peering_connection <|--- azure_network_vpn_site
@@ -2562,8 +2569,6 @@ database_instance_type <|--- azure_postgresql_server_type
 microsoft_resource <|--- azure_postgresql_server_type
 group <|--- azure_resource_group
 microsoft_resource <|--- azure_resource_group
-microsoft_resource <|--- azure_security_assessment
-phantom_resource <|--- azure_security_assessment
 microsoft_resource <|--- azure_security_auto_provisioning_setting
 microsoft_resource <|--- azure_security_pricing
 phantom_resource <|--- azure_security_pricing
@@ -2696,6 +2701,8 @@ gcp_resource <|--- gcp_backend_service
 gcp_resource <|--- gcp_billing_account
 bucket <|--- gcp_bucket
 gcp_resource <|--- gcp_bucket
+gcp_resource <|--- gcp_cloud_function
+serverless_function <|--- gcp_cloud_function
 gcp_resource <|--- gcp_commitment
 gcp_resource <|--- gcp_container_cluster
 managed_kubernetes_cluster_provider <|--- gcp_container_cluster
@@ -2706,6 +2713,14 @@ gcp_resource <|--- gcp_disk_type
 volume_type <|--- gcp_disk_type
 gateway <|--- gcp_external_vpn_gateway
 gcp_resource <|--- gcp_external_vpn_gateway
+gcp_resource <|--- gcp_filestore_backup
+gcp_resource <|--- gcp_filestore_instance
+network_share <|--- gcp_filestore_instance
+gcp_resource <|--- gcp_filestore_instance_snapshot
+gcp_resource <|--- gcp_firestore_backup
+database <|--- gcp_firestore_database
+gcp_resource <|--- gcp_firestore_database
+gcp_resource <|--- gcp_firestore_document
 firewall <|--- gcp_firewall
 gcp_resource <|--- gcp_firewall
 gcp_resource <|--- gcp_firewall_policy
@@ -2719,6 +2734,7 @@ gcp_resource <|--- gcp_https_health_check
 gcp_resource <|--- gcp_image
 gcp_resource <|--- gcp_instance
 instance <|--- gcp_instance
+autoscaling_group <|--- gcp_instance_group
 gcp_resource <|--- gcp_instance_group
 gcp_resource <|--- gcp_instance_group_manager
 gcp_resource <|--- gcp_instance_template
@@ -2746,6 +2762,10 @@ gcp_resource <|--- gcp_project
 gcp_resource <|--- gcp_project_billing_info
 gcp_resource <|--- gcp_public_advertised_prefix
 gcp_resource <|--- gcp_public_delegated_prefix
+gcp_resource <|--- gcp_pubsub_snapshot
+gcp_resource <|--- gcp_pubsub_subscription
+queue <|--- gcp_pubsub_subscription
+gcp_resource <|--- gcp_pubsub_topic
 gcp_resource <|--- gcp_region
 region <|--- gcp_region
 gcp_resource <|--- gcp_region_quota
@@ -2904,10 +2924,6 @@ resource <|--- network_share
 account <|--- onelogin_account
 region <|--- onelogin_region
 user <|--- onelogin_user
-instance <|--- onprem_instance
-account <|--- onprem_location
-network <|--- onprem_network
-region <|--- onprem_region
 resource <|--- organizational_root
 resource <|--- organizational_unit
 resource <|--- peering_connection
@@ -2938,15 +2954,6 @@ quota <|--- type
 resource <|--- user
 resource <|--- volume
 type <|--- volume_type
-zone <|--- vsphere_cluster
-region <|--- vsphere_data_center
-resource <|--- vsphere_datastore
-resource <|--- vsphere_datastore_cluster
-resource <|--- vsphere_esxi_host
-account <|--- vsphere_host
-instance <|--- vsphere_instance
-resource <|--- vsphere_resource_pool
-resource <|--- vsphere_template
 phantom_resource <|--- zone
 
 @enduml

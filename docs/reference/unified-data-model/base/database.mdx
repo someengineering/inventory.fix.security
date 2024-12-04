@@ -38,6 +38,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_dynamodb_table {
+
+}
 class aws_rds_cluster {
 
 }
@@ -76,6 +79,9 @@ class database {
 class digitalocean_database {
 
 }
+class gcp_firestore_database {
+
+}
 class gcp_sql_database_instance {
 
 }
@@ -91,6 +97,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+database <|--- aws_dynamodb_table
 database <|--- aws_rds_cluster
 database <|--- aws_rds_instance
 database <|--- azure_cosmos_db_account
@@ -101,6 +108,7 @@ database <|--- azure_sql_server_database
 database <|--- azure_sql_server_managed_instance_database
 resource <|--- database
 database <|--- digitalocean_database
+database <|--- gcp_firestore_database
 database <|--- gcp_sql_database_instance
 
 @enduml

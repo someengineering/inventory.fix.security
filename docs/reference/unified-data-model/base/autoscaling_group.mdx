@@ -51,6 +51,9 @@ class azure_compute_virtual_machine_scale_set {
 class gcp_autoscaler {
 
 }
+class gcp_instance_group {
+
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -67,6 +70,7 @@ resource <|--- autoscaling_group
 autoscaling_group <|--- aws_autoscaling_group
 autoscaling_group <|--- azure_compute_virtual_machine_scale_set
 autoscaling_group <|--- gcp_autoscaler
+autoscaling_group <|--- gcp_instance_group
 
 @enduml
 ```

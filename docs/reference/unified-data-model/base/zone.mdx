@@ -56,15 +56,11 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-class vsphere_cluster {
-
-}
 class zone {
 **long_name**: string
 }
 zone <|--- gcp_zone
 resource <|--- phantom_resource
-zone <|--- vsphere_cluster
 phantom_resource <|--- zone
 
 @enduml

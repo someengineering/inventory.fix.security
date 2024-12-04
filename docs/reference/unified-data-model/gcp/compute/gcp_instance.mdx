@@ -96,6 +96,9 @@ class gcp_disk {
 class gcp_instance {
 
 }
+class gcp_instance_group {
+
+}
 class gcp_machine_type {
 
 }
@@ -113,11 +116,14 @@ class gcp_target_instance {
 }
 gcp_instance -[#1A83AF]-> gcp_disk
 gcp_instance -[#1A83AF]-> gcp_packet_mirroring
+gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_machine_type -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_network -[#1A83AF]-> gcp_target_instance
 gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance_group
 gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 gcp_target_instance -[#1A83AF]-> gcp_instance
 

@@ -68,9 +68,6 @@ class microsoft_graph_organization {
 class onelogin_account {
 
 }
-class onprem_location {
-
-}
 class posthog_project {
 
 }
@@ -92,9 +89,6 @@ class scarf_organization {
 class slack_team {
 
 }
-class vsphere_host {
-
-}
 resource <|--- account
 account <|--- aws_account
 account <|--- azure_subscription
@@ -105,11 +99,9 @@ account <|--- github_account
 account <|--- kubernetes_cluster
 account <|--- microsoft_graph_organization
 account <|--- onelogin_account
-account <|--- onprem_location
 account <|--- posthog_project
 account <|--- scarf_organization
 account <|--- slack_team
-account <|--- vsphere_host
 
 @enduml
 ```

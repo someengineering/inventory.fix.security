@@ -1,22 +1,22 @@
 ---
-sidebar_label: Monitor Alert Rule
+sidebar_label: Network Application Gateway Trusted Root Certificate
 ---
 
-# `azure_monitor_alert_rule`
+# `azure_network_application_gateway_trusted_root_certificate`
 
-- Categories: Management
-- Service: monitor
-- Provider Link: [Monitor Alert Rule](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview)
+- Categories: Access Control, Networking, Security
+- Service: networking
+- Provider Link: [Network Application Gateway Trusted Root Certificate](https://learn.microsoft.com/en-us/azure/application-gateway/)
 
 ## Description
 
-Azure Monitor Alert Rule is a feature in Microsoft Azure that defines conditions for monitoring resources and triggers notifications when specified thresholds are met. It evaluates metrics, logs, and activity data from Azure services, then sends alerts via various channels when predefined criteria are satisfied, helping administrators respond to issues and maintain system health.
+Azure Network Application Gateway Trusted Root Certificate is used to verify the trustworthiness of certificates by establishing the root of trust in certificate chains.
 
 ## Base Hierarchy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Hierarchy of Monitor Alert Rule"
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Application Gateway Trusted Root Certificate"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -40,7 +40,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_monitor_alert_rule {
+class azure_network_application_gateway_trusted_root_certificate {
+
+}
+class certificate {
 
 }
 class microsoft_resource {
@@ -49,7 +52,9 @@ class microsoft_resource {
 class resource {
 
 }
-microsoft_resource <|--- azure_monitor_alert_rule
+certificate <|--- azure_network_application_gateway_trusted_root_certificate
+microsoft_resource <|--- azure_network_application_gateway_trusted_root_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
 
 @enduml
@@ -61,7 +66,7 @@ resource <|--- microsoft_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Monitor Alert Rule resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway Trusted Root Certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -85,7 +90,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_monitor_alert_rule {
+class azure_network_application_gateway_trusted_root_certificate {
 
 }
 
@@ -98,7 +103,7 @@ class azure_monitor_alert_rule {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Monitor Alert Rule data model"
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway Trusted Root Certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -122,24 +127,15 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_monitor_alert_rule {
-**action**: string
-**actions**: string[]
-**description**: string
-**is_enabled**: boolean
-**last_updated_time**: datetime
-**rule_condition**: azure_monitor_rule_condition
-}
-class azure_monitor_rule_condition {
-**data_source**: azure_monitor_rule_data_source
+class azure_network_application_gateway_trusted_root_certificate {
+**certificate_data**: string
+**key_vault_secret_id**: string
 **type**: string
 }
-class azure_monitor_rule_data_source {
-**legacy_resource_id**: string
-**metric_namespace**: string
-**resource_location**: string
-**resource_uri**: string
-**type**: string
+class certificate {
+**dns_names**: string[]
+**expires**: datetime
+**sha1_fingerprint**: string
 }
 class microsoft_resource {
 **etag**: string
@@ -157,9 +153,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_monitor_alert_rule --> azure_monitor_rule_condition
-microsoft_resource <|--- azure_monitor_alert_rule
-azure_monitor_rule_condition --> azure_monitor_rule_data_source
+certificate <|--- azure_network_application_gateway_trusted_root_certificate
+microsoft_resource <|--- azure_network_application_gateway_trusted_root_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
 
 @enduml

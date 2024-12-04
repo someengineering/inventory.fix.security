@@ -105,9 +105,6 @@ class aws_bedrock_agent_flow_version {
 class aws_bedrock_agent_prompt {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_custom_model {
 
 }
@@ -218,7 +215,6 @@ class aws_sqs_queue {
 }
 aws_athena_work_group -[#1A83AF]-> aws_kms_key
 aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
-aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
 aws_bedrock_agent -[#1A83AF]-> aws_kms_key
 aws_bedrock_agent_flow -[#1A83AF]-> aws_bedrock_agent_flow_version
@@ -227,8 +223,6 @@ aws_bedrock_agent_flow -[#1A83AF]-> aws_lambda_function
 aws_bedrock_agent_flow_version -[#1A83AF]-> aws_kms_key
 aws_bedrock_agent_prompt -[#1A83AF]-> aws_bedrock_custom_model
 aws_bedrock_agent_prompt -[#1A83AF]-> aws_kms_key
-aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
-aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
 aws_bedrock_custom_model -[#1A83AF]-> aws_bedrock_model_customization_job
 aws_bedrock_custom_model -[#1A83AF]-> aws_kms_key
 aws_bedrock_evaluation_job -[#1A83AF]-> aws_kms_key

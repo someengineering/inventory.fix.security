@@ -264,20 +264,6 @@ class azure_vpn_client_configuration {
 **vpn_client_address_pool**: azure_address_space
 **vpn_client_ipsec_policies**: azure_ipsec_policy[]
 **vpn_client_protocols**: string[]
-**vpn_client_revoked_certificates**: azure_vpn_client_revoked_certificate[]
-**vpn_client_root_certificates**: azure_vpn_client_root_certificate[]
-}
-class azure_vpn_client_revoked_certificate {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**thumbprint**: string
-}
-class azure_vpn_client_root_certificate {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**public_cert_data**: string
 }
 class azure_vpn_nat_rule_mapping {
 **address_space**: string
@@ -323,8 +309,6 @@ azure_vpn_client_configuration --> azure_address_space
 azure_vpn_client_configuration --> azure_ipsec_policy
 azure_vpn_client_configuration --> azure_radius_server
 azure_vpn_client_configuration --> azure_vng_client_connection_configuration
-azure_vpn_client_configuration --> azure_vpn_client_revoked_certificate
-azure_vpn_client_configuration --> azure_vpn_client_root_certificate
 resource <|--- gateway
 resource <|--- microsoft_resource
 

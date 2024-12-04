@@ -1,22 +1,22 @@
 ---
-sidebar_label: Security Assessment
+sidebar_label: Network VPN Client Root Certificate
 ---
 
-# `azure_security_assessment`
+# `azure_network_vpn_client_root_certificate`
 
-- Categories: Management
-- Service: security
-- Provider Link: [Security Assessment](https://learn.microsoft.com/en-us/azure/defender-for-cloud/secure-score-security-controls)
+- Categories: Access Control, Networking, Security
+- Service: networking
+- Provider Link: [Network VPN Client Root Certificate](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)
 
 ## Description
 
-Azure Security Assessment is a service that evaluates Azure resources for potential security vulnerabilities and compliance issues. It scans configurations, identifies risks, and provides recommendations to improve security posture. The assessment covers various aspects including network security, data protection, and access control, offering insights to help organizations strengthen their Azure environment's security.
+Azure Network VPN Client Root Certificate is used to authenticate VPN clients by verifying the root of trust in the client certificate chain. It helps in securing VPN connections by establishing a trusted connection.
 
 ## Base Hierarchy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Hierarchy of Security Assessment"
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network VPN Client Root Certificate"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -40,22 +40,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_security_assessment {
+class azure_network_vpn_client_root_certificate {
+
+}
+class certificate {
 
 }
 class microsoft_resource {
 
 }
-class phantom_resource {
-
-}
 class resource {
 
 }
-microsoft_resource <|--- azure_security_assessment
-phantom_resource <|--- azure_security_assessment
+certificate <|--- azure_network_vpn_client_root_certificate
+microsoft_resource <|--- azure_network_vpn_client_root_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
-resource <|--- phantom_resource
 
 @enduml
 ```
@@ -66,7 +66,7 @@ resource <|--- phantom_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Security Assessment resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of Network VPN Client Root Certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -90,13 +90,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_security_assessment {
+class azure_network_vpn_client_root_certificate {
 
 }
-class microsoft_resource {
-
-}
-azure_security_assessment -[#1A83AF]-> microsoft_resource
 
 @enduml
 ```
@@ -107,7 +103,7 @@ azure_security_assessment -[#1A83AF]-> microsoft_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Security Assessment data model"
+```kroki imgType="plantuml" imgAlt="Diagram of Network VPN Client Root Certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -131,26 +127,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_assessment_status {
-**cause**: string
-**code**: string
-**description**: string
-**first_evaluation_date**: datetime
-**status_change_date**: datetime
+class azure_network_vpn_client_root_certificate {
+**public_cert_data**: string
 }
-class azure_security_assessment {
-**additional_data**: dictionary[string, any]
-**assessment_status**: azure_assessment_status
-**resource_id**: string
-**resource_source**: string
-**subscription_issue**: boolean
+class certificate {
+**dns_names**: string[]
+**expires**: datetime
+**sha1_fingerprint**: string
 }
 class microsoft_resource {
 **etag**: string
 **provisioning_state**: string
-}
-class phantom_resource {
-
 }
 class resource {
 **age**: duration
@@ -164,11 +151,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_security_assessment --> azure_assessment_status
-microsoft_resource <|--- azure_security_assessment
-phantom_resource <|--- azure_security_assessment
+certificate <|--- azure_network_vpn_client_root_certificate
+microsoft_resource <|--- azure_network_vpn_client_root_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
-resource <|--- phantom_resource
 
 @enduml
 ```

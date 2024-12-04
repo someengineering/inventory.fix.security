@@ -132,7 +132,6 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
 class azure_storage_queue {
-**approximate_message_count**: int64
 **queue_metadata**: dictionary[string, string]
 }
 class microsoft_resource {
@@ -140,7 +139,9 @@ class microsoft_resource {
 **provisioning_state**: string
 }
 class queue {
-
+**approximate_message_count**: int64
+**message_retention_period_days**: int64
+**queue_type**: queue_type
 }
 class resource {
 **age**: duration

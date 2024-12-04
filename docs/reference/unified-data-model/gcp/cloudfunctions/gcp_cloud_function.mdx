@@ -1,0 +1,303 @@
+---
+sidebar_label: Cloud Function
+---
+
+# `gcp_cloud_function`
+
+- Categories: Compute
+- Service: cloudfunctions
+- Provider Link: [Cloud Function](https://cloud.google.com/functions/docs)
+
+## Description
+
+GCP Cloud Function is a serverless execution environment for building and connecting cloud services. It allows you to run your code in response to events without provisioning or managing servers.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Cloud Function"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_cloud_function {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+class serverless_function {
+
+}
+gcp_resource <|--- gcp_cloud_function
+serverless_function <|--- gcp_cloud_function
+resource <|--- gcp_resource
+resource <|--- serverless_function
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cloud Function resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_cloud_function {
+
+}
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Cloud Function data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_build_config {
+**automatic_update_policy**: dictionary[string, any]
+**build**: string
+**docker_registry**: string
+**docker_repository**: string
+**entry_point**: string
+**environment_variables**: dictionary[string, string]
+**on_deploy_update_policy**: string
+**runtime**: string
+**service_account**: string
+**source**: gcp_source
+**source_provenance**: gcp_source_provenance
+**source_token**: string
+**worker_pool**: string
+}
+class gcp_cloud_function {
+**build_config**: gcp_build_config
+**create_time**: datetime
+**environment**: string
+**event_trigger**: gcp_event_trigger
+**kms_key_name**: string
+**satisfies_pzs**: boolean
+**service_config**: gcp_service_config
+**state**: string
+**state_messages**: gcp_cloud_functions_state_message[]
+**update_time**: datetime
+**upgrade_info**: gcp_upgrade_info
+**url**: string
+}
+class gcp_cloud_functions_state_message {
+**message**: string
+**severity**: string
+**type**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_event_filter {
+**attribute**: string
+**operator**: string
+**value**: string
+}
+class gcp_event_trigger {
+**channel**: string
+**event_filters**: gcp_event_filter[]
+**event_type**: string
+**pubsub_topic**: string
+**retry_policy**: string
+**service**: string
+**service_account_email**: string
+**trigger**: string
+**trigger_region**: string
+}
+class gcp_repo_source {
+**branch_name**: string
+**commit_sha**: string
+**dir**: string
+**project_id**: string
+**repo_name**: string
+**tag_name**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_secret_env_var {
+**key**: string
+**project_id**: string
+**secret**: string
+**version**: string
+}
+class gcp_secret_version {
+**path**: string
+**version**: string
+}
+class gcp_secret_volume {
+**mount_path**: string
+**project_id**: string
+**secret**: string
+**versions**: gcp_secret_version[]
+}
+class gcp_service_config {
+**all_traffic_on_latest_revision**: boolean
+**available_cpu**: string
+**available_memory**: string
+**binary_authorization_policy**: string
+**environment_variables**: dictionary[string, string]
+**ingress_settings**: string
+**max_instance_count**: int64
+**max_instance_request_concurrency**: int64
+**min_instance_count**: int64
+**revision**: string
+**secret_environment_variables**: gcp_secret_env_var[]
+**secret_volumes**: gcp_secret_volume[]
+**security_level**: string
+**service**: string
+**service_account_email**: string
+**timeout_seconds**: int64
+**uri**: string
+**vpc_connector**: string
+**vpc_connector_egress_settings**: string
+}
+class gcp_source {
+**git_uri**: string
+**repo_source**: gcp_repo_source
+**storage_source**: gcp_storage_source
+}
+class gcp_source_provenance {
+**git_uri**: string
+**resolved_repo_source**: gcp_repo_source
+**resolved_storage_source**: gcp_storage_source
+}
+class gcp_storage_source {
+**bucket**: string
+**generation**: string
+**object**: string
+**source_upload_url**: string
+}
+class gcp_upgrade_info {
+**build_config**: gcp_build_config
+**event_trigger**: gcp_event_trigger
+**service_config**: gcp_service_config
+**upgrade_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class serverless_function {
+**memory_size**: int64
+}
+gcp_build_config --> gcp_source
+gcp_build_config --> gcp_source_provenance
+gcp_cloud_function --> gcp_build_config
+gcp_cloud_function --> gcp_cloud_functions_state_message
+gcp_cloud_function --> gcp_deprecation_status
+gcp_cloud_function --> gcp_event_trigger
+gcp_resource <|--- gcp_cloud_function
+gcp_cloud_function --> gcp_service_config
+gcp_cloud_function --> gcp_upgrade_info
+serverless_function <|--- gcp_cloud_function
+gcp_event_trigger --> gcp_event_filter
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_secret_volume --> gcp_secret_version
+gcp_service_config --> gcp_secret_env_var
+gcp_service_config --> gcp_secret_volume
+gcp_source --> gcp_repo_source
+gcp_source --> gcp_storage_source
+gcp_source_provenance --> gcp_repo_source
+gcp_source_provenance --> gcp_storage_source
+gcp_upgrade_info --> gcp_build_config
+gcp_upgrade_info --> gcp_event_trigger
+gcp_upgrade_info --> gcp_service_config
+resource <|--- serverless_function
+
+@enduml
+```
+
+</ZoomPanPinch>
