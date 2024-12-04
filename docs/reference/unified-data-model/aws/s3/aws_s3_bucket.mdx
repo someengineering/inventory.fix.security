@@ -159,9 +159,6 @@ class aws_sagemaker_training_job {
 class aws_sagemaker_transform_job {
 
 }
-class aws_ssm_resource_compliance {
-
-}
 aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
 aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_backup_protected_resource -[#1A83AF]-> aws_s3_bucket
@@ -195,7 +192,6 @@ aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_ssm_resource_compliance -[#1A83AF]-> aws_s3_bucket
 
 @enduml
 ```
@@ -284,7 +280,8 @@ class aws_s3_target_grant {
 **permission**: string
 }
 class bucket {
-
+**encryption_enabled**: boolean
+**versioning_enabled**: boolean
 }
 class resource {
 **age**: duration

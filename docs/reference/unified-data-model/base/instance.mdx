@@ -65,9 +65,6 @@ class instance {
 class kubernetes_node {
 
 }
-class onprem_instance {
-
-}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -80,9 +77,6 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-class vsphere_instance {
-
-}
 instance <|--- aws_ec2_instance
 azure_compute_virtual_machine_base <|--- azure_compute_virtual_machine
 instance <|--- azure_compute_virtual_machine_base
@@ -91,8 +85,6 @@ instance <|--- digitalocean_droplet
 instance <|--- gcp_instance
 resource <|--- instance
 instance <|--- kubernetes_node
-instance <|--- onprem_instance
-instance <|--- vsphere_instance
 
 @enduml
 ```

@@ -1,0 +1,219 @@
+---
+sidebar_label: Pub/Sub Topic
+---
+
+# `gcp_pubsub_topic`
+
+- Categories: Compute
+- Service: pubsub
+- Provider Link: [Pub/Sub Topic](https://cloud.google.com/pubsub/docs/overview)
+
+## Description
+
+GCP Pub/Sub Topic is a messaging entity within the Google Cloud Pub/Sub service that acts as a conduit for messages sent by publishers. It allows applications to send messages to a centralized topic, which are then delivered to one or more subscribing applications. Pub/Sub Topics facilitate decoupled communication, enabling scalable and reliable messaging patterns for distributed systems.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Pub/Sub Topic"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_pubsub_topic {
+
+}
+class gcp_resource {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_pubsub_topic
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pub/Sub Topic resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_pubsub_snapshot {
+
+}
+class gcp_pubsub_subscription {
+
+}
+class gcp_pubsub_topic {
+
+}
+gcp_pubsub_topic -[#1A83AF]-> gcp_pubsub_snapshot
+gcp_pubsub_topic -[#1A83AF]-> gcp_pubsub_subscription
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pub/Sub Topic data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_avro_format {
+
+}
+class gcp_aws_kinesis {
+**aws_role_arn**: string
+**consumer_arn**: string
+**gcp_service_account**: string
+**state**: string
+**stream_arn**: string
+}
+class gcp_cloud_storage {
+**avro_format**: gcp_avro_format
+**bucket**: string
+**match_glob**: string
+**minimum_object_create_time**: datetime
+**pubsub_avro_format**: gcp_pub_sub_avro_format
+**state**: string
+**text_format**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_ingestion_data_source_settings {
+**aws_kinesis**: gcp_aws_kinesis
+**cloud_storage**: gcp_cloud_storage
+**platform_logs_settings**: string
+}
+class gcp_message_storage_policy {
+**allowed_persistence_regions**: string[]
+**enforce_in_transit**: boolean
+}
+class gcp_pub_sub_avro_format {
+
+}
+class gcp_pubsub_topic {
+**ingestion_data_source_settings**: gcp_ingestion_data_source_settings
+**kms_key_name**: string
+**message_retention_duration**: string
+**message_storage_policy**: gcp_message_storage_policy
+**satisfies_pzs**: boolean
+**schema_settings**: gcp_schema_settings
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_schema_settings {
+**encoding**: string
+**first_revision_id**: string
+**last_revision_id**: string
+**schema**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_cloud_storage --> gcp_avro_format
+gcp_cloud_storage --> gcp_pub_sub_avro_format
+gcp_ingestion_data_source_settings --> gcp_aws_kinesis
+gcp_ingestion_data_source_settings --> gcp_cloud_storage
+gcp_pubsub_topic --> gcp_deprecation_status
+gcp_pubsub_topic --> gcp_ingestion_data_source_settings
+gcp_pubsub_topic --> gcp_message_storage_policy
+gcp_resource <|--- gcp_pubsub_topic
+gcp_pubsub_topic --> gcp_schema_settings
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+
+@enduml
+```
+
+</ZoomPanPinch>

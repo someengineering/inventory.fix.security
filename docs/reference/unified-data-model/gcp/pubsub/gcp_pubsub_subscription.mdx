@@ -1,0 +1,258 @@
+---
+sidebar_label: Pub/Sub Subscription
+---
+
+# `gcp_pubsub_subscription`
+
+- Categories: Compute, Storage
+- Service: pubsub
+- Provider Link: [Pub/Sub Subscription](https://cloud.google.com/pubsub/docs/subscriber)
+
+## Description
+
+GCP Pub/Sub Subscription represents a connection to a Pub/Sub Topic, enabling applications to consume messages. Subscriptions can pull or push messages from the associated topic and ensure message delivery based on acknowledgment and retry policies. This allows for flexible, reliable messaging and integration with various systems.
+
+## Base Hierarchy
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Hierarchy of Pub/Sub Subscription"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_pubsub_subscription {
+
+}
+class gcp_resource {
+
+}
+class queue {
+
+}
+class resource {
+
+}
+gcp_resource <|--- gcp_pubsub_subscription
+queue <|--- gcp_pubsub_subscription
+resource <|--- gcp_resource
+resource <|--- queue
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Relationship to other Resources
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pub/Sub Subscription resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_pubsub_subscription {
+
+}
+class gcp_pubsub_topic {
+
+}
+gcp_pubsub_topic -[#1A83AF]-> gcp_pubsub_subscription
+
+@enduml
+```
+
+</ZoomPanPinch>
+
+## Properties
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of Pub/Sub Subscription data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_analytics_hub_subscription_info {
+**listing**: string
+**subscription**: string
+}
+class gcp_avro_config {
+**use_topic_schema**: boolean
+**write_metadata**: boolean
+}
+class gcp_big_query_config {
+**drop_unknown_fields**: boolean
+**service_account_email**: string
+**state**: string
+**table**: string
+**use_table_schema**: boolean
+**use_topic_schema**: boolean
+**write_metadata**: boolean
+}
+class gcp_cloud_storage_config {
+**avro_config**: gcp_avro_config
+**bucket**: string
+**filename_datetime_format**: string
+**filename_prefix**: string
+**filename_suffix**: string
+**max_bytes**: string
+**max_duration**: string
+**max_messages**: string
+**service_account_email**: string
+**state**: string
+**text_config**: gcp_text_config
+}
+class gcp_dead_letter_policy {
+**dead_letter_topic**: string
+**max_delivery_attempts**: int64
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_oidc_token {
+**audience**: string
+**service_account_email**: string
+}
+class gcp_pubsub_subscription {
+**ack_deadline_seconds**: int64
+**analytics_hub_subscription_info**: gcp_analytics_hub_subscription_info
+**bigquery_config**: gcp_big_query_config
+**cloud_storage_config**: gcp_cloud_storage_config
+**dead_letter_policy**: gcp_dead_letter_policy
+**detached**: boolean
+**enable_exactly_once_delivery**: boolean
+**enable_message_ordering**: boolean
+**expiration_policy**: string
+**message_retention_duration**: string
+**push_config**: gcp_push_config
+**retain_acked_messages**: boolean
+**retry_policy**: gcp_retry_policy
+**state**: string
+**subscription_filter**: string
+**subscription_topic**: string
+**topic_message_retention_duration**: string
+}
+class gcp_pubsub_wrapper {
+
+}
+class gcp_push_config {
+**attributes**: dictionary[string, string]
+**no_wrapper**: boolean
+**oidc_token**: gcp_oidc_token
+**pubsub_wrapper**: gcp_pubsub_wrapper
+**push_endpoint**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_retry_policy {
+**maximum_backoff**: string
+**minimum_backoff**: string
+}
+class gcp_text_config {
+
+}
+class queue {
+**approximate_message_count**: int64
+**message_retention_period_days**: int64
+**queue_type**: queue_type
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_cloud_storage_config --> gcp_avro_config
+gcp_cloud_storage_config --> gcp_text_config
+gcp_pubsub_subscription --> gcp_analytics_hub_subscription_info
+gcp_pubsub_subscription --> gcp_big_query_config
+gcp_pubsub_subscription --> gcp_cloud_storage_config
+gcp_pubsub_subscription --> gcp_dead_letter_policy
+gcp_pubsub_subscription --> gcp_deprecation_status
+gcp_pubsub_subscription --> gcp_push_config
+gcp_resource <|--- gcp_pubsub_subscription
+gcp_pubsub_subscription --> gcp_retry_policy
+queue <|--- gcp_pubsub_subscription
+gcp_push_config --> gcp_oidc_token
+gcp_push_config --> gcp_pubsub_wrapper
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- queue
+
+@enduml
+```
+
+</ZoomPanPinch>

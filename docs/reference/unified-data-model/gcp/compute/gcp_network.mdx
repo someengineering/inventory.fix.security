@@ -137,6 +137,7 @@ gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
 gcp_firewall -[#1A83AF]-> gcp_network
 gcp_firewall_policy -[#1A83AF]-> gcp_network
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_backend_service
 gcp_network -[#1A83AF]-> gcp_forwarding_rule
 gcp_network -[#1A83AF]-> gcp_instance
@@ -228,7 +229,7 @@ class gcp_resource {
 **link**: string
 }
 class network {
-
+**cidr_blocks**: string[]
 }
 class resource {
 **age**: duration

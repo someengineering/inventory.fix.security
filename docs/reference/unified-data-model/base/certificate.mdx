@@ -44,6 +44,24 @@ class aws_acm_certificate {
 class aws_iam_server_certificate {
 
 }
+class azure_network_application_gateway_authentication_certificate {
+
+}
+class azure_network_application_gateway_ssl_certificate {
+
+}
+class azure_network_application_gateway_trusted_client_certificate {
+
+}
+class azure_network_application_gateway_trusted_root_certificate {
+
+}
+class azure_network_vpn_client_revoked_certificate {
+
+}
+class azure_network_vpn_client_root_certificate {
+
+}
 class certificate {
 **dns_names**: string[]
 **expires**: datetime
@@ -69,6 +87,12 @@ class resource {
 }
 certificate <|--- aws_acm_certificate
 certificate <|--- aws_iam_server_certificate
+certificate <|--- azure_network_application_gateway_authentication_certificate
+certificate <|--- azure_network_application_gateway_ssl_certificate
+certificate <|--- azure_network_application_gateway_trusted_client_certificate
+certificate <|--- azure_network_application_gateway_trusted_root_certificate
+certificate <|--- azure_network_vpn_client_revoked_certificate
+certificate <|--- azure_network_vpn_client_root_certificate
 resource <|--- certificate
 certificate <|--- digitalocean_certificate
 certificate <|--- gcp_ssl_certificate

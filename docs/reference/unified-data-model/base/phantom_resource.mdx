@@ -110,9 +110,6 @@ class azure_network_virtual_appliance_sku {
 class azure_postgresql_server_type {
 
 }
-class azure_security_assessment {
-
-}
 class azure_security_pricing {
 
 }
@@ -200,9 +197,6 @@ class network_quota {
 class onelogin_region {
 
 }
-class onprem_region {
-
-}
 class phantom_resource {
 
 }
@@ -233,12 +227,6 @@ class type {
 class volume_type {
 
 }
-class vsphere_cluster {
-
-}
-class vsphere_data_center {
-
-}
 class zone {
 
 }
@@ -267,7 +255,6 @@ azure_usage <|--- azure_network_usage
 network_quota <|--- azure_network_usage
 phantom_resource <|--- azure_network_virtual_appliance_sku
 database_instance_type <|--- azure_postgresql_server_type
-phantom_resource <|--- azure_security_assessment
 phantom_resource <|--- azure_security_pricing
 phantom_resource <|--- azure_storage_account_deleted
 azure_usage <|--- azure_storage_account_usage
@@ -297,15 +284,12 @@ quota <|--- load_balancer_quota
 region <|--- microsoft_graph_organization_root
 quota <|--- network_quota
 region <|--- onelogin_region
-region <|--- onprem_region
 resource <|--- phantom_resource
 phantom_resource <|--- quota
 phantom_resource <|--- region
 region <|--- slack_region
 quota <|--- type
 type <|--- volume_type
-zone <|--- vsphere_cluster
-region <|--- vsphere_data_center
 phantom_resource <|--- zone
 
 @enduml

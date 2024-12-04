@@ -164,7 +164,9 @@ class aws_sqs_redrive_policy {
 **max_receive_count**: int64
 }
 class queue {
-
+**approximate_message_count**: int64
+**message_retention_period_days**: int64
+**queue_type**: queue_type
 }
 class resource {
 **age**: duration

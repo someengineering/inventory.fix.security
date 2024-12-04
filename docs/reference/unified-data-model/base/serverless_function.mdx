@@ -47,6 +47,9 @@ class aws_lambda_function {
 class azure_web_app {
 
 }
+class gcp_cloud_function {
+
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -60,11 +63,12 @@ class resource {
 **tags**: dictionary[string, string]
 }
 class serverless_function {
-
+**memory_size**: int64
 }
 serverless_function <|--- aws_cloudfront_function
 serverless_function <|--- aws_lambda_function
 serverless_function <|--- azure_web_app
+serverless_function <|--- gcp_cloud_function
 resource <|--- serverless_function
 
 @enduml

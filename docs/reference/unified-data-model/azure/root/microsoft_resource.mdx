@@ -83,10 +83,16 @@ class azure_authorization_management_lock {
 class azure_authorization_role_assignment {
 
 }
-class azure_resource_group {
+class azure_monitor_activity_log_alert {
 
 }
-class azure_security_assessment {
+class azure_monitor_metric_alert {
+
+}
+class azure_monitor_scheduled_query_rule {
+
+}
+class azure_resource_group {
 
 }
 class azure_sql_server_ad_administrator {
@@ -99,9 +105,11 @@ class microsoft_resource {
 
 }
 azure_authorization_management_lock -[#1A83AF]-> microsoft_resource
+azure_monitor_activity_log_alert -[#1A83AF]-> microsoft_resource
+azure_monitor_metric_alert -[#1A83AF]-> microsoft_resource
+azure_monitor_scheduled_query_rule -[#1A83AF]-> microsoft_resource
 azure_resource_group -[#1A83AF]-> azure_authorization_role_assignment
 azure_resource_group -[#1A83AF]-> microsoft_resource
-azure_security_assessment -[#1A83AF]-> microsoft_resource
 azure_sql_server_ad_administrator -[#1A83AF]-> microsoft_resource
 azure_sql_server_managed_instance_ad_administrator -[#1A83AF]-> microsoft_resource
 microsoft_resource -[#1A83AF]-> azure_authorization_role_assignment

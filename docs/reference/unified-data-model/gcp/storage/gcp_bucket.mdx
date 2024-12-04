@@ -128,7 +128,8 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
 class bucket {
-
+**encryption_enabled**: boolean
+**versioning_enabled**: boolean
 }
 class gcp_action {
 **storage_class**: string
@@ -163,7 +164,6 @@ class gcp_bucket {
 **storage_class**: string
 **time_created**: datetime
 **updated**: datetime
-**versioning_enabled**: boolean
 }
 class gcp_bucket_access_control {
 **bucket**: string

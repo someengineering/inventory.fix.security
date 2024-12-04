@@ -4,7 +4,7 @@ sidebar_label: DynamoDB Table
 
 # `aws_dynamodb_table`
 
-- Categories: Database
+- Categories: Compute, Database
 - Service: dynamodb
 - Provider Link: [DynamoDB Table](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html)
 
@@ -46,11 +46,16 @@ class aws_dynamodb_table {
 class aws_resource {
 
 }
+class database {
+
+}
 class resource {
 
 }
 aws_resource <|--- aws_dynamodb_table
+database <|--- aws_dynamodb_table
 resource <|--- aws_resource
+resource <|--- database
 
 @enduml
 ```
@@ -97,14 +102,10 @@ class aws_kinesis_stream {
 class aws_kms_key {
 
 }
-class aws_ssm_resource_compliance {
-
-}
 aws_backup_protected_resource -[#1A83AF]-> aws_dynamodb_table
 aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
 aws_dynamodb_table -[#1A83AF]-> aws_kms_key
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
-aws_ssm_resource_compliance -[#1A83AF]-> aws_dynamodb_table
 
 @enduml
 ```
@@ -255,6 +256,17 @@ class aws_dynamodb_table_class_summary {
 class aws_resource {
 **arn**: string
 }
+class database {
+**db_endpoint**: string
+**db_publicly_accessible**: boolean
+**db_status**: database_instance_status
+**db_type**: string
+**db_version**: string
+**instance_type**: string
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -289,7 +301,9 @@ aws_dynamodb_table --> aws_dynamodb_sse_description
 aws_dynamodb_table --> aws_dynamodb_stream_specification
 aws_dynamodb_table --> aws_dynamodb_table_class_summary
 aws_resource <|--- aws_dynamodb_table
+database <|--- aws_dynamodb_table
 resource <|--- aws_resource
+resource <|--- database
 
 @enduml
 ```

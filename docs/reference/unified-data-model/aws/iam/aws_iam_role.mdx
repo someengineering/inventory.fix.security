@@ -110,9 +110,6 @@ class aws_bedrock_agent_flow_version {
 class aws_bedrock_agent_knowledge_base {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_evaluation_job {
 
 }
@@ -192,7 +189,6 @@ class aws_sns_subscription {
 
 }
 aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_knowledge_base
-aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_agent_flow -[#1A83AF]-> aws_bedrock_agent_flow_version
 aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 aws_iam_role -[#1A83AF]-> aws_apigateway_authorizer
@@ -200,7 +196,6 @@ aws_iam_role -[#1A83AF]-> aws_bedrock_agent
 aws_iam_role -[#1A83AF]-> aws_bedrock_agent_flow
 aws_iam_role -[#1A83AF]-> aws_bedrock_agent_flow_version
 aws_iam_role -[#1A83AF]-> aws_bedrock_agent_knowledge_base
-aws_iam_role -[#1A83AF]-> aws_bedrock_agent_version
 aws_iam_role -[#1A83AF]-> aws_bedrock_evaluation_job
 aws_iam_role -[#1A83AF]-> aws_bedrock_model_customization_job
 aws_iam_role -[#1A83AF]-> aws_cognito_group

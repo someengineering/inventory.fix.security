@@ -91,9 +91,6 @@ class aws_bedrock_agent {
 class aws_bedrock_agent_knowledge_base {
 
 }
-class aws_bedrock_agent_version {
-
-}
 class aws_bedrock_foundation_model {
 
 }
@@ -107,17 +104,12 @@ class aws_kms_key {
 
 }
 aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_knowledge_base
-aws_bedrock_agent -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_agent -[#1A83AF]-> aws_bedrock_guardrail
 aws_bedrock_agent -[#1A83AF]-> aws_kms_key
-aws_bedrock_agent_version -[#1A83AF]-> aws_bedrock_guardrail
-aws_bedrock_agent_version -[#1A83AF]-> aws_kms_key
 aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent
-aws_bedrock_foundation_model -[#1A83AF]-> aws_bedrock_agent_version
 aws_bedrock_guardrail -[#1A83AF]-> aws_kms_key
 aws_iam_role -[#1A83AF]-> aws_bedrock_agent
 aws_iam_role -[#1A83AF]-> aws_bedrock_agent_knowledge_base
-aws_iam_role -[#1A83AF]-> aws_bedrock_agent_version
 
 @enduml
 ```

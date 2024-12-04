@@ -1,22 +1,22 @@
 ---
-sidebar_label: Metric Alert
+sidebar_label: Network Application Gateway SSL Certificate
 ---
 
-# `azure_metric_alert`
+# `azure_network_application_gateway_ssl_certificate`
 
-- Categories: Management
-- Service: monitor
-- Provider Link: [Metric Alert](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric-overview)
+- Categories: Access Control, Networking, Security
+- Service: networking
+- Provider Link: [Network Application Gateway SSL Certificate](https://learn.microsoft.com/en-us/azure/application-gateway/)
 
 ## Description
 
-Azure Metric Alert is a monitoring service in Microsoft Azure that tracks specified metrics for resources. It evaluates data against predefined thresholds and triggers notifications when these thresholds are breached. Users can configure alerts for various metrics, set custom conditions, and define actions such as sending emails or executing automated responses when alert conditions are met.
+Azure Network Application Gateway SSL Certificate provides secure SSL communication, enabling encrypted traffic between the client and the gateway.
 
 ## Base Hierarchy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Hierarchy of Metric Alert"
+```kroki imgType="plantuml" imgAlt="Hierarchy of Network Application Gateway SSL Certificate"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -40,7 +40,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_metric_alert {
+class azure_network_application_gateway_ssl_certificate {
+
+}
+class certificate {
 
 }
 class microsoft_resource {
@@ -49,7 +52,9 @@ class microsoft_resource {
 class resource {
 
 }
-microsoft_resource <|--- azure_metric_alert
+certificate <|--- azure_network_application_gateway_ssl_certificate
+microsoft_resource <|--- azure_network_application_gateway_ssl_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
 
 @enduml
@@ -61,7 +66,7 @@ resource <|--- microsoft_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Metric Alert resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway SSL Certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -85,7 +90,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_metric_alert {
+class azure_network_application_gateway_ssl_certificate {
 
 }
 
@@ -98,7 +103,7 @@ class azure_metric_alert {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of Metric Alert data model"
+```kroki imgType="plantuml" imgAlt="Diagram of Network Application Gateway SSL Certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -122,23 +127,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class azure_metric_alert {
-**alert_actions**: azure_metric_alert_action[]
-**auto_mitigate**: boolean
-**description**: string
-**enabled**: boolean
-**evaluation_frequency**: string
-**is_migrated**: boolean
-**last_updated_time**: datetime
-**scopes**: string[]
-**severity**: int64
-**target_resource_region**: string
-**target_resource_type**: string
-**window_size**: string
+class azure_network_application_gateway_ssl_certificate {
+**certificate_data**: string
+**key_vault_secret_id**: string
+**public_cert_data**: string
+**ssl_password**: string
+**type**: string
 }
-class azure_metric_alert_action {
-**action_group_id**: string
-**web_hook_properties**: dictionary[string, string]
+class certificate {
+**dns_names**: string[]
+**expires**: datetime
+**sha1_fingerprint**: string
 }
 class microsoft_resource {
 **etag**: string
@@ -156,8 +155,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_metric_alert --> azure_metric_alert_action
-microsoft_resource <|--- azure_metric_alert
+certificate <|--- azure_network_application_gateway_ssl_certificate
+microsoft_resource <|--- azure_network_application_gateway_ssl_certificate
+resource <|--- certificate
 resource <|--- microsoft_resource
 
 @enduml
