@@ -4,10 +4,10 @@ updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: daily
+      interval: monthly
     commit-message:
-      prefix: '[skip ci] build'
-      prefix-development: '[skip ci] chore'
+      prefix: 'build'
+      prefix-development: 'chore'
       include: scope
     labels:
       - 🧩 dependencies
@@ -17,7 +17,7 @@ updates:
     schedule:
       interval: daily
     commit-message:
-      prefix: '[skip ci] ci'
+      prefix: 'ci'
       include: scope
     labels:
       - 🧩 dependencies
