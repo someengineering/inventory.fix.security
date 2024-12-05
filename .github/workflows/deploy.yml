@@ -17,35 +17,35 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website
         run: yarn build
-
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
 
   deploy:
-    # when you change the name of this job, also update the algolia workflow
     name: Deploy to GitHub Pages
     needs: build
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  search-index:
+    name: Update the Search Index
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
       - name: Trigger Algolia crawl
         uses: algolia/algoliasearch-crawler-github-actions@v1
         with:
