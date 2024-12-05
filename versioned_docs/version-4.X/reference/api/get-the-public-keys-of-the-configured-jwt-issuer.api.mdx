@@ -7,7 +7,7 @@ hide_title: true
 hide_table_of_contents: true
 api: {"tags":["authorization"],"responses":{"200":{"description":"The public keys of the configured JWT issuer.","content":{"application/json":{"example":"{\n  \"keys\": [\n    {\n      \"alg\": \"sha256WithRSAEncryption\",\n      \"e\": \"AQAB\",\n      \"kid\": \"fDKvq05HG0...\",\n      \"kty\": \"RSA\",\n      \"n\": \"u7cp95GkUOj...\",\n      \"use\": \"sig\",\n      \"x5c\": [ \"MIIDoTCCAomgAw...\" ],\n      \"x5t\": \"DMpDIyR...\",\n      \"x5t#S256\": \"fDKvq05HG0Oz....\"\n    }\n  ]\n}\n"}}}},"description":"Get the public keys of the configured JWT issuer.","method":"get","path":"/.well-known/jwks.json","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get the public keys of the configured JWT issuer.","description":{"type":"text/plain"},"url":{"path":[".well-known","jwks.json"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
-info_path: reference/api/fix-inventory-core-rest-api
+info_path: version-4.X/reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
 hide_send_button: true
 ---
