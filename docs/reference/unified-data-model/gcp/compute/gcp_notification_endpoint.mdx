@@ -46,11 +46,16 @@ class gcp_notification_endpoint {
 class gcp_resource {
 
 }
+class phantom_resource {
+
+}
 class resource {
 
 }
 gcp_resource <|--- gcp_notification_endpoint
+phantom_resource <|--- gcp_notification_endpoint
 resource <|--- gcp_resource
+resource <|--- phantom_resource
 
 @enduml
 ```
@@ -149,6 +154,9 @@ class gcp_resource {
 **label_fingerprint**: string
 **link**: string
 }
+class phantom_resource {
+
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -164,9 +172,11 @@ class resource {
 gcp_notification_endpoint --> gcp_deprecation_status
 gcp_notification_endpoint --> gcp_notification_endpoint_grpc_settings
 gcp_resource <|--- gcp_notification_endpoint
+phantom_resource <|--- gcp_notification_endpoint
 gcp_notification_endpoint_grpc_settings --> gcp_duration
 gcp_resource --> gcp_deprecation_status
 resource <|--- gcp_resource
+resource <|--- phantom_resource
 
 @enduml
 ```
