@@ -29,6 +29,7 @@ jobs:
           path: build
 
   deploy:
+    # when you change the name of this job, also update the algolia workflow
     name: Deploy to GitHub Pages
     needs: build
 

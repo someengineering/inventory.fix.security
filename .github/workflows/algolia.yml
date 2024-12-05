@@ -16,13 +16,13 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Wait for Netlify deployment
+      - name: Wait for pages deployment
         if: github.event_name != 'workflow_dispatch'
-        uses: probablyup/wait-for-netlify-action@3.2.0
+        uses: lewagon/wait-on-check-action@v1.3.1
         with:
-          site_id: ${{ secrets.NETLIFY_SITE_ID }}
-        env:
-          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          ref: ${{ github.ref }}
+          check-name: Deploy to GitHub Pages
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Trigger Algolia crawl
         uses: algolia/algoliasearch-crawler-github-actions@v1
         with:
