@@ -1,1 +1,1 @@
-# Please see the [Fix Inventory website/documentation contribution guide](https://inventory.fix.security/contributing/docs).
+# Please see the [Fix Inventory website/documentation contribution guide](https://fixinventory.org/contributing/docs).
