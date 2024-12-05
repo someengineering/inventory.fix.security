@@ -1,0 +1,186 @@
+---
+date: 2024-12-05
+---
+
+# 4.2.0
+
+## What's Changed
+
+### Features
+
+- [`98efe454`](https://github.com/someengineering/fixinventory/commit/98efe454) <span class="badge badge--secondary">gcp</span> Add SCC service collection (#2291)
+- [`54024e5c`](https://github.com/someengineering/fixinventory/commit/54024e5c) <span class="badge badge--secondary">gcp</span> Improve the way of collection for DiskTypes and MachineTypes (#2284)
+- [`73efbf33`](https://github.com/someengineering/fixinventory/commit/73efbf33) <span class="badge badge--secondary">gcp</span> Add Pub/Sub service collection (#2287)
+- [`c6267002`](https://github.com/someengineering/fixinventory/commit/c6267002) <span class="badge badge--secondary">gcp</span> Add metrics collection (#2283)
+- [`5b8dc075`](https://github.com/someengineering/fixinventory/commit/5b8dc075) <span class="badge badge--secondary">lib</span> Extend base resources with additional common properties (#2278)
+- [`2cccb449`](https://github.com/someengineering/fixinventory/commit/2cccb449) <span class="badge badge--secondary">aws</span> Reimplement SSM Compliance resource collection (#2280)
+- [`a18bf1af`](https://github.com/someengineering/fixinventory/commit/a18bf1af) <span class="badge badge--secondary">gcp</span> Add cloudfunctions service collection (#2276)
+- [`6a681048`](https://github.com/someengineering/fixinventory/commit/6a681048) <span class="badge badge--secondary">gcp</span> Add filestore service collection (#2277)
+- [`6d185bb3`](https://github.com/someengineering/fixinventory/commit/6d185bb3) <span class="badge badge--secondary">gcp</span> Add firestore service collection (#2275)
+- [`897e9204`](https://github.com/someengineering/fixinventory/commit/897e9204) <span class="badge badge--secondary">core</span> Add Async Streams abstraction (#2273)
+- [`309a6344`](https://github.com/someengineering/fixinventory/commit/309a6344) <span class="badge badge--secondary">azure</span> Update security assessments collection (#2266)
+- [`c22f979f`](https://github.com/someengineering/fixinventory/commit/c22f979f) <span class="badge badge--secondary">aws</span> Add searching instances also by region and make `SEVERITY_MAPPING` statically (#2272)
+- [`65c98f76`](https://github.com/someengineering/fixinventory/commit/65c98f76) <span class="badge badge--secondary">aws</span> Add collection of GuardDuty resource (#2255)
+- [`bc8eae4a`](https://github.com/someengineering/fixinventory/commit/bc8eae4a) <span class="badge badge--secondary">aws</span> Make a collection of Ec2 Instance types only for existing instances (#2264)
+- [`fc42db51`](https://github.com/someengineering/fixinventory/commit/fc42db51) <span class="badge badge--secondary">lib</span> Allow marking resource classes as not exportable (#2259)
+- [`23cd836a`](https://github.com/someengineering/fixinventory/commit/23cd836a) <span class="badge badge--secondary">lib</span> Define separate assessment section (#2257)
+- [`d77c65cc`](https://github.com/someengineering/fixinventory/commit/d77c65cc) <span class="badge badge--secondary">aws</span> Ignore datetime for history by default (#2256)
+- [`a0083255`](https://github.com/someengineering/fixinventory/commit/a0083255) <span class="badge badge--secondary">plugins/onprem</span> Move onprem plugin to dedicated repository (#2251)
+- [`1d0504ac`](https://github.com/someengineering/fixinventory/commit/1d0504ac) <span class="badge badge--secondary">aws</span> Revert "[aws][feat] Add collection of Inspector resource (#2242)" (#2246)
+- [`8626219a`](https://github.com/someengineering/fixinventory/commit/8626219a) <span class="badge badge--secondary">aws</span> Add collection of Inspector resource (#2242)
+- [`6cacdf95`](https://github.com/someengineering/fixinventory/commit/6cacdf95) <span class="badge badge--secondary">azure</span> : Add more connections from monitor (#2239)
+- [`47a41a01`](https://github.com/someengineering/fixinventory/commit/47a41a01) <span class="badge badge--secondary">plugins/vsphere</span> Move vSphere plugin to dedicated repository (#2243)
+- [`b37bc55c`](https://github.com/someengineering/fixinventory/commit/b37bc55c) <span class="badge badge--secondary">azure</span> Collect certificates from sub resources (#2225)
+- [`f3a94606`](https://github.com/someengineering/fixinventory/commit/f3a94606) <span class="badge badge--secondary">core</span> Allows retrieving the model from plugins instead of db (#2232)
+- [`8482aa6d`](https://github.com/someengineering/fixinventory/commit/8482aa6d) <span class="badge badge--secondary">azure</span> : Improved AzureComputeDiskTypePricing deletion (#2231)
+- [`e27feda8`](https://github.com/someengineering/fixinventory/commit/e27feda8) <span class="badge badge--secondary">aws</span> Add additional policies to the cloudwatch (#2216)
+- [`1022d231`](https://github.com/someengineering/fixinventory/commit/1022d231) Cleanup (#2224)
+- [`25d12134`](https://github.com/someengineering/fixinventory/commit/25d12134) <span class="badge badge--secondary">aws</span> Add lifecycle policy to the S3 resource (#2220)
+- [`a2853406`](https://github.com/someengineering/fixinventory/commit/a2853406) <span class="badge badge--secondary">gcp</span> Add Vertex AI collection (#2211)
+- [`06ff0a3f`](https://github.com/someengineering/fixinventory/commit/06ff0a3f) <span class="badge badge--secondary">azure</span> Connect CosmosDB resources to the location instead of subscription (#2214)
+- [`70e1eec9`](https://github.com/someengineering/fixinventory/commit/70e1eec9) <span class="badge badge--secondary">core</span> Add node command (#2212)
+- [`4ba56c19`](https://github.com/someengineering/fixinventory/commit/4ba56c19) <span class="badge badge--secondary">plugin</span> Better docs and docs_url (#2210)
+- [`14887b64`](https://github.com/someengineering/fixinventory/commit/14887b64) <span class="badge badge--secondary">core</span> Add kind description in multi tenant mode (#2204)
+- [`550f6bf1`](https://github.com/someengineering/fixinventory/commit/550f6bf1) <span class="badge badge--secondary">aws</span> : Add more policies to collect (#2202)
+- [`146cd102`](https://github.com/someengineering/fixinventory/commit/146cd102) <span class="badge badge--secondary">core</span> list: allow for listing props with default props (#2200)
+- [`077a8086`](https://github.com/someengineering/fixinventory/commit/077a8086) <span class="badge badge--secondary">core</span> Add IAM edge collection (#2198)
+- [`50ec1d35`](https://github.com/someengineering/fixinventory/commit/50ec1d35) <span class="badge badge--secondary">aws</span> Bedrock resources collection (#2190)
+- [`6d11a8a9`](https://github.com/someengineering/fixinventory/commit/6d11a8a9) <span class="badge badge--secondary">lib</span> Unify groups and categories (#2194)
+- [`62a867e8`](https://github.com/someengineering/fixinventory/commit/62a867e8) <span class="badge badge--secondary">lib</span> Improve model check (#2193)
+- [`90139f5c`](https://github.com/someengineering/fixinventory/commit/90139f5c) <span class="badge badge--secondary">hetzner</span> Initial Hetzner Cloud support (#2168)
+- [`66cbd9e3`](https://github.com/someengineering/fixinventory/commit/66cbd9e3) <span class="badge badge--secondary">plugins</span> Proper name, icon and group for AWS, Azure and GCP (#2188)
+- [`36ddfa5b`](https://github.com/someengineering/fixinventory/commit/36ddfa5b) <span class="badge badge--secondary">core</span> Allow filtering edge properties (#2186)
+- [`85fbe2d2`](https://github.com/someengineering/fixinventory/commit/85fbe2d2) <span class="badge badge--secondary">azure</span> Azure adjust names and connections (#2183)
+- [`f7d3dac7`](https://github.com/someengineering/fixinventory/commit/f7d3dac7) <span class="badge badge--secondary">core</span> Allow edge properties (#2182)
+- [`467a6638`](https://github.com/someengineering/fixinventory/commit/467a6638) <span class="badge badge--secondary">core</span> Use database locks to perform migration (#2184)
+- [`c3a1bddb`](https://github.com/someengineering/fixinventory/commit/c3a1bddb) <span class="badge badge--secondary">aws</span> Add amazon Q resource collection (#2175)
+- [`6be0feb2`](https://github.com/someengineering/fixinventory/commit/6be0feb2) <span class="badge badge--secondary">azure</span> Add machine learning resources collection (#2174)
+- [`70cee4c5`](https://github.com/someengineering/fixinventory/commit/70cee4c5) <span class="badge badge--secondary">core</span> allowlist events for posthog (#2177)
+- [`0b83034f`](https://github.com/someengineering/fixinventory/commit/0b83034f) <span class="badge badge--secondary">azure</span> Add PostgreSQL collection for cosmos-db resources (#2170)
+- [`4fffcfa9`](https://github.com/someengineering/fixinventory/commit/4fffcfa9) <span class="badge badge--secondary">azure</span> Add cosmos-db resources collection (#2167)
+- [`4b9b7184`](https://github.com/someengineering/fixinventory/commit/4b9b7184) <span class="badge badge--secondary">azure</span> Add WebApp (#2164)
+- [`3c831f8c`](https://github.com/someengineering/fixinventory/commit/3c831f8c) <span class="badge badge--secondary">azure</span> Improve KeyVault (#2163)
+- [`c06a775b`](https://github.com/someengineering/fixinventory/commit/c06a775b) <span class="badge badge--secondary">core</span> account security score details (#2162)
+- [`89ffc7c4`](https://github.com/someengineering/fixinventory/commit/89ffc7c4) <span class="badge badge--secondary">gcp</span> Save parsing with feedback (#2160)
+- [`34d50ba3`](https://github.com/someengineering/fixinventory/commit/34d50ba3) <span class="badge badge--secondary">azure</span> Add flow log resource collection (#2159)
+- [`fdaeb537`](https://github.com/someengineering/fixinventory/commit/fdaeb537) <span class="badge badge--secondary">azure</span> Monitoring and KeyVault resources (#2156)
+- [`f692309a`](https://github.com/someengineering/fixinventory/commit/f692309a) <span class="badge badge--secondary">azure</span> : Update configs collection for mysql and postgresql (#2157)
+- [`3410e814`](https://github.com/someengineering/fixinventory/commit/3410e814) <span class="badge badge--secondary">azure</span> Add postgres service collection (#2155)
+- [`4125af70`](https://github.com/someengineering/fixinventory/commit/4125af70) <span class="badge badge--secondary">azure</span> Improve SQL Server (#2151)
+- [`3de8958f`](https://github.com/someengineering/fixinventory/commit/3de8958f) <span class="badge badge--secondary">azure</span> Add support for mysql resource collection (#2150)
+- [`4f24d5ba`](https://github.com/someengineering/fixinventory/commit/4f24d5ba) <span class="badge badge--secondary">core</span> Add history timeline (#2152)
+- [`a7cdc097`](https://github.com/someengineering/fixinventory/commit/a7cdc097) <span class="badge badge--secondary">azure</span> : Add prefix 'server' to the SQL resources (#2148)
+- [`ea2c97fe`](https://github.com/someengineering/fixinventory/commit/ea2c97fe) <span class="badge badge--secondary">azure</span> Add policies (#2141)
+- [`4f4d80eb`](https://github.com/someengineering/fixinventory/commit/4f4d80eb) <span class="badge badge--secondary">azure</span> Add support for sql resource collection (#2144)
+
+### Fixes
+
+- [`d61bb368`](https://github.com/someengineering/fixinventory/commit/d61bb368) docker-compose no pull info (#2297)
+- [`0d969e4f`](https://github.com/someengineering/fixinventory/commit/0d969e4f) docker-compose -> docker compose (#2295)
+- [`3fff8b57`](https://github.com/someengineering/fixinventory/commit/3fff8b57) <span class="badge badge--secondary">aws</span> : Update S3 bucket tests for updated implementation (#2281)
+- [`e0c1ae7d`](https://github.com/someengineering/fixinventory/commit/e0c1ae7d) <span class="badge badge--secondary">azure</span> : Ignore errors from Azure side (#2263)
+- [`ebb67bec`](https://github.com/someengineering/fixinventory/commit/ebb67bec) <span class="badge badge--secondary">aws</span> Collect and connect Inspector resources properly (#2253)
+- [`2022f484`](https://github.com/someengineering/fixinventory/commit/2022f484) <span class="badge badge--secondary">azure</span> Metadata (#2261)
+- [`aceca6bc`](https://github.com/someengineering/fixinventory/commit/aceca6bc) <span class="badge badge--secondary">core</span> Use id and name for descendant count (#2271)
+- [`e83ee7a7`](https://github.com/someengineering/fixinventory/commit/e83ee7a7) Store access levels directly on the reported section (#2265)
+- [`67091085`](https://github.com/someengineering/fixinventory/commit/67091085) <span class="badge badge--secondary">core</span> Count failing resources correctly (#2269)
+- [`fee7b5a0`](https://github.com/someengineering/fixinventory/commit/fee7b5a0) Enable access_edges via env variable (#2262)
+- [`d2acc740`](https://github.com/someengineering/fixinventory/commit/d2acc740) <span class="badge badge--secondary">aws</span> Ignore wrong history events (#2260)
+- [`3ba74a90`](https://github.com/someengineering/fixinventory/commit/3ba74a90) Add sts:AssumeRole action when checking roles (#2244)
+- [`4d6ff4a7`](https://github.com/someengineering/fixinventory/commit/4d6ff4a7) Add an access section next to permissions in IAM edges (#2254)
+- [`015bbfee`](https://github.com/someengineering/fixinventory/commit/015bbfee) Make resource_policy abstract method to trigger typecheck (#2252)
+- [`53b45ef1`](https://github.com/someengineering/fixinventory/commit/53b45ef1) <span class="badge badge--secondary">aws</span> Turn off access edge collection (#2248)
+- [`4381b4fb`](https://github.com/someengineering/fixinventory/commit/4381b4fb) <span class="badge badge--secondary">core</span> Export property documentation for configs (#2245)
+- [`20335dd2`](https://github.com/someengineering/fixinventory/commit/20335dd2) Wrap scp collection into try catch (#2241)
+- [`d3c88331`](https://github.com/someengineering/fixinventory/commit/d3c88331) Enable access edges collection (#2238)
+- [`42c7c446`](https://github.com/someengineering/fixinventory/commit/42c7c446) Collect SCPs for access edges (#2235)
+- [`d989475c`](https://github.com/someengineering/fixinventory/commit/d989475c) <span class="badge badge--secondary">aws</span> Handle AWS server errors properly (#2236)
+- [`19801757`](https://github.com/someengineering/fixinventory/commit/19801757) <span class="badge badge--secondary">azure</span> Reimplement resource type collection of compute, psql, mysql and ml services (#2234)
+- [`8adf359d`](https://github.com/someengineering/fixinventory/commit/8adf359d) <span class="badge badge--secondary">core</span> Add kinds to content hash (#2233)
+- [`303e661e`](https://github.com/someengineering/fixinventory/commit/303e661e) <span class="badge badge--secondary">azure</span> Define Phantom Resources (#2230)
+- [`12878a16`](https://github.com/someengineering/fixinventory/commit/12878a16) <span class="badge badge--secondary">aws</span> Add missing resource docs (#2227)
+- [`73218b40`](https://github.com/someengineering/fixinventory/commit/73218b40) <span class="badge badge--secondary">azure</span> Compute unused regions as last step (#2228)
+- [`c6e9b82a`](https://github.com/someengineering/fixinventory/commit/c6e9b82a) Access Edges (#2195)
+- [`bce4ffcb`](https://github.com/someengineering/fixinventory/commit/bce4ffcb) Better detect and remove unused regions (#2222)
+- [`7f41f800`](https://github.com/someengineering/fixinventory/commit/7f41f800) <span class="badge badge--secondary">core</span> move slotted data to previous slot, not next (#2226)
+- [`e0f8435b`](https://github.com/someengineering/fixinventory/commit/e0f8435b) <span class="badge badge--secondary">gcp</span> : Deduplicate error messages in accumulator (#2223)
+- [`46953708`](https://github.com/someengineering/fixinventory/commit/46953708) <span class="badge badge--secondary">core</span> Merge edge and vertex and unfold in code (#2217)
+- [`5aee8cbc`](https://github.com/someengineering/fixinventory/commit/5aee8cbc) <span class="badge badge--secondary">core</span> Compute descendant count based on ancestors section not g… (#2213)
+- [`a5267a37`](https://github.com/someengineering/fixinventory/commit/a5267a37) <span class="badge badge--secondary">azure</span> : Fix `connect_in_graph` method of `AzureAuthorizationRoleAssignment` resource (#2215)
+- [`47c62533`](https://github.com/someengineering/fixinventory/commit/47c62533) <span class="badge badge--secondary">core</span> Multipart name (#2203)
+- [`5d39d027`](https://github.com/someengineering/fixinventory/commit/5d39d027) <span class="badge badge--secondary">azure</span> Ignore props for history (#2201)
+- [`61e97ea3`](https://github.com/someengineering/fixinventory/commit/61e97ea3) <span class="badge badge--secondary">core</span> Traverse the graph by walking all possible paths when an edge filter is present (#2197)
+- [`21ddc09a`](https://github.com/someengineering/fixinventory/commit/21ddc09a) <span class="badge badge--secondary">core</span> Persist parent update structure in an atomic way (#2196)
+- [`ac8c4a08`](https://github.com/someengineering/fixinventory/commit/ac8c4a08) <span class="badge badge--secondary">azure</span> : Fix unnecessary abstract class kinds (#2191)
+- [`d7fcb849`](https://github.com/someengineering/fixinventory/commit/d7fcb849) <span class="badge badge--secondary">plugins</span> Add missing metadata (#2192)
+- [`e44bb355`](https://github.com/someengineering/fixinventory/commit/e44bb355) <span class="badge badge--secondary">core</span> Fix model filter condition (#2189)
+- [`2b99e41a`](https://github.com/someengineering/fixinventory/commit/2b99e41a) Add IamPrincipal base resource (#2187)
+- [`f11d8717`](https://github.com/someengineering/fixinventory/commit/f11d8717) <span class="badge badge--secondary">core</span> Surrogate system data (#2185)
+- [`16df325e`](https://github.com/someengineering/fixinventory/commit/16df325e) <span class="badge badge--secondary">core</span> arangosearch predicates with array access (#2179)
+- [`9256dace`](https://github.com/someengineering/fixinventory/commit/9256dace) <span class="badge badge--secondary">core</span> Do not use arangosearch for nested array context searches (#2178)
+- [`d4f3a035`](https://github.com/someengineering/fixinventory/commit/d4f3a035) <span class="badge badge--secondary">core</span> latest azure check (#2172)
+- [`e0008e56`](https://github.com/someengineering/fixinventory/commit/e0008e56) Make report checks lookup safer (#2171)
+- [`89cf8177`](https://github.com/someengineering/fixinventory/commit/89cf8177) <span class="badge badge--secondary">core</span> History timeseries slotter (#2169)
+- [`00b95816`](https://github.com/someengineering/fixinventory/commit/00b95816) <span class="badge badge--secondary">gcp</span> : Duplicate checksum error in sql service (#2166)
+- [`59e53ccb`](https://github.com/someengineering/fixinventory/commit/59e53ccb) <span class="badge badge--secondary">core</span> Move timeline to request time after (#2165)
+- [`dcd08d96`](https://github.com/someengineering/fixinventory/commit/dcd08d96) <span class="badge badge--secondary">gcp</span> Improve error message (#2161)
+- [`2278030e`](https://github.com/someengineering/fixinventory/commit/2278030e) <span class="badge badge--secondary">core</span> Use consistent reading when updating the account (#2158)
+- [`c8bb7918`](https://github.com/someengineering/fixinventory/commit/c8bb7918) <span class="badge badge--secondary">gcp</span> Disk size types (#2154)
+- [`57a7d38c`](https://github.com/someengineering/fixinventory/commit/57a7d38c) <span class="badge badge--secondary">shell</span> Do not warn when the model cannot be loaded (#2153)
+- [`0c4ee17a`](https://github.com/someengineering/fixinventory/commit/0c4ee17a) <span class="badge badge--secondary">azure</span> Better names (#2149)
+- [`73486084`](https://github.com/someengineering/fixinventory/commit/73486084) <span class="badge badge--secondary">core</span> Security sync by always marking the resource vulnerable (#2147)
+- [`4f0f9734`](https://github.com/someengineering/fixinventory/commit/4f0f9734) <span class="badge badge--secondary">core</span> History search with sort and fulltext terms (#2146)
+- [`c710cf6e`](https://github.com/someengineering/fixinventory/commit/c710cf6e) <span class="badge badge--secondary">core</span> Fix nested with statements (#2145)
+
+### Documentation
+
+- [`786318ae`](https://github.com/someengineering/fixinventory/commit/786318ae) Update README.md fix Get Started Guide Link (Fixes: 2285 https://github.com/someengineering/fixinventory/issues/2285) (#2286)
+- [`a42fa7ea`](https://github.com/someengineering/fixinventory/commit/a42fa7ea) Update README.md (#2250)
+- [`732e13fa`](https://github.com/someengineering/fixinventory/commit/732e13fa) Added images to README.md (#2249)
+- [`a6afc70a`](https://github.com/someengineering/fixinventory/commit/a6afc70a) Update README.md with details (#2247)
+- [`68c61523`](https://github.com/someengineering/fixinventory/commit/68c61523) Update Link in overview of README.md (#2173)
+
+### Chores
+
+- [`07e0ded1`](https://github.com/someengineering/fixinventory/commit/07e0ded1) Bump libs (#2293)
+- [`4c981891`](https://github.com/someengineering/fixinventory/commit/4c981891) Bump version (#2292)
+- [`48a3e691`](https://github.com/someengineering/fixinventory/commit/48a3e691) Use PostHog default host (#2290)
+- [`43a1200a`](https://github.com/someengineering/fixinventory/commit/43a1200a) Adjust Code-Owners (#2288)
+- [`bbd5b4f2`](https://github.com/someengineering/fixinventory/commit/bbd5b4f2) Bump libs (#2282)
+- [`aeeee140`](https://github.com/someengineering/fixinventory/commit/aeeee140) Bump Libs (#2279)
+- [`f960bd8c`](https://github.com/someengineering/fixinventory/commit/f960bd8c) Bump libs (#2270)
+- [`a0d35cb6`](https://github.com/someengineering/fixinventory/commit/a0d35cb6) <span class="badge badge--secondary">plugins/posthog</span> Log conversion errors (#2268)
+- [`381f8a11`](https://github.com/someengineering/fixinventory/commit/381f8a11) Remove unused gitignore entries (#2267)
+- [`b9595dd9`](https://github.com/someengineering/fixinventory/commit/b9595dd9) Bump fixcompliance to latest
+- [`84f055d0`](https://github.com/someengineering/fixinventory/commit/84f055d0) Add a link to contribution guidelines (#2237)
+- [`5f83fed3`](https://github.com/someengineering/fixinventory/commit/5f83fed3) Recreate requirements (#2229)
+- [`6f8a26bf`](https://github.com/someengineering/fixinventory/commit/6f8a26bf) Bump Libs (#2221)
+- [`207397fa`](https://github.com/someengineering/fixinventory/commit/207397fa) Move to Python 3.12 (#2219)
+- [`0dd8f240`](https://github.com/someengineering/fixinventory/commit/0dd8f240) <span class="badge badge--secondary">lib</span> Rename internal properties with underscore (#2209)
+- [`3136b95c`](https://github.com/someengineering/fixinventory/commit/3136b95c) <span class="badge badge--secondary">lib</span> Dedicated property for provider_link (#2208)
+- [`0c2bc07e`](https://github.com/someengineering/fixinventory/commit/0c2bc07e) Remove phantom property (#2207)
+- [`634d5275`](https://github.com/someengineering/fixinventory/commit/634d5275) <span class="badge badge--secondary">azure</span> Adjust service names (#2205)
+- [`1735b141`](https://github.com/someengineering/fixinventory/commit/1735b141) Bump Libs (#2199)
+- [`fe600472`](https://github.com/someengineering/fixinventory/commit/fe600472) Bump fixcompliance to latest
+- [`33eff4dd`](https://github.com/someengineering/fixinventory/commit/33eff4dd) Bump fixcompliance to latest
+- [`a0efd4ff`](https://github.com/someengineering/fixinventory/commit/a0efd4ff) <span class="badge badge--secondary">aws</span> Documentation for AWS Iam and SSO (#2181)
+- [`7cda2327`](https://github.com/someengineering/fixinventory/commit/7cda2327) <span class="badge badge--secondary">azure</span> Remove unused classes (#2180)
+- [`bdc974a1`](https://github.com/someengineering/fixinventory/commit/bdc974a1) Bump libs (#2176)
+- [`3b3c4cf2`](https://github.com/someengineering/fixinventory/commit/3b3c4cf2) Bump fixcompliance to latest
+- [`d87f9f89`](https://github.com/someengineering/fixinventory/commit/d87f9f89) Bump fixcompliance to latest
+- [`5e3bc854`](https://github.com/someengineering/fixinventory/commit/5e3bc854) Bump fixcompliance to latest
+- [`3b7af84a`](https://github.com/someengineering/fixinventory/commit/3b7af84a) Bump fixcompliance to latest
+- [`1c939020`](https://github.com/someengineering/fixinventory/commit/1c939020) Bump fixcompliance to latest
+
+### feature
+
+- [`76f1e08c`](https://github.com/someengineering/fixinventory/commit/76f1e08c) <span class="badge badge--secondary">lib</span> Add the source of resource kind (#2218)
+
+{/* truncate */}
+
+## Docker Images
+
+- `somecr.io/someengineering/fixcore:4.2.0`
+- `somecr.io/someengineering/fixworker:4.2.0`
+- `somecr.io/someengineering/fixshell:4.2.0`
+- `somecr.io/someengineering/fixmetrics:4.2.0`
