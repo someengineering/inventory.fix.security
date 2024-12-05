@@ -18,10 +18,10 @@ const isProd =
 
 const config: Config = {
   organizationName: 'someengineering',
-  projectName: 'inventory.fix.security',
+  projectName: 'fixinventory.org',
   deploymentBranch: 'gh-pages',
   title: 'Fix Inventory by Some Engineering Inc.',
-  url: 'https://inventory.fix.security',
+  url: 'https://fixinventory.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -40,7 +40,7 @@ const config: Config = {
         {
           src: 'https://plausible.io/js/script.js',
           defer: true,
-          'data-domain': 'inventory.fix.security',
+          'data-domain': 'fixinventory.org',
         },
       ]
     : [],

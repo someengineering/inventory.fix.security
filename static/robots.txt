@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://inventory.fix.security/sitemap.xml
+Sitemap: https://fixinventory.org/sitemap.xml
