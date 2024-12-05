@@ -1,4 +1,4 @@
-# [Fix Inventory Website](https://fixinventory.org/)
+# [Fix Inventory Website](https://fixinventory.org)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e5843266-740b-40d5-ae38-3d38ba3c0456/deploy-status)](https://app.netlify.com/sites/fix-inventory/deploys)
 
