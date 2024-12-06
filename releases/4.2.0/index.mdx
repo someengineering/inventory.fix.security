@@ -4,6 +4,33 @@ date: 2024-12-05
 
 # 4.2.0
 
+## Highlights
+
+### Google Cloud Platform
+
+- **Expanded Service Support**: Added collections for Pub/Sub, Cloud Functions, Firestore, Filestore, and SCC services.
+- **AI Service Support**: Added support for Vertex AI resources.
+- **Enhanced Insights**: Improved metrics collection for major cloud services.
+
+### Amazon Web Services
+
+- **Broader Security Coverage**: Added collections for SSM Compliance, GuardDuty, and Inspector resources.
+- **AI Service Support**: Fix now supports SageMaker, Bedrock, and Q services.
+- **Policy and Lifecycle Enhancements**: Lifecycle policies for S3 and expanded CloudWatch policies.
+
+### Microsoft Azure
+
+- **New Resource Support**: Added collections for PostgreSQL, CosmosDB, SQL Server, and Flow Logs.
+- **AI Service Support**: Added support for Machine Learning resources.
+- **Improved Monitoring and KeyVault Integration**: Enhanced visibility and security for critical Azure resources.
+- **New Security Benchmark**: Azure CIS 2.1 has been added to the list of benchmarks.
+
+### Core and Library Enhancements
+
+- **Resource Abstraction**: More common properties added to base resources.
+- **Categories**: Unified resource categories for better organization.
+- **Consistency**: Improved consistency checks.
+
 ## What's Changed
 
 ### Features
@@ -26,7 +53,6 @@ date: 2024-12-05
 - [`23cd836a`](https://github.com/someengineering/fixinventory/commit/23cd836a) <span class="badge badge--secondary">lib</span> Define separate assessment section (#2257)
 - [`d77c65cc`](https://github.com/someengineering/fixinventory/commit/d77c65cc) <span class="badge badge--secondary">aws</span> Ignore datetime for history by default (#2256)
 - [`a0083255`](https://github.com/someengineering/fixinventory/commit/a0083255) <span class="badge badge--secondary">plugins/onprem</span> Move onprem plugin to dedicated repository (#2251)
-- [`1d0504ac`](https://github.com/someengineering/fixinventory/commit/1d0504ac) <span class="badge badge--secondary">aws</span> Revert "[aws][feat] Add collection of Inspector resource (#2242)" (#2246)
 - [`8626219a`](https://github.com/someengineering/fixinventory/commit/8626219a) <span class="badge badge--secondary">aws</span> Add collection of Inspector resource (#2242)
 - [`6cacdf95`](https://github.com/someengineering/fixinventory/commit/6cacdf95) <span class="badge badge--secondary">azure</span> : Add more connections from monitor (#2239)
 - [`47a41a01`](https://github.com/someengineering/fixinventory/commit/47a41a01) <span class="badge badge--secondary">plugins/vsphere</span> Move vSphere plugin to dedicated repository (#2243)
