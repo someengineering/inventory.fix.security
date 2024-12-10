@@ -13,8 +13,7 @@ import versions from './versions.json';
 
 const isDev = process.env.NODE_ENV === 'development';
 const isBuildFast = isDev || !!process.env.BUILD_FAST;
-const isProd =
-  process.env.CURRENT_BRANCH === 'main' && process.env.CONTEXT === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 const config: Config = {
   organizationName: 'someengineering',
