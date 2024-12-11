@@ -1,11 +1,11 @@
 ---
 id: get-a-configuration-by-its-id
 title: "Get a configuration by its id"
-description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+description: "Fetch a configuration by id."
 sidebar_label: "Get a configuration by its id"
 hide_title: true
 hide_table_of_contents: true
-api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch a configuration by id.\n","tags":["config"],"parameters":[{"name":"config_id","required":true,"in":"path","description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"200":{"description":"The configuration","headers":{"Fix-Config-Revision":{"description":"The revision of this config","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"404":{"description":"No configuration for this key."}},"method":"get","path":"/config/{config_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get a configuration by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch a configuration by id.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+api: {"description":"Fetch a configuration by id.\n","tags":["config"],"parameters":[{"name":"config_id","required":true,"in":"path","description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"200":{"description":"The configuration","headers":{"Fix-Config-Revision":{"description":"The revision of this config","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"404":{"description":"No configuration for this key."}},"method":"get","path":"/config/{config_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Fix Inventory Core REST API","version":"V1"},"postman":{"name":"Get a configuration by its id","description":{"content":"Fetch a configuration by id.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: reference/api/fix-inventory-core-rest-api
 custom_edit_url: null
@@ -40,7 +40,7 @@ import TabItem from "@theme/TabItem";
   
 </MethodEndpoint>
 
-**Experimental**: This API is not stable and might be subject of change.<br/> Fetch a configuration by id.
+Fetch a configuration by id.
 
 <Heading
   id={"request"}
