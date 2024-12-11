@@ -124,7 +124,7 @@ const config: Config = {
                   [
                     remarkKroki,
                     {
-                      krokiBase: 'https://kroki.some.engineering',
+                      krokiBase: 'https://kroki.io',
                       lang: 'kroki',
                       imgRefDir: '/img/kroki',
                       imgDir: 'static/img/kroki',
