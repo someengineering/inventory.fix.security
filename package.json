@@ -29,7 +29,7 @@
     "@docusaurus/core": "3.4.0",
     "@docusaurus/plugin-pwa": "3.4.0",
     "@docusaurus/plugin-sitemap": "3.4.0",
-    "@docusaurus/preset-classic": "3.4.0",
+    "@docusaurus/preset-classic": "3.6.3",
     "@docusaurus/theme-mermaid": "3.4.0",
     "@fec/remark-a11y-emoji": "4.0.2",
     "@fontsource-variable/plus-jakarta-sans": "5.0.21",
