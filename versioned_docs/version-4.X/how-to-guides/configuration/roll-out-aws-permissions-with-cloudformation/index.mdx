@@ -18,7 +18,7 @@ The source code can be found in the [`someengineering/fixinventory-cf` GitHub re
 
 :::note
 
-If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `FixInventoryAccess` role is [https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-role.template](https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-role.template).
+If you prefer to deploy the StackSet yourself, you can download the template from our CDN: [https://cdn.some.engineering/fix/aws/latest/fixinventory-role.template](https://cdn.some.engineering/fix/aws/latest/fixinventory-role.template).
 
 :::
 
@@ -45,9 +45,11 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 3. Click this button to open the **Quick create stack** page:
 
-   [<span class="button button--primary">Deploy StackSet</span>](https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-stackset.template)
+   [<span class="button button--primary">Deploy Stack</span>](https://console.aws.amazon.com/cloudformation/home#/stacks/create)
 
-4. Enter a stack name (e.g., `FixInventoryAccess`) and configure the four parameters as follows:
+4. Specify the template by selecting "Upload a template file" and upload the file. Press Next.
+  
+5. Enter a stack name (e.g., `FixInventoryAccess`) and configure the four parameters as follows:
 
    | Parameter | Description |
    | --- | --- |
@@ -58,17 +60,17 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
    ![Stack Configuration](./img/configure_the_stack.png)
 
-5. Click **Next** on both this page and the next, then click **Create Stack**.
+6. Click **Next** on both this page and the next, then click **Create Stack**.
 
    The stack will take a few minutes to deploy.
 
    ![Stack Creating](./img/stack_creating.png)
 
-6. In the menu to the left, click **StackSets**. You can see that the StackSet is being created on the **Self-managed** or **Service-managed** tab (depending on the option you chose).
+7. In the menu to the left, click **StackSets**. You can see that the StackSet is being created on the **Self-managed** or **Service-managed** tab (depending on the option you chose).
 
    ![StackSet Creating](./img/stackset_creating.png)
 
-7. After a few minutes, the StackSet will be created and begin deploying to all accounts in our organization. Reviewing the stacks in `us-east-1`, you should now see a new stack created by the StackSet:
+8. After a few minutes, the StackSet will be created and begin deploying to all accounts in our organization. Reviewing the stacks in `us-east-1`, you should now see a new stack created by the StackSet:
 
    ![Stacks Created](./img/stacks_created.png)
 
@@ -97,7 +99,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
    aws cloudformation create-stack \
      --region us-east-1 \
      --stack-name FixInventoryAccess \
-     --template-url https://fixinventorypublic.s3.amazonaws.com/cf/fixinventory-stackset.template \
+     --template-body file://path/to/your/fixinventory-role.template \
      --parameters ParameterKey=DeploymentTargetOrganizationalUnitIds,ParameterValue="$AWS_OU" ParameterKey=FixInventoryAccountID,ParameterValue=$FIX_ACCOUNT_ID
    ```
 
